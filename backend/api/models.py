@@ -11,8 +11,6 @@ class CustomUserManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name,
             )
-        
-
         user.is_superuser=False
         user.is_staff=False
         user.set_password(password)
@@ -61,19 +59,45 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def short_name(self):
         return self.first_name
 
-# class Post(models.Model):
-#     title = models.CharField(max_length=200)
-#     content = models.TextField()
-#     date_published = models.DateField(auto_created=True)
-#     last_modified = models.DateTimeField(auto_now=True)
-#     author = models.one_to_one_field(CustomUser)
+class Post(models.Model):
+     title = models.CharField(max_length=100)
+     content = models.TextField()
+     date_published = models.DateField(auto_now_add=True)
+     last_modified = models.DateTimeField(auto_now=True)
+     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
 
-# class Comments(models.Model):
-
+class Comment(models.Model):
+    title = models.CharField(max_length=50)
+    content = models.TextField(max_length=500)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    date_published = models.DateField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
     
 
 
+    
+
+# User
+    #
+# Profile (for addtional information) MAYBE LATER
+    # Profile picture
+    # Bio
+    # followers / friends
+    # follows / friends
+# Post
+    # Title
+    # Content
+    # date_published
+    # last_modified
+    # author
+# Comments
+    # Post
+    # Content
+    # Author
+# Categories MAYBE LATER
+    # ?
 
 
 
