@@ -11,7 +11,12 @@ class CustomUserManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name,
             )
+        
+
+        user.is_superuser=False
+        user.is_staff=False
         user.set_password(password)
+        
         user.save(using=self._db)
         return user
 
@@ -35,8 +40,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     is_active = models.BooleanField(default=True)
-    # is_superuser = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False) # Necesarry for Django's admin
+    is_staff = models.BooleanField(default=False)
 
     objects = CustomUserManager()
 
