@@ -16,10 +16,16 @@ class CustomUserManager(BaseUserManager):
         return user
 
     def create_superuser(self, username, email, password, first_name, last_name):
-        user = self.create_user((username, email, password, first_name, last_name)) # Calls the function/method above
-        user.is_admin=True
-        user.is_staff=True
+        user = self.model(
+            username=username,
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name,
+            )
         user.is_superuser=True
+        user.is_staff=True
+        user.set_password(password)
+        
         user.save(using=self._db)
         return user
 
@@ -29,9 +35,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
+    # is_superuser = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False) # Necesarry for Django's admin
 
-    objects = CustomUserManager
+    objects = CustomUserManager()
 
     USERNAME_FIELD = "username"
 
@@ -45,23 +52,20 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.username
     
     def full_name(self):
-        f'{self.first_name} + {self.last_name}'
+        return f'{self.first_name} {self.last_name}'
 
     def short_name(self):
         return self.first_name
-    
-    def e_mail(self):
-        return self.email
 
-class Post(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    date_published = models.DateField(auto_created=True)
-    last_modified = models.DateTimeField(auto_now=True)
-    author = models.one_to_one_field(CustomUser)
+# class Post(models.Model):
+#     title = models.CharField(max_length=200)
+#     content = models.TextField()
+#     date_published = models.DateField(auto_created=True)
+#     last_modified = models.DateTimeField(auto_now=True)
+#     author = models.one_to_one_field(CustomUser)
 
 
-class Comments(models.Model):
+# class Comments(models.Model):
 
     
 
