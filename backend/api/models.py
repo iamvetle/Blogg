@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 # Create your models here.
 
+# model.Manager - is what allows me to still use the "foundational" django manager methods
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, username, email, password, first_name, last_name):
         user = self.model(
@@ -34,7 +36,7 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=15, unique=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, max_length=30)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     is_active = models.BooleanField(default=True)
@@ -64,14 +66,14 @@ class Post(models.Model):
      content = models.TextField()
      date_published = models.DateField(auto_now_add=True)
      last_modified = models.DateTimeField(auto_now=True)
-     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="posts")
 
 
 class Comment(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField(max_length=500)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="comments")
     date_published = models.DateField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     

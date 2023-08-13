@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, ProfileSerializer
 from rest_framework import status
-from .models import CustomUser, CustomUserManager
+from .models import CustomUser
 
 class MyAccountView(APIView):
     
@@ -20,7 +20,7 @@ class UserProfileView(APIView):
     def get(self, request, id):
         if request.user.is_authenticated:
             try:
-                user = CustomUser.CustomUserManager.get(pk=id)
+                user = CustomUser.objects.get(pk=id)
             except CustomUser.DoesNotExist:
                 return Response(status=status.HTTP_404_NOT_FOUND)
             
@@ -34,26 +34,26 @@ class UserProfileView(APIView):
     
     # def get another user
 
-class MyUserView(APIView):
+# class MyUserView(APIView):
     
-class AllPosts(APIView):
-    # if is authenticated
+# class AllPosts(APIView):
+#     # if is authenticated
     
-    # def get - retrieves all posts ? - cant get all posts
+#     # def get - retrieves all posts ? - cant get all posts
 
-class NewPost(APIView):
-    # if is authenticated
+# class NewPost(APIView):
+#     # if is authenticated
     
-    # def post - new post
+#     # def post - new post
     
     
-class SeePost(APIView):
-    # if is authenticated
+# class SeePost(APIView):
+#     # if is authenticated
     
-    # see a specific post information
+#     # see a specific post information
     
-class CustomUser(APIView)
+# class CustomUser(APIView)
 
-    different user information
+#     different user information
 
 
