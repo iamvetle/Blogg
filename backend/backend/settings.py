@@ -33,6 +33,7 @@ AUTH_USER_MODEL = "api.CustomUser"
 
 INSTALLED_APPS = [
     'api',
+    'debug_toolbar',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -125,4 +127,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+INTERNAL_IPS = [ # For Django Debug Toolbar
+    "127.0.0.1",
+    "localhost",
+]
 
