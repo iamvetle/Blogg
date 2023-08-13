@@ -66,7 +66,7 @@ class Post(models.Model):
      content = models.TextField()
      date_published = models.DateField(auto_now_add=True)
      last_modified = models.DateTimeField(auto_now=True)
-     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="posts")
+     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
      
      def __str__(self):
          return self.title
@@ -80,6 +80,11 @@ class Comment(models.Model):
     date_published = models.DateField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     
+    def __str__(self):
+        return self.title
+    
+    def full_comment(self):
+        return f'{self.title}\n{self.content}'
 
 
     
