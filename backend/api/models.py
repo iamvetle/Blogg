@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
-# Create your models here.
-
 # model.Manager - is what allows me to still use the "foundational" django manager methods
 
 class CustomUserManager(BaseUserManager):
@@ -81,7 +79,7 @@ class Comment(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return self.title
+        return f'{self.title} (Post: {self.post})' 
     
     def full_comment(self):
         return f'{self.title}\n{self.content}'
