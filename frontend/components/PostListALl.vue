@@ -5,7 +5,7 @@
         <h1 class="text-5xl">The most recent posts</h1>
         <ul>
           <li v-for="post in posts" :key="post.id" class="p-10">
-            <div @click="seePost(post.id)">{{ post.title }}</div> by {{ post.author.username }}
+            <div>{{ post.title }}</div> by {{ post.author.username }}
             <div class="w-[200px] h-[200px] border">
               {{ post.content }}
             </div>
@@ -22,9 +22,6 @@
   import axios from 'axios'
   import { onMounted, ref } from 'vue';
   
-  function seePost(id) {
-  
-  }
   
   type Post = {
     id:number;
@@ -48,10 +45,6 @@
     .catch((error) => {
       console.error(error)
     } )
-  }
-  
-  function postClick() {
-  
   }
   
   onMounted(fetchPosts)
