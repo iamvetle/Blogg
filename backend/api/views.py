@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, ProfileSerializer
+from .serializers import UserSerializer, ProfileSerializer, PostSerializer, CommentSerializer
 from rest_framework import status
-from .models import CustomUser
+from .models import CustomUser, Post, Comment
 
 class MyAccountView(APIView):
     
@@ -28,6 +28,17 @@ class UserProfileView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
+    
+
+class PostView(APIView):
+    
+    def get(self, request):
+        queryset = Post.objects.all()
+        serializer = PostSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+            
+    
+    
     # if is authentication
     
     # def get userinformation
