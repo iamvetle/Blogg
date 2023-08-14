@@ -14,14 +14,23 @@
   </div>
 </template>
 
-<script setup>
+
+<script setup lang="ts">
+
+type Post = {
+  id:number;
+  title:string;
+  content:string;
+  author:{username:string};
+};
+
 
 import axios from 'axios'
 import { onMounted, ref } from 'vue';
 
 const feedPostsURL = "http://localhost:8888/api/feed/"
 
-let posts = ref([])
+let posts = ref<Post[]>([])
 
 function fetchPosts() {
   axios.get(feedPostsURL)
