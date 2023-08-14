@@ -1,11 +1,12 @@
 <template>
-  <div id="site-wrapper">
+
+  <div id="site-wrapper" v-if="!showPost">
     <div class="container" id="container">
       <h1 class="text-5xl">The most recent posts</h1>
       <ul>
         <li v-for="post in posts" :key="post.id" class="p-10">
-          {{ post.title }} by {{ post.author.username }}
-          <div class="w-[200px] h-[200px] blur-[1px] border">
+          <div @click="showPost=!showPost">{{ post.title }}</div> by {{ post.author.username }}
+          <div class="w-[200px] h-[200px] border">
             {{ post.content }}
           </div>
         </li>
@@ -17,6 +18,9 @@
 
 <script setup lang="ts">
 
+import axios from 'axios'
+import { onMounted, ref } from 'vue';
+
 type Post = {
   id:number;
   title:string;
@@ -24,13 +28,10 @@ type Post = {
   author:{username:string};
 };
 
-
-import axios from 'axios'
-import { onMounted, ref } from 'vue';
+let posts = ref<Post[]>([])
+let showPost = ref(false)
 
 const feedPostsURL = "http://localhost:8888/api/feed/"
-
-let posts = ref<Post[]>([])
 
 function fetchPosts() {
   axios.get(feedPostsURL)
@@ -42,6 +43,10 @@ function fetchPosts() {
   .catch((error) => {
     console.error(error)
   } )
+}
+
+function postClick() {
+
 }
 
 onMounted(fetchPosts)
