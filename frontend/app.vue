@@ -3,14 +3,14 @@
     <div class="container" id="container">
       <h1 class="text-5xl">The most recent posts</h1>
       <ul>
-        <li v-for="post in posts" :key="post.id">
+        <li v-for="post in posts" :key="post.id" class="p-10">
           {{ post.title }} by {{ post.author.username }}
-          <div class="w-50 h-50">
+          <div class="w-[200px] h-[200px] blur-[1px] border">
             {{ post.content }}
           </div>
         </li>
       </ul>
-  </div>    
+    </div>    
   </div>
 </template>
 
