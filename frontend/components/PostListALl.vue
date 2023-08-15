@@ -7,6 +7,7 @@
           v-for="post in posts"
           :key="post.id"
           :postDetail="post"
+          
           />
       </div>    
     </div>
@@ -17,8 +18,20 @@
   
   const baseURL = "http://localhost:8888/api/feed/"
 
-  import { onMounted, ref } from 'vue';
+  import { ref, onMounted } from 'vue';
+  import axios from 'axios'
 
-  const { data:posts } = await useFetch(baseURL) // fix error code later
-  const props = defineProps(["postDetail"])  
+  let posts = ref([])
+
+  onMounted(async () => {
+  try {
+    const response = await axios.get(baseURL)
+    posts.value = response.data
+    console.log("PostListAll OK", posts.value)
+  } catch (error) {
+    console.error(error)
+  }
+})
+
+  console.log("PostListAll OK", posts)
   </script>
