@@ -3,14 +3,12 @@
     <div id="site-wrapper" v-if="!showPost">
       <div class="container" id="container">
         <h1 class="text-5xl">The most recent posts</h1>
-        <ul>
-          <li v-for="post in posts" :key="post.id" class="p-10">
-            <div>{{ post.title }}</div> by {{ post.author.username }}
-            <div class="w-[200px] h-[200px] border">
-              {{ post.content }}
-            </div>
-          </li>
-        </ul>
+          <PostDetail 
+          v-for="post in posts"
+          :key="post.id"
+          :postDetail="post"
+          @click="fullView(post)" 
+          />
       </div>    
     </div>
     <Post />
@@ -18,10 +16,10 @@
   
   
   <script setup lang="ts">
-  
-  import axios from 'axios'
+
+  import { PostFullView } from '.nuxt/components';
+import axios from 'axios'
   import { onMounted, ref } from 'vue';
-  
   
   type Post = {
     id:number;
@@ -32,7 +30,8 @@
   
   let posts = ref<Post[]>([])
   let showPost = ref(false)
-  
+  let props = defineProps(["postDetail"])
+
   const feedPostsURL = "http://localhost:8888/api/feed/"
   
   function fetchPosts() {
@@ -47,6 +46,6 @@
     } )
   }
   
-  onMounted(fetchPosts)
+  onBeforeMount(fetchPosts)
   
   </script>
