@@ -1,15 +1,17 @@
 <template>
     <div>
-        <div>{{ postDetail.title }}</div> by {{ postDetail.author.username }}
+        <div>
+            <nuxt-link :to="`/post/${postDetail.id}`" > {{ postDetail.title }} </nuxt-link> by {{ postDetail.author.username }}
+        </div>
         <div class="w-[200px] h-[200px] border">
         {{ postDetail.content }}
         </div>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
-const post = defineProps(["postDetail"])
+const prop = defineProps(["postDetail"])
 
 
 </script>

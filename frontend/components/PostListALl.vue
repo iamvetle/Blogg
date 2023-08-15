@@ -1,51 +1,24 @@
 <template>
 
-    <div id="site-wrapper" v-if="!showPost">
+    <div id="site-wrapper">
       <div class="container" id="container">
         <h1 class="text-5xl">The most recent posts</h1>
-          <PostDetail 
+          <PostPartialView
           v-for="post in posts"
           :key="post.id"
           :postDetail="post"
-          @click="fullView(post)" 
           />
       </div>    
     </div>
-    <Post />
   </template>
   
   
   <script setup lang="ts">
+  
+  const baseURL = "http://localhost:8888/api/feed/"
 
-  import { PostFullView } from '.nuxt/components';
-import axios from 'axios'
   import { onMounted, ref } from 'vue';
-  
-  type Post = {
-    id:number;
-    title:string;
-    content:string;
-    author:{username:string};
-  };
-  
-  let posts = ref<Post[]>([])
-  let showPost = ref(false)
-  let props = defineProps(["postDetail"])
 
-  const feedPostsURL = "http://localhost:8888/api/feed/"
-  
-  function fetchPosts() {
-    axios.get(feedPostsURL)
-    .then((response) => {
-      console.log("Successfully 'fetchPosts'", response.status)
-      console.log("All:", response.data)
-      posts.value = response.data
-    })
-    .catch((error) => {
-      console.error(error)
-    } )
-  }
-  
-  onBeforeMount(fetchPosts)
-  
+  const { data:posts } = await useFetch(baseURL) // fix error code later
+  const props = defineProps(["postDetail"])  
   </script>

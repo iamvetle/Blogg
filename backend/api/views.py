@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, ProfileSerializer, PostSerializer, CommentSerializer
@@ -39,7 +39,10 @@ class PostView(APIView): #working
             
 
 class IndividualPostView(APIView):
-    def get(self, request):
+     def get(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+        serializer = PostSerializer(post)
+        return Response(serializer.data, status=status.HTTP_200_OK)
         
     
     # if is authentication
