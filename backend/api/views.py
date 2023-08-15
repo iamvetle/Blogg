@@ -30,20 +30,25 @@ class UserProfileView(APIView):
             return Response(status=status.HTTP_401_UNAUTHORIZED)
     
 
-class PostView(APIView):
+class PostView(APIView): #working
     
     def get(self, request):
         queryset = Post.objects.all()
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
             
-    
+
+class IndividualPostView(APIView):
+    def get(self, request):
+        
     
     # if is authentication
     
     # def get userinformation
     
     # def get another user
+
+
 
 # class MyUserView(APIView):
     

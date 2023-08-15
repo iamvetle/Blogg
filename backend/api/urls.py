@@ -3,9 +3,10 @@ from .views import MyAccountView, UserProfileView, PostView
 
 urlpatterns = [
     # path("auth/"), # authenticates user
-    path("myaccount/", MyAccountView.as_view(), name="my_account"), # my account
-    path("user/<int:id>/", UserProfileView.as_view(),  name="profile"), # different user profile
-    path("feed/", PostView.as_view(), name="feed")
+    #path("myaccount/", MyAccountView.as_view(), name="my_account"), # my account
+    #path("user/<int:id>/", UserProfileView.as_view(),  name="profile"), # different user profile
+    path("feed/", PostView.as_view(), name="feed"),
+    path("post/<int:id>/")
     # path("") # feed or "go get logged in"-page
     # path("post/<int:id>") # specific post
 ]
