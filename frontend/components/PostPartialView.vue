@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <nuxt-link :to="`/post/${postDetail.id}`" > {{ postDetail.title }} </nuxt-link> by {{ postDetail.author.username }}
+            <nuxt-link :to="`/post/${postDetail.id}/`" > {{ postDetail.title }} </nuxt-link> by {{ postDetail.author.username }}
         </div>
         <div class="w-[200px] h-[200px] border">
         {{ postDetail.content }}
@@ -9,9 +9,12 @@
     </div>
 </template>
 
-<script setup lang="ts">
-
-const prop = defineProps(["postDetail"])
+<script setup>
 
 
+const { postDetail } = defineProps({
+  postDetail: Object
+});
+
+console.log(postDetail.id)
 </script>
