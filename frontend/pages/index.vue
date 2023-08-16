@@ -13,23 +13,29 @@
   </div>
 </template>
   
-  
+
   <script setup lang="ts">
+
+  interface PostType {
+    id: number;
+    title: string;
+    content: string;
+    author: object;    
+  }
   
   const baseURL = "http://localhost:8888/api/feed/"
 
   import { ref, onMounted } from 'vue';
   import axios from 'axios'
 
-  let posts = ref([])
+  let posts = ref<PostType[]>([])
 
-  //@ts-ignore
-  axios("http://localhost:8888/api/feed/")
+  axios.get("http://localhost:8888/api/feed/")
   .then((Response) => { 
-    console.log(Response.data); 
-    posts.value = Response.data 
+    posts.value = Response.data
+    console.dir("All posts retrieved:", Response.data) 
   }).catch((error) => { 
-    console.error(error)
+    console.error("Error, fetching all posts:", error)
   })
 
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nuxt-link :to="`/post/${postDetail.id}`"><p>{{ postDetail.title }}</p></nuxt-link>
+        <nuxt-link :to="`/post/${postDetail.id}`"> <p>{{ postDetail.title }}</p></nuxt-link>
         <p>{{ postDetail.content }}</p>
         <p>{{ postDetail.author.username }}</p>
     </div>
@@ -9,7 +9,9 @@
 
 <script setup lang="ts">
 
+
 const { postDetail }:any = defineProps(["postDetail"])
-console.log(postDetail)
+console.log(postDetail.id)
+
 
 </script>
