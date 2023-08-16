@@ -5,7 +5,6 @@
         </div>
         <div class="w-[200px] h-[200px] border">
         {{ postDetail.content }}
-        {{ postDetail.id }}
         </div>
     </div>
 </template>
@@ -15,5 +14,5 @@
 
 const { postDetail } = defineProps(['postDetail']);
 
-console.log(postDetail.id)
+console.log(postDetail)
 </script>
