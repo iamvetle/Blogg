@@ -1,10 +1,11 @@
 <template>
-    <div v-if="post" class="container w-8/12 pt-8">
-		<button @click="$router.go(-1)" class="border bg-light-blue-400">Back</button>
+    <div v-if="post" class="container w-8/12 pt-8 mx-auto">
         
-		    <p class="text-2xl py-2">{{ post.title }}</p>
+		    <p class="text-2xl py-5">{{ post.title }}</p>
         <p>{{ post.content }}</p>
-        <p class="pt-5 font-bold">{{ post.author.username }}</p>
+        <p class="py-3 font-bold">- {{ post.author.username }}</p>
+        <button @click="$router.go(-1)" class="border bg-light-blue-400">Back</button>
+
 	</div>
 </template>
 
