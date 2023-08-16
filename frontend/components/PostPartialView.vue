@@ -14,5 +14,7 @@
 
 const { postDetail } = defineProps(['postDetail']);
 
+console.log("loaded")
+
 console.log(postDetail)
 </script>
