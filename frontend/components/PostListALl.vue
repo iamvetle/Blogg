@@ -21,19 +21,7 @@
   import { ref, onMounted } from 'vue';
   import axios from 'axios'
 
-  let posts = ref([])
-
-  
-
-  onMounted(async () => {
-  try {
-    const response = await axios.get(baseURL)
-    posts.value = response.data
-    console.log("PostListAll OK", posts.value)
-  } catch (error) {
-    console.error(error)
-  }
-})
+  const { data:posts } = await useFetch(baseURL)
 
   console.log("PostListAll OK", posts)
   </script>
