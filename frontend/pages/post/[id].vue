@@ -2,6 +2,7 @@
     <div>
         <p>{{ post.title }}</p>
         <p>{{ post.content }}</p>
+        <p> {{ post.author.username }}</p>
     </div>
 </template>
 
