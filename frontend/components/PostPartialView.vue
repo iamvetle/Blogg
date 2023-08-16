@@ -5,6 +5,7 @@
         </div>
         <div class="w-[200px] h-[200px] border">
         {{ postDetail.content }}
+        {{ postDetail.id }}
         </div>
     </div>
 </template>
