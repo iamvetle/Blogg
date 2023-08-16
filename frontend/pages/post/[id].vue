@@ -1,7 +1,8 @@
 <template>
     <div v-if="post">
 		<button @click="$router.go(-1)" class="border bg-light-blue-400">Back</button>
-        <p>{{ post.title }}</p>
+        
+		    <p>{{ post.title }}</p>
         <p>{{ post.content }}</p>
         <p>{{ post.author.username }}</p>
 	</div>
