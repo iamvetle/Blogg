@@ -12,9 +12,7 @@
 <script setup>
 
 
-const { postDetail } = defineProps({
-  postDetail: Object
-});
+const { postDetail } = defineProps(['postDetail']);
 
 console.log(postDetail.id)
 </script>

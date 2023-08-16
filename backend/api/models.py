@@ -60,7 +60,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.first_name
 
 class Post(models.Model):
-     id = models.AutoField(primary_key=True)
      title = models.CharField(max_length=100)
      content = models.TextField()
      date_published = models.DateField(auto_now_add=True)
