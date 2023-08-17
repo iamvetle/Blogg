@@ -1,16 +1,14 @@
 <template>
     <div id="site-wrapper" class="container mx-auto" >
-      
-	<div class="container" id="container">
         <h1 class="text-5xl pb-3">The most recent posts</h1>
-        <div v-for="post in posts" class="p-2 w-6/12 inline-block">
-          <PostPartialView
-          :key="post.id"
-          :postDetail="post"
-          />
-        </div>    
-    </div>
-  
+        <div>
+			<PostPartialView
+			v-for="(post, index) in posts"
+			:key="post.id"
+			:postDetail="post"
+			:class="postPlacement(index)"
+			/>
+        </div>    	
   </div>
 </template>
   
@@ -32,10 +30,14 @@ import axios from 'axios'
 const baseURL = "http://localhost:8888/api/feed/"
 const posts = ref<PostType[]>([])
 
-// // Post placement
-// function postPlacement(postCount) {
-// 	if postCount = 1
-// }
+// Post placement
+function postPlacement(index: number) {
+	if ( (index + 1) % 3 === 0) {
+		return "w-full mx-auto border border-red-500 p-2 m-2"
+	} else {
+		return "w-5/12 inline-block border border-blue-500 p-2 m-2"
+	}
+};
 
 
 // Fetch from API
