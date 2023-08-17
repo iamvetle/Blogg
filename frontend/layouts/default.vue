@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div id="navbar">
-      <navbar />
-    </div>
     <div id="content"> <!-- Everything goes in here-->
       <slot />
     </div> <!-- !! -->
