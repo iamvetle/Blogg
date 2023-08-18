@@ -11,11 +11,11 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-</template>
+</template> 
 
 <script setup lang="ts">
 
-import axios from 'axios'
+import axios from 'axios' // Make into component later
 import { on } from 'events';
 
 const baseURL = "http://localhost:8888/login/"
@@ -29,7 +29,8 @@ function loginForm() {
         console.log(response)
         localStorage.setItem("username", response.data.username)
         localStorage.setItem("token", response.data.token) // Give token if authenticated
-        navigateTo("/myuser") //make the main page different or myaccount
+        console.log("Successfully logged in", localStorage.getItem("username"), localStorage.getItem("token"))
+        //navigateTo("/myuser") //make the main page different or myaccount
 
     })
     .catch((error) => {

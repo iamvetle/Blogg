@@ -10,9 +10,20 @@ class CommentSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
+        fields = ('id', 'email', 'username', 'first_name', 'last_name', 'age', 'address', 'date_joined', 'phone_number', 'nickname')
+        extra_kwargs = {
+            'password': {'write_only': True, 'required': True},
+            'first_name': {'required': True},
+            'last_name': {'required': True},
+            'email': {'required': True},
+            }
 
-        fields = ["username", "email", "first_name", "last_name", "password"]
-
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        user = CustomUser(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer()   
     class Meta:        
