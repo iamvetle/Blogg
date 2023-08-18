@@ -16,12 +16,13 @@
 <script setup lang="ts">
 
 import axios from 'axios' // Make into component later
+
 import { on } from 'events';
 
 const baseURL = "http://localhost:8888/login/"
 let usernameInput = ref(null)
 let passwordInput = ref(null)
-let token = localStorage.getItem("token")
+
  
 function loginForm() {
     axios.post(baseURL)
@@ -39,8 +40,11 @@ function loginForm() {
 }
  
 onBeforeMount( () => { // want to later use middleware instead (that is executed before all)
-    if (token === null) {
+    let token = localStorage.getItem("token")
+
+    if (token !== null) {
         return navigateTo("/")
+        console.log("Token found, no need for client to be here.")
     }
 })
 
