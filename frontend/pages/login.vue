@@ -1,10 +1,48 @@
 <template>
     <div>
-
+        <form @submit.prevent="loginForm">
+            <label for="usernameInput">Username:</label>
+            <input type="text" v-model="usernameInput">
+        
+            <label for="passwordInput">Password:</label>
+            <input type="password" v-model="passwordInput">
+            
+            <label for="submit">Click to submit:</label>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 </template>
 
 <script setup lang="ts">
+
+import axios from 'axios'
+import { on } from 'events';
+
+const baseURL = "http://localhost:8888/login/"
+let usernameInput = ref(null)
+let passwordInput = ref(null)
+let token = localStorage.getItem("token")
+ 
+function loginForm() {
+    axios.post(baseURL)
+    .then((response) => {
+        console.log(response)
+        localStorage.setItem("username", response.data.username)
+        localStorage.setItem("token", response.data.token) // Give token if authenticated
+        navigateTo("/myuser") //make the main page different or myaccount
+
+    })
+    .catch((error) => {
+        console.error(error)
+    })
+}
+ 
+onBeforeMount( () => { // want to later use middleware instead (that is executed before all)
+    if (token === null) {
+        return navigateTo("/")
+    }
+})
+
 
 </script>
 
