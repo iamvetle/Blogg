@@ -1,15 +1,15 @@
 <template>
-    <div id="site-wrapper" class="container mx-auto" >
-        <h1 class="text-5xl pb-3">The most recent posts</h1>
         <div>
+			<div id="main" class="grid grid-cols-12 gap-8 py-12">
+          	<h2 class="text-4xl text-center pt-6 pb-10 col-span-12">Siste blogginnlegg</h2>
 			<PostPartialView
 			v-for="(post, index) in posts"
 			:key="post.id"
 			:postDetail="post"
 			:class="postPlacement(index)"
 			/>
-        </div>    	
-  </div>
+        </div>
+		</div>    	
 </template>
   
 
@@ -32,10 +32,10 @@ const posts = ref<PostType[]>([])
 
 // Post placement
 function postPlacement(index: number) {
-	if ( (index + 1) % 3 === 0) {
-		return "w-full mx-auto border border-red-500 p-2 m-2"
+	if ( (index + 1) % 2 === 0) {
+		return "col-span-3"
 	} else {
-		return "w-5/12 inline-block border border-blue-500 p-2 m-2"
+		return "col-start-4 col-span-3"
 	}
 };
 
