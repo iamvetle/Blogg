@@ -41,9 +41,6 @@ class PostAdmin(admin.ModelAdmin):
 
 
 # Forms ? ->
- 
-class CustomUserAdmin(admin.ModelAdmin):
-    pass
 
     
 # Register ->
