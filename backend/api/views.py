@@ -5,7 +5,10 @@ from .serializers import UserSerializer, ProfileSerializer, PostSerializer, Comm
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
-from .models import CustomUser, Post, Comment
+from .models import Post, Comment
+from django.contrib.auth import get_user_model
+
+CustomUser = get_user_model()
 
 class MyAccountView(APIView):
     

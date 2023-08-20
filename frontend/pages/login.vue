@@ -31,10 +31,10 @@ import axios from 'axios' // Make into component later
 
 
 const baseURL = "http://localhost:8888/api/login/"
-let usernameInput = ref(null)
-let passwordInput = ref(null)
+let usernameInput = ref<string | null>(null)
+let passwordInput = ref<string | null>(null)
 
-let loginerror:boolean = false
+let loginerror = false
 let loginsucess = false
 
  
@@ -47,7 +47,12 @@ function loginForm() {
         console.log(response)
         localStorage.setItem("username", response.data.username)
         localStorage.setItem("token", response.data.token) // Give token if authenticated
-        console.log("Successfully logged in", localStorage.getItem("username"), localStorage.getItem("token"))
+        loginsucess = true
+        loginerror = false
+        console.log(`Successfully logged in.`)
+        usernameInput.value = ""
+        passwordInput.value = ""
+
         //navigateTo("/myuser") //make the main page different or myaccount
 
     })
