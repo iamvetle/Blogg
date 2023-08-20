@@ -5,7 +5,7 @@
         <p>{{ account.first_name }}</p>
         <p>{{ account.last_name }}</p>
     </div>
-    <div else v-on="accountError()">
+    <div v-else="accountError()">
         <p>An error occured. See console log.</p>
     </div>
 </template>
@@ -23,32 +23,35 @@ type Account = {
 
 import axios from 'axios'
 
-const baseURL = "http://localstorage:8888/api/myuser/"
-let account: null | Account = null
+const baseURL = "http://localhost:8888/api/myuser/"
+let account = ref<null | Account>(null)
 
 function accountError() {
     console.log("The account object is null or undefined")
 }
 
-onMounted( () => {
+
+function fetchIt() { 
     const token = localStorage.getItem("token")
-    
-    axios.get(baseURL, { 
-        "headers": {
+
+    axios.get("http://localhost:8888/api/myuser/", { 
+        headers: {
             'Authorization': `Token ${token}`
         }
     })
     .then((response) => {
         const data: Account = response.data
-            account = {
-                "username": data.username,
-                "email": data.email,
-                "first_name": data.first_name,
-                "last_name": data.last_name,
+            account.value = {
+                username: data.username,
+                email: data.email,
+                first_name: data.first_name,
+                last_name: data.last_name,
             }
     })
-})
+    .catch((error) => console.error(error))
+}
 
+onMounted(fetchIt)
 
 </script>
 

@@ -7,19 +7,19 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from .models import Post, Comment
 from django.contrib.auth import get_user_model
+from rest_framework.permissions import IsAuthenticated
 
 CustomUser = get_user_model()
 
+
 class MyAccountView(APIView):
     
+    permission_classes = [IsAuthenticated]
+    
     def get(self, request):
-        
-        if request.user.is_authenticated:
-            serializer = UserSerializer(request.user)
-            return Response(serializer.data, status=status.HTTP_200_OK) # AUTHORIZED - OK
-        else:
-            return Response(status=status.HTTP_401_UNAUTHORIZED) # NOT AUTHORIZED - NOT OK
-        
+        serializer = UserSerializer(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK) # AUTHORIZED - OK
+    
 class UserProfileView(APIView):
     
     def get(self, request, id):
