@@ -10,7 +10,7 @@ class CommentSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'email', 'username', 'first_name', 'last_name', 'age', 'address', 'date_joined', 'phone_number', 'nickname')
+        fields = ('id', 'email', 'username', 'first_name', 'last_name', 'age', 'address', 'phone_number', 'nickname')
         extra_kwargs = {
             'password': {'write_only': True, 'required': True},
             'first_name': {'required': True},

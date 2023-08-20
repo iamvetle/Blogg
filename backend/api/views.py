@@ -26,7 +26,7 @@ class UserProfileView(APIView):
             except CustomUser.DoesNotExist:
                 return Response(status=status.HTTP_404_NOT_FOUND)
             
-            serializer = ProfileSerializer(request.user)
+            serializer = ProfileSerializer(user)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)

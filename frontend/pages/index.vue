@@ -14,7 +14,7 @@
   
 
 <script setup lang="ts">
-definePageMeta({
+definePageMeta({ //@ts-ignore
 	layout:"mainpage",
 })
 

@@ -16,32 +16,16 @@ class CustomUserManager(BaseUserManager):
         if not last_name:
             raise ValueError('The Last name field must be set')
         email = self.normalize_email(email)
+        user = self.model(email=email, username=username, **extra_fields)
         user.set_password(password)
 
-        
-        user = self.model(email=email, username=username, **extra_fields)
         user.save(using=self._db)
         return user
     
-    def create_superuser(self, username, email, password, first_name, last_name):
-        user = self.model(
-            username=username,
-            email=self.normalize_email(email),
-            first_name=first_name,
-            last_name=last_name,
-            )
-        user.is_superuser=True
-        user.is_staff=True
-        user.set_password(password)
+    def create_superuser(self, email, username, password, first_name, last_name, **extra_fields):
+        user = self.create_user(email, username, password, first_name, last_name, is_superuser = True, is_staff = True, **extra_fields)
         
-        user.save(using=self._db)
         return user
-    
-    def create_superuser(self, email, username, password, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-        
-        return self.create_user(email, username, password, **extra_fields)
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=15, unique=True)
@@ -50,7 +34,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=30)
     age = models.PositiveIntegerField(null=True)
     address = models.TextField(null=True)
-    date_joined = models.DateTimeField(auto_now_add=True, null=True)
     last_online = models.DateTimeField(auto_now=True, null=True)
     phone_number = models.CharField(max_length=15, null=True)
     nickname = models.CharField(max_length=30, null=True)
