@@ -1,5 +1,5 @@
 <template>
-        <div>
+    	<div>
 			<div id="main" class="grid grid-cols-12 gap-8 py-12">
           	<h2 class="text-4xl text-center pt-6 pb-10 col-span-12">Siste blogginnlegg</h2>
 			<PostPartialView
@@ -8,12 +8,15 @@
 			:postDetail="post"
 			:class="postPlacement(index)"
 			/>
-        </div>
+        	</div>
 		</div>    	
 </template>
   
 
 <script setup lang="ts">
+definePageMeta({
+	layout:"mainpage",
+})
 
 // Typescript
 interface PostType {

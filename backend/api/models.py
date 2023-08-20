@@ -16,8 +16,10 @@ class CustomUserManager(BaseUserManager):
         if not last_name:
             raise ValueError('The Last name field must be set')
         email = self.normalize_email(email)
-        user = self.model(email=email, username=username, **extra_fields)
         user.set_password(password)
+
+        
+        user = self.model(email=email, username=username, **extra_fields)
         user.save(using=self._db)
         return user
     

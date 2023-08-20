@@ -1,11 +1,13 @@
 <template>
-    <div v-if="post" class="container w-8/12 pt-8 mx-auto">
-        
-		    <p class="text-2xl py-5">{{ post.title }}</p>
-        <p>{{ post.content }}</p>
-        <p class="py-3 font-bold">- {{ post.author.username }}</p>
-        <button @click="$router.go(-1)" class="border bg-light-blue-400">Back</button>
-
+    <div v-if="post" class="grid grid-cols-12 py-[100px]">
+      <div class="px-[60px] py-[30px] col-start-5 col-span-4 bg-white">
+          <p class="text-3xl py-5">{{ post.title.toUpperCase() }}</p>
+          <small>Date here</small>
+          <img src="~/assets/noimage.jpg" alt="idk" class="pt-1 rounded-sm h-auto max-w-3/4"/>
+          <p class="pt-3 font-bold">- {{ post.author.username }}</p>
+          <p class="py-2">{{ post.content }}</p>
+          <button @click="$router.go(-1)" class="border border-2 bg-light-blue-400 rounded-lg py-1 px-2">Back</button>
+      </div>
 	</div>
 </template>
 
