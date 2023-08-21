@@ -8,7 +8,9 @@ export default defineNuxtConfig({
     }
   },
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@vee-validate/nuxt',
+    '@formkit/nuxt'
   ]
 
 })

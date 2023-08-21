@@ -34,12 +34,19 @@ class LoginView(APIView): # Login to account
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
-class RegisterUserView(APIView): # Not in use
+class RegisterUserView(APIView): 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
-            UserSerializer.create(serializer.data)
-            return Response("User creation succeded", serializer.data, status=status.HTTP_201_CREATED)
+            data = request.data
+            print("New user created:", data)
+            CustomUser.objects.create_user(
+                username=data['username'],              
+                email=data['email'], 
+                first_name=data['first_name'], 
+                last_name=data['last_name'], 
+                password=data['password'])
+            return Response("User creation succeded", status=status.HTTP_201_CREATED)
         else:
             return Response("User creation failed", status=status.HTTP_400_BAD_REQUEST)
 

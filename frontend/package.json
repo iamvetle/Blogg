@@ -9,8 +9,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@formkit/nuxt": "^0.18.3",
     "@nuxt/devtools": "latest",
     "@types/node": "^18.17.3",
+    "@vee-validate/nuxt": "^4.11.2",
     "nuxt": "^3.6.5"
   },
   "dependencies": {

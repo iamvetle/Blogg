@@ -15,13 +15,6 @@ class UserSerializer(serializers.ModelSerializer):
             'last_name': {'required': True},
             'email': {'required': True},
             }
-
-    def create(self, validated_data):
-        password = validated_data.pop('password') # Makes sure the password is not
-        user = CustomUser(**validated_data)
-        user.set_password(password)
-        user.save()
-        return user
     
 class PostSerializer(serializers.ModelSerializer):
     
