@@ -11,10 +11,8 @@
 	</div>
 </template>
 
+<script setup lang="ts"> // Each individual post (ex: http://localhost:3000/post/3)
 
-<script setup lang="ts">
-
-// Typescript
 interface PostType {
   id:number;
   title:string;
@@ -24,23 +22,22 @@ interface PostType {
   };
 }
 
-// Imports
-import { ref } from 'vue'
 import axios from 'axios'
 
-// Variables
 let post = ref<PostType | null>(null)
 const postId = useRoute()
-const url = `http://localhost:8888/api/post/${postId.params.id}`
+const baseURL = `http://localhost:8888/api/post/${postId.params.id}`
 
-// Life cycle
-onMounted( () => { axios.get(url)
+onMounted( () => {
+	axios.get(baseURL)
   .then((Response) => { 
     console.log(Response); 
     post.value = Response.data 
-  }).catch((error) => { 
+	})
+  .catch((error) => { 
     console.error(error)
-  })})
+  })
+})
 
 
 </script>

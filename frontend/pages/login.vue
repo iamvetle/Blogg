@@ -7,9 +7,7 @@
         <label for="pwd">Password:</label>
         <input type="password" id="pwd" v-model="passwordInput" required class="border block border-blue-500">
         
-        <button type="submit" class="rounded-sm bg-slate-400 mt-4 text-white px-1 py-1">
-        Submit
-        </button>
+        <button type="submit" class="rounded-sm bg-slate-400 mt-4 text-white px-1 py-1">Submit        </button>
 
         <hr class="block my-4" />
         
@@ -18,17 +16,14 @@
 
         <p class="mt-5">No account?</p>
         <p class="pt-2">Click her to register for a new account</p>
-        <button class="bg-slate-200 p-1 rounded-sm mt-3"><router-link to="/register">Register</router-link></button>
+        <button class="bg-slate-200 p-1 rounded-sm mt-3"><nuxt-link to="/register">Register</nuxt-link></button>
     </div>
     </form>
 </template> 
 
-
-
 <script setup lang="ts">
 
 import axios from 'axios' // Make into component later
-
 
 const baseURL = "http://localhost:8888/api/login/"
 let usernameInput = ref<string | null>(null)
@@ -46,23 +41,20 @@ function loginForm() {
     .then((response) => {
         console.log(response)
         localStorage.setItem("username", response.data.username)
-        localStorage.setItem("token", response.data.token) // Give token if authenticated
+        localStorage.setItem("token", response.data.token)
         loginsucess = true
         loginerror = false
         console.log(`Successfully logged in.`)
         usernameInput.value = ""
         passwordInput.value = ""
-
-        //navigateTo("/myuser") //make the main page different or myaccount
-
     })
     .catch((error) => {
-        console.error(error.data) //@ts-ignore
+        console.error(error.data)
         loginerror = true
     })
 }
  
-onBeforeMount( () => { // want to later use middleware instead (that is executed before all)
+onBeforeMount( () => { // TODO: Switch to 'middleware' instead
     let token = localStorage.getItem("token")
 
     if (token !== null) {
@@ -70,7 +62,6 @@ onBeforeMount( () => { // want to later use middleware instead (that is executed
         return navigateTo("/")
     }
 })
-
 
 </script>
 

@@ -30,7 +30,6 @@ function accountError() {
     console.log("The account object is null or undefined")
 }
 
-
 function fetchIt() { 
     const token = localStorage.getItem("token")
 

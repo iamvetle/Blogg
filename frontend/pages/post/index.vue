@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"> // Nothing here: Only redirects back to "/"
 definePageMeta({
     middleware: () => {
         return "/"

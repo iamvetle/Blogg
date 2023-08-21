@@ -138,3 +138,8 @@ INTERNAL_IPS = [ # For Django Debug Toolbar
     "localhost"
 ]
 
+REST_FRAMEWORK = { # For token authentication (DRF)
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}

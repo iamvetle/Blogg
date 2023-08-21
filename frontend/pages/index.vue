@@ -11,29 +11,25 @@
         	</div>
 		</div>    	
 </template>
-  
 
 <script setup lang="ts">
-definePageMeta({ //@ts-ignore
+
+definePageMeta({
 	layout:"mainpage",
 })
 
-// Typescript
 interface PostType {
 	id: number;
 	title: string;
 	content: string;
 	author: object;    
 }
-// Imports
-import { ref, onMounted } from 'vue';
+
 import axios from 'axios'
 
-// Variables
 const baseURL = "http://localhost:8888/api/feed/"
 const posts = ref<PostType[]>([])
 
-// Post placement
 function postPlacement(index: number) {
 	if ( (index + 1) % 2 === 0) {
 		return "col-span-3"
@@ -42,7 +38,6 @@ function postPlacement(index: number) {
 	}
 };
 
-
 // Fetch from API
 onMounted( () => { axios.get("http://localhost:8888/api/feed/")
 	.then((Response) => { 
@@ -50,7 +45,7 @@ onMounted( () => { axios.get("http://localhost:8888/api/feed/")
 		console.dir("All posts retrieved:", Response.data) 
 	}).catch((error) => { 
 		console.error("Error, fetching all posts:", error)
-	})})
-
+	})
+})
 
 </script>
