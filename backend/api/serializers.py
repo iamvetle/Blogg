@@ -22,17 +22,21 @@ class UserSerializer(serializers.ModelSerializer):
             }
 
     def create(self, validated_data):
-        password = validated_data.pop('password')
+        password = validated_data.pop('password') # Makes sure the password is not
         user = CustomUser(**validated_data)
         user.set_password(password)
         user.save()
         return user
 class PostSerializer(serializers.ModelSerializer):
-    author = UserSerializer()   
+    author = serializers.SerializerMethodField()
     class Meta:        
-        model = Post
-        
-        fields = ["id", "title", "content", "author"]        
+        model = Post    
+        fields = ["title", "content", "author"] 
+    def get_author(self, obj):
+        author = {
+            "username":obj.author.username
+        }
+        return author
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:

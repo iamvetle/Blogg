@@ -1,14 +1,11 @@
 from django.urls import path
-from .views import MyAccountView, UserProfileView, PostView, IndividualPostView, LoginView
+from .views import MyAccountView, UserProfileView, AllPostsView, SinglePostView, LoginView, NewPostView
 
 urlpatterns = [
-    # path("auth/"), # authenticates user
-    #path("myaccount/", MyAccountView.as_view(), name="my_account"), # my account
-    #path("user/<int:id>/", UserProfileView.as_view(),  name="profile"), # different user profile
+
     path("myuser/", MyAccountView.as_view(), name="myuser"),
-    path("feed/", PostView.as_view(), name="feed"),
-    path("post/<int:pk>/", IndividualPostView.as_view(), name="post_full_view"),
+    path("feed/", AllPostsView.as_view(), name="all_posts"),
+    path("post/<int:pk>/", SinglePostView.as_view(), name="single_post"),
     path("login/", LoginView.as_view(), name="login"), 
-    # path("") # feed or "go get logged in"-page
-    # path("post/<int:id>") # specific post
+    path("newpost/", NewPostView.as_view(), name="new_post"),
 ]

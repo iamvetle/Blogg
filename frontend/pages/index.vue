@@ -49,3 +49,8 @@ onMounted( () => { axios.get("http://localhost:8888/api/feed/")
 })
 
 </script>
+
+<style scoped lang="scss">
+
+
+</style>

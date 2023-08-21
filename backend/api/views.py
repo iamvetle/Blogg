@@ -12,15 +12,15 @@ from rest_framework.permissions import IsAuthenticated
 CustomUser = get_user_model()
 
 
-class MyAccountView(APIView):
+class MyAccountView(APIView): # Get info about my own account
     
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
         serializer = UserSerializer(request.user)
-        return Response(serializer.data, status=status.HTTP_200_OK) # AUTHORIZED - OK
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
-class UserProfileView(APIView):
+class UserProfileView(APIView): # Retrieve a specific user profile
     
     def get(self, request, id):
         if request.user.is_authenticated:
@@ -35,7 +35,7 @@ class UserProfileView(APIView):
             return Response(status=status.HTTP_401_UNAUTHORIZED)
     
 
-class PostView(APIView): #working
+class AllPostsView(APIView): # Retrieves ALL posts
     
     def get(self, request):
         queryset = Post.objects.all()
@@ -43,14 +43,26 @@ class PostView(APIView): #working
         return Response(serializer.data, status=status.HTTP_200_OK)
             
 
-class IndividualPostView(APIView):
-     def get(self, request, pk):
+class SinglePostView(APIView): # Retrieves a specific post
+    def get(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
         serializer = PostSerializer(post)
         return Response(serializer.data, status=status.HTTP_200_OK)
         
+class NewPostView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request):
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(author=request.user)
+            return Response(status=status.HTTP_201_CREATED)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+    
 
-class LoginView(APIView):
+
+class LoginView(APIView): # Login to account
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')

@@ -4,6 +4,8 @@
         <p>{{ account.email }}</p>
         <p>{{ account.first_name }}</p>
         <p>{{ account.last_name }}</p>
+        <hr>
+        <nuxt-link to="/newpost"><button class="border py-1 px-2">Create new post</button></nuxt-link>
     </div>
     <div v-else="accountError()"> <!-- Will always first cause this. TODO: Fix-->
         <p>An error occured. See console log.</p>
