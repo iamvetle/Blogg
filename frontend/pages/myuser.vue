@@ -5,7 +5,7 @@
         <p>{{ account.first_name }}</p>
         <p>{{ account.last_name }}</p>
     </div>
-    <div v-else="accountError()">
+    <div v-else="accountError()"> <!-- Will always first cause this. TODO: Fix-->
         <p>An error occured. See console log.</p>
     </div>
 </template>
