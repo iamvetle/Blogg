@@ -12,15 +12,39 @@ from rest_framework.permissions import IsAuthenticated
 CustomUser = get_user_model()
 
 
-class MyAccountView(APIView): # Get info about my own account
+### USER HANDLING
+
+class MyAccountView(APIView): # Personal account
     
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+class LoginView(APIView): # Login to account
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        user = authenticate(username=username, password=password)
+        
+        if user:
+            token, _ = Token.objects.get_or_create(user=user) # Get or create a token
+            return Response({'token': token.key}, status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+class RegisterUserView(APIView): # Not in use
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            UserSerializer.create(serializer.data)
+            return Response("User creation succeded", serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response("User creation failed", status=status.HTTP_400_BAD_REQUEST)
+
     
-class UserProfileView(APIView): # Retrieve a specific user profile
+class UserProfileView(APIView): # Other user profiles
     
     def get(self, request, id):
         if request.user.is_authenticated:
@@ -34,6 +58,7 @@ class UserProfileView(APIView): # Retrieve a specific user profile
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
     
+### POST RETRIEVEL
 
 class AllPostsView(APIView): # Retrieves ALL posts
     
@@ -41,7 +66,6 @@ class AllPostsView(APIView): # Retrieves ALL posts
         queryset = Post.objects.all()
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-            
 
 class SinglePostView(APIView): # Retrieves a specific post
     def get(self, request, pk):
@@ -59,20 +83,9 @@ class NewPostView(APIView):
             return Response(status=status.HTTP_201_CREATED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-    
 
 
-class LoginView(APIView): # Login to account
-    def post(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
-        user = authenticate(username=username, password=password)
-        
-        if user:
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key}, status=status.HTTP_200_OK)
-        else:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
 # if is authentication
 
 # def get userinformation

@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.conf import settings
 
-# model.Manager - is what allows me to still use the "foundational" django manager methods
-
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, password, first_name, last_name, **extra_fields):
         if not email:
@@ -28,16 +26,16 @@ class CustomUserManager(BaseUserManager):
         
         return user
 
-class CustomUser(AbstractBaseUser, PermissionsMixin): # Might want to change what is required later
-    username = models.CharField(max_length=15, unique=True)
-    email = models.EmailField(unique=True, max_length=100)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+class CustomUser(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(max_length=15, unique=True, blank=False) # Required
+    email = models.EmailField(unique=True, max_length=100, blank=False) # Required
+    first_name = models.CharField(max_length=30, blank=False) # Required
+    last_name = models.CharField(max_length=30, blank=False) # Required
     age = models.PositiveIntegerField(blank=True)
-    address = models.TextField(blank=True)
-    last_online = models.DateTimeField(auto_now=True, null=True)
-    phone_number = models.CharField(max_length=15, null=True)
-    nickname = models.CharField(max_length=30, null=True)
+    address = models.TextField(blank=True, default='')
+    last_online = models.DateTimeField(auto_now=True)
+    phone_number = models.CharField(max_length=20, blank=True, default='')
+    nickname = models.CharField(max_length=30, blank=True, default='')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

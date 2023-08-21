@@ -1,15 +1,10 @@
 from .models import CustomUser, Post, Comment
 from django.contrib.auth import get_user_model
+from rest_framework import serializers
+
 
 CustomUser = get_user_model()
 
-from rest_framework import serializers
-
-class CommentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Comment
-        
-        fields = ["__all__"]
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -27,18 +22,27 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+    
 class PostSerializer(serializers.ModelSerializer):
+    
     author = serializers.SerializerMethodField()
+
     class Meta:        
         model = Post    
         fields = ["title", "content", "author"] 
+
     def get_author(self, obj):
         author = {
             "username":obj.author.username
         }
         return author
 
-class ProfileSerializer(serializers.ModelSerializer):
+class CommentSerializer(serializers.ModelSerializer): # Not in use
+    class Meta:
+        model = Comment
+        fields = ["__all__"]
+
+class ProfileSerializer(serializers.ModelSerializer): # Not in use
     class Meta:
         model = CustomUser
         
