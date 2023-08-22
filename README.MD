@@ -7,7 +7,7 @@
     * Make the form prettier [X]
     * Make sure spaces aren't allowed [X]
     * Redirect authenticated users [X]
-    * Redirect after successfull registration ( '/login' )
+    * Redirect after successfull registration ( '/login' ) [X]
     * Better response after post message [X]
 
 ### Logout "page" ( '/logout' )

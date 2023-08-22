@@ -7,9 +7,10 @@
                 </nuxt-link>
             </logo>
             <ul class="flex space-x-5 me-7">
-                <li class="">Link 1</li>
-                <li class="">Link 1</li>
-                <li class="">Link 1</li>
+                <nuxt-link to="/"><li class="hover:text-red-300">Home</li></nuxt-link>
+                <nuxt-link to="/registrer/"><li class="">Registrer</li></nuxt-link>
+                <nuxt-link to="/login/"><li class="">Logg inn</li></nuxt-link>
+                <nuxt-link to="/myuser/"><li class="">myuser</li></nuxt-link> <!--Remove later-->                
             </ul>
         </div>
     </div>
