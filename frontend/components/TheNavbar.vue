@@ -8,19 +8,19 @@
             </div>
             <ul class="flex space-x-6 me-7 text-sm">
                 <nuxt-link to="/kontakt/">
-                    <li class="me-7 hover:text-yellow-300">Kontakt</li>
+                    <li class="hover:text-yellow-300">Kontakt</li>
                 </nuxt-link>
                 <nuxt-link to="/om-oss/">
-                    <li class="me-7 hover:text-yellow-300">Om oss</li>
+                    <li class="hover:text-yellow-300">Om oss</li>
                 </nuxt-link>
                 <nuxt-link to="/newpost/">
-                    <li class="me-7 hover:text-yellow-300">Nytt innlegg</li>
+                    <li class="hover:text-yellow-300">Nytt innlegg</li>
                 </nuxt-link>
                 <nuxt-link to="/myuser/">
-                    <li class="me-7 hover:text-yellow-300">Min Side</li>
+                    <li class="hover:text-yellow-300">Min Side</li>
                 </nuxt-link>
                 <nuxt-link to="/loggut/">
-                    <li class="me-7 hover:text-yellow-300">Logg ut</li>
+                    <li class="hover:text-yellow-300">Logg ut</li>
                 </nuxt-link>
             </ul>
         </div>
