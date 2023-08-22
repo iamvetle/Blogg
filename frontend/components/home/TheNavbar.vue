@@ -7,10 +7,10 @@
             <nuxt-link to="/om-oss">
                 <li class="me-7 hover:text-yellow-300">Om oss</li>
             </nuxt-link>
-            <nuxt-link to="/registrer">
+            <nuxt-link to="/register/">
                 <li class="me-7 hover:text-yellow-300">Registrer</li>
             </nuxt-link>
-            <nuxt-link to="/login">
+            <nuxt-link to="/login/">
                 <li class="me-7 hover:text-yellow-300">Login</li>
             </nuxt-link>
         </ul>

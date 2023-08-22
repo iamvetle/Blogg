@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form @submit.prevent="publishPost">
+        <form @submit.prevent="newPost">
             <input class="border" v-model="titleInput" type="text" id="title">
             <textarea class="border" v-model="textInput"></textarea>
             <button type="submit">Submit</button>
@@ -16,28 +16,23 @@ let titleInput: Ref<string | null> = ref(null)
 let textInput: any = ref(null)
 const baseURL = "http://localhost:8888/api/newpost/"
 
-function publishPost() {
+const newPost = async () => {
     const token = localStorage.getItem("token")
 
     const data = {
         title:titleInput.value,
         content:textInput.value,
-        author: {
-            username:"iamvetle"
-        }
     }
-
-    axios.post(baseURL, data, { 
-        headers: {
-            'Authorization': `Token ${token}`
-        }
-    })
-    .then((response) => {
-        console.log("Successfilly added the post", response.data)
-    })
-    .catch((error) => {
-        console.error(error)
-    })
+    try {
+        const response = await axios.post(baseURL, data, { 
+            headers: {
+                'Authorization': `Token ${token}`  
+            }
+        })
+        console.log("Successfully added post")
+    } catch {
+        console.log("Failed adding post")
+    }
 }
 </script>
 

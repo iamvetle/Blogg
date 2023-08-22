@@ -39,14 +39,20 @@ function postPlacement(index: number) {
 };
 
 // Fetch from API
-onMounted( () => { axios.get("http://localhost:8888/api/feed/")
-	.then((Response) => { 
-		posts.value = Response.data
-		console.dir("All posts retrieved:", Response.data) 
-	}).catch((error) => { 
-		console.error("Error, fetching all posts:", error)
-	})
-})
+
+const fetchPosts = async () => {
+	try {
+		const response = await axios.get(baseURL)
+		posts.value = response.data
+		console.dir("All posts retrieved:", response.data) 
+	} catch {
+		console.error("Error, fetching all posts:")
+
+	}
+
+} 
+
+onMounted(fetchPosts)
 
 </script>
 
