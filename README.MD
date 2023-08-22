@@ -14,8 +14,8 @@
 * Backend
     * Delete token when accessing '/loggout' [X]
 * Frontend
-    * Delete token when accessing '/loggout' [X]
-        * Add a button for it [X]
+    * Delete token when accessing '/loggout' [V]
+        * Add a button for it [V]
 
 ### New post page ( '/newpost' )
 * Backend [X]
