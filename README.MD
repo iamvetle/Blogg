@@ -30,6 +30,8 @@
 ### Other
     * Combine tailwind css with scss - sass
     * Change from redirect to propper "middleware"
+    * Implement redirection when on wrong pages + when on "pages that doesnt exist"
+    * Create custom error page
 
     ** Find out how to:
 
