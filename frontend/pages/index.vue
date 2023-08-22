@@ -15,7 +15,7 @@
 <script setup lang="ts">
 
 definePageMeta({
-	layout:"mainpage",
+	layout:"index-layout",
 })
 
 interface PostType {

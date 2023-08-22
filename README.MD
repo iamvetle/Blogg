@@ -18,10 +18,11 @@
         * Add a button for it [V]
 
 ### New post page ( '/newpost' )
-* Backend [X]
+* Backend
     -
 * Frontend
     * Redirect unauth users [X]
+    * Make the site much prettier [X]
 
 ### Index page ( '/' )
 * Frontend
@@ -29,6 +30,7 @@
 
 ### Other
     * Combine tailwind css with scss - sass
+    * Try to use ONE navbar instead of two [X]
     * Change from redirect to propper "middleware"
     * Implement redirection when on wrong pages + when on "pages that doesnt exist"
     * Create custom error page

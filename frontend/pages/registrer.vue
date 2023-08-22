@@ -1,6 +1,6 @@
 
 <template>
-	<div>
+	<div class="">
 		<FormKit
 			type="form"
 			id="register_form"

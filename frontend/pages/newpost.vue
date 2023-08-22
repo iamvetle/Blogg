@@ -1,10 +1,14 @@
 <template>
     <div>
-        <form @submit.prevent="newPost">
-            <input class="border" v-model="titleInput" type="text" id="title">
-            <textarea class="border" v-model="textInput"></textarea>
-            <button type="submit">Submit</button>
-        </form>
+        <div class="grid grids-cols-12">
+            <div id="form">
+                <form @submit.prevent="newPost">
+                    <input class="border" v-model="titleInput" type="text" id="title"> <!-- Title -->
+                    <textarea class="border" v-model="textInput"></textarea> <!-- Content -->
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 
