@@ -18,7 +18,7 @@
                     </div>
                     <hr class="my-6 border-t border-gray-300">
                     <div class="flex flex-col">
-                        <span class="text-gray-600 uppercase font-bold tracking-wider mb-2">OOOO</span>
+                        <span class="text-gray-600 uppercase font-bold tracking-wider mb-2">Info</span>
                         <ul>
                             <li class="mb-2">Epost: {{ account.email }}</li>
                             <li class="mb-2">Tlf.nr: {{ account.phone_number }}</li>
@@ -121,7 +121,17 @@ type Account = {
     phone_number:number;
 }
 
-
+type Post = {
+    title: string;
+    content:string;
+    date_published:string;
+    last_modified:string;
+    author: {
+        username:string;
+        first_name:string;
+        last_name:string;
+    }
+}
 
 // -----
 
@@ -134,7 +144,30 @@ function accountError() {
     console.log("The account object is null or undefined")
 }
 
-async function fetchAccountInformation() { 
+
+
+const fetchAllPosts = async () => { 
+    const token = localStorage.getItem("token")
+    try {
+        const response = await axios.get("http://localhost:8888/api/feed/", { 
+        headers: {
+                'Authorization': `Token ${token}`
+            }})
+            const data: Post[] = response.data
+            console.log("Account information (success): ", data)
+                account.value = {
+                    title: data.title,
+                    content: data.content,
+                    date_published: data.date_published,
+                    last_modified: data.last_modified,
+                    author: data.author,
+                }
+    } catch {
+            console.log("Something happend. Failed to fetch posts.")
+    }
+}
+
+onBeforeMount( async () => {
     const token = localStorage.getItem("token")
     try {
         const response = await axios.get("http://localhost:8888/api/myuser/", { 
@@ -156,34 +189,8 @@ async function fetchAccountInformation() {
     } catch {
         console.log("Something happend. Failed to fetch user information.")
     }
-
-}
-
-// async function fetchAllPosts() { 
-//     const token = localStorage.getItem("token")
-//     try {
-//         response = await axios.get("http://localhost:8888/api/myuser/", { 
-//         headers: {
-//             'Authorization': `Token ${token}`
-//         }})
-//         const data: Account = response.data
-//         console.log("Account information (success): ", data)
-//             account.value = {
-//                 username: data.username,
-//                 email: data.email,
-//                 first_name: data.first_name,
-//                 last_name: data.last_name,
-//                 nickname: data.nickname,
-//                 address: data.address,
-//                 age: data.age,
-//             }
-//     } catch {
-//         console.log("Something happend. Failed to fetch posts.")
-//     }
-
-// }
-
-onMounted(fetchAccountInformation)
+})
+onMounted(fetchAllPosts)
 
 </script>
 
