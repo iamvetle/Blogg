@@ -1,5 +1,11 @@
 # TODO:
 
+### My user apge ( '/myuser')
+* Backend logic
+    * -
+* Frontend logic
+    * Make the page much prettier [X]
+
 ### Register page ( '/register' )
 * Backend logic
     -
@@ -14,26 +20,24 @@
 * Backend
     * Delete token when accessing '/loggout' [X]
 * Frontend
-    * Delete token when accessing '/loggout' [V]
-        * Add a button for it [V]
+    * -
 
 ### New post page ( '/newpost' )
 * Backend
     -
 * Frontend
     * Redirect unauth users [X]
-    * Make the site much prettier [X]
 
 ### Index page ( '/' )
 * Frontend
-    * Customize the navbar based on if auth or not [X]
+    * Make the navbar dynamically when logs inn [X]
 
 ### Other
     * Combine tailwind css with scss - sass
-    * Try to use ONE navbar instead of two [X]
     * Change from redirect to propper "middleware"
     * Implement redirection when on wrong pages + when on "pages that doesnt exist"
     * Create custom error page
+    * Change everthing to Norwegian
 
     ** Find out how to:
 

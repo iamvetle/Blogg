@@ -1,10 +1,10 @@
 <template>
     <div>
         <div v-if="removed">
-            <p>You are now logged out.</p>
+            <p>Du er nå logged ut.</p>
         </div>
         <div v-else>
-            <p>Logged out.</p>
+            <p>Logget ut.</p>
         </div>
     </div>
 </template>

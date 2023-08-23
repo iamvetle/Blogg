@@ -18,7 +18,7 @@
                     <button class="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto">Cancel</button>
                     <button class="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500">Post</button>
                     <div v-if="postState">
-                        <p>New post added!</p>
+                        <p>Nytt innlegg lagt til!</p>
                     </div>
                 </div>
             </div>
