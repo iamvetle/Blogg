@@ -1,4 +1,3 @@
-
 export default defineNuxtConfig({
   devtools: {
     enabled: true,
@@ -11,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@vee-validate/nuxt',
     '@formkit/nuxt',
+    '@pinia/nuxt'
   ],
     tailwindcss: {
       cssPath: '~/assets/css/tailwind.css',
@@ -20,5 +20,6 @@ export default defineNuxtConfig({
       config: {},
       injectPosition: 'first',
       viewer: true
-    }
+    },
+
 })
