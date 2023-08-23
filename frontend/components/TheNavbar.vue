@@ -1,5 +1,5 @@
 <template>
-    <div id="navbar" class="w-full text-white h-[50px] bg-[#823038]">
+    <div id="navbar" class="w-full text-white h-[50px] bg-blue-500">
         <div v-if="isAuthenticated" class="h-full flex justify-between items-center">
             <div id="logo" class="ms-3">
                 <nuxt-link to="/">

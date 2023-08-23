@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-[#F4F7BE]" id="site-wrapper">
+	<div class="bg-white" id="site-wrapper">
 		<div>
 			<TheNavbar />
 			<slot/>

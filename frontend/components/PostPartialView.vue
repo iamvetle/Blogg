@@ -1,7 +1,7 @@
 <template>
     <div id="post" class="prose"> <!-- Post -->
         <div class="img">
-            <img src="../assets/noimage.jpg" class="border border-2 rounded-lg border-gray-400" alt="bilde">
+            <img src="../assets/noimage.jpg" class="border rounded-lg border-gray-400" alt="bilde">
         </div>
         <div id="content">
             <h3 class="text-3xl">{{ postDetail.title }}</h3>

@@ -7,6 +7,8 @@ export default <Partial<Config>>{
       colors: {//@ts-ignore
         primary: defaultTheme.colors.green
       }
+    },
+    fontFamily: { //@ts-ignore
     }
   },
     plugins: [
