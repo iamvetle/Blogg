@@ -12,7 +12,6 @@ function checkToken() {
     let token = localStorage.getItem("token")
     if (token !== null) {
         isAuthenticated.value = true
-        console.log(isAuthenticated)
     }
 }
 

@@ -10,7 +10,7 @@
 * Backend logic
     -
 * Frontend logic
-    * Make the form prettier [X]
+    * Make the form prettier [V]
     * Make sure spaces aren't allowed [X]
     * Redirect authenticated users [X]
     * Redirect after successfull registration ( '/login' ) [X]
