@@ -1,7 +1,7 @@
 <template>
     	<div>
 			<section class="bg-white dark:bg-gray-900">
-				<p>{{ example }}</p>
+				<p></p>
 				<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 					<div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
 						<h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Siste blogginnlegg</h2>
@@ -10,7 +10,7 @@
 
 					<div id="main" class="grid gap-8 lg:grid-cols-2">
 						<PostPartialView
-						v-for="(post, index) in posts"
+						v-for="(post, index) in posts" 
 						:key="post.id"
 						:postDetail="post"
 						/>
@@ -21,15 +21,13 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
+
 
 import axios from 'axios'
 import { storeToRefs } from 'pinia'
 import { useGeneralStore } from '@/store/posts'
 
-const store = useGeneralStore()
-
-const { example } = storeToRefs(store)
-store.example = "goodbye"
 
 definePageMeta({
 	layout:"index-layout",
@@ -39,7 +37,10 @@ definePageMeta({
 
 //const { data } = await useFetch("/api/allposts")
 //console.log(data.value)
-const posts = ref<PostType[]>([])
+const store = useGeneralStore()
+
+const posts = ref(null)
+
 
 type PostType = {
 	id: number;
@@ -56,18 +57,17 @@ type PostType = {
 
 const baseURL = "http://localhost:8888/api/feed/"
 
-async function fetchAllPosts() {
-	try {
-		const response = await axios.get<PostType[]>(baseURL)
-		console.log("Success: fetch all posts", response.data)
-		posts.value = response.data
-		
-	} catch {
-		console.log("Error: failed to fetch tasks")
-	}
+
+async function rock() {
+
+	await store.fetchAllPosts() // have to do await to not start a race condition
+	posts.value = store.allposts
+
+
 }
 
-onBeforeMount(fetchAllPosts)
+
+onMounted(rock)
 
 </script>
 
