@@ -8,10 +8,9 @@ CustomUser = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('id', 'email', 'username', 'first_name', 'last_name', 'age', 'address', 'phone_number', 'nickname', 'last_modified')
+        fields = ('id', 'email', 'username', 'first_name', 'last_name', 'age', 'address', 'phone_number', 'nickname', 'last_online')
         extra_kwargs = {
             'password': {'write_only': True, 'required': True},
-            'date_published': {'read_only': True},
             'first_name': {'required': True},
             'last_name': {'required': True},
             'email': {'required': True},
@@ -23,10 +22,9 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:        
         model = Post    
-        fields = ["title", "content", "author", "last_modified"]
+        fields = ["title", "content", "author", "last_modified", "date_published"]
         extra_kwargs = {
             "date_published": {"read_only": True},
-            "last_modified": {"write_only": True}
         } 
 
     def get_author(self, obj):
@@ -47,7 +45,6 @@ class CommentSerializer(serializers.ModelSerializer): # Not in use
         extra_kwargs = {
             "author": {"read_only": True},
             "date_published": {"read_only": True},
-            "last_modified": {"write_only": True},
             "post": {"read_only": True}
         }
         

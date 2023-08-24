@@ -124,8 +124,7 @@ type Account = {
 type Post = {
     title: string;
     content:string;
-    date_published:string;
-    last_modified:string;
+    readonly date_published:string;
     author: {
         username:string;
         first_name:string;
