@@ -46,10 +46,9 @@ const baseURL = "http://localhost:8888/api/feed/"
 
 async function fetchAllPosts() {
 	try {
-		const response = await axios.get<PostType>(baseURL)
-		console.log("Success: fetch all posts", response.data) //@ts-ignore
+		const response = await axios.get<PostType[]>(baseURL)
+		console.log("Success: fetch all posts", response.data)
 		posts.value = response.data
-
 		
 	} catch {
 		console.log("Error: failed to fetch tasks")

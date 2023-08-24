@@ -12,19 +12,19 @@
                         <h1 class="text-xl font-bold">{{ account.first_name }} {{ account.last_name }}</h1>
                         <p class="text-gray-600">{{ account.username }}</p>
                         <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                            <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</a>
-                            <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Resume</a>
+                            <button disabled class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">followers</button> <!-- Figure this out later -->
+                            <button disabled class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">follows</button> <!-- Figure this out later -->
                         </div>
                     </div>
                     <hr class="my-6 border-t border-gray-300">
                     <div class="flex flex-col">
                         <span class="text-gray-600 uppercase font-bold tracking-wider mb-2">Info</span>
                         <ul>
-                            <li class="mb-2">Epost: {{ account.email }}</li>
-                            <li class="mb-2">Tlf.nr: {{ account.phone_number }}</li>
-                            <li class="mb-2">Kallenavn: {{ account.nickname }}</li>
-                            <li class="mb-2">Addresse: {{ account.address }}</li>
-                            <li class="mb-2">Alder: {{ account.age }}</li>
+                            <li v-if="account.email" class="mb-2 flex"><p class="font-bold me-2">Epost:</p> {{ account.email }}</li>
+                            <li v-if="account.phone_number" class="mb-2"><p class="font-bold me-2">Tlf.nr:</p> {{ account.phone_number }}</li>
+                            <li v-if="account.nickname" class="mb-2"><p class="font-bold me-2">Kallenavn:</p> {{ account.nickname }}</li>
+                            <li v-if="account.address" class="mb-2"><p class="font-bold me-2">Addresse:</p> {{ account.address }}</li>
+                            <li v-if="account.age" class="mb-2"><p class="font-bold me-2">Alder:</p> {{ account.age }}</li>
                         </ul>
                     </div>
                 </div>
@@ -39,21 +39,16 @@
                         luctus risus rhoncus id.
                     </p>
 
-                    <h2 class="text-xl font-bold mt-6 mb-4">Posts</h2>
+                    <h2 class="text-xl font-bold mt-6 mb-4">All posts by {{ account.first_name }}</h2>
                     
                     <!-- Post begin -->
-                    <div class="mb-6">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600 font-bold">Web Developer</span>
-                            <p>
-                                <span class="text-gray-600 mr-2">date published: </span>
-                                <span class="text-gray-600">-(put here)</span>
-                            </p>
-                        </div>
-                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                            tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                            suscipit.
-                        </p>
+                    <div>
+                        <PostUser
+                        v-for="post in posts"
+                        :key="post.id"
+                        :postProp="post"
+                        :accountProp="account"
+                        />
                     </div>
                     <!-- Post end -->
                     
@@ -73,10 +68,9 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
 
 // Typescript 'Types'
-type Account = {
+type AccountType = {
     username: string;
     email: string;
     first_name: string;
@@ -87,75 +81,62 @@ type Account = {
     phone_number:number;
 }
 
-type Post = {
-    title: string;
+type PostType = {
+    id:number;
+    title:string;    
     content:string;
-    readonly date_published:string;
+    date_published:string;
+    last_modified:string;
     author: {
         username:string;
         first_name:string;
         last_name:string;
-    }
+    };
 }
-
-// -----
 
 import axios from 'axios'
 
-const baseURL = "http://localhost:8888/api/myuser/"
-const account = ref<null | Account>(null)
+const basePostsURL = "http://localhost:8888/api/feed/"
+const baseUserInfoURL = "http://localhost:8888/api/myuser/"
+
+const account = ref<null | AccountType>(null)
+const posts = ref<PostType[]>([])
+
 
 function accountError() {
     console.log("The account object is null or undefined")
 }
 
-
-
-const fetchAllPosts = async () => { 
+const fetchAccount = async () => { 
     const token = localStorage.getItem("token")
     try {
-        const response = await axios.get("http://localhost:8888/api/feed/", { 
+        const response = await axios.get<AccountType>(baseUserInfoURL, { 
         headers: {
                 'Authorization': `Token ${token}`
             }})
-            const data: Post[] = response.data
-            console.log("Account information (success): ", data)
-                account.value = {
-                    title: data.title,
-                    content: data.content,
-                    date_published: data.date_published,
-                    last_modified: data.last_modified,
-                    author: data.author,
-                }
+            account.value = response.data
+            console.log("Successfully retrieved user information: ", response.data)
     } catch {
-            console.log("Something happend. Failed to fetch posts.")
+            console.log("Something happend. Failed to fetch user information.")
     }
 }
 
-onBeforeMount( async () => {
+const fetchUserPosts = async () => {
     const token = localStorage.getItem("token")
     try {
-        const response = await axios.get("http://localhost:8888/api/myuser/", { 
+        const response = await axios.get<PostType[]>(basePostsURL, { 
         headers: {
             'Authorization': `Token ${token}`
         }})
-        const data: Account = response.data
-        console.log("Account information (success): ", data)
-            account.value = {
-                username: data.username,
-                email: data.email,
-                first_name: data.first_name,
-                last_name: data.last_name,
-                nickname: data.nickname,
-                address: data.address,
-                phone_number:data.phone_number,
-                age: data.age,
-            }
+        posts.value = response.data
+        console.log("Fetched posts successfully: ", response.data)
     } catch {
-        console.log("Something happend. Failed to fetch user information.")
+        console.log("Something happend. Failed to fetch posts.")
     }
-})
-onMounted(fetchAllPosts)
+}
+
+onBeforeMount(fetchAccount)
+onMounted(fetchUserPosts)
 
 </script>
 
