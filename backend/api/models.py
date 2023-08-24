@@ -91,50 +91,13 @@ class Comment(models.Model):
 
     
 
-# User
-    #
-# Profile (for addtional information) MAYBE LATER
-    # Profile picture
-    # Bio
-    # followers / friends
-    # follows / friends
-# Post
-    # Title
-    # Content
-    # date_published
-    # last_modified
-    # author
-# Comments
-    # Post
-    # Content
-    # Author
-# Categories MAYBE LATER
+# Categories - kanskje senere
     # ?
-
-
-
-
-
 # CustomUser
-
-# username
-# lastname
-# email
-# password
-# birthday
+# Birthday
 
 # followers
 # follows
 
 # posts ->
-
-###
-
-# a post
-
-# title
-# content
-# published_date
-# last modified
-# author
 # tags

@@ -8,19 +8,22 @@ CustomUser = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
+
         fields = ('id', 'email', 'username', 'first_name', 'last_name', 'age', 'address', 'phone_number', 'nickname', 'last_online')
         extra_kwargs = {
             'first_name': {'required': True},
             'last_name': {'required': True},
             'email': {'required': True},
+            'username': {'required': True},
             }
     
 class PostSerializer(serializers.ModelSerializer):
     
-    author = serializers.SerializerMethodField()
+    author = serializers.SerializerMethodField() # Passer på at ikke ALT av CustomUser blir sendt med
 
     class Meta:        
-        model = Post    
+        model = Post
+
         fields = ["title", "content", "author", "last_modified", "date_published"]
         extra_kwargs = {
             "date_published": {"read_only": True},
@@ -38,9 +41,11 @@ class CommentSerializer(serializers.ModelSerializer): # Not in use
     
     author = serializers.SerializerMethodField()
     post = serializers.SerializerMethodField()
+
     class Meta:
         model = Comment
-        fields = ["title", "content"]
+
+        fields = ["title", "content", "date_published"]
         extra_kwargs = {
             "author": {"read_only": True},
             "date_published": {"read_only": True},
@@ -63,7 +68,7 @@ class CommentSerializer(serializers.ModelSerializer): # Not in use
         }
         return post
 
-class ProfileSerializer(serializers.ModelSerializer): # Not in use
+class ProfileSerializer(serializers.ModelSerializer): # Not in use / bytte med User på myuser siden senere // har ikke noe egen model for denne
     class Meta:
         model = CustomUser
         
