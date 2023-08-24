@@ -112,7 +112,7 @@
 
 import axios from 'axios'
 
-const baseURL = "http://localhost:8888/api/register/"
+const baseURL = "http://localhost:8888/api/registrer/"
 const submitted = ref(false)
 
 const submitForm = async (formData:object) => {
