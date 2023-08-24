@@ -27,6 +27,8 @@ definePageMeta({
 	layout:"index-layout",
 })
 
+//const { data } = await useFetch("/api/allposts")
+//console.log(data.value)
 const posts = ref<PostType[]>([])
 
 type PostType = {
