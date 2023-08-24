@@ -12,7 +12,7 @@
                         <h1 class="text-xl font-bold">{{ account.first_name }} {{ account.last_name }}</h1>
                         <p class="text-gray-600">{{ account.username }}</p>
                         <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                            <button disabled class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">followers</button> <!-- Figure this out later -->
+                            <nuxt-link to="/newpost"><button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">New post</button></nuxt-link>
                             <button disabled class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">follows</button> <!-- Figure this out later -->
                         </div>
                     </div>
@@ -63,7 +63,7 @@
 
 
 
-        <nuxt-link to="/newpost"><button class="border py-1 px-2">Create new post</button></nuxt-link>
+        <nuxt-link to="/newpost"><button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">New post</button></nuxt-link>
 
 </template>
 
