@@ -1,6 +1,7 @@
 <template>
     	<div>
 			<section class="bg-white dark:bg-gray-900">
+				<p>{{ example }}</p>
 				<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 					<div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
 						<h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Siste blogginnlegg</h2>
@@ -22,10 +23,19 @@
 <script setup lang="ts">
 
 import axios from 'axios'
+import { storeToRefs } from 'pinia'
+import { useGeneralStore } from '@/store/posts'
+
+const store = useGeneralStore()
+
+const { example } = storeToRefs(store)
+store.example = "goodbye"
 
 definePageMeta({
 	layout:"index-layout",
 })
+
+
 
 //const { data } = await useFetch("/api/allposts")
 //console.log(data.value)
