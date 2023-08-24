@@ -60,8 +60,9 @@ const baseURL = "http://localhost:8888/api/feed/"
 
 async function rock() {
 
-	await store.fetchAllPosts() // have to do await to not start a race condition
 	posts.value = store.allposts
+
+	await store.fetchAllPosts() // have to do await to not start a race condition
 
 
 }
