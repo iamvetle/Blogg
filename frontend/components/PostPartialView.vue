@@ -33,6 +33,6 @@
 // Props
 const { postDetail } = defineProps(["postDetail"])
 const postLink = `/post/${postDetail.id}`
-const author_name = `${postDetail.author.first_name} ${postDetail.author.last_name}
+const author_name = `${postDetail.author.first_name} ${postDetail.author.last_name}`
 
 </script>
