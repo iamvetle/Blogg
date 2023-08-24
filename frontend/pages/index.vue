@@ -9,7 +9,7 @@
 
 					<div id="main" class="grid gap-8 lg:grid-cols-2">
 						<PostPartialView
-						v-for="(post, index) in data"
+						v-for="(post, index) in posts"
 						:key="post.id"
 						:postDetail="post"
 						/>
@@ -21,22 +21,42 @@
 
 <script setup lang="ts">
 
+import axios from 'axios'
+
 definePageMeta({
 	layout:"index-layout",
 })
+
+const posts = ref<PostType[]>([])
 
 type PostType = {
 	id: number;
 	title: string;
 	content: string;
-	author: object;    
+	author: {
+		username:string;
+		first_name:string;
+		last_name:string;
+	};
+	date_published:string;    
 }
 
 
-const baseURL = "http://localhost:8888/api/feed/" //@ts-ignore
-const { data }:PostType = await useFetch('/api/allposts')
+const baseURL = "http://localhost:8888/api/feed/"
 
-// Fetch from API
+async function fetchAllPosts() {
+	try {
+		const response = await axios.get<PostType>(baseURL)
+		console.log("Success: fetch all posts", response.data) //@ts-ignore
+		posts.value = response.data
+
+		
+	} catch {
+		console.log("Error: failed to fetch tasks")
+	}
+}
+
+onBeforeMount(fetchAllPosts)
 
 </script>
 
