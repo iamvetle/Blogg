@@ -40,6 +40,8 @@
                     </p>
 
                     <h2 class="text-xl font-bold mt-6 mb-4">Posts</h2>
+                    
+                    <!-- Post begin -->
                     <div class="mb-6">
                         <div class="flex justify-between">
                             <span class="text-gray-600 font-bold">Web Developer</span>
@@ -53,31 +55,8 @@
                             suscipit.
                         </p>
                     </div>
-                    <div class="mb-6">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600 font-bold">Web Developer</span>
-                            <p>
-                                <span class="text-gray-600 mr-2">at ABC Company</span>
-                                <span class="text-gray-600">2017 - 2019</span>
-                            </p>
-                        </div>
-                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                            tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                            suscipit.
-                        </p>
-                    </div>
-                    <div class="mb-6">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600 font-bold">Web Developer</span>
-                            <p>
-                                <span class="text-gray-600 mr-2">at ABC Company</span>
-                                <span class="text-gray-600">2017 - 2019</span>
-                            </p>
-                        </div>
-                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus est vitae
-                            tortor ullamcorper, ut vestibulum velit convallis. Aenean posuere risus non velit egestas
-                            suscipit.
-                        </p>
+                    <!-- Post end -->
+                    
                     </div>
                 </div>
             </div>
@@ -88,22 +67,9 @@
 
 
 
-<div v-if="account">
-        <h2>Hello {{ account.username }}</h2>
-        <p>{{ account.email }}</p>
-        <p>{{ account.first_name }}</p>
-        <p>{{ account.last_name }}</p>
-        <hr>
-        <nuxt-link to="/newpost"><button class="border py-1 px-2">Create new post</button></nuxt-link>
-    </div>
-    <div v-else="accountError()"> <!-- Will always first cause this. TODO: Fix-->
-        <p>An error occured. See console log.</p>
-    </div>
 
-    </div>
-    <div v-else="accountError()"> <!-- Will always first cause this. TODO: Fix-->
-        <p>An error occured. See console log.</p>
-    </div>
+        <nuxt-link to="/newpost"><button class="border py-1 px-2">Create new post</button></nuxt-link>
+
 </template>
 
 <script setup lang="ts">
