@@ -21,7 +21,6 @@
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.8.0",
     "nuxi": "^3.6.5",
-    "pinia": "^2.1.6",
     "postcss": "^8.4.28",
     "sass": "^1.65.1",
     "tailwind": "^4.0.0",
