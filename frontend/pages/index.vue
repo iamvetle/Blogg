@@ -21,10 +21,7 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
 
-
-import axios from 'axios'
 import { storeToRefs } from 'pinia'
 import { useGeneralStore } from '@/store/posts'
 
@@ -32,48 +29,23 @@ import { useGeneralStore } from '@/store/posts'
 definePageMeta({
 	layout:"index-layout",
 })
+const store = useGeneralStore()
 
-
+const { posts } = storeToRefs(store)
 
 //const { data } = await useFetch("/api/allposts")
 //console.log(data.value)
-const store = useGeneralStore()
 
-const posts = ref(null)
-
-
-type PostType = {
-	id: number;
-	title: string;
-	content: string;
-	author: {
-		username:string;
-		first_name:string;
-		last_name:string;
-	};
-	date_published:string;    
+const fetchPosts = () => {
+	store.fetchAllPosts()
 }
 
 
-const baseURL = "http://localhost:8888/api/feed/"
-
-
-async function rock() {
-
-	posts.value = store.allposts
-
-	await store.fetchAllPosts() // have to do await to not start a race condition
-
-
-}
-
-
-onMounted(rock)
+onMounted(fetchPosts)
 
 </script>
 
 <style scoped lang="scss">
-
 
 </style>
 
