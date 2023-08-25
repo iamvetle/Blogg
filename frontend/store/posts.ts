@@ -21,7 +21,6 @@ interface LoginType {
 	token:string;
 }
 
-
 const posts = ref<PostType[]>([])
 
 async function fetchAllPosts() {

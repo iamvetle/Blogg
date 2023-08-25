@@ -99,7 +99,7 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from 'store/posts';
+import { useGeneralStore } from '@/store/posts';
 
 const store = useGeneralStore()
 
