@@ -62,8 +62,37 @@ async function registerFormPost(data:object) {
 	}
 }
 
+type AccountType = {
+    username: string;
+    email: string;
+    first_name: string;
+    last_name: string;
+    nickname: string;
+    age:number;
+    address:string;
+    phone_number:number;
+}
 
-return { posts, fetchAllPosts, loginPost, registerFormPost }
+async function fetchAccount () { 
+	const baseURL = "http://localhost:8888/api/myuser/"
+
+    const token = localStorage.getItem("token")
+    try {
+        const response = await axios.get<AccountType>(baseURL, { 
+        headers: {
+                'Authorization': `Token ${token}`
+            }})
+			console.log("Successfully retrieved user information: ", response.data)
+            return response.data
+    
+		} catch {
+            console.log("Something happend. Failed to fetch user information.")
+			return false
+    }
+}
+
+
+return { posts, fetchAllPosts, loginPost, registerFormPost, fetchAccount }
 
 
 })

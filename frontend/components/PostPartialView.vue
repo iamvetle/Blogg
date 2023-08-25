@@ -29,6 +29,28 @@
 
 <script setup lang="ts">
 
+import axios from 'axios'
+import { useGeneralStore } from '@/store/posts';
+
+const store = useGeneralStore()
+const account = ref(null)
+
+type AccountType = {
+    username: string;
+    email: string;
+    first_name: string;
+    last_name: string;
+    nickname: string;
+    age:number;
+    address:string;
+    phone_number:number;
+}
+
+function fetchUserInfo() {
+    account.value = store.fetchAccount()
+} 
+
+
 
 // Props
 const { postDetail } = defineProps(["postDetail"])

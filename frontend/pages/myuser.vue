@@ -107,19 +107,8 @@ function accountError() {
     console.log("The account object is null or undefined")
 }
 
-const fetchAccount = async () => { 
-    const token = localStorage.getItem("token")
-    try {
-        const response = await axios.get<AccountType>(baseUserInfoURL, { 
-        headers: {
-                'Authorization': `Token ${token}`
-            }})
-            account.value = response.data
-            console.log("Successfully retrieved user information: ", response.data)
-    } catch {
-            console.log("Something happend. Failed to fetch user information.")
-    }
-}
+
+
 
 const fetchUserPosts = async () => {
     const token = localStorage.getItem("token")
