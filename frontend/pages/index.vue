@@ -25,12 +25,12 @@
 import { storeToRefs } from 'pinia'
 import { useGeneralStore } from '@/store/posts'
 
-
 definePageMeta({
 	layout:"index-layout",
 })
 const store = useGeneralStore()
 const { posts } = storeToRefs(store)
+const account = null
 
 //const { data } = await useFetch("/api/allposts")
 //console.log(data.value)

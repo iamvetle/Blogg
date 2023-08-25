@@ -15,7 +15,7 @@
                 <div class="flex items-center space-x-4">
                     <img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Leos avatar" />
                     <span class="font-medium dark:text-white">
-                        {{ author_name }}
+                        {{ author_full_name }}
                     </span>
                 </div>
             <nuxt-link to=postLink class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline">
@@ -29,32 +29,11 @@
 
 <script setup lang="ts">
 
-import axios from 'axios'
 import { useGeneralStore } from '@/store/posts';
-
-const store = useGeneralStore()
-const account = ref(null)
-
-type AccountType = {
-    username: string;
-    email: string;
-    first_name: string;
-    last_name: string;
-    nickname: string;
-    age:number;
-    address:string;
-    phone_number:number;
-}
-
-function fetchUserInfo() {
-    account.value = store.fetchAccount()
-} 
-
-
 
 // Props
 const { postDetail } = defineProps(["postDetail"])
 const postLink = `/post/${postDetail.id}`
-const author_name = `${postDetail.author.first_name} ${postDetail.author.last_name}`
+const author_full_name = `${postDetail.author.first_name} ${postDetail.author.last_name}`
 
 </script>

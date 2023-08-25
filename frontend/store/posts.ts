@@ -73,7 +73,7 @@ type AccountType = {
     phone_number:number;
 }
 
-async function fetchAccount () { 
+async function fetchUserAccount () { 
 	const baseURL = "http://localhost:8888/api/myuser/"
 
     const token = localStorage.getItem("token")
@@ -83,7 +83,8 @@ async function fetchAccount () {
                 'Authorization': `Token ${token}`
             }})
 			console.log("Successfully retrieved user information: ", response.data)
-            return response.data
+            const accountInformation = response.data
+			return accountInformation
     
 		} catch {
             console.log("Something happend. Failed to fetch user information.")
@@ -92,7 +93,7 @@ async function fetchAccount () {
 }
 
 
-return { posts, fetchAllPosts, loginPost, registerFormPost, fetchAccount }
+return { posts, fetchAllPosts, loginPost, registerFormPost, fetchUserAccount }
 
 
 })

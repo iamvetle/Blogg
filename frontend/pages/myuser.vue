@@ -95,36 +95,32 @@ type PostType = {
 }
 
 import axios from 'axios'
+import { storeToRefs } from 'pinia';
+import { useGeneralStore } from '@/store/posts';
 
 const basePostsURL = "http://localhost:8888/api/feed/"
 const baseUserInfoURL = "http://localhost:8888/api/myuser/"
+const store = useGeneralStore()
 
-const account = ref<null | AccountType>(null)
-const posts = ref<PostType[]>([])
-
+const { posts } = storeToRefs(store)
+const account = ref<AccountType | null>(null)
 
 function accountError() {
     console.log("The account object is null or undefined")
 }
 
-
-
-
 const fetchUserPosts = async () => {
-    const token = localStorage.getItem("token")
-    try {
-        const response = await axios.get<PostType[]>(basePostsURL, { 
-        headers: {
-            'Authorization': `Token ${token}`
-        }})
-        posts.value = response.data
-        console.log("Fetched posts successfully: ", response.data)
-    } catch {
-        console.log("Something happend. Failed to fetch posts.")
+    store.fetchAllPosts()
+}
+
+const fetchUserAccount = async () => {
+    const response = await store.fetchUserAccount()
+    if (response) {
+        account.value = response
     }
 }
 
-onBeforeMount(fetchAccount)
+onMounted(fetchUserAccount)
 onMounted(fetchUserPosts)
 
 </script>
