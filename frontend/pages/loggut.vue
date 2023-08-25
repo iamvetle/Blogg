@@ -27,11 +27,12 @@ function logoutFunction() {
 
         store.changeAuthenticated(false)
 
-        setTimeout(() => {
-            navigateTo("/")
-        }, 1000 )
-
     }
+
+    setTimeout(() => {
+        navigateTo("/")
+    }, 1000 )
+    
 }
 
 onMounted(logoutFunction)

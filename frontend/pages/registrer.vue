@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 definePageMeta({
-	middleware:["check-token"]
+	middleware:["check-token", "redirect-if-have-token"]
 })
 
 </script>

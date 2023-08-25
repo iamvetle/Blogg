@@ -65,7 +65,7 @@
 <script setup lang="ts">
 
 definePageMeta ({
-	middleware:["check-token"]
+	middleware:["check-token", "redirect-if-no-token"]
 })
 
 // Typescript 'Types'

@@ -31,7 +31,7 @@
 import axios from 'axios'
 
 definePageMeta({
-	middleware:["check-token"]
+	middleware:["check-token", "redirect-if-no-token"]
 })
 
 const titleInput: Ref<string | null> = ref(null)
