@@ -19,6 +19,8 @@ interface PostType {
 
 const posts = ref<PostType[]>([])
 
+const isAuthenticated = ref(false)
+
 async function fetchAllPosts() {
 	try {
 		const response = await axios.get<PostType[]>("http://localhost:8888/api/feed/")
@@ -68,7 +70,7 @@ type AccountType = {
     phone_number:number;
 }
 
-async function fetchUserAccount (token) { 
+async function fetchUserAccount (token:any) { 
 	const baseURL = "http://localhost:8888/api/myuser/"
 
     try {
@@ -86,8 +88,11 @@ async function fetchUserAccount (token) {
     }
 }
 
+function changeAuthenticated(state:boolean) {
+	isAuthenticated.value = state
+}
 
-return { posts, fetchAllPosts, loginPost, registerFormPost, fetchUserAccount }
+return { posts, isAuthenticated, fetchAllPosts, changeAuthenticated, loginPost, registerFormPost, fetchUserAccount }
 
 
 })

@@ -11,12 +11,27 @@
 
 <script setup lang="ts">
 
+import { useGeneralStore } from '@/store/posts';
+
+const store = useGeneralStore()
+
 const removed = ref(false)
 
 function logoutFunction() {
     if (localStorage.getItem("token") != null) {
         localStorage.removeItem("token")
         removed.value = true
+
+        store.changeAuthenticated(false)
+
+        setTimeout(() => {
+            navigateTo("/")
+        }, 1000 )
+
+
+        
+
+
     }
 }
 

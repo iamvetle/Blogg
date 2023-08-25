@@ -109,7 +109,10 @@ async function submitLoginForm(formData:object) {
     const data = formData
     const response = await store.registerFormPost(data)
     if (response) {
-        submitted.value = true        
+        submitted.value = true   
+        setTimeout(() => {
+            navigateTo("/login")
+        }, 1000 )     
     }
 }
 </script>

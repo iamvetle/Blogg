@@ -1,14 +1,15 @@
 <template>
-	<NavbarLoggedIn v-if="token"/>
+	<NavbarLoggedIn v-if="store.isAuthenticated"/>
 	<NavbarLoggedOut v-else/>
 </template>
 
 
 <script setup lang="ts"> // Used by mainpage.vue - for feed
 
-const token = ref<null | string>(null)
+import { useGeneralStore } from '@/store/posts'
 
-onMounted(() => token.value = localStorage.getItem("token"))
+const store = useGeneralStore()
+
 </script>
 
 <style scoped></style>

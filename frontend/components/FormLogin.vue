@@ -41,12 +41,20 @@ let loginsucess = false
 async function loginForm() {
     const token = await store.loginPost(usernameInput.value, passwordInput.value)
     localStorage.setItem("token", token)
+
     if (token) {
         usernameInput.value = ""
         passwordInput.value = ""
         
         loginsucess = true
         loginerror = false
+
+        store.changeAuthenticated(true)
+
+        setTimeout(() => {
+            navigateTo("/myuser")
+        }, 1000 )
+
     }
     else {
         loginsucess = false
