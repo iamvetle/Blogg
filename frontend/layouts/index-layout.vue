@@ -1,7 +1,7 @@
 <template>
     <div id="site-wrapper" class="bg-white"> <!-- Background color -->
         <HomeTheHeader />
-        <TheNavbar/>
+        <TheNavbar />
         <slot />
 
         <TheFooter/>
