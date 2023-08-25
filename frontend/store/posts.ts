@@ -1,8 +1,10 @@
 import axios from 'axios'
+import { request } from 'http';
 
+//@ts-ignore
 export const useGeneralStore = defineStore('general', () => {
 
-type PostType = {
+interface PostType {
 	id:number;
 	title:string;    
 	content:string;
@@ -15,13 +17,16 @@ type PostType = {
 	};
 }
 
+interface LoginType {
+	token:string;
+}
 
-const baseURL = "http://localhost:8888/api/feed/"
+
 const posts = ref<PostType[]>([])
 
 async function fetchAllPosts() {
 	try {
-		const response = await axios.get<PostType[]>(baseURL)
+		const response = await axios.get<PostType[]>("http://localhost:8888/api/feed/")
 		console.log("Success: fetched all posts", response.data)
 		posts.value = response.data
 	} catch {
@@ -29,5 +34,23 @@ async function fetchAllPosts() {
 	}
 }
 
-return { posts, fetchAllPosts}
+async function loginFetch(username:string, password:string) {
+	const header = {
+		"username": username,
+		"password": password
+	}
+	try {
+		const response = await axios.post<LoginType>("http://localhost:8888/api/login/", header)
+		localStorage.setItem("token", response.data.token)
+		console.log("Successfully logged in: ", response.data)
+		return true
+	} catch {
+		console.log("Failed to login")
+		return false
+	}
+}
+
+
+return { posts, fetchAllPosts, loginFetch }
+
 })

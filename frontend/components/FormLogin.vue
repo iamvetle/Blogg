@@ -27,39 +27,34 @@
 </template>
 
 <script setup lang="ts">
+import { useGeneralStore } from '@/store/posts';
 
-import axios from 'axios'
 
-const baseURL = "http://localhost:8888/api/login/"
-let usernameInput = ref<string | null>(null)
-let passwordInput = ref<string | null>(null)
+const store = useGeneralStore()
+
+const usernameInput = ref<string>("")
+const passwordInput = ref<string>("")
 
 let loginerror = false
 let loginsucess = false
-
  
-function loginForm() {
-    axios.post(baseURL, {
-        "username":usernameInput.value,
-        "password":passwordInput.value,
-    })
-    .then((response) => {
-        console.log(response)
-        localStorage.setItem("token", response.data.token)
-        loginsucess = true
-        loginerror = false
-        console.log(`Successfully logged in.`)
+async function loginForm() {
+    const response = await store.loginFetch(usernameInput.value, passwordInput.value)
+    if (response) {
         usernameInput.value = ""
         passwordInput.value = ""
-    })
-    .catch((error) => {
-        console.error(error.data)
+        
+        loginsucess = true
+        loginerror = false
+    }
+    else {
+        loginsucess = false
         loginerror = true
-    })
+    }
 }
 
 function tokenCheck() {
-    let token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
 
     if (token !== null) {
         console.log("Token found, no need for client to be here.")

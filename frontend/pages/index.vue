@@ -30,7 +30,6 @@ definePageMeta({
 	layout:"index-layout",
 })
 const store = useGeneralStore()
-
 const { posts } = storeToRefs(store)
 
 //const { data } = await useFetch("/api/allposts")
@@ -39,7 +38,6 @@ const { posts } = storeToRefs(store)
 const fetchPosts = () => {
 	store.fetchAllPosts()
 }
-
 
 onMounted(fetchPosts)
 
