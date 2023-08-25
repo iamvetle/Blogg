@@ -8,7 +8,6 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxtjs/tailwindcss',
-    '@vee-validate/nuxt',
     '@formkit/nuxt',
     '@pinia/nuxt',
   ],
