@@ -17,10 +17,6 @@ interface PostType {
 	};
 }
 
-interface LoginType {
-	token:string;
-}
-
 const posts = ref<PostType[]>([])
 
 async function fetchAllPosts() {
@@ -39,10 +35,9 @@ async function loginPost(username:string, password:string) {
 		"password": password
 	}
 	try {
-		const response = await axios.post<LoginType>("http://localhost:8888/api/login/", header)
-		localStorage.setItem("token", response.data.token)
+		const response = await axios.post("http://localhost:8888/api/login/", header)
 		console.log("Successfully logged in: ", response.data)
-		return true
+		return response.data.token
 	} catch {
 		console.log("Failed to login")
 		return false
@@ -73,10 +68,9 @@ type AccountType = {
     phone_number:number;
 }
 
-async function fetchUserAccount () { 
+async function fetchUserAccount (token) { 
 	const baseURL = "http://localhost:8888/api/myuser/"
 
-    const token = localStorage.getItem("token")
     try {
         const response = await axios.get<AccountType>(baseURL, { 
         headers: {

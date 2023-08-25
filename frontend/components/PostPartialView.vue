@@ -29,7 +29,6 @@
 
 <script setup lang="ts">
 
-import { useGeneralStore } from '@/store/posts';
 
 // Props
 const { postDetail } = defineProps(["postDetail"])

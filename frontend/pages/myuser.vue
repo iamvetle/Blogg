@@ -43,7 +43,7 @@
                     
                     <!-- Post begin -->
                     <div>
-                        <PostUser
+                        <MyuserPostUser
                         v-for="post in posts"
                         :key="post.id"
                         :postProp="post"
@@ -59,11 +59,6 @@
     </div>
 </div>
 
-
-
-
-
-        <nuxt-link to="/newpost"><button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">New post</button></nuxt-link>
 
 </template>
 
@@ -94,27 +89,22 @@ type PostType = {
     };
 }
 
-import axios from 'axios'
 import { storeToRefs } from 'pinia';
 import { useGeneralStore } from '@/store/posts';
 
-const basePostsURL = "http://localhost:8888/api/feed/"
-const baseUserInfoURL = "http://localhost:8888/api/myuser/"
 const store = useGeneralStore()
 
 const { posts } = storeToRefs(store)
 const account = ref<AccountType | null>(null)
-
-function accountError() {
-    console.log("The account object is null or undefined")
-}
 
 const fetchUserPosts = async () => {
     store.fetchAllPosts()
 }
 
 const fetchUserAccount = async () => {
-    const response = await store.fetchUserAccount()
+    const token = localStorage.getItem("token")
+
+    const response = await store.fetchUserAccount(token)
     if (response) {
         account.value = response
     }
