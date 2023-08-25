@@ -30,6 +30,10 @@
 
 import axios from 'axios'
 
+definePageMeta({
+	middleware:["check-token"]
+})
+
 const titleInput: Ref<string | null> = ref(null)
 const textInput: any = ref(null)
 const baseURL = "http://localhost:8888/api/newpost/"

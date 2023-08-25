@@ -64,6 +64,10 @@
 
 <script setup lang="ts">
 
+definePageMeta ({
+	middleware:["check-token"]
+})
+
 // Typescript 'Types'
 type AccountType = {
     username: string;

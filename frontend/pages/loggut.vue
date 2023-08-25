@@ -10,6 +10,9 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+	middleware:["check-token"]
+})
 
 import { useGeneralStore } from '@/store/posts';
 

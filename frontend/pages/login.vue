@@ -17,6 +17,11 @@
 </template> 
 
 <script setup lang="ts">
+
+definePageMeta ({
+	middleware:["check-token"]
+})
+
 </script>
 
 <style scoped>
