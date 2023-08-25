@@ -28,10 +28,6 @@ function logoutFunction() {
             navigateTo("/")
         }, 1000 )
 
-
-        
-
-
     }
 }
 
