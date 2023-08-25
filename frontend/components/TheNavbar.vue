@@ -1,6 +1,8 @@
 <template>
-	<NavbarLoggedIn v-if="store.isAuthenticated"/>
-	<NavbarLoggedOut v-else/>
+	<ClientOnly>
+		<NavbarLoggedIn v-if="store.isAuthenticated"/>
+		<NavbarLoggedOut v-else/>
+	</ClientOnly>
 </template>
 
 

@@ -25,6 +25,7 @@
 import { storeToRefs } from 'pinia'
 import { useGeneralStore } from '@/store/posts'
 
+
 definePageMeta({
 	layout:"index-layout",
 	middleware:["check-token"]

@@ -13,6 +13,7 @@ export default <Partial<Config>>{
   },
     plugins: [
       require('@tailwindcss/typography'),
+      require('flowbite/plugin'),
       //require('@tailwindcss/forms'),
     ],
   
