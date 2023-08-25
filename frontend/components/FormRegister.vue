@@ -10,7 +10,7 @@
                 id="register_form"
                 :form-class="submitted ? 'hide' : 'show'"
                 submit-label="Create account"
-                @submit="submitForm"
+                @submit="submitLoginForm"
                 :actions="false"
                 #default="{ value }"
             >
@@ -99,20 +99,17 @@
 </template>
 
 <script setup lang="ts">
+import { useGeneralStore } from 'store/posts';
 
-import axios from 'axios'
+const store = useGeneralStore()
 
-const baseURL = "http://localhost:8888/api/registrer/"
 const submitted = ref(false)
 
-const submitForm = async (formData:object) => {
-	const data = formData
-	try {
-		const response = await axios.post(baseURL, data)
-		console.log("Successfully created user account", response.data)
-		submitted.value = true
-	} catch {
-		console.log("Failed in creating user account")
-	}
+async function submitLoginForm(formData:object) {
+    const data = formData
+    const response = await store.registerFormPost(data)
+    if (response) {
+        submitted.value = true        
+    }
 }
 </script>

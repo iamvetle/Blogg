@@ -34,7 +34,7 @@ async function fetchAllPosts() {
 	}
 }
 
-async function loginFetch(username:string, password:string) {
+async function loginPost(username:string, password:string) {
 	const header = {
 		"username": username,
 		"password": password
@@ -50,7 +50,21 @@ async function loginFetch(username:string, password:string) {
 	}
 }
 
+async function registerFormPost(data:object) {
+	const baseURL = "http://localhost:8888/api/registrer/"
 
-return { posts, fetchAllPosts, loginFetch }
+	try {
+		const response = await axios.post(baseURL, data)
+		console.log("Successfully created user account", response.data)
+		return true
+	} catch {
+		console.log("Failed in creating user account")
+		return false
+	}
+}
+
+
+return { posts, fetchAllPosts, loginPost, registerFormPost }
+
 
 })

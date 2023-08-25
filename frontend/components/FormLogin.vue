@@ -39,7 +39,7 @@ let loginerror = false
 let loginsucess = false
  
 async function loginForm() {
-    const response = await store.loginFetch(usernameInput.value, passwordInput.value)
+    const response = await store.loginPost(usernameInput.value, passwordInput.value)
     if (response) {
         usernameInput.value = ""
         passwordInput.value = ""
