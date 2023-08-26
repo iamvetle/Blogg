@@ -16,7 +16,10 @@
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18.17.3",
     "@vee-validate/nuxt": "^4.11.2",
-    "nuxt": "^3.6.5"
+    "happy-dom": "^10.11.0",
+    "nuxt": "^3.6.5",
+    "nuxt-vitest": "^0.10.2",
+    "vitest": "^0.34.3"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.8.0",
