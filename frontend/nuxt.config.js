@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@formkit/nuxt',
     '@pinia/nuxt',
+    'nuxt-vitest',
   ],
     tailwindcss: {
       cssPath: '~/assets/css/tailwind.css',
