@@ -17,29 +17,40 @@ interface PostType {
 	};
 }
 
-const posts = ref<PostType[]>([])
+const posts = ref<PostType[] | null>(null)
 
 const isAuthenticated = ref(false)
 
 async function fetchAllPosts() {
 	try {
-		const response = await axios.get<PostType[]>("http://localhost:8888/api/feed/")
-		console.log("Success: fetched all posts", response.data)
-		posts.value = response.data
+		const {data: response} = await useFetch<PostType[]>("http://localhost:8888/api/feed/")
+		posts.value = toRaw(response.value)
+		console.log("Success: fetched all posts", toRaw(response.value))
+
 	} catch {
 		console.log("Error: failed to fetch tasks")
 	}
 }
 
+interface FetchResponseType {
+	token:string
+}
+
 async function loginPost(username:string, password:string) {
-	const header = {
+	const payload = {
 		"username": username,
 		"password": password
 	}
 	try {
-		const response = await axios.post("http://localhost:8888/api/login/", header)
-		console.log("Successfully logged in: ", response.data)
-		return response.data.token
+		const { data: response } = await useFetch<FetchResponseType>("http://localhost:8888/api/login/", {
+			body: JSON.stringify(payload),
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+		console.log("Successfully logged in: ", toRaw(response.value))
+		return toRaw(response.value?.token)
 	} catch {
 		console.log("Failed to login")
 		return false

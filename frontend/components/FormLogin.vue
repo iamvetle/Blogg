@@ -39,7 +39,7 @@ let loginerror = false
 let loginsucess = false
  
 async function loginForm() {
-    const token = await store.loginPost(usernameInput.value, passwordInput.value)
+    const token:string = await store.loginPost(usernameInput.value, passwordInput.value) as string
     localStorage.setItem("token", token)
 
     if (token) {
