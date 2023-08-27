@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const useGeneralStore = defineStore('general', () => {
 
-const posts = ref<PostType[] | null>(null)
+const posts = ref<PostType[]>([])
 const isAuthenticated = ref(false)
 
 interface FetchResponseType {
@@ -34,11 +34,15 @@ interface AccountType {
 async function fetchAllPosts() {
 	try {
 		const {data: response} = await useFetch<PostType[]>("http://localhost:8888/api/feed/")
+
+		console.log(response.data.value)
+		console.log(toRaw(response.value))
+		console.log(response.value)
+		console.log("Success: fetched all posts", response.data.value)
 		posts.value = toRaw(response.value)
-		console.log("Success: fetched all posts", toRaw(response.value))
 
 	} catch {
-		console.log("Error: failed to fetch tasks")
+		console.log("Error: failed to fetch tasks");
 	}
 }
 async function loginPost(formData) {

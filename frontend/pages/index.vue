@@ -37,8 +37,8 @@ const account = null
 //const { data } = await useFetch("/api/allposts")
 //console.log(data.value)
 
-const fetchPosts = () => {
-	store.fetchAllPosts()
+async function fetchPosts () {
+	await store.fetchAllPosts()
 }
 
 onMounted(fetchPosts)

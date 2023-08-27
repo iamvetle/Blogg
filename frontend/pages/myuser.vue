@@ -107,7 +107,7 @@ const fetchUserPosts = async () => {
 
 const fetchUserAccount = async () => {
     const token = localStorage.getItem("token")
-
+//@ts-ignore
     const response = await store.fetchUserAccount(token)
     if (response) {
         account.value = response
