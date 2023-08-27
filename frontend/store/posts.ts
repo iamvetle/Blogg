@@ -41,13 +41,10 @@ async function fetchAllPosts() {
 		console.log("Error: failed to fetch tasks")
 	}
 }
-async function loginPost(username:string, password:string) {
+async function loginPost(formData) {
 	const baseURL = "http://localhost:8888/api/login/"
 
-	const payload = {
-		"username": username,
-		"password": password
-	}
+	const payload = formData
 	try {
 		const { data: response } = await useFetch<FetchResponseType>(baseURL, {
 			body: JSON.stringify(payload),

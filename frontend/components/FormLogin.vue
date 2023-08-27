@@ -1,29 +1,61 @@
 <template> 
+
+<div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+
     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
         Sign in to your account
     </h1>
+        <div id="form" class="space-y-4 md:space-y-6">
+            <FormKit
+                type="form"
+                id="login_form"
+                submit-label="Sign in"
+                @submit="submitLoginForm"
+                :actions="false"
+                #default="{ value }"
+                >
+        
+            <div>
+                <FormKit
+                    type="text"
+                    name="username"
+                    label="Brukernavn"
+                    placeholder="jane43"
+                    validation="required"
+                    label-class="prose"
+                    input-class="prose bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    message-class="prose text-sm text-red-500"
+                />
+            </div>
 
-    <div id="form">
-        <form class="space-y-4 md:space-y-6" @submit.prevent="loginForm">
-            <div>
-                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ditt brukernavn</label>
-                <input v-model="usernameInput" type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="jane43" required >
+            <div class="mt-2">
+                <FormKit                    
+                    type="password"
+                    name="password"
+                    label="Password"
+                    validation="required"
+                    placeholder="************"
+                    label-class="prose"
+                    input-class="prose bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    message-class="prose text-sm text-red-500"
+                />
             </div>
-            <div>
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Passord</label>
-                <input v-model="passwordInput" type="password" name="password" id="password" placeholder="************" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required >
-            </div>
-            
-            <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign in</button>
-            
+            <div id="button" class="mt-4">
+                    <FormKit
+                        type="submit"
+                        label="Bekreft"
+                        input-class ="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                    />
+                </div>
+                        
             <p class="mt-5 text-red-700" v-show="loginerror">Invalid credentials</p>
             <p class="mt-5 text-green-700" v-show="loginsucess">Login successfull</p>
-            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+            <p class="text-sm font-light text-gray-500 dark:text-gray-400 mt-3">
                 Don’t have an account yet? <nuxt-link to="/registrer/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</nuxt-link>
             </p>
-        </form>
-        
-    </div>
+        </FormKit>
+        </div>
+        </div>
 </template>
 
 <script setup lang="ts">
@@ -32,19 +64,14 @@ import { useGeneralStore } from '@/store/posts';
 
 const store = useGeneralStore()
 
-const usernameInput = ref<string>("")
-const passwordInput = ref<string>("")
-
 const loginerror = ref(false)
 const loginsucess = ref(false)
  
-async function loginForm() {
-    const token:string = await store.loginPost(usernameInput.value, passwordInput.value) as string
+async function submitLoginForm(formData:object) {
+    const token:any = await store.loginPost(formData)
     localStorage.setItem("token", token)
 
     if (token) {
-        usernameInput.value = ""
-        passwordInput.value = ""
         
         loginsucess.value = true
         loginerror.value = false
