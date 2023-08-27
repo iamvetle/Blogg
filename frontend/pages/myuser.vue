@@ -7,7 +7,6 @@
                 <div class="bg-white shadow rounded-lg p-6">
                     <div class="flex flex-col items-center">
                         <img src="~assets/no.png" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" alt="avatar">
-
                         <!-- </img> -->
                         <h1 class="text-xl font-bold">{{ account.first_name }} {{ account.last_name }}</h1>
                         <p class="text-gray-600">{{ account.username }}</p>
