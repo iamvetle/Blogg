@@ -35,8 +35,8 @@ const store = useGeneralStore()
 const usernameInput = ref<string>("")
 const passwordInput = ref<string>("")
 
-let loginerror = false
-let loginsucess = false
+const loginerror = ref(false)
+const loginsucess = ref(false)
  
 async function loginForm() {
     const token:string = await store.loginPost(usernameInput.value, passwordInput.value) as string
@@ -46,8 +46,8 @@ async function loginForm() {
         usernameInput.value = ""
         passwordInput.value = ""
         
-        loginsucess = true
-        loginerror = false
+        loginsucess.value = true
+        loginerror.value = false
 
         store.changeAuthenticated(true)
 
@@ -57,8 +57,8 @@ async function loginForm() {
 
     }
     else {
-        loginsucess = false
-        loginerror = true
+        loginsucess.value = false
+        loginerror.value = true
     }
 }
 
@@ -71,6 +71,5 @@ function tokenCheck() {
     }
 }
 
-onBeforeMount(tokenCheck) // TODO: Switch to 'middleware' instead
-
+onBeforeMount(tokenCheck)
 </script>
