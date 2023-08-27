@@ -99,5 +99,4 @@ function changeAuthenticated(state:boolean) {
 
 return { posts, isAuthenticated, fetchAllPosts, changeAuthenticated, loginPost, registerFormPost, fetchUserAccount }
 
-
 })
