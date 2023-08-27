@@ -41,7 +41,7 @@ async function fetchPosts () {
 	await store.fetchAllPosts()
 }
 
-onMounted(fetchPosts)
+fetchPosts()
 
 </script>
 
