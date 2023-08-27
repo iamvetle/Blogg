@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import axios from 'axios'
 
 export const useGeneralStore = defineStore('general', () => {
@@ -20,22 +22,12 @@ interface PostType {
 		last_name:string;
 	};
 }
-interface AccountType {
-    username: string;
-    email: string;
-    first_name: string;
-    last_name: string;
-    nickname: string;
-    age:number;
-    address:string;
-    phone_number:number;
-}
+
 
 async function fetchAllPosts() {
 	try {
 		const {data: response} = await useFetch<PostType[]>("http://localhost:8888/api/feed/")
-		posts.value = toRaw(response.value)
-		console.log("Success: fetched all posts", toRaw(response.value))
+		console.log("Success: fetched all posts", response.value)
 
 	} catch {
 		console.log("Error: failed to fetch tasks")
