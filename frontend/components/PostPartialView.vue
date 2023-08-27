@@ -26,11 +26,8 @@
         </article> 
 </template>
 
-
 <script setup lang="ts">
 
-
-// Props
 const { postDetail } = defineProps(["postDetail"])
 const postLink = `/post/${postDetail.id}`
 const author_full_name = `${postDetail.author.first_name} ${postDetail.author.last_name}`

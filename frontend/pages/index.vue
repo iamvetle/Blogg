@@ -10,7 +10,7 @@
 
 					<div id="main" class="grid gap-8 lg:grid-cols-2">
 						<PostPartialView
-						v-for="(post, index) in posts" 
+						v-for="post in posts" 
 						:key="post.id"
 						:postDetail="post"
 						/>
@@ -21,11 +21,6 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
-
-import { storeToRefs } from 'pinia'
-import { useGeneralStore } from '@/store/posts'
-
 
 definePageMeta({
 	layout:"index-layout",
@@ -33,10 +28,7 @@ definePageMeta({
 })
 
 const baseURL = "http://localhost:8888/api/feed/"
-
-const store = useGeneralStore()
 const posts = await fetchAllPosts(baseURL)
-const account = null
 
 </script>
 

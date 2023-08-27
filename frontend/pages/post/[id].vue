@@ -22,22 +22,8 @@ interface PostType {
   };
 }
 
-import axios from 'axios'
-
-let post = ref<PostType | null>(null)
 const postId = useRoute()
 const baseURL = `http://localhost:8888/api/post/${postId.params.id}`
-
-onMounted( () => {
-	axios.get(baseURL)
-  .then((Response) => { 
-    console.log(Response); 
-    post.value = Response.data 
-	})
-  .catch((error) => { 
-    console.error(error)
-  })
-})
-
+const { data:post } = await useFetch<PostType>(baseURL)
 
 </script>
