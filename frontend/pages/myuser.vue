@@ -63,6 +63,7 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
 
 interface PostType {
         id:number;
@@ -77,15 +78,34 @@ interface PostType {
         };
     }
 
-definePageMeta ({
-	middleware:["check-token", "redirect-if-no-token"] // middleware checks token
-})
+interface AccountType {
+    username: string;
+    email: string;
+    first_name: string;
+    last_name: string;
+    nickname: string;
+    age:number;
+    address:string;
+    phone_number:number;
+    }
 
-const accountURL = "http://localhost:8888/api/myuser/"
-const postURL = "http://localhost:8888/api/feed/"
+// husk definemiddle ware senere
 
-const posts = await fetchAllPosts(postURL)// FIX to only include personal user posts
-const account = await fetchMyAccount(accountURL)
+
+const posts = ref([])// FIX to only include personal user posts
+const account = ref(null)
+
+;( async () => {
+    const postURL = "http://localhost:8888/api/feed/"
+
+	posts.value = await fetchAllPosts(postURL)
+})()
+
+;( async () => {
+    const accountURL = "http://localhost:8888/api/myuser/"
+
+	account.value = await fetchMyAccount(accountURL)
+})()
 
 </script>
 

@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 interface PostType {
     id:number;
     title:string;    
@@ -11,16 +13,15 @@ interface PostType {
     };
 }
 
-export const fetchAllPosts = async (url:string ) => {
+export const fetchAllPosts = async(url:string ) => {
 
     try {
-        const { data:response } = await useFetch<PostType[]>(url)
+        const response = await axios.get<PostType[]>(url)
         
-        console.log("OK: All posts fetched", response.value)// print to self
-        return response.value
+        console.log("OK: all posts fetched", response.data)// print to self
+        return response.data
     
     } catch {
-        console.error("FAILED: Posts not fetched") // print to self
-        return null
+        //console.error("FAILED: no posts fetched") // print to self - not working at all, no idea why
     }
 }

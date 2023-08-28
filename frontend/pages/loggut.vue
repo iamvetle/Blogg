@@ -4,35 +4,37 @@
             <p>Du er nå logged ut.</p>
         </div>
         <div v-else>
-            <p>Logget ut.</p>
+            <p>Logges ut..</p>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	middleware:["check-token"]
-})
 
 import { useGeneralStore } from '@/store/posts';
 
 const store = useGeneralStore()
 
+// put definepagemeta
+
 const removed = ref(false)
 
-function logoutFunction() {
-    if (localStorage.getItem("token") != null) {
+const logoutFunction = () => {
+    const token = localStorage.getItem("token")
+
+    if (token != null) {
         localStorage.removeItem("token")
-        removed.value = true
+        
+        removed.value = true //@ts-ignore
+        store.isAuthenticated = true
 
-        store.changeAuthenticated(false)
-
+        setTimeout(() => {
+            navigateTo("/login")
+            }, 1000 )
+    } else {
+        navigateTo("/")// temperory redirectioon
     }
 
-    setTimeout(() => {
-        navigateTo("/")
-    }, 1000 )
-    
 }
 
 onMounted(logoutFunction)

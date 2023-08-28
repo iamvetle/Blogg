@@ -10,6 +10,7 @@
 
 					<div id="main" class="grid gap-8 lg:grid-cols-2">
 						<PostPartialView
+						v-if="posts"
 						v-for="post in posts" 
 						:key="post.id"
 						:postDetail="post"
@@ -21,14 +22,31 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
 
 definePageMeta({
-	layout:"index-layout",
-	middleware:["check-token"]
+	layout:"index-layout"
 })
 
-const baseURL = "http://localhost:8888/api/feed/"
-const posts = await fetchAllPosts(baseURL)
+interface PostType {
+    id:number;
+    title:string;    
+    content:string;
+    date_published:string;
+    last_modified:string;
+    author: {
+        username:string;
+        first_name:string;
+        last_name:string;
+    };
+}
+
+const posts = ref<PostType[]>([]);
+
+;( async () => {
+	const baseURL = "http://localhost:8888/api/feed/"
+	posts.value = await fetchAllPosts(baseURL)
+})();
 
 </script>
 

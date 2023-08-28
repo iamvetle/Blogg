@@ -51,7 +51,7 @@
             <p class="mt-5 text-red-700" v-show="loginerror">Invalid credentials</p>
             <p class="mt-5 text-green-700" v-show="loginsucess">Login successfull</p>
             <p class="text-sm font-light text-gray-500 dark:text-gray-400 mt-3">
-                Don’t have an account yet? <nuxt-link to="/registrer/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</nuxt-link>
+                Don't have an account yet? <nuxt-link to="/registrer/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</nuxt-link>
             </p>
         </FormKit>
         </div>
@@ -59,21 +59,27 @@
 </template>
 
 <script setup lang="ts">
+import { useGeneralStore } from '@/store/posts';
+
+const store = useGeneralStore()
 
 const loginerror = ref(false)
 const loginsucess = ref(false)
+const baseURL = "http://localhost:8888/api/login/"
  
 async function submitForm(formData:object) {
-    const token:any = await submitLoginForm(formData)
+    const token = await submitLoginForm(baseURL, formData) as string
     localStorage.setItem("token", token)
 
     if (token) {
+        //@ts-ignore
+        store.changeAuthenticated(true)
         
         loginsucess.value = true
         loginerror.value = false
 
         setTimeout(() => {
-            navigateTo("/myuser")
+            return navigateTo("/myuser")
         }, 1000 )
 
     }
@@ -86,9 +92,9 @@ async function submitForm(formData:object) {
 function tokenCheck() {
     const token = localStorage.getItem("token")
 
-    if (token !== null) {
+    if (token != null) {
         console.log("Token found, no need for client to be here.")
-        return navigateTo("/")
+        return navigateTo("/myuser")
     }
 }
 

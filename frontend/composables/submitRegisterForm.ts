@@ -1,21 +1,13 @@
-import 
+import axios from 'axios'
 
-export const submitLoginForm = async () => {
-    
+export const submitRegisterForm = async(url:string, formData:object) => {
+
     try {
-        async function registerFormPost(data:object) {
-            const baseURL = "http://localhost:8888/api/registrer/"
-        
-            try {
-                const response = await axios.post(baseURL, data)
-                console.log("OK: created new user account", response.data) // print to self
-                return true
-            } catch {
-                console.log("FAILED: no new user account created") // print to self
-                return false
-            }
-        }
+        const response = await axios.post(url, formData)
+        console.log("OK: created user account", response.data)
+        return true
     } catch {
-
+        console.log("FAILED: no user account was created")
+        return false
     }
 }

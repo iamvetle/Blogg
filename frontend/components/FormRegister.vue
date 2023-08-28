@@ -10,7 +10,7 @@
                 id="register_form"
                 :form-class="submitted ? 'hide' : 'show'"
                 submit-label="Create account"
-                @submit="submitRegisterForm"
+                @submit="submitForm"
                 :actions="false"
                 #default="{ value }"
                 >
@@ -115,16 +115,13 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '@/store/posts';
-
-const store = useGeneralStore()
 
 const submitted = ref(false)
+const baseURL = "http://localhost:8888/api/registrer/"
 
-async function submitRegisterForm(formData:object) {
-    const data = formData
-    const response = await store.registerFormPost(data)
-    if (response) {
+const submitForm = async(formData:object) => {
+    const response = await submitRegisterForm(baseURL, formData)
+    if (response === true ) {
         submitted.value = true   
         setTimeout(() => {
             navigateTo("/login")

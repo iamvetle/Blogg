@@ -1,7 +1,7 @@
 <template>
     <div id="postFormWrapper">
         <div class="heading text-center font-bold text-2xl m-5 text-gray-800">New Post</div>
-        <form @submit.prevent="newPost">
+        <form @submit.prevent="submitNewPost">
             <div class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
                 <input v-model="titleInput" class="title bg-gray-100 border border-gray-300 p-2 mb-4 outline-none" spellcheck="false" placeholder="Title" type="text">
                 <textarea v-model="textInput" class="description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none" spellcheck="false" placeholder="Describe everything about this post here"></textarea>
@@ -28,35 +28,21 @@
 
 <script setup lang="ts">
 
-import axios from 'axios'
+// huske definepagedata senere
 
-definePageMeta({
-	middleware:["check-token", "redirect-if-no-token"]
-})
-
-const titleInput: Ref<string | null> = ref(null)
-const textInput: any = ref(null)
+const titleInput: Ref<string> = ref("")
+const textInput: Ref<string> = ref("")
 const baseURL = "http://localhost:8888/api/newpost/"
 const postState = ref(false)
 
-const newPost = async () => {
-    const token = localStorage.getItem("token")
-
-    const data = {
-        title:titleInput.value,
-        content:textInput.value,
-    }
-    try {
-        const response = await axios.post(baseURL, data, { 
-            headers: {
-                'Authorization': `Token ${token}`  
-            }
-        })
-        console.log("Successfully added post")
-        textInput.value = ""
-        titleInput.value = ""
-    } catch {
-        console.log("Failed adding post")
+const submitNewPost = async() => {
+    if (titleInput.value.trim() != "" || textInput.value.trim() != "") {
+        const formData = {
+            "title": titleInput,
+            "content": textInput
+        }
+        await createNewPost(baseURL, formData)
+        postState.value = true
     }
 }
 </script>

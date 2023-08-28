@@ -15,8 +15,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-	middleware:["check-token", "redirect-if-have-token"]
-})
+// huske definepagedata senere
 
 </script>
