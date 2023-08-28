@@ -1,17 +1,17 @@
-export async function fetchAllPosts (url:string ) {
+interface PostType {
+    id:number;
+    title:string;    
+    content:string;
+    date_published:string;
+    last_modified:string;
+    author: {
+        username:string;
+        first_name:string;
+        last_name:string;
+    };
+}
 
-    interface PostType {
-        id:number;
-        title:string;    
-        content:string;
-        date_published:string;
-        last_modified:string;
-        author: {
-            username:string;
-            first_name:string;
-            last_name:string;
-        };
-    }
+export const fetchAllPosts = async (url:string ) => {
 
     try {
         const { data:response } = await useFetch<PostType[]>(url)
