@@ -1,9 +1,15 @@
-import axios from 'axios'
-import { request } from 'http';
+//@ts-nocheck
 
-//@ts-ignore
+import axios from 'axios'
+
 export const useGeneralStore = defineStore('general', () => {
 
+const posts = ref<PostType[]>([])
+const isAuthenticated = ref(false)
+
+interface FetchResponseType {
+	token:string
+}
 interface PostType {
 	id:number;
 	title:string;    
@@ -17,35 +23,35 @@ interface PostType {
 	};
 }
 
-const posts = ref<PostType[]>([])
-
-const isAuthenticated = ref(false)
 
 async function fetchAllPosts() {
 	try {
-		const response = await axios.get<PostType[]>("http://localhost:8888/api/feed/")
-		console.log("Success: fetched all posts", response.data)
-		posts.value = response.data
+		const {data: response} = await useFetch<PostType[]>("http://localhost:8888/api/feed/")
+		console.log("Success: fetched all posts", response.value)
+
 	} catch {
 		console.log("Error: failed to fetch tasks")
 	}
 }
+async function loginPost(formData) {
+	const baseURL = "http://localhost:8888/api/login/"
 
-async function loginPost(username:string, password:string) {
-	const header = {
-		"username": username,
-		"password": password
-	}
+	const payload = formData
 	try {
-		const response = await axios.post("http://localhost:8888/api/login/", header)
-		console.log("Successfully logged in: ", response.data)
-		return response.data.token
+		const { data: response } = await useFetch<FetchResponseType>(baseURL, {
+			body: JSON.stringify(payload),
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+		console.log("Successfully logged in: ", toRaw(response.value))
+		return toRaw(response.value?.token)
 	} catch {
 		console.log("Failed to login")
 		return false
 	}
 }
-
 async function registerFormPost(data:object) {
 	const baseURL = "http://localhost:8888/api/registrer/"
 
@@ -58,28 +64,17 @@ async function registerFormPost(data:object) {
 		return false
 	}
 }
-
-type AccountType = {
-    username: string;
-    email: string;
-    first_name: string;
-    last_name: string;
-    nickname: string;
-    age:number;
-    address:string;
-    phone_number:number;
-}
-
-async function fetchUserAccount (token:any) { 
+async function fetchUserAccount (token:string) { 
 	const baseURL = "http://localhost:8888/api/myuser/"
 
     try {
-        const response = await axios.get<AccountType>(baseURL, { 
+        const { data: response } = await useFetch<AccountType>(baseURL, { 
         headers: {
                 'Authorization': `Token ${token}`
             }})
-			console.log("Successfully retrieved user information: ", response.data)
-            const accountInformation = response.data
+
+            const accountInformation = toRaw(response.value)
+			console.log("Success: Retrieved user information: ", toRaw(accountInformation))
 			return accountInformation
     
 		} catch {
@@ -87,12 +82,10 @@ async function fetchUserAccount (token:any) {
 			return false
     }
 }
-
 function changeAuthenticated(state:boolean) {
 	isAuthenticated.value = state
 }
 
 return { posts, isAuthenticated, fetchAllPosts, changeAuthenticated, loginPost, registerFormPost, fetchUserAccount }
-
 
 })

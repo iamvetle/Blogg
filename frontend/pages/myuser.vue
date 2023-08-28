@@ -7,7 +7,6 @@
                 <div class="bg-white shadow rounded-lg p-6">
                     <div class="flex flex-col items-center">
                         <img src="~assets/no.png" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" alt="avatar">
-
                         <!-- </img> -->
                         <h1 class="text-xl font-bold">{{ account.first_name }} {{ account.last_name }}</h1>
                         <p class="text-gray-600">{{ account.username }}</p>
@@ -44,6 +43,7 @@
                     <!-- Post begin -->
                     <div>
                         <MyuserPostUser
+                        v-if="posts"
                         v-for="post in posts"
                         :key="post.id"
                         :postProp="post"
@@ -64,58 +64,28 @@
 
 <script setup lang="ts">
 
+interface PostType {
+        id:number;
+        title:string;    
+        content:string;
+        date_published:string;
+        last_modified:string;
+        author: {
+            username:string;
+            first_name:string;
+            last_name:string;
+        };
+    }
+
 definePageMeta ({
-	middleware:["check-token", "redirect-if-no-token"]
+	middleware:["check-token", "redirect-if-no-token"] // middleware checks token
 })
 
-// Typescript 'Types'
-type AccountType = {
-    username: string;
-    email: string;
-    first_name: string;
-    last_name: string;
-    nickname: string;
-    age:number;
-    address:string;
-    phone_number:number;
-}
+const accountURL = "http://localhost:8888/api/myuser/"
+const postURL = "http://localhost:8888/api/feed/"
 
-type PostType = {
-    id:number;
-    title:string;    
-    content:string;
-    date_published:string;
-    last_modified:string;
-    author: {
-        username:string;
-        first_name:string;
-        last_name:string;
-    };
-}
-
-import { storeToRefs } from 'pinia';
-import { useGeneralStore } from '@/store/posts';
-
-const store = useGeneralStore()
-
-const { posts } = storeToRefs(store)
-const account = ref<AccountType | null>(null)
-
-const fetchUserPosts = async () => {
-    store.fetchAllPosts()
-}
-
-const fetchUserAccount = async () => {
-    const token = localStorage.getItem("token")
-
-    const response = await store.fetchUserAccount(token)
-    if (response) {
-        account.value = response
-    }
-}
-
-onMounted(fetchUserAccount)
-onMounted(fetchUserPosts)
+const posts = await fetchAllPosts(postURL)// FIX to only include personal user posts
+const account = await fetchMyAccount(accountURL)
 
 </script>
 
