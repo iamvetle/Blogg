@@ -10,7 +10,7 @@
                 type="form"
                 id="login_form"
                 submit-label="Sign in"
-                @submit="submitLoginForm"
+                @submit="submitForm"
                 :actions="false"
                 #default="{ value }"
                 >
@@ -59,24 +59,18 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '@/store/posts';
-
-
-const store = useGeneralStore()
 
 const loginerror = ref(false)
 const loginsucess = ref(false)
  
-async function submitLoginForm(formData:object) {
-    const token:any = await store.loginPost(formData)
+async function submitForm(formData:object) {
+    const token:any = await submitLoginForm(formData)
     localStorage.setItem("token", token)
 
     if (token) {
         
         loginsucess.value = true
         loginerror.value = false
-
-        store.changeAuthenticated(true)
 
         setTimeout(() => {
             navigateTo("/myuser")

@@ -1,16 +1,9 @@
 <template>
-	<ClientOnly>
-		<NavbarLoggedIn v-if="store.isAuthenticated"/>
-		<NavbarLoggedOut v-else/>
-	</ClientOnly>
+	<p>temp</p>
 </template>
 
 
 <script setup lang="ts"> // Used by mainpage.vue - for feed
-
-import { useGeneralStore } from '@/store/posts'
-
-const store = useGeneralStore()
 
 </script>
 
