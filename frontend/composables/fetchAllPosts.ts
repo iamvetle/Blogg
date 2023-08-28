@@ -16,12 +16,13 @@ interface PostType {
 export const fetchAllPosts = async(url:string ) => {
 
     try {
-        const response = await axios.get<PostType[]>(url)
-        
+        const response = (await axios.get<PostType[]>(url))
+
         console.log("OK: all posts fetched", response.data)// print to self
         return response.data
-    
-    } catch {
-        //console.error("FAILED: no posts fetched") // print to self - not working at all, no idea why
+
+    } catch (error) {
+        console.error("An error occured while trying to fetch posts", error) // print to self
+        return null
     }
 }

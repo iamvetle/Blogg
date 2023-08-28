@@ -1,4 +1,4 @@
-import { useGeneralStore } from "@/store/posts"
+import { useGeneralStore } from "store/generalStore"
 import { storeToRefs } from "pinia"
 
 export default defineNuxtRouteMiddleware((to) => {

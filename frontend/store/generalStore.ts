@@ -2,7 +2,7 @@ export const useGeneralStore = defineStore('general', () => {
     const isAuthenticated = ref(false);
 
 
-    function changeAuthenticated(state:boolean) {
+    const changeAuthenticated =  (state:boolean) => {
  	    isAuthenticated.value = state
 
     }

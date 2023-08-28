@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '@/store/posts';
+import { useGeneralStore } from '@/store/generalStore';
 
 const store = useGeneralStore()
 
@@ -100,3 +100,4 @@ function tokenCheck() {
 
 onBeforeMount(tokenCheck)
 </script>
+store/generalStore

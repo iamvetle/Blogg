@@ -11,10 +11,10 @@
 <script setup lang="ts">
 //@ts-nocheck
 
-import { useGeneralStore } from '@/store/posts';
+import { useGeneralStore } from '@/store/generalStore';
 const store = useGeneralStore()
 
 
 </script>
 
-<style scoped></style>
+<style scoped></style>store/generalStore

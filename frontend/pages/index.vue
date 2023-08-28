@@ -8,13 +8,15 @@
 						<p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Her er de siste blogginnleggene.</p>
 					</div>
 
-					<div id="main" class="grid gap-8 lg:grid-cols-2">
+					<div id="main" class="grid gap-8 lg:grid-cols-2" v-if="posts">
 						<PostPartialView
-						v-if="posts"
 						v-for="post in posts" 
 						:key="post.id"
 						:postDetail="post"
 						/>
+					</div>
+					<div v-else>
+						<p>There are no posts. Return value from fetch is {{ typeof posts }}</p> <!-- print to self -->
 					</div>
 				</div>
 			</section>
@@ -22,7 +24,6 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
 
 definePageMeta({
 	layout:"index-layout"
@@ -41,11 +42,11 @@ interface PostType {
     };
 }
 
-const posts = ref<PostType[]>([]);
+const posts = ref<PostType[] | null>([]);
 
 ;( async () => {
 	const baseURL = "http://localhost:8888/api/feed/"
-	posts.value = await fetchAllPosts(baseURL)
+		posts.value = await fetchAllPosts(baseURL)
 })();
 
 </script>

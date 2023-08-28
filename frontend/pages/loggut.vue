@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 
-import { useGeneralStore } from '@/store/posts';
+import { useGeneralStore } from '@/store/generalStore';
 
 const store = useGeneralStore()
 
@@ -25,7 +25,7 @@ const logoutFunction = () => {
     if (token != null) {
         localStorage.removeItem("token")
         
-        removed.value = true //@ts-ignore
+        removed.value = true
         store.isAuthenticated = true
 
         setTimeout(() => {
@@ -43,4 +43,4 @@ onMounted(logoutFunction)
 
 <style scoped>
 
-</style>
+</style>store/generalStore
