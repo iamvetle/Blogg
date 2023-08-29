@@ -9,8 +9,8 @@ export const createNewPost = async (url:string, formData:object) => {
                 'Authorization': `Token ${token}`  
             }
         })
-        console.log("OK: a new post was created")
-    } catch {
-        console.log("FAILED: no new post was created")
+        console.log("OK: a new post was created", response.data)
+    } catch (error) {
+        console.log("FAILED: no new post was created:", error)
     }
 }

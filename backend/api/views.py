@@ -22,6 +22,12 @@ class MyAccountView(APIView): # Personal account
         serializer = UserSerializer(request.user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+class MyPosts(APIView):
+    
+    permission_classes = [IsAuthenticated]
+    
+
+
 class LoginView(APIView): # Login to account
     def post(self, request):
         username = request.data.get('username')

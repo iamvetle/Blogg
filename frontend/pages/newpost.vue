@@ -43,8 +43,8 @@ const postState = ref(false)
 const submitNewPost = async() => {
     if (titleInput.value.trim() != "" || textInput.value.trim() != "") {
         const formData = {
-            "title": titleInput,
-            "content": textInput
+            "title": titleInput.value,
+            "content": textInput.value
         }
         await createNewPost(baseURL, formData)
         postState.value = true
