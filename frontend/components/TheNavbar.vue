@@ -9,12 +9,14 @@
 
 
 <script setup lang="ts">
-//@ts-nocheck
 
 import { useGeneralStore } from '@/store/generalStore';
 const store = useGeneralStore()
 
+;(async() => {
+	checkToken()
+})()
 
 </script>
 
-<style scoped></style>store/generalStore
+<style scoped></style>

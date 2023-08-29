@@ -19,7 +19,7 @@
 <script setup lang="ts">
 
 definePageMeta({
-    middleware:["no-token-redirect"]
+    middleware:["has-token-redirect"]
 })
 
 // husk definpagedata senere

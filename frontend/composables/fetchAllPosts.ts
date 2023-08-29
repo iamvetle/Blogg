@@ -22,7 +22,7 @@ export const fetchAllPosts = async(url:string ) => {
         return response.data
 
     } catch (error) {
-        console.error("An error occured while trying to fetch posts", error) // print to self
+        //console.error("An error occured while trying to fetch posts", error) // print to self
         return null
     }
 }

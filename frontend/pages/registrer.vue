@@ -18,7 +18,7 @@
 // huske definepagedata senere
 
 definePageMeta({
-    middleware:["no-token-redirect"]
+    middleware:["has-token-redirect"]
 })
 
 
