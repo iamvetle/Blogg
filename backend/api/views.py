@@ -26,6 +26,13 @@ class MyPosts(APIView):
     
     permission_classes = [IsAuthenticated]
     
+    def get(self, request):
+        author = request.user.id
+        queryset = Post.objects.get(author_id=author)
+        serializer = PostSerializer(queryset) # why does it break when i do "many=true"?
+        
+        if serializer.is_valid:
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class LoginView(APIView): # Login to account

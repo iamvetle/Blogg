@@ -100,9 +100,9 @@ const posts = ref([])// FIX to only include personal user posts
 const account = ref(null)
 
 ;( async () => {
-    const postURL = "http://localhost:8888/api/feed/"
+    const postURL = "http://localhost:8888/api/myuser/posts/"
 
-	posts.value = await fetchAllPosts(postURL)
+	posts.value = await fetchMyPosts(postURL)
 })()
 
 ;( async () => {
