@@ -25,12 +25,14 @@ const logoutFunction = () => {
     if (token != null) {
         localStorage.removeItem("token")
         
-        removed.value = true
         store.isAuthenticated = true
 
         setTimeout(() => {
-            navigateTo("/login")
-            }, 1000 )
+            removed.value = true
+            setTimeout(() => {
+                return navigateTo("/login")
+            }, 750)
+            }, 500 )
     } else {
         navigateTo("/")// temperory redirectioon
     }
