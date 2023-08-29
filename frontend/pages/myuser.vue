@@ -90,6 +90,10 @@ interface AccountType {
     }
 
 // husk definemiddle ware senere
+definePageMeta({
+    middleware:["no-token-redirect"]
+})
+
 
 
 const posts = ref([])// FIX to only include personal user posts
