@@ -9,7 +9,7 @@
 					</div>
 
 					<div id="main" class="grid gap-8 lg:grid-cols-2" v-if="posts">
-						<PostPartialView
+						<PostWindow
 						v-for="post in posts" 
 						:key="post.id"
 						:postDetail="post"
