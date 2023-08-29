@@ -115,7 +115,7 @@ class NewPostView(APIView):
 
 
 
-# class MyUserView(APIView):
+# class min-sideView(APIView):
     
 # class AllPosts(APIView):
 #     # if is authenticated

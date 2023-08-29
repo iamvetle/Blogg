@@ -1,7 +1,9 @@
 <template>
 	<div class="bg-white" id="site-wrapper">
 		<div>
-			<TheNavbar />
+			<ClientOnly>
+				<TheNavbar />
+			</ClientOnly>
 			<slot/>
 			<TheFooter/>
 		</div>

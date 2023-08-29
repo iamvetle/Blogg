@@ -1,6 +1,6 @@
 # TODO:
 
-### My user apge ( '/myuser')
+### My user apge ( '/min-side')
 * Backend logic
     * -
 * Frontend logic

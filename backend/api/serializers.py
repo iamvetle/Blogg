@@ -68,7 +68,7 @@ class CommentSerializer(serializers.ModelSerializer): # Not in use
         }
         return post
 
-class ProfileSerializer(serializers.ModelSerializer): # Not in use / bytte med User på myuser siden senere // har ikke noe egen model for denne
+class ProfileSerializer(serializers.ModelSerializer): # Not in use / bytte med User på min-side siden senere // har ikke noe egen model for denne
     class Meta:
         model = CustomUser
         

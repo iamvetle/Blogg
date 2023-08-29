@@ -10,9 +10,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
 
         if (token == null) {
-            if (to.path === "/myuser/" || to.path === "/newpost/") {
-                return navigateTo("/login/")
-            } else if (to.path === "/logout/") {
+            if (to.path === "/min-side" || to.path === "/newpost") {
+                return navigateTo("/login")
+            } else if (to.path === "/logout") {
                 return navigateTo("")
             }
         }

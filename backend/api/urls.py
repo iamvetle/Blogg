@@ -3,8 +3,8 @@ from .views import MyAccountView,  AllPostsView, SinglePostView, LoginView, NewP
 
 urlpatterns = [
 
-    path("myuser/", MyAccountView.as_view(), name="myuser"),
-    path("myuser/posts/", MyPosts.as_view(), name="myposts"),
+    path("min-side/", MyAccountView.as_view(), name="min-side"),
+    path("min-side/posts/", MyPosts.as_view(), name="myposts"),
     path("feed/", AllPostsView.as_view(), name="all_posts"),
     path("post/<int:pk>/", SinglePostView.as_view(), name="single_post"),
     path("login/", LoginView.as_view(), name="login"), 
