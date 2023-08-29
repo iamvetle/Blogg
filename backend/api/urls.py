@@ -2,9 +2,8 @@ from django.urls import path
 from .views import MyAccountView,  AllPostsView, SinglePostView, LoginView, NewPostView, RegisterUserView, MyPosts
 
 urlpatterns = [
-
-    path("min-side/", MyAccountView.as_view(), name="min-side"),
     path("min-side/posts/", MyPosts.as_view(), name="myposts"),
+    path("min-side/", MyAccountView.as_view(), name="min-side"),
     path("feed/", AllPostsView.as_view(), name="all_posts"),
     path("post/<int:pk>/", SinglePostView.as_view(), name="single_post"),
     path("login/", LoginView.as_view(), name="login"), 

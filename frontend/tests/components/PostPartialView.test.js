@@ -11,7 +11,7 @@
 // }
 
 // test("Displays title correctly", () => {
-//     const wrapper = mount(PostWindow, {
+//     const wrapper = mount(PostPartialView, {
 //         props: {
 //             postDetail: mockPostDetail
 //         }
