@@ -32,7 +32,7 @@ definePageMeta({
 interface PostType {
     id:number;
     title:string;    
-    content:string;
+    content_snippet:string;
     date_published:string;
     last_modified:string;
     author: {
