@@ -32,7 +32,7 @@ definePageMeta({
 interface PostType {
     id:number;
     title:string;    
-    content_snippet:string;
+    content:string;
     date_published:string;
     last_modified:string;
     author: {
@@ -45,7 +45,7 @@ interface PostType {
 const posts = ref<PostType[] | null>([]);
 
 ;( async () => {
-	const baseURL = "http://localhost:8888/api/feed/"
+	const baseURL = "http://localhost:8888/api/feed/" //@ts-ignore
 		posts.value = await fetchAllPosts(baseURL)
 })();
 
