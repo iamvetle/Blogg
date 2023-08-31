@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, ProfileSerializer, PostSerializer, CommentSerializer, PostSnippetSerializer
+from .serializers import UserSerializer, ProfileSerializer, PostSerializer, PostSnippetSerializer, UserProfileSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
@@ -29,7 +29,7 @@ class MyPosts(APIView):
     def get(self, request):
         author = request.user.id
         queryset = Post.objects.filter(author_id=author)
-        serializer = PostSerializer(queryset, many=True) # why does it break when i do "many=true"?
+        serializer = PostSerializer(queryset, many=True)
         
         if serializer.is_valid:
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -47,8 +47,7 @@ class LoginView(APIView): # Login to account
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
-class RegisterUserView(APIView):
-          
+class RegisterUserView(APIView): # Register a new user 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
@@ -66,16 +65,17 @@ class RegisterUserView(APIView):
 
     
 class UserProfileView(APIView): # Other user profiles
-    
-    def get(self, request, id):
-        if request.user.is_authenticated:
-            try:
-                user = CustomUser.objects.get(pk=id)
-            except CustomUser.DoesNotExist:
-                return Response(status=status.HTTP_404_NOT_FOUND)
-            
-            serializer = ProfileSerializer(user)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, username):
+
+        user = CustomUser.objects.get(username=username)
+        user_profile = UserProfileSerializer(user)
+        
+        if user_profile.is_valid:
+            return Response(user_profile.data, status=status.HTTP_200_OK)
+
         else:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
     
