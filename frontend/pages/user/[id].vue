@@ -1,19 +1,19 @@
 <template>
     <div id="site-wrapper">
         
-        <div class="w-9/12 mx-auto border-2 pb-[60px]">
+        <div class="w-9/12 mx-auto border-v pb-[60px]">
 
             <div class="w-full px-[80px] grid grid-cols-12 gap-[80px]">
             
-                <div class="inline-block col-span-8 border-2 border-blue-500"> <!-- 8/12 main content-->
+                <div class="inline-block col-span-8 border-v border-blue-500"> <!-- 8/12 main content-->
                 
-                    <img src="~/assets/noimage.jpg" id="header" class="h-[150px] w-full object-cover border-2 border-slate-500"> <!-- The IMAGE -->
+                    <img src="~/assets/noimage.jpg" id="header" class="h-[150px] w-full object-cover border-v border-slate-500"> <!-- The IMAGE -->
                     
 
                     
                     <div id="top" class="px-2 pt-[50px]">
                         <div id="heading" class="prose">
-                            <h2 class="text-4xl leading-[52px] font-medium tracking-[-0.03em]">asda</h2>
+                            <h2 class="text-4xl leading-[52px] font-medium tracking-[-0.03em]">{{ posts[0].first_name }} {{ posts[0].last_name }}</h2>
                         </div>
                         
                         <div class="pt-[30px]">
@@ -38,9 +38,10 @@
                     
                 </div>
             
-                <div id="sidebar" class="px-5 col-span-4 border border-red-500">
+                <div id="sidebar" class="px-5 col-span-4 border-v border-red-500">
                     <UserSidebar
-                    :postProp="posts"
+                    v-if="posts != null"
+                    :sideBarProp="posts[0]"
                     />
                 </div>
 
@@ -67,13 +68,19 @@ interface PostType {
 }
 
 const posts = ref<PostType[]>([])
+const userProp = ref(null)
 
-;( async () => {
+
+;await ( async () => {
   const route = useRoute()
   const baseURL = `http://localhost:8888/api/${route.params.id}/`		
   
   //@ts-ignore
   posts.value = await fetchAuthPosts(baseURL)
+
+  userProp.value = posts.value[0]
+
+    
 })();
 
 </script>
