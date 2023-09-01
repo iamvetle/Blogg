@@ -1,5 +1,5 @@
 <template>
-    	<div>
+    	<div v-if="page === 'access'">
 			<section class="bg-white dark:bg-gray-900">
 				<p></p>
 				<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -20,14 +20,18 @@
 					</div>
 				</div>
 			</section>
+		</div>
+		<div v-else>
+			<wait/>
 		</div>    	
 </template>
 
 <script setup lang="ts">
 
-definePageMeta({
-	layout:"index-layout"
-})
+import { useGeneralStore } from '@/store/generalStore';
+
+const store = useGeneralStore()
+let page = "not_access"
 
 interface PostType {
     id:number;
@@ -44,11 +48,28 @@ interface PostType {
 
 const posts = ref<PostType[] | null>([]);
 
-;( async () => {
+const fetchPosts = async () => {
 	const baseURL = "http://localhost:8888/api/feed/" //@ts-ignore
 		posts.value = await fetchAllPosts(baseURL)
-})();
+}
 
+onMounted(() => {
+	checkLocalToken()
+	if (store.isAuthenticated === true) {
+		setPageLayout("index-layout")
+		let page = "access"
+
+		fetchPosts()
+	} else {
+		setPageLayout("blank")
+	}
+})
+
+
+
+definePageMeta({
+	layout:false,
+})
 </script>
 
 <style scoped lang="scss">
