@@ -70,15 +70,14 @@ class UserProfileView(APIView): # Other user profiles
 
     def get(self, request, username):
 
-        user = CustomUser.objects.get(username=username)
-        user_profile = UserProfileSerializer(user)
+        queryset = CustomUser.objects.filter(username=username)                
         
-        if user_profile.is_valid:
-            return Response(user_profile.data, status=status.HTTP_200_OK)
+        if not queryset.exists():
+            return Response({"detail": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
-        else:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
-    
+        serializer = UserProfileSerializer(queryset, many=True)
+            
+        return Response(serializer.data, status=status.HTTP_200_OK)    
 ### POST RETRIEVEL
 
 class AllPostsView(APIView): # Retrieves ALL posts

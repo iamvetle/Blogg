@@ -9,5 +9,5 @@ urlpatterns = [
     path("login/", LoginView.as_view(), name="login"), 
     path("newpost/", NewPostView.as_view(), name="new_post"),
     path("registrer/", RegisterUserView.as_view(), name="register_user"), # TODO: remove the 'api/' part
-    path("user/<str:username>/", UserProfileView.as_view, name="user_profile"),
+    path("<str:username>/", UserProfileView.as_view(), name="user_profile"),
 ]
