@@ -102,7 +102,7 @@ const account = ref(null)
 ;( async () => {
     const postURL = "http://localhost:8888/api/min-side/posts/"
 
-	posts.value = await fetchMyPosts(postURL)
+	posts.value = await fetchAuthPosts(postURL)
 })()
 
 ;( async () => {

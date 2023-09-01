@@ -99,14 +99,15 @@ class CommentSerializer(serializers.ModelSerializer): # Not in use
         }
         return post
 
-class ProfileSerializer(serializers.ModelSerializer): # Not in use / bytte med User på min-side siden senere // har ikke noe egen model for denne
-    class Meta:
-        model = CustomUser
-        
-        fields = ["username", "first_name", "last_name", "posts"]
-
 class UserProfileSerializer(serializers.ModelSerializer):
+    posts = serializers.SerializerMethodField()
+
+    def get_posts(self, obj):
+                
+        posts = Post.objects.filter(author__username=obj.username)
+        return PostSnippetSerializer(posts, many=True).data
+
     class Meta:
         model = CustomUser
 
-        fields = ["username", "first_name", "last_name"]
+        fields = ["username", "first_name", "last_name", "posts"]

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, ProfileSerializer, PostSerializer, PostSnippetSerializer, UserProfileSerializer
+from .serializers import UserSerializer, PostSerializer, PostSnippetSerializer, UserProfileSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
@@ -76,8 +76,10 @@ class UserProfileView(APIView): # Other user profiles
             return Response({"detail": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = UserProfileSerializer(queryset, many=True)
-            
+
+        print(serializer.data)    
         return Response(serializer.data, status=status.HTTP_200_OK)    
+
 ### POST RETRIEVEL
 
 class AllPostsView(APIView): # Retrieves ALL posts
