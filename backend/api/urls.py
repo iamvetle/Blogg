@@ -1,5 +1,8 @@
 from django.urls import path
-from .views import MyAccountView,  AllPostsView, SinglePostView, LoginView, NewPostView, RegisterUserView, MyPosts, PostSnippetsView, UserProfileView
+from api.views.auth_views import LoginView, RegisterUserView
+from api.views.post_views import AllPostsView, SinglePostView, NewPostView, MyPosts, PostSnippetsView
+from api.views.user_views import MyAccountView, UserProfileView
+
 
 urlpatterns = [
     path("min-side/posts/", MyPosts.as_view(), name="myposts"),

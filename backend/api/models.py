@@ -48,6 +48,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     nickname = models.CharField(max_length=30, blank=True, default='')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    followers = models.ManyToManyField('self', related_name='following', symmetrical=False, blank=True)
 
     objects = CustomUserManager()
 
