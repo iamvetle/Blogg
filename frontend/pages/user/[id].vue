@@ -1,15 +1,6 @@
 <template>
     <div id="site-wrapper">
         
-        <div id="navbar" class="w-full h-[60px] flex justify-end items-center">
-            <ul class="flex space-x-5 me-5 items-center">
-                <li>Write</li>
-                <li>Signup</li>
-                <li>Signin</li>
-                <li>avatar</li>
-            </ul>
-        </div>
-        
         <div class="w-9/12 mx-auto border-2 pb-[60px]">
 
             <div class="w-full px-[80px] grid grid-cols-12 gap-[80px]">
@@ -22,7 +13,7 @@
                     
                     <div id="top" class="px-2 pt-[50px]">
                         <div id="heading" class="prose">
-                            <h2 class="text-4xl leading-[52px] font-medium tracking-[-0.03em]">{{ name }}</h2>
+                            <h2 class="text-4xl leading-[52px] font-medium tracking-[-0.03em]">asda</h2>
                         </div>
                         
                         <div class="pt-[30px]">
@@ -48,7 +39,9 @@
                 </div>
             
                 <div id="sidebar" class="px-5 col-span-4 border border-red-500">
-                    <UserSidebar/>
+                    <UserSidebar
+                    :postProp="posts"
+                    />
                 </div>
 
             </div>
@@ -72,10 +65,6 @@ interface PostType {
         last_name:string;
     };
 }
-
-definePageMeta({
-	layout:"blank"
-})
 
 const posts = ref<PostType[]>([])
 

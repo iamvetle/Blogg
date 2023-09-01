@@ -3,7 +3,7 @@
                     <img src="~/assets/no.png" id="profilbilde" class="w-[80px] h-[80px] mt-[40px] mb-[10px]">
 
                     <div id="info-wrapper">
-                        <p id="username" class="font-bold leading-7">Username</p>
+                        <p id="username" class="font-bold leading-7">{{ postProp[0].username }}</p> <!-- Through props - not the best-->
                         <span id="followers"><p class="font-light text-sm leading-7">71M followers</p></span>
                         <div id="bio" class="pt-4 pb-7 text-sm"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex corrupti tempore nesciunt?</p></div>
                         
@@ -54,6 +54,8 @@
 </template>
 
 <script setup lang="ts">
+
+const { postProp } = defineProps(["postProp"])
 
 </script>
 
