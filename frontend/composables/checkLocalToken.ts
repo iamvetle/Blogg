@@ -1,10 +1,11 @@
 import { useGeneralStore } from "@/store/generalStore"
 
-export const checkToken = () => {
+export const checkLocalToken = () => {
     if (process.client) {
+
         const token = localStorage.getItem("token")
         const store = useGeneralStore()
 
-        store.isAuthenticated = Boolean(token)
+        token != null ? store.isAuthenticated = true : store.isAuthenticated = false  
     }
 }
