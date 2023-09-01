@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.conf import settings
 
+    # Signal to create or update the Profile model when the User model is created or updated
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, password, first_name, last_name, **extra_fields):
         if not email:
@@ -62,6 +67,26 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def short_name(self):
         return self.first_name
+
+# class Profile(models.model):
+#     user_account = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+#     bio = models.TextField(max_length=500, default="", blank=True)
+#     #profile_picture
+#     followers = models.ManyToManyField('self', related_name='following', symmetrical=False, blank=True)
+
+#     @receiver(post_save, sender=CustomUser)
+#     def create_or_update_user_profile(sender, instance, created, **kwargs):
+#         if created:
+#             Profile.objects.create(user=instance)
+#         instance.profile.save()
+
+    '''
+    followers: A ManyToManyField with 'self' allows users to follow each other.
+
+    related_name='following' allows you to access the users that a user is following.
+    symmetrical=False ensures the relationship isn't automatically two-way (i.e., if User A follows User B, it doesn't mean User B follows User A).
+    blank=True allows for a user to have zero followers or following.'''
+
 
 class Post(models.Model):
      title = models.CharField(max_length=100)

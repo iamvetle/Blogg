@@ -18,7 +18,6 @@ class UserSerializer(serializers.ModelSerializer):
             }
     
 class PostSerializer(serializers.ModelSerializer):
-
     author = serializers.SerializerMethodField() # Passer på at ikke ALT av CustomUser blir sendt med
 
     class Meta:        
@@ -37,7 +36,8 @@ class PostSerializer(serializers.ModelSerializer):
         }
         return author
 
-class PostSnippetSerializer(serializers.ModelSerializer):
+class PostSnippetSerializer(serializers.ModelSerializer): # Bare en liten del av posts
+
     content_snippet = serializers.SerializerMethodField() # Limited to 100 char
     author = serializers.SerializerMethodField()
     
@@ -105,4 +105,8 @@ class ProfileSerializer(serializers.ModelSerializer): # Not in use / bytte med U
         
         fields = ["username", "first_name", "last_name", "posts"]
 
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
 
+        fields = ["username", "first_name", "last_name"]
