@@ -6,6 +6,8 @@
 
 <script setup lang="ts">
 
+console.log("'blank' layout is selected")
+
 </script>
 
 <style scoped>

@@ -59,21 +59,19 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '@/store/generalStore';
-
-const store = useGeneralStore()
 
 const loginerror = ref(false)
 const loginsucess = ref(false)
+
 const baseURL = "http://localhost:8888/api/login/"
  
 async function submitForm(formData:object) {
     const token = await submitLoginForm(baseURL, formData) as string
-    localStorage.setItem("token", token)
 
     if (token) {
         //@ts-ignore
-        store.changeAuthenticated(true)
+        
+        setLocalToken(token)
         
         loginsucess.value = true
         loginerror.value = false
@@ -89,15 +87,4 @@ async function submitForm(formData:object) {
     }
 }
 
-function tokenCheck() {
-    const token = localStorage.getItem("token")
-
-    if (token != null) {
-        console.log("Token found, no need for client to be here.")
-        return navigateTo("min-side")
-    }
-}
-
-onBeforeMount(tokenCheck)
 </script>
-store/generalStore

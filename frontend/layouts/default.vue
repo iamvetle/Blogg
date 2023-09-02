@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-white" id="site-wrapper">
+	<div id="site-wrapper" class="bg-white" >
 		<div>
 			<ClientOnly>
 				<TheNavbar />
@@ -11,6 +11,9 @@
 </template>
 
 <script setup lang="ts">
+
+console.log("'default' layout is selected")
+
 
 </script>
 

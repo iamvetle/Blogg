@@ -1,8 +1,8 @@
 import { useGeneralStore } from "@/store/generalStore"
 
-export const setLocalToken = () => {
+export const setLocalToken = (token:string) => {
     if (process.client) {
-        const token = localStorage.getItem("token")
+        token != null ? localStorage.setItem("token", token): localStorage.removeItem("token")
         const store = useGeneralStore()
 
         store.isAuthenticated = Boolean(token)

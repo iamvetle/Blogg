@@ -9,6 +9,8 @@
 
 <script setup lang="ts"> // Used by mainpage.vue - for feed
 
+console.log("header")
+
 </script>
 
 <style scoped>

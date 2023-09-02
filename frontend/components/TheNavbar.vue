@@ -13,9 +13,7 @@
 import { useGeneralStore } from '@/store/generalStore';
 const store = useGeneralStore()
 
-;(async() => {
-	checkLocalToken()
-})()
+checkLocalToken()
 
 </script>
 
