@@ -11,7 +11,6 @@ CustomUser = get_user_model()
 
 ### POST RETRIEVEL
 
-
 class MyPosts(APIView):
     
     permission_classes = [IsAuthenticated]

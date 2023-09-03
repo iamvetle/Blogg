@@ -13,9 +13,4 @@
 <script setup lang="ts">
 // huske definepagedata senere
 
-definePageMeta({
-    middleware:["has-token-redirect"]
-})
-
-
 </script>

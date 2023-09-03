@@ -1,5 +1,5 @@
 <template>
-        <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"> <!-- Type one -->
+        <article class="p-6 bg-plain rounded-lg border-primary-base border-2 shadow-md"> <!-- Type one -->
             <div class="flex justify-end items-center mb-5 text-gray-500">
                 <span class="text-sm">{{ postDetail.date_published }}</span>
             </div>

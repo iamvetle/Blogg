@@ -11,9 +11,10 @@
 <script setup lang="ts">
 
 import { useGeneralStore } from '@/store/generalStore';
+
 const store = useGeneralStore()
 
-checkLocalToken()
+checkLocalToken
 
 </script>
 

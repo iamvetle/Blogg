@@ -56,3 +56,9 @@ def follow_user(request, username):
     
     current_user.save()
 
+### Checking if server is online
+
+class HealthCheck(APIView):
+
+    def get(self, request):
+        Response(status=status.HTTP_200_OK)

@@ -89,13 +89,6 @@ interface AccountType {
     phone_number:number;
     }
 
-// husk definemiddle ware senere
-definePageMeta({
-    middleware:["no-token-redirect"]
-})
-
-
-
 const posts = ref([])// FIX to only include personal user posts
 const account = ref(null)
 

@@ -30,11 +30,6 @@
 
 // huske definepagedata senere
 
-definePageMeta({
-    middleware:["no-token-redirect"]
-})
-
-
 const titleInput: Ref<string> = ref("")
 const textInput: Ref<string> = ref("")
 const baseURL = "http://localhost:8888/api/newpost/"

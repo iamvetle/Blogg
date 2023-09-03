@@ -64,6 +64,7 @@ const loginerror = ref(false)
 const loginsucess = ref(false)
 
 const baseURL = "http://localhost:8888/api/login/"
+const { redirect } = defineProps(["redirect"])
  
 async function submitForm(formData:object) {
     const token = await submitLoginForm(baseURL, formData) as string
@@ -77,7 +78,9 @@ async function submitForm(formData:object) {
         loginerror.value = false
 
         setTimeout(() => {
-            return navigateTo("min-side")
+            if (redirect === true){
+                return navigateTo("min-side")
+            }
         }, 1000 )
 
     }

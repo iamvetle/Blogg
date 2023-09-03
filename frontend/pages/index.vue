@@ -1,7 +1,7 @@
 <template>
 	<div id="site-wrapper">
 
-		<div v-if="store.isAuthenticated">
+		<div v-if="storeValue">
 			<TheFeed/>
 		</div>
 		<div v-else>
@@ -16,7 +16,15 @@
 import { useGeneralStore } from '@/store/generalStore';
 const store = useGeneralStore()
 
+const storeValue = computed(() => store.isAuthenticated)
+
 console.log(store.isAuthenticated)
+
+watch(storeValue, (newVal, oldVal) => {
+	if (newVal !== oldVal) {
+		setPageLayout("feed-layout")
+	}
+})
 
 onBeforeMount(() => {
 	if (store.isAuthenticated === true) {
@@ -25,6 +33,14 @@ onBeforeMount(() => {
 		setPageLayout("blank")
 	}
 })
+
+const setLayout = () => {
+	if (store.isAuthenticated === true) {
+		setPageLayout("feed-layout")
+	} else {
+		setPageLayout("blank")
+	}
+}
 
 </script>
 

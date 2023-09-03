@@ -1,5 +1,5 @@
 from django.urls import path
-from api.views.auth_views import LoginView, RegisterUserView
+from api.views.auth_views import LoginView, RegisterUserView, HealthCheck 
 from api.views.post_views import AllPostsView, SinglePostView, NewPostView, MyPosts, PostSnippetsView
 from api.views.user_views import MyAccountView, UserProfileView
 
@@ -13,4 +13,5 @@ urlpatterns = [
     path("newpost/", NewPostView.as_view(), name="new_post"),
     path("registrer/", RegisterUserView.as_view(), name="register_user"), # TODO: remove the 'api/' part
     path("<str:username>/", UserProfileView.as_view(), name="user_profile"),
+    path("health_check/", HealthCheck.as_view(), name="health_check")
 ]
