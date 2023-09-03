@@ -9,7 +9,9 @@ from ..models import Post, Comment
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
 
-class LoginService():
+CustomUser = get_user_model()
+
+class LoginService(): # Try login logic
     
     @staticmethod
     def login_user(username, password):
@@ -21,5 +23,33 @@ class LoginService():
             return token
         else:
             return None
+        
+
+class NewUserService(APIView): # Try to register a user logic
+        
+        @staticmethod
+        def register_user(registration_data):
+
+            serializer = UserSerializer(data=registration_data)
+            
+            
+            print(registration_data)
+
+
+            if serializer.is_valid():
+
+                data = registration_data
+                
+                CustomUser.objects.create_user(
+                    username=data["username"],              
+                    email=data['email'], 
+                    first_name=data['first_name'], 
+                    last_name=data['last_name'], 
+                    password=data['password'])
+                return data
+            else:
+                print("Returned none?")
+                return None
+
         
         

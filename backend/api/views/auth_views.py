@@ -8,12 +8,11 @@ from django.contrib.auth import authenticate
 from ..models import Post, Comment
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
-from api.services.auth_services import LoginService
+from api.services.auth_services import LoginService, NewUserService
 
 CustomUser = get_user_model()
 
-
-### USER HANDLING
+### AUTHENTICATION HANDELING
 
 class LoginView(APIView): # Login to account
     
@@ -24,27 +23,25 @@ class LoginView(APIView): # Login to account
         
         token = LoginService.login_user(username, password) 
         
-        if token:
-            return Response({'token': token.key}, status=status.HTTP_200_OK) # Success + new key
+        if token is not None:
+            print(f"Correct credentials, logged in as {username}. Token {token.key}")
+            return Response({'token': token.key}, status=status.HTTP_200_OK) # Correct credentials / token
+        
         else:
+            print(f"Incorrect credentials ('{username}, {password}')")
             return Response("Wrong credentials ", status=status.HTTP_401_UNAUTHORIZED) # Wrong credentials       
 
 class RegisterUserView(APIView): # Register a new user 
     
     def post(self, request):
-        serializer = UserSerializer(data=request.data)
-        
-        if serializer.is_valid():
-            data = request.data
-            print("New user created:", data)
-            CustomUser.objects.create_user(
-                username=data["username"],              
-                email=data['email'], 
-                first_name=data['first_name'], 
-                last_name=data['last_name'], 
-                password=data['password'])
-            
-            return Response("User creation succeded", status=status.HTTP_201_CREATED)
+
+        new_user_data = request.data
+
+        response = NewUserService.register_user(new_user_data)
+
+        if response is not None:    
+            print(f"New user, {response['username']}, created")
+            return Response(f"Sucessfuly created new user", status=status.HTTP_201_CREATED)
         else:
             return Response("User creation failed", status=status.HTTP_400_BAD_REQUEST)
 
