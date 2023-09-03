@@ -43,7 +43,7 @@ class SinglePostView(APIView): # Retrieves a specific post
         serializer = PostSerializer(post)
         return Response(serializer.data, status=status.HTTP_200_OK)
         
-class NewPostView(APIView):
+class CreatePostView(APIView):
     permission_classes = [IsAuthenticated]
     
     def post(self, request):

@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate
 from ..models import Post, Comment
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
+from api.services.auth_services import LoginService
 
 CustomUser = get_user_model()
 
@@ -17,15 +18,16 @@ CustomUser = get_user_model()
 class LoginView(APIView): # Login to account
     
     def post(self, request):
+        
         username = request.data.get('username')
         password = request.data.get('password')
-        user = authenticate(username=username, password=password)
         
-        if user:
-            token, _ = Token.objects.get_or_create(user=user) # Get or create a token
-            return Response({'token': token.key}, status=status.HTTP_200_OK)
+        token = LoginService.login_user(username, password) 
+        
+        if token:
+            return Response({'token': token.key}, status=status.HTTP_200_OK) # Success + new key
         else:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response("Wrong credentials ", status=status.HTTP_401_UNAUTHORIZED) # Wrong credentials       
 
 class RegisterUserView(APIView): # Register a new user 
     

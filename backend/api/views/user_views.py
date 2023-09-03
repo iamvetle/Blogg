@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from ..serializers import UserSerializer, PostSerializer, PostSnippetSerializer, UserProfileSerializer
+from ..serializers import UserSerializer, PostSerializer, UserProfileSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from ..models import Post, Comment
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
+
+# A view is responsible for processing incomming HTTP requests and returning HTTP responses - handle user-facing logic. 
 
 CustomUser = get_user_model()
 
