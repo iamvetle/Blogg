@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate
 from ..models import Post, Comment
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
+from api.services.user_services import UserProfileService
 
 # A view is responsible for processing incomming HTTP requests and returning HTTP responses - handle user-facing logic. 
 
@@ -30,15 +31,15 @@ class UserProfileView(APIView): # Other user profiles
 
     def get(self, request, username):
 
-        queryset = CustomUser.objects.filter(username=username)                
-        
-        if not queryset.exists():
-            return Response({"detail": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+        response = UserProfileService.get_user_profile(username)
 
-        serializer = UserProfileSerializer(queryset, many=True)
+        if response is not None:
+            print(f"Data from '{username}' retrieved:", response)
+            return Response(response, status=status.HTTP_200_OK)    
 
-        print(serializer.data)    
-        return Response(serializer.data, status=status.HTTP_200_OK)    
+        else:
+            print(f"The user '{username}' does not exist")
+            return Response(status=status.HTTP_400_BAD_REQUEST) 
 
 def follow_user(request, username):
     user_to_follow = CustomUser.objects.get(username=username)

@@ -23,7 +23,7 @@ class MyPosts(APIView):
         if serializer.is_valid:
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-class AllPostsView(APIView): # Retrieves ALL posts
+class AllPostsView(APIView): # Retrieves ALL posts # not used at the moment
     
     def get(self, request):
         queryset = Post.objects.all()

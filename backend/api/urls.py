@@ -1,6 +1,6 @@
 from django.urls import path
 from api.views.auth_views import LoginView, RegisterUserView, HealthCheck 
-from api.views.post_views import AllPostsView, SinglePostView, CreatePostView, MyPosts, PostSnippetsView
+from api.views.post_views import SinglePostView, CreatePostView, MyPosts, PostSnippetsView
 from api.views.user_views import MyAccountView, UserProfileView
 
 
