@@ -41,7 +41,7 @@ class UserProfileView(APIView): # Other user profiles
             print(f"The user '{username}' does not exist")
             return Response(status=status.HTTP_400_BAD_REQUEST) 
 
-def follow_user(request, username):
+def follow_user(request, username): # bruker ikke
     user_to_follow = CustomUser.objects.get(username=username)
     
     current_user = request.user

@@ -14,7 +14,7 @@ CustomUser = get_user_model()
 
 ### AUTHENTICATION HANDELING
 
-class LoginView(APIView): # Login to account
+class LoginView(APIView): # Login
     
     def post(self, request):
         
@@ -31,7 +31,7 @@ class LoginView(APIView): # Login to account
             print(f"Incorrect credentials ('{username}, {password}')")
             return Response("Wrong credentials ", status=status.HTTP_401_UNAUTHORIZED) # Wrong credentials       
 
-class RegisterUserView(APIView): # Register a new user 
+class RegisterUserView(APIView): # Registrer
     
     def post(self, request):
 
@@ -44,16 +44,6 @@ class RegisterUserView(APIView): # Register a new user
             return Response(f"Sucessfuly created new user", status=status.HTTP_201_CREATED)
         else:
             return Response("User creation failed", status=status.HTTP_400_BAD_REQUEST)
-
-
-def follow_user(request, username):
-    user_to_follow = CustomUser.objects.get(username=username)
-    
-    current_user = request.user
-    
-    current_user.following.add(user_to_follow)
-    
-    current_user.save()
 
 ### Checking if server is online
 
