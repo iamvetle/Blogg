@@ -5,8 +5,7 @@ export default defineNuxtConfig({
     timeline: {
       enabled: true
     }
-  },
-  experimental: { noVueServer: true }, 
+  }, 
   modules: [
     '@nuxtjs/tailwindcss',
     '@formkit/nuxt',
@@ -24,10 +23,9 @@ export default defineNuxtConfig({
     },
     pinia: {
       autoImports: [
-        // automatically imports `defineStore`
-        'defineStore', // import { defineStore } from 'pinia'
-        ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+        'defineStore',
+        ['defineStore', 'definePiniaStore'],
       ]
     },
-    ssr:false, // client only - Single site application is whats "on" now
+    ssr:false, // client only (single site application) all api fetch on client
   })
