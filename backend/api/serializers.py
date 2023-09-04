@@ -111,3 +111,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = CustomUser
 
         fields = ["username", "first_name", "last_name", "posts"]
+
+class FollowersSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = CustomUser
+        
+        fields = ["username"]
