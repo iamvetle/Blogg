@@ -40,12 +40,12 @@ class UserProfileView(APIView): # Other user profiles
             print(f"The user '{username}' does not exist")
             return Response(status=status.HTTP_400_BAD_REQUEST) 
 
-def follow_user(request, username): # bruker ikke
-    user_to_follow = CustomUser.objects.get(username=username)
-    
-    current_user = request.user
-    
-    current_user.following.add(user_to_follow)
-    
-    current_user.save()
 
+
+class FollowUserView(APIView): # Currently workign with this
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+
+        UserProfileService.follow_user(request, pk)

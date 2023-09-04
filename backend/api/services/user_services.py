@@ -28,3 +28,13 @@ class UserProfileService(): # Other user profiles
             serializer = UserProfileSerializer(queryset, many=True)
 
             return serializer.data  
+    
+    @staticmethod
+    def follow_user(request, username): # bruker ikke
+        user_to_follow = CustomUser.objects.get(username=username)
+        
+        current_user = request.user
+        
+        current_user.following.add(user_to_follow)
+        
+        current_user.save()

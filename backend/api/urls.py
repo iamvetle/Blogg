@@ -13,5 +13,6 @@ urlpatterns = [
     path("newpost/", CreatePostView.as_view(), name="new_post"),
     path("registrer/", RegisterUserView.as_view(), name="register_user"), # TODO: remove the 'api/' part
     path("<str:username>/", UserProfileView.as_view(), name="user_profile"),
+    
     path("health_check/", HealthCheck.as_view(), name="health_check")
 ]
