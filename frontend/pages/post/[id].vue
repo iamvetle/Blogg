@@ -33,7 +33,7 @@ const post = ref<PostType | null>(null);
   const route = useRoute()
   const baseURL = `http://localhost:8888/api/post/${route.params.id}/`		
   
-  post.value = await fetchPost(baseURL)
+  post.value = await fetchAuthPost(baseURL)
 })();
 
 </script>

@@ -41,7 +41,7 @@ const posts = ref<PostType[] | null>([]);
 
 ;(async () => {
 const baseURL = "http://localhost:8888/api/feed/" //@ts-ignore
-    posts.value = await fetchAllPosts(baseURL)
+    posts.value = await fetchAuthPosts(baseURL)
 })();
 </script>
 

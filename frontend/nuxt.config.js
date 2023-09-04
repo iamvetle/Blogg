@@ -6,6 +6,7 @@ export default defineNuxtConfig({
       enabled: true
     }
   },
+  experimental: { noVueServer: true }, 
   modules: [
     '@nuxtjs/tailwindcss',
     '@formkit/nuxt',
@@ -28,5 +29,5 @@ export default defineNuxtConfig({
         ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
       ]
     },
-    ssr:false // client only - Single site application is whats "on" now
+    ssr:false, // client only - Single site application is whats "on" now
   })
