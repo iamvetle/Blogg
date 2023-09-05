@@ -21,9 +21,11 @@
           src="~assets/no.png"
           alt="temporary universal profile-picture"
         />
-        <span class="font-medium dark:text-white">
-          {{ author_full_name }}
-        </span>
+        <nuxt-link :to="author_link">
+          <span class="font-medium dark:text-white">
+            {{  postDetail.author.username }}
+          </span>
+        </nuxt-link>
       </div>
       <nuxt-link
         :to="postLink"
@@ -48,7 +50,10 @@
 </template>
 
 <script setup lang="ts">
+
 const { postDetail } = defineProps(["postDetail"]);
 const postLink = `/post/${postDetail.id}`;
-const author_full_name = `${postDetail.author.first_name} ${postDetail.author.last_name}`;
+const author_full_name:string = `${postDetail.author.first_name} ${postDetail.author.last_name}`  ;
+console.log(postDetail.author.username)
+const author_link = `user/${postDetail.author.username}`;
 </script>

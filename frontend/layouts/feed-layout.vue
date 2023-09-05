@@ -1,12 +1,13 @@
 <template>
   <div id="site-wrapper" class="bg-white">
     <!-- Background color -->
-    <TheHeader />
+    <ElementTheHeader/>
+    <ElementNavbar />
     <ClientOnly>
-      <TheNavbar />
+      <Navbar />
     </ClientOnly>
     <slot />
-    <TheFooter />
+    <ElementFooter/>
   </div>
 </template>
 

@@ -4,7 +4,7 @@
       <TheFeed />
     </div>
     <div v-else>
-      <Wait />
+      <TheWait />
     </div>
   </div>
 </template>

@@ -2,10 +2,10 @@
   <div id="site-wrapper" class="bg-white">
     <div>
       <ClientOnly>
-        <TheNavbar />
+        <Navbar />
       </ClientOnly>
       <slot />
-      <TheFooter />
+      <ElementFooter />
     </div>
   </div>
 </template>
