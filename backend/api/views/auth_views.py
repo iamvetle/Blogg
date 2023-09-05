@@ -44,10 +44,3 @@ class RegisterUserView(APIView): # Registrer
             return Response(f"Sucessfuly created new user", status=status.HTTP_201_CREATED)
         else:
             return Response("User creation failed", status=status.HTTP_400_BAD_REQUEST)
-
-### Checking if server is online
-
-class HealthCheck(APIView):
-
-    def get(self, request):
-        Response(status=status.HTTP_200_OK)
