@@ -1,21 +1,14 @@
 <template>
-	<NavbarLoggedIn
-		v-if="store.isAuthenticated"
-	/>
-	<NavbarLoggedOut
-		v-else
-	/>
+  <NavbarLoggedIn v-if="store.isAuthenticated" />
+  <NavbarLoggedOut v-else />
 </template>
 
-
 <script setup lang="ts">
+import { useGeneralStore } from "@/store/generalStore";
 
-import { useGeneralStore } from '@/store/generalStore';
+const store = useGeneralStore();
 
-const store = useGeneralStore()
-
-checkLocalToken
-
+checkLocalToken;
 </script>
 
 <style scoped></style>

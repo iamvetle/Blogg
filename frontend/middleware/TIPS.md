@@ -1,6 +1,6 @@
 Middleware:
 Avoid heavy operations
 Common logic:
-    for example: authentication.
+for example: authentication.
 rediractions
 initial setup

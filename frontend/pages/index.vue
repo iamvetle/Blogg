@@ -1,49 +1,43 @@
 <template>
-	<div id="site-wrapper">
-
-		<div v-if="storeValue">
-			<TheFeed/>
-		</div>
-		<div v-else>
-			<Wait/>
-		</div>
-
-	</div> 	
+  <div id="site-wrapper">
+    <div v-if="storeValue">
+      <TheFeed />
+    </div>
+    <div v-else>
+      <Wait />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { useGeneralStore } from "@/store/generalStore";
+const store = useGeneralStore();
 
-import { useGeneralStore } from '@/store/generalStore';
-const store = useGeneralStore()
+const storeValue = computed(() => store.isAuthenticated);
 
-const storeValue = computed(() => store.isAuthenticated)
-
-console.log(store.isAuthenticated)
+console.log(store.isAuthenticated);
 
 watch(storeValue, (newVal, oldVal) => {
-	if (newVal !== oldVal) {
-		setPageLayout("feed-layout")
-	}
-})
+  if (newVal !== oldVal) {
+    setPageLayout("feed-layout");
+  }
+});
 
 onBeforeMount(() => {
-	if (store.isAuthenticated === true) {
-		setPageLayout("feed-layout")
-	} else {
-		setPageLayout("blank")
-	}
-})
+  if (store.isAuthenticated === true) {
+    setPageLayout("feed-layout");
+  } else {
+    setPageLayout("blank");
+  }
+});
 
 const setLayout = () => {
-	if (store.isAuthenticated === true) {
-		setPageLayout("feed-layout")
-	} else {
-		setPageLayout("blank")
-	}
-}
-
+  if (store.isAuthenticated === true) {
+    setPageLayout("feed-layout");
+  } else {
+    setPageLayout("blank");
+  }
+};
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
