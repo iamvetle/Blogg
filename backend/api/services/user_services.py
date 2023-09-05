@@ -49,12 +49,29 @@ class UserProfileService(): # Other user profiles
                 "current_user":current_user,
                 "user_to_follow":user_to_follow,
             }
+    
+    @staticmethod
+    def unfollow_user(request, username):
+        user_to_unfollow = CustomUser.objects.get(username=username)
         
+        if user_to_unfollow:
+            current_user = request.user
+            current_user.following.remove(user_to_unfollow)
+            
+            current_user.save()
+            return {
+                "status":True,
+                "current_user":current_user,
+                "user_to_unfollow":user_to_unfollow,
+            }
+        else:
+            return None
+
 
 class MyProfileService():
     
     @staticmethod
-    def is_followed_by(request):
+    def followers(request):
         current_user = request.user
                 
         all_followers = current_user.followers.all()
