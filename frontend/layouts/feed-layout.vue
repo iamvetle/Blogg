@@ -2,9 +2,8 @@
   <div id="site-wrapper" class="bg-white">
     <!-- Background color -->
     <ElementTheHeader/>
-    <ElementNavbar />
     <ClientOnly>
-      <Navbar />
+      <ElementNavbar/>
     </ClientOnly>
     <slot />
     <ElementFooter/>

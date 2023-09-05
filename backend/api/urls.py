@@ -16,7 +16,7 @@ urlpatterns = [
     path("newpost/", CreatePostView.as_view(), name="new_post"),
     path("registrer/", RegisterUserView.as_view(), name="register_user"),
     path("<str:username>/follow/", FollowUserView.as_view(), name="user_follow"),
-    path("<str:username>/unfollow/", UnfollowUserView.as_view(), name="user_follow"),
+    path("<str:username>/unfollow/", UnfollowUserView.as_view(), name="user_unfollow"),
     path("<str:username>/", UserProfileView.as_view(), name="user_profile"), # <- Don't move
-    path("post/<int:pk>/", SinglePostView.as_view(), name="single_post"),
+    path("post/<int:pk>/", SinglePostView.as_view(), name="single_post"), # <- Don't move
 ]    

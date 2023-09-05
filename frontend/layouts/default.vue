@@ -1,16 +1,24 @@
 <template>
   <div id="site-wrapper" class="bg-white">
-    <div>
+    <div v-if="store.apiDownError === false">
       <ClientOnly>
-        <Navbar />
+        <ElementNavbar />
       </ClientOnly>
       <slot />
       <ElementFooter />
+    </div>
+    <div v-else>
+      <ErrorAPIDown/>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+
+import { useGeneralStore } from '~/store/generalStore';
+import ErrorAPIDown from '~/components/Error/ErrorAPIDown.vue';
+const store = useGeneralStore()
+
 console.log("'default' layout is selected");
 </script>
 
