@@ -3,10 +3,11 @@ export const useGeneralStore = defineStore("general", () => {
   
   // error pages
   const apiDownError = ref(false);
+  const username = ref(null)
 
   const changeAuthenticated = (state: boolean) => {
     isAuthenticated.value = state;
   };
 
-  return { isAuthenticated, apiDownError, changeAuthenticated };
+  return { isAuthenticated, apiDownError, username, changeAuthenticated };
 });

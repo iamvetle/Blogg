@@ -70,6 +70,11 @@
               >Min side</nuxt-link
             >
           </li>
+
+          <li v-if="store.isAuthenticated" class="font-bold">
+            Logget inn
+          </li>
+
           <li>
             <nuxt-link
               to="/loggut"
@@ -85,5 +90,8 @@
 
 <script setup lang="ts">
 import { initFlowbite } from "flowbite";
+import { useGeneralStore } from "~/store/generalStore";
+
+const store = useGeneralStore()
 onMounted(initFlowbite);
 </script>

@@ -8,5 +8,6 @@ export const checkLocalToken = () => {
     token != null
       ? (store.isAuthenticated = true)
       : (store.isAuthenticated = false);
+    return token
   }
 };

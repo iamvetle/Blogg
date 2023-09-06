@@ -17,7 +17,7 @@
               <h2
                 class="text-4xl leading-[52px] font-medium tracking-[-0.03em]"
               >
-                {{ posts[0].first_name }} {{ posts[0].last_name }}
+                {{ first_name }} {{ last_name }}
               </h2>
             </div>
 
@@ -36,13 +36,14 @@
                 v-for="post in posts"
                 :key="post.id"
                 :postProp="post"
+                class="mt-10"
               />
             </div>
           </div>
         </div>
 
         <div id="sidebar" class="px-5 col-span-4 border-v border-red-500">
-          <UserSidebar v-if="posts != null" :sideBarProp="posts[0]" />
+          <UserSidebar v-if="posts != null" :sideBarProp="userProp" :num_of_followers="followers" />
         </div>
       </div>
     </div>
@@ -67,6 +68,10 @@ interface PostType {
 
 const posts = ref<PostType[]>([]);
 const userProp = ref(null);
+const first_name = ref(null);
+const last_name = ref(null);
+const followers = ref(null)
+const username = ref(null)
 
 await(async () => {
   const route = useRoute();
@@ -74,15 +79,20 @@ await(async () => {
 
   //@ts-ignore
   posts.value = await fetchAuthPosts(baseURL);
-  console.dir(toRaw(posts.value[0].posts))
-  posts.value = posts.value[0].posts
-  console.log(posts.value)
-  userProp.value = posts.value[0];
+  console.dir(toRaw(posts.value))
 
-  for (let i in posts.value) {
-    console.log(i)
-  }
-})();
+  followers.value = posts.value[0].num_of_followers;
+  console.log(toRaw(followers.value))
+
+  posts.value = posts.value[0].posts
+  //
+  first_name.value = posts.value[0].author.first_name
+  last_name.value = posts.value[0].author.last_name
+  username.value = posts.value[0].author.username
+
+  userProp.value = username.value;
+
+  } )();
 </script>
 
 <style scoped></style>
