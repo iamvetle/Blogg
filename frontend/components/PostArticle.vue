@@ -5,11 +5,11 @@
         ><p class="me-1 prose-xs">Published by</p>
         <p class="prose-xs font-bold me-2">{{ postProp.username }}</p>
         <p class="font-extralight prose-xs">
-          - {{ postProp.posts[0].date_published }}
+          - {{ postProp.date_published }}
         </p></span
       >
-      <h3 class="font-bold">{{ postProp.posts[0].title }}</h3>
-      <p>{{ postProp.posts[0].content_snippet }}</p>
+      <h3 class="font-bold">{{ postProp.title }}</h3>
+      <p>{{ postProp.content_snippet }}</p>
       <nuxt-link :to="readpost">
         <p class="pt-2 text-xs font-light hover:font-normal">Read more</p>
       </nuxt-link>
@@ -23,8 +23,9 @@
 
 <script setup lang="ts">
 const { postProp } = defineProps(["postProp"]);
+console.log(postProp)
 
-const readpost = `/post/${postProp.posts[0].id}`;
+const readpost = `/post/${postProp.id}`;
 </script>
 
 <style scoped></style>

@@ -74,8 +74,14 @@ await(async () => {
 
   //@ts-ignore
   posts.value = await fetchAuthPosts(baseURL);
-
+  console.dir(toRaw(posts.value[0].posts))
+  posts.value = posts.value[0].posts
+  console.log(posts.value)
   userProp.value = posts.value[0];
+
+  for (let i in posts.value) {
+    console.log(i)
+  }
 })();
 </script>
 
