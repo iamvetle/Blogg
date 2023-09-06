@@ -6,10 +6,17 @@ from rest_framework import serializers
 CustomUser = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
+    num_of_followers = serializers.SerializerMethodField()
+    
+    def get_num_of_followers(self, obj):
+        
+        followers = list(obj.followers)
+        num_of_followers = len(followers)
+        return num_of_followers
     class Meta:
         model = CustomUser
 
-        fields = ('id', 'email', 'username', 'first_name', 'last_name', 'age', 'address', 'phone_number', 'nickname', 'last_online')
+        fields = ('id', 'email', 'username', 'first_name', 'last_name', 'age', 'address', 'phone_number', 'nickname', 'last_online', 'num_of_followers')
         extra_kwargs = {
             'first_name': {'required': True},
             'last_name': {'required': True},
@@ -101,16 +108,33 @@ class CommentSerializer(serializers.ModelSerializer): # Not in use
 
 class UserProfileSerializer(serializers.ModelSerializer):
     posts = serializers.SerializerMethodField()
+    
+    num_of_followers = serializers.SerializerMethodField()
 
     def get_posts(self, obj):
                 
         posts = Post.objects.filter(author__username=obj.username)
         return PostSnippetSerializer(posts, many=True).data
+    
+    def get_num_of_followers(self, obj):
+        
+        num_of_followers = 0
+        print(obj)
+        
+        try:
+            followers = list(obj.followers.all())
+            
+            num_of_followers = len(followers)
+            return num_of_followers
+
+        except:
+        
+            return num_of_followers
 
     class Meta:
         model = CustomUser
 
-        fields = ["username", "first_name", "last_name", "posts"]
+        fields = ["username", "first_name", "last_name", "posts", "num_of_followers"]
 
 class FollowersSerializer(serializers.ModelSerializer):
     

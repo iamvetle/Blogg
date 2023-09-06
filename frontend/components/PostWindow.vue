@@ -45,7 +45,7 @@
           ></path>
         </svg>
       </nuxt-link>
-    </div>
+      </div>
   </article>
 </template>
 
@@ -55,5 +55,5 @@ const { postDetail } = defineProps(["postDetail"]);
 const postLink = `/post/${postDetail.id}`;
 const author_full_name:string = `${postDetail.author.first_name} ${postDetail.author.last_name}`  ;
 console.log(postDetail.author.username)
-const author_link = `user/${postDetail.author.username}`;
-</script>
+const author_link = `/user/${postDetail.author.username}`;
+</script> 
