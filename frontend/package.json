@@ -7,8 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "vitest --run --reporter verbose --globals",
-    "test:watch": "vitest --reporter verbose --globals"
+    "test": "vitest"
   },
   "devDependencies": {
     "@formkit/nuxt": "^0.18.3",
