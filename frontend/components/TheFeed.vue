@@ -26,6 +26,7 @@
 </template>
 
 <script setup lang="ts">
+
 interface PostType {
   id: number;
   title: string;
