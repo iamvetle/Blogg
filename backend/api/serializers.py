@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
     
     def get_num_of_followers(self, obj):
         
-        followers = list(obj.followers)
+        followers = list(obj.followers.all())
         num_of_followers = len(followers)
         return num_of_followers
     class Meta:
@@ -125,16 +125,16 @@ class UserProfileSerializer(serializers.ModelSerializer):
             followers = list(obj.followers.all())
             
             num_of_followers = len(followers)
-            return num_of_followers
+            return str(num_of_followers)
 
         except:
         
-            return num_of_followers
+            return str(num_of_followers)
 
     class Meta:
         model = CustomUser
 
-        fields = ["username", "first_name", "last_name", "posts", "num_of_followers"]
+        fields = ["num_of_followers", "username", "first_name", "last_name", "posts"]
 
 class FollowersSerializer(serializers.ModelSerializer):
     

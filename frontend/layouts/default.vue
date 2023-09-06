@@ -16,7 +16,6 @@
 <script setup lang="ts">
 
 import { useGeneralStore } from '~/store/generalStore';
-import ErrorAPIDown from '~/components/Error/ErrorAPIDown.vue';
 const store = useGeneralStore()
 
 console.log("'default' layout is selected");

@@ -13,7 +13,7 @@
       </p>
       <!-- Through props - not the best-->
       <span id="followers"
-        ><p class="font-light text-sm leading-7">71M followers</p></span
+        ><p class="font-light text-sm leading-7">{{ sideBarProp.num_of_followers }} followers</p></span
       >
       <div id="bio" class="pt-4 pb-7 text-sm">
         <p>
@@ -101,7 +101,10 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
 const { sideBarProp } = defineProps(["sideBarProp"]);
+const route = useRoute()
+  
 </script>
 
 <style scoped></style>
