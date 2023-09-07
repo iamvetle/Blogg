@@ -33,6 +33,9 @@
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.8.0",
+    "@tiptap/pm": "^2.1.8",
+    "@tiptap/starter-kit": "^2.1.8",
+    "@tiptap/vue-2": "^2.1.8",
     "flowbite": "^1.8.1",
     "nuxi": "^3.6.5",
     "nuxt-vitest": "^0.10.4",
