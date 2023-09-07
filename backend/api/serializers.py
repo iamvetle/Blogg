@@ -125,11 +125,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
             followers = list(obj.followers.all())
             
             num_of_followers = len(followers)
-            return str(num_of_followers)
+            return num_of_followers
 
         except:
         
-            return str(num_of_followers)
+            return num_of_followers
 
     class Meta:
         model = CustomUser

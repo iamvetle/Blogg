@@ -11,10 +11,11 @@ export const followUser = async (url: string) => {
     };
 
     const response = await axios.get(url, { headers });
-    console.log("OK: fetched personal user account", response.data); // print to self
+    console.log("OK: Managed to follow user", response.data); // print to self
     return response.data;
+  
   } catch (error) {
-    console.log(error);
-    return null;
+    console.log("did not manage to follow user", error);
+    return error;
   }
 };
