@@ -1451,6 +1451,13 @@
     lodash.merge "^4.6.2"
     postcss-selector-parser "6.0.10"
 
+"@tinymce/tinymce-vue@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-vue/-/tinymce-vue-5.1.1.tgz#0879787e07833a4316b2eaf0417c7c6a2abce86b"
+  integrity sha512-iO57HOWesFOhsaqjA5Ea6sDvQBmJJH3/dq00Uvg7metlct2kLF+ctRgoDsetLt6gmeZ7COPftr814/XzqnJ/dg==
+  dependencies:
+    tinymce "^6.0.0 || ^5.5.1"
+
 "@tiptap/core@^2.1.8":
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/@tiptap/core/-/core-2.1.8.tgz#4555dc7d86580dee790d4aded1ce7fb79319da70"
@@ -1609,14 +1616,13 @@
     "@tiptap/extension-strike" "^2.1.8"
     "@tiptap/extension-text" "^2.1.8"
 
-"@tiptap/vue-2@^2.1.8":
+"@tiptap/vue-3@^2.1.8":
   version "2.1.8"
-  resolved "https://registry.yarnpkg.com/@tiptap/vue-2/-/vue-2-2.1.8.tgz#582d0a46f6167e3336a0ac53c25e4c0901d06634"
-  integrity sha512-Zbz5JAtWFN22hyUGCfI/RssOyHrHcs1ujXkxjBW2yQ5fjetKIazDjgtkgkQPKpdV7Bgby+1bbONbqE7YHAYlOA==
+  resolved "https://registry.yarnpkg.com/@tiptap/vue-3/-/vue-3-2.1.8.tgz#889556991bb9e794391adfeebc1c4e32d6452bfe"
+  integrity sha512-+cIbxRoWWHRbVL+/lzCHb6uG3ow+w06JVC+YJ5GP9vUjtdJ101hLM8L308TCmHgiIWzGdDtwXq3Tf1CwAYRiWQ==
   dependencies:
     "@tiptap/extension-bubble-menu" "^2.1.8"
     "@tiptap/extension-floating-menu" "^2.1.8"
-    vue-ts-types "^1.6.0"
 
 "@tootallnate/once@2":
   version "2.0.0"
@@ -9080,6 +9086,11 @@ tinybench@^2.5.0:
   resolved "https://registry.yarnpkg.com/tinybench/-/tinybench-2.5.0.tgz#4711c99bbf6f3e986f67eb722fed9cddb3a68ba5"
   integrity sha512-kRwSG8Zx4tjF9ZiyH4bhaebu+EDz1BOx9hOigYHlUW4xxI/wKIUQUqo018UlU4ar6ATPBsaMrdbKZ+tmPdohFA==
 
+"tinymce@^6.0.0 || ^5.5.1":
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-6.7.0.tgz#0ec245502cdefbfa0ff9042b423ac9a01e781423"
+  integrity sha512-Wf2RSobIXQ7XNw3/v4z1lPGiH3Pjsmc/6/7fG28aIS6uVWj/7IhvOPuwfJJDeOx0o0D3nSnoLHgR2KU8JAdE+w==
+
 tinypool@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/tinypool/-/tinypool-0.7.0.tgz#88053cc99b4a594382af23190c609d93fddf8021"
@@ -9848,11 +9859,6 @@ vue-template-compiler@^2.7.14:
   dependencies:
     de-indent "^1.0.2"
     he "^1.2.0"
-
-vue-ts-types@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/vue-ts-types/-/vue-ts-types-1.6.0.tgz#cc35f10ef41e883b779a123361c0cb24996cb890"
-  integrity sha512-8sOvLp0ZiZOD/t899GqsMd6gHM8mMKMtqNXilsrnpvHGZoD9ZgwksJ+eL5zHmjQ7xeCPPvIwhAqYrG/daHyZGA==
 
 vue-tsc@^1.8.8:
   version "1.8.8"
