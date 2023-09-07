@@ -6,7 +6,7 @@
           <!-- 8/12 main content-->
 
           <img
-            src="~/assets/noimage.jpg"
+            :src=image
             id="header"
             class="h-[150px] w-full object-cover border-v border-slate-500"
           />
@@ -72,6 +72,7 @@ const first_name = ref(null);
 const last_name = ref(null);
 const followers = ref(null)
 const username = ref(null)
+const image = "~/assets/noimage.jpg"
 
 await(async () => {
   const route = useRoute();
@@ -85,6 +86,7 @@ await(async () => {
   console.log(toRaw(followers.value))
 
   posts.value = posts.value[0].posts
+  console.log(toRaw(posts))
   //
   first_name.value = posts.value[0].author.first_name
   last_name.value = posts.value[0].author.last_name

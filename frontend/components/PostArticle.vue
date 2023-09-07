@@ -3,7 +3,7 @@
     <div class="px-2 col-span-9 border-v2 border-red-300">
       <span class="text-xs flex py-2"
         ><p class="me-1 prose-xs">Published by</p>
-        <p class="prose-xs font-bold me-2">{{ postProp.username }}</p>
+        <p class="prose-xs font-bold me-2">{{ postProp.author.username }}</p>
         <p class="font-extralight prose-xs">
           - {{ postProp.date_published }}
         </p></span
@@ -16,12 +16,28 @@
     </div>
 
     <div id="article-img" class="col-span-3 border-v2 border-red-300">
-      <img src="~/assets/noimage.jpg" class="h-[150px] bg-slate-100" />
+      <img :src="image" class="h-[150px] bg-slate-100" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+
+// typescript
+interface PostPropType {
+  id:number;
+  title:string;
+  content_snippet:string;
+  date_published:string;
+  author: {
+    username:string,
+    first_name:string,
+    last_name:string,
+  };
+}
+
+const image = "@/assets/no.png"
+
 const { postProp } = defineProps(["postProp"]);
 console.log(postProp)
 

@@ -10,9 +10,14 @@ export default defineConfig({
             dirs:['./composables'],
             vueTemplate:true,
         }),
-    ], 
+     ], 
     test: {
         globals: true,
         environment:"happy-dom"
     },
+    resolve: {
+        alias: {
+            "~":"."
+        }
+    }
 })

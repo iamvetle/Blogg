@@ -101,7 +101,6 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
 
 interface PostType {
   id: number;
@@ -127,13 +126,14 @@ interface AccountType {
   phone_number: number;
 }
 
-const posts = ref([]); // FIX to only include personal user posts
+const posts = ref<PostType[]>([]); // FIX to only include personal user posts
 const account = ref(null);
 
 (async () => {
   const postURL = "http://localhost:8888/api/min-side/posts/";
 
-  posts.value = await fetchAuthPosts(postURL);
+  //@ts-ignore
+  posts.value = await fetchAuthPosts?.(postURL);
 })();
 (async () => {
   const accountURL = "http://localhost:8888/api/min-side/";
