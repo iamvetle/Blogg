@@ -1,5 +1,5 @@
 <template>
-  <div v-if="account">
+  <div v-if="user">
     <div class="bg-gray-100 py-12 px-8">
       <div class="container mx-auto py-8">
         <div class="grid grid-cols-4 sm:grid-cols-12 gap-12 px-4">
@@ -13,9 +13,9 @@
                 />
                 <!-- </img> -->
                 <h1 class="text-xl font-bold">
-                  {{ account.first_name }} {{ account.last_name }}
+                  {{ user.first_name }} {{ user.last_name }}
                 </h1>
-                <p class="text-gray-600">{{ account.username }}</p>
+                <p class="text-gray-600">{{ user.username }}</p>
                 <div class="mt-6 flex flex-wrap gap-4 justify-center">
                   <nuxt-link to="/newpost"
                     ><button
@@ -40,25 +40,25 @@
                   >Info</span
                 >
                 <ul>
-                  <li v-if="account.email" class="mb-2 flex">
+                  <li v-if="user.email" class="mb-2 flex">
                     <p class="font-bold me-2">Epost:</p>
-                    {{ account.email }}
+                    {{ user.email }}
                   </li>
-                  <li v-if="account.phone_number" class="mb-2">
+                  <li v-if="user.phone_number" class="mb-2">
                     <p class="font-bold me-2">Tlf.nr:</p>
-                    {{ account.phone_number }}
+                    {{ user.phone_number }}
                   </li>
-                  <li v-if="account.nickname" class="mb-2">
+                  <li v-if="user.nickname" class="mb-2">
                     <p class="font-bold me-2">Kallenavn:</p>
-                    {{ account.nickname }}
+                    {{ user.nickname }}
                   </li>
-                  <li v-if="account.address" class="mb-2">
+                  <li v-if="user.address" class="mb-2">
                     <p class="font-bold me-2">Addresse:</p>
-                    {{ account.address }}
+                    {{ user.address }}
                   </li>
-                  <li v-if="account.age" class="mb-2">
+                  <li v-if="user.age" class="mb-2">
                     <p class="font-bold me-2">Alder:</p>
-                    {{ account.age }}
+                    {{ user.age }}
                   </li>
                 </ul>
               </div>
@@ -78,7 +78,7 @@
               </p>
 
               <h2 class="text-xl font-bold mt-6 mb-4">
-                All posts by {{ account.first_name }}
+                All posts by {{ user.first_name }}
               </h2>
 
               <!-- Post begin -->
@@ -88,7 +88,6 @@
                   v-for="post in posts"
                   :key="post.id"
                   :postProp="post"
-                  :accountProp="account"
                 />
               </div>
               <!-- Post end -->
@@ -127,19 +126,20 @@ interface AccountType {
 }
 
 const posts = ref<PostType[]>([]); // FIX to only include personal user posts
-const account = ref(null);
+const user = ref<AccountType | null>(null);
 
-(async () => {
+onMounted( async () => {
   const postURL = "http://localhost:8888/api/min-side/posts/";
-
   //@ts-ignore
   posts.value = await fetchAuthPosts?.(postURL);
-})();
-(async () => {
-  const accountURL = "http://localhost:8888/api/min-side/";
+})
 
-  account.value = await fetchMyAccount(accountURL);
-})();
+onMounted( async () => {
+  const userURL = "http://localhost:8888/api/min-side/";
+
+  user.value = await fetchMyAccount?.(userURL)
+})
+
 </script>
 
 <style scoped></style>

@@ -16,7 +16,7 @@
 <script setup lang="ts">
 // For the posts in the 'min-side'
 
-const { postProp, accountProp } = defineProps(["postProp", "accountProp"]);
+const { postProp } = defineProps(["postProp"]);
 </script>
 
 <style scoped></style>

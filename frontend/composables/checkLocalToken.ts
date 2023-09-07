@@ -1,4 +1,4 @@
-import { useGeneralStore } from "@/store/generalStore";
+import { useGeneralStore } from "~/store/generalStore";
 
 export const checkLocalToken = () => {
   if (process.client) {
