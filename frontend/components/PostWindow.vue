@@ -18,7 +18,7 @@
       <div class="flex items-center space-x-4">
         <img
           class="w-7 h-7 rounded-full"
-          src="~assets/no.png"
+          :src=profile_picture_temp
           alt="temporary universal profile-picture"
         />
         <nuxt-link :to="author_link">
@@ -56,4 +56,5 @@ const postLink = `/post/${postDetail.id}`;
 const author_full_name:string = `${postDetail.author.first_name} ${postDetail.author.last_name}`  ;
 console.log(postDetail.author.username)
 const author_link = `/user/${postDetail.author.username}`;
+const profile_picture_temp = "../../assets/no.img"
 </script> 
