@@ -10,9 +10,18 @@ class UserSerializer(serializers.ModelSerializer):
     
     def get_num_of_followers(self, obj):
         
-        followers = list(obj.followers.all())
-        num_of_followers = len(followers)
-        return num_of_followers
+        num_of_followers = 0
+        print(obj)
+        
+        try:
+            followers = list(obj.followers.all())
+            
+            num_of_followers = len(followers)
+            return num_of_followers
+
+        except:
+        
+            return num_of_followers
     class Meta:
         model = CustomUser
 

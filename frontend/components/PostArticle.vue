@@ -36,7 +36,7 @@ interface PostPropType {
   };
 }
 
-const image = "@/assets/no.png"
+const image = "~/assets/no.png"
 
 const { postProp } = defineProps(["postProp"]);
 console.log(postProp)

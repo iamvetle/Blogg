@@ -4,70 +4,72 @@
       <div class="container mx-auto py-8">
         <div class="grid grid-cols-4 sm:grid-cols-12 gap-12 px-4">
           <div class="col-span-4 sm:col-span-3">
-            <div class="bg-white shadow rounded-lg p-6">
-              <div class="flex flex-col items-center">
-                <img
-                  src="~assets/no.png"
-                  class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
-                  alt="avatar"
-                />
-                <!-- </img> -->
-                <h1 class="text-xl font-bold">
-                  {{ user.first_name }} {{ user.last_name }}
-                </h1>
-                <p class="text-gray-600">{{ user.username }}</p>
-                <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                  <nuxt-link to="/newpost"
-                    ><button
-                      class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+            <div id="wrapper" class="bg-primary-base rounded-lg p-6">
+              <div class="px-5 py-5 bg-plain rounded-xl">
+                <div class="flex flex-col items-center">
+                  <img
+                    :src="profile_picture"
+                    class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
+                    alt="avatar"
+                  />
+                  <!-- </img> -->
+                  <h1 class="text-xl text-plain font-bold">
+                    {{ user.first_name }} {{ user.last_name }}
+                  </h1>
+                  <p class="">{{ user.username }}</p>
+                  <div class="mt-6 flex flex-wrap gap-4 justify-center">
+                    <nuxt-link to="/newpost"
+                      ><button
+                        class="bg-secondary-base text-plain hover:bg-secondary-low py-2 px-4 rounded"
+                      >
+                        New post
+                      </button></nuxt-link
                     >
-                      New post
-                    </button></nuxt-link
-                  >
-                  <button
-                    disabled
-                    class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded"
-                  >
-                    follows
-                  </button>
-                  <!-- Figure this out later -->
+                    <span
+                      class="bg-plain border-primary-base border-2 hover:text-primary-low text-primary-base py-2 px-4 rounded"
+                    >
+                      {{ user.num_of_followers }} followers
+                    </span>
+                    <!-- Figure this out later -->
+                  </div>
                 </div>
-              </div>
-              <hr class="my-6 border-t border-gray-300" />
-              <div class="flex flex-col">
-                <span
-                  class="text-gray-600 uppercase font-bold tracking-wider mb-2"
-                  >Info</span
-                >
-                <ul>
-                  <li v-if="user.email" class="mb-2 flex">
-                    <p class="font-bold me-2">Epost:</p>
-                    {{ user.email }}
-                  </li>
-                  <li v-if="user.phone_number" class="mb-2">
-                    <p class="font-bold me-2">Tlf.nr:</p>
-                    {{ user.phone_number }}
-                  </li>
-                  <li v-if="user.nickname" class="mb-2">
-                    <p class="font-bold me-2">Kallenavn:</p>
-                    {{ user.nickname }}
-                  </li>
-                  <li v-if="user.address" class="mb-2">
-                    <p class="font-bold me-2">Addresse:</p>
-                    {{ user.address }}
-                  </li>
-                  <li v-if="user.age" class="mb-2">
-                    <p class="font-bold me-2">Alder:</p>
-                    {{ user.age }}
-                  </li>
-                </ul>
+                <hr class="my-6 border-t border-2 roundend-sm border-gray-200" />
+                <div class="flex flex-col">
+                  <span
+                    class="uppercase font-bold tracking-wider mb-2"
+                    >Info</span
+                  >
+                  <ul class="">
+                    <li v-if="user.email" class="mb-2 flex">
+                      <p class="font-bold me-2">Epost:</p>
+                      {{ user.email }}
+                    </li>
+                    <li v-if="user.phone_number" class="mb-2">
+                      <p class="font-bold me-2">Tlf.nr:</p>
+                      {{ user.phone_number }}
+                    </li>
+                    <li v-if="user.nickname" class="mb-2">
+                      <p class="font-bold me-2">Kallenavn:</p>
+                      {{ user.nickname }}
+                    </li>
+                    <li v-if="user.address" class="mb-2">
+                      <p class="font-bold me-2">Addresse:</p>
+                      {{ user.address }}
+                    </li>
+                    <li v-if="user.age" class="mb-2">
+                      <p class="font-bold me-2">Alder:</p>
+                      {{ user.age }}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-span-4 sm:col-span-9">
-            <div class="bg-white shadow rounded-lg p-6">
+            <div class="bg-primary-base rounded-lg p-6">
+              <div class="px-5 py-7 bg-plain border-primary-base border rounded-md">
               <h2 class="text-xl font-bold mb-4">Bio</h2>
-              <p class="text-gray-700">
+              <p class="">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                 finibus est vitae tortor ullamcorper, ut vestibulum velit
                 convallis. Aenean posuere risus non velit egestas suscipit. Nunc
@@ -76,8 +78,9 @@
                 erat volutpat. Nulla vulputate pharetra tellus, in luctus risus
                 rhoncus id.
               </p>
+              </div>
 
-              <h2 class="text-xl font-bold mt-6 mb-4">
+              <h2 class="text-xl text-plain font-bold mt-8 mb-6">
                 All posts by {{ user.first_name }}
               </h2>
 
@@ -123,8 +126,10 @@ interface AccountType {
   age: number;
   address: string;
   phone_number: number;
+  num_of_followers: number;
 }
 
+const profile_picture = '~/assets/no.png'
 const posts = ref<PostType[]>([]); // FIX to only include personal user posts
 const user = ref<AccountType | null>(null);
 

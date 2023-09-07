@@ -24,7 +24,7 @@
 
 <script lang="ts">
 
-const refresh = async () => {
-    await refreshNuxtData()
+function refresh () {
+    // return navigateTo("/")
 }
 </script>

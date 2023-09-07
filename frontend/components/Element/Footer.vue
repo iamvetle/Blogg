@@ -1,9 +1,9 @@
 <template>
-  <div class="mt-10 p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
-    <div class="mx-auto max-w-screen-xl text-center">
+  <div class="pt-10 p-4 bg-primary-high">
+    <div class="mx-auto max-w-screen-xl text-plain text-center">
       <a
         href="#"
-        class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white"
+        class="flex justify-center items-center text-2xl font-semibold"
       >
         <svg
           class="mr-2 h-8"
@@ -151,11 +151,11 @@
         </svg>
         The Blogg
       </a>
-      <p class="my-6 text-gray-500 dark:text-gray-400">
+      <p class="my-6">
         Plattform for making posts, reading posts, and providing information.
       </p>
       <ul
-        class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white"
+        class="flex flex-wrap justify-center items-center mb-6 text-plain"
       >
         <li>
           <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
@@ -179,7 +179,7 @@
           <a href="#" class="mr-4 hover:underline md:mr-6">Contact</a>
         </li>
       </ul>
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+      <span class="text-sm text-plain sm:text-center"
         >© 2023 <a href="#" class="hover:underline">The Blog™</a>. All Rights
         Reserved.</span
       >

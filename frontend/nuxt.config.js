@@ -21,6 +21,11 @@ export default defineNuxtConfig({
     injectPosition: "first",
     viewer: true,
   },
+      resolve: {
+        alias: {
+            "~":"."
+        }
+      },
   pinia: {
     autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],
   },
