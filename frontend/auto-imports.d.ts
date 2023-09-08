@@ -7,7 +7,7 @@ export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const apiEndpointCheck: typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']
-  const checkLocalToken: typeof import('./composables/checkLocalToken')['checkLocalToken']
+  const checkLocalInfo: typeof import('./composables/checkLocalInfo')['checkLocalInfo']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
   const createNewPost: typeof import('./composables/createNewPost')['createNewPost']
@@ -46,7 +46,7 @@ declare global {
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
   const resolveComponent: typeof import('vue')['resolveComponent']
-  const setLocalToken: typeof import('./composables/setLocalToken')['setLocalToken']
+  const setLocalInfo: typeof import('./composables/setLocalInfo')['setLocalInfo']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
@@ -78,7 +78,7 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly apiEndpointCheck: UnwrapRef<typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']>
-    readonly checkLocalToken: UnwrapRef<typeof import('./composables/checkLocalToken')['checkLocalToken']>
+    readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
     readonly createNewPost: UnwrapRef<typeof import('./composables/createNewPost')['createNewPost']>
@@ -117,7 +117,7 @@ declare module 'vue' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
-    readonly setLocalToken: UnwrapRef<typeof import('./composables/setLocalToken')['setLocalToken']>
+    readonly setLocalInfo: UnwrapRef<typeof import('./composables/setLocalInfo')['setLocalInfo']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
@@ -143,7 +143,7 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly apiEndpointCheck: UnwrapRef<typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']>
-    readonly checkLocalToken: UnwrapRef<typeof import('./composables/checkLocalToken')['checkLocalToken']>
+    readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
     readonly createNewPost: UnwrapRef<typeof import('./composables/createNewPost')['createNewPost']>
@@ -182,7 +182,7 @@ declare module '@vue/runtime-core' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
-    readonly setLocalToken: UnwrapRef<typeof import('./composables/setLocalToken')['setLocalToken']>
+    readonly setLocalInfo: UnwrapRef<typeof import('./composables/setLocalInfo')['setLocalInfo']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>

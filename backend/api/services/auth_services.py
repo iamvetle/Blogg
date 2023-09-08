@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from ..serializers import UserSerializer, PostSerializer, PostSnippetSerializer, UserProfileSerializer
+from ..serializers import UserSerializer, PostSerializer, PostSnippetSerializer, UserProfileSerializer, JustLoggedInSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
@@ -14,15 +14,22 @@ CustomUser = get_user_model()
 class LoginService(): # Try login logic
     
     @staticmethod
-    def login_user(username, password):
+    def login_user(request):
+        
+        username = request.data.get('username')
+        password = request.data.get('password')
         
         user = authenticate(username=username, password=password) # Tries to authenticate
             
         if user:
             token, _ = Token.objects.get_or_create(user=user) # 'Get' or 'Create' a token
+                        
+            info_for_store = {
+                "username":username,
+                "token":token.key,
+            }
             
-            
-            return token
+            return info_for_store
         else:
             return None
         

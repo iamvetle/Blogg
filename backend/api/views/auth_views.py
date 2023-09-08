@@ -18,17 +18,14 @@ class LoginView(APIView): # Login
     
     def post(self, request):
         
-        username = request.data.get('username')
-        password = request.data.get('password')
+        info_for_store = LoginService.login_user(request) 
         
-        token = LoginService.login_user(username, password) 
-        
-        if token is not None:
-            print(f"Correct credentials, logged in as {username}. Token {token.key}")
-            return Response({'token': token.key}, status=status.HTTP_200_OK) # Correct credentials / token
+        if info_for_store is not None:
+            print(f"Correct credentials, logged in as {info_for_store['username']}. Token {info_for_store['token']}")
+            return Response(info_for_store, status=status.HTTP_200_OK) # Correct credentials / token
         
         else:
-            print(f"Incorrect credentials ('{username}, {password}')")
+            print(f"Incorrect credentials")
             return Response("Wrong credentials ", status=status.HTTP_401_UNAUTHORIZED) # Wrong credentials       
 
 class RegisterUserView(APIView): # Registrer

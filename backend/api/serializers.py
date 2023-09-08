@@ -151,3 +151,19 @@ class FollowersSerializer(serializers.ModelSerializer):
         model = CustomUser
         
         fields = ["username"]
+
+class JustLoggedInSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = CustomUser
+        
+        fields = ["username, first_name, last_name"]
+        
+        
+        extra_kwargs = {
+            "username": {"read_only": True},
+            "first_name": {"read_only": True},
+            "last_name": {"read_only": True},
+        }
+    
+        

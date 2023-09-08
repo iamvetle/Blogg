@@ -8,7 +8,7 @@ import { useGeneralStore } from "~/store/generalStore";
 
 const store = useGeneralStore();
 
-checkLocalToken;
+checkLocalInfo;
 </script>
 
 <style scoped></style>
