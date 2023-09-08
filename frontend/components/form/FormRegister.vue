@@ -121,7 +121,7 @@ const submitted = ref(false);
 const baseURL = "http://localhost:8888/api/registrer/";
 
 const submitForm = async (formData: object) => {
-  const response = await submitRegisterForm(baseURL, formData);
+  const response = await postForm(baseURL, formData);
   if (response === true) {
     submitted.value = true;
     setTimeout(() => {

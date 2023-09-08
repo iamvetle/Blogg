@@ -133,21 +133,36 @@ const hoverAction = (text) => {
 }
 
 const followUserAction = async () => {
-const baseURL = `shttp://localhost:8888/api/${sideBarProp}/kunfollow/`
+    const followURL = `http://localhost:8888/api/${sideBarProp}/follow/`
+    const unfollowURL = `http://localhost:8888/api/${sideBarProp}/unfollow/`
 
-const response = await followUser(baseURL)
+    if (followingState.value === false ) {
 
-if (followingState.value === false ) {
-    followText.value = "Following"
-    followingState.value = true 
-    followClass.value = "bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-secondary-low"
+        const response = await followUser(followURL)
 
-} else {
-    followText.value = "Follow"
-    followingState.value = false
-    followClass.value = "bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-secondary-low"
+        if (response.status == 200) {
 
-}
+            followText.value = "Following"
+            followingState.value = true 
+            followClass.value = "bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-secondary-low"
+            followers.value++
+            
+        } else {
+            console.log("something went wrong. did not manage to follow") // print to self
+        }
+
+    } else {
+
+        const response = await unfollowUser(unfollowURL)
+
+        if (response.status == 404) {
+
+            followText.value = "Follow"
+            followingState.value = false
+            followClass.value = "bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-secondary-low"
+            followers.value--
+        }
+    }
 
 }
 

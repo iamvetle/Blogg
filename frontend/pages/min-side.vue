@@ -103,6 +103,7 @@
 </template>
 
 <script setup lang="ts">
+import no from '~/assets/no.png'
 
 interface PostType {
   id: number;
@@ -127,22 +128,23 @@ interface AccountType {
   address: string;
   phone_number: number;
   num_of_followers: number;
+  last_online:string;
 }
 
-const profile_picture = '~/assets/no.png'
+const profile_picture = no
 const posts = ref<PostType[]>([]); // FIX to only include personal user posts
 const user = ref<AccountType | null>(null);
 
 onMounted( async () => {
   const postURL = "http://localhost:8888/api/min-side/posts/";
   //@ts-ignore
-  posts.value = await fetchAuthPosts?.(postURL);
+  posts.value = await fetchingPosts?.(postURL);
 })
 
 onMounted( async () => {
   const userURL = "http://localhost:8888/api/min-side/";
 
-  user.value = await fetchMyAccount?.(userURL)
+  user.value = await fetchPersonalUser?.(userURL)
 })
 
 </script>

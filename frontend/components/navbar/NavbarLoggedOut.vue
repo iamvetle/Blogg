@@ -4,13 +4,11 @@
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
       <div class="flex items-center">
-        <nuxt-link to=""
-          ><img src="~/assets/example.png" class="h-8 mr-3" alt="Flowbite Logo"
-        /></nuxt-link>
+        <nuxt-link to="/">
         <span
-          class="self-center text-2xl font-semibold whitespace-nowrap text-plain"
-          >The Blog</span
-        >
+          class="self-center flex text-2xl font-semibold whitespace-nowrap text-plain"
+          >The Blog</span>
+      </nuxt-link>
       </div>
       <button
         data-collapse-toggle="navbar-solid-bg"
@@ -69,6 +67,9 @@
 
 <script setup lang="ts">
 import { initFlowbite } from "flowbite";
+import example from "~/assets/example.png"
+
+const image = example
 
 onMounted(initFlowbite);
 </script>

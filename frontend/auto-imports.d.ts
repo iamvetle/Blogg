@@ -6,24 +6,18 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
-  const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const apiEndpointCheck: typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']
   const checkLocalToken: typeof import('./composables/checkLocalToken')['checkLocalToken']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
   const createNewPost: typeof import('./composables/createNewPost')['createNewPost']
-  const createPinia: typeof import('pinia')['createPinia']
   const customRef: typeof import('vue')['customRef']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
-  const defineStore: typeof import('pinia')['defineStore']
   const effectScope: typeof import('vue')['effectScope']
-  const fetchAllPosts: typeof import('./composables/fetchAllPosts')['fetchAllPosts']
-  const fetchAuthPost: typeof import('./composables/fetchAuthPost')['fetchAuthPost']
-  const fetchAuthPosts: typeof import('./composables/fetchAuthPosts')['fetchAuthPosts']
-  const fetchMyAccount: typeof import('./composables/fetchMyAccount')['fetchMyAccount']
+  const fetchMyAccount: typeof import('./composables/fetchPersonalUser')['fetchMyAccount']
+  const fetchingPosts: typeof import('./composables/fetchingPosts')['fetchingPosts']
   const followUser: typeof import('./composables/followUser')['followUser']
-  const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const h: typeof import('vue')['h']
@@ -32,11 +26,6 @@ declare global {
   const isReactive: typeof import('vue')['isReactive']
   const isReadonly: typeof import('vue')['isReadonly']
   const isRef: typeof import('vue')['isRef']
-  const mapActions: typeof import('pinia')['mapActions']
-  const mapGetters: typeof import('pinia')['mapGetters']
-  const mapState: typeof import('pinia')['mapState']
-  const mapStores: typeof import('pinia')['mapStores']
-  const mapWritableState: typeof import('pinia')['mapWritableState']
   const markRaw: typeof import('vue')['markRaw']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
@@ -57,15 +46,12 @@ declare global {
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
   const resolveComponent: typeof import('vue')['resolveComponent']
-  const setActivePinia: typeof import('pinia')['setActivePinia']
   const setLocalToken: typeof import('./composables/setLocalToken')['setLocalToken']
-  const setMapStoreSuffix: typeof import('pinia')['setMapStoreSuffix']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
-  const storeToRefs: typeof import('pinia')['storeToRefs']
-  const submitLoginForm: typeof import('./composables/submitLoginForm')['submitLoginForm']
-  const submitRegisterForm: typeof import('./composables/submitRegisterForm')['submitRegisterForm']
+  const postForm: typeof import('./composables/postForm')['postForm']
+  const postForm: typeof import('./composables/postForm')['postForm']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
@@ -100,10 +86,8 @@ declare module 'vue' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
-    readonly fetchAllPosts: UnwrapRef<typeof import('./composables/fetchAllPosts')['fetchAllPosts']>
-    readonly fetchAuthPost: UnwrapRef<typeof import('./composables/fetchAuthPost')['fetchAuthPost']>
-    readonly fetchAuthPosts: UnwrapRef<typeof import('./composables/fetchAuthPosts')['fetchAuthPosts']>
-    readonly fetchMyAccount: UnwrapRef<typeof import('./composables/fetchMyAccount')['fetchMyAccount']>
+    readonly fetchMyAccount: UnwrapRef<typeof import('./composables/fetchPersonalUser')['fetchMyAccount']>
+    readonly fetchingPosts: UnwrapRef<typeof import('./composables/fetchingPosts')['fetchingPosts']>
     readonly followUser: UnwrapRef<typeof import('./composables/followUser')['followUser']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
@@ -137,8 +121,8 @@ declare module 'vue' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
-    readonly submitLoginForm: UnwrapRef<typeof import('./composables/submitLoginForm')['submitLoginForm']>
-    readonly submitRegisterForm: UnwrapRef<typeof import('./composables/submitRegisterForm')['submitRegisterForm']>
+    readonly postForm: UnwrapRef<typeof import('./composables/postForm')['postForm']>
+    readonly postForm: UnwrapRef<typeof import('./composables/postForm')['postForm']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
@@ -167,10 +151,8 @@ declare module '@vue/runtime-core' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
-    readonly fetchAllPosts: UnwrapRef<typeof import('./composables/fetchAllPosts')['fetchAllPosts']>
-    readonly fetchAuthPost: UnwrapRef<typeof import('./composables/fetchAuthPost')['fetchAuthPost']>
-    readonly fetchAuthPosts: UnwrapRef<typeof import('./composables/fetchAuthPosts')['fetchAuthPosts']>
-    readonly fetchMyAccount: UnwrapRef<typeof import('./composables/fetchMyAccount')['fetchMyAccount']>
+    readonly fetchMyAccount: UnwrapRef<typeof import('./composables/fetchPersonalUser')['fetchMyAccount']>
+    readonly fetchingPosts: UnwrapRef<typeof import('./composables/fetchingPosts')['fetchingPosts']>
     readonly followUser: UnwrapRef<typeof import('./composables/followUser')['followUser']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
@@ -204,8 +186,8 @@ declare module '@vue/runtime-core' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
-    readonly submitLoginForm: UnwrapRef<typeof import('./composables/submitLoginForm')['submitLoginForm']>
-    readonly submitRegisterForm: UnwrapRef<typeof import('./composables/submitRegisterForm')['submitRegisterForm']>
+    readonly postForm: UnwrapRef<typeof import('./composables/postForm')['postForm']>
+    readonly postForm: UnwrapRef<typeof import('./composables/postForm')['postForm']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>

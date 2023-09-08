@@ -3,14 +3,12 @@
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <div class="flex items-center">
-        <nuxt-link to=""
-          ><img src="~/assets/example.png" class="h-8 mr-3" alt="Flowbite Logo"
-        /></nuxt-link>
+    <div class="flex items-center">
+        <nuxt-link to="/">
         <span
-          class="self-center text-2xl font-semibold whitespace-nowrap text-plain"
-          >The Blog</span
-        >
+          class="self-center flex text-2xl font-semibold whitespace-nowrap text-plain"
+          >The Blog</span>
+      </nuxt-link>
       </div>
       <button
         data-collapse-toggle="navbar-solid-bg"
@@ -71,7 +69,7 @@
             >
           </li>
 
-          <li v-if="store.isAuthenticated" class="font-bold">
+          <li v-if="authenticated" class="font-bold">
             Logget inn
           </li>
 
@@ -91,7 +89,12 @@
 <script setup lang="ts">
 import { initFlowbite } from "flowbite";
 import { useGeneralStore } from "~/store/generalStore";
+import example from "~/assets/example.png"
+
+let image = example
 
 const store = useGeneralStore()
+const authenticated = computed(() => store.isAuthenticated)
+
 onMounted(initFlowbite);
 </script>

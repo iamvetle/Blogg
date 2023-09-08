@@ -72,7 +72,7 @@ const baseURL = "http://localhost:8888/api/login/";
 const { redirect } = defineProps(["redirect"]);
 
 async function submitForm(formData: object) {
-  const token = (await submitLoginForm(baseURL, formData)) as string;
+  const token = (await postForm(baseURL, formData)) as string;
 
   if (token) {
     //@ts-ignore

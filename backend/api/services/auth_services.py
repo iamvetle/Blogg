@@ -20,6 +20,8 @@ class LoginService(): # Try login logic
             
         if user:
             token, _ = Token.objects.get_or_create(user=user) # 'Get' or 'Create' a token
+            
+            
             return token
         else:
             return None
