@@ -6,7 +6,7 @@
           <!-- 8/12 main content-->
 
           <img
-            :src=image
+            :src=header_image
             id="header"
             class="h-[150px] w-full object-cover border-v border-slate-500"
           />
@@ -53,6 +53,8 @@
 <script setup lang="ts">
 //@ts-nocheck
 
+import header_img from '~/assets/noimage.jpg'
+
 interface PostType {
   id: number;
   title: string;
@@ -72,7 +74,7 @@ const first_name = ref(null);
 const last_name = ref(null);
 const followers = ref(null)
 const username = ref(null)
-const image = "~/assets/noimage.jpg"
+const header_image = header_img
 
 await(async () => {
   const route = useRoute();

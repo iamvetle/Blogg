@@ -36,7 +36,7 @@
         <li class="items-center pt-2">
             <span class="items-center">
             <img
-                :src="temp_profile_avatar"
+                :src="temp_profile_picture"
                 class="w-5 h-5 inline"
             />
             <p class="items-center ms-3 me-2 inline text-sm">Barack Obama</p>
@@ -49,7 +49,7 @@
         <li class="items-center pt-2">
             <span class="items-center">
             <img
-                :src="temp_profile_avatar"
+                :src="temp_profile_picture"
                 class="w-5 h-5 inline"
             />
             <p class="items-center ms-3 me-2 inline text-sm">Barack Obama</p>
@@ -62,7 +62,7 @@
         <li class="items-center pt-2">
             <span class="items-center">
             <img
-                :src="temp_profile_avatar"
+                :src="temp_profile_picture"
                 class="w-5 h-5 inline"
             />
             <p class="items-center ms-3 me-2 inline text-sm">Barack Obama</p>
@@ -75,7 +75,7 @@
         <li class="items-center pt-2">
             <span class="items-center">
             <img
-                :src="temp_profile_avatar"
+                :src="temp_profile_picture"
                 class="w-5 h-5 inline"
             />
             <p class="items-center ms-3 me-2 inline text-sm">Barack Obama</p>
@@ -88,7 +88,7 @@
         <li class="items-center pt-2">
             <span class="items-center">
             <img
-                :src="temp_profile_avatar"
+                :src="temp_profile_picture"
                 class="w-5 h-5 inline"
             />
             <p class="items-center ms-3 me-2 inline text-sm">Barack Obama</p>
@@ -106,12 +106,16 @@
 
 <script setup lang="ts">
 //@ts-nocheck
+
+import profile_picture from '~/assets/no.png'
+import three_doties from '~/assets/three-dots.svg'
+
 const { sideBarProp, num_of_followers } = defineProps(["sideBarProp", "num_of_followers"]);
+
 const route = useRoute()
 const hover = ref(false)
-const temp_profile_avatar = "~/assets/barack-distorted-img.png"
-const temp_profile_picture = "~/assets/no.png"
-const three_dots = "~/assets/three-dots.svg"
+const temp_profile_picture = profile_picture
+const three_dots = three_doties
 
 const followers = ref(num_of_followers)
 const followText = ref("Follow")

@@ -49,9 +49,7 @@
 </template>
 
 <script setup lang="ts">
-
-
-
+import no from '~/assets/no.png'
 
 const { postDetail } = defineProps(["postDetail"]);
 const postLink = `/post/${postDetail.id}`;
@@ -59,6 +57,6 @@ const author_full_name:string = `${postDetail.author.first_name} ${postDetail.au
 console.log(postDetail.author.username)
 const author_link = `/user/${postDetail.author.username}`;
 
-const profile_image = "~/assets/no.png"
+const profile_image = no
 
 </script> 

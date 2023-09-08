@@ -22,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+import no from '~/assets/noimage.jpg'
 
 // typescript
 interface PostPropType {
@@ -36,7 +37,7 @@ interface PostPropType {
   };
 }
 
-const image = "~/assets/no.png"
+const image = no
 
 const { postProp } = defineProps(["postProp"]);
 console.log(postProp)
