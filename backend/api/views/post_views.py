@@ -8,6 +8,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
 from api.services.post_services import CreatePostService
 from django.core.paginator import Paginator
+from rest_framework.pagination import PageNumberPagination
 
 CustomUser = get_user_model()
 
@@ -37,11 +38,14 @@ class PostSnippetsView(APIView):
 
     def get(self, request):
         queryset = Post.objects.all()
-        serializer = PostSnippetSerializer(queryset, many=True)
-        p = Paginator(serializer.data, 2)
-        tst = p.page(1).object_list
         
-        return Response(tst, status=status.HTTP_200_OK)
+        paginator = PageNumberPagination()
+        paginated_queryset = paginator.paginate_queryset(queryset, request)
+
+        serializer = PostSnippetSerializer(paginated_queryset, many=True)
+        
+        return paginator.get_paginated_response(serializer.data)
+
 
 class SinglePostView(APIView): # Retrieves a specific post
     permission_classes = [IsAuthenticated]
@@ -67,4 +71,6 @@ class CreatePostView(APIView):
     
     def get(self, request):
         return Response("Authorized:", status=status.HTTP_200_OK)
+
+#####
 
