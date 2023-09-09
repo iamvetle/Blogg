@@ -143,8 +143,9 @@ const followUserAction = async () => {
     if (followingState.value === false ) {
 
         const response = await followUser(followURL)
+        console.log(response)
 
-        if (response.status == 200) {
+        if (response != null ) {
 
             followText.value = "Following"
             followingState.value = true 
@@ -159,7 +160,7 @@ const followUserAction = async () => {
 
         const response = await unfollowUser(unfollowURL)
 
-        if (response.status == 404) {
+        if (response != 404) {
 
             followText.value = "Follow"
             followingState.value = false

@@ -67,11 +67,10 @@ class UserProfileService(): # Other user profiles
         else:
             return None
 
-
 class MyProfileService():
     
     @staticmethod
-    def followers(request):
+    def get_all_followers(request):
         current_user = request.user
                 
         all_followers = current_user.followers.all()

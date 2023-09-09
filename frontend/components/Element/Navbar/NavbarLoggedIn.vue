@@ -56,7 +56,7 @@
 
           <li>
             <nuxt-link
-              to="/"
+              to="/folgere"
               class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
               >Følger</nuxt-link
             >

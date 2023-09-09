@@ -81,7 +81,7 @@ class CurrentFollowersView(APIView):
     
     def get(self, request):
         
-        followers = MyProfileService.followers(request)
+        followers = MyProfileService.get_all_followers(request)
         print(followers.data)
         
         if followers.data != None:            

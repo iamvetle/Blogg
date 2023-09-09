@@ -62,8 +62,27 @@
                     </li>
                   </ul>
                 </div>
+
               </div>
+              
             </div>
+            <div>
+  
+              <div class="items-center pt-2 ms-6">
+                <h3 class="text-lg py-3">Followers</h3>
+              <span class="items-center">
+              <img
+                  :src="profile_pic"
+                  class="w-5 h-5 inline"
+              />
+              <p class="items-center ms-3 me-2 inline text-sm">Barack Obama</p>
+              <img
+                  :src="three_dots"
+                  class="items-center pms-4 inline w-[15px] py-auto"
+              />
+              </span>
+              </div>
+          </div>
           </div>
           <div class="col-span-4 sm:col-span-9">
             <div class="bg-primary-base rounded-lg p-6">
@@ -104,6 +123,9 @@
 
 <script setup lang="ts">
 import no from '~/assets/no.png'
+
+import profile_pic from '~/assets/no.png'
+import three_dots from '~/assets/three-dots.svg'
 
 interface PostType {
   id: number;
