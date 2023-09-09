@@ -8,7 +8,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "typecheck": "npx nuxi typecheck"
   },
   "devDependencies": {
     "@formkit/nuxt": "^0.18.3",

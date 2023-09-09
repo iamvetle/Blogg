@@ -16,7 +16,6 @@ from django.core.serializers import serialize
 
 CustomUser = get_user_model()
 
-
 ### USER HANDLING
 
 class MyAccountView(APIView): # Personal account
@@ -40,9 +39,7 @@ class UserProfileView(APIView): # Other user profiles
 
         else:
             print(f"The user '{username}' does not exist")
-            return Response(status=status.HTTP_400_BAD_REQUEST) 
-
-
+            return Response(status=status.HTTP_404_NOT_FOUND) 
 
 class FollowUserView(APIView): # Currently workign with this
 
@@ -72,8 +69,6 @@ class UnfollowUserView(APIView):
         else:
             print("Failed to unfollow")
             return Response("Failed to unfollow", status=status.HTTP_400_BAD_REQUEST)
-
-            
 
 class CurrentFollowersView(APIView):
     

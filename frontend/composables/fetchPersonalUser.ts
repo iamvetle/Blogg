@@ -1,18 +1,5 @@
 import axios from "axios";
 
-interface AccountType {
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  nickname: string;
-  age: number;
-  address: string;
-  phone_number: number;
-  num_of_followers: number;
-  last_online:string;
-}
-
 export const fetchPersonalUser = async (url: string) => {
   try {
     const token = localStorage.getItem("token");

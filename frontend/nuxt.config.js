@@ -6,6 +6,9 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+  imports: {
+    dirs:['./typescript', './stores']
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "@formkit/nuxt",

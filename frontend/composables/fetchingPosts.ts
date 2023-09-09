@@ -1,18 +1,4 @@
-import axios from "axios";
-
-interface PostType {
-  id: number;
-  title: string;
-  content: string;
-  date_published: string;
-  last_modified:string; // TODO: fjern denne senere på backend
-  num_of_followers:string;
-  author: {
-    username: string;
-    first_name: string;
-    last_name: string;
-  };
-}
+import axios from 'axios'
 
 export const fetchingPosts = async (url: string) => {
   try {

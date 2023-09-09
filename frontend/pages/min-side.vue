@@ -70,17 +70,12 @@
   
               <div class="items-center pt-2 ms-6">
                 <h3 class="text-lg py-3">Followers</h3>
-              <span class="items-center">
-              <img
-                  :src="profile_pic"
-                  class="w-5 h-5 inline"
-              />
-              <p class="items-center ms-3 me-2 inline text-sm">Barack Obama</p>
-              <img
-                  :src="three_dots"
-                  class="items-center pms-4 inline w-[15px] py-auto"
-              />
-              </span>
+              <div>  
+                <OneFollower
+                v-for="f in followers"
+                :follower="f"
+                />
+              </div>
               </div>
           </div>
           </div>
@@ -127,39 +122,15 @@ import no from '~/assets/no.png'
 import profile_pic from '~/assets/no.png'
 import three_dots from '~/assets/three-dots.svg'
 
-interface PostType {
-  id: number;
-  title: string;
-  content: string;
-  date_published: string;
-  last_modified: string;
-  author: {
-    username: string;
-    first_name: string;
-    last_name: string;
-  };
-}
-
-interface AccountType {
-  username: string;
-  email: string;
-  first_name: string;
-  last_name: string;
-  nickname: string;
-  age: number;
-  address: string;
-  phone_number: number;
-  num_of_followers: number;
-  last_online:string;
-}
-
 const profile_picture = no
 const posts = ref<PostType[]>([]); // FIX to only include personal user posts
 const user = ref<AccountType | null>(null);
+const followers = ref(null)
 
 onMounted( async () => {
   const postURL = "http://localhost:8888/api/min-side/posts/";
-  //@ts-ignore
+
+    //@ts-ignore
   posts.value = await fetchingPosts?.(postURL);
 })
 
@@ -167,6 +138,14 @@ onMounted( async () => {
   const userURL = "http://localhost:8888/api/min-side/";
 
   user.value = await fetchPersonalUser?.(userURL)
+})
+
+onMounted( async () => {
+  const followersURL = "http://localhost:8888/api/min-side/followers/"
+  
+  //@ts-ignore
+  followers.value = await fetchAllFollowers?.(followersURL)
+  console.log(followers.value)
 })
 
 </script>

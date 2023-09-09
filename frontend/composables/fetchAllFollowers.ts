@@ -1,10 +1,7 @@
 import axios from "axios";
 
-interface FollowerType {
-	username:string;
-}
-
 export const fetchAllFollowers = async (url: string) => {
+	
 try {
 	const token = localStorage.getItem("token");
 	const headers = {
