@@ -1,13 +1,14 @@
 <template>
     <div>
         <Pagination
+        v-if="pages_count"
         :all_pages_count="pages_count"
         />
     </div>
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
+
 import axios from 'axios'
 
 const pages_count = ref(null)

@@ -8,12 +8,12 @@
 <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
 	<div>
 	<p class="text-sm text-gray-700">
-		Showing {{ all_pages_count }}
+		Showing
 		<span class="font-medium">1</span>
 		to
 		<span class="font-medium">10</span>
 		of
-		<span class="font-medium">97</span>
+		<span class="font-medium">{{ last_page }}</span>
 		results
 	</p>
 	</div>
@@ -51,6 +51,14 @@
 <script setup lang="ts">
 
 const { all_pages_count } = defineProps(["all_pages_count"])
+
+const per_page = 4
+
+const last_page = computed ( () => {
+	let num = all_pages_count / per_page
+	return Math.ceil(num)
+	
+})
 
 </script>
 
