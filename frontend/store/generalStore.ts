@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useGeneralStore = defineStore("general", () => {
   const isAuthenticated = ref(false);
-  const username = ref(null);
+  const username = ref<string | null>(null);
 
   // error pages
   const apiDownError = ref(false);

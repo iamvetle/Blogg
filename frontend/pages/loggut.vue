@@ -14,15 +14,15 @@ import { useGeneralStore } from "@/store/generalStore";
 
 const store = useGeneralStore();
 
-// put definepagemeta
-
 const removed = ref(false);
 
 const logoutFunction = () => {
   const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
 
-  if (token != null) {
+  if (token != null || username != null) {
     localStorage.removeItem("token");
+    localStorage.removeItem("username");
 
     store.isAuthenticated = true;
 
