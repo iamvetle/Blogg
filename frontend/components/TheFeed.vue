@@ -14,7 +14,7 @@
           </p>
         </div>
         <div id="main" class="py-12 grid gap-8 lg:grid-cols-2" v-if="posts">
-          <PostWindow v-for="post in posts" :key="post.id" :postDetail="post" />
+          <PostWindow v-if="posts" v-for="post in posts.results" :key="post.id" :postDetail="post" />
         </div>
       </div>
     </section>
@@ -27,26 +27,13 @@
 
 <script setup lang="ts">
 
-interface PostType {
-  id: number;
-  title: string;
-  content: string;
-  date_published: string;
-  last_modified: string;
-  author: {
-    username: string;
-    first_name: string;
-    last_name: string;
-  };
-}
+const posts = ref<SnippetPostType | null>(null);
 
-const posts = ref<PostType[] | null>([]);
-
-(async () => {
-  const baseURL = "http://localhost:8888/api/feed/"; //@ts-ignore
-  posts.value = await fetchingPosts(baseURL);
+onMounted(async () => {
+  const baseURL = "http://localhost:8888/api/feed/";
+  posts.value = await fetchAllPosts(baseURL) as SnippetPostType;
   posts.value?.reverse()
-})();
+})
 </script>
 
 <style scoped lang="scss"></style>

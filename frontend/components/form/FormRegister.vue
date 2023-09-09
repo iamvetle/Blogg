@@ -122,7 +122,7 @@ const baseURL = "http://localhost:8888/api/registrer/";
 
 const submitForm = async (formData: object) => {
   const response = await postForm(baseURL, formData);
-  if (response === true) {
+  if (response != null) {
     submitted.value = true;
     setTimeout(() => {
       navigateTo("/login");

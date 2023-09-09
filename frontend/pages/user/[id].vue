@@ -81,7 +81,7 @@ await(async () => {
   const baseURL = `http://localhost:8888/api/${route.params.id}/`;
 
   //@ts-ignore
-  posts.value = await fetchingPosts(baseURL);
+  posts.value = await fetchAllPosts(baseURL);
   console.dir(toRaw(posts.value))
 
   followers.value = posts.value[0].num_of_followers;

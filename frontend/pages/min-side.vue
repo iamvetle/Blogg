@@ -119,19 +119,16 @@
 <script setup lang="ts">
 import no from '~/assets/no.png'
 
-import profile_pic from '~/assets/no.png'
-import three_dots from '~/assets/three-dots.svg'
-
 const profile_picture = no
-const posts = ref<PostType[]>([]); // FIX to only include personal user posts
-const user = ref<AccountType | null>(null);
+const posts = ref<PersonalPostType>([]); // FIX to only include personal user posts
+const user = ref<PersonalUserType | null>(null);
 const followers = ref(null)
 
 onMounted( async () => {
   const postURL = "http://localhost:8888/api/min-side/posts/";
 
     //@ts-ignore
-  posts.value = await fetchingPosts?.(postURL);
+  posts.value = await fetchAllPosts?.(postURL);
 })
 
 onMounted( async () => {

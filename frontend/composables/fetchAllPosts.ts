@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetchingPosts = async (url: string) => {
+export const fetchAllPosts = async (url: string) => {
   try {
     const token = localStorage.getItem("token");
     const headers = {
@@ -8,12 +8,12 @@ export const fetchingPosts = async (url: string) => {
       Authorization: `Token ${token}`,
     };
 
-    const response = await axios.get<PostType[]>(url, { headers });
+    const response = await axios.get<SnippetPostType[]>(url, { headers });
 
     if (response.data != null) {
       console.log("OK: Posts fetched", response.status, response.data); // print to self
       
-      return response.data;
+      return response.data as SnippetPostType;
     
     } else {
       console.log("OBS! Fetching succsedded, but response(data) was:", response.status, response.data) // print to self

@@ -9,7 +9,6 @@
 
 <script setup lang="ts">
 import profile_picture from '~/assets/no.png'
-import three_dots from '~/assets/three-dots.svg'
 
 const { follower } = defineProps(["follower"])
 

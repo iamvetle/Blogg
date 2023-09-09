@@ -24,18 +24,6 @@
 <script setup lang="ts">
 import no from '~/assets/noimage.jpg'
 
-// typescript
-interface PostPropType {
-  id:number;
-  title:string;
-  content_snippet:string;
-  date_published:string;
-  author: {
-    username:string,
-    first_name:string,
-    last_name:string,
-  };
-}
 
 const image = no
 

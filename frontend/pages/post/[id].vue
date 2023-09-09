@@ -7,7 +7,7 @@
       <p class="text-3xl py-5">{{ post.title.toUpperCase() }}</p>
       <small>Date here</small>
       <img
-        src="~/assets/noimage.jpg"
+        :src="noimage"
         alt="idk"
         class="pt-1 rounded-sm h-auto max-w-3/4"
       />
@@ -27,25 +27,15 @@
 </template>
 
 <script setup lang="ts">
-// Each individual post (ex: http://localhost:3000/post/3)
+import noimage from '~/assets/noimage.jpg'
 
-interface PostType {
-  id: number;
-  title: string;
-  content: string;
-  author: {
-    username: string;
-    first_name: string;
-    last_name: string;
-  };
-}
+const post = ref<SinglePostType | null>(null);
 
-const post = ref<PostType | null>(null);
-
-(async () => {
+onMounted( async () => {
   const route = useRoute();
   const baseURL = `http://localhost:8888/api/post/${route.params.id}/`;
 
-  post.value = await fetchingPosts(baseURL);
-})();
+  post.value = await fetchAllPosts(baseURL);
+});
+
 </script>
