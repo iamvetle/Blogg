@@ -2,25 +2,25 @@
     <div>
         <Pagination
         v-if="pages_count"
-        :all_pages_count="pages_count"
         />
     </div>
 </template>
 
 <script setup lang="ts">
 
-import axios from 'axios'
-
-const pages_count = ref(null)
-const baseURL = "http://localhost:8888/api/feed/"
+const previous_p = ref<string | null>(null);
+const next_p = ref<string | null>(null);
+const pages_count = ref<number | null>(null);
 
 
 onMounted( async () => {
     try {
-        const response = await fetchAllPosts(baseURL)
+        const response = await fetchAllPosts()
 
         if (response != null) {
             pages_count.value = response.count
+            next_p.value = response.next
+            previous_p.value = response.previous
         }
     } catch (error) {
         console.log(error)

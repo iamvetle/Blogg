@@ -19,7 +19,9 @@ declare global {
   const fetchAllPosts: typeof import('./composables/fetchAllPosts')['fetchAllPosts']
   const fetchMyAccount: typeof import('./composables/fetchPersonalUser')['fetchMyAccount']
   const fetchPersonalUser: typeof import('./composables/fetchPersonalUser')['fetchPersonalUser']
+  const fetchPostSnippets: typeof import('./composables/fetchPostSnippets')['fetchPostSnippets']
   const fetchingPosts: typeof import('./composables/fetchingPosts')['fetchingPosts']
+  const fixPagination: typeof import('./composables/fixPagination')['fixPagination']
   const followUser: typeof import('./composables/followUser')['followUser']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
@@ -91,7 +93,8 @@ declare module 'vue' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly fetchAllFollowers: UnwrapRef<typeof import('./composables/fetchAllFollowers')['fetchAllFollowers']>
     readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/fetchPersonalUser')['fetchPersonalUser']>
-    readonly fetchingPosts: UnwrapRef<typeof import('./composables/fetchingPosts')['fetchingPosts']>
+    readonly fetchPostSnippets: UnwrapRef<typeof import('./composables/fetchPostSnippets')['fetchPostSnippets']>
+    readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
     readonly followUser: UnwrapRef<typeof import('./composables/followUser')['followUser']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
@@ -157,7 +160,8 @@ declare module '@vue/runtime-core' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly fetchAllFollowers: UnwrapRef<typeof import('./composables/fetchAllFollowers')['fetchAllFollowers']>
     readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/fetchPersonalUser')['fetchPersonalUser']>
-    readonly fetchingPosts: UnwrapRef<typeof import('./composables/fetchingPosts')['fetchingPosts']>
+    readonly fetchPostSnippets: UnwrapRef<typeof import('./composables/fetchPostSnippets')['fetchPostSnippets']>
+    readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
     readonly followUser: UnwrapRef<typeof import('./composables/followUser')['followUser']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
