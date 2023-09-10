@@ -18,7 +18,7 @@ export const fetchPostSnippets = async () => {
     if (response.data != null) {
       console.log("OK: Posts fetched", response.data); // print to self
 
-      fixPagination(response.data) // calls the pagination composable for the paginatioin.vue
+      await fixPagination(response.data) // calls the pagination composable for the paginatioin.vue
       
       store.posts = response.data as SnippetPostType;
     
