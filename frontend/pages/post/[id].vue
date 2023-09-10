@@ -5,7 +5,7 @@
       class="px-[60px] py-[30px] col-start-5 col-span-4 bg-white"
     >
       <p class="text-3xl py-5">{{ post.title.toUpperCase() }}</p>
-      <small>Date here</small>
+      <small>Published {{ post.date_published }}</small>
       <img
         :src="noimage"
         alt="idk"
@@ -20,9 +20,6 @@
         Back
       </button>
     </div>
-    <div v-else>
-      <p>Did not fetch post, got return '{{ typeof post }}'</p>
-    </div>
   </div>
 </template>
 
@@ -33,9 +30,9 @@ const post = ref<SinglePostType | null>(null);
 
 onMounted( async () => {
   const route = useRoute();
-  const baseURL = `http://localhost:8888/api/post/${route.params.id}/`;
+  const postURL = `http://localhost:8888/api/post/${route.params.id}/`;
 
-  post.value = await fetchAllPosts(baseURL);
+  post.value = await fetchPost(postURL);
 });
 
 </script>
