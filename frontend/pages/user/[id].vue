@@ -31,9 +31,9 @@
             <hr class="mt-2" />
           </div>
           <div id="main" class="pt-[50px]">
-            <div class="pb-[40px]">
+            <div class="pb-[40px]" v-if="store.theUser[0].posts">
               <PostArticle
-                v-for="post in posts"
+                v-for="post in store.theUser[0].posts"
                 :key="post.id"
                 :postProp="post"
                 class="mt-10"
@@ -43,7 +43,7 @@
         </div>
 
         <div id="sidebar" class="px-5 col-span-4 border-v border-red-500">
-          <UserSidebar v-if="posts != null" :sideBarProp="userProp" :num_of_followers="followers" />
+          <UserSidebar v-if="store.theUser[0].posts != null" :sideBarProp="userProp" :num_of_followers="followers" />
         </div>
       </div>
     </div>
@@ -52,23 +52,13 @@
 
 <script setup lang="ts">
 //@ts-nocheck
+// a user's page
 
 import header_img from '~/assets/noimage.jpg'
+import { useGeneralStore } from '~/store/generalStore';
 
-interface PostType {
-  id: number;
-  title: string;
-  content_snippet: string;
-  date_published: string;
-  last_modified: string;
-  author: {
-    username: string;
-    first_name: string;
-    last_name: string;
-  };
-}
+const store = useGeneralStore()
 
-const posts = ref<PostType[]>([]);
 const userProp = ref(null);
 const first_name = ref(null);
 const last_name = ref(null);
@@ -76,23 +66,26 @@ const followers = ref(null)
 const username = ref(null)
 const header_image = header_img
 
+
 await(async () => {
   const route = useRoute();
-  const baseURL = `http://localhost:8888/api/${route.params.id}/`;
+  const theUserURL = `http://localhost:8888/api/${route.params.id}/`;
 
   //@ts-ignore
-  posts.value = await fetchAllPosts(baseURL);
-  console.dir(toRaw(posts.value))
+  await fetchUserInfoPosts(theUserURL);
+  console.dir(toRaw(store.theUser[0]))
 
-  followers.value = posts.value[0].num_of_followers;
+  followers.value = store.theUser[0].posts[0].num_of_followers;
   console.log(toRaw(followers.value))
 
-  posts.value = posts.value[0].posts
-  console.log(toRaw(posts))
+  console.log(toRaw(store.theUser[0].posts))
+  console.log(toRaw(store.theUser[0].posts[0].author.first_name))
   //
-  first_name.value = posts.value[0].author.first_name
-  last_name.value = posts.value[0].author.last_name
-  username.value = posts.value[0].author.username
+
+  //
+  first_name.value = store.theUser[0].posts[0].author.first_name
+  last_name.value = store.theUser[0].posts[0].author.last_name
+  username.value = store.theUser[0].posts[0].author.username
 
   userProp.value = username.value;
 
