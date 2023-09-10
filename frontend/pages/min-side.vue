@@ -99,10 +99,10 @@
               </h2>
 
               <!-- Post begin -->
-              <div>
+              <div v-if="store.personalPosts">
                 <MyUserPosts
-                  v-if="posts"
-                  v-for="post in posts"
+                  v-if="store.personalPosts"
+                  v-for="post in store.personalPosts"
                   :key="post.id"
                   :postProp="post"
                 />
@@ -118,17 +118,17 @@
 
 <script setup lang="ts">
 import no from '~/assets/no.png'
+import { useGeneralStore } from '~/store/generalStore';
+
+const store = useGeneralStore()
 
 const profile_picture = no
-const posts = ref<PersonalPostType>([]); // FIX to only include personal user posts
 const user = ref<PersonalUserType | null>(null);
 const followers = ref(null)
 
 onMounted( async () => {
-  const postURL = "http://localhost:8888/api/min-side/posts/";
 
-    //@ts-ignore
-  posts.value = await fetchAllPosts?.(postURL);
+  await fetchPersonalPosts()
 })
 
 onMounted( async () => {

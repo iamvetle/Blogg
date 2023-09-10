@@ -6,10 +6,12 @@ export const useGeneralStore = defineStore("general", () => {
 
   // posts
   const posts = ref<SnippetPostType | null>(null)
+  const personalPosts = ref<SnippetPostType | null>(null)
 
   // links
   const baseFeedURL = "http://localhost:8888/api/feed/"
   const post_snippets_url = ref<string>("http://localhost:8888/api/feed/")
+  const personal_post_snippets_url = ref<string>("http://localhost:8888/api/min-side/posts/")
 
   const next_page_link = ref<string | null>(null)
   const previous_page_link = ref<string | null>(null)
@@ -27,5 +29,5 @@ export const useGeneralStore = defineStore("general", () => {
     isAuthenticated.value = state;
   };
 
-  return { posts, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
+  return { posts, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
 });

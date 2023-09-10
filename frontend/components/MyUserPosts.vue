@@ -17,6 +17,7 @@
 // For the posts in the 'min-side'
 
 const { postProp } = defineProps(["postProp"]);
+console.log(postProp)
 </script>
 
 <style scoped></style>
