@@ -11,15 +11,15 @@
 		Showing
 		<span class="font-medium">1</span>
 		to
-		<span class="font-medium">10</span>
+		<span class="font-medium">4</span>
 		of
-		<span class="font-medium">{{ store.last_page_link }}</span>
+		<span class="font-medium">{{ store.number_of_posts_count }}</span>
 		results
 	</p>
 	</div>
 	<div>
 	<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-		<div @click="store.previous_page_link" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+		<div @click="click_previous_page" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
 			<span class="sr-only">Previous</span>
 		<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 			<path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
@@ -55,17 +55,27 @@ import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
 
-const click_next_page = async () => { //@ts-ignore
-	store.post_snippets_url = store.next_page_link
-	
+const click_next_page = async () => {
+
+	if (store.next_page_link != null) {
+		store.post_snippets_url = store.next_page_link
 		
-	await fetchPostSnippets()
+		await fetchPostSnippets()
+	} else {
+		console.log("cannot go any further back")
+	}
 }
 
-const click_previous_page = async () => { //@ts-ignore
-	store.post_snippets_url = store.previous_page_link
+const click_previous_page = async () => {
 
-	await fetchPostSnippets()
+	if (store.previous_page_link != null) {
+		store.post_snippets_url = store.previous_page_link
+		
+		await fetchPostSnippets()
+	} else {
+		console.log("cannot go any further back")
+	}
+
 }
 
 // links

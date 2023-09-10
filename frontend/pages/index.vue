@@ -2,6 +2,7 @@
   <div id="site-wrapper">
     <div v-if="storeValue">
       <TheFeed />
+      <Pagination />
     </div>
     <div v-else>
       <TheWait />

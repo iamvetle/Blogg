@@ -23,7 +23,7 @@ export const fetchPostSnippets = async () => {
       store.posts = response.data as SnippetPostType;
     
     } else {
-      console.log("OBS! Fetching succsedded, but response(data) was:" , response.data) // print to self
+      console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self
     }
 
   } catch (error) {

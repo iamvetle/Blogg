@@ -6,7 +6,6 @@
       <ElementNavbar/>
     </ClientOnly>
     <slot />
-    <Pagination/>
     <ElementFooter/>
   </div>
 </template>
