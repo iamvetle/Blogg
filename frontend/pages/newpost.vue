@@ -79,6 +79,7 @@
         <!-- buttons -->
         <div class="buttons flex">
           <button
+            @click="cancel"
             class="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto"
           >
             Cancel
@@ -106,15 +107,25 @@ const baseURL = "http://localhost:8888/api/newpost/";
 const postState = ref(false);
 
 const submitNewPost = async () => {
-  if (titleInput.value.trim() != "" || textInput.value.trim() != "") {
+  if (titleInput.value.trim() != "" || textInput.value.trim() != "") { // passer på at begge feltene er fylt
     const formData = {
       title: titleInput.value,
       content: textInput.value,
     };
     await createNewPost(baseURL, formData);
     postState.value = true;
+    titleInput.value = "";
+    textInput.value = "";
   }
 };
+
+const cancel = () => {
+  postState.value = false;
+  titleInput.value = "";
+  textInput.value = "";
+  const router = useRouter()
+  router.go(-1)
+}
 </script>
 
 <style scoped></style>

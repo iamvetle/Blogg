@@ -4,12 +4,18 @@ import { useGeneralStore } from "@/store/generalStore";
 
 export default defineNuxtRouteMiddleware((to, from) => {
   if (process.client) {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token")
+    const username = localStorage.getItem("username");
+
     const store = useGeneralStore();
 
-    token != null
-      ? (store.isAuthenticated = true)
-      : (store.isAuthenticated = false);
+    if (token != null) {
+      (store.isAuthenticated = true)
+      store.username = username
+    } else {
+      (store.isAuthenticated = false);
+      store.username = null
+    }
 
     const path_place = to.path;
 
