@@ -94,8 +94,6 @@ import { initFlowbite } from "flowbite";
 import { useGeneralStore } from "~/store/generalStore";
 import example from "~/assets/example.png"
 
-let image = example
-
 const store = useGeneralStore()
 const authenticated = computed(() => store.isAuthenticated)
 
