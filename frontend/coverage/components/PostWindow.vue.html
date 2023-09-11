@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for TheFeed.vue</title>
+    <title>Code coverage report for components/PostWindow.vue</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> TheFeed.vue</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> PostWindow.vue</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>51/51</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>51/51</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
@@ -114,7 +114,29 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -166,56 +188,67 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;div id="wrapper"&gt;
-    &lt;section class="bg-plain dark:bg-gray-900" v-if="posts"&gt;
-      &lt;p&gt;&lt;/p&gt;
-      &lt;div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6"&gt;
-        &lt;div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8"&gt;
-          &lt;h2
-            class="pt-10 mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
-          &gt;
-            Siste blogginnlegg
-          &lt;/h2&gt;
-          &lt;p class="font-light text-gray-500 sm:text-xl dark:text-gray-400"&gt;
-            Her er de siste blogginnleggene.
-          &lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div id="main" class="py-12 grid gap-8 lg:grid-cols-2" v-if="posts"&gt;
-          &lt;PostWindow v-for="post in posts" :key="post.id" :postDetail="post" /&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/section&gt;
-    &lt;div v-else&gt;
-      &lt;p&gt;There are no posts. Return value from fetch is {{ typeof posts }}&lt;/p&gt;
-      &lt;!-- print to self --&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+&lt;article
+	class="p-6 bg-plain rounded-lg border-primary-base border-2 shadow-md"
+&gt;
+	&lt;!-- Type one --&gt;
+	&lt;div class="flex justify-end items-center mb-5 text-gray-500"&gt;
+	&lt;span class="text-sm"&gt;{{ postDetail.date_published }}&lt;/span&gt;
+	&lt;/div&gt;
+	&lt;h2
+	class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+	&gt;
+	&lt;a href="#"&gt;{{ postDetail.title }}&lt;/a&gt;
+	&lt;/h2&gt;
+	&lt;p class="mb-5 font-light text-gray-500 dark:text-gray-400"&gt;
+	{{ postDetail.content_snippet }}
+	&lt;/p&gt;
+	&lt;div class="flex justify-between items-center"&gt;
+	&lt;div class="flex items-center space-x-4"&gt;
+		&lt;img
+		:src="profile_image"
+		class="w-7 h-7 rounded-full"
+		/&gt;
+		&lt;nuxt-link :to="author_link"&gt;
+		&lt;span class="font-medium dark:text-white"&gt;
+			{{  postDetail.author.username }}
+		&lt;/span&gt;
+		&lt;/nuxt-link&gt;
+	&lt;/div&gt;	
+	&lt;nuxt-link
+		:to="postLink"
+		class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
+	&gt;
+		Read more
+		&lt;svg
+		class="ml-2 w-4 h-4"
+		fill="currentColor"
+		viewBox="0 0 20 20"
+		xmlns="http://www.w3.org/2000/svg"
+		&gt;
+		&lt;path
+			fill-rule="evenodd"
+			d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+			clip-rule="evenodd"
+		&gt;&lt;/path&gt;
+		&lt;/svg&gt;
+	&lt;/nuxt-link&gt;
+	&lt;/div&gt;
+&lt;/article&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script setup lang="ts"&gt;
-interface PostType {
-  id: number;
-  title: string;
-  content: string;
-  date_published: string;
-  last_modified: string;
-  author: {
-    username: string;
-    first_name: string;
-    last_name: string;
-  };
-}
+import no from '~/assets/no.png'
 &nbsp;
-const posts = ref&lt;PostType[] | null&gt;([]);
+const { postDetail } = defineProps(["postDetail"]);
+const postLink = `/post/${postDetail.id}`;
+const author_full_name:string = `${postDetail.author.first_name} ${postDetail.author.last_name}`  ;
+console.log(postDetail.author.username)
+const author_link = `/user/${postDetail.author.username}`;
 &nbsp;
-(async () =&gt; {
-  const baseURL = "http://localhost:8888/api/feed/"; //@ts-ignore
-  posts.value = await fetchAllPosts(baseURL);
-  posts.value?.reverse()
-})();
-&lt;/script&gt;
+const profile_image = no
 &nbsp;
-&lt;style scoped lang="scss"&gt;&lt;/style&gt;
+&lt;/script&gt; 
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -223,16 +256,16 @@ const posts = ref&lt;PostType[] | null&gt;([]);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-06T20:44:49.669Z
+                at 2023-09-11T11:11:21.249Z
             </div>
-        <script src="prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="sorter.js"></script>
-        <script src="block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     

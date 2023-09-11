@@ -18,10 +18,6 @@
         </div>
       </div>
     </section>
-    <div v-else>
-      <p>There are no posts. Return value from fetch is {{ typeof store.posts }}</p>
-      <!-- print to self -->
-    </div>
   </div>
 </template>
 
