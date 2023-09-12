@@ -7,6 +7,11 @@
 
 <script setup lang="ts">
 
+
+definePageMeta({
+  layout:'tiptap-layout'
+})
+
 </script>
 
 <style scoped>
