@@ -13,7 +13,7 @@
 	<button
 		data-collapse-toggle="navbar-solid-bg"
 		type="button"
-		class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-plain rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+		class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-plain rounded-lg md:hidden hover:bg-gray-100 hover:text-primary-high focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
 		aria-controls="navbar-solid-bg"
 		aria-expanded="false"
 	>
@@ -35,55 +35,55 @@
 		</svg>
 	</button>
 	<div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-		<ul
-		class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent"
-		>
-		<li>
-			<nuxt-link
-			to="/"
-			class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
-			>Hjem</nuxt-link
+		<div class="flex">
+			<input class="h-8 mx-2 w-auto flex" type="text" placeholder="Search">
+			
+			<ul
+			class="flex flex-col font-medium mt-4 rounded-lg bg-gray-primary-low md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent"
 			>
-		</li>
-
-		<li>
-			<nuxt-link
-			to="/newpost"
-			class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
-			>New post</nuxt-link
-			>
-		</li>
-
-		<li>
-			<nuxt-link
-			to="/folgere"
-			class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
-			>Følger</nuxt-link
-			>
-		</li>
-		<li>
-			<nuxt-link
-			to="/min-side"
-			class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
-			>Min side</nuxt-link
-			>
-		</li>
-
-		<li v-if="authenticated" class="font-bold">
-			Logget inn
-			<span v-if="store.username" class="text-white font-thin text-sm">
-			({{ store.username }})
-			</span>
-		</li>
-
-		<li>
-			<nuxt-link
-			to="/loggut"
-			class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
-			>Logg ut</nuxt-link
-			>
-		</li>
-		</ul>
+			<li>
+				<nuxt-link
+				to="/"
+				class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
+				>Hjem</nuxt-link
+				>
+			</li>
+			<li>
+				<nuxt-link
+				to="/newpost"
+				class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
+				>New post</nuxt-link
+				>
+			</li>
+			<li>
+				<nuxt-link
+				to="/folgere"
+				class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
+				>Følger</nuxt-link
+				>
+			</li>
+			<li>
+				<nuxt-link
+				to="/min-side"
+				class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
+				>Min side</nuxt-link
+				>
+			</li>
+			<li v-if="authenticated" class="font-bold bg-plain max-w-fit px-1 rounded-md text-center">
+				Logget inn
+				<span v-if="store.username" class="font-thin text-sm">
+				<p>({{ store.username }})</p>
+				</span>
+			</li>
+			<li>
+				<nuxt-link
+				to="/loggut"
+				class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
+				>Logg ut</nuxt-link
+				>
+			</li>
+			</ul>
+		</div>
 	</div>
 	</div>
 </nav>
@@ -92,9 +92,6 @@
 <script setup lang="ts">
 import { initFlowbite } from "flowbite";
 import { useGeneralStore } from "~/store/generalStore";
-import example from "~/assets/example.png"
-
-let image = example
 
 const store = useGeneralStore()
 const authenticated = computed(() => store.isAuthenticated)

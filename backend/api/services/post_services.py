@@ -36,7 +36,7 @@ class PostSnippetService():
     
     @staticmethod
     def get_posts(request):
-        queryset = Post.objects.all()
+        queryset = Post.objects.all().order_by('-date_published')
         
         paginator = CustomPageNumberPagination() # look at other_services.py for more info
         paginated_queryset = paginator.paginate_queryset(queryset, request)
