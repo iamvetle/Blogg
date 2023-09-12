@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="editor">
     <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
       <div class="menubar">
@@ -215,4 +215,18 @@ export default {
     this.editor.destroy()
   },
 }
+</script> -->
+
+<template>
+  <div>
+
+  </div>
+</template>
+
+<script setup lang="ts">
+
 </script>
+
+<style scoped>
+
+</style>
