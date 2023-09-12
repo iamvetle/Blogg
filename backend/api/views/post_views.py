@@ -29,7 +29,7 @@ class AllPostsView(APIView): # Retrieves ALL posts # not used at the moment
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
-        queryset = Post.objects.all()
+        queryset = Post.objects.all().order_by('-date_published')
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
