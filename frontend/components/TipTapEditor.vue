@@ -2,10 +2,15 @@
     <div id="editor-container">
       <div id="editor-area">
 
-        <floating-menu :editor="editor" :tippy-options="{ duration: 100 }" v-if="editor">
-          <button @click="addImage">
-          set image
-        </button>
+        <floating-menu :editor="editor" :tippy-options="{ duration: 100 }" v-if="editor"
+        class="floating-menu absolute z-10 bg-white shadow-lg rounded-lg p-2 space-x-2"
+        >
+      <button @click="setBold" :class="{ 'bold': editor.isActive('bold')}">B</button>
+      <button @click="setItalic" :class="{ 'italic': editor.isActive('italic')}">I</button>
+      <button @click="setUnderline" :class="{ 'underline': editor.isActive('underline')}">U</button>
+      <button @click="setBulletList" :class="{ 'bulletList': editor.isActive('bulletList')}">•</button>
+
+      <button @click="setOrderedList" :class="{ 'orderedList': editor.isActive('orderedList')}">1.</button>
         </floating-menu>
         <bubble-menu
         :editor="editor"
@@ -38,6 +43,9 @@
 
 
         </bubble-menu>
+
+        <button @click="editor.getJSON()">Upload Image</button>
+
         <editor-content :editor="editor" />
       </div>
     </div>
@@ -97,6 +105,11 @@ function addImage() {
 
 </script>
 
-<style lang="scss">
-
+<style scoped>
+.editor {
+  @apply border border-gray-300 rounded-lg;
+}
+.floating-menu {
+  @apply p-2 bg-white border border-gray-200 rounded shadow-lg;
+}
 </style>
