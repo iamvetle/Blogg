@@ -1,4 +1,4 @@
-iiiiiiiiiiii<template>
+<template>
 	<div class="grid-cols-12 grid">
 		<div class="md:col-start-4 md:col-span-6 col-start-3 col-span-8 border" id="editor-container">
 		<div id="editor-area">
@@ -8,34 +8,21 @@ iiiiiiiiiiii<template>
 			v-if="editor"
 			class="flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md"
 			>
-				<button @click="editor.commands.toggleBold()" :class="{ 'is-active': editor.isActive('bold')}"
-				class="flex">
-				<img class="h-5 flex items-center" src="~/assets/icons/bold.svg">
+			<button @click="addImage()">
+				<img class="h-5 flex items-center" src="~/assets/icons/image-add-line.svg" alt="add_image">
 			</button>
 	
-				<button @click="editor.commands.toggleItalic()" :class="{ 'is-active': editor.isActive('italic') }"
-				class="flex">
-				<img class="h-5 flex items-center" src="~/assets/icons/italic.svg">
-			</button>
-	
-				<button @click="setLink()" :class="{ 'is-active': editor.isActive('link')}"
-				class="flex">
-				<img class="h-5 flex items-center" src="~/assets/icons/link.svg">
-			</button>
-	
-				<button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
-				class="flex">
-				<img class="h-5 flex items-center" src="~/assets/icons/h-1.svg">
-			</button>
-	
-				<button @click="editor.chain().focus().toggleHeading({ level: 4 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }"
-				class="flex">
-				<img class="h-5 flex items-center" src="~/assets/icons/h-2.svg">
-			</button>
-	
-				<button @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor.isActive('blockquote') }"
+			<button @click="setLink()" :class="{ 'is-active': editor.isActive('link')}"
 				class="">
-				<img class="h-5 flex items-center" src="~/assets/icons/quote-text.svg">
+				<img class="h-5 flex items-center" src="~/assets/icons/link.svg" alt="link">
+			</button>
+
+			<button @click="editor.chain().focus().setHorizontalRule().run()">
+				<img class="h-5 flex items-center" src="~/assets/separator.svg" alt="seperator">
+			</button>		
+	
+			<button @click="editor.chain().focus().toggleCode().run()" :class="{ 'is-active': editor.isActive('code') }">
+				<img class="h-5 flex items-center" src="~/assets/icons/code-view.svg" alt="code">
 			</button>
 	
 	
@@ -49,7 +36,7 @@ iiiiiiiiiiii<template>
 			v-if="editor"
 			class="space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md"
 			>
-				<button @click="editor.commands.toggleBold()" :class="{ 'is-active': editor.isActive('bold')}"
+			<button @click="editor.commands.toggleBold()" :class="{ 'is-active': editor.isActive('bold') }"
 				class="">
 				<img class="h-5 flex items-center" src="~/assets/icons/bold.svg">
 			</button>
@@ -58,11 +45,11 @@ iiiiiiiiiiii<template>
 				class="">
 				<img class="h-5 flex items-center" src="~/assets/icons/italic.svg">
 			</button>
-	
-				<button @click="setLink()" :class="{ 'is-active': editor.isActive('link')}"
-				class="">
-				<img class="h-5 flex items-center" src="~/assets/icons/link.svg">
+
+			<button @click="editor.chain().focus().toggleUnderline().run()" :class="{ 'is-active': editor.isActive('underline') }">
+				<img class="h-5 flex items-center" src="~/assets/icons/underline.svg">
 			</button>
+	
 	
 				<button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
 				class="">
@@ -76,12 +63,8 @@ iiiiiiiiiiii<template>
 	
 				<button @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor.isActive('blockquote') }"
 				class="">
-				<img class="h-5 flex items-center" src="~/assets/icons/quote-text.svg">
+				<img class="h-5 flex items-center" src="~/assets/icons/double-quotes-r.svg">
 			</button>
-	
-	
-	
-	
 	
 			</bubble-menu>
 			<div>

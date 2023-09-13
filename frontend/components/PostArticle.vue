@@ -9,7 +9,7 @@
         </p></span
       >
       <h3 class="font-bold">{{ postProp.title }}</h3>
-      <p>{{ postProp.content_snippet }}</p>
+      <div class="prose" v-html="postProp.content_snippet"></div>
       <nuxt-link :to="readpost">
         <p class="pt-2 text-xs font-light hover:font-normal">Read more</p>
       </nuxt-link>
