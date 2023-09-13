@@ -1,31 +1,32 @@
+
 export default defineNuxtConfig({
   devtools: {
     enabled: true,
 
     timeline: {
-      enabled: true
-    }
+      enabled: true,
+    },
+  },
+  imports: {
+    dirs:['./typescript', './stores']
   },
   modules: [
-    '@nuxtjs/tailwindcss',
-    '@formkit/nuxt',
-    '@pinia/nuxt',
-    'nuxt-vitest',
+    "@nuxtjs/tailwindcss",
+    "@formkit/nuxt",
+    "@pinia/nuxt",
+    "nuxt-vitest",
   ],
-    tailwindcss: {
-      cssPath: '~/assets/css/tailwind.css',
-      configPath: 'tailwind.config',
-      exposeConfig: false,
-      exposeLevel: 2,
-      config: {},
-      injectPosition: 'first',
-      viewer: true
-    },
-    pinia: {
-      autoImports: [
-        // automatically imports `defineStore`
-        'defineStore', // import { defineStore } from 'pinia'
-        ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
-      ]
-    }
-  })
+  tailwindcss: {
+    cssPath: "~/assets/css/tailwind.css",
+    configPath: "tailwind.config",
+    exposeConfig: false,
+    exposeLevel: 2,
+    config: {},
+    injectPosition: "first",
+    viewer: true,
+  },
+  pinia: {
+    autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],
+  },
+  ssr: false, // client only (single site application) all api fetch on client
+});

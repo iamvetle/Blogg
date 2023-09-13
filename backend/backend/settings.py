@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'http://127.0.0.1:3000',
 ]
 
 MIDDLEWARE = [
@@ -142,4 +143,6 @@ REST_FRAMEWORK = { # For token authentication (DRF)
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
-}
+    'DEFAULT_PAGINATION_CLASS': 'api.services.other.CustomPageNumberPagination',
+    'PAGE_SIZE': 10,
+} 

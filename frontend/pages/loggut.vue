@@ -1,48 +1,44 @@
 <template>
-    <div>
-        <div v-if="removed">
-            <p>Du er nå logged ut.</p>
-        </div>
-        <div v-else>
-            <p>Logges ut..</p>
-        </div>
+  <div>
+    <div v-if="removed">
+      <p>Du er nå logged ut.</p>
     </div>
+    <div v-else>
+      <p>Logges ut..</p>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { useGeneralStore } from "@/store/generalStore";
 
-import { useGeneralStore } from '@/store/generalStore';
+const store = useGeneralStore();
 
-const store = useGeneralStore()
-
-// put definepagemeta
-
-const removed = ref(false)
+const removed = ref(false);
 
 const logoutFunction = () => {
-    const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
 
-    if (token != null) {
-        localStorage.removeItem("token")
-        
-        store.isAuthenticated = true
+  if (token != null || username != null) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
 
-        setTimeout(() => {
-            removed.value = true
-            setTimeout(() => {
-                return navigateTo("/login")
-            }, 750)
-            }, 500 )
-    } else {
-        navigateTo("/")// temperory redirectioon
-    }
+    store.isAuthenticated = true;
 
-}
+    setTimeout(() => {
+      removed.value = true;
+      setTimeout(() => {
+        return navigateTo("/login");
+      }, 750);
+    }, 500);
+  } else {
+    navigateTo("/"); // temperory redirectioon
+  }
+};
 
-onMounted(logoutFunction)
-
+onMounted(logoutFunction);
 </script>
 
-<style scoped>
-
-</style>store/generalStore
+<style scoped></style>
+store/generalStore

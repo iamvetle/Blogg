@@ -1,24 +1,23 @@
 <template>
-    <div class="mb-6">
-        <div class="flex justify-between"> 
-            <span class="text-gray-600 font-bold">{{ postProp.title }}</span>
-            <span class="flex">
-                <span class="text-gray-600 mr-2">posted: </span>
-                <span class="text-gray-600">{{ postProp.date_published }}</span>
-            </span>
-        </div>
-        <p class="mt-2">
-            {{ postProp.content }}
-        </p>
+  <div class="bg-plain mb-6 px-5 py-5 border rounded-lg border-primary-base">
+    <div class="flex justify-between">
+      <span class="font-bold">{{ postProp.title }}</span>
+      <span class="flex">
+        <span class="mr-2">posted: </span>
+        <span class="">{{ postProp.date_published }}</span>
+      </span>
     </div>
+    <p class="mt-2">
+      {{ postProp.content }}
+    </p>
+  </div>
 </template>
 
-<script setup lang="ts"> // For the posts in the 'min-side'
+<script setup lang="ts">
+// For the posts in the 'min-side'
 
-const { postProp, accountProp } = defineProps(["postProp", "accountProp"])
-
+const { postProp } = defineProps(["postProp"]);
+console.log(postProp)
 </script>
 
-
-<style scoped>
-</style>
+<style scoped></style>
