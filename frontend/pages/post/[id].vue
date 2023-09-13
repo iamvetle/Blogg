@@ -12,7 +12,7 @@
         class="pt-1 rounded-sm h-auto max-w-3/4"
       />
       <p class="pt-3 font-bold">- {{ post.author.username }}</p>
-      <p class="py-2">{{ post.content }}</p>
+      <div class="py-2 prose" v-html="post.content"></div>
       <button
         @click="$router.go(-1)"
         class="border-2 bg-light-blue-400 rounded-lg py-1 px-2"

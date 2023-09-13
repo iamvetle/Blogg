@@ -84,7 +84,11 @@ iiiiiiiiiiii<template>
 	
 	
 			</bubble-menu>
-			<editor-content :editor="editor" />
+			<div>
+				<editor-content :editor="editor" />
+			</div>
+			<div><button @click="publishPost">punlish</button></div>
+
 		</div>
 		<!-- <pre><code>{{ html }}</code></pre> -->
 		</div>
@@ -104,6 +108,7 @@ import Bold from '@tiptap/extension-bold'
 import Blockquote from '@tiptap/extension-blockquote'
 import Dropcursor from '@tiptap/extension-dropcursor'
 import Image from '@tiptap/extension-image'
+import Starterkit from '@tiptap/starter-kit'
 
 const editor = useEditor({
 "type": "doc",
@@ -114,6 +119,7 @@ const editor = useEditor({
 	}),
 	Blockquote,
 	Image,
+	Starterkit,
 	Dropcursor,
 	Document,
 	Paragraph,
@@ -185,6 +191,24 @@ function addImage() {
 	}
 	}
 
+
+const publishPost = async () => {
+	
+	
+
+	const { title, body } = extractTitleAndContent(html.value)
+
+	console.log(title)
+	let request_body = {
+		"title":title,
+		"content":body,
+	}
+
+	const baseURL = "http://localhost:8888/api/newpost/"
+	await createNewPost(baseURL, request_body)
+
+	editor.value.commands.clearContent()
+}
 </script>
 
 <style scoped>
