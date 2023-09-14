@@ -56,6 +56,7 @@ declare global {
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
   const resolveComponent: typeof import('vue')['resolveComponent']
+  const searchRequest: typeof import('./composables/searchRequest')['searchRequest']
   const setLocalInfo: typeof import('./composables/setLocalInfo')['setLocalInfo']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
@@ -133,6 +134,7 @@ declare module 'vue' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
+    readonly searchRequest: UnwrapRef<typeof import('./composables/searchRequest')['searchRequest']>
     readonly setLocalInfo: UnwrapRef<typeof import('./composables/setLocalInfo')['setLocalInfo']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
@@ -204,6 +206,7 @@ declare module '@vue/runtime-core' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
+    readonly searchRequest: UnwrapRef<typeof import('./composables/searchRequest')['searchRequest']>
     readonly setLocalInfo: UnwrapRef<typeof import('./composables/setLocalInfo')['setLocalInfo']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
