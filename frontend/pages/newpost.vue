@@ -13,9 +13,9 @@
 
         <!-- icons -->
         <div class="icons flex text-gray-500 m-2">
-          <div class="count ml-auto text-gray-400 text-xs font-semibold">
+          <!-- <div class="count ml-auto text-gray-400 text-xs font-semibold">
             0/300
-          </div>
+          </div> -->
           <!-- Maybe later-->
         </div>
         <!-- buttons -->

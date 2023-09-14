@@ -7,7 +7,7 @@ vi.stubGlobal('setPageLayout', () => {
     return null
 })
 
-describe('login page testing', () => {
+describe('index page testing', () => {
     let wrapper;
     let store;
     let pinia;

@@ -106,7 +106,7 @@ const emit = defineEmits()
 
 const editor = useEditor({
 "type": "doc",
-	content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
+	content: '<h2>- title</h2><p>- content</p>',
 	extensions: [
 	Heading.configure({
 	levels: [2,3,4]

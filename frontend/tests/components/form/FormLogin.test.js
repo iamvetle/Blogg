@@ -1,12 +1,24 @@
 import { mount } from '@vue/test-utils'
-import { FormLogin } from '~/components/form/FormLogin.vue'
+import { createTestingPinia } from '@pinia/testing'
+import { useGeneralStore } from '~/store/generalStore'
+import FormLogin from '~/components/form/FormLogin.vue'
 
-describe("testing login form", () => {
-    let wrapper
-    let store
-    let pinia
+describe('FormLogin page testing', () => {
+    let wrapper;
+    let store;
+    let pinia;
 
     beforeEach(() => {
-        wrapper = mount(FormLogin)
+        pinia = createTestingPinia()
+        store = useGeneralStore(pinia)
+        wrapper = mount(FormLogin, {
+            global: {
+                plugins: [pinia],
+            },
+        })
+    })
+
+    test('exists', () => {
+        expect(wrapper.exists()).toBe(true)
     })
 })
