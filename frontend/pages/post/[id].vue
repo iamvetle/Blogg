@@ -4,14 +4,14 @@
       v-if="post"
       class="px-[60px] py-[30px] col-start-5 col-span-4 bg-white"
     >
-      <p class="text-3xl py-5">{{ post.title.toUpperCase() }}</p>
-      <small>Published {{ post.date_published }}</small>
+      <p class="text-3xl py-5 prose">{{ post.title.toUpperCase() }}</p>
+      <small class="prose">Published {{ post.date_published }}</small>
       <img
         :src="noimage"
         alt="idk"
         class="pt-1 rounded-sm h-auto max-w-3/4"
       />
-      <p class="pt-3 font-bold">- {{ post.author.username }}</p>
+      <p class="pt-3 font-bold prose">- {{ post.author.username }}</p>
       <div class="py-2 prose" v-html="post.content"></div>
       <button
         @click="$router.go(-1)"

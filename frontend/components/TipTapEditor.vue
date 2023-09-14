@@ -1,6 +1,6 @@
 <template>
-	<div class="grid-cols-12 grid">
-		<div class="md:col-start-4 md:col-span-6 col-start-3 col-span-8 border" id="editor-container">
+	<div class="p-2">
+		<div class="w-full" id="editor-container">
 		<div id="editor-area">
 			<floating-menu
 			:editor="editor"
@@ -17,16 +17,19 @@
 				<img class="h-5 flex items-center" src="~/assets/icons/link.svg" alt="link">
 			</button>
 
+			<button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
+				class="">
+				<img class="h-5 flex items-center" src="~/assets/icons/h-1.svg">
+			</button>
+	
+				<button @click="editor.chain().focus().toggleHeading({ level: 4 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }"
+				class="">
+				<img class="h-5 flex items-center" src="~/assets/icons/h-2.svg">
+			</button>
+
 			<button @click="editor.chain().focus().setHorizontalRule().run()">
 				<img class="h-5 flex items-center" src="~/assets/separator.svg" alt="seperator">
 			</button>		
-	
-			<button @click="editor.chain().focus().toggleCode().run()" :class="{ 'is-active': editor.isActive('code') }">
-				<img class="h-5 flex items-center" src="~/assets/icons/code-view.svg" alt="code">
-			</button>
-	
-	
-	
 	
 	
 			</floating-menu>
@@ -49,16 +52,9 @@
 			<button @click="editor.chain().focus().toggleUnderline().run()" :class="{ 'is-active': editor.isActive('underline') }">
 				<img class="h-5 flex items-center" src="~/assets/icons/underline.svg">
 			</button>
-	
-	
-				<button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
-				class="">
-				<img class="h-5 flex items-center" src="~/assets/icons/h-1.svg">
-			</button>
-	
-				<button @click="editor.chain().focus().toggleHeading({ level: 4 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }"
-				class="">
-				<img class="h-5 flex items-center" src="~/assets/icons/h-2.svg">
+
+			<button @click="editor.chain().focus().toggleCode().run()" :class="{ 'is-active': editor.isActive('code') }">
+				<img class="h-5 flex items-center" src="~/assets/icons/code-view.svg" alt="code">
 			</button>
 	
 				<button @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor.isActive('blockquote') }"
@@ -70,11 +66,24 @@
 			<div>
 				<editor-content :editor="editor" />
 			</div>
-			<div><button @click="publishPost">punlish</button></div>
 
 		</div>
 		<!-- <pre><code>{{ html }}</code></pre> -->
 		</div>
+		<div class="buttons flex pt-32">
+          <button
+          class="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto"
+          @click="editor.commands.clearContent"
+		  >
+            Cancel
+          </button>
+          <button
+		  @click="newPostMaterial"
+            class="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500"
+          >
+            Post
+          </button>
+          </div>
 </div>
 </template>
 
@@ -92,6 +101,8 @@ import Blockquote from '@tiptap/extension-blockquote'
 import Dropcursor from '@tiptap/extension-dropcursor'
 import Image from '@tiptap/extension-image'
 import Starterkit from '@tiptap/starter-kit'
+
+const emit = defineEmits()
 
 const editor = useEditor({
 "type": "doc",
@@ -175,9 +186,7 @@ function addImage() {
 	}
 
 
-const publishPost = async () => {
-	
-	
+const newPostMaterial = async () => {
 
 	const { title, body } = extractTitleAndContent(html.value)
 
@@ -187,8 +196,8 @@ const publishPost = async () => {
 		"content":body,
 	}
 
-	const baseURL = "http://localhost:8888/api/newpost/"
-	await createNewPost(baseURL, request_body)
+	// emit to parent component
+	emit('newPostMaterial', request_body)
 
 	editor.value.commands.clearContent()
 }
