@@ -15,6 +15,7 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const effectScope: typeof import('vue')['effectScope']
+  const extractTitleAndContent: typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']
   const fetchAllFollowers: typeof import('./composables/fetchAllFollowers')['fetchAllFollowers']
   const fetchAllPosts: typeof import('./composables/fetchAllPosts')['fetchAllPosts']
   const fetchMyAccount: typeof import('./composables/fetchPersonalUser')['fetchMyAccount']
@@ -94,6 +95,7 @@ declare module 'vue' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fetchAllFollowers: UnwrapRef<typeof import('./composables/fetchAllFollowers')['fetchAllFollowers']>
     readonly fetchPersonalPosts: UnwrapRef<typeof import('./composables/fetchPersonalPosts')['fetchPersonalPosts']>
     readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/fetchPersonalUser')['fetchPersonalUser']>
@@ -164,6 +166,7 @@ declare module '@vue/runtime-core' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fetchAllFollowers: UnwrapRef<typeof import('./composables/fetchAllFollowers')['fetchAllFollowers']>
     readonly fetchPersonalPosts: UnwrapRef<typeof import('./composables/fetchPersonalPosts')['fetchPersonalPosts']>
     readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/fetchPersonalUser')['fetchPersonalUser']>

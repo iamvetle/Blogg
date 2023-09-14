@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from "@/store/generalStore";
+import { useGeneralStore } from "~/store/generalStore";
 const store = useGeneralStore();
 
 const storeValue = computed(() => store.isAuthenticated);
