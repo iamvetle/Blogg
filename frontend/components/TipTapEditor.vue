@@ -1,6 +1,6 @@
 <template>
 	<div class="p-2">
-		<div class="w-full" id="editor-container">
+		<div class="w-full min-h-[280px]" id="editor-container">
 		<div id="editor-area">
 			<floating-menu
 			:editor="editor"
@@ -71,19 +71,19 @@
 		<!-- <pre><code>{{ html }}</code></pre> -->
 		</div>
 		<div class="buttons flex pt-32">
-          <button
-          class="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto"
-          @click="editor.commands.clearContent"
-		  >
-            Cancel
-          </button>
-          <button
-		  @click="newPostMaterial"
-            class="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500"
-          >
-            Post
-          </button>
-          </div>
+		<button
+		class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
+		@click="editor.commands.clearContent"
+		>
+			Cancel
+		</button>
+		<button
+		@click="newPostMaterial"
+			class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
+		>
+			Post
+		</button>
+		</div>
 </div>
 </template>
 
@@ -109,7 +109,7 @@ const editor = useEditor({
 	content: '<h2>- title</h2><p>- content</p>',
 	extensions: [
 	Heading.configure({
-	levels: [2,3,4]
+	levels: [1,2,3,4]
 	}),
 	Blockquote,
 	Image,

@@ -31,9 +31,6 @@
 <script setup lang="ts">
 // huske definepagedata senere
 
-const titleInput: Ref<string> = ref("");
-const textInput: Ref<string> = ref("");
-const baseURL = "http://localhost:8888/api/newpost/";
 const postState = ref(false);
 
 const publishPost = async (request_body : object) => {
