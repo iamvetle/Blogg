@@ -65,5 +65,24 @@ class CreatePostView(APIView):
     def get(self, request):
         return Response("Authorized:", status=status.HTTP_200_OK)
 
+
+class SearchView(APIView): ## filters based on username
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        
+        search_query = request.query_params.get('q', None)
+        print(search_query)
+                                
+        search_results = Post.objects.filter(title__icontains=search_query)
+        
+        serializer = PostSerializer(search_results, many=True)
+        
+        print(serializer.data)
+        return Response(serializer.data)
+    
+
+
+
 #####
 

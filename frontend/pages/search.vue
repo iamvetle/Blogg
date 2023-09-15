@@ -15,19 +15,21 @@
 <script setup lang="ts">
 
 const search_input = ref("")
-const results = ref(null)
+const results = ref<object | null>(null)
 
 
 const trySearch = async () => {
 
     if (search_input.value.trim() != null) {
 
-        const baseURL = "http://localhost:8888/api/search/"
-    
-        results.value = await searchRequest(baseURL, search_input.value)
+        console.log(search_input.value)
 
-        if (results != null) {
-            console.log("search results retrieved")
+        const baseURL = `http://localhost:8888/api/search?q=${search_input.value}`
+    
+        results.value = await searchRequest(baseURL)
+
+        if (results.value != null) {
+            console.log("post retrived apperantly")
         }
 
     }
