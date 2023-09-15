@@ -36,7 +36,7 @@
 	</button>
 	<div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
 		<div class="flex">
-			<input class="h-8 mx-2 w-auto flex" type="text" placeholder="Search">
+			<input class="h-8 mx-2 w-auto flex" type="text" placeholder="Search" v-model="search_input" @keyup.enter="trySearch">
 			
 			<ul
 			class="flex flex-col font-medium mt-4 rounded-lg bg-gray-primary-low md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent"
@@ -90,11 +90,29 @@
 </template>
 
 <script setup lang="ts">
+//@ts-nocheck
+
 import { initFlowbite } from "flowbite";
 import { useGeneralStore } from "~/store/generalStore";
 
+const search_input = ref("")
 const store = useGeneralStore()
 const authenticated = computed(() => store.isAuthenticated)
+const router = useRouter()
+
+const trySearch = async () => {
+
+	const search_query = search_input.value
+	search_input.value = ""
+
+	console.log(search_query)
+    
+	router.push({
+		path:"/search",
+		query:{ q: search_query },
+	})
+
+}
 
 onMounted(initFlowbite);
 </script>

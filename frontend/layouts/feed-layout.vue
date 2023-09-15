@@ -11,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+
 // Used by index.vue
 
 console.log("'feed-layout' layout is selected");

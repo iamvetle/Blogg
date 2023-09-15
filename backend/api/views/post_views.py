@@ -72,14 +72,20 @@ class SearchView(APIView): ## filters based on username
     def get(self, request):
         
         search_query = request.query_params.get('q', None)
-        print(search_query)
-                                
-        search_results = Post.objects.filter(title__icontains=search_query)
-        
-        serializer = PostSerializer(search_results, many=True)
-        
-        print(serializer.data)
-        return Response(serializer.data)
+        if search_query != None:           
+            
+            print("search query is:", search_query)
+            search_results = Post.objects.filter(title__icontains=search_query)
+            
+            if search_results != None:
+                serializer = PostSerializer(search_results, many=True)
+                print(serializer.data)
+                
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response("No posts found", status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
     
 
 

@@ -1,8 +1,7 @@
 <template>
 <article
-	class="p-6 bg-plain rounded-lg border-primary-base border-2 shadow-md"
->
-	<!-- Type one -->
+	class="p-6 bg-plain rounded-lg border-primary-base border-2 shadow-md">
+
 	<div class="flex justify-end items-center mb-5 text-gray-500">
 	<span class="text-sm">{{ postDetail.date_published }}</span>
 	</div>
@@ -10,8 +9,8 @@
 	class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
 	>
 	<a href="#">{{ postDetail.title }}</a>
-	</h2>
-	<div class="mb-5 font-light text-gray-500 dark:text-gray-400" v-html="postDetail?.content_snippet">
+	</h2><!-- fix this to better later that is v-html--> 
+	<div class="mb-5 font-light text-gray-500 dark:text-gray-400" v-html="postDetail?.content_snippet || postDetail?.content"> 
 	</div>
 	<div class="flex justify-between items-center">
 	<div class="flex items-center space-x-4">
