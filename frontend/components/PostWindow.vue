@@ -11,7 +11,7 @@
 	>
 	<a href="#">{{ postDetail.title }}</a>
 	</h2>
-	<div class="mb-5 font-light text-gray-500 dark:text-gray-400" v-html="postDetail.content_snippet">
+	<div class="mb-5 font-light text-gray-500 dark:text-gray-400" v-html="postDetail?.content_snippet">
 	</div>
 	<div class="flex justify-between items-center">
 	<div class="flex items-center space-x-4">
