@@ -17,7 +17,7 @@ from rest_framework import status
 from ..models import Post
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
-from .other import CustomPageNumberPagination
+from .other import CustomPageNumberPagination, CustomLimitOffsetPagination
 
 CustomUser = get_user_model()
 
@@ -38,7 +38,7 @@ class PostSnippetService():
     def get_posts(request):
         queryset = Post.objects.all().order_by('-date_published')
         
-        paginator = CustomPageNumberPagination() # look at other_services.py for more info
+        paginator = CustomLimitOffsetPagination() # look at other_services.py for more info
         paginated_queryset = paginator.paginate_queryset(queryset, request)
 
         serializer = PostSnippetSerializer(paginated_queryset, many=True)

@@ -83,7 +83,8 @@ const click_previous_page = async () => {
 	}
 }
 
-const click_last_page = async () => {
+// FIX: later
+const click_last_page = async () => { 
 
 	const new_page_link = `${store.baseFeedURL}?page=${store.total_pages_count}`
 

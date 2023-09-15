@@ -18,6 +18,8 @@
 <script setup lang="ts">
 //@ts-nocheck
 
+// TODO: Install pagnation, and search store posts
+
 const search_input = ref("")
 
 const results = ref<object | null>(null)

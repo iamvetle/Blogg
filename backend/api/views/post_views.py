@@ -12,8 +12,6 @@ from rest_framework.pagination import PageNumberPagination
 
 CustomUser = get_user_model()
 
-### POST RETRIEVEL
-
 class MyPosts(APIView):
     permission_classes = [IsAuthenticated]
     
@@ -25,14 +23,15 @@ class MyPosts(APIView):
         if serializer.is_valid:
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-class AllPostsView(APIView): # Retrieves ALL posts # not used at the moment
+# not used at the moment
+class AllPostsView(APIView): 
+    """ retrieves all posts if client is authenticated """
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
         queryset = Post.objects.all().order_by('-date_published')
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
 class PostSnippetsView(APIView):
     permission_classes = [IsAuthenticated]
 

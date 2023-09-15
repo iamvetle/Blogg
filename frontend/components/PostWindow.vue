@@ -8,7 +8,7 @@
 	<h2
 	class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
 	>
-	<a href="#">{{ postDetail.title }}</a>
+	<nuxt-link :to="postLink">{{ postDetail.title }}</nuxt-link>
 	</h2><!-- fix this to better later that is v-html--> 
 	<div class="mb-5 font-light text-gray-500 dark:text-gray-400" v-html="postDetail?.content_snippet || postDetail?.content"> 
 	</div>
