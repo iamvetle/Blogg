@@ -98,6 +98,14 @@
 import { useEditor, EditorContent, FloatingMenu } from '@tiptap/vue-3'
 import { BubbleMenu } from '@tiptap/vue-3';
 import Document from '@tiptap/extension-document'
+import BulletList from '@tiptap/extension-bullet-list'
+import CodeBlock from '@tiptap/extension-code-block'
+import HardBreak from '@tiptap/extension-hard-break'
+import HorizontalRule from '@tiptap/extension-horizontal-rule'
+import ListItem from '@tiptap/extension-list-item'
+import OrderedList from '@tiptap/extension-ordered-list'
+import Code from '@tiptap/extension-code'
+import Strike from '@tiptap/extension-strike'
 import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
 import Heading from '@tiptap/extension-heading'
@@ -106,8 +114,9 @@ import Link from '@tiptap/extension-link'
 import Bold from '@tiptap/extension-bold'
 import Blockquote from '@tiptap/extension-blockquote'
 import Dropcursor from '@tiptap/extension-dropcursor'
+import Gapcursor from '@tiptap/extension-gapcursor'
+import History from '@tiptap/extension-history'
 import Image from '@tiptap/extension-image'
-import Starterkit from '@tiptap/starter-kit'
 
 const emit = defineEmits()
 const errorHappened = ref(null)
@@ -116,20 +125,28 @@ const editor = useEditor({
 "type": "doc",
 	content: '<h2>- title</h2><p>- content</p>',
 	extensions: [
-	Heading.configure({
-	levels: [1,2,3,4]
-	}),
-	Blockquote,
-	Image,
-	Starterkit,
-	Dropcursor,
-	Document,
-	Paragraph,
-	Text,
-	Italic,
-	Link,
-	Bold,
-	FloatingMenu,
+		Heading.configure({
+		levels: [1,2,3,4]
+		}),
+		Blockquote,
+		BulletList,
+		Image,
+		CodeBlock,
+		HardBreak,
+		HorizontalRule,
+		ListItem,
+		OrderedList,
+		Strike,
+		Gapcursor,
+		History,
+		Dropcursor,
+		Document,
+		Paragraph,
+		Text,
+		Italic,
+		Link,
+		Bold,
+		FloatingMenu,
 
 	],
 	editorProps: {
@@ -178,10 +195,7 @@ const setLink = () => {
 		.run()
 	}
 
-// medium (når hover):
-// ""BUBBLEMENU" bold, italic, link, h3, h4, blockquote, (private comment)
-// ""FLOATINGMENU" bold, italic, link, h3, h4, blockquote, (private comment)
-
+// husk at hermer etter medium
 
 // methods 
 
