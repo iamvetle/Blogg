@@ -68,8 +68,9 @@
 			</div>
 
 		</div>
-		<!-- <pre><code>{{ html }}</code></pre> -->
-		</div>
+		<div v-if="errorHappened === true">nothing was posted -> an error happened. something was wrong with the input</div>
+		<div v-if="errorHappened === false">Everything went A OK</div>	
+	</div>
 		<div class="buttons flex pt-32">
 		<button
 		class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
@@ -84,6 +85,12 @@
 			Post
 		</button>
 		</div>
+		<hr class="my-12">
+		<div class="pt-[70px] pb-[60px]">
+			<pre><code>{{ html }}</code></pre>
+
+		</div>
+
 </div>
 </template>
 
@@ -103,6 +110,7 @@ import Image from '@tiptap/extension-image'
 import Starterkit from '@tiptap/starter-kit'
 
 const emit = defineEmits()
+const errorHappened = ref(null)
 
 const editor = useEditor({
 "type": "doc",
@@ -191,15 +199,25 @@ const newPostMaterial = async () => {
 	const { title, body } = extractTitleAndContent(html.value)
 
 	console.log(title)
+
+	if (title.trim() != "" && body.trim() != "") {
 	let request_body = {
 		"title":title,
 		"content":body,
 	}
-
-	// emit to parent component
 	emit('newPostMaterial', request_body)
 
+	errorHappened.value = false
 	editor.value.commands.clearContent()
+
+} else {
+	console.log("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
+	errorHappened.value = true
+
+}
+
+	// emit to parent component
+
 }
 </script>
 
