@@ -5,9 +5,7 @@
             <button @click="trySearch(search_input)" id="search_button">Search</button>
         </div>
         <div v-if="results" v-for="result in results">
-            <ul>
-                <PostWindow :postDetail="result" :key="results.id"/>
-            </ul>
+            <PostWindow :postDetail="result" :key="result.id"/>
         </div>
         <p v-if="no_posts_found">No results for '{{ last_search }}'</p>
     </div>
@@ -29,12 +27,12 @@ const router = useRouter()
 const last_search = ref<string | null>(null)
 
 
-const trySearch = async (search_query) => {
+const trySearch = async (search_query:string) => {
     no_posts_found.value = false
     
     const response = await searchRequest(`http://localhost:8888/api/search?q=${search_query}`)
 
-    router.replace({
+    router?.replace({
         query:{ q:search_query}
     })
     
@@ -42,7 +40,7 @@ const trySearch = async (search_query) => {
 
     last_search.value = search_query
 
-    if (response.length == 0) {
+    if (response?.length == 0) {
         no_posts_found.value = true 
     }
 
@@ -53,7 +51,7 @@ const trySearch = async (search_query) => {
 
 onMounted( async () => {
     
-    const search_query = route.query.q
+    const search_query = route?.query?.q as string
     
     if (search_query != null) {
         console.log(route.fullPath)

@@ -3,6 +3,10 @@ import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import loggut from '~/pages/loggut.vue'
 
+vi.stubGlobal("navigateTo", () => {
+    return null
+})
+
 describe('loggut page testing', () => {
     let wrapper;
     let store;

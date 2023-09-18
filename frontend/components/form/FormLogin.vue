@@ -12,7 +12,6 @@
 		submit-label="Sign in"
 		@submit="submitForm"
 		:actions="false"
-		#default="{ value }"
 	>
 		<div>
 		<FormKit
@@ -71,7 +70,7 @@ const loginsucess = ref(false);
 const baseURL = "http://localhost:8888/api/login/";
 const { redirect } = defineProps(["redirect"]);
 
-async function submitForm(formData: object) {
+const submitForm = async (formData: object) => {
 const response = await postForm(baseURL, formData)
 
 if (response?.token != null || response?.username != null) {

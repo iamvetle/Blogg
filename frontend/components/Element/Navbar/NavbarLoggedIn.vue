@@ -90,7 +90,6 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
 
 import { initFlowbite } from "flowbite";
 import { useGeneralStore } from "~/store/generalStore";

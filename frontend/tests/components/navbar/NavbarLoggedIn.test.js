@@ -3,6 +3,10 @@ import NavbarLoggedInVue from '~/components/Element/Navbar/NavbarLoggedIn.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 
+vi.stubGlobal('useRouter', () => {
+    return null
+})
+
 describe("testing NavbarLoggedIn component", () => {
     let wrapper
     let store
@@ -39,8 +43,8 @@ describe("testing NavbarLoggedIn component", () => {
         expect(wrapper.text()).toContain("testname")
     })
 
-    test("username does not render", () => {
-        wrapper.unmount()
+    test("username does not render", async () => {
+        await wrapper.unmount()
 
         store.isAuthenticated = false
 
@@ -51,6 +55,23 @@ describe("testing NavbarLoggedIn component", () => {
             }
     
         })
+
         expect(wrapper.text()).not.toContain("testname")
+    })
+
+    it("'Authenticated' variable should follow pinia store variable", async () => {
+        await wrapper.unmount()
+
+        store.isAuthenticated = true
+
+        wrapper = mount(NavbarLoggedInVue, {
+            global: {
+                plugins: [pinia]
+    
+            }
+    
+        });
+
+        expect(wrapper.vm.authenticated).toBe(true)
     })
 })

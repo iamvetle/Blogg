@@ -13,7 +13,6 @@
         submit-label="Create account"
         @submit="submitForm"
         :actions="false"
-        #default="{ value }"
       >
         <div>
           <FormKit

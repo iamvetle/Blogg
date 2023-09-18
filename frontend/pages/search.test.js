@@ -3,17 +3,31 @@ import { mount } from '@vue/test-utils'
 
 if (import.meta.vitest) {
 
-let wrapper
+vi.stubGlobal("useRoute", () => {
+    return null
+})
 
-    
+vi.stubGlobal("useRouter", () => {
+    return null
+})
+
+
+vi.stubGlobal("trySearch", () => {
+    return null
+})
+
+vi.stubGlobal("onMounted", () => {
+    return null
+})
+
+
+let wrapper
 
     describe("testing search page", () => {
         
         wrapper = mount(search)
 
         test("exists", () => {
-            const wrapper = mount(search)
-
 
             expect(wrapper.exists()).toBe(true)            
         })
@@ -36,15 +50,7 @@ let wrapper
             expect(typeof wrapper.vm.trySearch).toBe('function')
         })
 
-        test("click button and function works", async () => {
-            
-            await wrapper.find('button').trigger('click')
-            
-            // expect(wrapper.vm.trySearch).
-
-        })
-
-        test("results are displayed if there are results", async () => {
+        test("results is passed as prop to child component", async () => {
             
             wrapper.vm.results = {
                 result1:"result 1",
@@ -53,8 +59,9 @@ let wrapper
 
             await nextTick()
 
-            expect(wrapper.text()).toContain("result 1")
-            expect(wrapper.text()).toContain("result 2")
+            console.log(wrapper.html())
+            expect(wrapper.html()).toContain("result 1")
+            expect(wrapper.html()).toContain("result 2")
 
         })
     })

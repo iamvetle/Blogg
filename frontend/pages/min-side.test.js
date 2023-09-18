@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore';
-import min-side from '~/pages/min-side.vue' // dont know why not working
+import minSideVue from './min-side.vue';  // dont know why not working
 
 describe('min-side page testing', () => {
     let wrapper;
@@ -11,7 +11,7 @@ describe('min-side page testing', () => {
     beforeEach(() => {
         pinia = createTestingPinia()
         store = useGeneralStore(pinia)
-        wrapper = mount(min-side, {
+        wrapper = mount(minSideVue, {
             global: {
                 plugins: [pinia],
             },

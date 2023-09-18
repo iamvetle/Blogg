@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>62/62</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>62/62</span>
+                <span class='fraction'>63/63</span>
             </div>
         
             
@@ -125,7 +125,9 @@
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -188,53 +190,54 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-&lt;article
-	class="p-6 bg-plain rounded-lg border-primary-base border-2 shadow-md"
-&gt;
-	&lt;!-- Type one --&gt;
-	&lt;div class="flex justify-end items-center mb-5 text-gray-500"&gt;
-	&lt;span class="text-sm"&gt;{{ postDetail.date_published }}&lt;/span&gt;
-	&lt;/div&gt;
-	&lt;h2
-	class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-	&gt;
-	&lt;a href="#"&gt;{{ postDetail.title }}&lt;/a&gt;
-	&lt;/h2&gt;
-	&lt;p class="mb-5 font-light text-gray-500 dark:text-gray-400"&gt;
-	{{ postDetail.content_snippet }}
-	&lt;/p&gt;
-	&lt;div class="flex justify-between items-center"&gt;
-	&lt;div class="flex items-center space-x-4"&gt;
-		&lt;img
-		:src="profile_image"
-		class="w-7 h-7 rounded-full"
-		/&gt;
-		&lt;nuxt-link :to="author_link"&gt;
-		&lt;span class="font-medium dark:text-white"&gt;
-			{{  postDetail.author.username }}
-		&lt;/span&gt;
-		&lt;/nuxt-link&gt;
-	&lt;/div&gt;	
-	&lt;nuxt-link
-		:to="postLink"
-		class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
-	&gt;
-		Read more
-		&lt;svg
-		class="ml-2 w-4 h-4"
-		fill="currentColor"
-		viewBox="0 0 20 20"
-		xmlns="http://www.w3.org/2000/svg"
+	&lt;div&gt;
+	
+	&lt;article
+		class="p-6 bg-plain rounded-lg border-primary-base border-2 shadow-md"&gt;
+	
+		&lt;div class="flex justify-end items-center mb-5 text-gray-500"&gt;
+		&lt;span class="text-sm"&gt;{{ postDetail.date_published }}&lt;/span&gt;
+		&lt;/div&gt;
+		&lt;h2
+		class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
 		&gt;
-		&lt;path
-			fill-rule="evenodd"
-			d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-			clip-rule="evenodd"
-		&gt;&lt;/path&gt;
-		&lt;/svg&gt;
-	&lt;/nuxt-link&gt;
+		&lt;nuxt-link :to="postLink"&gt;{{ postDetail.title }}&lt;/nuxt-link&gt;
+		&lt;/h2&gt;&lt;!-- fix this to better later that is v-html--&gt;
+		&lt;div class="mb-5 font-light text-gray-500 dark:text-gray-400" v-html="postDetail?.<span class="branch-0 cbranch-no" title="branch not covered" >content_snippet || postDetail?.content"&gt;</span>
+		&lt;/div&gt;
+		&lt;div class="flex justify-between items-center"&gt;
+		&lt;div class="flex items-center space-x-4"&gt;
+			&lt;img
+			:src="profile_image"
+			class="w-7 h-7 rounded-full"
+			/&gt;
+			&lt;nuxt-link :to="author_link"&gt;
+			&lt;span class="font-medium dark:text-white"&gt;
+				{{  postDetail.author.username }}
+			&lt;/span&gt;
+			&lt;/nuxt-link&gt;
+		&lt;/div&gt;
+		&lt;nuxt-link
+			:to="postLink"
+			class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
+		&gt;
+			Read more
+			&lt;svg
+			class="ml-2 w-4 h-4"
+			fill="currentColor"
+			viewBox="0 0 20 20"
+			xmlns="http://www.w3.org/2000/svg"
+			&gt;
+			&lt;path
+				fill-rule="evenodd"
+				d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+				clip-rule="evenodd"
+			&gt;&lt;/path&gt;
+			&lt;/svg&gt;
+		&lt;/nuxt-link&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
 	&lt;/div&gt;
-&lt;/article&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script setup lang="ts"&gt;
@@ -256,7 +259,7 @@ const profile_image = no
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-12T06:48:17.497Z
+                at 2023-09-18T12:41:55.419Z
             </div>
         <script src="../prettify.js"></script>
         <script>

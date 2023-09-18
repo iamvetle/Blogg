@@ -105,14 +105,12 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
 
 import profile_picture from '~/assets/no.png'
 import three_doties from '~/assets/three-dots.svg'
 
 const { sideBarProp, num_of_followers } = defineProps(["sideBarProp", "num_of_followers"]);
 
-const route = useRoute()
 const hover = ref(false)
 const temp_profile_picture = profile_picture
 const three_dots = three_doties
@@ -123,7 +121,7 @@ const followingState = ref(false)
 
 const followClass = ref("bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-secondary-low")
 
-const hoverAction = (text) => {
+const hoverAction = (text:string) => {
     if ( text === "on" && followingState.value === true && followText.value === "Following") {
         followText.value = "Unfollow"
         followClass.value = "bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-warning-low"
