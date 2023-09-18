@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "tests\\components\\node_modules\\.vitest": true,
+    "tests\\components\\node_modules": true
+  }
+}
