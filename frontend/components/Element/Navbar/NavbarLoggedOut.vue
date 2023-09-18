@@ -1,75 +1,40 @@
 <template>
-  <nav class="border-gray-200 bg-primary-high">
-    <div
-      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-    >
-      <div class="flex items-center">
-        <nuxt-link to="/">
-        <span
-          class="self-center flex text-2xl font-semibold whitespace-nowrap text-plain"
-          >The Blog</span>
-      </nuxt-link>
-      </div>
-      <button
-        data-collapse-toggle="navbar-solid-bg"
-        type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-plain rounded-lg md:hidden hover:bg-gray-100 hover:text-primary-high focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-solid-bg"
-        aria-expanded="false"
-      >
-        <span class="sr-only">Open main menu</span>
-        <svg
-          class="w-5 h-5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 17 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15"
-          />
-        </svg>
-      </button>
-      <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+	<div id="navbar-wrapper" class="items-center">
+	<nav class="border-gray-200 bg-primary-high items-center">
+		<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+		<span class="ps-7 self-center text-2xl font-semibold whitespace-nowrap text-plain">
+			<nuxt-link to="/">The Blog</nuxt-link>
+		</span>
+		<div class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-search">
+			<div id="nav-menu" class="flex items-center">
         <ul
-        class="flex flex-col font-medium mt-4 rounded-lg bg-gray-primary-low md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent"
-        >
-          <li>
-            <nuxt-link
-              to="/"
-              class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
-              >Hjem</nuxt-link
-            >
-          </li>
-          <li>
-            <nuxt-link
-              to="/registrer/"
-              class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
-              >Registrer</nuxt-link
-            >
-          </li>
-          <li>
-            <nuxt-link
-              to="/login"
-              class="block py-2 pl-3 pr-4 text-plain rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-low md:p-0"
-              >Logg inn</nuxt-link
-            >
-          </li>
+        class="flex font-medium mt-4 rounded-lg bg-gray-50 md:flex-row lg:space-x-6 md:space-x-4 md:mt-0 md:bg-transparent items-center"
+                    >
+                    <li class="h-10 flex text-plain  hover:text-secondary-low border-plain border-2 p-1 rounded-md items-center hover:border-secondary-base">
+          <nuxt-link
+          to="/login"
+          class="flex items-center text-plain py-2 pl-3 pr-4 rounded md:p-0"
+          >Login</nuxt-link
+          >
+        </li>
+        <li class="flex shadow-md h-10 p-1 rounded-md items-center bg-secondary-base hover:bg-secondary-low">
+          <nuxt-link
+          to="/registrer"
+          class="flex items-center py-2 pl-3 pr-4 text-plain md:hover:bg-transparent md:p-0"
+          >Registrer</nuxt-link
+          >
+        </li>
         </ul>
       </div>
-    </div>
-  </nav>
+		</div>
+		</div>
+	</nav>
+	</div>
 </template>
 
 <script setup lang="ts">
-import { initFlowbite } from "flowbite";
 import example from "~/assets/example.png"
 
 const image = example
 
-onMounted(initFlowbite);
 </script>
