@@ -19,7 +19,7 @@
 			</svg>
 			<span class="sr-only">Search icon</span>
 			</div>
-			<input v-model="search_input" type="text" id="search-navbar" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
+			<input @keyup.enter="trySearch(search_input)" v-model="search_input" type="text" id="search-navbar" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
 		</div>
 		<button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-plain rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
 			<span class="sr-only">Open main menu</span>
@@ -90,19 +90,23 @@ const search_input = ref("")
 const store = useGeneralStore()
 const authenticated = computed(() => store.isAuthenticated)
 const router = useRouter()
+const route = useRoute()
 
-const trySearch = async () => {
+const trySearch = async (search_query:string) => {
 
-	const search_query = search_input.value
-	search_input.value = ""
+	if ( search_query.trim() != "" ) {
+		
+		const response = await searchRequest(`http://localhost:8888/api/search/?q=${search_query}`) as boolean
+		console.log(search_query)
 
-	console.log(search_query)
-	
-	router.push({
-		path:"/search",
-		query:{ q: search_query },
-	})
-
+		if (response === true) {
+			navigateTo(`/search?q=${search_query}`)
+			store.lastSearch = search_query
+			search_input.value = ""
+		} else {
+			store.lastSearch = ""
+		}
+	}
 }
 
 onMounted(initFlowbite);

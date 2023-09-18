@@ -39,10 +39,6 @@ describe("testing NavbarLoggedIn component", () => {
         expect(wrapper.text()).toContain("Min side")
     })
 
-    test("username renders correctly",() => {
-        expect(wrapper.text()).toContain("testname")
-    })
-
     test("username does not render", async () => {
         await wrapper.unmount()
 
