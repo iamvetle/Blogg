@@ -117,13 +117,14 @@ import Dropcursor from '@tiptap/extension-dropcursor'
 import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
 import Image from '@tiptap/extension-image'
+import Placeholder from '@tiptap/extension-placeholder'
 
 const emit = defineEmits()
 const errorHappened = ref(null)
 
 const editor = useEditor({
 "type": "doc",
-	content: '<h2>- title</h2><p>- content</p>',
+	content: '',
 	extensions: [
 		Heading.configure({
 		levels: [1,2,3,4]
@@ -146,6 +147,9 @@ const editor = useEditor({
 		Italic,
 		Link,
 		Bold,
+		Placeholder.configure({
+			placeholder:'Write something ...'
+		}),
 		FloatingMenu,
 
 	],
@@ -236,5 +240,13 @@ const newPostMaterial = async () => {
 </script>
 
 <style scoped>
+
+.tiptap p.is-editor-empty:first-child::before {
+content: attr(data-placeholder);
+float: left;
+color: #adb5bd;
+pointer-events: none;
+height: 0;
+}
 
 </style>
