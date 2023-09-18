@@ -1,11 +1,15 @@
 <template>
-  <div id="site-wrapper" class="bg-white">
-    <div v-if="store.apiDownError === false">
+  <div id="site-wrapper" class="bg-white ">
+    <div v-if="store.apiDownError === false" class="min-h-screen flex flex-col">
       <ClientOnly>
         <ElementNavbar />
       </ClientOnly>
-      <slot />
-      <ElementFooter />
+<div class="flex-1">
+        <slot/>
+  
+</div>      <div class="">
+        <ElementFooter />
+      </div>
     </div>
     <div v-else>
       <ErrorAPIDown/>
