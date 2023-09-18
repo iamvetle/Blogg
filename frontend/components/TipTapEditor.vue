@@ -239,7 +239,13 @@ const newPostMaterial = async () => {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+/* Basic editor styles */
+.tiptap {
+> * + * {
+	margin-top: 0.75em;
+}
+}
 
 .tiptap p.is-editor-empty:first-child::before {
 content: attr(data-placeholder);

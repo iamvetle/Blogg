@@ -30,7 +30,8 @@ const last_search = ref<string | null>(null)
 const trySearch = async (search_query:string) => {
     no_posts_found.value = false
     
-    const response = await searchRequest(`http://localhost:8888/api/search?q=${search_query}`)
+    const response = await searchRequest(`http://localhost:8888/api/search/?q=${search_query}`)
+    console.log(search_query)
 
     router?.replace({
         query:{ q:search_query}
