@@ -6,7 +6,7 @@ from rest_framework import status
 from ..models import Post
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
-from api.services.post_services import CreatePostService, PostSnippetService
+from api.services.post_services import CreatePostService, PostSnippetService, SearchService
 from django.core.paginator import Paginator
 from rest_framework.pagination import PageNumberPagination
 
@@ -63,26 +63,17 @@ class CreatePostView(APIView):
     
     def get(self, request):
         return Response("Authorized:", status=status.HTTP_200_OK)
-
-
-class SearchView(APIView): ## filters based on username
+    
+class SearchView(APIView): ## filters based on post title
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
         
-        search_query = request.query_params.get('q', None)
-        if search_query != None:           
-            
-            print("search query is:", search_query)
-            search_results = Post.objects.filter(title__icontains=search_query)
-            
-            if search_results != None:
-                serializer = PostSerializer(search_results, many=True)
-                print(serializer.data)
+        response = SearchService.get_search_result_posts(request)
+        
+        if response != None:           
                 
-                return Response(serializer.data, status=status.HTTP_200_OK)
-            else:
-                return Response("No posts found", status=status.HTTP_200_OK)
+            return Response(response, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
     

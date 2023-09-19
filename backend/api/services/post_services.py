@@ -44,3 +44,27 @@ class PostSnippetService():
         serializer = PostSnippetSerializer(paginated_queryset, many=True)
         
         return paginator.get_paginated_response(serializer.data)
+    
+    
+
+class SearchService():
+    ''' gets all filtered post snippets through a post title query, in paginated response '''
+    
+    @staticmethod
+    def get_search_result_posts(request):
+        
+        search_query = request.query_params.get('q', None)
+        print(search_query)
+        
+        if search_query != None:
+            search_results = Post.objects.filter(title__icontains=search_query) # filter (post title)           
+                
+            paginator = CustomLimitOffsetPagination() # del opp så paginator ikke blir knyttet til her
+                    
+            paginated_results = paginator.paginate_queryset(search_results, request)
+
+            serializer = PostSerializer(paginated_results, many=True)
+        
+            return paginator.get_paginated_response(serializer.data)
+        else:
+            return None

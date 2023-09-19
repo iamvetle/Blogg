@@ -16,8 +16,6 @@ from django.core.serializers import serialize
 
 CustomUser = get_user_model()
 
-### USER HANDLING
-
 class MyAccountView(APIView): # Personal account
     permission_classes = [IsAuthenticated]
     

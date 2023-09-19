@@ -96,13 +96,13 @@ const trySearch = async (search_query:string) => {
 
 	if ( search_query.trim() != "" ) {
 		
-		const response = await searchRequest(`http://localhost:8888/api/search/?q=${search_query}`) as boolean
+		const response = await searchRequest(`http://localhost:8888/api/search/?q=${search_query}`)
 		console.log(search_query)
 
 		if (response === true) {
-			navigateTo(`/search?q=${search_query}`)
 			store.lastSearch = search_query
 			search_input.value = ""
+			return navigateTo(`/search?q=${search_query}`)
 		} else {
 			store.lastSearch = ""
 		}
