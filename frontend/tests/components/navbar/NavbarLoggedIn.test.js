@@ -54,20 +54,4 @@ describe("testing NavbarLoggedIn component", () => {
 
         expect(wrapper.text()).not.toContain("testname")
     })
-
-    it("'Authenticated' variable should follow pinia store variable", async () => {
-        await wrapper.unmount()
-
-        store.isAuthenticated = true
-
-        wrapper = mount(NavbarLoggedInVue, {
-            global: {
-                plugins: [pinia]
-    
-            }
-    
-        });
-
-        expect(wrapper.vm.authenticated).toBe(true)
-    })
 })

@@ -88,19 +88,19 @@ import { useSearchStore } from "~/store/searchStore";
 
 const search_input = ref("")
 const store = useSearchStore()
-const router = useRouter()
-const route = useRoute()
 
 const trySearch = async () => {
+	store.lastSearch = search_input.value
 
 	if ( search_input.value.trim() != "" ) {
-		
-		await searchRequest(`http://localhost:8888/api/search/?q=${search_input.value}`)
-		console.log(search_input.value)
 
-		store.lastSearch = search_input.value
+		store.baseSearchURL = `http://localhost:8888/api/search/?q=${search_input.value}`
+		
+		await searchRequest()
+		console.log(search_input.value)
 		search_input.value = ""
-		return navigateTo(`/search?q=${search_input.value}`)
+
+		return await navigateTo(`/search?q=${search_input.value}`)
 	}
 }
 

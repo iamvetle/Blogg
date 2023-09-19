@@ -2,7 +2,7 @@
   <div id="site-wrapper">
     <div v-if="storeValue">
       <TheFeed />
-      <Pagination />
+      <FeedPagination />
     </div>
     <div v-else>
       <TheWait />
@@ -32,13 +32,6 @@ onBeforeMount(() => {
   }
 });
 
-const setLayout = () => {
-  if (store.isAuthenticated === true) {
-    setPageLayout("feed-layout");
-  } else {
-    setPageLayout("blank");
-  }
-};
 </script>
 
 <style scoped lang="scss"></style>

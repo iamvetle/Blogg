@@ -1,8 +1,9 @@
 <template>
     <div id="site-wrapper">
         <h2 class="text-2xl inline">Search results for: <p class="inline pl-2">'{{ store.lastSearch }}'</p></h2>
-        <div v-if="store.searchPosts.results">
+        <div v-if="store.searchPosts">
             <PostWindow v-for="post, index in store.searchPosts.results" :postDetail="post" :key="index"/>
+            <SearchPagination/>
         </div>
         <div>
             
@@ -14,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
 
 // jeg må rewrite hele pagnation vis jeg vil ha det med search også
 
@@ -22,16 +22,9 @@ import { useSearchStore } from '~/store/searchStore';
 
 // TODO: Install pagnation, and search store posts
 
-const search_input = ref("")
 const store = useSearchStore()
 
 const no_posts_found = ref(false)
-const route = useRoute()
-const router = useRouter()
-
-definePageMeta({
-    layout:'default'
-})
 
 </script>
 

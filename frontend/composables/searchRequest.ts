@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useSearchStore } from '../store/searchStore';
 // with the full url query path
-export const searchRequest = async (url: string) => {
+export const searchRequest = async () => {
 
 	if (process.client) {
 try {
@@ -13,13 +13,27 @@ try {
     console.log(token)
     console.log(headers)
 
-	const response = await axios.get(url, { headers });
+	const response = await axios.get(store.baseSearchURL, { headers });
 	console.log(toRaw(response))
 
 	if (response.data != null) {
 		console.log("OK: Followers fetched", response.status, response.data); // print to self
-		store.searchPosts = response.data
+		
+        store.number_of_posts_count = response.data.count
 
+        const calculate_total_pages = () => {
+            let num = store.number_of_posts_count as number / 10
+            return Math.ceil(num)
+        }
+
+        store.total_pages_count = calculate_total_pages()
+        store.next_page_link = response.data.next
+        store.previous_page_link = response.data.previous
+        //store.last_page_link = `http://localhost:8888/api/search/?limit=10&offset${store.total_pages_count*10}`
+        store.current_page = response.data.current_page
+		
+		store.searchPosts = response.data
+				
 		// returns 'custom' response when the request was successfull
 		return true
 	} else {
