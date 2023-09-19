@@ -18,16 +18,20 @@
 
 // jeg må rewrite hele pagnation vis jeg vil ha det med search også
 
-import { useGeneralStore } from '~/store/generalStore'
+import { useSearchStore } from '~/store/searchStore';
 
 // TODO: Install pagnation, and search store posts
 
 const search_input = ref("")
-const store = useGeneralStore()
+const store = useSearchStore()
 
 const no_posts_found = ref(false)
 const route = useRoute()
 const router = useRouter()
+
+definePageMeta({
+    layout:'default'
+})
 
 </script>
 

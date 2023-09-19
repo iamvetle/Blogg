@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { useGeneralStore } from '~/store/generalStore';
+import { useSearchStore } from '../store/searchStore';
 // with the full url query path
 export const searchRequest = async (url: string) => {
 
 	if (process.client) {
 try {
-	const store = useGeneralStore()
+	const store = useSearchStore()
 	const token = localStorage.getItem("token");
 	const headers = {
 	"Authorization": `Token ${token}`,
