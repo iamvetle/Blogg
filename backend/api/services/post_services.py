@@ -63,7 +63,7 @@ class SearchService():
                     
             paginated_results = paginator.paginate_queryset(search_results, request)
 
-            serializer = PostSerializer(paginated_results, many=True)
+            serializer = PostSnippetSerializer(paginated_results, many=True)
         
             return paginator.get_paginated_response(serializer.data)
         else:

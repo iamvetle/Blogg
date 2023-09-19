@@ -4,6 +4,9 @@
         <div v-if="store.searchPosts.results">
             <PostWindow v-for="post, index in store.searchPosts.results" :postDetail="post" :key="index"/>
         </div>
+        <div>
+            
+        </div>
         <p v-if="no_posts_found">No results for ''</p>
     </div>
 
@@ -12,6 +15,8 @@
 
 <script setup lang="ts">
 //@ts-nocheck
+
+// jeg må rewrite hele pagnation vis jeg vil ha det med search også
 
 import { useGeneralStore } from '~/store/generalStore'
 
