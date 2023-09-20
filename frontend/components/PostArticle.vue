@@ -16,16 +16,13 @@
     </div>
 
     <div id="article-img" class="col-span-3 border-v2 border-red-300">
-      <img :src="image" class="h-[150px] bg-slate-100" />
+      <img :src="placeholder_image" class="h-[150px] bg-slate-100" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import no from '~/assets/noimage.jpg'
-
-
-const image = no
+import placeholder_image from '~/assets/placeholder-image.jpg'
 
 const { postProp } = defineProps(["postProp"]);
 console.log(postProp)

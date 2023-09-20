@@ -6,7 +6,7 @@
           <!-- 8/12 main content-->
 
           <img
-            :src=header_image
+            :src="placeholder_header_image"
             id="header"
             class="h-[150px] w-full object-cover border-v border-slate-500"
           />
@@ -51,10 +51,9 @@
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
 // a user's page
 
-import header_img from '~/assets/noimage.jpg'
+import placeholder_header_image from '~/assets/placeholder-image.jpg'
 import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
@@ -64,8 +63,6 @@ const first_name = ref(null);
 const last_name = ref(null);
 const followers = ref(null)
 const username = ref(null)
-const header_image = header_img
-
 
 await(async () => {
   const route = useRoute();

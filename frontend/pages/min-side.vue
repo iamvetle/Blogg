@@ -8,9 +8,9 @@
 			<div class="px-5 py-5 bg-plain rounded-xl">
 				<div class="flex flex-col items-center">
 				<img
-					:src="profile_picture"
+					:src="placeholder_profile_picture"
 					class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
-					alt="avatar"
+					alt="Profilbilde"
 				/>
 				<!-- </img> -->
 				<h1 class="text-xl text-plain font-bold">
@@ -22,7 +22,7 @@
 					><button
 						class="bg-secondary-base text-plain hover:bg-secondary-low py-2 px-4 rounded"
 					>
-						New post
+						Nytt innlegg
 					</button></nuxt-link
 					>
 					<span
@@ -117,12 +117,12 @@
 </template>
 
 <script setup lang="ts">
-import no from '~/assets/no.png'
+import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
+
 import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
 
-const profile_picture = no
 const user = ref<PersonalUserType | null>(null);
 const followers = ref(null)
 
