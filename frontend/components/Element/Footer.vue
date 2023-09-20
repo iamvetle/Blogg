@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="pt-10 p-4 bg-primary-high w-full ">
+    <div class="pt-10 p-4 bg-primary-base w-full ">
       <div class="mx-auto max-w-screen-xl text-plain text-center">
           <div class="flex justify-center items-center text-2xl font-semibold">
             <path

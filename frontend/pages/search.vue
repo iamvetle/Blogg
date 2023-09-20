@@ -1,12 +1,10 @@
 <template>
-    <div id="site-wrapper">
-        <h2 class="text-2xl inline">Search results for: <p class="inline pl-2">'{{ store.lastSearch }}'</p></h2>
-        <div v-if="store.searchPosts">
-            <PostWindow v-for="post, index in store.searchPosts.results" :postDetail="post" :key="index"/>
-            <SearchPagination/>
-        </div>
+    <div id="site-wrapper" class="flex flex-col">
         <div>
-            
+            <h2 class="text-2xl inline">Search results for: <p class="inline pl-2">'{{ store.lastSearch }}'</p></h2>
+            <div v-if="store.searchPosts">
+                <PostWindow v-for="post, index in store.searchPosts.results" :postDetail="post" :key="index"/>
+            </div>
         </div>
         <p v-if="no_posts_found">No results for ''</p>
     </div>
@@ -25,6 +23,10 @@ import { useSearchStore } from '~/store/searchStore';
 const store = useSearchStore()
 
 const no_posts_found = ref(false)
+
+definePageMeta({
+    layout:"search-layout"
+})
 
 </script>
 

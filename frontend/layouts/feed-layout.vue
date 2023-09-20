@@ -10,6 +10,7 @@
       </div>
     </div>
 <div class="mt-auto">
+      <FeedPagination/>
       <ElementFooter />
   
 </div>  

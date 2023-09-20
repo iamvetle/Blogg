@@ -1,7 +1,7 @@
 <template>
 	<div>
 
-		<article class="p-6 bg-plain">
+		<article class="p-6 bg-plain overflow-hidden">
 			<div id="grid-container" class="grid grid-cols-6 gap-x-5 gap-y-2 mx-2">
 				
 				<div class="col-start-1 col-span-4 inline-block">
@@ -15,12 +15,12 @@
 				<div class="col-span-2"></div>
 				
 
-				<div class="col-start-1 col-span-4 inline-block">
+				<div class="col-start-1 col-span-4 inline-block overflow-hidden">
 
 					<h2 class="mt-1 mb-2 text-2xl font-bold tracking-tight text-gray-900">
 						<nuxt-link :to="postLink">{{ postDetail.title }}</nuxt-link>
 					</h2><!-- fix this to better later that is v-html-->
-					<div class="mb-2 font-light text-gray-500 dark:text-gray-400"
+					<div class="mb-2 font-light text-gray-500"
 						v-html="postDetail?.content_snippet || postDetail?.content">
 					</div>
 				</div>
@@ -33,11 +33,11 @@
 						<div class="flex justify-between items-center w-full">
 							<div id="tags" class="flex items-center space-x-2">
 								<span
-									class="flex items-center justify-center rounded-lg bg-gray-500 px-2 py-[4px] text-xs">sometag</span>
+									class="flex items-center justify-center rounded-lg bg-primary-base text-plain px-2 py-[4px] text-xs">sometag</span>
 								<span
-									class="flex items-center justify-center rounded-lg bg-gray-500 px-2 py-[3px] text-xs">sometag</span>
+									class="flex items-center justify-center rounded-lg bg-primary-base text-plain px-2 py-[3px] text-xs">sometag</span>
 								<span
-									class="flex items-center justify-center rounded-lg bg-gray-500 px-2 py-[3px] text-xs">sometag</span>
+									class="flex items-center justify-center rounded-lg bg-primary-base text-plain px-2 py-[3px] text-xs">sometag</span>
 							</div>
 							<div class="flex items-center">
 								<nuxt-link :to="postLink"
