@@ -3,7 +3,7 @@
 	<div class="bg-gray-100 py-12 px-8">
 	<div class="container mx-auto py-8">
 		<div class="grid grid-cols-4 sm:grid-cols-12 gap-12 px-4">
-		<div class="col-span-4 sm:col-span-3">
+		<div class="col-span-4 sm:col-span-5 xl:col-span-3">
 			<div id="wrapper" class="bg-primary-base rounded-lg p-6">
 			<div class="px-5 py-5 bg-plain rounded-xl">
 				<div class="flex flex-col items-center">
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 		</div>
-		<div class="col-span-4 sm:col-span-9">
+		<div class="col-span-4 sm:col-span-7 xl:col-span-9">
 			<div class="bg-primary-base rounded-lg p-6">
 			<div class="px-5 py-7 bg-plain border-primary-base border rounded-md">
 			<h2 class="text-xl font-bold mb-4">Bio</h2>

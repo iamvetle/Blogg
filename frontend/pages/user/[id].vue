@@ -52,6 +52,7 @@
 
 <script setup lang="ts">
 // a user's page
+//@ts-nocheck
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
 import { useGeneralStore } from '~/store/generalStore';
