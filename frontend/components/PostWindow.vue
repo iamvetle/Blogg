@@ -1,7 +1,7 @@
 <template>
 	<div>
 
-		<article class="p-6 bg-plain rounded-lg border-primary-base border-2 shadow-md ">
+		<article class="p-6 bg-plain">
 			<div id="grid-container" class="grid grid-cols-6 gap-x-5 gap-y-2 mx-2">
 				
 				<div class="col-start-1 col-span-4 inline-block">
