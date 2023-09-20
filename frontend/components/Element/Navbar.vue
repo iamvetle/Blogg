@@ -19,13 +19,13 @@ checkLocalInfo;
 		
 		
 			<div class="flex items-center">
-			<h2 class="text-2xl flex ms-8 me-6">Bloggen</h2>
-				<input type="text" class="rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden sm:flex" placeholder="Søk..">
+			<h2 @click="toggleSearch" class="text-2xl flex ms-8 me-6">Bloggen</h2>
+				<input type="text" class="rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden sm:block" placeholder="Søk..">
 			</div>
 			<div id="nav-menu" class="flex items-center p-6">
 				<ul class="flex items-center">
-					<li id="new-post" class=" sm:hidden flex flex-col me-4">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-auto fill-white" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
+					<li @click="toggleSearch" id="search-icon" class="sm:hidden flex flex-col me-4">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 hover:h-7 w-auto fill-white" viewBox="0 0 24 24"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
 						<p class="text-xs sm:flex hidden"></p>
 					</li>
 					<li id="new-post" class="flex flex-col me-4">
@@ -42,10 +42,17 @@ checkLocalInfo;
 				</ul>
 			</div>
 		</div>
+		<input v-if="mobileSearch" type="text" class="sm:hidden flex rounded-md h-10 mx-auto w-8/12 mb-5 bt-4" placeholder="Søk..">
 	</div>
 </template>
 
 <script setup lang="ts">
+
+const mobileSearch = ref(false)
+
+const toggleSearch = () => {
+	mobileSearch.value = !mobileSearch.value	
+}
 
 </script>
 

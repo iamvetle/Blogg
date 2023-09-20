@@ -1,7 +1,6 @@
 <template>
   <div id="site-wrapper" class="bg-white flex flex-col min-h-screen">
     <!-- Background color -->
-    <ElementTheHeader />
     <div class="flex-1 flex flex-col">
       <ClientOnly>
         <ElementNavbar />
