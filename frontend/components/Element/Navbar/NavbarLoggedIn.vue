@@ -20,7 +20,7 @@ checkLocalInfo;
 		
 			<div class="flex items-center">
 			<h2 class="text-white text-2xl flex ms-8 me-6"><nuxt-link to="/">Bloggen</nuxt-link></h2>
-			<SearchBar/>
+			<input @keyup.enter="trySearch" v-model="search_input" type="text" class="border-plain shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex" placeholder="Søk..">
 		</div>
 			<div id="nav-menu" class="flex text-center items-center p-6">
 				<ul class="flex items-center">
@@ -46,11 +46,12 @@ checkLocalInfo;
 				</ul>
 			</div>
 		</div>
-		<SearchBar/>
+		<input autofocus @keyup.enter="trySearch" v-model="search_input" v-if="mobileSearch" type="text" class="sm:hidden flex rounded-md h-10 mx-auto w-8/12 mb-5 bt-4" placeholder="Søk..">
 		</div>
 </template>
 
 <script setup lang="ts">
+import { useSearchStore } from '~/store/searchStore';
 
 const mobileSearch = ref(false)
 
@@ -59,7 +60,23 @@ const toggleSearch = () => {
 	mobileSearch.value = !mobileSearch.value	
 }
 
+const search_input = ref("")
+const store = useSearchStore()
 
+const trySearch = async () => {
+	store.lastSearch = search_input.value
+
+	if ( search_input.value.trim() != "" ) {
+
+		store.baseSearchURL = `http://localhost:8888/api/search/?q=${search_input.value}`
+		
+		await searchRequest()
+		console.log(search_input.value)
+		search_input.value = ""
+
+		return await navigateTo(`/search?q=${search_input.value}`)
+	}
+}
 </script>
 
 <style scoped>
