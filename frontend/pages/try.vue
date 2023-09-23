@@ -1,5 +1,5 @@
 <template>
-	<div id="site-wrapper" class="bg-background">
+	<div id="site-wrapper" class="bg-background text-onBackground">
 
 		<div id="container-navbar" class="w-full py-4 text-onPrimary bg-primary mb-16">
 
@@ -13,11 +13,11 @@
 
 				<span class="flex items-center">
 					<span id="new-post" class="me-4 flex items-center flex-col">
-						<svg class="mb-1 w-7 h-auto fill-onPrimary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3V5H4V18.3851L5.76282 17H20V10H22V18C22 18.5523 21.5523 19 21 19H6.45455L2 22.5V4C2 3.44772 2.44772 3 3 3H14ZM19 3V0H21V3H24V5H21V8H19V5H16V3H19Z"></path></svg>
+						<svg class="mb-1 w-7 h-auto fill-onPrimary hover:fill-onPrimaryFixed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3V5H4V18.3851L5.76282 17H20V10H22V18C22 18.5523 21.5523 19 21 19H6.45455L2 22.5V4C2 3.44772 2.44772 3 3 3H14ZM19 3V0H21V3H24V5H21V8H19V5H16V3H19Z"></path></svg>
 						<span class="text-xs">Nytt innlegg</span>
 					</span>
 					<span class="flex items-center flex-col">
-							<svg class="mb-1 w-8 h-auto fill-onPrimary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12.1597 16C10.1243 16 8.29182 16.8687 7.01276 18.2556C8.38039 19.3474 10.114 20 12 20C13.9695 20 15.7727 19.2883 17.1666 18.1081C15.8956 16.8074 14.1219 16 12.1597 16ZM12 4C7.58172 4 4 7.58172 4 12C4 13.8106 4.6015 15.4807 5.61557 16.8214C7.25639 15.0841 9.58144 14 12.1597 14C14.6441 14 16.8933 15.0066 18.5218 16.6342C19.4526 15.3267 20 13.7273 20 12C20 7.58172 16.4183 4 12 4ZM12 5C14.2091 5 16 6.79086 16 9C16 11.2091 14.2091 13 12 13C9.79086 13 8 11.2091 8 9C8 6.79086 9.79086 5 12 5ZM12 7C10.8954 7 10 7.89543 10 9C10 10.1046 10.8954 11 12 11C13.1046 11 14 10.1046 14 9C14 7.89543 13.1046 7 12 7Z"></path></svg>					
+							<svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12.1597 16C10.1243 16 8.29182 16.8687 7.01276 18.2556C8.38039 19.3474 10.114 20 12 20C13.9695 20 15.7727 19.2883 17.1666 18.1081C15.8956 16.8074 14.1219 16 12.1597 16ZM12 4C7.58172 4 4 7.58172 4 12C4 13.8106 4.6015 15.4807 5.61557 16.8214C7.25639 15.0841 9.58144 14 12.1597 14C14.6441 14 16.8933 15.0066 18.5218 16.6342C19.4526 15.3267 20 13.7273 20 12C20 7.58172 16.4183 4 12 4ZM12 5C14.2091 5 16 6.79086 16 9C16 11.2091 14.2091 13 12 13C9.79086 13 8 11.2091 8 9C8 6.79086 9.79086 5 12 5ZM12 7C10.8954 7 10 7.89543 10 9C10 10.1046 10.8954 11 12 11C13.1046 11 14 10.1046 14 9C14 7.89543 13.1046 7 12 7Z"></path></svg>					
 						<span class="text-xs">Min profile</span>
 					</span>
 				</span>
@@ -47,7 +47,7 @@
 							<p class="mb-2 prose">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores, ad, repellendus culpa
 								quod itaque laboriosam odit assumenda, fugit doloremque iste sapiente! Porro voluptas
 								fugit ipsam odio repellat nam cumque consequatur!</p>
-								<span class="text-sm text-primary-base text-primary">Les mer</span>
+								<span class="text-sm  text-primary hover:text-primaryFixed">Les mer</span>
 							</div>
 
 						<span class="flex items-center justify-between">
@@ -57,7 +57,7 @@
 
 							<span class="flex items-center">
 								<span id="save-article" class="me-2 w-auto h-auto mx-auto flex items-center justify-center">
-									<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+									<svg width="24" height="24" viewBox="0 0 24 24"
 										xmlns="http://www.w3.org/2000/svg">
 										<path
 											d="M7 19V13H17V19H19V7.82843L16.1716 5H5V19H7ZM4 3H17L21 7V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM9 15V19H15V15H9Z"
@@ -120,25 +120,7 @@
 							<div class="ml-2">
 								<p class=" font-bold">Burde vi ha blekkspruter i Norge?</p>
 								<span class="flex">
-									<span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-											xmlns="http://www.w3.org/2000/svg">
-											<path
-												d="M6.93912 14.0327C6.7072 14.6562 6.51032 15.233 6.33421 15.8154C7.29345 15.1188 8.43544 14.6766 9.75193 14.512C12.2652 14.1979 14.4976 12.5384 15.6279 10.4535L14.1721 8.99878L15.5848 7.58407C15.9185 7.24993 16.2521 6.91603 16.5858 6.58237C17.0151 6.15301 17.5 5.35838 18.0129 4.21479C12.4197 5.08172 8.99484 8.50636 6.93912 14.0327ZM17 8.99728L18 9.99658C17 12.9966 14 15.9966 10 16.4966C7.33146 16.8301 5.66421 18.6635 4.99824 21.9966H3C4 15.9966 6 1.99658 21 1.99658C20.0009 4.99392 19.0018 6.99303 18.0027 7.99391C17.6662 8.33038 17.3331 8.66372 17 8.99728Z"
-												fill="black" />
-										</svg>
-									</span>
-									<span>
-										<p>:p Stian Gruve</p>
-									</span>
-								</span>
-							</div>
-						</div>
-						<div class="flex pb-8">
-							<img :src="article_image" class="w-14 h-12">
-							<div class="ml-2">
-								<p class="font-bold">Burde vi ha blekkspruter i Norge?</p>
-								<span class="flex items-center">
-									<span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+									<span><svg width="24" height="24" viewBox="0 0 24 24" class="fill-onBackground"
 											xmlns="http://www.w3.org/2000/svg">
 											<path
 												d="M6.93912 14.0327C6.7072 14.6562 6.51032 15.233 6.33421 15.8154C7.29345 15.1188 8.43544 14.6766 9.75193 14.512C12.2652 14.1979 14.4976 12.5384 15.6279 10.4535L14.1721 8.99878L15.5848 7.58407C15.9185 7.24993 16.2521 6.91603 16.5858 6.58237C17.0151 6.15301 17.5 5.35838 18.0129 4.21479C12.4197 5.08172 8.99484 8.50636 6.93912 14.0327ZM17 8.99728L18 9.99658C17 12.9966 14 15.9966 10 16.4966C7.33146 16.8301 5.66421 18.6635 4.99824 21.9966H3C4 15.9966 6 1.99658 21 1.99658C20.0009 4.99392 19.0018 6.99303 18.0027 7.99391C17.6662 8.33038 17.3331 8.66372 17 8.99728Z"
@@ -151,7 +133,25 @@
 								</span>
 							</div>
 						</div>
-						<p class="-mt-2 text-xs text-primary-base">Se alle</p>
+						<div class="flex pb-8">
+							<img :src="article_image" class="w-14 h-12">
+							<div class="ml-2">
+								<p class="font-bold">Burde vi ha blekkspruter i Norge?</p>
+								<span class="flex items-center">
+									<span><svg width="24" height="24" viewBox="0 0 24 24" class="fill-onBackground"
+											xmlns="http://www.w3.org/2000/svg">
+											<path
+												d="M6.93912 14.0327C6.7072 14.6562 6.51032 15.233 6.33421 15.8154C7.29345 15.1188 8.43544 14.6766 9.75193 14.512C12.2652 14.1979 14.4976 12.5384 15.6279 10.4535L14.1721 8.99878L15.5848 7.58407C15.9185 7.24993 16.2521 6.91603 16.5858 6.58237C17.0151 6.15301 17.5 5.35838 18.0129 4.21479C12.4197 5.08172 8.99484 8.50636 6.93912 14.0327ZM17 8.99728L18 9.99658C17 12.9966 14 15.9966 10 16.4966C7.33146 16.8301 5.66421 18.6635 4.99824 21.9966H3C4 15.9966 6 1.99658 21 1.99658C20.0009 4.99392 19.0018 6.99303 18.0027 7.99391C17.6662 8.33038 17.3331 8.66372 17 8.99728Z"
+												fill="black" />
+										</svg>
+									</span>
+									<span class="flex ms-1">
+										<p>Stian Gruve</p>
+									</span>
+								</span>
+							</div>
+						</div>
+						<p class="-mt-2 text-xs text-primary hover:text-primaryFixed">Se alle</p>
 					</div>
 				</div>
 				<hr class="mb-8">
@@ -176,7 +176,7 @@
 							<p class="ms-2">Mats Ole Bak</p>
 						</span>
 					</div>
-					<span class="text-xs text-primary-base">Se alle</span>
+					<span class="text-xs text-primary hover:text-primaryFixed">Se alle</span>
 				</div>
 
 			</div>
