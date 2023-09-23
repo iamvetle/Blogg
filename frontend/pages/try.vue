@@ -1,35 +1,25 @@
 <template>
-	<div id="site-wrapper" class="">
+	<div id="site-wrapper" class="bg-background">
 
-		<div id="container-navbar" class="w-full py-4 bg-red-500 mb-16">
+		<div id="container-navbar" class="w-full py-4 text-onPrimary bg-primary mb-16">
 
-			<div id="navbar" class="mx-auto flex items-center max-w-[1000px] bg-red-500 justify-between">
+			<div id="navbar" class="mx-auto flex items-center max-w-[1000px] bg-primary justify-between">
 				<span class="flex items-center">
 					<span id="logo">
-						<svg width="14" height="32" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg"
-							xmlns:xlink="http://www.w3.org/1999/xlink">
-							<path d="M0 0.5H18V35.5H0V0.5Z" fill="url(#pattern0)" />
-							<defs>
-								<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-									<use xlink:href="#image0_33_464" transform="scale(0.0555556 0.0285714)" />
-								</pattern>
-								<image id="image0_33_464" width="18" height="35"
-									xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAjCAYAAACZ6FpfAAABuElEQVRIS5WWAVXDMBCGmQLAwaYAcFAUwBQACmAKGAoYCigK2BQwFDAUMAcggf8rTV+4Xpr03rtHl6Zf//uTS5kclMdUU5+Vp8oj5Vb5oqxBTAo5QD5agH1koYFVKehLk4F58aPBWQmIUlAzFIsSUCXCWwb0UALC2O8MaF4CgoEilHmxL/WIhzEamDUco8+Vu1JFQcm1LkgAO+WqvS7eRxmLyjfkaBCG3itDGwDYKrtWSBFjj+gj6k/FWjdugid2UgA96sZdVv+fOlapF4AoJ7dz4wdRVXuKkHxhbjBxo7xUXpl7rioUsf1pgxBAeGuIpS5YgDiO9YO91AUgJsaBQjZbiEoXtvSZxvYWZDi9n7VGbHm9jsi1yFQQDrU4gnf/BnMgT01y1VKleWrwBX96MaSoWA3UFGiUmiHQKDUpkHdGJ70JZnml0Ravxk13pXIbkuPzNppEK9ASg+Epsv68i1AZCi87jMY2HshTdKaH8InwVtT90vJ226RAnloQZQOLI/ntH/qnwXrVlJ7akJ4qz2wWoil7qEXYBnwQ4kMvhlHuXNmcXbnux4ulks/TSUv51F8Ov+4ry/gv0ktUVNzvVVcAAAAASUVORK5CYII=" />
-							</defs>
-						</svg>
+						<svg class="w-8 h-auto fill-onPrimary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.9381 8H21C22.1046 8 23 8.89543 23 10V14C23 15.1046 22.1046 16 21 16H19.9381C19.446 19.9463 16.0796 23 12 23V21C15.3137 21 18 18.3137 18 15V9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9V16H3C1.89543 16 1 15.1046 1 14V10C1 8.89543 1.89543 8 3 8H4.06189C4.55399 4.05369 7.92038 1 12 1C16.0796 1 19.446 4.05369 19.9381 8ZM3 10V14H4V10H3ZM20 10V14H21V10H20ZM7.75944 15.7849L8.81958 14.0887C9.74161 14.6662 10.8318 15 12 15C13.1682 15 14.2584 14.6662 15.1804 14.0887L16.2406 15.7849C15.0112 16.5549 13.5576 17 12 17C10.4424 17 8.98882 16.5549 7.75944 15.7849Z"></path></svg>
 					</span>
 					<span id="searchbar" class="ms-8 "><input placeholder="Søk" class="border border-transparent rounded-2xl w-96 h-auto" type="text"></span>
 				</span>
 
 				<span class="flex items-center">
-					<span id="new-post" class="me-6">
-						<svg width="24" height="24" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M16.6667 4V6.66667H3.33341V24.5135L5.68384 22.6667H24.6667V13.3333H27.3334V24C27.3334 24.7364 26.7365 25.3333 26.0001 25.3333H6.60615L0.666748 30V5.33333C0.666748 4.59696 1.26371 4 2.00008 4H16.6667ZM23.3334 4V0H26.0001V4H30.0001V6.66667H26.0001V10.6667H23.3334V6.66667H19.3334V4H23.3334Z"
-								fill="black" />
-						</svg>
+					<span id="new-post" class="me-4 flex items-center flex-col">
+						<svg class="mb-1 w-7 h-auto fill-onPrimary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3V5H4V18.3851L5.76282 17H20V10H22V18C22 18.5523 21.5523 19 21 19H6.45455L2 22.5V4C2 3.44772 2.44772 3 3 3H14ZM19 3V0H21V3H24V5H21V8H19V5H16V3H19Z"></path></svg>
+						<span class="text-xs">Nytt innlegg</span>
 					</span>
-					<span><img :src="profile_picture" alt="profil-bilde" class="w-8 h-auto"></span>
+					<span class="flex items-center flex-col">
+							<svg class="mb-1 w-8 h-auto fill-onPrimary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12.1597 16C10.1243 16 8.29182 16.8687 7.01276 18.2556C8.38039 19.3474 10.114 20 12 20C13.9695 20 15.7727 19.2883 17.1666 18.1081C15.8956 16.8074 14.1219 16 12.1597 16ZM12 4C7.58172 4 4 7.58172 4 12C4 13.8106 4.6015 15.4807 5.61557 16.8214C7.25639 15.0841 9.58144 14 12.1597 14C14.6441 14 16.8933 15.0066 18.5218 16.6342C19.4526 15.3267 20 13.7273 20 12C20 7.58172 16.4183 4 12 4ZM12 5C14.2091 5 16 6.79086 16 9C16 11.2091 14.2091 13 12 13C9.79086 13 8 11.2091 8 9C8 6.79086 9.79086 5 12 5ZM12 7C10.8954 7 10 7.89543 10 9C10 10.1046 10.8954 11 12 11C13.1046 11 14 10.1046 14 9C14 7.89543 13.1046 7 12 7Z"></path></svg>					
+						<span class="text-xs">Min profile</span>
+					</span>
 				</span>
 			</div>
 		</div>
@@ -43,26 +33,26 @@
 					<div id="left-col-article" class="col-start-1 col-end-9">
 						<span class="flex items-center w-full mb-2">
 							<span class="user-picture flex items-center">
-								<img :src="user_picture" alt="Bruker profilbilde" class="w-6 h-auto me-2">
+								<img :src="user_picture" alt="Bruker profilbilde" class=" w-6 h-auto me-2">
 							</span>
 							<span class="flex items-center justify-between w-full">
 								<span class="flex items-center username">
-									<p class="font-bold">Jon Smith</p>
+									<p class=" font-bold">Jon Smith</p>
 								</span>
-								<p class="font-light">2023-02-11</p>
+								<p class=" font-light">2023-02-11</p>
 							</span>
 						</span>
 						<div class="mb-4 w-full">
-							<h3 class="text-[28px] mb-2">title master grand</h3>
-							<p class="mb-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores, ad, repellendus culpa
+							<h3 class=" text-[28px] mb-2">title master grand</h3>
+							<p class="mb-2 prose">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores, ad, repellendus culpa
 								quod itaque laboriosam odit assumenda, fugit doloremque iste sapiente! Porro voluptas
 								fugit ipsam odio repellat nam cumque consequatur!</p>
-								<span class="text-sm text-primary-base">Les mer</span>
+								<span class="text-sm text-primary-base text-primary">Les mer</span>
 							</div>
 
 						<span class="flex items-center justify-between">
 								<span class="flex items-center">
-									<span id="tag" class="text-sm py-0 px-1 bg-red-500 rounded-md">Typescript</span>
+									<span id="tag" class="text-xs py-1 px-1 bg-primary text-onPrimary rounded-md">Typescript</span>
 								</span>
 
 							<span class="flex items-center">
@@ -109,10 +99,10 @@
 					<div class="mb-4 w-full flex items-center ">
 						<img :src="profile_picture" class="w-20 h-auto">
 						<div class="ml-2">
-							<h2 id="card-username" class="text-4xl">Brukernavn</h2>
+							<h2 id="card-username" class=" text-4xl">Brukernavn</h2>
 							<span>
 
-								<p id="card-name">Ola Nordmann</p>
+								<p id="card-name" class="prose">Ola Nordmann</p>
 							</span>
 						</div>
 					</div>
@@ -122,13 +112,13 @@
 				<hr class="mb-8">
 
 				<div id="saved-posts" class="mx-auto w-full mb-8">
-					<h3 class="text-[28px] mb-9">Lagrede innlegg</h3>
+					<h3 class=" text-[28px] mb-9">Lagrede innlegg</h3>
 
 					<div class="w-full mx-auto">
 						<div class="flex pb-8">
 							<img :src="article_image" class="w-14 h-12">
 							<div class="ml-2">
-								<p class="font-bold">Burde vi ha blekkspruter i Norge?</p>
+								<p class=" font-bold">Burde vi ha blekkspruter i Norge?</p>
 								<span class="flex">
 									<span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
 											xmlns="http://www.w3.org/2000/svg">
