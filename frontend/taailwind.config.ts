@@ -1,0 +1,68 @@
+import type { Config } from "tailwindcss";
+
+export default <Partial<Config>>{
+	theme: {
+		extend: {
+			colors: {
+				"primary": "#006781",
+				"onPrimary": "#ffffff",
+				"primaryContainer": "#b9eaff",
+				"onPrimaryContainer": "#001f29",
+				"primaryFixed": "#b9eaff",
+				"onPrimaryFixed": "#001f29",
+				"primaryFixedDim": "#5ed4fd",
+				"onPrimaryFixedVariant": "#004d62",
+				"secondary": "#4c626b",
+				"onSecondary": "#ffffff",
+				"secondaryContainer": "#cfe6f1",
+				"onSecondaryContainer": "#071e26",
+				"secondaryFixed": "#cfe6f1",
+				"onSecondaryFixed": "#071e26",
+				"secondaryFixedDim": "#b3cad5",
+				"onSecondaryFixedVariant": "#354a53",
+				"tertiary": "#5b5b7e",
+				"onTertiary": "#ffffff",
+				"tertiaryContainer": "#e1dfff",
+				"onTertiaryContainer": "#181837",
+				"tertiaryFixed": "#e1dfff",
+				"onTertiaryFixed": "#181837",
+				"tertiaryFixedDim": "#c4c3eb",
+				"onTertiaryFixedVariant": "#434465",
+				"error": "#ba1a1a",
+				"errorContainer": "#ffdad6",
+				"onError": "#ffffff",
+				"onErrorContainer": "#410002",
+				"background": "#fbfcfe",
+				"onBackground": "#191c1d",
+				"outline": "#70787c",
+				"inverseOnSurface": "#eff1f2",
+				"inverseSurface": "#2e3132",
+				"inversePrimary": "#5ed4fd",
+				"shadow": "#000000",
+				"surfaceTint": "#006781",
+				"outlineVariant": "#c0c8cc",
+				"scrim": "#000000",
+				"surface": "#f8f9fb",
+				"onSurface": "#191c1d",
+				"surfaceVariant": "#dce4e8",
+				"onSurfaceVariant": "#40484c",
+				"surfaceContainerHighest": "#e1e3e4",
+				"surfaceContainerHigh": "#e7e8ea",
+				"surfaceContainer": "#eceef0",
+				"surfaceContainerLow": "#f2f4f5",
+				"surfaceContainerLowest": "#ffffff",
+				"surfaceDim": "#d8dadc",
+				"surfaceBright": "#f8f9fb"
+			},
+
+		},
+		fontFamily: {
+			//@ts-ignore
+		},
+	},
+	plugins: [
+		require("@tailwindcss/typography"),
+		require("flowbite/plugin"),
+		//require('@tailwindcss/forms'),
+	],
+};
