@@ -1,15 +1,17 @@
 <template>
   <div id="site-wrapper">
     <div v-if="storeValue">
-      <TheFeed />
+      <ListArticles/>
     </div>
     <div v-else>
-      <TheWait />
+      <Wait/>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import Wait from "~/components/layout/Wait.vue";
+import ListArticles from "~/components/modules/Blogg/ListArticles.vue";
 import { useGeneralStore } from "~/store/generalStore";
 const store = useGeneralStore();
 

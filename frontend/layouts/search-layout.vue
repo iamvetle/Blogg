@@ -3,7 +3,7 @@
       <!-- Background color -->
       <div class="flex-1 flex flex-col">
         <ClientOnly>
-          <ElementNavbar />
+          <TheNavbar />
         </ClientOnly>
         <div class="flex-1">
           <slot />
@@ -17,6 +17,8 @@
   </template>
   
   <script setup lang="ts">
+import TheNavbar from '~/components/layout/TheNavbar.vue';
+
   // Used by index.vue
   console.log("'search-layout' layout is selected");
   </script>

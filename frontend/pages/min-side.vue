@@ -71,7 +71,7 @@
 			<div class="items-center pt-2 ms-6">
 				<h3 class="text-lg py-3">Followers</h3>
 			<div>  
-				<OneFollower
+				<Follower
 				v-for="f in followers"
 				:follower="f"
 				/>
@@ -100,7 +100,7 @@
 
 			<!-- Post begin -->
 			<div v-if="store.personalPosts">
-				<MyUserPosts
+				<ListMyPosts/>
 				v-if="store.personalPosts"
 				v-for="post in store.personalPosts"
 				:key="post.id"
@@ -118,6 +118,8 @@
 
 <script setup lang="ts">
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
+import Follower from '~/components/modules/MyUser/Follower.vue';
+import ListMyPosts from '~/components/modules/MyUser/ListMyPosts.vue';
 
 import { useGeneralStore } from '~/store/generalStore';
 

@@ -6,7 +6,7 @@
       <div
         class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl">
         <div>
-          <TipTapEditor
+          <EditorCard
           @newPostMaterial ="publishPost"
           />
         </div>
@@ -29,6 +29,8 @@
 </template>
 
 <script setup lang="ts">
+import EditorCard from '~/components/modules/Editor/EditorCard.vue';
+
 // huske definepagedata senere
 
 const postState = ref(false);

@@ -5,5 +5,4 @@
     "types": ["vitest/globals"],
     "noUnusedLocals": true,
     "noUnusedParameters": true
-  }
-}
+  }}

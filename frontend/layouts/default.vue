@@ -2,7 +2,7 @@
   <div id="site-wrapper" class="bg-white flex flex-col min-h-screen">
     <div v-if="store.apiDownError === false" class="flex-1 flex flex-col">
       <ClientOnly>
-        <ElementNavbar />
+        <TheNavbar />
       </ClientOnly>
       <div class="flex-1">
         <slot />
@@ -11,14 +11,18 @@
     <div v-else class="flex-1">
       <ErrorAPIDown />
     </div>
-<div class="mt-auto">
-      <ElementFooter />
-  
-</div>  </div>
+    <div class="mt-auto">
+      <TheFooter />
+
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
+import TheFooter from '~/components/layout/TheFooter.vue';
+import TheNavbar from '~/components/layout/TheNavbar.vue';
 import { useGeneralStore } from '~/store/generalStore';
+
 const store = useGeneralStore()
 
 console.log("'default' layout is selected");

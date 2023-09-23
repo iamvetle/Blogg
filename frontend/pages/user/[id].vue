@@ -32,7 +32,7 @@
           </div>
           <div id="main" class="pt-[50px]">
             <div class="pb-[40px]" v-if="store.theUser[0].posts">
-              <PostArticle
+              <ArticleEntire
                 v-for="post in store.theUser[0].posts"
                 :key="post.id"
                 :postProp="post"
@@ -43,7 +43,7 @@
         </div>
 
         <div id="sidebar" class="px-5 col-span-4 border-v border-red-500">
-          <UserSidebar v-if="store.theUser[0].posts != null" :sideBarProp="userProp" :num_of_followers="followers" />
+          <TheSidebar v-if="store.theUser[0].posts != null" :sideBarProp="userProp" :num_of_followers="followers" />
         </div>
       </div>
     </div>
@@ -55,6 +55,8 @@
 //@ts-nocheck
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
+import ArticleEntire from '~/components/modules/Blogg/ArticleEntire.vue';
+import TheSidebar from '~/components/modules/UserProfile/TheSidebar.vue';
 import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()

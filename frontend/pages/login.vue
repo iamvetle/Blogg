@@ -8,7 +8,7 @@
       >
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <div id="login_form">
-            <FormLogin :redirect="true" />
+            <LoginCard :redirect="true" />
           </div>
         </div>
       </div>
@@ -17,6 +17,8 @@
 </template>
 
 <script setup lang="ts">
+import LoginCard from '~/components/modules/Auth/LoginCard.vue';
+
 // husk definpagedata senere
 </script>
 
