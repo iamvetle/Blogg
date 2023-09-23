@@ -29,7 +29,7 @@
 								fill="black" />
 						</svg>
 					</span>
-					<span><img :src="profile_picture" alt="profil-bilde" class="w-10 h-auto"></span>
+					<span><img :src="profile_picture" alt="profil-bilde" class="w-8 h-auto"></span>
 				</span>
 			</div>
 		</div>
@@ -37,26 +37,16 @@
 		<div id="main" class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
 
 			<div id="content" class="col-span-6 mx-auto">
-				<span class="mx-auto flex items-center justify-center mb-16">
-					<h2 class="bg-red-500 text-[32px] px-4 py-2 m-2 rounded-md">
-						Hjem
-					</h2>
-					<h3 class="text-2xl py-2 px-1 bg-red-500 rounded-md">
-						Følger
-					</h3>
-				</span>
 
-				<hr class="mb-16">
-
-				<div class="article grid-cols-12 grid gap-8">
+				<div class="article grid-cols-12 grid gap-8 mb-16">
 
 					<div id="left-col-article" class="col-start-1 col-end-9">
-						<span class="flex items-center w-full mb-4">
-							<span class="user-picture">
-								<img :src="user_picture" alt="Bruker profilbilde" class="w-8 h-auto me-2">
+						<span class="flex items-center w-full mb-2">
+							<span class="user-picture flex items-center">
+								<img :src="user_picture" alt="Bruker profilbilde" class="w-6 h-auto me-2">
 							</span>
 							<span class="flex items-center justify-between w-full">
-								<span class="username">
+								<span class="flex items-center username">
 									<p class="font-bold">Jon Smith</p>
 								</span>
 								<p class="font-light">2023-02-11</p>
@@ -108,13 +98,14 @@
 					</div>
 
 				</div>
+				<hr class="mb-16">
 
 			</div>
 
 			<div id="aside" class="col-span-4 h-fit mb-14 mx-auto">
 
 
-				<div id="personal-user-card" class="mx-auto mb-16">
+				<div id="personal-user-card" class="mx-auto mb-8">
 					<div class="mb-4 w-full flex items-center ">
 						<img :src="profile_picture" class="w-20 h-auto">
 						<div class="ml-2">
@@ -128,6 +119,7 @@
 					<p>Antall følgere: 10</p>
 					<p>Antall innlegg: 14</p>
 				</div>
+				<hr class="mb-8">
 
 				<div id="saved-posts" class="mx-auto w-full mb-8">
 					<h3 class="text-[28px] mb-9">Lagrede innlegg</h3>
@@ -172,6 +164,7 @@
 						<p class="-mt-2 text-xs text-primary-base">Se alle</p>
 					</div>
 				</div>
+				<hr class="mb-8">
 
 				<div id="following-card" class="mx-auto w-full">
 					<h3 class="text-[28px] mb-9">Følger</h3>
