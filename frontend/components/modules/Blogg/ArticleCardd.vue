@@ -24,9 +24,11 @@
             <span class="flex items-center justify-between">
                 <span class="flex items-center">
 
-                    <BaseTag
-                    :textProp="tagText"
-                    />
+                    <div v-if="postProp.tags" v-for="tag in postProp.tags">
+                        <BaseTag :textProp="tag" 
+                        class="me-1"
+                        />
+                    </div>
 
                 </span>
 
@@ -68,7 +70,6 @@ import account_picture from '~/assets/account-pin-circle-line.svg'
 
 // temp solution
 const article_image = "https://picsum.photos/500/300"
-const tagText = "something"
 
 const { postProp } = defineProps(["postProp"])
 

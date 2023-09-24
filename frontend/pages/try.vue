@@ -19,7 +19,7 @@
 			<div id="aside" class="col-span-4 h-auto w-full mb-14 mx-auto">
 
 				<div id="my-profile-card" v-if="user" class="w-full">
-					<MyProfileCard 
+					<MyProfileCard
 					:userProp="user"
 					/>
 				</div>

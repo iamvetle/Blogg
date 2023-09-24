@@ -2,7 +2,7 @@
   <div id="site-wrapper" class="bg-white flex flex-col min-h-screen">
     <div v-if="store.apiDownError === false" class="flex-1 flex flex-col">
       <ClientOnly>
-        <TheNavbar />
+        <TheNavbarr />
       </ClientOnly>
       <div class="flex-1">
         <slot />
@@ -19,8 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import TheFooter from '~/components/layout/TheFooter.vue';
-import TheNavbar from '~/components/layout/TheNavbar.vue';
 import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
