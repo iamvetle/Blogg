@@ -8,7 +8,7 @@
                 </span>
                 <span class="flex items-center justify-between w-full">
                     <span class="flex items-center full_name">
-                        <p class=" font-bold">jonas</p>
+                        <p class=" font-bold"> {{ author_full_name }} </p>
                     </span>
                     <p class=" font-light">{{ postProp.date_published }}</p>
                 </span>
@@ -72,6 +72,7 @@ import account_picture from '~/assets/account-pin-circle-line.svg'
 const article_image = "https://picsum.photos/500/300"
 
 const { postProp } = defineProps(["postProp"])
+const author_full_name = `${postProp.author.first_name} ${postProp.author.last_name}`;
 
 </script>
 
