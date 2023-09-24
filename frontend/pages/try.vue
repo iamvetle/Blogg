@@ -8,7 +8,8 @@
 			<div id="content" class="col-span-6 mx-auto">
 
 				<div class="article">
-					<ArticleCardd />
+					<ArticleCardd 
+					/>
 					<hr class="mb-16">
 				</div>
 
@@ -16,8 +17,10 @@
 
 			<div id="aside" class="col-span-4 h-fit mb-14 mx-auto">
 
-				<div id="my-profile-card">
-					<MyProfileCard />
+				<div id="my-profile-card" v-if="user">
+					<MyProfileCard 
+					:userProp="user"
+					/>
 				</div>
 
 				<hr class="mb-8">
@@ -49,10 +52,25 @@
 
 <script setup lang="ts">
 
+import axios from 'axios'
+
 import TheNavbarr from '~/components/layout/TheNavbarr.vue';
 import ArticleCardd from '~/components/modules/Blogg/ArticleCardd.vue';
 import MyProfileCard from '~/components/modules/MyUser/MyProfileCard.vue';
 // import article_image from '~/assets/placeholder-image.jpg'
+
+const user = ref<null | RandomAccount>(null)
+
+const fetchUser = async()=> {
+	const url = "https://random-data-api.com/api/v2/users?size=1"
+	const response:RandomAccount = await axios.get(url)
+	console.log(response.data)
+	user.value = response.data
+
+}
+
+
+onMounted(fetchUser)
 
 definePageMeta({
 	layout: "blank"

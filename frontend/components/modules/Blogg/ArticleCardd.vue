@@ -4,7 +4,7 @@
         <div id="left-col-article" class="col-start-1 col-end-9">
             <span class="flex items-center w-full mb-2">
                 <span class="user-picture flex items-center">
-                    <img :src="user_picture" alt="Bruker profilbilde" class=" w-6 h-auto me-2">
+                    <img :src="account_picture" alt="Bruker profilbilde" class=" w-6 h-auto me-2">
                 </span>
                 <span class="flex items-center justify-between w-full">
                     <span class="flex items-center username">
@@ -61,9 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import profile_picture from '~/assets/placeholder-profile-picture.png'
-
-const user_picture = ref(profile_picture)
+import account_picture from '~/assets/account-pin-circle-line.svg'
 
 // temp solution
 const article_image = "https://picsum.photos/500/300"
