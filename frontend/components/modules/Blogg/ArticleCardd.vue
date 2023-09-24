@@ -10,7 +10,7 @@
                     <span class="flex items-center full_name">
                         <p class=" font-bold">jonas</p>
                     </span>
-                    <p class=" font-light">2023-02-11</p>
+                    <p class=" font-light">{{ postProp.date_published }}</p>
                 </span>
             </span>
             <div class="mb-4 w-full">

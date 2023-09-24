@@ -1,35 +1,71 @@
 <template>
-  <div id="wrapper">
-    <section class="bg-plain dark:bg-gray-900" v-if="store.posts">
-      <p></p>
-      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-          <h2 class="pt-10 mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-            Siste blogginnlegg
-          </h2>
-          <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Her er de siste blogginnleggene.
-          </p>
-        </div>
-        <div id="main" class="py-12 grid gap-8 lg:grid-cols-2" v-if="store.posts.results">
-          <ArticleCard v-for="post in store.posts.results" :key="post.id" :postDetail="post"
-            class="border-primary-base border-2 shadow-sm" />
-        </div>
-      </div>
-    </section>
-  </div>
+	<div id="site-wrapper" class="bg-background text-onBackground">
+		<div id="main" class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
+
+			<div id="content" class="col-span-6 mx-auto" v-if="(store.posts) && (store.posts.results)">
+
+				<div class="article" v-for="post in store.posts.results" :key="post.id">
+					<ArticleCardd
+					:postProp="post" 
+					/>
+					<hr class="mb-16">
+				</div>
+
+			</div>
+
+			<div id="aside" class="col-span-4 h-auto w-full mb-14 mx-auto">
+
+				<div id="my-profile-card" v-if="userdata" class="w-full">
+					<MyProfileCard
+					:userProp="userdata"
+					/>
+				</div>
+
+				<hr class="mb-8">
+
+				<div id="saved-posts" class="mx-auto w-full mb-8">
+					<h3 class=" text-[28px] mb-9">Lagrede innlegg</h3>
+
+					<div class="saved-article">
+						<ArticleSavedCard />
+					</div>
+					<p class="-mt-2 text-xs text-primary hover:text-primaryFixed">Se alle</p>
+				</div>
+
+				<hr class="mb-8">
+
+				<div id="following-card" class="mx-auto w-full">
+					<h3 class="text-[28px] mb-9">Følger</h3>
+					<div id="following">
+						<Following />
+					</div>
+					<span class="text-xs text-primary hover:text-primaryFixed">Se alle</span>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
 </template>
 
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
-import ArticleCard from './ArticleCard.vue';
 
 const store = useGeneralStore()
+const userdata = ref<null | PersonalUserType>(null)
 
 onBeforeMount(async () => {
   await fetchPostSnippets()
   console.log(store.posts)
 })
+
+onMounted(async () => {
+  const baseMyUserURL = "http://localhost:8888/api/min-side/" 
+  userdata.value = await fetchPersonalUser(baseMyUserURL)
+  console.log(userdata.value.data) // print to self
+})
+
+
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped></style>

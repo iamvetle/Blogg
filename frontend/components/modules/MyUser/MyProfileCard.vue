@@ -9,7 +9,7 @@
                 </span>
             </div>
         </div>
-        <p class="text-onPrimaryContainer">Antall følgere: X</p>
+        <p class="text-onPrimaryContainer">Antall følgere: {{ userProp.num_of_followers }}</p>
         <p class="text-onPrimaryContainer">Antall innlegg: X</p>
     </div>
 </template>
