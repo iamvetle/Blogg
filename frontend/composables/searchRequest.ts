@@ -6,6 +6,7 @@ export const searchRequest = async () => {
 	if (process.client) {
 try {
 	const store = useSearchStore()
+	const store2 = useGeneralStore()
 	const token = localStorage.getItem("token");
 	const headers = {
 	"Authorization": `Token ${token}`,
@@ -18,6 +19,9 @@ try {
 
 	if (response.data != null) {
 		console.log("OK: Followers fetched", response.status, response.data); // print to self
+
+		store2.posts = response.data
+		await fixPagination(store2.posts)
 		
         store.number_of_posts_count = response.data.count
 
