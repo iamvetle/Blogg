@@ -74,7 +74,7 @@
 		<div class="buttons flex pt-32">
 		<button
 		class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
-		@click="editor.commands.clearContent"
+		@click="cancelClick"
 		>
 			Cancel
 		</button>
@@ -236,6 +236,13 @@ const newPostMaterial = async () => {
 
 	// emit to parent component
 
+}
+
+const cancelClick = () => {
+	const router = useRouter()
+	editor.value.commands.clearContent
+	const place = router.go(-1)
+	return navigateTo(place)
 }
 </script>
 

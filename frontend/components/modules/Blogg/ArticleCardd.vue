@@ -8,17 +8,16 @@
                 </span>
                 <span class="flex items-center justify-between w-full">
                     <span class="flex items-center full_name">
-                        <p class=" font-bold"> {{ author_full_name }} </p>
+                        <p class="font-bold"><nuxt-link :to="author_link"><span v-if="author_full_name == ''">{{ postProp.author.username }} (brukernavn)</span>{{ author_full_name }}</nuxt-link></p>
                     </span>
                     <p class=" font-light">{{ postProp.date_published }}</p>
                 </span>
             </span>
             <div class="mb-4 w-full">
-                <h3 class=" text-[28px] mb-2">{{ postProp.title }}</h3>
-                <p class="mb-2 prose">
-                    {{ postProp.body }}
+                <h3 class=" text-[28px] mb-2"><nuxt-link :to="postLink">{{ postProp.title }}</nuxt-link></h3>
+                <p class="mb-2 prose" v-html="postProp.content_snippet">
                 </p>
-                <span class="text-sm  text-primary hover:text-primaryFixed">Les mer</span>
+                <span class="text-sm  text-primary hover:text-primaryFixed"><nuxt-link :to="postLink">Les mer</nuxt-link></span>
             </div>
 
             <span class="flex items-center justify-between">
@@ -73,6 +72,8 @@ const article_image = "https://picsum.photos/500/300"
 
 const { postProp } = defineProps(["postProp"])
 const author_full_name = `${postProp.author.first_name} ${postProp.author.last_name}`;
+const author_link = `/user/${postProp.author.username}`;
+const postLink = `/post/${postProp.id}`;
 
 </script>
 

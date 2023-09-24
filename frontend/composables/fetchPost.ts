@@ -1,10 +1,8 @@
 // async
 
 import axios from 'axios' 
-import { useGeneralStore } from '~/store/generalStore';
 
 export const fetchPost = async (postURL:string) => {
-  const store = useGeneralStore()
 
   try {
     const token = localStorage.getItem("token");

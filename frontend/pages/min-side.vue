@@ -100,7 +100,7 @@
 
 			<!-- Post begin -->
 			<div v-if="store.personalPosts">
-				<ListMyPosts/>
+				<ListMyPosts
 				v-if="store.personalPosts"
 				v-for="post in store.personalPosts"
 				:key="post.id"

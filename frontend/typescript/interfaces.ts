@@ -15,11 +15,12 @@ export interface SnippetPostType {
 	count: number;
 	next: string | null;
 	previous: string | null;
+	current_page:number;
 	results: [
 		{
 			id: number;
 			title: string;
-			content: string;
+			content_snippet: string;
 			date_published: string;
 			last_modified: string; // TODO: fjern denne senere på backend
 			num_of_followers: string;
