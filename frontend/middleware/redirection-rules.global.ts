@@ -1,7 +1,7 @@
-//@ts-nocheck
+
 
 import { useGeneralStore } from "@/store/generalStore";
-
+//@ts-ignore
 export default defineNuxtRouteMiddleware((to, from) => {
   if (process.client) {
     const token = localStorage.getItem("token")

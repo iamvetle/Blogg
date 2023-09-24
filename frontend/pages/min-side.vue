@@ -118,8 +118,6 @@
 
 <script setup lang="ts">
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
-import Follower from '~/components/modules/MyUser/Follower.vue';
-import ListMyPosts from '~/components/modules/MyUser/ListMyPosts.vue';
 
 import { useGeneralStore } from '~/store/generalStore';
 

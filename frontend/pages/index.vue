@@ -1,17 +1,15 @@
 <template>
-  <div id="site-wrapper">
-    <div v-if="storeValue">
-      <ListArticles/>
-    </div>
-    <div v-else>
-      <Wait/>
-    </div>
-  </div>
+<div id="site-wrapper">
+	<div v-if="storeValue">
+		<ListArticles/>
+	</div>
+	<div v-else>
+		<Wait/>
+	</div>
+</div>
 </template>
 
 <script setup lang="ts">
-import Wait from "~/components/layout/Wait.vue";
-import ListArticles from "~/components/modules/Blogg/ListArticles.vue";
 import { useGeneralStore } from "~/store/generalStore";
 const store = useGeneralStore();
 
@@ -20,17 +18,17 @@ const storeValue = computed(() => store.isAuthenticated);
 console.log(store.isAuthenticated);
 
 watch(storeValue, (newVal, oldVal) => {
-  if (newVal !== oldVal) {
-    setPageLayout("feed-layout");
-  }
+if (newVal !== oldVal) {
+	setPageLayout("feed-layout");
+}
 });
 
 onBeforeMount(() => {
-  if (store.isAuthenticated === true) {
-    setPageLayout("feed-layout");
-  } else {
-    setPageLayout("blank");
-  }
+if (store.isAuthenticated === true) {
+	setPageLayout("feed-layout");
+} else {
+	setPageLayout("blank");
+}
 });
 
 </script>

@@ -2,7 +2,7 @@
     <div>
         <ul>
             <div v-for="f, index in followers">
-				<OneFollower
+				<Follower
 				:key="index"
 				:follower="f"
 				/>

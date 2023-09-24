@@ -11,14 +11,13 @@
     </div>
 <div class="mt-auto">
       <FeedPagination/>
-      <ElementFooter />
+      <TheFooter/>
   
 </div>  
 </div>
 </template>
 
 <script setup lang="ts">
-import TheNavbar from '~/components/layout/TheNavbar.vue';
 
 // Used by index.vue
 console.log("'feed-layout' layout is selected");

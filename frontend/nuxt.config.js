@@ -7,6 +7,12 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+  components: [
+    {
+      path: '~/components',
+     pathPrefix: false,
+    },
+  ],
   imports: {
     dirs:['./typescript', './store']
   },

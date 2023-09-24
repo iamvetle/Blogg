@@ -1,8 +1,7 @@
 <template>
     <div>
         <ClientOnly>
-            <TipTapEditor 
-            />
+            <EditorCard/>
         </ClientOnly>
     </div>
 </template>

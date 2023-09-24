@@ -1,6 +1,6 @@
 import { useGeneralStore } from "@/store/generalStore";
 
-export default defineNuxtRouteMiddleware((to) => {
+export default defineNuxtRouteMiddleware(() => {
   if (process.client) {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("username")

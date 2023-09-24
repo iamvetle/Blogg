@@ -16,7 +16,6 @@
 
 // jeg må rewrite hele pagnation vis jeg vil ha det med search også
 
-import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue';
 import { useSearchStore } from '~/store/searchStore';
 
 // TODO: Install pagnation, and search store posts

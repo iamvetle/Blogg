@@ -7,24 +7,27 @@
                     <img :src="account_picture" alt="Bruker profilbilde" class=" w-6 h-auto me-2">
                 </span>
                 <span class="flex items-center justify-between w-full">
-                    <span class="flex items-center username">
-                        <p class=" font-bold">Jon Smith</p>
+                    <span class="flex items-center full_name">
+                        <p class=" font-bold">jonas</p>
                     </span>
                     <p class=" font-light">2023-02-11</p>
                 </span>
             </span>
             <div class="mb-4 w-full">
-                <h3 class=" text-[28px] mb-2">title master grand</h3>
-                <p class="mb-2 prose">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores, ad, repellendus
-                    culpa
-                    quod itaque laboriosam odit assumenda, fugit doloremque iste sapiente! Porro voluptas
-                    fugit ipsam odio repellat nam cumque consequatur!</p>
+                <h3 class=" text-[28px] mb-2">{{ postProp.title }}</h3>
+                <p class="mb-2 prose">
+                    {{ postProp.body }}
+                </p>
                 <span class="text-sm  text-primary hover:text-primaryFixed">Les mer</span>
             </div>
 
             <span class="flex items-center justify-between">
                 <span class="flex items-center">
-                    <span id="tag" class="text-xs py-1 px-1 bg-primary text-onPrimary rounded-md">Typescript</span>
+
+                    <BaseTag
+                    :textProp="tagText"
+                    />
+
                 </span>
 
                 <span class="flex items-center">
@@ -65,7 +68,9 @@ import account_picture from '~/assets/account-pin-circle-line.svg'
 
 // temp solution
 const article_image = "https://picsum.photos/500/300"
+const tagText = "something"
 
+const { postProp } = defineProps(["postProp"])
 
 </script>
 

@@ -17,7 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import LoginCard from '~/components/modules/Auth/LoginCard.vue';
 
 // husk definpagedata senere
 </script>

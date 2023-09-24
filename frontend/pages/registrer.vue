@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-import SignUpCard from '~/components/modules/Auth/SignUpCard.vue';
 
 // huske definepagedata senere
 </script>
