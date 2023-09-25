@@ -8,7 +8,7 @@ describe("TheFeed testing", () => {
     let store;
     let pinia
 
-    beforeEach(() => { // The beforeEach block runs before each test within the describe block. 
+    beforeEach(() => { // The beforeEach block runs before each test
         // Create a new testing Pinia instance
         pinia = createTestingPinia()
 
