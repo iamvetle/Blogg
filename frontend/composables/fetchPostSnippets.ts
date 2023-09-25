@@ -3,17 +3,14 @@
 import axios from 'axios' 
 import { useGeneralStore } from '~/store/generalStore';
 
+
 export const fetchPostSnippets = async () => {
   const store = useGeneralStore()
+  const { $fetchWithToken } = useNuxtApp()
 
   try {
-    const token = localStorage.getItem("token");
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token}`,
-    };
 
-    const response = await axios.get<SnippetPostType[]>(store.post_snippets_url, { headers });
+    const response = await $fetchWithToken.get<SnippetPostType[]>(store.post_snippets_url);
 
     if (response.data != null) {
       console.log("OK: Posts fetched", response.data); // print to self
