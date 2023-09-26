@@ -10,7 +10,7 @@
         >
           <div
             class="absolute bg-gradient-to-b from-primary-base to-primary-high opacity-75 inset-0 z-0"
-          ></div>
+          />
           <div class="w-full max-w-md z-10">
             <div class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">
               The Blogg

@@ -6,14 +6,20 @@
           <!-- 8/12 main content-->
 
           <img
-            :src="placeholder_header_image"
             id="header"
+            :src="placeholder_header_image"
             class="h-[150px] w-full object-cover border-v border-slate-500"
-          />
+          >
           <!-- The IMAGE -->
 
-          <div id="top" class="px-2 pt-[50px]">
-            <div id="heading" class="prose">
+          <div
+            id="top"
+            class="px-2 pt-[50px]"
+          >
+            <div
+              id="heading"
+              class="prose"
+            >
               <h2
                 class="text-4xl leading-[52px] font-medium tracking-[-0.03em]"
               >
@@ -23,27 +29,46 @@
 
             <div class="pt-[30px]">
               <ul class="flex justify-start items-center space-x-4">
-                <li class="prose">Home</li>
-                <li class="prose">Links</li>
-                <li class="prose">About</li>
+                <li class="prose">
+                  Home
+                </li>
+                <li class="prose">
+                  Links
+                </li>
+                <li class="prose">
+                  About
+                </li>
               </ul>
             </div>
-            <hr class="mt-2" />
+            <hr class="mt-2">
           </div>
-          <div id="main" class="pt-[50px]">
-            <div class="pb-[40px]" v-if="store.theUser[0].posts">
+          <div
+            id="main"
+            class="pt-[50px]"
+          >
+            <div
+              v-if="store.theUser[0].posts"
+              class="pb-[40px]"
+            >
               <ArticleEntire
                 v-for="post in store.theUser[0].posts"
                 :key="post.id"
-                :postProp="post"
+                :post-prop="post"
                 class="mt-10"
               />
             </div>
           </div>
         </div>
 
-        <div id="sidebar" class="px-5 col-span-4 border-v border-red-500">
-          <TheSidebar v-if="store.theUser[0].posts != null" :sideBarProp="userProp" :num_of_followers="followers" />
+        <div
+          id="sidebar"
+          class="px-5 col-span-4 border-v border-red-500"
+        >
+          <TheSidebar
+            v-if="store.theUser[0].posts != null"
+            :side-bar-prop="userProp"
+            :num_of_followers="followers"
+          />
         </div>
       </div>
     </div>

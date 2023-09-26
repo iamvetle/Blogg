@@ -1,5 +1,8 @@
 <template>
-  <div id="site-wrapper" class="bg-white flex flex-col min-h-screen">
+  <div
+    id="site-wrapper"
+    class="bg-white flex flex-col min-h-screen"
+  >
     <!-- Background color -->
     <div class="flex-1 flex flex-col">
       <ClientOnly>
@@ -9,12 +12,11 @@
         <slot />
       </div>
     </div>
-<div class="mt-auto">
-      <FeedPagination/>
-      <TheFooter/>
-  
-</div>  
-</div>
+    <div class="mt-auto">
+      <FeedPagination />
+      <TheFooter />
+    </div>  
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -1,10 +1,10 @@
 <template>
-    <div id="site-wrapper">
+  <div id="site-wrapper">
     <!-- Background color -->
     <ClientOnly>
-    <slot />
+      <slot />
     </ClientOnly>
-    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

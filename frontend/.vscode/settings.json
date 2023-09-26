@@ -2,5 +2,14 @@
   "files.exclude": {
     "tests\\components\\node_modules\\.vitest": true,
     "tests\\components\\node_modules": true
-  }
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue"
+  ]
 }

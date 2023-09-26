@@ -5,14 +5,17 @@
     >
       Create and account
     </h1>
-    <div id="form" class="space-y-4 md:space-y-6">
+    <div
+      id="form"
+      class="space-y-4 md:space-y-6"
+    >
       <FormKit
-        type="form"
         id="register_form"
+        type="form"
         :form-class="submitted ? 'hide' : 'show'"
         submit-label="Create account"
-        @submit="submitForm"
         :actions="false"
+        @submit="submitForm"
       >
         <div>
           <FormKit
@@ -92,7 +95,10 @@
             message-class="prose text-sm text-red-500"
           />
         </div>
-        <div id="button" class="mt-4">
+        <div
+          id="button"
+          class="mt-4"
+        >
           <FormKit
             type="submit"
             label="Bekreft"
@@ -104,13 +110,16 @@
           <nuxt-link
             to="/login/"
             class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-            >Login here</nuxt-link
-          >>
+          >
+            Login here
+          </nuxt-link>>
         </p>
       </FormKit>
     </div>
     <div v-if="submitted">
-      <h2 class="text-green-600">Suksess i å lage en ny konto!</h2>
+      <h2 class="text-green-600">
+        Suksess i å lage en ny konto!
+      </h2>
     </div>
   </div>
 </template>

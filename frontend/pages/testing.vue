@@ -1,7 +1,7 @@
 <template>
-    <div>
-		<Filter/>
-    </div>
+  <div>
+    <Filter />
+  </div>
 </template>
 
 <script setup lang="ts">

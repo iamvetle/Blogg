@@ -1,54 +1,80 @@
 <template>
-	<div id="site-wrapper" class="bg-background text-onBackground">
+  <div
+    id="site-wrapper"
+    class="bg-background text-onBackground"
+  >
+    <TheNavbarr />
 
-		<TheNavbarr />
+    <div
+      id="main"
+      class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28"
+    >
+      <div
+        v-if="(posts) && (posts.posts)"
+        id="content"
+        class="col-span-6 mx-auto"
+      >
+        <div
+          v-for="post, index in posts.posts"
+          :key="index"
+          class="article"
+        >
+          <ArticleCardd
+            :post-prop="post" 
+          />
+          <hr class="mb-16">
+        </div>
+      </div>
 
-		<div id="main" class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
+      <div
+        id="aside"
+        class="col-span-4 h-auto w-full mb-14 mx-auto"
+      >
+        <div
+          v-if="user"
+          id="my-profile-card"
+          class="w-full"
+        >
+          <MyProfileCard
+            :user-prop="user"
+          />
+        </div>
 
-			<div id="content" class="col-span-6 mx-auto" v-if="(posts) && (posts.posts)">
+        <hr class="mb-8">
 
-				<div class="article" v-for="post, index in posts.posts" :key="index">
-					<ArticleCardd
-					:postProp="post" 
-					/>
-					<hr class="mb-16">
-				</div>
+        <div
+          id="saved-posts"
+          class="mx-auto w-full mb-8"
+        >
+          <h3 class=" text-[28px] mb-9">
+            Lagrede innlegg
+          </h3>
 
-			</div>
+          <div class="saved-article">
+            <ArticleSavedCard />
+          </div>
+          <p class="-mt-2 text-xs text-primary hover:text-primaryFixed">
+            Se alle
+          </p>
+        </div>
 
-			<div id="aside" class="col-span-4 h-auto w-full mb-14 mx-auto">
+        <hr class="mb-8">
 
-				<div id="my-profile-card" v-if="user" class="w-full">
-					<MyProfileCard
-					:userProp="user"
-					/>
-				</div>
-
-				<hr class="mb-8">
-
-				<div id="saved-posts" class="mx-auto w-full mb-8">
-					<h3 class=" text-[28px] mb-9">Lagrede innlegg</h3>
-
-					<div class="saved-article">
-						<ArticleSavedCard />
-					</div>
-					<p class="-mt-2 text-xs text-primary hover:text-primaryFixed">Se alle</p>
-				</div>
-
-				<hr class="mb-8">
-
-				<div id="following-card" class="mx-auto w-full">
-					<h3 class="text-[28px] mb-9">Følger</h3>
-					<div id="following">
-						<Following />
-					</div>
-					<span class="text-xs text-primary hover:text-primaryFixed">Se alle</span>
-				</div>
-
-			</div>
-
-		</div>
-	</div>
+        <div
+          id="following-card"
+          class="mx-auto w-full"
+        >
+          <h3 class="text-[28px] mb-9">
+            Følger
+          </h3>
+          <div id="following">
+            <Following />
+          </div>
+          <span class="text-xs text-primary hover:text-primaryFixed">Se alle</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

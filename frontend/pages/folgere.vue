@@ -1,15 +1,16 @@
 <template>
-    <div>
-        <ul>
-            <div v-for="f, index in followers">
-				<Follower
-				:key="index"
-				:follower="f"
-				/>
-			</div>
-        </ul>
-
-    </div>
+  <div>
+    <ul>
+      <div
+        v-for="f, index in followers" 
+        :key="index"
+      >
+        <Follower
+          :follower="f"
+        />
+      </div>
+    </ul>
+  </div>
 </template>
 
 <script setup lang="ts">

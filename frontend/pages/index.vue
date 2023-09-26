@@ -1,12 +1,12 @@
 <template>
-<div id="site-wrapper">
-	<div v-if="storeValue">
-		<ListArticles/>
-	</div>
-	<div v-else>
-		<Wait/>
-	</div>
-</div>
+  <div id="site-wrapper">
+    <div v-if="storeValue">
+      <ListArticles />
+    </div>
+    <div v-else>
+      <Wait />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

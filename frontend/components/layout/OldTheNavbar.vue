@@ -1,6 +1,6 @@
 <template>
-<TheNavbarLoggedIn v-if="store.isAuthenticated" />
-<TheNavbarLoggedOut v-else />
+  <TheNavbarLoggedIn v-if="store.isAuthenticated" />
+  <TheNavbarLoggedOut v-else />
 </template>
 
 <script setup lang="ts">

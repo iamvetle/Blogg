@@ -1,6 +1,12 @@
 <template>
-  <div id="site-wrapper" class="bg-white flex flex-col min-h-screen">
-    <div v-if="store.apiDownError === false" class="flex-1 flex flex-col">
+  <div
+    id="site-wrapper"
+    class="bg-white flex flex-col min-h-screen"
+  >
+    <div
+      v-if="store.apiDownError === false"
+      class="flex-1 flex flex-col"
+    >
       <ClientOnly>
         <TheNavbarr />
       </ClientOnly>
@@ -8,12 +14,14 @@
         <slot />
       </div>
     </div>
-    <div v-else class="flex-1">
+    <div
+      v-else
+      class="flex-1"
+    >
       <ErrorAPIDown />
     </div>
     <div class="mt-auto">
       <TheFooter />
-
     </div>
   </div>
 </template>

@@ -10,7 +10,7 @@ export const fixPagination = async (response_data:SnippetPostType | null) => {
         store.number_of_posts_count = response_data.count
 
         const calculate_total_pages = () => {
-            let num = store.number_of_posts_count as number / 10
+            const num = store.number_of_posts_count as number / 10
             return Math.ceil(num)
         }
 
