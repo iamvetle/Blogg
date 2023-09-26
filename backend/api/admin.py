@@ -34,8 +34,6 @@ class PostInline(admin.TabularInline):
         """
         return not obj
 
-class PostAdmin(admin.ModelAdmin):
-    inlines = [CommentInline]
     
 # Admin models ->
 
@@ -45,10 +43,48 @@ class PostAdmin(admin.ModelAdmin):
     
 # Register ->
     
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    save_on_top = True
+
+    model = Post
+    
+    inlines = [CommentInline]
+    
+
+    
+    list_display = (
+        "id",
+        "title",
+        "content",
+        "date_published",
+        "published"
+        
+    )
+    
+    list_filter = (
+        "published",
+        "date_published",
+    )
+    list_editable = (
+        "title",
+        "content",
+        "published"
+    )
+    
+    search_fields = (
+        "title",
+        "content"
+    )
+    
+    date_hierarchy = "last_modified"
+
+
+
+    
 admin.site.register(CustomUser, UserAdmin)
 
 
-admin.site.register(Post, PostAdmin)
 
 admin.site.register(Comment)
 
