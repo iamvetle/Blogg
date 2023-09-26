@@ -3,5 +3,6 @@
         "@nuxtjs/eslint-config-typescript",
         "plugin:prettier/recommended",
         "prettier"
-    ]
-}
+    ],
+    "vue/attribute-hyphenation": ["never"]
+  }

@@ -9,7 +9,7 @@ vi.stubGlobal("navigateTo", () => {
 
 let wrapper:VueWrapper
 let store
-let pinia = createTestingPinia()
+const pinia = createTestingPinia()
 
 describe('loggut page testing', () => {
     store = useGeneralStore(pinia)

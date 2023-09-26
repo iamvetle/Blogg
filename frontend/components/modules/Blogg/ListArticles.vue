@@ -12,14 +12,12 @@
         id="content"
         class="col-span-6 mx-auto"
       >
-        <div
-
-        >
+        <div>
           <ArticleCardd
-          v-for="post in store.posts.results"
-          :key="post.id"
-          class="article"
-            :postProp="post" 
+            v-for="post in store.posts.results"
+            :key="post.id"
+            class="article"
+            :post-prop="post" 
           />
           <hr class="mb-16">
         </div>

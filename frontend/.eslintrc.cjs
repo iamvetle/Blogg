@@ -4,7 +4,5 @@ module.exports = {
         "@nuxt/eslint-config",
         "plugin:nuxt/base",
     ],
-        "vue/attribute-hyphenation": ["error", "always" | "never", {
-          "ignore": []
-        }]
-};
+
+}
