@@ -2,7 +2,6 @@ from .models import CustomUser, Post, Comment
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-
 CustomUser = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
@@ -151,14 +150,11 @@ class FollowersSerializer(serializers.ModelSerializer):
         model = CustomUser
         
         fields = ["username"]
-
 class JustLoggedInSerializer(serializers.ModelSerializer):
-    
     class Meta:
         model = CustomUser
         
         fields = ["username, first_name, last_name"]
-        
         
         extra_kwargs = {
             "username": {"read_only": True},

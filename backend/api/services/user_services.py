@@ -1,17 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from ..serializers import UserSerializer, PostSerializer, UserProfileSerializer, FollowersSerializer
-from rest_framework import status
-from rest_framework.authtoken.models import Token
-from django.contrib.auth import authenticate
-from ..models import Post, Comment
+from ..serializers import UserProfileSerializer, FollowersSerializer
 from django.contrib.auth import get_user_model
-from rest_framework.permissions import IsAuthenticated
 
 
 CustomUser = get_user_model()
-
 
 ### USER HANDLING
     

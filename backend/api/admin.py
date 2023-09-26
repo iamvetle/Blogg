@@ -51,3 +51,7 @@ admin.site.register(CustomUser, UserAdmin)
 admin.site.register(Post, PostAdmin)
 
 admin.site.register(Comment)
+
+
+# https://realpython.com/python-django-blog/
+# ^step 2 talks about admin class models

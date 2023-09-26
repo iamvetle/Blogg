@@ -1,13 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from rest_framework.response import Response
 from rest_framework.views import APIView
-from ..serializers import UserSerializer, PostSerializer, PostSnippetSerializer, UserProfileSerializer, JustLoggedInSerializer
-from rest_framework import status
+from ..serializers import UserSerializer
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
-from ..models import Post, Comment
 from django.contrib.auth import get_user_model
-from rest_framework.permissions import IsAuthenticated
 
 CustomUser = get_user_model()
 
@@ -33,15 +28,13 @@ class LoginService(): # Try login logic
         else:
             return None
         
-
 class NewUserService(APIView): # Try to register a user logic
         
         @staticmethod
         def register_user(registration_data):
 
             serializer = UserSerializer(data=registration_data)
-            
-            
+                        
             print(registration_data)
 
 

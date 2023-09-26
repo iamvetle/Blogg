@@ -9,14 +9,9 @@
 #     def create_post()
     
     
-from django.shortcuts import get_object_or_404
-from rest_framework.response import Response
-from rest_framework.views import APIView
 from ..serializers import PostSerializer, PostSnippetSerializer
-from rest_framework import status
 from ..models import Post
 from django.contrib.auth import get_user_model
-from rest_framework.permissions import IsAuthenticated
 from .other import CustomPageNumberPagination, CustomLimitOffsetPagination
 
 CustomUser = get_user_model()
