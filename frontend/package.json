@@ -7,7 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "vitest",
+    "test": "vitest --dom",
     "test:ui": "vitest --ui",
     "coverage": "vitest run --coverage",
     "typecheck": "npx nuxi typecheck",
