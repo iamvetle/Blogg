@@ -5,7 +5,7 @@
 
 				<div class="article" v-for="post in store.posts.results" :key="post.id" :post-prop="post">
 
-					<article-cardd>
+					<article-card>
 
 						<template #author>
 							<span @click="redirect_to_author_page(post)">
@@ -48,9 +48,7 @@
 							<img :src="post_image" alt="Bilde til artikkel" class="w-full h-auto">
 						</template>
 
-
-
-					</article-cardd>
+					</article-card>
 
 
 					<hr class="mb-16">

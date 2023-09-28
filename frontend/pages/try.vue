@@ -19,7 +19,7 @@
           :key="index"
           class="article"
         >
-          <ArticleCardd
+          <ArticleCard
             :post-prop="post" 
           />
           <hr class="mb-16">

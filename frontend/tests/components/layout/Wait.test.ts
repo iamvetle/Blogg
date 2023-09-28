@@ -10,6 +10,6 @@ describe("testing TheWait component", () => {
     })
 
     it("should Render FormLogin", () => {
-        wrapper.findComponent({ name:"FormLogin" })
+        expect(wrapper.findComponent({ name:"FormLogin" }))
     })
 })

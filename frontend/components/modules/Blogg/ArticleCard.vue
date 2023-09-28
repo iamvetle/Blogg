@@ -1,90 +1,74 @@
 <template>
-  <div>
-    <article class="p-6 bg-plain overflow-hidden">
-      <div
-        id="grid-container"
-        class="grid grid-cols-6 gap-x-5 gap-y-2 mx-2"
-      >
-        <div class="col-start-1 col-span-4 inline-block">
-          <div class="flex justify-between items-center text-gray-500">
-            <span class="text-sm flex items-center"><img
-              class="h-5 me-2"
-              :src="placeholder_profile_picture"
-              alt="Profilbilde"
-            > <nuxt-link
-              :to="author_link"
-              class="flex items-center"
-            ><span
-              v-if="author_full_name == ''"
-            >Jonas Bakke</span>{{
-              author_full_name }}</nuxt-link></span><span class="text-sm">{{
-              postDetail.date_published }}</span>
-          </div>
-        </div>
-        <div class="col-span-2" />
+	<div class="article grid-cols-12 grid gap-8 mb-16">
+		<div id="left-col-article" class="col-start-1 col-end-9">
+			<span class="flex items-center w-full mb-2">
+				<span class="user-picture flex items-center">
+					<img :src="account_picture" alt="Bruker profilbilde" class=" w-6 h-auto me-2">
+				</span>
+				<span class="flex items-center justify-between w-full">
+
+					<span class="flex items-center full_name">
+							<slot name="author">Author name.</slot>
+
+					</span>
+
+					<slot name="date_published">Date published.</slot>
+					
+				</span>
+			</span>
+			<div class="mb-4 w-full">
+
+				<slot name="title">Title goes here</slot>
 
 
-        <div class="col-start-1 col-span-4 inline-block overflow-hidden">
-          <h2 class="mt-1 mb-2 text-2xl font-bold tracking-tight text-gray-900">
-            <nuxt-link :to="postLink">
-              {{ postDetail.title }}
-            </nuxt-link>
-          </h2><!-- fix this to better later that is v-html-->
-          <div
-            class="mb-2 font-light text-gray-500"
-            v-html="postDetail?.content_snippet || postDetail?.content"
-          />
-        </div>
-        <div class="col-span-2">
-          <img
-            :src="placeholder_image"
-            class="w-auto h-auto p-2"
-          >
-        </div>
+				<slot name="content">The content/body goes here.</slot>
 
-        <div class="col-start-1 col-span-4">
-          <div class="flex items-center pt-2 pb-4">
-            <div class="flex justify-between items-center w-full">
-              <div
-                id="tags"
-                class="flex items-center space-x-2"
-              >
-                <span
-                  class="flex items-center justify-center rounded-lg bg-primary-base text-plain px-2 py-[4px] text-xs"
-                >sometag</span>
-                <span
-                  class="flex items-center justify-center rounded-lg bg-primary-base text-plain px-2 py-[3px] text-xs"
-                >sometag</span>
-                <span
-                  class="flex items-center justify-center rounded-lg bg-primary-base text-plain px-2 py-[3px] text-xs"
-                >sometag</span>
-              </div>
-              <div class="flex items-center">
-                <nuxt-link
-                  :to="postLink"
-                  class="text-sm flex items-center font-medium text-primary-600 hover:underline"
-                >
-                  Read more
-                </nuxt-link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-span-2" />
-      </div>
-    </article>
-  </div>
+			</div>
+
+			<span class="flex items-center justify-between">
+				<slot name="lesmer"></slot>
+
+				<span class="flex items-center">
+					<slot name="tags"></slot>
+				</span>
+
+				<span class="flex items-center">
+					
+					<span id="save-article" class="me-2 w-auto h-auto mx-auto flex items-center justify-center">
+						<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M7 19V13H17V19H19V7.82843L16.1716 5H5V19H7ZM4 3H17L21 7V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM9 15V19H15V15H9Z"
+								fill="black" />
+						</svg>
+
+					</span>
+
+					<span id="article-options" class="w-auto h-auto mx-auto flex items-center justify-center">
+
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M4.5 10.5C3.675 10.5 3 11.175 3 12C3 12.825 3.675 13.5 4.5 13.5C5.325 13.5 6 12.825 6 12C6 11.175 5.325 10.5 4.5 10.5ZM19.5 10.5C18.675 10.5 18 11.175 18 12C18 12.825 18.675 13.5 19.5 13.5C20.325 13.5 21 12.825 21 12C21 11.175 20.325 10.5 19.5 10.5ZM12 10.5C11.175 10.5 10.5 11.175 10.5 12C10.5 12.825 11.175 13.5 12 13.5C12.825 13.5 13.5 12.825 13.5 12C13.5 11.175 12.825 10.5 12 10.5Z"
+								fill="black" />
+						</svg>
+
+
+					</span>
+				</span>
+			</span>
+		</div>
+
+		<div id="right-col-article" class="col-span-4 flex items-center justify-center|">
+			<slot name="article_image">This is were the article image is.</slot>
+		</div>
+	</div>
 </template>
 
 <script setup lang="ts">
+import account_picture from '~/assets/account-pin-circle-line.svg'
 
-import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
-import placeholder_image from '~/assets/placeholder-image.jpg'
+// temp solution
 
-const { postDetail } = defineProps(["postDetail"]);
-const postLink = `/post/${postDetail.id}`;
-const author_full_name: string = `${postDetail.author.first_name} ${postDetail.author.last_name}`;
-console.log(postDetail.author.username)
-const author_link = `/user/${postDetail.author.username}`;
 
-</script> 
+</script>
+
+<style scoped></style>

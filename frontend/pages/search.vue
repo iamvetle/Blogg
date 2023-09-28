@@ -10,7 +10,7 @@
         </span>
       </h2>
       <div v-if="store.searchPosts">
-        <ArticleCardd
+        <ArticleCard
           v-for="post, index in store.searchPosts.results"
           :key="index"
           :post-detail="post"

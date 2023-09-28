@@ -1,13 +1,10 @@
-import { shallowMount } from '@vue/test-utils'
+import { VueWrapper, shallowMount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import SignUpCard from '~/components/modules/Auth/SignUpCard.vue'
 
-vi.stubGlobal('FormKit', () => { // don't understand why not working
-    return null
-})
 describe('FormRegister page testing', () => {
-    let wrapper;
+    let wrapper:VueWrapper
     let store;
     let pinia;
 
@@ -23,5 +20,18 @@ describe('FormRegister page testing', () => {
 
     test('exists', () => {
         expect(wrapper.exists()).toBe(true)
+    })
+
+    test('FormKit is rendered', () => {
+        expect(wrapper.findComponent({ name:"FormKit" }))
+    })
+
+    test('suksess burde vises etter at en konto har blitt laget', async () => {
+        console.log(wrapper.html())
+
+        wrapper.vm.submitted = true
+        await wrapper.vm.$nextTick()
+
+        expect(wrapper.text()).toContain("Suksess")
     })
 })

@@ -35,7 +35,9 @@ class UserSerializer(serializers.ModelSerializer):
     
 class PostSerializer(serializers.ModelSerializer):
     author = serializers.SerializerMethodField() # Passer på at ikke ALT av CustomUser blir sendt med
+    
     date_published = serializers.SerializerMethodField()
+    
 
     class Meta:        
         model = Post
@@ -46,14 +48,16 @@ class PostSerializer(serializers.ModelSerializer):
         } 
 
     def get_author(self, obj):
+        ''' Ensures that not all of the fields from "author" is included, but only "username", "first_name" and "last_name" '''
         author = {
             "username":obj.author.username,
             "first_name":obj.author.first_name,
             "last_name":obj.author.last_name
         }
         return author
-
+    
     def get_date_published(self, obj):
+        ''' Makes the value of the "date" string more readable '''
         return obj.date_published.strftime('%d-%m-%Y')        
 
 class PostSnippetSerializer(serializers.ModelSerializer): # Bare en liten del av posts
