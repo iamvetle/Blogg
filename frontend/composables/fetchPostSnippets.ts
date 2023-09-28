@@ -13,14 +13,14 @@ export const fetchPostSnippets = async () => {
       Authorization: `Token ${token}`,
     };
 
-    const response = await axios.get<SnippetPostType[]>(store.post_snippets_url, { headers });
+    const response = await axios.get<ArticlesSnippetsType[]>(store.post_snippets_url, { headers });
 
     if (response.data != null) {
       console.log("OK: Posts fetched", response.data); // print to self
 
       await fixPagination(response.data) // calls the pagination composable for the paginatioin.vue
       
-      store.posts = response.data as SnippetPostType;
+      store.posts = response.data as ArticlesSnippetsType;
     
     } else {
       console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self

@@ -154,11 +154,11 @@ export const useGeneralStore = defineStore("general", () =&gt; {
   const username = ref&lt;string | null&gt;(null);
 &nbsp;
   // Posts
-  const posts = ref&lt;SnippetPostType | null&gt;(null)
+  const posts = ref&lt;ArticlesSnippetsType | null&gt;(null)
 &nbsp;
   // Min side
   const theUser = ref(null) 
-  const personalPosts = ref&lt;SnippetPostType | null&gt;(null)
+  const personalPosts = ref&lt;ArticlesSnippetsType | null&gt;(null)
 &nbsp;
   // Links
   const baseFeedURL = "http://localhost:8888/api/feed/"

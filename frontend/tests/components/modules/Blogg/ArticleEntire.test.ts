@@ -21,7 +21,7 @@ describe("testing the ArticleEntire", () => {
         expect(wrapper.exists()).toBe(true)        
     })
 
-    test("text is rendered", () => {
+    it("should take and render the content of the props being passed", () => {
         expect(wrapper.text()).toContain("Read more")
         expect(wrapper.text()).toContain("title")
         expect(wrapper.text()).toContain("some content")

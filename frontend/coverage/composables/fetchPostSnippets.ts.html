@@ -142,14 +142,14 @@ export const fetchPostSnippets = async () =&gt; {
       Authorization: `Token ${token}`,
     };
 &nbsp;
-    const response = await axios.get&lt;SnippetPostType[]&gt;(store.post_snippets_url, { headers }<span class="branch-0 cbranch-no" title="branch not covered" >);</span>
+    const response = await axios.get&lt;ArticlesSnippetsType[]&gt;(store.post_snippets_url, { headers }<span class="branch-0 cbranch-no" title="branch not covered" >);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    if (response.data != null) {</span>
 <span class="cstat-no" title="statement not covered" >      console.log("OK: Posts fetched", response.data); // print to self</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >      await fixPagination(response.data) // calls the pagination composable for the paginatioin.vue</span>
 <span class="cstat-no" title="statement not covered" >      </span>
-<span class="cstat-no" title="statement not covered" >      store.posts = response.data as SnippetPostType;</span>
+<span class="cstat-no" title="statement not covered" >      store.posts = response.data as ArticlesSnippetsType;</span>
 <span class="cstat-no" title="statement not covered" >    </span>
 <span class="cstat-no" title="statement not covered" >    } else {</span>
 <span class="cstat-no" title="statement not covered" >      console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self</span>

@@ -7,11 +7,11 @@ export const useGeneralStore = defineStore("general", () => {
   const username = ref<string | null>(null);
 
   // Posts
-  const posts = ref<SnippetPostType | null>(null)
+  const posts = ref<ArticlesSnippetsType | null>(null)
 
   // Min side
   const theUser = ref(null) 
-  const personalPosts = ref<SnippetPostType | null>(null)
+  const personalPosts = ref<ArticlesSnippetsType | null>(null)
 
   // Links
   const baseFeedURL = "http://localhost:8888/api/feed/"

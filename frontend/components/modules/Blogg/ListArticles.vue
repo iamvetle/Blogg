@@ -10,7 +10,7 @@
 						<template #author>
 							<span @click="redirect_to_author_page(post)">
 								<p class="font-bold" v-text="author_full_name(post)">
-								</p>
+								</p	>
 							</span>
 						</template>
 
@@ -95,6 +95,7 @@
 
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
+import { ArticleSnippetSingleType } from '~/typescript/interfaces';
 const post_image = ref('https://picsum.photos/500/300')
 
 const store = useGeneralStore()
@@ -111,19 +112,19 @@ onMounted(async () => {
 	console.log(userdata.value.data) // print to self
 })
 
-const redirect_to_author_page = async (post) => {
+const redirect_to_author_page = async (post:ArticleSnippetSingleType) => {
 	const author_profile_page = post.author.username
 
 	return await navigateTo(`/user/${author_profile_page}`)
 }
 
-const redirect_to_post_page = async (post) => {
+const redirect_to_post_page = async (post:ArticleSnippetSingleType) => {
 	const post_article_page = post.id
 
 	return await navigateTo(`/post/${post_article_page}`)
 }
 
-const author_full_name = (post) => {
+const author_full_name = (post:ArticleSnippetSingleType) => {
 	const author = post.author
 
 	const full = `${author.first_name} ${author.last_name}`;

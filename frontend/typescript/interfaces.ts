@@ -11,7 +11,8 @@ export interface AccountType {
 	last_online: string;
 }
 
-export interface SnippetPostType {
+// plural
+export interface ArticlesSnippetsType {
 	count: number;
 	next: string | null;
 	previous: string | null;
@@ -32,6 +33,22 @@ export interface SnippetPostType {
 		}
 	]
 }
+
+// singel
+export interface ArticleSnippetSingleType {
+	id: number;
+	title: string;
+	content_snippet: string;
+	date_published: string;
+	last_modified: string; // TODO: fjern denne senere på backend
+	num_of_followers: string;
+	author: {
+		username: string;
+		first_name: string;
+		last_name: string;
+	}
+} 
+
 
 export interface PersonalPostType {
 	id: number;
@@ -55,7 +72,7 @@ export interface SinglePostType {
 		first_name: string;
 		last_name: string;
 	};
-	last_modified: string;
+	last_modified: string; // remove this later
 	date_published: string;
 }
 
@@ -77,6 +94,7 @@ export interface FollowerType {
 }
 
 
+// not using
 export interface RandomAccount {
 	id: string,
 	uid: string,
@@ -118,6 +136,8 @@ export interface RandomAccount {
 
 // URL: https://dummyjson.com/posts?skip=5&limit=10 
 // max 150 posts
+
+// not using
 export interface FakePost {
 	limit: number,
 	posts: [{

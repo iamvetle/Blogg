@@ -1,6 +1,7 @@
 from .models import CustomUser, Post, Comment
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from datetime import datetime
 
 CustomUser = get_user_model()
 
@@ -34,6 +35,7 @@ class UserSerializer(serializers.ModelSerializer):
     
 class PostSerializer(serializers.ModelSerializer):
     author = serializers.SerializerMethodField() # Passer på at ikke ALT av CustomUser blir sendt med
+    date_published = serializers.SerializerMethodField()
 
     class Meta:        
         model = Post
@@ -51,10 +53,15 @@ class PostSerializer(serializers.ModelSerializer):
         }
         return author
 
+    def get_date_published(self, obj):
+        return obj.date_published.strftime('%d-%m-%Y')        
+
 class PostSnippetSerializer(serializers.ModelSerializer): # Bare en liten del av posts
 
     content_snippet = serializers.SerializerMethodField() # Limited to 100 char
     author = serializers.SerializerMethodField()
+    date_published = serializers.SerializerMethodField()
+
     
     class Meta:
         model = Post
@@ -82,11 +89,15 @@ class PostSnippetSerializer(serializers.ModelSerializer): # Bare en liten del av
             "last_name": obj.author.last_name,
         }
         return author
+    
+    def get_date_published(self, obj):
+        return obj.date_published.strftime('%d-%m-%Y')        
 
 class CommentSerializer(serializers.ModelSerializer): # Not in use
     
     author = serializers.SerializerMethodField()
     post = serializers.SerializerMethodField()
+    date_published = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
@@ -113,6 +124,8 @@ class CommentSerializer(serializers.ModelSerializer): # Not in use
             "author_last_name":obj.author.last_name,
         }
         return post
+    def get_date_published(self, obj):
+        return obj.date_published.strftime('%d-%m-%Y')        
 
 class UserProfileSerializer(serializers.ModelSerializer):
     posts = serializers.SerializerMethodField()
