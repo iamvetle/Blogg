@@ -6,9 +6,10 @@ from rest_framework import status
 from ..models import Post
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
-from api.services.post_services import CreatePostService, PostSnippetService, SearchService
-from django.core.paginator import Paginator
-from rest_framework.pagination import PageNumberPagination
+from api.services.post_services import CreatePostService, PostSnippetService
+from api.services.search_services import SearchService
+from rest_framework.response import Response
+from api.services.pagination_services import CustomLimitOffsetPagination
 
 CustomUser = get_user_model()
 
@@ -67,18 +68,19 @@ class CreatePostView(APIView):
 class SearchView(APIView): ## filters based on post title
     permission_classes = [IsAuthenticated]
     
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         
-        response = SearchService.get_search_result_posts(request)
+        ''' Does the filtering logic '''
+        queryset = SearchService.filtered_search(request)
         
+        paginator = CustomLimitOffsetPagination() # del opp så paginator ikke blir knyttet til her
+        paginated_results = paginator.paginate_queryset(queryset, request)
+        
+        serializer = PostSnippetSerializer(paginated_results, many=True)
+        response = paginator.get_paginated_response(serializer.data)
+
         if response != None:           
-                
             return Response(response, status=status.HTTP_200_OK)
+
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-    
-
-
-
-#####
-
