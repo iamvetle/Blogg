@@ -5,12 +5,12 @@
   >
     <div>
       <h2 class="text-2xl inline">
-        Search results for: <p class="inline pl-2">
+        Search results for: <span class="inline pl-2">
           '{{ store.lastSearch }}'
-        </p>
+        </span>
       </h2>
       <div v-if="store.searchPosts">
-        <ArticleCard
+        <ArticleCardd
           v-for="post, index in store.searchPosts.results"
           :key="index"
           :post-detail="post"
@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 
-import { useSearchStore } from '~/store/searchStore';
+import { useSearchStore } from '~/store/searchStore'
 
 const store = useSearchStore()
 

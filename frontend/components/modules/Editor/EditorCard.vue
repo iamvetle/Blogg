@@ -14,7 +14,7 @@
           <button @click="addImage()">
             <img
               class="h-5 flex items-center"
-              src="~/assets/icons/image-add-line.svg"
+              :src="add_image_icon"
               alt="add_image"
             >
           </button>
@@ -26,7 +26,7 @@
           >
             <img
               class="h-5 flex items-center"
-              src="~/assets/icons/link.svg"
+              :src="link_icon"
               alt="link"
             >
           </button>
@@ -38,7 +38,7 @@
           >
             <img
               class="h-5 flex items-center"
-              src="~/assets/icons/h-1.svg"
+              :src="heading_1_icon"
             >
           </button>
 	
@@ -49,14 +49,14 @@
           >
             <img
               class="h-5 flex items-center"
-              src="~/assets/icons/h-2.svg"
+              :src="heading_2_icon"
             >
           </button>
 
           <button @click="editor.chain().focus().setHorizontalRule().run()">
             <img
               class="h-5 flex items-center"
-              src="~/assets/separator.svg"
+              :src="seperator_icon"
               alt="seperator"
             >
           </button>
@@ -74,7 +74,7 @@
           >
             <img
               class="h-5 flex items-center"
-              src="~/assets/icons/bold.svg"
+              :src="bold_icon"
             >
           </button>
 	
@@ -85,7 +85,8 @@
           >
             <img
               class="h-5 flex items-center"
-              src="~/assets/icons/italic.svg"
+              :src="italic_icon"
+              alt="italic"
             >
           </button>
 
@@ -95,7 +96,7 @@
           >
             <img
               class="h-5 flex items-center"
-              src="~/assets/icons/underline.svg"
+              :src="underline_icon"
             >
           </button>
 
@@ -105,7 +106,7 @@
           >
             <img
               class="h-5 flex items-center"
-              src="~/assets/icons/code-view.svg"
+              :src="code_snip_icon"
               alt="code"
             >
           </button>
@@ -117,7 +118,7 @@
           >
             <img
               class="h-5 flex items-center"
-              src="~/assets/icons/double-quotes-r.svg"
+              :src="double_quotes_icon"
             >
           </button>
         </bubble-menu>
@@ -177,6 +178,20 @@ import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
 import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
+
+// Images (svgs)
+import add_image_icon from '~/assets/icons/image-add-line.svg'
+import underline_icon from '~/assets/icons/underline.svg'
+import code_snip_icon from '~/assets/icons/code-view.svg'
+import double_quotes_icon from '~/assets/icons/double-quotes-r.svg'
+import italic_icon from '~/assets/icons/italic.svg'
+import bold_icon from '~/assets/icons/bold.svg'
+import link_icon from '~/assets/icons/link.svg'
+import seperator_icon from '~/assets/seperator.svg'
+
+import heading_1_icon from '~/assets/icons/h-1.svg'
+import heading_2_icon from '~/assets/icons/h-2.svg'
+
 
 // const emit = defineEmits()
 const errorHappened = ref(null)

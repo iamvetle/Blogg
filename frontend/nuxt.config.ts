@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
   modules: [
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/eslint-module",
+    //"@nuxtjs/eslint-module",
     "@formkit/nuxt",
     "@pinia/nuxt",
     "nuxt-vitest",

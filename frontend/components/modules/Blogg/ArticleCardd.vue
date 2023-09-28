@@ -13,6 +13,7 @@
           >
         </span>
         <span class="flex items-center justify-between w-full">
+          <slot>Fallback</slot>
           <span class="flex items-center full_name">
             <p class="font-bold"><nuxt-link :to="author_link"><span v-if="author_full_name == ''">{{
               postProp.author.username }} (brukernavn)</span>{{ author_full_name }}</nuxt-link></p>
