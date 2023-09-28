@@ -1,7 +1,7 @@
 import { VueWrapper, mount } from '@vue/test-utils'
-import NavbarLoggedInVue from '~/components/Element/Navbar/NavbarLoggedIn.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
+import TheNavbarLoggedIn from '~/components/layout/TheNavbarLoggedIn.vue'
 
 vi.stubGlobal('useRouter', () => {
     return null
@@ -21,7 +21,7 @@ describe("testing NavbarLoggedIn component", () => {
     store.username = "testname"
     
 
-    wrapper = mount(NavbarLoggedInVue, {
+    wrapper = mount(TheNavbarLoggedIn, {
         global: {
             plugins: [pinia]
 
@@ -43,7 +43,7 @@ describe("testing NavbarLoggedIn component", () => {
 
         store.isAuthenticated = false
 
-        wrapper = mount(NavbarLoggedInVue, {
+        wrapper = mount(TheNavbarLoggedIn, {
             global: {
                 plugins: [pinia]
     

@@ -1,7 +1,7 @@
-import Footer from '~/components/Element/Footer.vue'
+import Footer from '~/components/layout/TheFooter.vue'
 import { mount } from '@vue/test-utils'
 
-describe('Testing the Footer element/component', () => {
+describe('Testing the TheFooter layout element/component', () => {
     const wrapper = mount(Footer);
 
     test("element exists", () => {

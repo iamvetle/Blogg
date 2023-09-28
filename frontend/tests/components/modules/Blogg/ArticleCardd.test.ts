@@ -1,8 +1,8 @@
-import PostArticle from '../../components/PostArticle.vue'
+import ArticleCardd from '~/components/modules/Blogg/ArticleCardd.vue'
 import { mount } from '@vue/test-utils'
 
 describe("testing PostArticle", async () => {
-    const wrapper = await mount(PostArticle, {
+    const wrapper = await mount(ArticleCardd, {
         props: {
             postProp: {
                 date_published: "2023-09-12",

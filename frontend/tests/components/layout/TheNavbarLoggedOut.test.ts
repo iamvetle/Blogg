@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
-import NavbarLoggedOutVue from '~/components/Element/Navbar/NavbarLoggedOut.vue'
+import TheNavbarLoggedOutVue from '~/components/layout/TheNavbarLoggedOut.vue'
 
 describe("testing NavbarLoggedOut cmp", () => {
     
-    const wrapper = mount(NavbarLoggedOutVue)
+    const wrapper = mount(TheNavbarLoggedOutVue)
 
-    test("component exists", () => {
+    test("thenavbarloggedoute exists", () => {
         expect(wrapper.exists()).toBe(true)
     })
 

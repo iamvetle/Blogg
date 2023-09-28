@@ -1,68 +1,108 @@
 <template>
-	<div class="article grid-cols-12 grid gap-8 mb-16">
-		<div id="left-col-article" class="col-start-1 col-end-9">
-			<span class="flex items-center w-full mb-2">
-				<span class="user-picture flex items-center">
-					<img :src="account_picture" alt="Bruker profilbilde" class=" w-6 h-auto me-2">
-				</span>
-				<span class="flex items-center justify-between w-full">
-					<span class="flex items-center full_name">
-						<p class="font-bold"><nuxt-link :to="author_link"><span v-if="author_full_name == ''">{{
-							postProp.author.username }} (brukernavn)</span>{{ author_full_name }}</nuxt-link></p>
-					</span>
-					<p class=" font-light">{{ postProp.date_published }}</p>
-				</span>
-			</span>
-			<div class="mb-4 w-full">
-				<h3 class=" text-[28px] mb-2">
-					<nuxt-link :to="postLink">
-						{{ postProp.title }}
-					</nuxt-link>
-				</h3>
-				<p class="mb-2 prose" v-html="postProp.content_snippet" />
-				<span class="text-sm  text-primary hover:text-primaryFixed"><nuxt-link :to="postLink">Les
-						mer</nuxt-link></span>
-			</div>
+  <div class="article grid-cols-12 grid gap-8 mb-16">
+    <div
+      id="left-col-article"
+      class="col-start-1 col-end-9"
+    >
+      <span class="flex items-center w-full mb-2">
+        <span class="user-picture flex items-center">
+          <img
+            :src="account_picture"
+            alt="Bruker profilbilde"
+            class=" w-6 h-auto me-2"
+          >
+        </span>
+        <span class="flex items-center justify-between w-full">
+          <span class="flex items-center full_name">
+            <p class="font-bold"><nuxt-link :to="author_link"><span v-if="author_full_name == ''">{{
+              postProp.author.username }} (brukernavn)</span>{{ author_full_name }}</nuxt-link></p>
+          </span>
+          <p class=" font-light">{{ postProp.date_published }}</p>
+        </span>
+      </span>
+      <div class="mb-4 w-full">
+        <h3 class=" text-[28px] mb-2">
+          <nuxt-link :to="postLink">
+            {{ postProp.title }}
+          </nuxt-link>
+        </h3>
+        <p class="mb-2 prose">
+          {{ postProp.content_snippet }}
+        </p>
+        <span class="text-sm  text-primary hover:text-primaryFixed"><nuxt-link :to="postLink">Les
+          mer</nuxt-link></span>
+      </div>
 
-			<span class="flex items-center justify-between">
-				<span class="flex items-center">
+      <span class="flex items-center justify-between">
+        <span class="flex items-center">
 
-					<div v-for="tag in postProp.tags" v-if="postProp.tags">
-						<BaseTag :text-prop="tag" class="me-1" />
-					</div>
+          <div v-if="postProp.tags">
+            <BaseTag
+              v-for="tag, index in postProp.tags"
+              :key="index"
+              :text-prop="tag"
+              class="me-1"
+            />
+          </div>
 
-				</span>
+        </span>
 
-				<span class="flex items-center">
-					<span id="save-article" class="me-2 w-auto h-auto mx-auto flex items-center justify-center">
-						<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M7 19V13H17V19H19V7.82843L16.1716 5H5V19H7ZM4 3H17L21 7V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM9 15V19H15V15H9Z"
-								fill="black" />
-						</svg>
+        <span class="flex items-center">
+          <span
+            id="save-article"
+            class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 19V13H17V19H19V7.82843L16.1716 5H5V19H7ZM4 3H17L21 7V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM9 15V19H15V15H9Z"
+                fill="black"
+              />
+            </svg>
 
-					</span>
+          </span>
 
 
 
-					<span id="article-options" class="w-auto h-auto mx-auto flex items-center justify-center">
+          <span
+            id="article-options"
+            class="w-auto h-auto mx-auto flex items-center justify-center"
+          >
 
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path
-								d="M4.5 10.5C3.675 10.5 3 11.175 3 12C3 12.825 3.675 13.5 4.5 13.5C5.325 13.5 6 12.825 6 12C6 11.175 5.325 10.5 4.5 10.5ZM19.5 10.5C18.675 10.5 18 11.175 18 12C18 12.825 18.675 13.5 19.5 13.5C20.325 13.5 21 12.825 21 12C21 11.175 20.325 10.5 19.5 10.5ZM12 10.5C11.175 10.5 10.5 11.175 10.5 12C10.5 12.825 11.175 13.5 12 13.5C12.825 13.5 13.5 12.825 13.5 12C13.5 11.175 12.825 10.5 12 10.5Z"
-								fill="black" />
-						</svg>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.5 10.5C3.675 10.5 3 11.175 3 12C3 12.825 3.675 13.5 4.5 13.5C5.325 13.5 6 12.825 6 12C6 11.175 5.325 10.5 4.5 10.5ZM19.5 10.5C18.675 10.5 18 11.175 18 12C18 12.825 18.675 13.5 19.5 13.5C20.325 13.5 21 12.825 21 12C21 11.175 20.325 10.5 19.5 10.5ZM12 10.5C11.175 10.5 10.5 11.175 10.5 12C10.5 12.825 11.175 13.5 12 13.5C12.825 13.5 13.5 12.825 13.5 12C13.5 11.175 12.825 10.5 12 10.5Z"
+                fill="black"
+              />
+            </svg>
 
 
-					</span>
-				</span>
-			</span>
-		</div>
+          </span>
+        </span>
+      </span>
+    </div>
 
-		<div id="right-col-article" class="col-span-4 flex items-center justify-center|">
-			<img :src="article_image" alt="Bilde til artikkel" class="w-full h-auto">
-		</div>
-	</div>
+    <div
+      id="right-col-article"
+      class="col-span-4 flex items-center justify-center|"
+    >
+      <img
+        :src="article_image"
+        alt="Bilde til artikkel"
+        class="w-full h-auto"
+      >
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -71,7 +111,12 @@ import account_picture from '~/assets/account-pin-circle-line.svg'
 // temp solution
 const article_image = "https://picsum.photos/500/300"
 
-const { postProp } = defineProps(["postProp"])
+const { postProp } = defineProps({
+  postProp: {
+    type:Object,
+    default:null
+  }
+})
 
 const author_full_name = `${postProp.author.first_name} ${postProp.author.last_name}`;
 const author_link = `/user/${postProp.author.username}`;

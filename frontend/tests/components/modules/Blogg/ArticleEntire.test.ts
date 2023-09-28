@@ -1,10 +1,10 @@
-import PostWindow from '../../components/PostWindow.vue'
+import ArticleEntire from '~/components/modules/Blogg/ArticleEntire.vue'
 import { shallowMount } from '@vue/test-utils'
 
-describe("testing the PostWindow", () => {
-    const wrapper = shallowMount(PostWindow, {
+describe("testing the ArticleEntire", () => {
+    const wrapper = shallowMount(ArticleEntire, {
         props: {
-            postDetail: {
+            postProp: {
                 title:"title",
                 content_snippet:"some content",
                 date_published:"2023-09-23",
@@ -23,5 +23,8 @@ describe("testing the PostWindow", () => {
 
     test("text is rendered", () => {
         expect(wrapper.text()).toContain("Read more")
+        expect(wrapper.text()).toContain("title")
+        expect(wrapper.text()).toContain("some content")
+        expect(wrapper.text()).toContain("testuser")
     })
 })

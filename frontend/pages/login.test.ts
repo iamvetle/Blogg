@@ -1,8 +1,8 @@
 import { VueWrapper, mount } from '@vue/test-utils'
-import login from '~/pages/login'
+import LoginCard from '~/components/modules/Auth/LoginCard.vue'
 
 describe('login page testing', () => {
-    const wrapper = mount()
+    const wrapper = mount(LoginCard)
 
     test('exists', () => {
         expect(wrapper.exists()).toBe(true)

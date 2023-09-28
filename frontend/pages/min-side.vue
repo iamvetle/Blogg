@@ -155,7 +155,7 @@ import { useGeneralStore } from '~/store/generalStore';
 const store = useGeneralStore()
 
 const user = ref<PersonalUserType | null>(null);
-const followers = ref(null)
+const followers = ref<FollowerType | null>(null)
 
 onMounted( async () => {
 

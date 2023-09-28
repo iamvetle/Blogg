@@ -1,12 +1,9 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
-import FormRegister from '~/components/form/FormRegister.vue'
+import EditorCard from '~/components/modules/Editor/EditorCard.vue'
 
-vi.stubGlobal('FormKit', () => { // don't understand why not working
-    return null
-})
-describe('FormRegister page testing', () => {
+describe('_blank testing', () => {
     let wrapper;
     let store;
     let pinia;
@@ -14,7 +11,7 @@ describe('FormRegister page testing', () => {
     beforeEach(() => {
         pinia = createTestingPinia()
         store = useGeneralStore(pinia)
-        wrapper = shallowMount(FormRegister, {
+        wrapper = mount(EditorCard, {
             global: {
                 plugins: [pinia],
             },

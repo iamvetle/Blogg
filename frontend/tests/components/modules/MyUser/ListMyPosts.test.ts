@@ -1,10 +1,10 @@
-import MyUserPost from '../../components/MyUserPosts.vue'
+import ListMyPosts from '~/components/modules/MyUser/ListMyPosts.vue'
 import { mount } from '@vue/test-utils'
 
 describe("testing MyUserPost cmp", () => {
 
     // mounts component
-    const wrapper = mount(MyUserPost, {
+    const wrapper = mount(ListMyPosts, {
         props: {
             postProp: {
                 id:3,

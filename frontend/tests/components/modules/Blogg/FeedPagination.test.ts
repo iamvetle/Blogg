@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils'
+import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import Pagination from '~/components/Pagination.vue'
+import FeedPagination from '~/components/modules/Blogg/FeedPagination.vue'
 import { useGeneralStore } from '~/store/generalStore'
 
-let wrapper
+let wrapper:VueWrapper
 let store
 let pinia
 
@@ -19,7 +19,7 @@ describe("testing Pagniation component", () => {
         store.current_page = 4
         store.next_page_link = "http://example.com/posts/page?=5"
         
-        wrapper = mount(Pagination, {
+        wrapper = mount(FeedPagination, {
             globals: {
                 plugins: [pinia]
             }

@@ -57,6 +57,7 @@
 </template>
 
 <script setup lang="ts">
+import { useSearchStore } from '~/store/searchStore';
 
 const search_input = ref("")
 const store = useSearchStore()

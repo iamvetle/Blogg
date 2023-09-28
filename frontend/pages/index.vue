@@ -10,8 +10,9 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from "~/store/generalStore";
-const store = useGeneralStore();
+import { useGeneralStore } from '~/store/generalStore';
+
+const store = useGeneralStore()
 
 const storeValue = computed(() => store.isAuthenticated);
 
@@ -33,4 +34,5 @@ if (store.isAuthenticated === true) {
 
 </script>
 
-<style scoped lang="scss"></style>
+<style>
+</style>

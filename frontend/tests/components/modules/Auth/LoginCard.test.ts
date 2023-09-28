@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
-import FormLogin from '~/components/form/FormLogin.vue'
+import LoginCard from '~/components/modules/Auth/LoginCard.vue';
 
 describe('FormLogin page testing', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = mount(FormLogin)
+        wrapper = mount(LoginCard)
     })
 
     test('exists', () => {

@@ -178,7 +178,7 @@ import History from '@tiptap/extension-history'
 import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
 
-const emit = defineEmits()
+// const emit = defineEmits()
 const errorHappened = ref(null)
 
 const editor = useEditor({
@@ -206,6 +206,7 @@ const editor = useEditor({
 		Italic,
 		Link,
 		Bold,
+    Code,
 		Placeholder.configure({
 			placeholder:'Write something ...'
 		}),

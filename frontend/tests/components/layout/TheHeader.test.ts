@@ -1,4 +1,4 @@
-import TheHeader from "~/components/Element/TheHeader.vue"
+import TheHeader from "~/components/layout/TheHeader.vue"
 import { mount } from '@vue/test-utils'
 
 describe("Testing TheHeader", () => {
