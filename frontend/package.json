@@ -13,7 +13,6 @@
     "typecheck": "npx nuxi typecheck",
     "lint": "eslint ."
   },
-
   "husky": {
     "hooks": {
       "pre-commit": "yarn test"
@@ -67,6 +66,7 @@
     "@tiptap/pm": "^2.1.8",
     "@tiptap/starter-kit": "^2.1.8",
     "@tiptap/vue-3": "^2.1.8",
+    "dlx": "^0.2.1",
     "element-plus": "^2.3.12",
     "eslint-plugin-prettier": "^5.0.0",
     "flowbite": "^1.8.1",
