@@ -13,6 +13,12 @@
     "typecheck": "npx nuxi typecheck",
     "lint": "eslint ."
   },
+
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test"
+    }
+  },
   "devDependencies": {
     "@formkit/nuxt": "^0.18.3",
     "@nuxt/devtools": "latest",
