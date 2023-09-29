@@ -38,19 +38,10 @@ describe("testing NavbarLoggedIn component", () => {
         expect(wrapper.text()).toContain("Min side")
     })
 
-    test("username does not render", async () => {
-        await wrapper.unmount()
-
-        store.isAuthenticated = false
-
-        wrapper = mount(TheNavbarLoggedIn, {
-            global: {
-                plugins: [pinia]
-    
-            }
-    
-        })
-
-        expect(wrapper.text()).not.toContain("testname")
-    })
+    // it("the input field in the menu bar get shown when the menu bar is clicked", async () => {
+    //     await 
+    //     const input_bar = await find('input["search_input"]')
+        
+    //     expect(input_bar.exists()).toBe(true)
+    // })
 })

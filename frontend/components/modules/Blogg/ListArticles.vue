@@ -7,7 +7,7 @@
 
 					<article-card>
 
-						<template #author>
+						<template #author v-if="post">
 							<span @click="redirect_to_author_page(post)">
 								<p class="font-bold" v-text="author_full_name(post)">
 								</p	>
@@ -123,12 +123,14 @@ const redirect_to_post_page = async (post:ArticleSnippetSingleType) => {
 }
 
 const author_full_name = (post:ArticleSnippetSingleType) => {
+	
+	console.log("author full name function being called")
+	console.log(post.author)
 	const author = post.author
 
-	const full = `${author.first_name} ${author.last_name}`;
-	return full
+	const full = `${author.first_name} ${author.last_name}` ?? author.username 
+	return full.trim() == "" ? author.username: full
 }
-
 
 </script>
 

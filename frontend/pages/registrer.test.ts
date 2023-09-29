@@ -1,10 +1,10 @@
-import { mount } from '@vue/test-utils'
+import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import register from '~/pages/registrer.vue'
 
 describe('register page testing', () => {
-    let wrapper;
+    let wrapper:VueWrapper
     let store;
     let pinia;
 

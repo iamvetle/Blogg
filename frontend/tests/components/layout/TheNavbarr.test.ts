@@ -21,4 +21,10 @@ describe("thenavvbarr testing", () => {
     test('exists', () => {
         expect(wrapper.exists()).toBe(true)
     })
+
+    test("renders text", () => {
+        expect(wrapper.text()).toContain("Nytt innlegg")
+        expect(wrapper.text()).toContain("Min profil")
+
+    })
 })
