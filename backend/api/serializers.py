@@ -47,13 +47,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class TagSerializer(serializers.ModelSerializer):
-    
     class Meta:
         model = Tag
         fields = ['id','name']
         
-class CategorySerializer(serializers.ModelSerializer):
-    
+class CategorySerializer(serializers.ModelSerializer):    
     class Meta:
         model = Category
         fields = ['id', 'name']
@@ -61,7 +59,8 @@ class CategorySerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     author = (
         serializers.SerializerMethodField()
-    )  # Passer på at ikke ALT av CustomUser blir sendt med
+        )  
+    ''' Makes sure that not everything in the 'author' object gets returned '''
 
     date_published = serializers.SerializerMethodField()
 
@@ -74,7 +73,7 @@ class PostSerializer(serializers.ModelSerializer):
         }
 
     def get_author(self, obj):
-        """Ensures that not all of the fields from "author" is included, but only "username", "first_name" and "last_name" """
+        """ Ensures that not all of the fields from "author" is included, but only 'username', 'first_name and 'last_name """
         author = {
             "username": obj.author.username,
             "first_name": obj.author.first_name,
@@ -83,12 +82,12 @@ class PostSerializer(serializers.ModelSerializer):
         return author
 
     def get_date_published(self, obj):
-        """Makes the value of the "date" string more readable"""
+        """ Makes the value of the "date" string more readable """
         return obj.date_published.strftime("%d-%m-%Y")
 
 
 class PostSnippetSerializer(serializers.ModelSerializer):  # Bare en liten del av posts
-    content_snippet = serializers.SerializerMethodField()  # Limited to 100 char
+    content_snippet = serializers.SerializerMethodField()  # Limited to 225 char
     author = serializers.SerializerMethodField()
     date_published = serializers.SerializerMethodField()
     

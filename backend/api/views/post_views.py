@@ -29,6 +29,7 @@ class MyPosts(APIView):
 # not used at the moment
 class AllPostsView(APIView):
     """retrieves all posts if client is authenticated"""
+
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
@@ -36,7 +37,7 @@ class AllPostsView(APIView):
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-        
+
 class PostSnippetsView(APIView):
     permission_classes = [IsAuthenticated]
     """retrieves all post snippets if client is authenticated"""
@@ -44,6 +45,7 @@ class PostSnippetsView(APIView):
     def get(self, request):
         response = PostSnippetService.get_posts(request)
         return Response(response, status=status.HTTP_200_OK)
+
 
 class SinglePostView(APIView):  # Retrieves a specific post
     permission_classes = [IsAuthenticated]
@@ -67,9 +69,6 @@ class CreatePostView(APIView):
             return Response(response.data, status=status.HTTP_201_CREATED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
-    def get(self, request):
-        return Response("Authorized:", status=status.HTTP_200_OK)
 
 
 class SearchView(APIView):  ## filters based on post title
