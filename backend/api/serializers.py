@@ -79,17 +79,22 @@ class PostSnippetSerializer(serializers.ModelSerializer):  # Bare en liten del a
     content_snippet = serializers.SerializerMethodField()  # Limited to 100 char
     author = serializers.SerializerMethodField()
     date_published = serializers.SerializerMethodField()
+    
+    tags = TagSerializer(many=True, read_only=True)
+    categories = CategorySerializer(many=True, read_only=True)
 
     class Meta:
         model = Post
 
-        fields = ["id", "title", "author", "content_snippet", "date_published"]
+        fields = ["id", "title", "author", "content_snippet", "date_published", "tags", "categories"]
         extra_kwargs = {
             "id": {"read_only": True},
             "date_published": {"read_only": True},
             "title": {"read_only": True},
             "content_snippet": {"read_only": True},
             "author": {"read_only": True},
+            "tags": {"read_only": True},
+            "categories": {"read_only": True}
         }
 
     def get_content_snippet(self, obj):
@@ -192,3 +197,15 @@ class JustLoggedInSerializer(serializers.ModelSerializer):
             "first_name": {"read_only": True},
             "last_name": {"read_only": True},
         }
+
+class TagSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Tag
+        fields = ['id','name']
+        
+class CategorySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Category
+        fields = ['id', 'name']
