@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-surfaceContainer">
+  <div class="bg-surface">
     <slot />
   </div>
 </template>

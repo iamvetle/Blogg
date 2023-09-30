@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="relative min-h-screen flex">
+    <div class="relative min-h-screen flex bg-surface">
       <div
         class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-plain">
         <div id="background"
-          class="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-primary text-white bg-no-repeat bg-cover relative">
+          class="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-primary text-onPrimary bg-no-repeat bg-cover relative">
           <div class="absolute bg-gradient-to-b from-inversePrimary to-primary opacity-75 inset-0 z-0" />
           <div class="w-full max-w-md z-10">
             <div class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">
@@ -20,10 +20,10 @@
           </div>
         </div>
         <div
-          class="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-2/5 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none bg-plain">
+          class="md:flex md:items-center md:justify-center w-full sm:w-auto md:h-full xl:w-2/5 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none">
           <div class="max-w-md w-full space-y-8">
             <div
-              class="w-full bg-primary text-onPrimary rounded-lg shadow-md dark:border md:mt-0 sm:max-w-md xl:p-0">
+              class="w-full shadow-md rounded-lg md:mt-0 sm:max-w-md xl:p-0">
               <LoginCard />
             </div>
           </div>
@@ -33,7 +33,11 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+setPageLayout('blank')
+
+</script>
 
 <style scoped>
 #background {

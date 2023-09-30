@@ -1,6 +1,6 @@
 <template>
 	<div id="container-navbar" class="w-full py-4 text-onPrimary bg-primary mb-16">
-		<div id="navbar" class="mx-auto flex items-center max-w-[1000px] bg-primary justify-between">
+		<div id="navbar" class="h-[50px] mx-auto flex items-center max-w-[1000px] bg-primary justify-between">
 			<span class="flex items-center">
 				<nuxt-link to="/">
 					<span @click="logoclick" id="logo">
@@ -10,7 +10,7 @@
 						</svg>
 					</span>
 				</nuxt-link>
-				<span id="searchbar" class="ms-8">
+				<span v-if="store2.isAuthenticated" id="searchbar" class="ms-8">
 					<input v-model="search_input" placeholder="Søk"
 						class="border border-transparent rounded-2xl w-96 h-auto bg-surface text-onSurface" type="text"
 						@keyup.enter="trySearch">
@@ -19,7 +19,7 @@
 			</span>
 
 			<span class="flex items-center">
-				<span id="new-post" class="me-4 flex items-center flex-col">
+				<span v-if="store2.isAuthenticated" id="new-post" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/newpost"><svg class="mb-1 w-7 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
@@ -27,7 +27,7 @@
 						</svg></nuxt-link>
 					<span class="text-xs"><nuxt-link to="/newpost">Nytt innlegg</nuxt-link></span>
 				</span>
-				<span class="me-4 flex items-center flex-col">
+				<span v-if="store2.isAuthenticated" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/min-side"><svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
@@ -35,9 +35,14 @@
 						</svg></nuxt-link>
 					<span class="text-xs"><nuxt-link to="/min-side">Min profil</nuxt-link></span>
 				</span>
-				<span class="me-4 flex items-center flex-col">
+				<span v-if="store2.isAuthenticated" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/loggut">
-						<svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.99805 21.0003V19.0003L3.99805 19.0001V4.83489C3.99805 4.35161 4.34367 3.93748 4.81916 3.85102L14.2907 2.12892C14.6167 2.06965 14.9291 2.28589 14.9884 2.61191C14.9948 2.64733 14.998 2.68325 14.998 2.71924V4.00014L18.998 4.00032C19.5503 4.00032 19.998 4.44803 19.998 5.00032V19.0001L21.998 19.0003V21.0003H17.998V6.00032L14.998 6.00014V21.0003H1.99805ZM12.998 4.39674L5.99805 5.66947V19.0003H12.998V4.39674ZM11.998 11.0003V13.0003H9.99805V11.0003H11.998Z"></path></svg>					</nuxt-link>
+						<svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path
+								d="M1.99805 21.0003V19.0003L3.99805 19.0001V4.83489C3.99805 4.35161 4.34367 3.93748 4.81916 3.85102L14.2907 2.12892C14.6167 2.06965 14.9291 2.28589 14.9884 2.61191C14.9948 2.64733 14.998 2.68325 14.998 2.71924V4.00014L18.998 4.00032C19.5503 4.00032 19.998 4.44803 19.998 5.00032V19.0001L21.998 19.0003V21.0003H17.998V6.00032L14.998 6.00014V21.0003H1.99805ZM12.998 4.39674L5.99805 5.66947V19.0003H12.998V4.39674ZM11.998 11.0003V13.0003H9.99805V11.0003H11.998Z">
+							</path>
+						</svg> </nuxt-link>
 					<span class="text-xs"><nuxt-link to="/loggut">loggut</nuxt-link></span>
 				</span>
 			</span>
@@ -47,9 +52,12 @@
 
 <script setup lang="ts">
 import { useSearchStore } from '~/store/searchStore';
+import { useGeneralStore } from '~/store/generalStore';
 
 const search_input = ref("")
+
 const store = useSearchStore()
+const store2 = useGeneralStore()
 
 /** Calls the composable 'searchReuqest' and cleans up the search query input field  */
 const trySearch = async () => {

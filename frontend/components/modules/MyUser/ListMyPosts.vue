@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-plain mb-6 px-5 py-5 border rounded-lg border-primary-base">
+  <div class="bg-onPrimary mb-6 px-5 py-5 border rounded-lg border-primary">
     <div class="flex justify-between">
       <span class="font-bold">{{ postProp.title }}</span>
       <span class="flex">

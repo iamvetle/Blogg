@@ -1,18 +1,18 @@
 <template>
   <div v-if="user">
-    <div class="bg-gray-100 py-12 px-8">
+    <div class="py-12 px-8">
       <div class="container mx-auto py-8">
         <div class="grid grid-cols-4 sm:grid-cols-12 gap-12 px-4">
           <div class="col-span-4 sm:col-span-5 xl:col-span-3">
             <div
               id="wrapper"
-              class="bg-primary-base rounded-lg p-6"
+              class="bg-primary rounded-lg p-6"
             >
-              <div class="px-5 py-5 bg-plain rounded-xl">
+              <div class="px-5 py-5 bg-onPrimary rounded-xl">
                 <div class="flex flex-col items-center">
                   <img
                     :src="placeholder_profile_picture"
-                    class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
+                    class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
                     alt="Profilbilde"
                   >
                   <!-- </img> -->
@@ -25,20 +25,20 @@
                   <div class="mt-6 flex flex-wrap gap-4 justify-center">
                     <nuxt-link to="/newpost">
                       <button
-                        class="bg-secondary-base text-plain hover:bg-secondary-low py-2 px-4 rounded"
+                        class="bg-secondary text-onSecondary hover:bg-secondaryFixedDim hover:text-onSecondaryFixed py-2 px-4 rounded"
                       >
                         Nytt innlegg
                       </button>
                     </nuxt-link>
                     <span
-                      class="bg-plain border-primary-base border-2 hover:text-primary-low text-primary-base py-2 px-4 rounded"
+                      class="bg-onPrimary border-onPrimaryContainer border-2 text-onPrimaryContainer py-2 px-4 rounded"
                     >
                       {{ user.num_of_followers }} followers
                     </span>
                     <!-- Figure this out later -->
                   </div>
                 </div>
-                <hr class="my-6 border-t border-2 roundend-sm border-gray-200">
+                <hr class="my-6 border-t border-2 roundend-sm border-primary">
                 <div class="flex flex-col">
                   <span
                     class="uppercase font-bold tracking-wider mb-2"
@@ -109,8 +109,8 @@
             </div>
           </div>
           <div class="col-span-4 sm:col-span-7 xl:col-span-9">
-            <div class="bg-primary-base rounded-lg p-6">
-              <div class="px-5 py-7 bg-plain border-primary-base border rounded-md">
+            <div class="bg-primary rounded-lg p-6">
+              <div class="px-5 py-7 bg-onPrimary border-primary border rounded-md">
                 <h2 class="text-xl font-bold mb-4">
                   Bio
                 </h2>
@@ -125,7 +125,7 @@
                 </p>
               </div>
 
-              <h2 class="text-xl text-plain font-bold mt-8 mb-6">
+              <h2 class="text-xl text-onPrimary font-bold mt-8 mb-6">
                 All posts by {{ user.first_name }}
               </h2>
 
