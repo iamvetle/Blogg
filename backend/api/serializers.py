@@ -1,4 +1,4 @@
-from .models import CustomUser, Post, Comment
+from .models import CustomUser, Post, Comment, Tag, Category
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from datetime import datetime
@@ -45,6 +45,18 @@ class UserSerializer(serializers.ModelSerializer):
             "username": {"required": True},
         }
 
+
+class TagSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Tag
+        fields = ['id','name']
+        
+class CategorySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Category
+        fields = ['id', 'name']
 
 class PostSerializer(serializers.ModelSerializer):
     author = (
@@ -198,14 +210,3 @@ class JustLoggedInSerializer(serializers.ModelSerializer):
             "last_name": {"read_only": True},
         }
 
-class TagSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Tag
-        fields = ['id','name']
-        
-class CategorySerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Category
-        fields = ['id', 'name']

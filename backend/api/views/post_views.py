@@ -29,7 +29,6 @@ class MyPosts(APIView):
 # not used at the moment
 class AllPostsView(APIView):
     """retrieves all posts if client is authenticated"""
-
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
@@ -40,11 +39,11 @@ class AllPostsView(APIView):
         
 class PostSnippetsView(APIView):
     permission_classes = [IsAuthenticated]
+    """retrieves all post snippets if client is authenticated"""
 
     def get(self, request):
         response = PostSnippetService.get_posts(request)
         return Response(response, status=status.HTTP_200_OK)
-
 
 class SinglePostView(APIView):  # Retrieves a specific post
     permission_classes = [IsAuthenticated]

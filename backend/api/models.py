@@ -93,7 +93,17 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     symmetrical=False ensures the relationship isn't automatically two-way (i.e., if User A follows User B, it doesn't mean User B follows User A).
     blank=True allows for a user to have zero followers or following."""
 
-
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
+    
+class Tag(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=10000)
@@ -104,8 +114,8 @@ class Post(models.Model):
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    categories = models.ManyToManyField(Category)
-    tags = models.ManyToManyField(Tag)
+    categories = models.ManyToManyField(Category, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return self.title
@@ -128,17 +138,6 @@ class Comment(models.Model):
     def full_comment(self):
         return f"{self.title}\n{self.content}"
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-    
-    def __str__(self):
-        return self.name
-    
-class Tag(models.Model):
-    name = models.CharField(max_length=100)
-    
-    def __str__(self):
-        return self.name
 
 
 # birthady?
