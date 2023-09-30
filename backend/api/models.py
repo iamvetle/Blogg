@@ -104,11 +104,15 @@ class Post(models.Model):
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    categories = models.ManyToManyField(Category)
+    tags = models.ManyToManyField(Tag)
+
     def __str__(self):
         return self.title
 
 
 class Comment(models.Model):
+    ''' Each post can have comments, and each post comment is this model '''
     title = models.CharField(max_length=50)
     content = models.TextField(max_length=500)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -124,14 +128,17 @@ class Comment(models.Model):
     def full_comment(self):
         return f"{self.title}\n{self.content}"
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
+    
+class Tag(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
 
-# Categories - kanskje senere
-# ?
-# CustomUser
-# Birthday
 
-# followers
-# follows
-
-# posts ->
-# tags
+# birthady?
