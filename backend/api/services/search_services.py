@@ -1,20 +1,19 @@
 from api.models import Post
+from django.db.models import Q
 
-class SearchService():
-    ''' filters the posts that are being returned based on title and query '''
-    
+
+class SearchService:
     @staticmethod
     def filtered_search(request):
+        """filters the posts with title and """
         queryset = Post.objects.all()
-        
-        title_query = request.query_params.get('title', None)
-        user_query = request.query_params.get('user', None)
-                
-        if title_query != None:
-            queryset = queryset.filter(title__icontains=title_query) 
-        
-        if user_query != None:            
-            queryset = queryset.filter(user__icontains=user_query)
-        
-        return queryset
-                            
+
+        search_query = request.query_params.get("q", None)
+
+        filtered_queryset = queryset.filter(
+            Q(title__icontains=search_query) | Q(author__username__icontains=search_query)
+            )
+        if filtered_queryset is not None:
+            return filtered_queryset
+        else:
+            return None

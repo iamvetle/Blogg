@@ -101,11 +101,12 @@ class Post(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     date_published = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField(default=False)
-    
+
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
+
 
 class Comment(models.Model):
     title = models.CharField(max_length=50)

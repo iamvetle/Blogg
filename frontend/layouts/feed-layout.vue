@@ -1,7 +1,7 @@
 <template>
   <div
     id="site-wrapper"
-    class="bg-white flex flex-col min-h-screen"
+    class="bg-background flex flex-col min-h-screen"
   >
     <!-- Background color -->
     <div class="flex-1 flex flex-col">
@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="mt-auto">
-      <FeedPagination />
-      <TheFooter />
+      <LazyFeedPagination />
+      <LazyTheFooter />
     </div>  
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div id="site-wrapper">
+  <div id="site-wrapper" class="bg-background">
     <!-- Background color -->
     <ClientOnly>
       <slot />

@@ -94,6 +94,7 @@
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
 import { ArticleSnippetSingleType } from '~/typescript/interfaces';
+
 const post_image = ref('https://picsum.photos/500/300')
 
 const store = useGeneralStore()

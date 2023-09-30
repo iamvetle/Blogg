@@ -1,7 +1,7 @@
 <template>
   <div
     id="site-wrapper"
-    class="bg-white flex flex-col min-h-screen"
+    class="bg-background flex flex-col min-h-screen"
   >
     <div
       v-if="store.apiDownError === false"
@@ -21,7 +21,7 @@
       <ErrorAPIDown />
     </div>
     <div class="mt-auto">
-      <TheFooter />
+      <LazyTheFooter />
     </div>
   </div>
 </template>
