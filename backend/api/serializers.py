@@ -2,6 +2,7 @@ from .models import CustomUser, Post, Comment, Tag, Category
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from datetime import datetime
+from time import strftime
 
 CustomUser = get_user_model()
 
@@ -83,7 +84,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_date_published(self, obj):
         """ Makes the value of the "date" string more readable """
-        return obj.date_published.strftime("%d-%m-%Y")
+        if obj.date_published is not None:
+            return obj.date_published.strftime("%d-%m-%Y")
 
 
 class PostSnippetSerializer(serializers.ModelSerializer):  # Bare en liten del av posts
@@ -124,7 +126,8 @@ class PostSnippetSerializer(serializers.ModelSerializer):  # Bare en liten del a
         return author
 
     def get_date_published(self, obj):
-        return obj.date_published.strftime("%d-%m-%Y")
+        if obj.date_published is not None:
+            return obj.date_published.strftime("%d-%m-%Y")
 
 
 class CommentSerializer(serializers.ModelSerializer):  # Not in use

@@ -1,12 +1,12 @@
-import { mount } from '@vue/test-utils'
+import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import BaseTag from '~/components/base/BaseTag.vue'
 
 describe('_blank testing', () => {
-    let wrapper;
-    let store;
-    let pinia;
+    let wrapper:VueWrapper;
+    let store:any;
+    let pinia:any;
 
     beforeEach(() => {
         pinia = createTestingPinia()
@@ -15,10 +15,17 @@ describe('_blank testing', () => {
             global: {
                 plugins: [pinia],
             },
+            props: {
+                textProp: "test prop"
+            }
         })
     })
 
     test('exists', () => {
         expect(wrapper.exists()).toBe(true)
+    })
+
+    it("should render prop", () => {
+        expect(wrapper.text()).toContain("test prop")
     })
 })

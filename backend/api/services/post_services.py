@@ -53,7 +53,8 @@ class SearchService():
         
         if search_query != None:
             search_results = Post.objects.filter(title__icontains=search_query) # filter (post title)           
-                
+            
+
             paginator = CustomLimitOffsetPagination() # del opp så paginator ikke blir knyttet til her
                     
             paginated_results = paginator.paginate_queryset(search_results, request)

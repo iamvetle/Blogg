@@ -5,7 +5,7 @@
 
 				<div class="article" v-for="post in store.posts.results" :key="post.id" :post-prop="post">
 
-					<article-card>
+						<article-card>
 
 						<template #author v-if="post">
 							<span @click="redirect_to_author_page(post)">
@@ -32,16 +32,16 @@
 
 
 						<template #lesmer>
-							<span class="text-sm flex items-center text-primary hover:text-primaryFixed"
+							<span class="text text-primary hover:text-primaryFixed"
 								@click="redirect_to_post_page(post)">
 								Les mer
 							</span>
 						</template>
 
 						<template #tags>
-							<div v-if="post.tags">
-								<BaseTag v-for="tag, index in post.tags" :key="index" :text-prop="tag" class="me-1" />
-							</div>
+							<span v-if="post.tags">
+								<BaseTag v-for="tag, index in post.tags" :key="index" :textProp="tag" class="me-1" />
+							</span>
 						</template>
 
 						<template #article_image>

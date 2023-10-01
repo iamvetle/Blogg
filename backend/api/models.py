@@ -110,7 +110,7 @@ class Post(models.Model):
     content = models.TextField(max_length=10000)
     date_created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    date_published = models.DateTimeField(blank=True, null=True)
+    date_published = models.DateTimeField(blank=True, null=True) # this is not working correctly. it is not appearing when I check on 'publish
     published = models.BooleanField(default=False)
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

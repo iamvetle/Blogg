@@ -25,11 +25,13 @@ export interface ArticlesSnippetsType {
 			date_published: string;
 			last_modified: string; // TODO: fjern denne senere på backend
 			num_of_followers: string;
-			author: {
+			author: {	
 				username: string;
 				first_name: string;
 				last_name: string;
-			}
+			},
+			tags:Array<string>,
+			categories:Array<string>
 		}
 	]
 }
@@ -40,13 +42,14 @@ export interface ArticleSnippetSingleType {
 	title: string;
 	content_snippet: string;
 	date_published: string;
-	last_modified: string; // TODO: fjern denne senere på backend
 	num_of_followers: string;
 	author: {
 		username: string;
 		first_name: string;
 		last_name: string;
-	}
+	},
+	tags:Array<string>,
+	categories:Array<string>
 } 
 
 
@@ -59,7 +62,6 @@ export interface PersonalPostType {
 		first_name: string;
 		last_name: string;
 	};
-	last_modified: string;
 	date_published: string;
 }
 
@@ -92,7 +94,6 @@ export interface PersonalUserType {
 export interface FollowerType {
 	username: string;
 }
-
 
 // not using
 export interface RandomAccount {
