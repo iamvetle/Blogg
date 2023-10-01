@@ -71,10 +71,10 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     save_on_top = True
-
     model = Post
-
     inlines = [CommentInline]
+    
+    filter_horizontal = ('tags', 'categories',)
 
     def body(self, obj):
         return format_html(obj.content)
@@ -101,11 +101,23 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = "last_modified"
 
     fieldsets = (
-        (None, {"fields": ("title", "body", "content", "published")}),
+        (None, {
+            "fields": ("title", "body", "content", "published", "author")}),
         (
-            "Other",
-            {"fields": ("last_modified", "date_published")},
-        ),
+            "Additional",
+            {"fields": ("tags", "categories")}),
+        (
+            "Extra",
+            {"fields": ("date_created", "last_modified", "date_published")}),
+    )
+    
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide'),
+            'fields': ('title', 'content', 'published', 'author')}),
+        (
+            'Additional', 
+            { 'fields': ('tags', 'categories')})
     )
 
 @admin.register(Comment)
@@ -164,7 +176,7 @@ class CustomUserAdmin(UserAdmin):
     )
     
     add_fieldsets = (
-        ('None', {
+        (None, {
             'classes': ('wide',),
             'fields': ('username', 'email', 'first_name', 'last_name', 'password1', 'password2'),
         }),
