@@ -146,12 +146,23 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ("username", "email", "phone_number")
 
     fieldsets = (
-        ("Basic info", {"fields": ("username", "first_name", "last_name", "password")}),
+        (None, {"fields": ("username", "email", "first_name", "last_name")}),
         (
             "Personal Information",
-            {"fields": ("email", "age", "address", "phone_number", "nickname")},
+            {"fields": ("age", "address", "phone_number", "nickname")},
         ),
     )
+    
+    add_fieldsets = (
+        ('None', {
+            'classes': ('wide',),
+            'fields': ('username', 'email', 'first_name', 'last_name', 'password1', 'password2'),
+        }),
+        ('Additional information', {
+            'fields': ('age', 'address', 'phone_number', 'nickname')
+        })
+    )
+    
 
 
 # https://realpython.com/python-django-blog/
