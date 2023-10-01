@@ -3,10 +3,6 @@ from .models import CustomUser, Post, Comment, Tag, Category
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 
-
-# Customize
-
-
 # Inlines ->
 class CommentInline(admin.TabularInline):
     model = Comment
@@ -25,8 +21,8 @@ class CommentInline(admin.TabularInline):
 
 class PostInline(admin.TabularInline):
     model = Post
-    fields = ["title", "content", "date_published", "last_modified"]
-    readonly_fields = ["date_published", "last_modified"]
+    fields = ["title", "content", "published", "date_published", "last_modified"]
+    readonly_fields = ["published", "date_published", "last_modified"]
     extra = 0
     can_delete = False
     show_change_link = True
@@ -37,15 +33,7 @@ class PostInline(admin.TabularInline):
         """
         return not obj
 
-
-# Admin models ->
-
-
-# Forms ? ->
-
-
-# Register ->
-
+# Admin models
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
@@ -54,6 +42,14 @@ class TagAdmin(admin.ModelAdmin):
 
     list_display = (
         "name",
+    )
+    
+    search_fields = (
+        "name",
+    )
+    
+    readonly_field = (
+        "name"
     )
 
 @admin.register(Category)
@@ -64,7 +60,14 @@ class CategoryAdmin(admin.ModelAdmin):
         "name",
     )
 
-    search_fields = ("name",)
+    search_fields = (
+        "name",
+    )
+    
+    readonly_field = (
+        "name",
+    )
+    
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     save_on_top = True
@@ -107,12 +110,19 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
+    save_on_top = True
+    
     model = Comment
     
     list_display = (
         "title",
         "post",
         "author"
+    )
+    
+    search_fields = (
+        'post__title',
+        'author__username',
     )
     
     readonly_fields = ('date_published', 'last_modified', 'post')
