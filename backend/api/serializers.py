@@ -50,12 +50,12 @@ class UserSerializer(serializers.ModelSerializer):
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ['id','name']
+        fields = ['name']
         
 class CategorySerializer(serializers.ModelSerializer):    
     class Meta:
         model = Category
-        fields = ['id', 'name']
+        fields = ['name']
 
 class PostSerializer(serializers.ModelSerializer):
     author = (

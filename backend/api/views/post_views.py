@@ -85,6 +85,7 @@ class SearchView(APIView):  ## filters based on post title
                 return Response("No results found", status=status.HTTP_400_BAD_REQUEST)
         else:
             queryset = Post.objects.all()
+            
         paginator = CustomLimitOffsetPagination()
         paginated_results = paginator.paginate_queryset(queryset, request)
 

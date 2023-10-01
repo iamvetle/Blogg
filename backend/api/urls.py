@@ -2,12 +2,16 @@ from django.urls import path
 from api.views.auth_views import LoginView, RegisterUserView
 from api.views.post_views import SinglePostView, CreatePostView, MyPosts, PostSnippetsView, SearchView
 from api.views.user_views import MyAccountView, UserProfileView, FollowUserView, CurrentFollowersView, UnfollowUserView
+from api.views.tag_views import AllTagsView
+from api.views.category_views import AllCategoriesView
 from api.views.other_views import HealthCheck 
 
 
 urlpatterns = [
     path("health_check/", HealthCheck.as_view(), name="health_check"), # Ping-ish
     path("search/", SearchView.as_view(), name="search"),
+    path("tags/", AllTagsView.as_view(), name="tags"),
+    path("categories/", AllCategoriesView.as_view(), name="tags"),
     path("min-side/posts/", MyPosts.as_view(), name="myposts"),
     path("min-side/followers/", CurrentFollowersView.as_view(), name="my_followers"),
     path("min-side/", MyAccountView.as_view(), name="min-side"),
