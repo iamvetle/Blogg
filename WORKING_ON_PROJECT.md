@@ -34,6 +34,8 @@ I am focusing on **frontend** at the moment.
 - [ ] Pengjøre veldig og rydd opp.
 - [ ] Fjern spor av tidligere prop og slett den gamle component.
 
+---
+
 ### min-side
 - [ ] Change the **personal posts** that are received in 'min-side' to be snippets
 - [ ] Put pagnation there if the users have a lot of posts
@@ -42,7 +44,7 @@ I am focusing on **frontend** at the moment.
 ---
 
 ### index
-- [ ] The post snippet or short description of the post **renders the elements** \<h1\> and such which they are not supposed to do. Fix that.
+- [ ] The post snippets **renders the elements** \<h1\> and such which they are not supposed to do. Fix that.
 - [ ] Place a temperary profile picture in the user sidebar (the same on as in min-side)
 - [ ] There is a '**date_published**' problem that interfers with ordering that I need to fix
 

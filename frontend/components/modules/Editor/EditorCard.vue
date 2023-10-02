@@ -3,7 +3,7 @@
 		<div id="editor-container" class="w-full min-h-[280px]">
 			<div id="editor-area">
 				<floating-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
-					class="flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md">
+					class="not-prose flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md">
 					<button @click="addImage()">
 						<img class="h-5 flex items-center" :src="add_image_icon" alt="add_image">
 					</button>
@@ -27,7 +27,7 @@
 					</button>
 				</floating-menu>
 				<bubble-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
-					class="space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md">
+					class="not-prose space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md">
 					<button :class="{ 'is-active': editor.isActive('bold') }" class=""
 						@click="editor.commands.toggleBold()">
 						<img class="h-5 flex items-center" :src="bold_icon">
@@ -159,7 +159,7 @@ const editor = useEditor({
 	],
 	editorProps: {
 		attributes: {
-			class: 'prose m-5 focus:outline-none',
+			class: 'm-5 focus:outline-none',
 		},
 	},
 })

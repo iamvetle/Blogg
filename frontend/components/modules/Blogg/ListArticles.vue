@@ -5,41 +5,40 @@
 
 				<div class="article" v-for="post in store.posts.results" :key="post.id" :post-prop="post">
 
-						<article-card>
+					<article-card>
 
-						<template #author v-if="post">
+						<template #author v-if="post.author">
 							<span @click="redirect_to_author_page(post)">
 								<p class="font-bold" v-text="author_full_name(post)">
-								</p	>
+								</p>
 							</span>
 						</template>
 
-						<template #date_published>
-							<p class=" font-light" v-text="post.date_published"></p>
+						<template #date_published v-if="post.date_published">
+							<p class="font-light" v-text="post.date_published"></p>
 						</template>
 
 						<template #title>
 							<span @click="redirect_to_post_page(post)">
-								<h3 class=" text-[28px] mb-2" v-text="post.title">
+								<h3 class="text-[28px] mb-2" v-text="post.title">
 								</h3>
 							</span>
 						</template>
 
-						<template #content>
-							<p class="mb-2 prose" v-text="post.content_snippet">
+						<template #content v-if="post.content_snippet">
+							<p class="mb-2" v-html="post.content_snippet">
 							</p>
 						</template>
 
 
 						<template #lesmer>
-							<span class="text text-primary hover:text-primaryFixed"
-								@click="redirect_to_post_page(post)">
+							<span class="text text-primary hover:text-primaryFixed" @click="redirect_to_post_page(post)">
 								Les mer
 							</span>
 						</template>
 
-						<template #tags>
-							<span v-if="post.tags">
+						<template #tags v-if="post.tags">
+							<span>
 								<BaseTag v-for="tag, index in post.tags" :key="index" :textProp="tag" class="me-1" />
 							</span>
 						</template>
@@ -57,7 +56,7 @@
 
 			<div id="aside" class="col-span-4 h-auto w-full mb-14 mx-auto">
 				<div v-if="userdata" id="my-profile-card" class="w-full">
-					<MyProfileCard :user-prop="userdata" />
+					<MyProfileCard :userProp="userdata" />
 				</div>
 
 				<hr class="mb-8">
@@ -111,26 +110,26 @@ onMounted(async () => {
 	console.log(userdata.value.data) // print to self
 })
 
-const redirect_to_author_page = async (post:ArticleSnippetSingleType) => {
+const redirect_to_author_page = async (post: ArticleSnippetSingleType) => {
 	const author_profile_page = post.author.username
 
 	return await navigateTo(`/user/${author_profile_page}`)
 }
 
-const redirect_to_post_page = async (post:ArticleSnippetSingleType) => {
+const redirect_to_post_page = async (post: ArticleSnippetSingleType) => {
 	const post_article_page = post.id
 
 	return await navigateTo(`/post/${post_article_page}`)
 }
 
-const author_full_name = (post:ArticleSnippetSingleType) => {
-	
+const author_full_name = (post: ArticleSnippetSingleType) => {
+
 	console.log("author full name function being called")
 	console.log(post.author)
 	const author = post.author
 
-	const full = `${author.first_name} ${author.last_name}` ?? author.username 
-	return full.trim() == "" ? author.username: full
+	const full = `${author.first_name} ${author.last_name}` ?? author.username
+	return full.trim() == "" ? author.username : full
 }
 
 </script>

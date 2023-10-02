@@ -5,8 +5,8 @@
   >
     <div class="mb-4 w-full flex flex-wrap min-w-0 items-center text-onPrimaryContainer">
       <img
-        :src="userProp.avatar"
-        class="w-20 h-auto text-onPrimaryContainer mr-2"
+        :src="profile_picture"
+        class="w-20 h-auto text-onPrimaryContainer mr-4"
       >
       <div class="min-w-0">
         <h2
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-//import profile_picture from '~/assets/account-circle-line.svg'
+import profile_picture from '~/assets/placeholder-profile-picture.png'
 
 const { userProp } = defineProps(["userProp"])
 

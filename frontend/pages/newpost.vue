@@ -7,9 +7,9 @@
       New Post
     </div>
     <div
-      class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl"
+      class="max-w-3xl py-[100px] mx-auto prose"
     >
-      <div>
+      <div id="direct-editor" class="w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg">
         <EditorCard
           @newPostMaterial="publishPost"
         />

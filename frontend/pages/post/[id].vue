@@ -1,14 +1,14 @@
 <template>
-	<div class="max-w-3xl py-[100px] mx-auto">
+	<div class="prose max-w-3xl py-[100px] mx-auto">
 		<div v-if="post" class="w-full px-[60px] py-[30px] bg-white">
-			<h1 class="py-5">
+			<h1 class="">
 				{{ post.title }}
 			</h1>
 			<!-- <span class="text-xs">Published {{ post.date_published }}</span> -->
 			<!-- <p class="pt-3 font-bold">
 		- {{ post.author.username }}
 	</p> -->
-			<div class="py-2" v-html="post.content"></div>
+			<div class="mb-4" v-html="post.content"></div>
 			<button class="border-2 bg-light-blue-400 rounded-lg py-1 px-2" @click="$router.go(-1)">
 				Back
 			</button>
@@ -34,11 +34,11 @@ onMounted(async () => {
 
 
 <style scoped>
-@import "~/assets/nrk/nrk-sans.min.css";
+/* @import "~/assets/nrk/nrk-sans.min.css"; */
 
 /* I can use scoped css on this component to be able to render it with the styles I want*/
 
-h1 {
+/* h1 {
 	cursor: default;
 	font: 100%/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	text-size-adjust: 100%;
@@ -284,5 +284,5 @@ li {
 	font-weight: 400;
 	line-height: 1.55;
 	margin-top: .25rem;
-}
+}*/
 </style>
