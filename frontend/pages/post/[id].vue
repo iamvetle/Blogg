@@ -4,9 +4,8 @@
       v-if="post"
       class="px-[60px] py-[30px] col-start-5 col-span-4 bg-white"
     >
-      <p class="text-3xl py-5 prose">
-        {{ post.title.toUpperCase() }}
-      </p>
+      <div class="py-5 prose" v-html="post.title">
+      </div>
       <small class="prose">Published {{ post.date_published }}</small>
       <img
         :src="noimage"

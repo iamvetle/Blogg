@@ -16,7 +16,9 @@ describe('_blank testing', () => {
                 plugins: [pinia],
             },
             props: {
-                textProp: "test prop"
+                textProp: {
+                    name: "test prop"
+                }
             }
         })
     })

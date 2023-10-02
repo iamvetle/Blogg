@@ -187,7 +187,7 @@ import double_quotes_icon from '~/assets/icons/double-quotes-r.svg'
 import italic_icon from '~/assets/icons/italic.svg'
 import bold_icon from '~/assets/icons/bold.svg'
 import link_icon from '~/assets/icons/link.svg'
-import seperator_icon from '~/assets/seperator.svg'
+import seperator_icon from '~/assets/separator.svg'
 
 import heading_1_icon from '~/assets/icons/h-1.svg'
 import heading_2_icon from '~/assets/icons/h-2.svg'
@@ -234,6 +234,8 @@ const editor = useEditor({
 	},
 },
 })
+
+const emit = defineEmits()
 
 const html = ref(null)
 
