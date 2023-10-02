@@ -108,10 +108,7 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=10000)
-    date_created = models.DateTimeField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
-    date_published = models.DateTimeField(blank=True, null=True) # this is not working correctly. it is not appearing when I check on 'publish
-    published = models.BooleanField(default=False)
+    date_published = models.DateTimeField(auto_now=True) # this is not working correctly. it is not appearing when I check on 'publish
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
@@ -120,7 +117,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-
 
 class Comment(models.Model):
     ''' Each post can have comments, and each post comment is this model '''

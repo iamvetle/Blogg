@@ -21,8 +21,8 @@ class CommentInline(admin.TabularInline):
 
 class PostInline(admin.TabularInline):
     model = Post
-    fields = ["title", "content", "published", "date_published", "last_modified"]
-    readonly_fields = ["published", "date_published", "last_modified"]
+    fields = ["title", "content", "date_published"]
+    readonly_field = "date_published"
     extra = 0
     can_delete = False
     show_change_link = True
@@ -82,11 +82,9 @@ class PostAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "date_published",
-        "published",
     )
 
     list_filter = (
-        "published",
         "date_published",
     )
     list_editable = ()
@@ -96,25 +94,25 @@ class PostAdmin(admin.ModelAdmin):
         "content",
     )
     
-    readonly_fields = ('date_published', 'date_created', 'last_modified', 'body')
+    readonly_fields = ('date_published', 'body')
 
-    date_hierarchy = "last_modified"
+    date_hierarchy = "date_published"
 
     fieldsets = (
         (None, {
-            "fields": ("title", "body", "content", "published", "author")}),
+            "fields": ("title", "body", "content", "author")}),
         (
             "Additional",
             {"fields": ("tags", "categories")}),
         (
             "Extra",
-            {"fields": ("date_created", "last_modified", "date_published")}),
+            {"fields": ("date_published",)}),
     )
     
     add_fieldsets = (
         (None, {
             'classes': ('wide'),
-            'fields': ('title', 'content', 'published', 'author')}),
+            'fields': ('title', 'content', 'author')}),
         (
             'Additional', 
             { 'fields': ('tags', 'categories')})
@@ -137,17 +135,17 @@ class CommentAdmin(admin.ModelAdmin):
         'author__username',
     )
     
-    readonly_fields = ('date_published', 'last_modified', 'post')
+    readonly_fields = ('date_published', 'post')
     
     fieldsets = (
         (None, {"fields": ("title", "content", "post")}),
         (
             "Other",
-            {"fields": ("last_modified", "date_published")},
+            {"fields": ("date_published",)},
         ),
     )
         
-    date_hierarchy = "last_modified"
+    date_hierarchy = "date_published"
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):

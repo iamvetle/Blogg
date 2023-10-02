@@ -71,7 +71,7 @@ class PostSerializer(serializers.ModelSerializer):
         
         content = serializers.SerializerMethodField()
 
-        fields = ["id", "title", "content", "author", "last_modified", "date_published"]
+        fields = ["id", "title", "content", "author", "date_published"]
         extra_kwargs = {
             "date_published": {"read_only": True},
         }
