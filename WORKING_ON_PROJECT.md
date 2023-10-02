@@ -30,6 +30,10 @@ I am focusing on **frontend** at the moment.
 
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
 
+### [id] user page
+- [ ] Pengjøre veldig og rydd opp.
+- [ ] Fjern spor av tidligere prop og slett den gamle component.
+
 ### min-side
 - [ ] Change the **personal posts** that are received in 'min-side' to be snippets
 - [ ] Put pagnation there if the users have a lot of posts
