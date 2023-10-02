@@ -66,6 +66,7 @@ I am focusing on **frontend** at the moment.
 ### General
 
 - [ ] Expand the registration form to include more information options
+- [ ] Fix the emit between new post and editorcard when it comes to border color and such
 
 ### thoughts
 

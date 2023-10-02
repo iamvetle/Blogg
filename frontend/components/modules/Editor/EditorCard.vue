@@ -1,6 +1,6 @@
 <template>
 	<div class="p-2">
-		<div id="editor-container" class="w-full min-h-[280px]">
+		<div id="editor-container" class="w-full min-h-[270px] mb-12">
 			<div id="editor-area">
 				<floating-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
 					class="not-prose flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md">
@@ -57,14 +57,9 @@
 					<editor-content :editor="editor" />
 				</div>
 			</div>
-			<div v-if="errorHappened === true">
-				nothing was posted -> an error happened. something was wrong with the input
-			</div>
-			<div v-if="errorHappened === false">
-				Everything went A OK
-			</div>
 		</div>
-		<div class="buttons flex pt-32">
+		<hr class="mb-4">
+		<div class="buttons flex">
 			<button
 				class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
 				@click="cancelClick">
@@ -75,10 +70,6 @@
 				@click="newPostMaterial">
 				Post
 			</button>
-		</div>
-		<hr class="my-12">
-		<div class="pt-[70px] pb-[60px]">
-			<!-- <pre><code>{{ html }}</code></pre> -->
 		</div>
 	</div>
 </template>
@@ -130,7 +121,7 @@ const editor = useEditor({
 	content: '',
 	extensions: [
 		Heading.configure({
-			levels: [1, 2, 3, 4]
+			levels: [1, 2, 3]
 		}),
 		Blockquote,
 		BulletList,

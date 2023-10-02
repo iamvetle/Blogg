@@ -26,7 +26,7 @@
 						</template>
 
 						<template #content v-if="post.content_snippet">
-							<p class="mb-2" v-html="post.content_snippet">
+							<p class="mb-2" v-text="toPlainText(post.content_snippet)">
 							</p>
 						</template>
 
@@ -81,7 +81,9 @@
 						Følger
 					</h3>
 					<div id="following">
-						<Following />
+						<Following 
+					
+						/>
 					</div>
 					<span class="text-xs text-primary hover:text-primaryFixed">Se alle</span>
 				</div>
@@ -98,6 +100,14 @@ const post_image = ref('https://picsum.photos/500/300')
 
 const store = useGeneralStore()
 const userdata = ref<null | PersonalUserType>(null)
+
+/** Essentially 'dumps' the input into a div and returns the plain text */
+const toPlainText = (raw:string) => {
+	const div = document.createElement('div')
+	div.innerHTML = raw
+	return div.textContent || div.innerText
+}
+
 
 onBeforeMount(async () => {
 	await fetchPostSnippets()

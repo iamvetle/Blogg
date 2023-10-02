@@ -10,7 +10,10 @@ export const createNewPost = async (url: string, formData: object) => {
       },
     });
     console.log("OK: a new post was created", response.data);
+
+    return true
   } catch (error) {
     console.log("FAILED: no new post was created:", error);
+    return false
   }
 };
