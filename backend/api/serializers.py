@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from datetime import datetime
 from time import strftime
+from django.utils.safestring import mark_safe
 
 CustomUser = get_user_model()
 
@@ -67,6 +68,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
+        
+        content = serializers.SerializerMethodField()
 
         fields = ["id", "title", "content", "author", "last_modified", "date_published"]
         extra_kwargs = {
@@ -81,7 +84,12 @@ class PostSerializer(serializers.ModelSerializer):
             "last_name": obj.author.last_name,
         }
         return author
-
+    def get_content(self, obj):
+        content = obj.content
+        content = mark_safe(content)
+        
+        return content
+        
     def get_date_published(self, obj):
         """ Makes the value of the "date" string more readable """
         if obj.date_published is not None:

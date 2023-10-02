@@ -201,7 +201,7 @@ const editor = useEditor({
 	content: '',
 	extensions: [
 		Heading.configure({
-		levels: [1,2,3,4]
+		levels: [1,2,3]
 		}),
 		Blockquote,
 		BulletList,
