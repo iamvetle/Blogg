@@ -889,7 +889,7 @@
         <line num="73" count="1" type="stmt"/>
         <line num="74" count="1" type="stmt"/>
       </file>
-      <file name="ArticleEntire.vue" path="C:\Users\metle\Desktop\Blogg\frontend\components\modules\Blogg\ArticleEntire.vue">
+      <file name="UserPostCard.vue" path="C:\Users\metle\Desktop\Blogg\frontend\components\modules\Blogg\UserPostCard.vue">
         <metrics statements="37" coveredstatements="37" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>

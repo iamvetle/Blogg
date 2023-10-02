@@ -1,5 +1,5 @@
 <template>
-  <div id="sidebar-component">
+  <div id="sidebar-component" class="w-full">
     <!-- 4/12 Sidebar -->
     <img
       id="profilbilde"

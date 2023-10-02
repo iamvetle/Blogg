@@ -33,7 +33,7 @@ onMounted(async () => {
 </script>
 
 
-<style>
+<style scoped>
 @import "~/assets/nrk/nrk-sans.min.css";
 
 /* I can use scoped css on this component to be able to render it with the styles I want*/

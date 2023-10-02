@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { PersonalPostType } from '../typescript/interfaces';
 
 export const useGeneralStore = defineStore("general", () => {
 
@@ -10,7 +11,7 @@ export const useGeneralStore = defineStore("general", () => {
   const posts = ref<ArticlesSnippetsType | null>(null)
 
   // Min side
-  const theUser = ref(null) 
+  const theUser = ref<PersonalPostType | null>(null) 
   const personalPosts = ref<ArticlesSnippetsType | null>(null)
 
   // Links

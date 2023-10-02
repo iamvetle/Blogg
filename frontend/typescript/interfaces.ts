@@ -23,7 +23,6 @@ export interface ArticlesSnippetsType {
 			title: string;
 			content_snippet: string;
 			date_published: string;
-			last_modified: string; // TODO: fjern denne senere på backend
 			num_of_followers: string;
 			author: {	
 				username: string;
@@ -74,7 +73,6 @@ export interface SinglePostType {
 		first_name: string;
 		last_name: string;
 	};
-	last_modified: string; // remove this later
 	date_published: string;
 }
 
