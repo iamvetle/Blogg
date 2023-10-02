@@ -1,157 +1,86 @@
 <template>
-  <div class="p-2">
-    <div
-      id="editor-container"
-      class="w-full min-h-[280px]"
-    >
-      <div id="editor-area">
-        <floating-menu
-          v-if="editor"
-          :editor="editor"
-          :tippy-options=" { duration: 100 }"
-          class="flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md"
-        >
-          <button @click="addImage()">
-            <img
-              class="h-5 flex items-center"
-              :src="add_image_icon"
-              alt="add_image"
-            >
-          </button>
-	
-          <button
-            :class="{ 'is-active': editor.isActive('link')}"
-            class=""
-            @click="setLink()"
-          >
-            <img
-              class="h-5 flex items-center"
-              :src="link_icon"
-              alt="link"
-            >
-          </button>
+	<div class="p-2">
+		<div id="editor-container" class="w-full min-h-[280px]">
+			<div id="editor-area">
+				<floating-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
+					class="flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md">
+					<button @click="addImage()">
+						<img class="h-5 flex items-center" :src="add_image_icon" alt="add_image">
+					</button>
 
-          <button
-            :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
-            class=""
-            @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
-          >
-            <img
-              class="h-5 flex items-center"
-              :src="heading_1_icon"
-            >
-          </button>
-	
-          <button
-            :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }"
-            class=""
-            @click="editor.chain().focus().toggleHeading({ level: 4 }).run()"
-          >
-            <img
-              class="h-5 flex items-center"
-              :src="heading_2_icon"
-            >
-          </button>
+					<button :class="{ 'is-active': editor.isActive('link') }" class="" @click="setLink()">
+						<img class="h-5 flex items-center" :src="link_icon" alt="link">
+					</button>
 
-          <button @click="editor.chain().focus().setHorizontalRule().run()">
-            <img
-              class="h-5 flex items-center"
-              :src="seperator_icon"
-              alt="seperator"
-            >
-          </button>
-        </floating-menu>
-        <bubble-menu
-          v-if="editor"
-          :editor="editor"
-          :tippy-options=" { duration: 100 }"
-          class="space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md"
-        >
-          <button
-            :class="{ 'is-active': editor.isActive('bold') }"
-            class=""
-            @click="editor.commands.toggleBold()"
-          >
-            <img
-              class="h-5 flex items-center"
-              :src="bold_icon"
-            >
-          </button>
-	
-          <button
-            :class="{ 'is-active': editor.isActive('italic') }"
-            class=""
-            @click="editor.commands.toggleItalic()"
-          >
-            <img
-              class="h-5 flex items-center"
-              :src="italic_icon"
-              alt="italic"
-            >
-          </button>
+					<button :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }" class=""
+						@click="editor.chain().focus().toggleHeading({ level: 3 }).run()">
+						<img class="h-5 flex items-center" :src="heading_1_icon">
+					</button>
 
-          <button
-            :class="{ 'is-active': editor.isActive('underline') }"
-            @click="editor.chain().focus().toggleUnderline().run()"
-          >
-            <img
-              class="h-5 flex items-center"
-              :src="underline_icon"
-            >
-          </button>
+					<button :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }" class=""
+						@click="editor.chain().focus().toggleHeading({ level: 4 }).run()">
+						<img class="h-5 flex items-center" :src="heading_2_icon">
+					</button>
 
-          <button
-            :class="{ 'is-active': editor.isActive('code') }"
-            @click="editor.chain().focus().toggleCode().run()"
-          >
-            <img
-              class="h-5 flex items-center"
-              :src="code_snip_icon"
-              alt="code"
-            >
-          </button>
-	
-          <button
-            :class="{ 'is-active': editor.isActive('blockquote') }"
-            class=""
-            @click="editor.chain().focus().toggleBlockquote().run()"
-          >
-            <img
-              class="h-5 flex items-center"
-              :src="double_quotes_icon"
-            >
-          </button>
-        </bubble-menu>
-        <div>
-          <editor-content :editor="editor" />
-        </div>
-      </div>
-      <div v-if="errorHappened === true">
-        nothing was posted -> an error happened. something was wrong with the input
-      </div>
-      <div v-if="errorHappened === false">
-        Everything went A OK
-      </div>	
-    </div>
-    <div class="buttons flex pt-32">
-      <button
-        class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
-        @click="cancelClick"
-      >
-        Cancel
-      </button>
-      <button
-        class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
-        @click="newPostMaterial"
-      >
-        Post
-      </button>
-    </div>
-    <hr class="my-12">
-    <div class="pt-[70px] pb-[60px]">
-      <pre><code>{{ html }}</code></pre>
-    </div>
-  </div>
+					<button @click="editor.chain().focus().setHorizontalRule().run()">
+						<img class="h-5 flex items-center" :src="seperator_icon" alt="seperator">
+					</button>
+				</floating-menu>
+				<bubble-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
+					class="space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md">
+					<button :class="{ 'is-active': editor.isActive('bold') }" class=""
+						@click="editor.commands.toggleBold()">
+						<img class="h-5 flex items-center" :src="bold_icon">
+					</button>
+
+					<button :class="{ 'is-active': editor.isActive('italic') }" class=""
+						@click="editor.commands.toggleItalic()">
+						<img class="h-5 flex items-center" :src="italic_icon" alt="italic">
+					</button>
+
+					<button :class="{ 'is-active': editor.isActive('underline') }"
+						@click="editor.chain().focus().toggleUnderline().run()">
+						<img class="h-5 flex items-center" :src="underline_icon">
+					</button>
+
+					<button :class="{ 'is-active': editor.isActive('code') }"
+						@click="editor.chain().focus().toggleCode().run()">
+						<img class="h-5 flex items-center" :src="code_snip_icon" alt="code">
+					</button>
+
+					<button :class="{ 'is-active': editor.isActive('blockquote') }" class=""
+						@click="editor.chain().focus().toggleBlockquote().run()">
+						<img class="h-5 flex items-center" :src="double_quotes_icon">
+					</button>
+				</bubble-menu>
+				<div class="">
+					<editor-content :editor="editor" />
+				</div>
+			</div>
+			<div v-if="errorHappened === true">
+				nothing was posted -> an error happened. something was wrong with the input
+			</div>
+			<div v-if="errorHappened === false">
+				Everything went A OK
+			</div>
+		</div>
+		<div class="buttons flex pt-32">
+			<button
+				class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
+				@click="cancelClick">
+				Cancel
+			</button>
+			<button
+				class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
+				@click="newPostMaterial">
+				Post
+			</button>
+		</div>
+		<hr class="my-12">
+		<div class="pt-[70px] pb-[60px]">
+			<!-- <pre><code>{{ html }}</code></pre> -->
+		</div>
+	</div>
 </template>
 
 <script setup>
@@ -197,11 +126,11 @@ import heading_2_icon from '~/assets/icons/h-2.svg'
 const errorHappened = ref(null)
 
 const editor = useEditor({
-"type": "doc",
+	"type": "doc",
 	content: '',
 	extensions: [
 		Heading.configure({
-		levels: [1,2,3]
+			levels: [1, 2, 3, 4]
 		}),
 		Blockquote,
 		BulletList,
@@ -221,18 +150,18 @@ const editor = useEditor({
 		Italic,
 		Link,
 		Bold,
-    Code,
+		Code,
 		Placeholder.configure({
-			placeholder:'Write something ...'
+			placeholder: 'Write something ...'
 		}),
 		FloatingMenu,
 
 	],
 	editorProps: {
-	attributes: {
-	class: 'prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none',
+		attributes: {
+			class: 'prose m-5 focus:outline-none',
+		},
 	},
-},
 })
 
 const emit = defineEmits()
@@ -240,9 +169,9 @@ const emit = defineEmits()
 const html = ref(null)
 
 onMounted(() => {
-editor.value.on("update", () => {
-html.value = editor.value.getHTML()
-})
+	editor.value.on("update", () => {
+		html.value = editor.value.getHTML()
+	})
 
 })
 
@@ -258,11 +187,11 @@ const setLink = () => {
 	// empty
 	if (url === '') {
 		editor.value
-		.chain()
-		.focus()
-		.extendMarkRange('link')
-		.unsetLink()
-		.run()
+			.chain()
+			.focus()
+			.extendMarkRange('link')
+			.unsetLink()
+			.run()
 
 		return
 	}
@@ -274,7 +203,7 @@ const setLink = () => {
 		.extendMarkRange('link')
 		.setLink({ href: url })
 		.run()
-	}
+}
 
 // husk at hermer etter medium
 
@@ -286,7 +215,7 @@ function addImage() {
 	if (url) {
 		editor.value.chain().focus().setImage({ src: url }).run()
 	}
-	}
+}
 
 
 const newPostMaterial = async () => {
@@ -296,20 +225,20 @@ const newPostMaterial = async () => {
 	console.log(title)
 
 	if (title.trim() != "" && body.trim() != "") {
-	const request_body = {
-		"title":title,
-		"content":body,
+		const request_body = {
+			"title": title,
+			"content": body,
+		}
+		emit('newPostMaterial', request_body)
+
+		errorHappened.value = false
+		editor.value.commands.clearContent()
+
+	} else {
+		console.log("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
+		errorHappened.value = true
+
 	}
-	emit('newPostMaterial', request_body)
-
-	errorHappened.value = false
-	editor.value.commands.clearContent()
-
-} else {
-	console.log("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
-	errorHappened.value = true
-
-}
 
 	// emit to parent component
 
@@ -326,17 +255,15 @@ const cancelClick = () => {
 <style lang="scss">
 /* Basic editor styles */
 .tiptap {
-> * + * {
-	margin-top: 0.75em;
-}
+	>*+* {
+		margin-top: 0.75em;
+	}
 }
 
 .tiptap p.is-editor-empty:first-child::before {
-content: attr(data-placeholder);
-float: left;
-color: #adb5bd;
-pointer-events: none;
-height: 0;
-}
-
-</style>
+	content: attr(data-placeholder);
+	float: left;
+	color: #adb5bd;
+	pointer-events: none;
+	height: 0;
+}</style>

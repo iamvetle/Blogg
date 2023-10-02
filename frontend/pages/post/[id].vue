@@ -1,6 +1,6 @@
 <template>
-	<div class="grid grid-cols-12 py-[100px]">
-		<div v-if="post" class="px-[60px] py-[30px] col-start-5 col-span-4 bg-white">
+	<div class="max-w-3xl py-[100px] mx-auto">
+		<div v-if="post" class="w-full px-[60px] py-[30px] bg-white">
 			<h1 class="py-5">
 				{{ post.title }}
 			</h1>
