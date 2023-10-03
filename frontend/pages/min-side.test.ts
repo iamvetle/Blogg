@@ -49,10 +49,20 @@ describe('min-side page testing', () => {
         expect(wrapper.exists()).toBe(true)
 
     })
-    test('the user information is rendering', async () => {
+    test('all user information fields are rendering', async () => {
         console.log(wrapper.html())
         await wrapper.vm.$nextTick()
 
         expect(wrapper.text()).toContain("test@example.com")
+        expect(wrapper.text()).toContain("test32")
+        expect(wrapper.text()).toContain("test")
+        expect(wrapper.text()).toContain("Test")
+        expect(wrapper.text()).toContain("Testanson")
+        expect(wrapper.text()).toContain(24);
+        expect(wrapper.text()).toContain("Someaddress 7, 4713 City, Country")
+        expect(wrapper.text()).toContain("Tt")
+        // expect(wrapper.text()).toContain("19-01-2021") # last_online 
+        expect(wrapper.text()).toContain(4)
+
     })
 })
