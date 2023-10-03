@@ -37,13 +37,13 @@ export const searchRequest = async () => {
 				//store.last_page_link = `http://localhost:8888/api/search/?limit=10&offset${store.total_pages_count*10}`
 				store.current_page = response.data.current_page
 
-				store.searchPosts = response.data
+				store2.posts= response.data
 
 				// returns 'custom' response when the request was successfull
 				return true
 			} else {
 				console.log("OBS! Fetching succedded, but response(data) was:", response.status, response.data) // print to self
-				store.searchPosts = null
+				store2.posts = null
 				return null
 			}
 		} catch (error) {

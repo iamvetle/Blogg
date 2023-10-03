@@ -12,8 +12,12 @@ export const fetchPostSnippets = async () => {
       "Content-Type": "application/json",
       Authorization: `Token ${token}`,
     };
+    console.log(token)
+    console.log(headers)
 
-    const response = await axios.get<ArticlesSnippetsType[]>(store.post_snippets_url, { headers });
+    const response = await axios.get(store.baseFeedURL, { headers });
+
+    console.log(toRaw(response))
 
     if (response.data != null) {
       console.log("OK: Posts fetched", response.data); // print to self

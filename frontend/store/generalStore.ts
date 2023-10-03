@@ -15,18 +15,18 @@ export const useGeneralStore = defineStore("general", () => {
   const personalPosts = ref<ArticlesSnippetsType | null>(null)
 
   // Links
-  const baseFeedURL = "http://localhost:8888/api/feed/"
+  const baseFeedURL = "http://localhost:8888/api/search/"
   const post_snippets_url = ref<string>("http://localhost:8888/api/feed/")
   const personal_post_snippets_url = ref<string>("http://localhost:8888/api/min-side/posts/")
 
-  const next_page_link = ref<string | null>(null)
-  const previous_page_link = ref<string | null>(null)
-  const last_page_link = ref<string | null>(null)
+  const next_page_link = ref("")
+  const previous_page_link = ref("")
+  const last_page_link = ref("")
 
   // pagnation
-  const total_pages_count = ref<number | null>(null);
-  const number_of_posts_count = ref<number | null>(null);
-  const current_page = ref<number | null>(null);
+  const total_pages_count = ref(0);
+  const number_of_posts_count = ref(0);
+  const current_page = ref(1);
 
   // error pages
   const apiDownError = ref(false);

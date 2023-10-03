@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="mt-auto">
-      <LazyFeedPagination />
-      <LazyTheFooter />
+      <FeedPagination/>
+      <TheFooter />
     </div>  
   </div>
 </template>

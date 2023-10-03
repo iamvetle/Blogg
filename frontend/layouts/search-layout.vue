@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="mt-auto">
-      <LazySearchPagination />
+      <FeedPagination/>
       <LazyTheFooter/>
     </div>  
   </div>

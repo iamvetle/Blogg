@@ -1,5 +1,5 @@
 <template>
-	<div id="site-wrapper">
+	<div id="site-wrapper" class="mt-8">
 		<div v-if="storeValue" class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
 			<ListArticles class="col-span-6 mx-auto" />
 			<ListArticlesSidebar class="col-span-4 mx-auto" />
