@@ -71,6 +71,7 @@
     "element-plus": "^2.3.12",
     "eslint-plugin-prettier": "^5.0.0",
     "flowbite": "^1.8.1",
+    "istanbul": "^0.4.5",
     "nuxi": "^3.6.5",
     "nuxt-vitest": "^0.10.4",
     "package.json": "^2.0.1",
