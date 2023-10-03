@@ -2,13 +2,14 @@ import { VueWrapper, mount } from '@vue/test-utils'
 import ListArticles from '~/components/modules/Blogg/ListArticles.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
+import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue'
 
 describe("list articles testing", () => {
     let wrapper: VueWrapper
     let store: any;
     let pinia: any;
 
-    describe("testing listaarticles", () => { // The beforeEach block runs before each test
+    beforeEach(() => { // The beforeEach block runs before each test
         // Create a new testing Pinia instance
         pinia = createTestingPinia()
 
@@ -16,56 +17,48 @@ describe("list articles testing", () => {
         store = useGeneralStore(pinia)
 
         store.isAuthenticated = true
+        store.posts = {
+            "count": 31,
+            "next": "http://localhost:8888/api/feed/?page=3",
+            "previous": "http://localhost:8888/api/feed/",
+            "current_page": 2,
+            "results": [
+                {
+                    "id": 17,
+                    "title": "This is a title that is made by bob",
+                    "author": {
+                        "username": "bob",
+                        "first_name": "Bob",
+                        "last_name": "Smith",
+                    },
+                    "content_snippet": "Lorem ipsum...",
+                    "date_published": "08-12-2021",
+                }
+            ]
+        }
 
         // Mount the component
         wrapper = mount(ListArticles, {
             global: {
                 plugins: [pinia],
-            },
-            props: {
-                postProp: {
-                    "count": 31,
-                    "next": "http://localhost:8888/api/feed/?page=3",
-                    "previous": "http://localhost:8888/api/feed/",
-                    "current_page": 2,
-                    "results": [
-                        {
-                            "id": 17,
-                            "title": "This is a title that is made by bob",
-                            "author": {
-                                "username": "bob",
-                                "first_name": "Bob",
-                                "last_name": "Smith",
-                            },
-                            "content_snippet": "Lorem ipsum...",
-                            "date_published": "2023-08-29",
-                        }
-                    ]
-                }}
-            })
-            
-            
-
-test("exists", () => {
-            expect(wrapper.exists()).toBe(true)
+                components: {
+                    ArticleCard
+                }
+            }
         })
+    })
 
-// it("Should render the posts that are fetched", async () => {
-//             console.log(wrapper.html())
+    test("exists", () => {
+        console.log(wrapper.html())
+        expect(wrapper.exists()).toBe(true)
+    })
 
-//             expect(wrapper.text()).toContain("This is a title that is made by bob")
-//         })
-
-    // test("shows an error message if there are no posts", () => {
-
-    //     store.posts = null
-    //     wrapper.unmount()
-
-    //     wrapper = mount(ListArticles, {
-    //         global: {
-    //             plugins: [pinia],
-    //         },
-    //     })
-    // })
-})
+    test("the articles/posts are rendering", () => {
+        expect(wrapper.text()).toContain("This is a title that is made by bob")
+        expect(wrapper.text()).toContain("bob")
+        expect(wrapper.text()).toContain("Bob")
+        expect(wrapper.text()).toContain("Smith")
+        expect(wrapper.text()).toContain("Lorem ipsum...")
+        expect(wrapper.text()).toContain("08-12-2021")
+    })
 })

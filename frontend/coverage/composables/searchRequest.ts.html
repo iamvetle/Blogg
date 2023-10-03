@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.69% </span>
+                <span class="strong">7.4% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/52</span>
+                <span class='fraction'>4/54</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.69% </span>
+                <span class="strong">7.4% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/52</span>
+                <span class='fraction'>4/54</span>
             </div>
         
             
@@ -115,10 +115,14 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -173,52 +177,54 @@ import { useSearchStore } from '../store/searchStore';
 export const searchRequest = <span class="fstat-no" title="function not covered" >async () =&gt; {</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >	if (process.client) {</span>
-<span class="cstat-no" title="statement not covered" >try {</span>
-<span class="cstat-no" title="statement not covered" >	const store = useSearchStore()</span>
-<span class="cstat-no" title="statement not covered" >	const store2 = useGeneralStore()</span>
-<span class="cstat-no" title="statement not covered" >	const token = localStorage.getItem("token");</span>
-<span class="cstat-no" title="statement not covered" >	const headers = {</span>
-<span class="cstat-no" title="statement not covered" >	"Authorization": `Token ${token}`,</span>
-<span class="cstat-no" title="statement not covered" >	};</span>
-<span class="cstat-no" title="statement not covered" >    console.log(token)</span>
-<span class="cstat-no" title="statement not covered" >    console.log(headers)</span>
+<span class="cstat-no" title="statement not covered" >		try {</span>
+<span class="cstat-no" title="statement not covered" >			const store = useSearchStore()</span>
+<span class="cstat-no" title="statement not covered" >			const store2 = useGeneralStore()</span>
+<span class="cstat-no" title="statement not covered" >			const token = localStorage.getItem("token");</span>
+<span class="cstat-no" title="statement not covered" >			const headers = {</span>
+<span class="cstat-no" title="statement not covered" >				"Authorization": `Token ${token}`,</span>
+<span class="cstat-no" title="statement not covered" >			};</span>
+<span class="cstat-no" title="statement not covered" >			console.log(token)</span>
+<span class="cstat-no" title="statement not covered" >			console.log(headers)</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	const response = await axios.get(store.baseSearchURL, { headers });</span>
-<span class="cstat-no" title="statement not covered" >	console.log(toRaw(response))</span>
+<span class="cstat-no" title="statement not covered" >			const response = await axios.get(store.baseSearchURL, { headers });</span>
+<span class="cstat-no" title="statement not covered" >			</span>
+<span class="cstat-no" title="statement not covered" >			console.log(toRaw(response))</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if (response.data != null) {</span>
-<span class="cstat-no" title="statement not covered" >		console.log("OK: Followers fetched", response.status, response.data); // print to self</span>
+<span class="cstat-no" title="statement not covered" >			if (response.data != null) {</span>
+<span class="cstat-no" title="statement not covered" >				console.log("OK: Followers fetched", response.status, response.data); // print to self</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		store2.posts = response.data</span>
-<span class="cstat-no" title="statement not covered" >		await fixPagination(store2.posts)</span>
-<span class="cstat-no" title="statement not covered" >		</span>
-<span class="cstat-no" title="statement not covered" >        store.number_of_posts_count = response.data.count</span>
+<span class="cstat-no" title="statement not covered" >				store2.posts = response.data</span>
+<span class="cstat-no" title="statement not covered" >				await fixPagination(store2.posts)</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        const calculate_total_pages = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            const num = store.number_of_posts_count as number / 10</span>
-<span class="cstat-no" title="statement not covered" >            return Math.ceil(num)</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >				store.number_of_posts_count = response.data.count</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        store.total_pages_count = calculate_total_pages()</span>
-<span class="cstat-no" title="statement not covered" >        store.next_page_link = response.data.next</span>
-<span class="cstat-no" title="statement not covered" >        store.previous_page_link = response.data.previous</span>
-<span class="cstat-no" title="statement not covered" >        //store.last_page_link = `http://localhost:8888/api/search/?limit=10&amp;offset${store.total_pages_count*10}`</span>
-<span class="cstat-no" title="statement not covered" >        store.current_page = response.data.current_page</span>
-<span class="cstat-no" title="statement not covered" >		</span>
-<span class="cstat-no" title="statement not covered" >		store.searchPosts = response.data</span>
-<span class="cstat-no" title="statement not covered" >				</span>
-<span class="cstat-no" title="statement not covered" >		// returns 'custom' response when the request was successfull</span>
-<span class="cstat-no" title="statement not covered" >		return true</span>
-<span class="cstat-no" title="statement not covered" >	} else {</span>
-<span class="cstat-no" title="statement not covered" >		console.log("OBS! Fetching succedded, but response(data) was:", response.status, response.data) // print to self</span>
-<span class="cstat-no" title="statement not covered" >		store.searchPosts = null</span>
-<span class="cstat-no" title="statement not covered" >		return null</span>
+<span class="cstat-no" title="statement not covered" >				const calculate_total_pages = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >					const num = store.number_of_posts_count as number / 10</span>
+<span class="cstat-no" title="statement not covered" >					return Math.ceil(num)</span>
+<span class="cstat-no" title="statement not covered" >				}</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >				store.total_pages_count = calculate_total_pages()</span>
+<span class="cstat-no" title="statement not covered" >				store.next_page_link = response.data.next</span>
+<span class="cstat-no" title="statement not covered" >				store.previous_page_link = response.data.previous</span>
+<span class="cstat-no" title="statement not covered" >				//store.last_page_link = `http://localhost:8888/api/search/?limit=10&amp;offset${store.total_pages_count*10}`</span>
+<span class="cstat-no" title="statement not covered" >				store.current_page = response.data.current_page</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >				store.searchPosts = response.data</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >				// returns 'custom' response when the request was successfull</span>
+<span class="cstat-no" title="statement not covered" >				return true</span>
+<span class="cstat-no" title="statement not covered" >			} else {</span>
+<span class="cstat-no" title="statement not covered" >				console.log("OBS! Fetching succedded, but response(data) was:", response.status, response.data) // print to self</span>
+<span class="cstat-no" title="statement not covered" >				store.searchPosts = null</span>
+<span class="cstat-no" title="statement not covered" >				return null</span>
+<span class="cstat-no" title="statement not covered" >			}</span>
+<span class="cstat-no" title="statement not covered" >		} catch (error) {</span>
+<span class="cstat-no" title="statement not covered" >			console.error("ERROR: An error occured while trying to fetch followers: ", error); // print to self</span>
+<span class="cstat-no" title="statement not covered" >			return null;</span>
+<span class="cstat-no" title="statement not covered" >		}</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" >} catch (error) {</span>
-<span class="cstat-no" title="statement not covered" >	console.error("ERROR: An error occured while trying to fetch followers: ", error); // print to self</span>
-<span class="cstat-no" title="statement not covered" >	return null;</span>
-<span class="cstat-no" title="statement not covered" >}</span>
-<span class="cstat-no" title="statement not covered" >}};</span>
+<span class="cstat-no" title="statement not covered" >};</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -226,7 +232,7 @@ export const searchRequest = <span class="fstat-no" title="function not covered"
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-28T19:23:31.793Z
+                at 2023-10-03T20:35:56.679Z
             </div>
         <script src="../prettify.js"></script>
         <script>

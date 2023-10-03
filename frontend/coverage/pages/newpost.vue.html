@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.75% </span>
+                <span class="strong">81.48% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>45/48</span>
+                <span class='fraction'>44/54</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">66.66% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.75% </span>
+                <span class="strong">81.48% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>45/48</span>
+                <span class='fraction'>44/54</span>
             </div>
         
             
@@ -111,7 +111,13 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -156,41 +162,40 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;div
-    id="postFormWrapper"
-    class="mt-10 mb-16"
-  &gt;
-    &lt;div class="heading text-center font-bold text-2xl m-5 text-gray-800"&gt;
-      New Post
-    &lt;/div&gt;
-    &lt;div
-      class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl"
-    &gt;
-      &lt;div&gt;
-        &lt;EditorCard
-          @newPostMaterial="publishPost"
-        /&gt;
-      &lt;/div&gt;
+	&lt;div id="postFormWrapper" class="mt-2 mb-16"&gt;
+		&lt;div class="max-w-3xl py-4 mx-auto prose"&gt;
+			&lt;div id="direct-editor"
+				:class="editorContainerClass"
+				
+				&gt;
+				&lt;EditorCard @newPostMaterial="publishPost" /&gt;
+			&lt;/div&gt;
 &nbsp;
-      &lt;!-- icons --&gt;
-      &lt;div class="icons flex text-gray-500 m-2"&gt;
-        &lt;!-- &lt;div class="count ml-auto text-gray-400 text-xs font-semibold"&gt;
+			&lt;!-- icons --&gt;
+			&lt;div class="icons flex text-gray-500 m-2"&gt;
+				&lt;!-- &lt;div class="count ml-auto text-gray-400 text-xs font-semibold"&gt;
             0/300
-          &lt;/div&gt; --&gt;
-        &lt;!-- Maybe later--&gt;
-      &lt;/div&gt;
-      &lt;!-- buttons --&gt;
-      &lt;div class="buttons flex"&gt;
-        &lt;div v-if="postState"&gt;
-          &lt;p&gt;Nytt innlegg lagt til!&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+          	&lt;/div&gt; --&gt;
+				&lt;!-- Maybe later--&gt;
+			&lt;/div&gt;
+			&lt;!-- buttons --&gt;
+			&lt;div class="buttons flex"&gt;
+				&lt;div v-if="postState"&gt;
+					&lt;p&gt;Nytt innlegg lagt til!&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script setup lang="ts"&gt;
@@ -198,15 +203,28 @@ import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 &nbsp;
 // huske definepagedata senere
 &nbsp;
-const postState = ref(false);
+const postState = ref&lt;false | true | null&gt;(null);
 &nbsp;
-const<span class="fstat-no" title="function not covered" > publishPost = async (request_body : object) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const baseURL = "http://localhost:8888/api/newpost/"</span>
-<span class="cstat-no" title="statement not covered" >  await createNewPost(baseURL, request_body)</span>
+let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
+&nbsp;
+watchEffect(() =&gt; {
+	if (postState.value == true) { 
+		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-green-300 shadow-lg"	
+}
+if (postState.value == false) {
+	return editorContainerClass.value = "w<span class="branch-0 cbranch-no" title="branch not covered" >-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-red-300 shadow-lg"	</span>
 <span class="cstat-no" title="statement not covered" >}</span>
-&lt;/script&gt;
-&nbsp;
-&lt;style scoped&gt;&lt;/style&gt;
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >})</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+const publishPost = async (request_body: object) =&gt; {
+	const baseURL = "http://<span class="branch-0 cbranch-no" title="branch not covered" >localhost:8888/api/newpost/"</span>
+<span class="cstat-no" title="statement not covered" >	postState.value = await createNewPost(baseURL, request_body)</span>
+<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" >&lt;/script&gt;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >&lt;style scoped&gt;&lt;/style&gt;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -214,7 +232,7 @@ const<span class="fstat-no" title="function not covered" > publishPost = async (
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-28T19:23:31.793Z
+                at 2023-10-03T20:35:56.679Z
             </div>
         <script src="../prettify.js"></script>
         <script>

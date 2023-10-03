@@ -2,7 +2,7 @@
 	<div id="site-wrapper" class="bg-background text-onBackground">
 		<div v-if="(store.posts) && (store.posts.results)" id="content">
 
-			<div class="article" v-for="post in store.posts.results" :key="post.id" :post-prop="post">
+			<div class="article" v-for="post in store.posts.results" :key="post.id">
 
 				<article-card>
 
@@ -56,7 +56,6 @@
 
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
-import { ArticleSnippetSingleType } from '~/typescript/interfaces';
 
 const post_image = ref('https://picsum.photos/500/300')
 
