@@ -40,10 +40,11 @@
 
 
 						<span
-							v-if="last_page_over_current_page"
+              v-if="under_last_page"
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0 ">...</span>
 
 						<span
+              v-if="store.current_page != store.total_pages_count"
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
 							>{{ store.total_pages_count }}</span>
 
@@ -69,17 +70,15 @@
 import { useGeneralStore } from '~/store/generalStore'
 
 const store = useGeneralStore()
-const last_page_over_current_page = ref(false)
+const under_last_page = ref(true)
 
 watchEffect(() => {
-	if ((store.current_page != null) && (store.total_pages_count != null)) {
-		if ((store.current_page + 1 < store.total_pages_count) && (store.current_page != store.total_pages_count)) {
-			last_page_over_current_page.value = true
+		if (store.current_page + 1 >= store.total_pages_count) {
+			under_last_page.value = false
 		}
-	} else {
-		last_page_over_current_page.value = false
-	}
-
+		if (store.current_page + 1 < store.total_pages_count) {
+      under_last_page.value = true
+    }
 })
 
 
