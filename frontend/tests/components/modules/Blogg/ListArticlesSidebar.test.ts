@@ -1,4 +1,4 @@
-import { mount } from "@vue/test-utils";
+import { VueWrapper, mount } from "@vue/test-utils";
 
 import ListArticlesSidebar from "~/components/modules/Blogg/ListArticlesSidebar.vue";
 import MyProfileCard from "~/components/modules/MyUser/MyProfileCard.vue";
@@ -12,11 +12,11 @@ const mockFetchPersonalUser = async (url: string) => {
 
 describe('ListArticlesSidebar testing', () => {
 
-  let wrapper
+  let wrapper:VueWrapper
 
   beforeAll(async () => {
     // Mock the fetchPersonalUser function
-    const userdata = ref(null)
+    const userdata = ref<object | null>(null)
     userdata.value = await mockFetchPersonalUser('http://localhost:8888/api/min-side/')
     
     wrapper = mount(ListArticlesSidebar, {

@@ -50,7 +50,7 @@ I am focusing on **frontend** at the moment.
   - But far from perfect!!
 - [x] Place a temperary profile picture in the user sidebar (the same on as in min-side)
 - [x] There is a '**date_published**' problem that interfers with ordering that I need to fix.
-- [ ] Split '**aside**' from 'ListArticles', so it becomes two components instead.
+  - [x] Split '**aside**' from 'ListArticles', so it becomes two components instead.
 
 ### text editor
 

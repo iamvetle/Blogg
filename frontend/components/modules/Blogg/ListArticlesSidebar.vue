@@ -6,7 +6,7 @@
 		</div>
 
 		<hr class="mb-8">
-		
+
 		<div id="saved-posts" class="mx-auto w-full mb-8">
 			<h3 class=" text-[28px] mb-9">
 				Lagrede innlegg
@@ -42,7 +42,7 @@ onBeforeMount(async () => {
 	const baseMyUserURL = "http://localhost:8888/api/min-side/"
 
 	userdata.value = await fetchPersonalUser(baseMyUserURL)
-	
+
 	console.log(userdata.value.data) // print to self
 })
 
