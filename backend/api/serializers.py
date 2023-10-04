@@ -1,4 +1,4 @@
-from .models import CustomUser, Post, Comment, Tag, Category
+from .models import CustomUser, Post, Comment, Tag, Category, SavedPost
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from datetime import datetime
@@ -220,3 +220,7 @@ class JustLoggedInSerializer(serializers.ModelSerializer):
             "last_name": {"read_only": True},
         }
 
+class SavedPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SavedPost
+        fields = '__all__'

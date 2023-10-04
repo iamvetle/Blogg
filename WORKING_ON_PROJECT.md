@@ -28,6 +28,7 @@ I am focusing on **frontend** at the moment.
 > Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
+- [ ] Fjern 'searchRequest' og 'searchPagnation' (det som er igjen)
 
 ### [id] user page
 

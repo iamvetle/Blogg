@@ -5,6 +5,7 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from django.conf import settings
+from django.contrib.auth import get_user_model
 
 
 class CustomUserManager(BaseUserManager):
@@ -135,4 +136,10 @@ class Comment(models.Model):
     def full_comment(self):
         return f"{self.title}\n{self.content}"
 
-
+class SavedPost(models.Model):
+    user = models.ForeignKey(get_user_model(), related_name="saved_posts", on_delete=models.CASCADE)
+    post = models.ForeignKey("Post", related_name='saved_by', on_delete=models.CASCADE)
+    saved_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        unique_together = ('user', 'post')
