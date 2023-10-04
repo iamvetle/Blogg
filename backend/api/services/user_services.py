@@ -7,8 +7,9 @@ CustomUser = get_user_model()
 
 ### USER HANDLING
     
-class UserProfileService(): # Other user profiles
-
+class UserProfileService():
+    ''' Includes services/functions for managing other users '''
+    #is auth here?
     @staticmethod
     def get_user_profile(username):
 
@@ -60,7 +61,8 @@ class UserProfileService(): # Other user profiles
             return None
 
 class MyProfileService():
-    
+    ''' Includes services/functions for the LOGGED-IN user '''
+
     @staticmethod
     def get_all_followers(request):
         current_user = request.user

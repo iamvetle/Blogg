@@ -12,24 +12,24 @@ from rest_framework.permissions import IsAuthenticated
 from api.services.user_services import UserProfileService, MyProfileService
 from django.core.serializers import serialize
 
-
 # A view is responsible for processing incomming HTTP requests and returning HTTP responses - handle user-facing logic. 
 
 CustomUser = get_user_model()
 
 class MyAccountView(APIView): # Personal account
+    ''' Returns profile information about the logged in user '''
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
         serializer = UserSerializer(request.user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        if serializer.is_valid:
+            return Response(serializer.data, status=status.HTTP_200_OK)
     
-class UserProfileView(APIView): # Other user profiles
-
+class UserProfileView(APIView):
+    ''' Returns information about a specified user '''
     permission_classes = [IsAuthenticated]
 
     def get(self, request, username):
-
         response = UserProfileService.get_user_profile(username)
 
         if response is not None:
@@ -40,8 +40,9 @@ class UserProfileView(APIView): # Other user profiles
             print(f"The user '{username}' does not exist")
             return Response(status=status.HTTP_404_NOT_FOUND) 
 
+# NOT FINISHED, BELOW
 class FollowUserView(APIView): # Currently workign with this
-
+    ''' Follows specified user '''
     permission_classes = [IsAuthenticated]
 
     def get(self, request, username):
@@ -55,6 +56,7 @@ class FollowUserView(APIView): # Currently workign with this
             return Response(f"{response['current_user']} did NOT start following {response['user_to_follow']}", status=status.HTTP_400_BAD_REQUEST) # print to self
 
 class UnfollowUserView(APIView):
+    ''' Unfollows specified user '''
     permission_classes = [IsAuthenticated]
     
     def get(self, request, username):
@@ -70,7 +72,7 @@ class UnfollowUserView(APIView):
             return Response("Failed to unfollow", status=status.HTTP_400_BAD_REQUEST)
 
 class CurrentFollowersView(APIView):
-    
+    ''' Returns a list of users following the logged in user '''
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
