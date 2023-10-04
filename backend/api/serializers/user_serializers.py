@@ -11,9 +11,9 @@ class UserSerializer(serializers.ModelSerializer):
     num_of_followers = serializers.SerializerMethodField()
 
     def get_num_of_followers(self, obj):
+        ''' Calculates the number of followers the objects '''
         num_of_followers = 0
-        print(obj)
-
+        
         try:
             followers = list(obj.followers.all())
 
@@ -46,7 +46,9 @@ class UserSerializer(serializers.ModelSerializer):
             "username": {"required": True},
         }
 
+    # def get_saved_posts(self)
 class FollowersSerializer(serializers.ModelSerializer):
+    ''' Returns the username of the object '''
     class Meta:
         model = CustomUser
 

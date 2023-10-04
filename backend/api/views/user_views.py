@@ -16,8 +16,8 @@ from django.core.serializers import serialize
 
 CustomUser = get_user_model()
 
-class MyAccountView(APIView): # Personal account
-    ''' Returns profile information about the logged in user '''
+class MyAccountView(APIView):
+    ''' Returns profile information about the LOGGED-IN user '''
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
