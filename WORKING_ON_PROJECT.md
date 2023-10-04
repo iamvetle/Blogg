@@ -15,7 +15,12 @@ I am focusing on **frontend** at the moment.
 - [x] Make a '**tag**' model and connect to the '**post**' model through a manytomany field on
 - [x] **Tag** : new model. Create a new 'tag' model and connect it to CustomUser (and or post?)
 - [x] **Categories** : new model. Connect to CustomUser (or post?)
-- [ ] Make it so users can **save posts** for reading later. Might need another model for that
+- [ ] Make it so users can **save posts** for reading later.
+  - [x] Lage en ny modell
+  - [x] Lage en ny serializer for den modellen
+  - [x] Lage en ny view for den
+  - [ ] Legge rute fram til viewen slik at man kan nå den
+    - [ ] Få det til å fungere med postman
 - (Do I need a new field in models.py? Does it need to be connected to a user?)
 
 - [ ] Make the api return '**following**'

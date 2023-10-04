@@ -223,4 +223,4 @@ class JustLoggedInSerializer(serializers.ModelSerializer):
 class SavedPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = SavedPost
-        fields = '__all__'
+        fields = '__all__' # TODO: I want to change it so that not all four fields are returned, and not in id form
