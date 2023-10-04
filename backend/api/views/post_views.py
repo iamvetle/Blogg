@@ -1,4 +1,5 @@
 # Standard libraries
+from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
@@ -13,8 +14,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # Local application imports
-from api.serializers import PostSerializer, PostSnippetSerializer, SavedPostSerializer
-from api.models import Post, SavedPost
+from api.models import Post, Tag, Comment, Category, SavedPost
+from api.serializers.post_serializers import PostSerializer, SavedPostSerializer, PostSnippetSerializer
 from api.services.post_services import CreatePostService, PostSnippetService
 from api.services.search_services import SearchService
 from api.services.pagination_services import CustomLimitOffsetPagination
@@ -112,7 +113,7 @@ class SavePostView(APIView):
     ''' Saves or un-saves a requested post for the user'''
     permission_classes = [IsAuthenticated]
 
-    def get(self, request, post_id):
+    def post(self, request, post_id):
         user = request.user
         
         try:
@@ -120,18 +121,27 @@ class SavePostView(APIView):
         except ObjectDoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-        # Check if the post is already saved by the user
-        already_saved = SavedPost.objects.filter(user=user, post=post).exists()
-                
-        if already_saved:
-            # If already saved, remove it from saved posts
-            SavedPost.objects.filter(user=user, post=post).delete()
-            return Response({'message': 'Post unsaved'}, status=status.HTTP_200_OK)
+        with transaction.atomic():
+            # Check if the post is already saved by the user
+            already_saved = SavedPost.objects.filter(user=user, post=post).exists()
+                    
+            if already_saved:
+                # If already saved, remove it from saved posts
+                SavedPost.objects.filter(user=user, post=post).delete()
+                return Response({'message': 'Post unsaved'}, status=status.HTTP_200_OK)
 
-        saved_post = SavedPost.objects.create(user=user, post=post)
-        # Saves the post
-        
-        serializer = SavedPostSerializer(saved_post)
-        
-        if serializer.is_valid:
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            saved_post = SavedPost.objects.create(user=user, post=post)
+            # Saves the post
+            
+            serializer = SavedPostSerializer(saved_post)
+            
+            if serializer.is_valid:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+class AllSavedPosts(APIView):
+    ''' Retrieves all posts the user has saved '''
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        user = request.user
+        saved_posts = Post.objects()

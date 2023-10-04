@@ -1,4 +1,5 @@
-from ..serializers import UserProfileSerializer, FollowersSerializer
+from api.serializers.user_serializers import FollowersSerializer
+from api.serializers.post_serializers import UserProfileSerializer
 from django.contrib.auth import get_user_model
 
 

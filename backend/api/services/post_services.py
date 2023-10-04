@@ -9,7 +9,7 @@
 #     def create_post()
     
     
-from ..serializers import PostSerializer, PostSnippetSerializer
+from api.serializers.post_serializers import PostSerializer, PostSnippetSerializer
 from ..models import Post
 from django.contrib.auth import get_user_model
 from .other import CustomPageNumberPagination, CustomLimitOffsetPagination

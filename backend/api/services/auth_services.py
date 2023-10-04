@@ -1,5 +1,5 @@
 from rest_framework.views import APIView
-from ..serializers import UserSerializer
+from api.serializers.user_serializers import UserSerializer
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model

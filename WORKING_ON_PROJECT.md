@@ -19,10 +19,9 @@ I am focusing on **frontend** at the moment.
   - [x] Lage en ny modell
   - [x] Lage en ny serializer for den modellen
   - [x] Lage en ny view for den
-  - [ ] Legge rute fram til viewen slik at man kan nå den
-    - [ ] Få det til å fungere med postman
-- (Do I need a new field in models.py? Does it need to be connected to a user?)
-
+  - [x] Legge rute fram til viewen slik at man kan nå den
+    - [x] Få det til å fungere med postman
+  - [ ] API backend trenger å returnere postene som brukeren har **lagret** 
 - [ ] Make the api return '**following**'
 
 (I want users to be able to 'like' other posts.
