@@ -75,7 +75,6 @@ class UserSerializer(serializers.ModelSerializer):
             "username": {"required": True},
         }
 
-
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
@@ -200,7 +199,8 @@ class CommentSerializer(serializers.ModelSerializer):  # Not in use
 
 class SavedPostSerializer(serializers.ModelSerializer):
         
-    user = UserOnlyAuthorSerializer(read_only=True)
+    user = UserOnlyAuthorSerializer()
+    
     class Meta:
         model = SavedPost
         fields = ['id', 'user', 'post', 'saved_at'] # TODO: I want to change it so that not all four fields are returned, and not in id form

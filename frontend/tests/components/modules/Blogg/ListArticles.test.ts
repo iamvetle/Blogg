@@ -61,4 +61,22 @@ describe("list articles testing", () => {
         expect(wrapper.text()).toContain("Lorem ipsum...")
         expect(wrapper.text()).toContain("08-12-2021")
     })
+
+    // it("Should render the posts that are fetched", async () => {
+    //             console.log(wrapper.html())
+
+    //             expect(wrapper.text()).toContain("This is a title that is made by bob")
+    //         })
+
+    // test("shows an error message if there are no posts", () => {
+
+    //     store.posts = null
+    //     wrapper.unmount()
+
+    //     wrapper = mount(ListArticles, {
+    //         global: {
+    //             plugins: [pinia],
+    //         },
+    //     })
+    // })
 })
