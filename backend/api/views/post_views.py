@@ -1,9 +1,9 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from ..serializers import PostSerializer, PostSnippetSerializer
+from ..serializers import PostSerializer, PostSnippetSerializer, SavedPostSerializer
 from rest_framework import status
-from ..models import Post
+from ..models import Post, SavedPost
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
 from api.services.post_services import CreatePostService, PostSnippetService
@@ -97,3 +97,26 @@ class SearchView(APIView):  ## filters based on post title
 
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class SavePost(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request, post_id):
+        user = request.user
+        post = Post.objects.get(id=post)
+        
+        if post.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        # Check if the post is already saved by the user
+        already_saved = SavedPost.objects.filter(user=user, post=post).exists()
+        
+        if already_saved:
+            # If already saved, remove it from saved posts
+            SavedPost.objects.filter(user=user, post=post).delete()
+            return Response({'message': 'Post unsaved'}, status=status.HTTP_200_OK)
+
+        saved_post = SavedPost.objects.create(user=user, post=post)
+        serializer = SavedPostSerializer(saved_post)
+        
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
