@@ -11,7 +11,6 @@ I am focusing on **frontend** at the moment.
 - **CustomUser** ->
 - [ ] new field: profile picture upload / img upload
 - [ ] Make it possible to save images in code editor to database here
-  - Find out how to do this
 
 ---
 
@@ -19,7 +18,7 @@ I am focusing on **frontend** at the moment.
 - [x] **Tag** : new model. Create a new 'tag' model and connect it to CustomUser (and or post?)
 - [x] **Categories** : new model. Connect to CustomUser (or post?)
 - [ ] Make it so users can **save posts** for reading later.
-  - [x] Lage en ny modell *models.py
+  - [x] Lage en ny modell (saved_post) *models.py
     - [ ] Registrer den i admin.py
   - [x] Lage en ny serializer for den modellen
   - [x] urls.py
@@ -28,17 +27,19 @@ I am focusing on **frontend** at the moment.
   - [x] Legge rute fram til viewen slik at man kan nå den
     - [x] Få det til å fungere med postman
 
+---
+
+- [ ] Ønsker at en post kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
+  - "stjerne" hvis lagret 
+
 ###  
 
 ***'fetchen' på api personlig bruker backend***:
 
-- [ ] **Antallet** lagrede innlegg inkluderes
-- [ ] **Tittelen** og **forfatteren** må også returneres 
-- [ ] API backend trenger å returnere postene som brukeren har **lagret** 
-- [ ] Make the api return '**following**'
-
-(I want users to be able to 'like' other posts.
-(Share? - much later in project at least))
+- [x] **Antallet** lagrede innlegg inkluderes
+- [x] **Tittelen** og **forfatteren** må også returneres 
+- [x] API backend trenger å returnere postene som brukeren har **lagret** 
+- [x] Make the api return '**following**'
 
 ## Frontend
 
@@ -47,6 +48,19 @@ I am focusing on **frontend** at the moment.
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
 - [ ] Fjern 'searchRequest' og 'searchPagnation' (det som er igjen)
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
+
+### ListArticlesSidebar 
+
+- **Vis korrekt, av og for brukeren**:
+  - [x] Antallet lagrede posts
+  - [x] Lagrede posts
+  - [x] Antall *følgere*
+  - [x] Antall *jeg følger*
+  - [x] Brukerne, navnene til de jeg følger
+- [ ] Gi en bruker muligheten, en knapp de kan trykke på hver post, for å **lagre** en post
+- [ ] Muligheten for en bruker til å **fjerne** en post som er lagret
+
+---
 
 ### [id] user page
 
@@ -103,3 +117,15 @@ Not so important right now:
 - [ ] Find out how I want implement "**text editor**"
 - Should I continue with **TiptapEditor** or use something else like **simplemde**?
 - Should I remove the images that are listed on the feed/index
+
+
+(I want users to be able to 'like' other posts.
+(Share? - much later in project at least))
+
+---
+
+---
+
+### In medium
+
++ **For you** | **Following** - | Cybersecurity | Society | Coding | Mental Health | Psychology | Equality | Web Development | Deep Learning | Mindfulness | Spirituality | Philosophy | Data Visualization | Math | Science | Self Improvment | Data Science | Programming

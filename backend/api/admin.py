@@ -1,14 +1,15 @@
 from django.contrib import admin
-from .models import CustomUser, Post, Comment, Tag, Category
+from .models import CustomUser, Post, Comment, Tag, Category, SavedPost
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 
-# Inlines ->
+
+# Inlines -> (is put inside the admin models)
 class CommentInline(admin.TabularInline):
     model = Comment
     fields = ["title", "content", "post", "author", "date_published"]
     readonly_fields = ["date_published"]
-    extra = 0
+    extra = 0  # or else, the three extra default fields are shown - annoying
     can_delete = False
     show_change_link = True
 
@@ -16,7 +17,9 @@ class CommentInline(admin.TabularInline):
         """
         Only allow changing comments if obj is None (which means it's a new comment)
         """
-        return not obj
+        if obj is None:
+            return True
+        return False
 
 
 class PostInline(admin.TabularInline):
@@ -31,50 +34,63 @@ class PostInline(admin.TabularInline):
         """
         Only allow changing comments if obj is None (which means it's a new comment)
         """
-        return not obj
+        if obj is None:
+            return True
+        return False
+
+
+class SavedPostInline(admin.TabularInline):
+    model = SavedPost
+    fields = ["post", "user", "saved_at"]
+    readonly_fields = ["saved_at"]
+    extra = 0  # or else, the three extra default fields are shown - annoying
+    can_delete = True
+    show_change_link = True
+
+    def has_change_permission(self, request, obj=None):
+        """
+        Only allow saving a new post if obj is None (which means it's a new a editing a book already saved)
+        """
+        if obj is None:
+            return True
+        return False
+
 
 # Admin models
 
+
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    
     model = Tag
 
-    list_display = (
-        "name",
-    )
-    
-    search_fields = (
-        "name",
-    )
-    
-    readonly_field = (
-        "name"
-    )
+    list_display = ("name",)
+
+    search_fields = ("name",)
+
+    readonly_field = "name"
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     model = Category
 
-    list_display = (
-        "name",
-    )
+    list_display = ("name",)
 
-    search_fields = (
-        "name",
-    )
-    
-    readonly_field = (
-        "name",
-    )
-    
+    search_fields = ("name",)
+
+    readonly_field = ("name",)
+
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     save_on_top = True
     model = Post
     inlines = [CommentInline]
-    
-    filter_horizontal = ('tags', 'categories',)
+
+    filter_horizontal = (
+        "tags",
+        "categories",
+    )
 
     def body(self, obj):
         return format_html(obj.content)
@@ -84,59 +100,45 @@ class PostAdmin(admin.ModelAdmin):
         "date_published",
     )
 
-    list_filter = (
-        "date_published",
-    )
+    list_filter = ("date_published",)
     list_editable = ()
 
     search_fields = (
         "title",
         "content",
     )
-    
-    readonly_fields = ('date_published', 'body')
+
+    readonly_fields = ("date_published", "body")
 
     date_hierarchy = "date_published"
 
     fieldsets = (
-        (None, {
-            "fields": ("title", "body", "content", "author")}),
-        (
-            "Additional",
-            {"fields": ("tags", "categories")}),
-        (
-            "Extra",
-            {"fields": ("date_published",)}),
+        (None, {"fields": ("title", "body", "content", "author")}),
+        ("Additional", {"fields": ("tags", "categories")}),
+        ("Extra", {"fields": ("date_published",)}),
     )
-    
+
     add_fieldsets = (
-        (None, {
-            'classes': ('wide'),
-            'fields': ('title', 'content', 'author')}),
-        (
-            'Additional', 
-            { 'fields': ('tags', 'categories')})
+        (None, {"classes": ("wide"), "fields": ("title", "content", "author")}),
+        ("Additional", {"fields": ("tags", "categories")}),
     )
+
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     save_on_top = True
-    
+
     model = Comment
-    
-    list_display = (
-        "title",
-        "post",
-        "author"
-    )
-    
+
+    list_display = ("title", "post", "author")
+
     search_fields = (
-        'post__title',
-        'author__username',
+        "post__title",
+        "author__username",
     )
-    
-    readonly_fields = ('date_published', 'post')
-    
+
+    readonly_fields = ("date_published", "post")
+
     fieldsets = (
         (None, {"fields": ("title", "content", "post")}),
         (
@@ -144,8 +146,9 @@ class CommentAdmin(admin.ModelAdmin):
             {"fields": ("date_published",)},
         ),
     )
-        
+
     date_hierarchy = "date_published"
+
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
@@ -154,6 +157,7 @@ class CustomUserAdmin(UserAdmin):
         return full_name
 
     model = CustomUser
+    inlines = [SavedPostInline]
 
     list_display = (
         "username",
@@ -172,17 +176,27 @@ class CustomUserAdmin(UserAdmin):
             {"fields": ("age", "address", "phone_number", "nickname")},
         ),
     )
-    
+
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('username', 'email', 'first_name', 'last_name', 'password1', 'password2'),
-        }),
-        ('Additional information', {
-            'fields': ('age', 'address', 'phone_number', 'nickname')
-        })
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": (
+                    "username",
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "password1",
+                    "password2",
+                ),
+            },
+        ),
+        (
+            "Additional information",
+            {"fields": ("age", "address", "phone_number", "nickname")},
+        ),
     )
-    
 
 
 # https://realpython.com/python-django-blog/
