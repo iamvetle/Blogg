@@ -2,7 +2,7 @@
   <div>
     <span class="mb-4 flex items-center">
       <img
-        :src="user_picture"
+        :src="profile_picture"
         class="w-6 h-auto"
       >
       <p class="ms-2">{{ followingProp.username }}</p>
@@ -14,7 +14,6 @@
 
 import profile_picture from '~/assets/placeholder-profile-picture.png'
 
-const user_picture = profile_picture
 const { followingProp } = defineProps(['followingProp'])
 
 </script>

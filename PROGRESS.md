@@ -19,7 +19,7 @@ I am focusing on **frontend** at the moment.
 - [x] **Categories** : new model. Connect to CustomUser (or post?)
 - [ ] Make it so users can **save posts** for reading later.
   - [x] Lage en ny modell (saved_post) *models.py
-    - [ ] Registrer den i admin.py
+    - [x] Registrer den i admin.py
   - [x] Lage en ny serializer for den modellen
   - [x] urls.py
   - [x] views.py
@@ -29,8 +29,8 @@ I am focusing on **frontend** at the moment.
 
 ---
 
-- [ ] Ønsker at en post kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
-  - "stjerne" hvis lagret 
+- [ ] Ønsker at en post i **listen ved feed** kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
+  - "***stjerne***" hvis lagret 
 
 ###  
 
@@ -40,6 +40,7 @@ I am focusing on **frontend** at the moment.
 - [x] **Tittelen** og **forfatteren** må også returneres 
 - [x] API backend trenger å returnere postene som brukeren har **lagret** 
 - [x] Make the api return '**following**'
+  - [x] and **who** I am followoing
 
 ## Frontend
 
@@ -71,7 +72,7 @@ I am focusing on **frontend** at the moment.
 
 ### min-side
 
-- [ ] Change the **personal posts** that are received in 'min-side' to be snippets
+- [x] Change the **personal posts** that are received in 'min-side' to be snippets
 - [ ] Put pagnation there if the users have a lot of posts
 - [ ] Give users the ability to edit their own posts
 

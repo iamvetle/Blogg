@@ -1,14 +1,23 @@
 export interface AccountType {
-	username: string;
-	email: string;
-	first_name: string;
-	last_name: string;
-	nickname: string;
-	age: number;
-	address: string;
-	phone_number: number;
-	num_of_followers: number;
-	last_online: string;
+	num_of_followers:number,
+	username:string,
+	first_name:string,
+	last_name:string,
+	posts:[
+		{
+			id:number,
+			title:string,
+			author:{
+				username:string,
+				first_name:string,
+				last_name:string,
+			},
+			content_snippet:string,
+			date_published:string,
+			tags:null | Array<string>,
+			categories:null | Array<string>
+		},
+	]
 }
 
 // plural
@@ -29,8 +38,8 @@ export interface ArticlesSnippetsType {
 				first_name: string;
 				last_name: string;
 			},
-			tags: Array<string>,
-			categories: Array<string>
+			tags: null | Array<string>,
+			categories: null | Array<string>
 		}
 	]
 }
@@ -41,42 +50,45 @@ export interface ArticleSnippetSingleType {
 	title: string;
 	content_snippet: string;
 	date_published: string;
-	num_of_followers: string;
 	author: {
 		username: string;
 		first_name: string;
 		last_name: string;
 	},
-	tags: Array<string>,
-	categories: Array<string>
+	tags: null | Array<string>,
+	categories: null | Array<string>
 }
 
 
 export interface PersonalPostType {
 	id: number;
 	title: string;
-	content: string;
+	content_snippet: string;
+	date_published: string;
 	author: {
 		username: string;
 		first_name: string;
 		last_name: string;
-	};
-	date_published: string;
+	},
+	tags: null | Array<string>,
+	categories: null | Array<string>
 }
 
 export interface SinglePostType {
 	id: number;
 	title: string;
 	content: string;
+	date_published: string;
 	author: {
 		username: string;
 		first_name: string;
 		last_name: string;
 	};
-	date_published: string;
+	tags: null | Array<string>,
+	categories: null | Array<string>
 }
 
-export interface PersonalUserType {
+export interface PersonalUserType { // Logged In user Type
 	id: number;
 	email: string;
 	username: string;
@@ -86,21 +98,26 @@ export interface PersonalUserType {
 	address: string | null;
 	phone_number: string | null;
 	nickname: string | null;
-	last_online: string;
+	following: [
+		{
+			username:string
+		}
+	]
+	num_of_following: number;
 	followers: [
 		{
-			"username":"bob"
+			username:string
 		}
 	]
 	num_of_followers: number;
 	saved_posts: [
 		{
-			"user": {
-				"username":string,
-				"first_name":string,
-				"last_name":string,
+			user: {
+				username:string,
+				first_name:string,
+				last_name:string,
 			},
-			"post":number
+			post:number
 		}
 	]
 	num_of_saved_posts: number;

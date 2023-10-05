@@ -30,10 +30,10 @@
 				Du følger
 			</h3>
 			<div id="following" v-if="userdata">
-				<Following 
-				v-for="follower, index in userdata.followers"
+				<!-- <Following 
+				v-for="follower, index in userdata.followers" 
 				:followingProp="follower"
-				:key="index"
+				:key="index" -->
 				/>
 			</div>
 			<span class="text-xs text-primary hover:text-primaryFixed">Se alle</span>
@@ -45,9 +45,9 @@
 <script setup lang="ts">
 
 const userdata = ref<null | PersonalUserType>(null)
+const baseMyUserURL = "http://localhost:8888/api/min-side/"
 
 onBeforeMount(async () => {
-	const baseMyUserURL = "http://localhost:8888/api/min-side/"
 
 	userdata.value = await fetchPersonalUser(baseMyUserURL)
 

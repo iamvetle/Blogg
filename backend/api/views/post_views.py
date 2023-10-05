@@ -35,11 +35,10 @@ class MyPosts(APIView):
     def get(self, request):
         author = request.user.id
         queryset = Post.objects.filter(author_id=author)
-        serializer = PostSerializer(queryset, many=True)
+        serializer = PostSnippetSerializer(queryset, many=True) # also post snippets now, NOT full ones
 
         if serializer.is_valid:
             return Response(serializer.data, status=status.HTTP_200_OK)
-
 
 # not used at the moment
 class AllPostsView(APIView):
@@ -163,7 +162,7 @@ class AllSavedPosts(APIView):
 
         queryset = SavedPost.objects.filter(user=userId)
 
-        if queryset.exists():
+        if queryset.exists:
             try:
                 serializer = SavedPostSerializer(queryset, many=True)
                 

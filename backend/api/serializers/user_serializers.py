@@ -37,14 +37,16 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
         fields = ["num_of_followers", "username", "first_name", "last_name", "posts"]
 
-
 class UserSerializer(serializers.ModelSerializer):
     followers = serializers.SerializerMethodField()
     num_of_followers = serializers.SerializerMethodField()
 
     saved_posts = serializers.SerializerMethodField()
     num_of_saved_posts = serializers.SerializerMethodField()
-
+    
+    following = serializers.SerializerMethodField()
+    num_of_following = serializers.SerializerMethodField()
+    
     def get_saved_posts(self, obj):
         saved_posts = obj.saved_posts.all()
         serializer = SavedPostSerializer(saved_posts, many=True)
@@ -83,6 +85,34 @@ class UserSerializer(serializers.ModelSerializer):
         except:
             return num_of_followers
 
+    def get_following(self, obj):
+        ''' Returns all follwing objects '''
+        
+        try:
+            queryset = obj.following.all()
+            
+            serializer = FollowersSerializer(queryset, many=True)
+            
+            if serializer.is_valid:
+                return serializer.data
+            else:
+                return 0
+        except:
+            return 0
+        
+    def get_num_of_following(self, obj):
+        ''' Calculates the amount the logged in user is following '''
+        num_of_following = 0
+
+        try:
+            following = list(obj.following.all())
+
+            num_of_following = len(following)
+            return num_of_following
+
+        except:
+            return num_of_following
+
     class Meta:
         model = CustomUser
 
@@ -96,7 +126,8 @@ class UserSerializer(serializers.ModelSerializer):
             "address",
             "phone_number",
             "nickname",
-            "last_online",
+            "following",
+            "num_of_following",
             "followers",
             "num_of_followers",
             "saved_posts",
