@@ -1,5 +1,8 @@
 from api.models import CustomUser, Post, Comment, Tag, Category, SavedPost
-from api.serializers.only_serializers import UserOnlyAuthorSerializer, PostOnlyTitleSerializer
+from api.serializers.only_serializers import (
+    OnlyAuthorCustomUserSerializer,
+    OnlyTitlepostSerializer,
+)
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from datetime import datetime
@@ -7,6 +10,7 @@ from time import strftime
 from django.utils.safestring import mark_safe
 
 CustomUser = get_user_model()
+
 
 ## fetches posts for user
 class UserProfileSerializer(serializers.ModelSerializer):
@@ -35,6 +39,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = CustomUser
 
         fields = ["num_of_followers", "username", "first_name", "last_name", "posts"]
+
 
 class UserSerializer(serializers.ModelSerializer):
     num_of_followers = serializers.SerializerMethodField()
@@ -75,27 +80,28 @@ class UserSerializer(serializers.ModelSerializer):
             "username": {"required": True},
         }
 
+
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ['name']
-        
-class CategorySerializer(serializers.ModelSerializer):    
+        fields = ["name"]
+
+
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['name']
+        fields = ["name"]
+
 
 class PostSerializer(serializers.ModelSerializer):
-    author = (
-        serializers.SerializerMethodField()
-        )  
-    ''' Makes sure that not everything in the 'author' object gets returned '''
+    author = serializers.SerializerMethodField()
+    """ Makes sure that not everything in the 'author' object gets returned """
 
     date_published = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
-        
+
         content = serializers.SerializerMethodField()
 
         fields = ["id", "title", "content", "author", "date_published"]
@@ -104,36 +110,46 @@ class PostSerializer(serializers.ModelSerializer):
         }
 
     def get_author(self, obj):
-        """ Ensures that not all of the fields from "author" is included, but only 'username', 'first_name and 'last_name """
+        """Ensures that not all of the fields from "author" is included, but only 'username', 'first_name and 'last_name"""
         author = {
             "username": obj.author.username,
             "first_name": obj.author.first_name,
             "last_name": obj.author.last_name,
         }
         return author
+
     def get_content(self, obj):
         content = obj.content
         content = mark_safe(content)
-        
+
         return content
-        
+
     def get_date_published(self, obj):
-        """ Makes the value of the "date" string more readable """
+        """Makes the value of the "date" string more readable"""
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
+
 
 class PostSnippetSerializer(serializers.ModelSerializer):  # Bare en liten del av posts
     content_snippet = serializers.SerializerMethodField()  # Limited to 225 char
     author = serializers.SerializerMethodField()
     date_published = serializers.SerializerMethodField()
-    
+
     tags = TagSerializer(many=True, read_only=True)
     categories = CategorySerializer(many=True, read_only=True)
 
     class Meta:
         model = Post
 
-        fields = ["id", "title", "author", "content_snippet", "date_published", "tags", "categories"]
+        fields = [
+            "id",
+            "title",
+            "author",
+            "content_snippet",
+            "date_published",
+            "tags",
+            "categories",
+        ]
         extra_kwargs = {
             "id": {"read_only": True},
             "date_published": {"read_only": True},
@@ -141,7 +157,7 @@ class PostSnippetSerializer(serializers.ModelSerializer):  # Bare en liten del a
             "content_snippet": {"read_only": True},
             "author": {"read_only": True},
             "tags": {"read_only": True},
-            "categories": {"read_only": True}
+            "categories": {"read_only": True},
         }
 
     def get_content_snippet(self, obj):
@@ -162,6 +178,7 @@ class PostSnippetSerializer(serializers.ModelSerializer):  # Bare en liten del a
     def get_date_published(self, obj):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
+
 
 class CommentSerializer(serializers.ModelSerializer):  # Not in use
     author = serializers.SerializerMethodField()
@@ -197,11 +214,11 @@ class CommentSerializer(serializers.ModelSerializer):  # Not in use
     def get_date_published(self, obj):
         return obj.date_published.strftime("%d-%m-%Y")
 
+
 class SavedPostSerializer(serializers.ModelSerializer):
-        
-    user = UserOnlyAuthorSerializer()
-    post = PostOnlyTitleSerializer()
+    user = OnlyAuthorCustomUserSerializer()
+    post = OnlyTitlepostSerializer()
+
     class Meta:
         model = SavedPost
-        fields = ['user', 'post'] # TODO: I want to change it so that not all four fields are returned, and not in id form
-        
+        fields = ["user", "post"]

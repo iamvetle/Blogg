@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 
 CustomUser = get_user_model()
 
-class UserOnlyAuthorSerializer(serializers.ModelSerializer):
+class OnlyAuthorCustomUserSerializer(serializers.ModelSerializer):
     ''' If an object contains user id, the class function will return expanded 
     information on the user if a us'''    
 
@@ -25,7 +25,7 @@ class UserOnlyAuthorSerializer(serializers.ModelSerializer):
     def get_last_name(self,obj):
         return obj.last_name
 
-class PostOnlyTitleSerializer(serializers.ModelSerializer):
+class OnlyTitlepostSerializer(serializers.ModelSerializer):
     ''' If the passing object contains post id, the class function will 
     return "exchange", the post title '''
     title = serializers.SerializerMethodField()
