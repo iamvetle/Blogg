@@ -1,7 +1,6 @@
 from api.models import CustomUser, Post, Comment, Tag, Category, SavedPost
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from datetime import datetime
 from time import strftime
 from django.utils.safestring import mark_safe
 
@@ -25,7 +24,7 @@ class OnlyAuthorCustomUserSerializer(serializers.ModelSerializer):
     def get_last_name(self,obj):
         return obj.last_name
 
-class OnlyTitlepostSerializer(serializers.ModelSerializer):
+class OnlyTitlePostSerializer(serializers.ModelSerializer):
     ''' If the passing object contains post id, the class function will 
     return "exchange", the post title '''
     title = serializers.SerializerMethodField()
@@ -37,3 +36,13 @@ class OnlyTitlepostSerializer(serializers.ModelSerializer):
         return obj.title
         
         
+class OnlyRealDateTimeSerializer(serializers.ModelSerializer):
+    ''' Takes post object and returns a more readable date_published field '''
+    date_published = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = Post
+        fields = ['date_published']
+        
+    def get_date_published(self, obj):
+        return obj.date_published.strftime("%d-%m-%Y")

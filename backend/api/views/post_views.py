@@ -1,6 +1,6 @@
 # Standard libraries
 from django.db import transaction
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -15,7 +15,11 @@ from rest_framework import status
 
 # Local application imports
 from api.models import Post, SavedPost
-from api.serializers.post_serializers import PostSerializer, SavedPostSerializer, PostSnippetSerializer
+from api.serializers.post_serializers import (
+    PostSerializer,
+    SavedPostSerializer,
+    PostSnippetSerializer,
+)
 from api.services.post_services import CreatePostService, PostSnippetService
 from api.services.search_services import SearchService
 from api.services.pagination_services import CustomLimitOffsetPagination
@@ -24,7 +28,8 @@ CustomUser = get_user_model()
 
 
 class MyPosts(APIView):
-    ''' Retrieves all posts created by the logged in user '''
+    """Retrieves all posts created by the logged in user"""
+
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
@@ -38,7 +43,8 @@ class MyPosts(APIView):
 
 # not used at the moment
 class AllPostsView(APIView):
-    ''' Retrieves all posts '''
+    """Retrieves all posts"""
+
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
@@ -48,7 +54,8 @@ class AllPostsView(APIView):
 
 
 class PostSnippetsView(APIView):
-    ''' Retrieves all posts as snippets, and returns paginated '''
+    """Retrieves all posts as snippets, and returns paginated"""
+
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
@@ -57,7 +64,8 @@ class PostSnippetsView(APIView):
 
 
 class SinglePostView(APIView):
-    ''' Retrieves a single post '''
+    """Retrieves a single post"""
+
     permission_classes = [IsAuthenticated]
 
     def get(self, request, pk):
@@ -67,7 +75,8 @@ class SinglePostView(APIView):
 
 
 class CreatePostView(APIView):
-    ''' Creates a new post '''
+    """Creates a new post"""
+
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
@@ -81,8 +90,10 @@ class CreatePostView(APIView):
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+
 class SearchView(APIView):  ## filters based on post title
-    ''' Filters posts based on the request query '''
+    """Filters posts based on the request query"""
+
     permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
@@ -96,7 +107,7 @@ class SearchView(APIView):  ## filters based on post title
                 return Response("No results found", status=status.HTTP_400_BAD_REQUEST)
         else:
             queryset = Post.objects.all()
-            
+
         paginator = CustomLimitOffsetPagination()
         paginated_results = paginator.paginate_queryset(queryset, request)
 
@@ -109,13 +120,15 @@ class SearchView(APIView):  ## filters based on post title
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+
 class SavePostView(APIView):
-    ''' Saves or un-saves a requested post for the user'''
+    """Saves or un-saves a requested post for the user"""
+
     permission_classes = [IsAuthenticated]
 
     def post(self, request, post_id):
         user = request.user
-        
+
         try:
             post = Post.objects.get(id=post_id)
         except ObjectDoesNotExist:
@@ -124,24 +137,40 @@ class SavePostView(APIView):
         with transaction.atomic():
             # Check if the post is already saved by the user
             already_saved = SavedPost.objects.filter(user=user, post=post).exists()
-                    
+
             if already_saved:
                 # If already saved, remove it from saved posts
                 SavedPost.objects.filter(user=user, post=post).delete()
-                return Response({'message': 'Post unsaved'}, status=status.HTTP_200_OK)
+                return Response({"message": "Post unsaved"}, status=status.HTTP_200_OK)
 
             saved_post = SavedPost.objects.create(user=user, post=post)
             # Saves the post
-            
+
             serializer = SavedPostSerializer(saved_post)
-            
+
             if serializer.is_valid:
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response({"message": "Post saved", "post":serializer.data}, status=status.HTTP_201_CREATED)
+
 
 class AllSavedPosts(APIView):
-    ''' Retrieves all posts the user has saved '''
+    """Retrieves all posts the user has saved"""
+
     permission_classes = [IsAuthenticated]
-    
+
     def get(self, request):
-        user = request.user
-        saved_posts = Post.objects()
+        userId = request.user.id
+        print(userId)
+
+        queryset = SavedPost.objects.filter(user=userId)
+
+        if queryset.exists():
+            try:
+                serializer = SavedPostSerializer(queryset, many=True)
+                
+                print(serializer.data)  # print to self
+                
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            except:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response([], status=status.HTTP_200_OK)

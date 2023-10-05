@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from api.serializers.user_serializers import UserSerializer
-from api.serializers.post_serializers import PostSerializer, PostSnippetSerializer, UserProfileSerializer
+from api.serializers.user_serializers import UserSerializer, UserProfileSerializer
+from api.serializers.post_serializers import PostSerializer, PostSnippetSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate

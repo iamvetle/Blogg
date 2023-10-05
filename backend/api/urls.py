@@ -14,6 +14,7 @@ urlpatterns = [
     path("categories/", AllCategoriesView.as_view(), name="tags"),
     path("min-side/posts/", MyPosts.as_view(), name="myposts"),
     path("min-side/followers/", CurrentFollowersView.as_view(), name="my_followers"),
+    # not a minside/follownig??
     path("min-side/", MyAccountView.as_view(), name="min_side"),
     path("feed/", PostSnippetsView.as_view(), name="all_posts"), # in snippets
     path("login/", LoginView.as_view(), name="login"), # TODO: change to auth/ later

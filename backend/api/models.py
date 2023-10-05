@@ -111,7 +111,7 @@ class Post(models.Model):
     content = models.TextField(max_length=10000)
     date_published = models.DateTimeField(auto_now=True) # this is not working correctly. it is not appearing when I check on 'publish
 
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posts")
 
     categories = models.ManyToManyField(Category, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)

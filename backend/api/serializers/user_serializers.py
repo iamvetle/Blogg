@@ -1,22 +1,49 @@
 # Standard libraries
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from api.serializers.post_serializers import PostSnippetSerializer
+from api.models import Post
 
 # Third-party libraries
 
 # Local application imports
 from api.serializers.post_serializers import SavedPostSerializer
-from api.models import CustomUser
 
 CustomUser = get_user_model()
 
+class UserProfileSerializer(serializers.ModelSerializer):
+    posts = serializers.SerializerMethodField()
+    num_of_followers = serializers.SerializerMethodField()
+
+    def get_posts(self, obj):
+        posts = Post.objects.filter(author__username=obj.username)
+        return PostSnippetSerializer(posts, many=True).data
+
+    def get_num_of_followers(self, obj):
+        num_of_followers = 0
+        print(obj)
+
+        try:
+            followers = list(obj.followers.all())
+
+            num_of_followers = len(followers)
+            return num_of_followers
+
+        except:
+            return num_of_followers
+
+    class Meta:
+        model = CustomUser
+
+        fields = ["num_of_followers", "username", "first_name", "last_name", "posts"]
+
 
 class UserSerializer(serializers.ModelSerializer):
-    followers = serializers.SerializerMethodField(read_only=True)
-    num_of_followers = serializers.SerializerMethodField(read_only=True)
+    followers = serializers.SerializerMethodField()
+    num_of_followers = serializers.SerializerMethodField()
 
-    saved_posts = serializers.SerializerMethodField(read_only=True)
-    num_of_saved_posts = serializers.SerializerMethodField(read_only=True)
+    saved_posts = serializers.SerializerMethodField()
+    num_of_saved_posts = serializers.SerializerMethodField()
 
     def get_saved_posts(self, obj):
         saved_posts = obj.saved_posts.all()
@@ -90,7 +117,6 @@ class FollowersSerializer(serializers.ModelSerializer):
         model = CustomUser
 
         fields = ["username"]
-
 
 class JustLoggedInSerializer(serializers.ModelSerializer):
     class Meta:
