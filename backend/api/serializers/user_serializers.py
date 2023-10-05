@@ -1,19 +1,52 @@
-from api.models import CustomUser, Post, Comment, Tag, Category, SavedPost
+# Standard libraries
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from datetime import datetime
-from time import strftime
-from django.utils.safestring import mark_safe
+
+# Third-party libraries
+
+# Local application imports
+from api.serializers.post_serializers import SavedPostSerializer
+from api.models import CustomUser
 
 CustomUser = get_user_model()
 
+
 class UserSerializer(serializers.ModelSerializer):
-    num_of_followers = serializers.SerializerMethodField()
+    followers = serializers.SerializerMethodField(read_only=True)
+    num_of_followers = serializers.SerializerMethodField(read_only=True)
+
+    saved_posts = serializers.SerializerMethodField(read_only=True)
+    num_of_saved_posts = serializers.SerializerMethodField(read_only=True)
+
+    def get_saved_posts(self, obj):
+        saved_posts = obj.saved_posts.all()
+        serializer = SavedPostSerializer(saved_posts, many=True)
+        if serializer.is_valid:
+            return serializer.data
+        else:
+            return 0
+
+    def get_num_of_saved_posts(self, obj):
+        """Calculates and returns the total number of saved posts the object has"""
+        saved_posts = obj.saved_posts.all()
+        saved_posts_list = list(saved_posts)
+        num_of_saved_posts = len(saved_posts_list)
+        if num_of_saved_posts is not None:
+            return num_of_saved_posts
+        else:
+            return 0
+
+    def get_followers(self, obj):
+        ''' Returns all followers objects '''
+        followers = obj.followers.all()
+        serializer = FollowersSerializer(followers, many=True)
+
+        return serializer.data
 
     def get_num_of_followers(self, obj):
-        ''' Calculates the number of followers the objects '''
+        """Calculates the total number of follwers the object has"""
         num_of_followers = 0
-        
+
         try:
             followers = list(obj.followers.all())
 
@@ -37,7 +70,10 @@ class UserSerializer(serializers.ModelSerializer):
             "phone_number",
             "nickname",
             "last_online",
+            "followers",
             "num_of_followers",
+            "saved_posts",
+            "num_of_saved_posts",
         )
         extra_kwargs = {
             "first_name": {"required": True},
@@ -46,23 +82,24 @@ class UserSerializer(serializers.ModelSerializer):
             "username": {"required": True},
         }
 
-    # def get_saved_posts(self)
+
 class FollowersSerializer(serializers.ModelSerializer):
-    ''' Returns the username of the object '''
+    """Returns the username of the object"""
+
     class Meta:
         model = CustomUser
 
         fields = ["username"]
 
+
 class JustLoggedInSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
 
-        fields = ["username, first_name, last_name"]
+        fields = ["username", "first_name", "last_name"]
 
         extra_kwargs = {
             "username": {"read_only": True},
             "first_name": {"read_only": True},
             "last_name": {"read_only": True},
         }
-    

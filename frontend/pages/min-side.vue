@@ -73,8 +73,11 @@
 								<h3 class="text-lg py-3">
 									Followers
 								</h3>
-								<div>
+								<div v-if="followers">
 									<Follower v-for="f, index in followers" :key="index" :follower="f" />
+								</div>
+								<div v-else>
+									<span>No followers</span>
 								</div>
 							</div>
 						</div>
@@ -85,7 +88,8 @@
 								<h2 class="text-xl font-bold mb-4">
 									Bio
 								</h2>
-								<p class="">
+								<p v-if="user.bio" v-text="user.bio"></p>
+								<p v-else class="">
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
 									finibus est vitae tortor ullamcorper, ut vestibulum velit
 									convallis. Aenean posuere risus non velit egestas suscipit. Nunc

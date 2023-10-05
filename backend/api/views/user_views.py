@@ -1,16 +1,17 @@
-from django.shortcuts import render, get_object_or_404
+# Standard libraries 
+from django.contrib.auth import get_user_model
+
+# Third-party libraries
+## Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from api.serializers.user_serializers import UserSerializer, FollowersSerializer
-from api.serializers.post_serializers import PostSerializer, UserProfileSerializer
 from rest_framework import status
-from rest_framework.authtoken.models import Token
-from django.contrib.auth import authenticate
-from api.models import Post, Comment
-from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated
+
+# Local application imports
+from api.models import Post, Comment
 from api.services.user_services import UserProfileService, MyProfileService
-from django.core.serializers import serialize
+from api.serializers.user_serializers import UserSerializer
 
 # A view is responsible for processing incomming HTTP requests and returning HTTP responses - handle user-facing logic. 
 
@@ -22,8 +23,11 @@ class MyAccountView(APIView):
     
     def get(self, request):
         serializer = UserSerializer(request.user)
+        print(serializer)
         if serializer.is_valid:
             return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
     
 class UserProfileView(APIView):
     ''' Returns information about a specified user '''
@@ -48,6 +52,7 @@ class FollowUserView(APIView): # Currently workign with this
     def get(self, request, username):
 
         response = UserProfileService.follow_user(request, username)
+        
         if response["status"] != False :
             print(f"{response['current_user']} started following {response['user_to_follow']}") # print to self
             return Response(f"{response['current_user']} started following {response['user_to_follow']}", status=status.HTTP_200_OK) # print to client console

@@ -5,28 +5,7 @@
         :src="user_picture"
         class="w-6 h-auto"
       >
-      <p class="ms-2">Mats Ole Bak</p>
-    </span>
-    <span class="mb-4 flex items-center">
-      <img
-        :src="user_picture"
-        class="w-6 h-auto"
-      >
-      <p class="ms-2">Mats Ole Bak</p>
-    </span>
-    <span class="mb-4 flex items-center">
-      <img
-        :src="user_picture"
-        class="w-6 h-auto"
-      >
-      <p class="ms-2">Mats Ole Bak</p>
-    </span>
-    <span class="mb-4 flex items-center">
-      <img
-        :src="user_picture"
-        class="w-6 h-auto"
-      >
-      <p class="ms-2">Mats Ole Bak</p>
+      <p class="ms-2">{{ followingProp.username }}</p>
     </span>
   </div>
 </template>
@@ -36,6 +15,7 @@
 import profile_picture from '~/assets/placeholder-profile-picture.png'
 
 const user_picture = profile_picture
+const { followingProp } = defineProps(['followingProp'])
 
 </script>
 

@@ -12,6 +12,7 @@ from rest_framework.response import Response
 from api.services.pagination_services import CustomLimitOffsetPagination
 
 class AllTagsView(APIView):
+    ''' Returns all tags '''
     permission_classes = [IsAuthenticated]
     
     def get(self, request):

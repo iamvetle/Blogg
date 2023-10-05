@@ -14,7 +14,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # Local application imports
-from api.models import Post, Tag, Comment, Category, SavedPost
+from api.models import Post, SavedPost
 from api.serializers.post_serializers import PostSerializer, SavedPostSerializer, PostSnippetSerializer
 from api.services.post_services import CreatePostService, PostSnippetService
 from api.services.search_services import SearchService

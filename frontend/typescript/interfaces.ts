@@ -16,7 +16,7 @@ export interface ArticlesSnippetsType {
 	count: number;
 	next: string | null;
 	previous: string | null;
-	current_page:number;
+	current_page: number;
 	results: [
 		{
 			id: number;
@@ -24,13 +24,13 @@ export interface ArticlesSnippetsType {
 			content_snippet: string;
 			date_published: string;
 			num_of_followers: string;
-			author: {	
+			author: {
 				username: string;
 				first_name: string;
 				last_name: string;
 			},
-			tags:Array<string>,
-			categories:Array<string>
+			tags: Array<string>,
+			categories: Array<string>
 		}
 	]
 }
@@ -47,9 +47,9 @@ export interface ArticleSnippetSingleType {
 		first_name: string;
 		last_name: string;
 	},
-	tags:Array<string>,
-	categories:Array<string>
-} 
+	tags: Array<string>,
+	categories: Array<string>
+}
 
 
 export interface PersonalPostType {
@@ -84,9 +84,26 @@ export interface PersonalUserType {
 	last_name: string;
 	age: number | null;
 	address: string | null;
+	phone_number: string | null;
 	nickname: string | null;
 	last_online: string;
+	followers: [
+		{
+			"username":"bob"
+		}
+	]
 	num_of_followers: number;
+	saved_posts: [
+		{
+			"user": {
+				"username":string,
+				"first_name":string,
+				"last_name":string,
+			},
+			"post":number
+		}
+	]
+	num_of_saved_posts: number;
 }
 
 export interface FollowerType {

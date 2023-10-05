@@ -11,8 +11,12 @@
 			<h3 class=" text-[28px] mb-9">
 				Lagrede innlegg
 			</h3>
-			<div class="saved-article">
-				<ArticleSavedCard />
+			<div class="saved-article" v-if="userdata?.saved_posts">
+				<ArticleSavedCard 
+				v-for="post, index in userdata.saved_posts"
+				:savedArticleProp="post"
+				:key="index"
+				/>
 			</div>
 			<p class="-mt-2 text-xs text-primary hover:text-primaryFixed">
 				Se alle
@@ -23,10 +27,14 @@
 
 		<div id="following-card" class="mx-auto w-full">
 			<h3 class="text-[28px] mb-9">
-				Følger
+				Du følger
 			</h3>
-			<div id="following">
-				<Following />
+			<div id="following" v-if="userdata">
+				<Following 
+				v-for="follower, index in userdata.followers"
+				:followingProp="follower"
+				:key="index"
+				/>
 			</div>
 			<span class="text-xs text-primary hover:text-primaryFixed">Se alle</span>
 		</div>

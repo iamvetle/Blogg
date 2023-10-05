@@ -1,5 +1,5 @@
 from api.models import CustomUser, Post, Comment, Tag, Category, SavedPost
-from api.serializers.only_serializers import UserOnlyAuthorSerializer
+from api.serializers.only_serializers import UserOnlyAuthorSerializer, PostOnlyTitleSerializer
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from datetime import datetime
@@ -200,8 +200,8 @@ class CommentSerializer(serializers.ModelSerializer):  # Not in use
 class SavedPostSerializer(serializers.ModelSerializer):
         
     user = UserOnlyAuthorSerializer()
-    
+    post = PostOnlyTitleSerializer()
     class Meta:
         model = SavedPost
-        fields = ['id', 'user', 'post', 'saved_at'] # TODO: I want to change it so that not all four fields are returned, and not in id form
+        fields = ['user', 'post'] # TODO: I want to change it so that not all four fields are returned, and not in id form
         

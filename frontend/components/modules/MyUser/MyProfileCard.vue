@@ -26,9 +26,12 @@
     <p class="text-onPrimaryContainer">
       Antall følgere: {{ userProp.num_of_followers }}
     </p>
-    <p class="text-onPrimaryContainer">
-      Antall innlegg: X
-    </p>
+    <span v-if="userProp.num_of_followers" lass="text-onPrimaryContainer">
+      Lagrede innlegg: {{ userProp.num_of_saved_posts }}
+    </span>
+    <span v-else>
+      Lagrede innleggg: 0
+    </span>
   </div>
 </template>
 
@@ -38,7 +41,7 @@ import profile_picture from '~/assets/placeholder-profile-picture.png'
 const { userProp } = defineProps(["userProp"])
 
 const full_name = computed(() => {
-    return userProp.first_name + " " + userProp.last_name
+    return `${userProp.first_name} ${userProp.last_name}`
 })
 
 </script>
