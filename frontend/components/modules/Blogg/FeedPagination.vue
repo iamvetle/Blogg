@@ -39,14 +39,12 @@
 						</div>
 
 
-						<span
-              v-if="under_last_page"
+						<span v-if="under_last_page"
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0 ">...</span>
 
-						<span
-              v-if="store.current_page != store.total_pages_count"
-							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-							>{{ store.total_pages_count }}</span>
+						<span v-if="store.current_page != store.total_pages_count"
+							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">{{
+								store.total_pages_count }}</span>
 
 
 						<div class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
@@ -73,12 +71,12 @@ const store = useGeneralStore()
 const under_last_page = ref(true)
 
 watchEffect(() => {
-		if (store.current_page + 1 >= store.total_pages_count) {
-			under_last_page.value = false
-		}
-		if (store.current_page + 1 < store.total_pages_count) {
-      under_last_page.value = true
-    }
+	if (store.current_page + 1 >= store.total_pages_count) {
+		under_last_page.value = false
+	}
+	if (store.current_page + 1 < store.total_pages_count) {
+		under_last_page.value = true
+	}
 })
 
 

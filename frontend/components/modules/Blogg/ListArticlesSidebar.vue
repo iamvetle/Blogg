@@ -30,10 +30,10 @@
 				Du følger
 			</h3>
 			<div id="following" v-if="userdata">
-				<!-- <Following 
-				v-for="follower, index in userdata.followers" 
-				:followingProp="follower"
-				:key="index" -->
+				<Following 
+				v-for="following, index in userdata.following" 
+				:followingProp="following"
+				:key="index"
 				/>
 			</div>
 			<span class="text-xs text-primary hover:text-primaryFixed">Se alle</span>

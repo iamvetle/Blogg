@@ -49,6 +49,7 @@ I am focusing on **frontend** at the moment.
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
 - [ ] Fjern 'searchRequest' og 'searchPagnation' (det som er igjen)
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
+- [ ] Fikse en type **historie** for å holde plassene på plass
 
 ### ListArticlesSidebar 
 
@@ -67,6 +68,8 @@ I am focusing on **frontend** at the moment.
 
 - [ ] Pengjøre veldig og rydd opp.
 - [ ] Fjern spor av tidligere prop og slett den gamle component.
+- [ ] Ønsker å få den **følg** og **slutt å følg** funksjonen til å fungere
+- [ ] Lage en ordentlig side for den
 
 ---
 
@@ -75,6 +78,7 @@ I am focusing on **frontend** at the moment.
 - [x] Change the **personal posts** that are received in 'min-side' to be snippets
 - [ ] Put pagnation there if the users have a lot of posts
 - [ ] Give users the ability to edit their own posts
+- [ ] Fix the pagnation bottom bar that currently has no functionality
 
 ---
 

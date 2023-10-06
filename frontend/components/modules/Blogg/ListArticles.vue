@@ -7,7 +7,7 @@
 				<article-card>
 
 					<template #author v-if="post.author">
-						<span @click="redirect_to_author_page(post)">
+						<span @click="redirect_to_author_page(post)" class="cursor-pointer">
 							<p class="font-bold" v-text="author_full_name(post)">
 							</p>
 						</span>
@@ -18,7 +18,7 @@
 					</template>
 
 					<template #title>
-						<span @click="redirect_to_post_page(post)">
+						<span @click="redirect_to_post_page(post)" class="cursor-pointer">
 							<h3 class="text-[28px] mb-2" v-text="post.title">
 							</h3>
 						</span>
@@ -31,7 +31,7 @@
 
 
 					<template #lesmer>
-						<span class="text text-primary hover:text-primaryFixed" @click="redirect_to_post_page(post)">
+						<span class="cursor-pointer text text-primary hover:text-primaryFixed" @click="redirect_to_post_page(post)">
 							Les mer
 						</span>
 					</template>

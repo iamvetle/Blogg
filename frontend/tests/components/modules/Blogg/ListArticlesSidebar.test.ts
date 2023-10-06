@@ -23,7 +23,9 @@ describe('ListArticlesSidebar testing', () => {
     pinia = createTestingPinia()
     store = useGeneralStore(pinia)
 
-    store.posts = {
+
+    // Mock the fetchPersonalUser function
+    const userdata = ref({
       "id": 13,
       "email": "vetle122@gmail.com",
       "username": "iamvetle",
@@ -34,9 +36,15 @@ describe('ListArticlesSidebar testing', () => {
       "phone_number": null,
       "nickname": null,
       "last_online": "2023-09-07T15:46:59.393210Z",
+      "following": [
+        {
+          "username": "michael90"
+        }
+      ],
+      "num_of_following": 1,
       "followers": [
         {
-          "username": "bob"
+          "username": "bob3"
         }
       ],
       "num_of_followers": 1,
@@ -51,10 +59,9 @@ describe('ListArticlesSidebar testing', () => {
         }
       ],
       "num_of_saved_posts": 1
-    }
+    });
 
-    // Mock the fetchPersonalUser function
-    const userdata = ref<object | null>(null)
+
     userdata.value = await mockFetchPersonalUser('http://localhost:8888/api/min-side/')
 
     wrapper = mount(ListArticlesSidebar, {
@@ -63,12 +70,10 @@ describe('ListArticlesSidebar testing', () => {
         mocks: { fetchPersonalUser: mockFetchPersonalUser, userdata },
         plugins: [pinia]
       },
-    })
+    });
 
-    wrapper.vm.propData = 3
 
-    wrapper.vm.$nextTick()
-
+    await wrapper.vm.$nextTick()
   })
 
   it('renders the component', () => {
@@ -94,13 +99,11 @@ describe('ListArticlesSidebar testing', () => {
     const following = wrapper.findComponent(Following)
     expect(following.exists()).toBe(true)
   })
-  it('props are passed to "following" component', () => {
-    wrapper.vm.$nextTick()
+  it('should render info about who I am following', async () => {
+    await wrapper.vm.$nextTick()
 
-    const following = wrapper.findComponent(Following)
-    console.log(wrapper.html())
+    expect(wrapper.text()).toContain("michael90")
 
 
-    expect(following.props('followingProp')).toEqual(3)
   })
 })
