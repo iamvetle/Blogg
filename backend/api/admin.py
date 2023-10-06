@@ -87,6 +87,34 @@ class PostAdmin(admin.ModelAdmin):
     model = Post
     inlines = [CommentInline]
 
+    def list_categories(self, obj):
+        """Turns each object/tag into a string, that are concatenated into one long string"""
+        list_of_categories = []
+
+        for category in obj.categories.all():
+            category = category.name
+
+            list_of_categories.append(category)
+
+        string_of_categories = ", ".join(list_of_categories)
+        return string_of_categories
+
+    list_categories.short_description = "Categories"
+
+    def list_tags(self, obj):
+        """Turns each object/tag into a string, that are concatenated into one long string"""
+        list_of_tags = []
+
+        for tag in obj.tags.all():
+            tag = tag.name
+
+            list_of_tags.append(tag)
+
+        string_of_tags = ", ".join(list_of_tags)
+        return string_of_tags
+
+    list_tags.short_description = "Tags"
+
     filter_horizontal = (
         "tags",
         "categories",
@@ -98,6 +126,8 @@ class PostAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "date_published",
+        "list_categories",
+        "list_tags",
     )
 
     list_filter = ("date_published",)

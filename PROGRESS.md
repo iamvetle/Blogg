@@ -2,7 +2,9 @@
 
 There are stuff I want the web client to be able to do, that I have not yet implemented. There are also things I want my blogg application to be able to do.
 
-I am focusing on **frontend** at the moment.
+I am focusing on **backend** at the moment.
+
+Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg ønsker å ha bloggen min.
 
 ## Backend
 
@@ -29,10 +31,18 @@ I am focusing on **frontend** at the moment.
 
 ---
 
-- [ ] Ønsker at en post i **listen ved feed** kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
+### admin.py - Admin Panel
+
+- [ ] Få tags og categories som er assosiert med en post til å vises i post list i admin panel
+
+---
+
+- [ ] Ønsker at en post i listen ved feed kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
   - "***stjerne***" hvis lagret 
 
-###  
+##  Frontend
+
+Jeg fokuserer på *én* side om gangen. Akkurat nå: 
 
 ***'fetchen' på api personlig bruker backend***:
 
@@ -41,8 +51,6 @@ I am focusing on **frontend** at the moment.
 - [x] API backend trenger å returnere postene som brukeren har **lagret** 
 - [x] Make the api return '**following**'
   - [x] and **who** I am followoing
-
-## Frontend
 
 > Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
@@ -59,10 +67,31 @@ I am focusing on **frontend** at the moment.
   - [x] Antall *følgere*
   - [x] Antall *jeg følger*
   - [x] Brukerne, navnene til de jeg følger
-- [ ] Gi en bruker muligheten, en knapp de kan trykke på hver post, for å **lagre** en post
-- [ ] Muligheten for en bruker til å **fjerne** en post som er lagret
 
 ---
+
+- [ ] Finne ut av hva jeg skal gjøre med "***les mer***" feltet. Skal jeg bli 'redirected' et sted?
+- [ ] -> Implementere "tags" eller categories inn i "search" eller "sorter"
+  - Sorter og søk kan kanskje være det samme. Tags og categories kan kanskje også være det.
+
+---
+
+- [ ] Gi en bruker muligheten, en knapp de kan trykke på
+  - Helt svart hvis lagret, delvis hvit hvis ikke lagret. ide
+hver post, for å **lagre** en post
+  - [ ] Trenger å lage en ***fetch call*** for den
+- [ ] Muligheten for en bruker til å **fjerne** en post som de har lagret
+
+---
+
+### [id] single post
+- [ ] Vise alle **taggene** som er assosierte med posten
+- [ ] Mulighet til å **følge** forfatteren 
+- [ ] Muligheten til å **lagre post** derifra også
+- [ ] Kan se kommentarer
+- [ ] Kan lage kommentar
+  - Kan kikke rund på andre blogg-lignende plattformerer og ***se hvordan de har 'kommentarer'***
+- Recommendations/post av samme fyr på bunnen?
 
 ### [id] user page
 
@@ -101,7 +130,7 @@ I am focusing on **frontend** at the moment.
 
 ---
 
-### General
+## General
 
 - [ ] Expand the registration form to include more information options
 - [ ] Fix the emit between new post and editorcard when it comes to border color and such
@@ -111,6 +140,11 @@ I am focusing on **frontend** at the moment.
 There are features I generally want to implement, but not sure how.
 
 - Comments have no functionality right now
+  - What kind of backend api-endpoints do I need for that? I need to be able to:
+    - Retrieve all comments to a post.
+      - Se på medium.com
+
+- Hva skjedde med *likes*?
 
 - Text editor for publishing posts
 - maybe relevant [simplemde](https://simplemde.com/)
