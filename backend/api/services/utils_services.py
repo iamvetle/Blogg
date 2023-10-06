@@ -1,5 +1,4 @@
-
 # class SearchService():
-    
+
 #     @staticmethod
 #     class

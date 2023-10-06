@@ -94,24 +94,31 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     symmetrical=False ensures the relationship isn't automatically two-way (i.e., if User A follows User B, it doesn't mean User B follows User A).
     blank=True allows for a user to have zero followers or following."""
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    
+
     def __str__(self):
         return self.name
-    
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=100)
-    
-    def __str__(self):  
+
+    def __str__(self):
         return self.name
-    
+
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=10000)
-    date_published = models.DateTimeField(auto_now=True) # this is not working correctly. it is not appearing when I check on 'publish
+    date_published = models.DateTimeField(
+        auto_now=True
+    )  # this is not working correctly. it is not appearing when I check on 'publish
 
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posts")
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posts"
+    )
 
     categories = models.ManyToManyField(Category, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
@@ -119,8 +126,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
 class Comment(models.Model):
-    ''' Each post can have comments, and each post comment is this model '''
+    """Each post can have comments, and each post comment is this model"""
+
     title = models.CharField(max_length=50)
     content = models.TextField(max_length=500)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -136,10 +145,13 @@ class Comment(models.Model):
     def full_comment(self):
         return f"{self.title}\n{self.content}"
 
+
 class SavedPost(models.Model):
-    user = models.ForeignKey(get_user_model(), related_name="saved_posts", on_delete=models.CASCADE)
-    post = models.ForeignKey("Post", related_name='saved_by', on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        get_user_model(), related_name="saved_posts", on_delete=models.CASCADE
+    )
+    post = models.ForeignKey("Post", related_name="saved_by", on_delete=models.CASCADE)
     saved_at = models.DateTimeField(auto_now_add=True)
-    
+
     class Meta:
-        unique_together = ('user', 'post')
+        unique_together = ("user", "post")

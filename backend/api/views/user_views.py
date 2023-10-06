@@ -77,7 +77,7 @@ class UnfollowUserView(APIView):
             return Response("Failed to unfollow", status=status.HTTP_400_BAD_REQUEST)
 
 class CurrentFollowersView(APIView):
-    ''' Returns a list of users following the logged in user '''
+    ''' Returns a list of users following the logged-in user '''
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
@@ -85,10 +85,26 @@ class CurrentFollowersView(APIView):
         followers = MyProfileService.get_all_followers(request)
         print(followers.data)
         
-        if followers.data != None:            
-            print("List of users that are follwing", followers.data)
+        if followers.data is not None:            
+            print("List of users that you are following", followers.data)
             return Response(followers.data, status=status.HTTP_200_OK)
         else:
             print("You have no followers lol (or there is an error)", followers.errors)
             return Response("You have no followers lol (or there is an error)", status=status.HTTP_204_NO_CONTENT)
 
+class CurrentFollowingView(APIView):
+    ''' Returns a list of the users the logged-in user is following '''
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        
+        # make a service later
+        following = MyProfileService.get_all_following(request)
+        print(following.data)
+        
+        if following.data is not None:
+            print("List of users that you are following")
+            return Response(following.data, status=status.HTTP_200_OK)
+        else:
+            print("You are not following anybody")
+            return Response("You are not following anybody")
