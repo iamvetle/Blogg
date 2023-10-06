@@ -2,14 +2,14 @@
 
 # # Application logic. Does not directly deal with HTTP requests and responses.
 
-# from api.serializers import PostSerializer, PostSnippetSerializer
+# from api.serializers import PostSerializer, PostShortenSerializer
 
 # class PostService:
 #     @staticmethod
 #     def create_post()
 
 
-from api.serializers.post_serializers import PostSerializer, PostSnippetSerializer
+from api.serializers.post_serializers import PostSerializer, PostShortenSerializer
 from ..models import Post
 from django.contrib.auth import get_user_model
 from .other import CustomPageNumberPagination, CustomLimitOffsetPagination
@@ -38,7 +38,7 @@ class PostSnippetService:
         )  # look at other_services.py for more info
         paginated_queryset = paginator.paginate_queryset(queryset, request)
 
-        serializer = PostSnippetSerializer(paginated_queryset, many=True)
+        serializer = PostShortenSerializer(paginated_queryset, many=True)
 
         return paginator.get_paginated_response(serializer.data)
 
@@ -62,7 +62,7 @@ class SearchService:
 
             paginated_results = paginator.paginate_queryset(search_results, request)
 
-            serializer = PostSnippetSerializer(paginated_results, many=True)
+            serializer = PostShortenSerializer(paginated_results, many=True)
 
             return paginator.get_paginated_response(serializer.data)
         else:

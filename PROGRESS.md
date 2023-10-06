@@ -20,7 +20,7 @@ Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg øn
 - [x] **Tag** : new model. Create a new 'tag' model and connect it to CustomUser (and or post?)
 - [x] **Categories** : new model. Connect to CustomUser (or post?)
 - [ ] Make it so users can **save posts** for reading later.
-  - [x] Lage en ny modell (saved_post) *models.py
+  - [x] Lage en ny modell (saved_post) \*models.py
     - [x] Registrer den i admin.py
   - [x] Lage en ny serializer for den modellen
   - [x] urls.py
@@ -31,24 +31,27 @@ Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg øn
 
 ---
 
-### admin.py - Admin Panel
+**Postman**
 
-- [ ] Få tags og categories som er assosiert med en post til å vises i post list i admin panel
+Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større oversikt.
 
 ---
 
-- [ ] Ønsker at en post i listen ved feed kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
-  - "***stjerne***" hvis lagret 
+### admin.py - Admin Panel
 
-##  Frontend
+- [x] Få tags og categories som er assosiert med en post til å vises i post list i admin panel
 
-Jeg fokuserer på *én* side om gangen. Akkurat nå: 
+---
 
-***'fetchen' på api personlig bruker backend***:
+## Frontend
+
+Jeg fokuserer på _én_ side om gangen. Akkurat nå:
+
+**_'fetchen' på api personlig bruker backend_**:
 
 - [x] **Antallet** lagrede innlegg inkluderes
-- [x] **Tittelen** og **forfatteren** må også returneres 
-- [x] API backend trenger å returnere postene som brukeren har **lagret** 
+- [x] **Tittelen** og **forfatteren** må også returneres
+- [x] API backend trenger å returnere postene som brukeren har **lagret**
 - [x] Make the api return '**following**'
   - [x] and **who** I am followoing
 
@@ -59,18 +62,18 @@ Jeg fokuserer på *én* side om gangen. Akkurat nå:
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
 - [ ] Fikse en type **historie** for å holde plassene på plass
 
-### ListArticlesSidebar 
+### ListArticlesSidebar
 
 - **Vis korrekt, av og for brukeren**:
   - [x] Antallet lagrede posts
   - [x] Lagrede posts
-  - [x] Antall *følgere*
-  - [x] Antall *jeg følger*
+  - [x] Antall _følgere_
+  - [x] Antall _jeg følger_
   - [x] Brukerne, navnene til de jeg følger
 
 ---
 
-- [ ] Finne ut av hva jeg skal gjøre med "***les mer***" feltet. Skal jeg bli 'redirected' et sted?
+- [ ] Finne ut av hva jeg skal gjøre med "**_les mer_**" feltet. Skal jeg bli 'redirected' et sted?
 - [ ] -> Implementere "tags" eller categories inn i "search" eller "sorter"
   - Sorter og søk kan kanskje være det samme. Tags og categories kan kanskje også være det.
 
@@ -78,19 +81,20 @@ Jeg fokuserer på *én* side om gangen. Akkurat nå:
 
 - [ ] Gi en bruker muligheten, en knapp de kan trykke på
   - Helt svart hvis lagret, delvis hvit hvis ikke lagret. ide
-hver post, for å **lagre** en post
-  - [ ] Trenger å lage en ***fetch call*** for den
+    hver post, for å **lagre** en post
+  - [ ] Trenger å lage en **_fetch call_** for den
 - [ ] Muligheten for en bruker til å **fjerne** en post som de har lagret
 
 ---
 
 ### [id] single post
+
 - [ ] Vise alle **taggene** som er assosierte med posten
-- [ ] Mulighet til å **følge** forfatteren 
+- [ ] Mulighet til å **følge** forfatteren
 - [ ] Muligheten til å **lagre post** derifra også
 - [ ] Kan se kommentarer
 - [ ] Kan lage kommentar
-  - Kan kikke rund på andre blogg-lignende plattformerer og ***se hvordan de har 'kommentarer'***
+  - Kan kikke rund på andre blogg-lignende plattformerer og **_se hvordan de har 'kommentarer'_**
 - Recommendations/post av samme fyr på bunnen?
 
 ### [id] user page
@@ -119,6 +123,9 @@ hver post, for å **lagre** en post
 - [x] There is a '**date_published**' problem that interfers with ordering that I need to fix.
   - [x] Split '**aside**' from 'ListArticles', so it becomes two components instead.
 
+- [ ] Ønsker at en post i listen ved feed kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
+  - "**_stjerne_**" hvis lagret
+
 ### text editor
 
 - [x] When **_making a post_** I want the styling to be the same
@@ -140,11 +147,12 @@ hver post, for å **lagre** en post
 There are features I generally want to implement, but not sure how.
 
 - Comments have no functionality right now
+
   - What kind of backend api-endpoints do I need for that? I need to be able to:
     - Retrieve all comments to a post.
       - Se på medium.com
 
-- Hva skjedde med *likes*?
+- Hva skjedde med _likes_?
 
 - Text editor for publishing posts
 - maybe relevant [simplemde](https://simplemde.com/)
@@ -157,7 +165,6 @@ Not so important right now:
 - Should I continue with **TiptapEditor** or use something else like **simplemde**?
 - Should I remove the images that are listed on the feed/index
 
-
 (I want users to be able to 'like' other posts.
 (Share? - much later in project at least))
 
@@ -167,4 +174,4 @@ Not so important right now:
 
 ### In medium
 
-+ **For you** | **Following** - | Cybersecurity | Society | Coding | Mental Health | Psychology | Equality | Web Development | Deep Learning | Mindfulness | Spirituality | Philosophy | Data Visualization | Math | Science | Self Improvment | Data Science | Programming
+- **For you** | **Following** - | Cybersecurity | Society | Coding | Mental Health | Psychology | Equality | Web Development | Deep Learning | Mindfulness | Spirituality | Philosophy | Data Visualization | Math | Science | Self Improvment | Data Science | Programming

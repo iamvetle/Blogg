@@ -2,6 +2,7 @@
 from django.contrib.auth import get_user_model
 
 # Third-party libraries
+
 ## Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,25 +12,25 @@ from rest_framework.permissions import IsAuthenticated
 # Local application imports
 from api.models import Post, Comment
 from api.services.user_services import UserProfileService, MyProfileService
-from api.serializers.user_serializers import UserSerializer
+from api.serializers.user_serializers import LoggedInUserSerializer
 
 # A view is responsible for processing incomming HTTP requests and returning HTTP responses - handle user-facing logic. 
 
 CustomUser = get_user_model()
 
-class MyAccountView(APIView):
+class LoggedInUserProfileView(APIView):
     ''' Returns profile information about the LOGGED-IN user '''
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
-        serializer = UserSerializer(request.user)
+        serializer = LoggedInUserSerializer(request.user)
         print(serializer)
         if serializer.is_valid:
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
     
-class UserProfileView(APIView):
+class NormalUserProfileView(APIView):
     ''' Returns information about a specified user '''
     permission_classes = [IsAuthenticated]
 

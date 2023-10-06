@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from api.serializers.post_serializers import PostSerializer, TagSerializer
-from api.serializers.user_serializers import UserProfileSerializer
+from api.serializers.user_serializers import NormalUserSerializer
 from rest_framework import status
 from api.models import Tag
 from django.contrib.auth import get_user_model

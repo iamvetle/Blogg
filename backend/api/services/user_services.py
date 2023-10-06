@@ -1,4 +1,4 @@
-from api.serializers.user_serializers import FollowersSerializer, UserProfileSerializer
+from api.serializers.user_serializers import FollowerSerializer, NormalUserSerializer
 from django.contrib.auth import get_user_model
 
 CustomUser = get_user_model()
@@ -17,7 +17,7 @@ class UserProfileService:
         if not queryset.exists():
             return None
         else:
-            serializer = UserProfileSerializer(queryset, many=True)
+            serializer = NormalUserSerializer(queryset, many=True)
 
             return serializer.data
 
@@ -70,7 +70,7 @@ class MyProfileService:
         all_followers = current_user.followers.all()
 
         if all_followers.exists():
-            serializer = FollowersSerializer(all_followers, many=True)
+            serializer = FollowerSerializer(all_followers, many=True)
 
             return serializer
         else:
@@ -82,7 +82,7 @@ class MyProfileService:
         queryset = current_user.following.all()
         
         if queryset.exists():
-            serializer = FollowersSerializer(queryset, many=True)
+            serializer = FollowerSerializer(queryset, many=True)
             
             if serializer.is_valid:
                 

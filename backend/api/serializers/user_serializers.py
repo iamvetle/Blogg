@@ -1,43 +1,17 @@
 # Standard libraries
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from api.serializers.post_serializers import PostSnippetSerializer
-from api.models import Post
 
 # Third-party libraries
 
 # Local application imports
-from api.serializers.post_serializers import SavedPostSerializer
+from api.models import Post
+from api.serializers.post_serializers import PostShortenSerializer
+from api.serializers.post_serializers import PostSaveStyleSerializer
 
 CustomUser = get_user_model()
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    posts = serializers.SerializerMethodField()
-    num_of_followers = serializers.SerializerMethodField()
-
-    def get_posts(self, obj):
-        posts = Post.objects.filter(author__username=obj.username)
-        return PostSnippetSerializer(posts, many=True).data
-
-    def get_num_of_followers(self, obj):
-        num_of_followers = 0
-        print(obj)
-
-        try:
-            followers = list(obj.followers.all())
-
-            num_of_followers = len(followers)
-            return num_of_followers
-
-        except:
-            return num_of_followers
-
-    class Meta:
-        model = CustomUser
-
-        fields = ["num_of_followers", "username", "first_name", "last_name", "posts"]
-
-class UserSerializer(serializers.ModelSerializer):
+class LoggedInUserSerializer(serializers.ModelSerializer):
     followers = serializers.SerializerMethodField()
     num_of_followers = serializers.SerializerMethodField()
 
@@ -49,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
     
     def get_saved_posts(self, obj):
         saved_posts = obj.saved_posts.all()
-        serializer = SavedPostSerializer(saved_posts, many=True)
+        serializer = PostSaveStyleSerializer(saved_posts, many=True)
         if serializer.is_valid:
             return serializer.data
         else:
@@ -68,7 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
     def get_followers(self, obj):
         ''' Returns all followers objects '''
         followers = obj.followers.all()
-        serializer = FollowersSerializer(followers, many=True)
+        serializer = FollowerSerializer(followers, many=True)
 
         return serializer.data
 
@@ -91,7 +65,7 @@ class UserSerializer(serializers.ModelSerializer):
         try:
             queryset = obj.following.all()
             
-            serializer = FollowersSerializer(queryset, many=True)
+            serializer = FollowerSerializer(queryset, many=True)
             
             if serializer.is_valid:
                 return serializer.data
@@ -140,8 +114,33 @@ class UserSerializer(serializers.ModelSerializer):
             "username": {"required": True},
         }
 
+class NormalUserSerializer(serializers.ModelSerializer):
+    posts = serializers.SerializerMethodField()
+    num_of_followers = serializers.SerializerMethodField()
 
-class FollowersSerializer(serializers.ModelSerializer):
+    def get_posts(self, obj):
+        posts = Post.objects.filter(author__username=obj.username)
+        return PostShortenSerializer(posts, many=True).data
+
+    def get_num_of_followers(self, obj):
+        num_of_followers = 0
+        print(obj)
+
+        try:
+            followers = list(obj.followers.all())
+
+            num_of_followers = len(followers)
+            return num_of_followers
+
+        except:
+            return num_of_followers
+
+    class Meta:
+        model = CustomUser
+
+        fields = ["num_of_followers", "username", "first_name", "last_name", "posts"]
+
+class FollowerSerializer(serializers.ModelSerializer):
     """Returns the username of the object"""
 
     class Meta:

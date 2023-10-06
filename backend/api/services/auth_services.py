@@ -1,5 +1,5 @@
 from rest_framework.views import APIView
-from api.serializers.user_serializers import UserSerializer
+from api.serializers.user_serializers import LoggedInUserSerializer
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
@@ -35,7 +35,7 @@ class LoginService:  # Try login logic
 class NewUserService(APIView):  # Try to register a user logic
     @staticmethod
     def register_user(registration_data):
-        serializer = UserSerializer(data=registration_data)
+        serializer = LoggedInUserSerializer(data=registration_data)
 
         print(registration_data)
 

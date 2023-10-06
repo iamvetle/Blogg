@@ -2,7 +2,6 @@ from api.models import CustomUser, Post, Comment, Tag, Category, SavedPost
 from api.serializers.only_serializers import (
     OnlyAuthorCustomUserSerializer,
     OnlyTitlePostSerializer,
-    OnlyRealDateTimeSerializer,
 )
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
@@ -25,6 +24,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    ''' Serializes the input. Can be used on both single and multiple post objects '''
     author = OnlyAuthorCustomUserSerializer(read_only=True)
     # Makes sure that not everything in the 'author' object gets returned
 
@@ -50,7 +50,9 @@ class PostSerializer(serializers.ModelSerializer):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
 
-class PostSnippetSerializer(serializers.ModelSerializer):  # Bare en liten del av posts
+class PostShortenSerializer(serializers.ModelSerializer):  # Bare en liten del av posts
+    ''' Shortenes the content. Can be used on both multiple and single posts '''
+    
     content_snippet = serializers.SerializerMethodField()  # Limited to 225 char
     author = OnlyAuthorCustomUserSerializer(read_only=True)
     date_published = serializers.SerializerMethodField()
@@ -127,7 +129,7 @@ class CommentSerializer(serializers.ModelSerializer):  # Not in use
             return obj.date_published.strftime("%d-%m-%Y")
 
 
-class SavedPostSerializer(serializers.ModelSerializer):
+class PostSaveStyleSerializer(serializers.ModelSerializer):
     user = OnlyAuthorCustomUserSerializer()
     post = OnlyTitlePostSerializer()
 
