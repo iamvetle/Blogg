@@ -54,7 +54,11 @@
 					<template #save-article-icon>
 						<BaseIconSaveArticle
 						widthProp="24"
-						heightProp="24"	
+						heightProp="24"
+						:colorProp="color"
+						@mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'"
+
+
 						/>						
 					</template>
 
@@ -76,6 +80,7 @@ import { useGeneralStore } from '~/store/generalStore';
 const post_image = ref('https://picsum.photos/500/300')
 
 const store = useGeneralStore()
+const color = ref("fill-black")
 
 /** Essentially 'dumps' the input into a div and returns the plain text */
 const toPlainText = (raw: string) => {
@@ -110,6 +115,8 @@ const author_full_name = (post: ArticleSnippetSingleType) => {
 	const full = `${author.first_name} ${author.last_name}` ?? author.username
 	return full.trim() == "" ? author.username : full
 }
+
+fetch
 
 </script>
 
