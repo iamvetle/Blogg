@@ -3,6 +3,7 @@ import ListArticles from '~/components/modules/Blogg/ListArticles.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue'
+import BaseIconSaveArticle from '~/components/base/BaseIconSaveArticle.vue';
 
 describe("list articles testing", () => {
     let wrapper: VueWrapper
@@ -42,8 +43,16 @@ describe("list articles testing", () => {
             global: {
                 plugins: [pinia],
                 components: {
-                    ArticleCard
+                    ArticleCard, BaseIconSaveArticle
+                },
+                mocks: {
+                    widthProp:""
                 }
+            },
+            props: {
+                widthProp: "23",
+                heightProp:"51",
+                colorProp:"blue",
             }
         })
     })
@@ -61,22 +70,10 @@ describe("list articles testing", () => {
         expect(wrapper.text()).toContain("Lorem ipsum...")
         expect(wrapper.text()).toContain("08-12-2021")
     })
+    test("renders the save icon component", () => {
+        const save_icon = wrapper.findComponent({ name: "BaseIconSaveArticle" }) 
 
-    // it("Should render the posts that are fetched", async () => {
-    //             console.log(wrapper.html())
-
-    //             expect(wrapper.text()).toContain("This is a title that is made by bob")
-    //         })
-
-    // test("shows an error message if there are no posts", () => {
-
-    //     store.posts = null
-    //     wrapper.unmount()
-
-    //     wrapper = mount(ListArticles, {
-    //         global: {
-    //             plugins: [pinia],
-    //         },
-    //     })
-    // })
+        expect(save_icon.exists()).toBe(true)
+    })
+    
 })

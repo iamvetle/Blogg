@@ -36,4 +36,4 @@ suite("testing PostArticle", async () => {
     it('article image should be rendered', () => {
         assert(wrapper.html().includes('<img src="~/source/to/image.jpg" alt="test">'), 'image is not rendering through slot')
     })
-    })
+})

@@ -68,11 +68,13 @@ describe('ListArticlesSidebar testing', () => {
       "num_of_saved_posts": 192
     });
 
+    const full_name = ref("iamfirstname iamlastname")
+
 
     wrapper = mount(ListArticlesSidebar, {
       global: {
         components: { MyProfileCard, ArticleSavedCard, Following },
-        mocks: { userdata },
+        mocks: { userdata, full_name },
         plugins: [pinia]
       }
     });
