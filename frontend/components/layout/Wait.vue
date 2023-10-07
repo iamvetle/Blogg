@@ -5,7 +5,7 @@
         class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-plain">
         <div id="background"
           class="sm:w-1/2 xl:w-3/5 h-full hidden md:flex flex-auto items-center justify-center p-10 overflow-hidden bg-primary text-onPrimary bg-no-repeat bg-cover relative">
-          <div class="absolute bg-gradient-to-b from-inversePrimary to-primary opacity-75 inset-0 z-0" />
+          <div class="absolute bg-gradient-to-b from-inversePrimary to-primary opacity-75 inset-0 z-0"></div>
           <div class="w-full max-w-md z-10">
             <div class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">
               The Blogg

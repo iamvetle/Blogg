@@ -31,6 +31,11 @@ Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg øn
 
 ---
 
+### Serializers og views
+- [ ] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
+
+---
+
 **Postman**
 
 Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større oversikt.
@@ -51,7 +56,7 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 
 - [x] **Antallet** lagrede innlegg inkluderes
 - [x] **Tittelen** og **forfatteren** må også returneres
-- [x] API backend trenger å returnere postene som brukeren har **lagret**
+- [x] API backend trenger å returnere postene som bru|keren har **lagret**
 - [x] Make the api return '**following**'
   - [x] and **who** I am followoing
 
@@ -60,7 +65,10 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
 - [ ] Fjern 'searchRequest' og 'searchPagnation' (det som er igjen)
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
-- [ ] Fikse en type **historie** for å holde plassene på plass
+- [ ] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
+  - keep-alive?
+
+---
 
 ### ListArticlesSidebar
 
@@ -100,6 +108,7 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 ### [id] user page
 
 - [ ] Pengjøre veldig og rydd opp.
+  - [ ] den er tulla til og fungerer ikke orden. den hermer etter index/feed noe den ikke skal
 - [ ] Fjern spor av tidligere prop og slett den gamle component.
 - [ ] Ønsker å få den **følg** og **slutt å følg** funksjonen til å fungere
 - [ ] Lage en ordentlig side for den
@@ -167,6 +176,10 @@ Not so important right now:
 
 (I want users to be able to 'like' other posts.
 (Share? - much later in project at least))
+
+ide:
+- hover or a title og så kommer content descirption under?
+- second title? / brief description
 
 ---
 

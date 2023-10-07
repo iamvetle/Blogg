@@ -1,7 +1,7 @@
 <template>
-	<div id="aside" class="h-auto w-full mb-14">
+	<div v-if="userdata" id="aside" class="h-auto w-full mb-14">
 
-		<div v-if="userdata" data-test="myprofile" class="w-full">
+		<div v-if="userdata?.username" data-test="myprofile" class="w-full">
 			<MyProfileCard :userProp="userdata" />
 		</div>
 
@@ -29,7 +29,7 @@
 			<h3 class="text-[28px] mb-9">
 				Du følger
 			</h3>
-			<div id="following" v-if="userdata">
+			<div id="following" v-if="userdata?.num_of_followers">
 				<Following 
 				v-for="following, index in userdata.following" 
 				:followingProp="following"

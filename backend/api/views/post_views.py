@@ -52,7 +52,6 @@ class PostAllSavedLoggedInUserView(APIView):
 
     def get(self, request):
         userId = request.user.id
-        print(userId)
 
         queryset = SavedPost.objects.filter(user=userId)
 

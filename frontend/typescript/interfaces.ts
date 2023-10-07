@@ -189,3 +189,14 @@ export interface FakePost {
 	total: number,
 
 }
+
+export interface PostSaved {
+	user: {
+		first_name:string,
+		last_name:string,
+		username:string,
+	},
+	post: {
+		title:string
+	}
+}
