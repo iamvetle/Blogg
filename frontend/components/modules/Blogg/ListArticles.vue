@@ -31,7 +31,8 @@
 
 
 					<template #lesmer>
-						<span class="cursor-pointer text text-primary hover:text-primaryFixed" @click="redirect_to_post_page(post)">
+						<span class="cursor-pointer text text-primary hover:text-primaryFixed"
+							@click="redirect_to_post_page(post)">
 							Les mer
 						</span>
 					</template>
@@ -41,7 +42,7 @@
 							<BaseTag v-for="tag, index in post.tags" :key="index" :textProp="tag" class="me-1" />
 						</span>
 					</template>
-<!-- 
+					<!-- 
 					<template #save-article-icon>
 						<svg width="24" height="24" class="fill-black" xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24">
@@ -52,14 +53,15 @@
 					</template> -->
 
 					<template #save-article-icon>
-						<BaseIconSaveArticle
-						widthProp="24"
-						heightProp="24"
-						:colorProp="color"
-						@mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'"
+						<BaseIconSaveArticle widthProp="24" heightProp="24" :colorProp="color"
+							@mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'" 
+							@click="doSavePost(post.id)"
+							/>
+					</template>
 
-
-						/>						
+					<template #more-options-icon>
+						<BaseIconMoreOptions widthProp="24" heightProp="24" :colorProp="color"
+							@mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'" />
 					</template>
 
 					<template #article_image>
@@ -71,10 +73,12 @@
 				<hr class="mb-16">
 			</div>
 
+		</div>
 	</div>
-</div></template>
+</template>
 
 <script setup lang="ts">
+import BaseIconMoreOptions from '~/components/base/BaseIconMoreOptions.vue';
 import { useGeneralStore } from '~/store/generalStore';
 
 const post_image = ref('https://picsum.photos/500/300')
@@ -115,8 +119,6 @@ const author_full_name = (post: ArticleSnippetSingleType) => {
 	const full = `${author.first_name} ${author.last_name}` ?? author.username
 	return full.trim() == "" ? author.username : full
 }
-
-fetch
 
 </script>
 
