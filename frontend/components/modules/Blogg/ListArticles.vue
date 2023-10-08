@@ -56,6 +56,7 @@
 						<BaseIconSaveArticle widthProp="24" heightProp="24" :colorProp="color"
 							@mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'" 
 							@click="doSavePost(post.id)"
+							class=":"
 							/>
 					</template>
 

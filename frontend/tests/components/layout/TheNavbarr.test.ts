@@ -1,6 +1,6 @@
 import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import TheNavbarr from '~/components/layout/TheNavbarr.vue'
+import TheNavbar from '~/components/layout/TheNavbar.vue'
 import { useGeneralStore } from '~/store/generalStore'
 
 describe("thenavvbarr testing", () => {
@@ -11,7 +11,7 @@ describe("thenavvbarr testing", () => {
     beforeEach(() => {
         pinia = createTestingPinia()
         store = useGeneralStore(pinia)
-        wrapper = mount(TheNavbarr, {
+        wrapper = mount(TheNavbar, {
             global: {
                 plugins: [pinia],
             },
@@ -33,7 +33,7 @@ describe("thenavvbarr testing", () => {
 
         store.isAuthenticated = false
         
-        wrapper = mount(TheNavbarr, {
+        wrapper = mount(TheNavbar, {
             global: {
                 plugins: [pinia],
             },

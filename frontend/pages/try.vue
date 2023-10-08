@@ -3,7 +3,7 @@
     id="site-wrapper"
     class="bg-background text-onBackground"
   >
-    <TheNavbarr />
+    <TheNavbar />
 
     <div
       id="main"
