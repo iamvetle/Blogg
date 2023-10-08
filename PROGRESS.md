@@ -20,6 +20,7 @@ Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg øn
 - [x] **Tag** : new model. Create a new 'tag' model and connect it to CustomUser (and or post?)
 - [x] **Categories** : new model. Connect to CustomUser (or post?)
 - [ ] Make it so users can **save posts** for reading later.
+- [ ] --and unsave
   - [x] Lage en ny modell (saved_post) \*models.py
     - [x] Registrer den i admin.py
   - [x] Lage en ny serializer for den modellen

@@ -15,8 +15,6 @@ import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
 
-store.isAuthenticated
-
 console.log(store.isAuthenticated);
 
 watchEffect(() => {

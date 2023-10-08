@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { PersonalPostType } from '../typescript/interfaces';
 
 export const useGeneralStore = defineStore("general", () => {
 
@@ -10,9 +9,12 @@ export const useGeneralStore = defineStore("general", () => {
   // Posts
   const posts = ref<ArticlesSnippetsType | null>(null)
 
+  // [id] user
+  const theUser = ref<AccountType | null>(null) 
+
   // Min side
-  const theUser = ref<PersonalPostType | null>(null) 
   const personalPosts = ref<ArticlesSnippetsType | null>(null)
+  const personalUser = ref<PersonalUserType | null>(null)
 
   // Links
   const baseFeedURL = "http://localhost:8888/api/search/"
@@ -38,5 +40,5 @@ export const useGeneralStore = defineStore("general", () => {
     isAuthenticated.value = state;
   };
 
-  return { posts, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
+  return { posts, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
 });

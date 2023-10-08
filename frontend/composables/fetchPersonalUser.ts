@@ -1,7 +1,12 @@
 import axios from "axios";
+import { useGeneralStore } from "~/store/generalStore";
 
-export const fetchPersonalUser = async (url: string) => {
+export const fetchPersonalUser = async () => {
   try {
+    const store = useGeneralStore()
+
+    const LoggedinUserURL = "http://localhost:8888/api/min-side/"
+
     const token = localStorage.getItem("token");
     !token ? console.log("no token") : "";
 
@@ -10,8 +15,12 @@ export const fetchPersonalUser = async (url: string) => {
       Authorization: `Token ${token}`,
     };
 
-    const response = await axios.get(url, { headers });
+    const response = await axios.get(LoggedinUserURL, { headers });
     console.log("OK: fetched personal user account", response.data); // print to self
+    
+
+    store.personalUser = response.data
+    
     return response.data;
   } catch (e) {
     console.log("FAILED: did not fetch personal account") // print to self - not working at all, no idea why

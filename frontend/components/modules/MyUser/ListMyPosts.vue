@@ -8,7 +8,7 @@
       </span>
     </div>
     <p class="mt-2">
-      {{ postProp.content }}
+      {{ postProp.content_snippet }}
     </p>
   </div>
 </template>
