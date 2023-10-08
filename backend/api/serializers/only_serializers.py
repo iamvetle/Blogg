@@ -26,11 +26,11 @@ class OnlyAuthorCustomUserSerializer(serializers.ModelSerializer):
 
 class OnlyTitlePostSerializer(serializers.ModelSerializer):
     ''' If the passing object contains post id, the class function will 
-    return "exchange", the post title '''
+    return "exchange", the post title (and also the post id..)'''
     title = serializers.SerializerMethodField()
     class Meta:
         model = Post
-        fields = ['title']
+        fields = ['id', 'title']
     
     def get_title(self, obj):
         return obj.title

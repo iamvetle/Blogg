@@ -18,13 +18,20 @@ export const fetchPersonalUser = async () => {
     const response = await axios.get(LoggedinUserURL, { headers });
     console.log("OK: fetched personal user account", response.data); // print to self
     
+    store.personalUser = response.data as PersonalUserType
+    console.dir(response.data)
 
-    store.personalUser = response.data
+    for (const savedPost of store.personalUser.saved_posts) {
+      console.log(savedPost.post.id) // print to self
+
+      store.idArrayOfSavedPosts.push(savedPost.post.id)
+
+    }
     
     return response.data;
   } catch (e) {
     console.log("FAILED: did not fetch personal account") // print to self - not working at all, no idea why
     // is it only with get requests?
-    return false;
+    return e;
   }
 };

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const doSavePost = async (postId:any) => {
-	if (process.client) {
 		try {
 			const token = localStorage.getItem("token");
 	
@@ -10,10 +9,10 @@ export const doSavePost = async (postId:any) => {
 					"Authorization": `Token ${token}`,
 				},
 			});
-			console.log("OK: saved post for reading later", response.data); // print to self
-			if (response.data?.message) {
-				alert(response.data.message)
-			}
+			console.log(response.data); // print to self
+			// if (response.data?.message) {
+			// 	alert(response.data.message)
+			// }
 			
 			/** Calls the composable that fetches profile information about the logged in user, so that the saved posts can be updated */
 			await fetchPersonalUser()
@@ -25,4 +24,4 @@ export const doSavePost = async (postId:any) => {
 			return null;
 		}
 	};
-}
+

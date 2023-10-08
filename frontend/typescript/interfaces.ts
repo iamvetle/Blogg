@@ -117,7 +117,10 @@ export interface PersonalUserType { // Logged In user Type
 				first_name:string,
 				last_name:string,
 			},
-			post:number
+			post: {
+				id:number,
+				title:string,
+			}
 		}
 	]
 	num_of_saved_posts: number;
