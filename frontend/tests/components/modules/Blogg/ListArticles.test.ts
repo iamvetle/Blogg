@@ -47,9 +47,10 @@ describe("list articles testing", () => {
                 },
             },
             props: {
-                widthProp: "23",
-                heightProp:"51",
-                colorProp:"blue",
+                width: "23",
+                height:"51",
+                fillColor:"blue",
+                class:'',
             }
         })
     })
