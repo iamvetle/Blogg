@@ -3,7 +3,7 @@ import ListArticles from '~/components/modules/Blogg/ListArticles.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue'
-import BaseIconSaveArticle from '~/components/base/BaseIconSaveArticle.vue';
+import BaseIconSaveArticleUnSaved from '~/components/base/BaseIconSaveArticleUnSaved.vue';
 
 describe("list articles testing", () => {
     let wrapper: VueWrapper
@@ -43,11 +43,8 @@ describe("list articles testing", () => {
             global: {
                 plugins: [pinia],
                 components: {
-                    ArticleCard, BaseIconSaveArticle
+                    ArticleCard, BaseIconSaveArticleUnSaved
                 },
-                mocks: {
-                    widthProp:""
-                }
             },
             props: {
                 widthProp: "23",
@@ -71,7 +68,7 @@ describe("list articles testing", () => {
         expect(wrapper.text()).toContain("08-12-2021")
     })
     test("renders the save icon component", () => {
-        const save_icon = wrapper.findComponent({ name: "BaseIconSaveArticle" }) 
+        const save_icon = wrapper.findComponent({ name: "BaseIconSaveArticleUnSaved" }) 
 
         expect(save_icon.exists()).toBe(true)
     })

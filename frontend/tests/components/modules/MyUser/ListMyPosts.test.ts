@@ -9,7 +9,7 @@ describe("testing MyUserPost cmp", () => {
             postProp: {
                 id:3,
                 title:"test title",
-                content: "test content",
+                content_snippet: "test content",
                 date_published:"2003-29-05",
                 author: {
                     username:"test",

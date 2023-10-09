@@ -41,18 +41,15 @@
 						<span>
 							<BaseTag v-for="tag, index in post.tags" :key="index" :textProp="tag" class="me-1" />
 						</span>
-					</template>	
+					</template>
 
-					<template #save-article-icon >
+					<template #save-article-icon>
 
-							<BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post.id)" widthProp="24" heightProp="24"
-							
-							@click="unsave(post.idyyy)"
+						<BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post.id)" @click="unsave(post.id)" />
+						<BaseIconSaveArticleUnSaved v-else @mouseover="color = 'fill-primary'"
+							@mouseleave="color = 'fill-black'" @click="save(post.id)" 
+							:fill-color="color"
 							/>
-							<BaseIconSaveArticleUnSaved v-else widthProp="24" heightProp="24" :colorProp="color"
-								@mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'"
-							@click="save(post.id)"
-								/>
 					</template>
 
 					<template #more-options-icon>
@@ -76,6 +73,7 @@
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
 import BaseIconSaveArticleSaved from '~/components/base/BaseIconSaveArticleSaved.vue';
+
 
 const post_image = ref('https://picsum.photos/500/300')
 
@@ -106,15 +104,15 @@ const redirect_to_post_page = async (post: ArticleSnippetSingleType) => {
 	return await navigateTo(`/post/${post_article_page}`)
 }
 
-const unsave = async (postId:number) => {
+const unsave = async (postId: number) => {
 	const index = store.idArrayOfSavedPosts.findIndex((id) => id === postId)
 
 	store.idArrayOfSavedPosts.splice(index, 1)
 
 	await doSavePost(postId)
-} 
+}
 
-const save = async (postId:number) => {
+const save = async (postId: number) => {
 
 	await doSavePost(postId)
 }

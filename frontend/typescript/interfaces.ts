@@ -126,6 +126,8 @@ export interface PersonalUserType { // Logged In user Type
 	num_of_saved_posts: number;
 }
 
+// no bio is being sent
+
 export interface FollowerType {
 	username: string;
 }
