@@ -3,6 +3,8 @@
     id="site-wrapper"
     class="bg-background flex flex-col min-h-screen"
   >
+  <div id="modal-root"></div>
+
     <!-- Background color -->
     <div class="flex-1 flex flex-col">
       <ClientOnly>

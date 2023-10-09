@@ -1,6 +1,11 @@
 <template>
 	<div id="site-wrapper" class="bg-background text-onBackground">
 		<div v-if="(store.posts) && (store.posts.results)" id="content">
+			<div>
+				<Popup
+				:initial="true"
+				/>
+			</div>
 
 			<div class="article" v-for="post, index in store.posts.results" :key="index">
 

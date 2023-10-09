@@ -7,9 +7,9 @@ describe('_blank testing', () => {
     beforeEach(() => {
         wrapper = mount(BaseIconSaveArticleSaved, {
             props: {
-                colorProp: "fill-red",
-                heightProp:"32",
-                widthProp:"13",
+                fillColor: "red",
+                height:"32",
+                width:"13",
             }
         })
     })
@@ -24,30 +24,30 @@ describe('_blank testing', () => {
         expect(element.exists()).toBe(true)
     })
 
-    // Checks to see if the component has the prop called 'colorProp'
+    // Checks to see if the component has the prop called 'fillColor'
     // and if it will be set to the value of 'red'
-    // (I can mention the 'colorProp' prop here because I specified 
+    // (I can mention the 'fillColor' prop here because I specified 
     // that it would be in the component above)
     test("component has color prop", () => {
-        expect(wrapper.props().colorProp).toBe("fill-red")
+        expect(wrapper.props().fillColor).toBe("red")
     })
 
     test("the icon is rendered in the prop color", () => {
         const svg = wrapper.find("svg")
 
-        expect(svg.attributes("class")).toContain("fill-red")
+        expect(svg.attributes("fill")).toContain("red")
     })
 
     test("has width and height props", () => {
-        expect(wrapper.props().heightProp).toBe("32")
-        expect(wrapper.props().widthProp).toBe("13")
+        expect(wrapper.props().height).toBe("32")
+        expect(wrapper.props().width).toBe("13")
     })
 
     test("the icons size is based on the width and height values", () => {
         const svg = wrapper.find("svg")
 
-        expect(svg.attributes("height")).toContain(wrapper.props().heightProp)
-        expect(svg.attributes("width")).toContain(wrapper.props().widthProp)
+        expect(svg.attributes("height")).toContain(wrapper.props().height)
+        expect(svg.attributes("width")).toContain(wrapper.props().width)
 
     })
 })

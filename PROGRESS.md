@@ -33,6 +33,7 @@ Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg øn
 ---
 
 ### Serializers og views
+
 - [ ] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
 
 ---
@@ -60,6 +61,7 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 - [x] API backend trenger å returnere postene som bru|keren har **lagret**
 - [x] Make the api return '**following**'
   - [x] and **who** I am followoing
+- [ ] lage sånn pop up til flere tng
 
 > Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
@@ -79,20 +81,8 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
   - [x] Antall _følgere_
   - [x] Antall _jeg følger_
   - [x] Brukerne, navnene til de jeg følger
+  - [ ] Finne ut av hva jeg skal gjøre med "**_les mer_**" feltet. Skal jeg bli 'redirected' et sted?
 
----
-
-- [ ] Finne ut av hva jeg skal gjøre med "**_les mer_**" feltet. Skal jeg bli 'redirected' et sted?
-- [ ] -> Implementere "tags" eller categories inn i "search" eller "sorter"
-  - Sorter og søk kan kanskje være det samme. Tags og categories kan kanskje også være det.
-
----
-
-- [ ] Gi en bruker muligheten, en knapp de kan trykke på
-  - Helt svart hvis lagret, delvis hvit hvis ikke lagret. ide
-    hver post, for å **lagre** en post
-  - [ ] Trenger å lage en **_fetch call_** for den
-- [ ] Muligheten for en bruker til å **fjerne** en post som de har lagret
 
 ---
 
@@ -131,10 +121,24 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
   - But far from perfect!!
 - [x] Place a temperary profile picture in the user sidebar (the same on as in min-side)
 - [x] There is a '**date_published**' problem that interfers with ordering that I need to fix.
+
   - [x] Split '**aside**' from 'ListArticles', so it becomes two components instead.
 
-- [ ] Ønsker at en post i listen ved feed kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
-  - "**_stjerne_**" hvis lagret
+- [x] Ønsker at en post i listen ved feed kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
+  - "**mørkere icon**" hvis lagret
+
+---
+
+- [ ] -> Implementere "tags" eller categories inn i "search" eller "sorter"
+  - Sorter og søk kan kanskje være det samme. Tags og categories kan kanskje også være det.
+
+---
+
+- [ ] Gi en bruker muligheten, en knapp de kan trykke på
+  - Helt svart hvis lagret, delvis hvit hvis ikke lagret. ide
+    hver post, for å **lagre** en post
+  - [ ] Trenger å lage en **_fetch call_** for den
+- [ ] Muligheten for en bruker til å **fjerne** en post som de har lagret
 
 ### text editor
 
@@ -179,6 +183,7 @@ Not so important right now:
 (Share? - much later in project at least))
 
 ide:
+
 - hover or a title og så kommer content descirption under?
 - second title? / brief description
 
