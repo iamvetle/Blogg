@@ -42,15 +42,5 @@ export const useGeneralStore = defineStore("general", () => {
     isAuthenticated.value = state;
   };
 
-  const checkIfPostIsSaved = (postId:number) => {
-    const store = useGeneralStore()
-    
-    if (store.idArrayOfSavedPosts.includes(postId)) {
-        return true
-    } else {
-        return false
-    }
-}
-
-  return { posts, idArrayOfSavedPosts, checkIfPostIsSaved, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
+  return { posts, idArrayOfSavedPosts, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
 });

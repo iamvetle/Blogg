@@ -45,14 +45,14 @@
 
 					<template #save-article-icon >
 
-						<div @click="doSavePost(post.id)" :saved="post.id">
-							<BaseIconSaveArticleSaved v-if="store.checkIfPostIsSaved(post.id)" widthProp="24" heightProp="24"
+							<BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post.id)" widthProp="24" heightProp="24"
+							
+							@click="unsave(post.idyyy)"
 							/>
 							<BaseIconSaveArticleUnSaved v-else widthProp="24" heightProp="24" :colorProp="color"
 								@mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'"
-							/>
-						</div>
-
+							@click="save(post.id)"
+								/>
 					</template>
 
 					<template #more-options-icon>
@@ -89,15 +89,6 @@ const toPlainText = (raw: string) => {
 	return div.textContent || div.innerText
 }
 
-watchEffect((postId) => {
-	if (store.personalUser.includes(postId)) {
-		return true
-	}
-	if (store.personalUser.includes(postId)) {
-		return false
-	}
-})
-
 onBeforeMount(async () => {
 	await fetchPostSnippets()
 	console.log(store.posts)
@@ -113,6 +104,19 @@ const redirect_to_post_page = async (post: ArticleSnippetSingleType) => {
 	const post_article_page = post.id
 
 	return await navigateTo(`/post/${post_article_page}`)
+}
+
+const unsave = async (postId:number) => {
+	const index = store.idArrayOfSavedPosts.findIndex((id) => id === postId)
+
+	store.idArrayOfSavedPosts.splice(index, 1)
+
+	await doSavePost(postId)
+} 
+
+const save = async (postId:number) => {
+
+	await doSavePost(postId)
 }
 
 const author_full_name = (post: ArticleSnippetSingleType) => {
