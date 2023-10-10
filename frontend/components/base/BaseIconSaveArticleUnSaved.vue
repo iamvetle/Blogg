@@ -23,7 +23,7 @@ withDefaults(defineProps<{
     width?: string,
     height?: string,
     fillColor?: string,
-    class: string
+    class?: string
 }>(), {
     width: "24",
     height: "24",

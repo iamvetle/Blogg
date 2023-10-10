@@ -12,6 +12,9 @@ Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg øn
 
 - **CustomUser** ->
 - [ ] new field: profile picture upload / img upload
+
+---
+
 - [ ] Make it possible to save images in code editor to database here
 
 ---
@@ -19,8 +22,8 @@ Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg øn
 - [x] Make a '**tag**' model and connect to the '**post**' model through a manytomany field on
 - [x] **Tag** : new model. Create a new 'tag' model and connect it to CustomUser (and or post?)
 - [x] **Categories** : new model. Connect to CustomUser (or post?)
-- [ ] Make it so users can **save posts** for reading later.
-- [ ] --and unsave
+- [x] Make it so users can **save posts** for reading later.
+- [x] --and unsave
   - [x] Lage en ny modell (saved_post) \*models.py
     - [x] Registrer den i admin.py
   - [x] Lage en ny serializer for den modellen
@@ -126,6 +129,10 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 
 - [x] Ønsker at en post i listen ved feed kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
   - "**mørkere icon**" hvis lagret
+
+---
+
+- [ ] Hvis en post har blitt lagret med et bilde ønsker jeg at bilde tas med i post snippets, men hvis ikke den har bilde, listes den uten
 
 ---
 

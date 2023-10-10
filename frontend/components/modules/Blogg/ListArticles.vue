@@ -3,11 +3,11 @@
 		<div v-if="(store.posts) && (store.posts.results)" id="content">
 			<div>
 				<Popup
-				:initial="true"
+				:initial="false"
 				/>
 			</div>
 
-			<div class="article" v-for="post, index in store.posts.results" :key="index">
+			<div class="article" v-for="post in store.posts.results" :key="post.id">
 
 				<article-card>
 
@@ -97,16 +97,16 @@ onBeforeMount(async () => {
 	console.log(store.posts)
 })
 
-const redirect_to_author_page = async (post: ArticleSnippetSingleType) => {
+const redirect_to_author_page = (post: ArticleSnippetSingleType) => {
 	const author_profile_page = post.author.username
 
-	return await navigateTo(`/user/${author_profile_page}`)
+	return navigateTo(`/user/${author_profile_page}`)
 }
 
-const redirect_to_post_page = async (post: ArticleSnippetSingleType) => {
+const redirect_to_post_page = (post: ArticleSnippetSingleType) => {
 	const post_article_page = post.id
 
-	return await navigateTo(`/post/${post_article_page}`)
+	return navigateTo(`/post/${post_article_page}`)
 }
 
 const unsave = async (postId: number) => {
