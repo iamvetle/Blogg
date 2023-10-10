@@ -2,9 +2,15 @@
 
 There are stuff I want the web client to be able to do, that I have not yet implemented. There are also things I want my blogg application to be able to do.
 
-I am focusing on **backend** at the moment.
+Det jeg tenker aller mest på at jeg savner i blogg-appen min, er evnen til å sortere etter tags. 
+Det er den tingen jeg savner mest og hva jeg ønsker å fokusere på.
 
-Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg ønsker å ha bloggen min.
+### Implementere tags sortering/søk
+- [ ] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
+
+---
+
+- [x] Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg ønsker å ha bloggen min.
 
 ## Backend
 
@@ -44,6 +50,7 @@ Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg øn
 **Postman**
 
 Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større oversikt.
+- [x]
 
 ---
 
@@ -64,7 +71,6 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 - [x] API backend trenger å returnere postene som bru|keren har **lagret**
 - [x] Make the api return '**following**'
   - [x] and **who** I am followoing
-- [ ] lage sånn pop up til flere tng
 
 > Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
@@ -114,6 +120,8 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 - [x] Change the **personal posts** that are received in 'min-side' to be snippets
 - [ ] Put pagnation there if the users have a lot of posts
 - [ ] Give users the ability to edit their own posts
+  - How?
+  - 
 - [ ] Fix the pagnation bottom bar that currently has no functionality
 
 ---

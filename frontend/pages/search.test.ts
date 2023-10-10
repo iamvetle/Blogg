@@ -5,7 +5,7 @@ import register from '~/pages/registrer.vue'
 
 describe('register page testing', () => {
     let wrapper:VueWrapper
-    let store
+    let store:any
     let pinia;
 
     beforeEach(() => {
