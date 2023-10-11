@@ -195,6 +195,9 @@ There are features I generally want to implement, but not sure how.
 - Text editor for publishing posts
 - maybe relevant [simplemde](https://simplemde.com/)
 
+- i should try to follow the best practice for pinia and store
+  - that might be to have all the logic, all of the functions inside the store and not do **store.functionOrVariable = something**
+
 Not so important right now:
 
 - Make the loading, and **_lazyloading_** much better

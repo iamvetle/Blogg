@@ -1,21 +1,21 @@
 export interface AccountType {
-	num_of_followers:number,
-	username:string,
-	first_name:string,
-	last_name:string,
-	posts:[
+	num_of_followers: number,
+	username: string,
+	first_name: string,
+	last_name: string,
+	posts: [
 		{
-			id:number,
-			title:string,
-			author:{
-				username:string,
-				first_name:string,
-				last_name:string,
+			id: number,
+			title: string,
+			author: {
+				username: string,
+				first_name: string,
+				last_name: string,
 			},
-			content_snippet:string,
-			date_published:string,
-			tags:null | Array<string>,
-			categories:null | Array<string>
+			content_snippet: string,
+			date_published: string,
+			tags: null | Array<string>,
+			categories: null | Array<string>
 		},
 	]
 }
@@ -100,26 +100,26 @@ export interface PersonalUserType { // Logged In user Type
 	nickname: string | null;
 	following: [
 		{
-			username:string
+			username: string
 		}
 	]
 	num_of_following: number;
 	followers: [
 		{
-			username:string
+			username: string
 		}
 	]
 	num_of_followers: number;
 	saved_posts: [
 		{
 			user: {
-				username:string,
-				first_name:string,
-				last_name:string,
+				username: string,
+				first_name: string,
+				last_name: string,
 			},
 			post: {
-				id:number,
-				title:string,
+				id: number,
+				title: string,
 			}
 		}
 	]
@@ -132,7 +132,33 @@ export interface FollowerType {
 	username: string;
 }
 
-// not using
+export interface Tag {
+	name: string
+}
+
+export interface Category {
+	name: string
+}
+
+
+export interface PostSaved {
+	user: {
+		first_name: string,
+		last_name: string,
+		username: string,
+	},
+	post: {
+		title: string
+	}
+}
+
+// not using ->
+
+
+/**
+ * Not in use
+ * @deprecated -> 
+ */
 export interface RandomAccount {
 	id: string,
 	uid: string,
@@ -195,13 +221,3 @@ export interface FakePost {
 
 }
 
-export interface PostSaved {
-	user: {
-		first_name:string,
-		last_name:string,
-		username:string,
-	},
-	post: {
-		title:string
-	}
-}

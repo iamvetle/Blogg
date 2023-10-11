@@ -1,8 +1,10 @@
 import axios from "axios";
-
+import { useGeneralStore } from '~/store/generalStore';
 /** Fetches all tags possible */
+
 export const fetchAllTags = async () => {
     const baseURL = "http://localhost:8888/api/tags/"
+    const store = useGeneralStore()
 
     try {
         const token = localStorage.getItem("token");
@@ -14,7 +16,11 @@ export const fetchAllTags = async () => {
         const response = await axios.get(baseURL, { headers });
 
         if (response.data != null) {
-            console.log("OK: tags fetched", response.status, response.data); // print to self
+            console.dir("OK: tags fetched", response.data); // print to self
+
+            store.allTags = response.data
+
+            console.log(toRaw(store.allTags))
 
             return response.data;
 
