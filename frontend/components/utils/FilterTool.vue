@@ -12,6 +12,12 @@
 </template>
 
 <script setup>
+/** The component is a base for filtering. It has input fields that can be 
+ * customized. The component is susposed to be associated to a fetch function, or similar.
+ * 
+ * The component is NOT finished. An unfinished idea!  
+ * */
+
 import axios from 'axios'
 
 const categories = ref(null)

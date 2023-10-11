@@ -19,6 +19,7 @@ declare global {
   const effectScope: typeof import('vue')['effectScope']
   const extractTitleAndContent: typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']
   const fetchAllFollowers: typeof import('./composables/fetchAllFollowers')['fetchAllFollowers']
+  const fetchAllTags: typeof import('./composables/fetchAllTags')['fetchAllTags']
   const fetchPersonalPosts: typeof import('./composables/fetchPersonalPosts')['fetchPersonalPosts']
   const fetchPersonalUser: typeof import('./composables/fetchPersonalUser')['fetchPersonalUser']
   const fetchPost: typeof import('./composables/fetchPost')['fetchPost']
@@ -99,6 +100,7 @@ declare module 'vue' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fetchAllFollowers: UnwrapRef<typeof import('./composables/fetchAllFollowers')['fetchAllFollowers']>
+    readonly fetchAllTags: UnwrapRef<typeof import('./composables/fetchAllTags')['fetchAllTags']>
     readonly fetchPersonalPosts: UnwrapRef<typeof import('./composables/fetchPersonalPosts')['fetchPersonalPosts']>
     readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/fetchPersonalUser')['fetchPersonalUser']>
     readonly fetchPost: UnwrapRef<typeof import('./composables/fetchPost')['fetchPost']>
@@ -173,6 +175,7 @@ declare module '@vue/runtime-core' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fetchAllFollowers: UnwrapRef<typeof import('./composables/fetchAllFollowers')['fetchAllFollowers']>
+    readonly fetchAllTags: UnwrapRef<typeof import('./composables/fetchAllTags')['fetchAllTags']>
     readonly fetchPersonalPosts: UnwrapRef<typeof import('./composables/fetchPersonalPosts')['fetchPersonalPosts']>
     readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/fetchPersonalUser')['fetchPersonalUser']>
     readonly fetchPost: UnwrapRef<typeof import('./composables/fetchPost')['fetchPost']>

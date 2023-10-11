@@ -14,13 +14,13 @@
     "help": true,
     "node_modules": true,
     "public": true,
-    "README.md": true,
     "taailwind.config.ts": true,
     "tsconfig.json": true,
     "vitest.config.ts": true,
     "vue-shims.d.ts": true,
     "yarn-error.log": true,
-    "yarn.lock": true
+    "yarn.lock": true,
+    "README.md": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": true,

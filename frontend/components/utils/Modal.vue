@@ -14,6 +14,10 @@
 </template>
 
 <script setup lang="ts">
+/** The component is supposed to act as a 'popup' that can be customized. 
+ * 
+ * UNFINISHED! Just an idea. 
+*/
 
 const props = withDefaults(defineProps<{
     initial: boolean,
