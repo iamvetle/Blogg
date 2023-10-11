@@ -6,17 +6,18 @@
 
 		<div>
 			Categories: {{ categories }}
-			chosenCategories: {{ selectedCategories }}
 		</div>
 		<div v-if="categories">
-			Selected named Categories: {{ filtered }}
-			{{ selectedCategoryNames }}
+			Selected categories: {{ selectedCategoryNames }}
+		</div>
+		<div v-if="selectedCategoryNames">
+			Custom url
+			<span>{{ customURL }}</span>
 		</div>
 	</div>
 </template>
 
-<script setup>
-import axios from 'axios'
+<script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
 /** 
  * The component is a base for filtering. It has input fields that can be 
@@ -26,17 +27,19 @@ import { useGeneralStore } from '~/store/generalStore';
  * 
  */
 
+const baseGroundURL = "http://localhost:8888"
+const setupTagURL = `${baseGroundURL}/?`
 
 const selectedCategories = ref({})
 
 const store = useGeneralStore()
 const categories = ref([])
-const filtered = ref([])
 
 onMounted(async () => {
-	await fetchAllTags()
+	await fetchAllTags() //@ts-ignore
 	categories.value = store.allTags
 })
+
 
 // watchEffect(() => {
 
@@ -47,6 +50,26 @@ onMounted(async () => {
 const selectedCategoryNames = computed(() => {
   return Object.keys(selectedCategories.value).filter(key => selectedCategories.value[key]);
 });
+
+/**
+ * The computed function returns the custom url I would use in my api data fetch 
+ * call for tag filtering
+ * 
+ * @returns - custom url ready for GET fetch   
+ */
+const customURL = computed(() => {
+	let url = setupTagURL
+
+	for (let category of selectedCategoryNames.value) {
+		url += `tags=${category}&`
+	}
+	if (url != setupTagURL) {
+		return url.slice(0, -1)
+	} else {
+		return baseGroundURL
+	}
+})
+
 
 /**
  * The difference between watchEffect and computed:
