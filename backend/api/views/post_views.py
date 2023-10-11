@@ -13,6 +13,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 
+
+# Django Filter
+from django_filters.rest_framework import DjangoFilterBackend
+
 # Local application imports
 from api.models import Post, SavedPost
 from api.serializers.post_serializers import (

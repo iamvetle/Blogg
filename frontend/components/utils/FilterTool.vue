@@ -1,21 +1,25 @@
 <template>
-  <div>
-    <div v-for="category in categories" :key="category">
-      <BaseCheckboxOption v-model="selectedCategories[category]"
-      :label="category"
-      />
-    </div>
+	<div>
+		<div v-for="category in categories" :key="category.name">
+			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
+		</div>
 
-    <div>
-      Selected Categories: {{ selectedCategories }}
-    </div>
-  </div>
+		<div>
+			Selected Categories: {{ selectedCategories }}
+			{{ categories }}
+		</div>
+	</div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import axios from 'axios'
 
-const categories = ['Fruit', 'Vegetable'];
+const categories = ref(null)
+
+onMounted(async () => {
+	const response = await fetchAllTags()
+	categories.value = response
+})
 const selectedCategories = ref({});
 
 // const selectedCategoryNames = computed(() => {

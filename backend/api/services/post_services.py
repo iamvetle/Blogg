@@ -8,7 +8,7 @@
 #     @staticmethod
 #     def create_post()
 
-
+from api.filters import PostFilter
 from api.serializers.post_serializers import PostSerializer, PostShortenSerializer
 from ..models import Post
 from django.contrib.auth import get_user_model
@@ -32,11 +32,13 @@ class PostSnippetService:
     @staticmethod
     def get_posts(request):
         queryset = Post.objects.all().order_by("-date_published")
+        
+        post_filter = PostFilter(request.GET, queryset=queryset)
 
         paginator = (
             CustomLimitOffsetPagination()
         )  # look at other_services.py for more info
-        paginated_queryset = paginator.paginate_queryset(queryset, request)
+        paginated_queryset = paginator.paginate_queryset(post_filter.qs, request)
 
         serializer = PostShortenSerializer(paginated_queryset, many=True)
 
