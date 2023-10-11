@@ -1,8 +1,7 @@
 <template>
     <div>
         <button @click="toggleDropdown">Toggle dropdown</button>
-        <div v-if="isOpen" id="dropdown-content">
-
+        <div v-if="isOpen" id="dropdown-content" v-m>
         </div>
     </div>
 </template>

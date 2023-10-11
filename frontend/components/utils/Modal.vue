@@ -16,13 +16,13 @@
 <script setup lang="ts">
 
 const props = withDefaults(defineProps<{
-    initial:boolean,
-    msg:string,
-    closeMsg:string,
+    initial: boolean,
+    msg: string,
+    closeMsg: string,
 }>(), {
-    initial:false,
-    msg:"Post saved",
-    closeMsg:"Close",
+    initial: false,
+    msg: "Post saved",
+    closeMsg: "Close",
 });
 
 const isOpen = ref(props.initial)
@@ -30,10 +30,6 @@ const isOpen = ref(props.initial)
 </script>
 
 <style scoped>
-
-
-
 /**
 https://dev.to/alvarosabu/create-modals-with-vue3-teleport-tailwindcss-48aj */
-
 </style>

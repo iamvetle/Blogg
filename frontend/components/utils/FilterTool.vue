@@ -1,26 +1,24 @@
 <template>
-  <div class="flex flex-col">
-    <span class="flex justify-between">
-      <span>Merke</span>
-      <span>^</span>
-    </span>
-  </div>
-	
-  <div class="border border-green-500 flex flex-col">
-    <BaseCheckboxOption
-      :choice="instance"
-      :count="count"
-    />
+  <div>
+    <div v-for="category in categories" :key="category">
+      <BaseCheckboxOption v-model="selectedCategories[category]"
+      :label="category"
+      />
+    </div>
+
+    <div>
+      Selected Categories: {{ selectedCategories }}
+    </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
+import { ref, computed } from 'vue';
 
-const instance = "red"
-const count = 4
+const categories = ['Fruit', 'Vegetable'];
+const selectedCategories = ref({});
 
+// const selectedCategoryNames = computed(() => {
+//   return categories.filter(category => selectedCategories.value[category]);
+// });
 </script>
-
-<style scoped>
-
-</style>

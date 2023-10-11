@@ -7,15 +7,12 @@
     ".npmrc": true,
     ".nuxt": true,
     ".output": true,
-    ".prettierignore": true,
-    ".prettierrc": true,
     ".vscode": true,
     "auto-imports.d.ts": true,
     "components.d.ts": true,
     "figma": true,
     "help": true,
     "node_modules": true,
-    "nuxt.config.ts": true,
     "public": true,
     "README.md": true,
     "taailwind.config.ts": true,
@@ -23,8 +20,7 @@
     "vitest.config.ts": true,
     "vue-shims.d.ts": true,
     "yarn-error.log": true,
-    "yarn.lock": true,
-    "tailwind.config.ts": true
+    "yarn.lock": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": true,

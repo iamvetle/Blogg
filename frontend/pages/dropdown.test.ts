@@ -4,8 +4,8 @@ import { useGeneralStore } from '~/store/generalStore'
 import dropdown from '~/pages/dropdown.vue'
 
 describe('dropdown page testing', () => {
-    let wrapper:VueWrapper
-    let store;
+    let wrapper: VueWrapper
+    let store:any;
     let pinia;
 
     beforeEach(() => {
