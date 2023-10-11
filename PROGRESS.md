@@ -62,9 +62,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ## Frontend
 
-Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 
-**_'fetchen' på api personlig bruker backend_**:
+**'fetchen' på api personlig bruker backend**
 
 - [x] **Antallet** lagrede innlegg inkluderes
 - [x] **Tittelen** og **forfatteren** må også returneres
@@ -149,11 +148,21 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 
 ---
 
-- [ ] Gi en bruker muligheten, en knapp de kan trykke på
+**Sortere/finne artikler etter tags/categories**
+
+- [ ] Først lage en prototype hvor jeg lister **alle tagsa** og så kan jeg velge **én** som jeg kan sortere etter
+  - deretter øke derifra
+  - kanskej dropdown
+  - kanskje velge flere eller bare en,
+  - favoritter, eller populære?
+
+---
+
+- [X] Gi en bruker muligheten, en knapp de kan trykke på
   - Helt svart hvis lagret, delvis hvit hvis ikke lagret. ide
     hver post, for å **lagre** en post
-  - [ ] Trenger å lage en **_fetch call_** for den
-- [ ] Muligheten for en bruker til å **fjerne** en post som de har lagret
+  - [X] Trenger å lage en **_fetch call_** for den
+- [X] Muligheten for en bruker til å **fjerne** en post som de har lagret
 
 ### text editor
 
@@ -162,7 +171,7 @@ Jeg fokuserer på _én_ side om gangen. Akkurat nå:
 - [ ] The **posting functionality** i want it to be obvious when a post was SUCCESSFULL, or when it FAILED.
 - Make it possible for the user to **add pictures** when making post
   - I don't want to focus on adding and rendering images until later
-- Maybe remove 'title' input field and just use 'content'
+- idea but probebly not: Maybe remove 'title' input field and just use 'content'
 
 ---
 
@@ -191,11 +200,14 @@ Not so important right now:
 - Make the loading, and **_lazyloading_** much better
 
 - [ ] Find out how I want implement "**text editor**"
-- Should I continue with **TiptapEditor** or use something else like **simplemde**?
+  - I have to fix/tweak the editor to be able to provide a smooth user experience when trying to make a post
+  - ~~Should I continue with **TiptapEditor** or use something else like **simplemde**?~~
 - Should I remove the images that are listed on the feed/index
 
 (I want users to be able to 'like' other posts.
 (Share? - much later in project at least))
+
+- Vil bruke 
 
 ide:
 

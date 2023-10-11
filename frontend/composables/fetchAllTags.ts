@@ -1,5 +1,6 @@
 import axios from "axios";
 
+/** Fetches all tags possible */
 export const fetchAllTags = async () => {
     const baseURL = "http://localhost:8888/api/tags/"
 
