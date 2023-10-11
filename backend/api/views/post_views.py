@@ -12,6 +12,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.generics import ListAPIView
 
 
 # Django Filter
@@ -24,9 +25,10 @@ from api.serializers.post_serializers import (
     PostSaveStyleSerializer,
     PostShortenSerializer,
 )
+from api.filters import PostFilter
 from api.services.post_services import CreatePostService, PostSnippetService
 from api.services.search_services import SearchService
-from api.services.pagination_services import CustomLimitOffsetPagination
+from api.services.pagination_services import CustomLimitOffsetPagination, GenericCustomLimitOffsetPagination
 
 CustomUser = get_user_model()
 
@@ -72,15 +74,21 @@ class PostAllSavedLoggedInUserView(APIView):
             return Response([], status=status.HTTP_200_OK)
 
 
-class PostMultipleShortenedView(APIView):
-    """Retrieves all posts as snippets, and returns paginated"""
+class PostMultipleShortenedView(ListAPIView):
+    """Retrieves all posts as snippets, and returns them paginated"""
 
     permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        response = PostSnippetService.get_posts(request)
-        return Response(response, status=status.HTTP_200_OK)
-
+    
+    serializer_class = PostShortenSerializer
+    queryset = Post.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = PostFilter
+    # Filters the queryset
+    pagination_class = GenericCustomLimitOffsetPagination
+    
+    http_method_names=['get']
+    
+    
 
 class PostMultipleAfterSearchView(APIView):  ## filters based on post title
     """Filters posts based on the request query"""
