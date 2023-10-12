@@ -3,16 +3,22 @@
 		<div v-for="category in categories" :key="category.name">
 			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
 		</div>
-		<div v-if="selectedCategoryNames">
+		<!-- <div v-if="selectedCategoryNames">
 			<span> 
 				Custom url {{ customURL }}
 			</span>
-		</div>
+		</div> -->
 	</div>
 </template>
 
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
+
+/** 
+ * I don not fant the fetch all tags to be fetched everytime I toggle the button, fix that
+ * @todo - for some reasen the list articles are also being fetched again, fix that
+ */
+
 /** 
  * The component is a base for filtering. It has input fields that can be 
  * customized. The component is susposed to be associated to a fetch function, or similar.
@@ -64,8 +70,6 @@ const customURL = computed(() => {
 watchEffect(async () => {
 	await fetchPostSnippets(customURL.value)
 })
-
-
 
 /**
  * The difference between watchEffect and computed:

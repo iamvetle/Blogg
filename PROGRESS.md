@@ -179,6 +179,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 - [ ] Expand the registration form to include more information options
 - [ ] Fix the emit between new post and editorcard when it comes to border color and such
+- [ ] fix the connection bettwen the search composables and the related components, integrate more, properly
 
 ### thoughts
 
