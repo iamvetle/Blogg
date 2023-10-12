@@ -3,7 +3,7 @@
 import axios from 'axios' 
 import { useGeneralStore } from '~/store/generalStore';
 
-export const fetchPostSnippets = async () => {
+export const fetchPostSnippets = async (optionalURL:string) => {
   const store = useGeneralStore()
 
   try {
@@ -15,7 +15,13 @@ export const fetchPostSnippets = async () => {
     console.log(token)
     console.log(headers)
 
-    const response = await axios.get(store.baseFeedURL, { headers });
+    let response;
+
+    if (optionalURL) {
+      response = await axios.get(optionalURL, { headers })
+    } else {
+      response = await axios.get(store.baseFeedURL, { headers });
+    }
 
     console.log(toRaw(response))
 

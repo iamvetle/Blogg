@@ -1,15 +1,16 @@
 import FilterTool from "~/components/utils/FilterTool.vue";
-import { mount } from '@vue/test-utils';
+import { VueWrapper, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from '~/store/generalStore';
 import BaseCheckboxOption from '~/components/base/BaseCheckboxOption.vue';
 
 describe('FilterTool testing', () => {
-    let wrapper;
+    let wrapper:VueWrapper
     let store;
+    let pinia:any;
 
     beforeEach(async () => {
-        const pinia = createTestingPinia();
+        pinia = createTestingPinia();
         store = useGeneralStore(pinia);
 
         // Set initial state for categories if it comes from the store

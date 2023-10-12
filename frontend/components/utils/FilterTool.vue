@@ -3,16 +3,10 @@
 		<div v-for="category in categories" :key="category.name">
 			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
 		</div>
-
-		<div>
-			Categories: {{ categories }}
-		</div>
-		<div v-if="categories">
-			Selected categories: {{ selectedCategoryNames }}
-		</div>
 		<div v-if="selectedCategoryNames">
-			Custom url
-			<span>{{ customURL }}</span>
+			<span> 
+				Custom url {{ customURL }}
+			</span>
 		</div>
 	</div>
 </template>
@@ -27,28 +21,21 @@ import { useGeneralStore } from '~/store/generalStore';
  * 
  */
 
-const baseGroundURL = "http://localhost:8888"
-const setupTagURL = `${baseGroundURL}/?`
+const baseGroundURL = "http://localhost:8888/api/feed/"
+const setupTagURL = `${baseGroundURL}?`
 
-const selectedCategories = ref({})
+const selectedCategories = ref<any>({})
 
 const store = useGeneralStore()
-const categories = ref([])
+const categories = ref<Category[]>([])
 
 onMounted(async () => {
-	await fetchAllTags() //@ts-ignore
-	categories.value = store.allTags
+	await fetchAllTags()
+	categories.value = store.allTags ?? []
 })
 
-
-// watchEffect(() => {
-
-// 	filtered.value = Object.keys(selectedCategories.value).filter(key => selectedCategories.value[key])
-
-// });
-
 const selectedCategoryNames = computed(() => {
-  return Object.keys(selectedCategories.value).filter(key => selectedCategories.value[key]);
+	return Object.keys(selectedCategories.value).filter(key => selectedCategories.value[key]);
 });
 
 /**
@@ -69,6 +56,15 @@ const customURL = computed(() => {
 		return baseGroundURL
 	}
 })
+
+
+/**
+ * Fetches new posts automatically based on the customURL
+ */
+watchEffect(async () => {
+	await fetchPostSnippets(customURL.value)
+})
+
 
 
 /**

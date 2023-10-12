@@ -1,7 +1,10 @@
 <template>
     <div>
-        <button @click="toggleDropdown">Toggle dropdown</button>
+        <button class="p-1 bg-primary text-onPrimary" @click="isOpen = !isOpen">Toggle dropdown</button>
         <div v-if="isOpen" id="dropdown-content">
+            <slot name="filter">
+
+            </slot>
         </div>
     </div>
 </template>
@@ -10,9 +13,9 @@
 
 const isOpen = ref(false)
 
-const toggleDropdown = () => {
-    isOpen.value != isOpen.value
-}
+// const toggleDropdown = () => {
+//     isOpen.value != isOpen.value
+// }
 
 </script>
 
