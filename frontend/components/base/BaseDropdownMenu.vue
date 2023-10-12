@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <button class="p-1 bg-primary text-onPrimary" @click="isOpen = !isOpen">Toggle dropdown</button>
-        <div v-if="isOpen" id="dropdown-content">
+    <div class="bg-primary rounded-lg text-onPrimary">
+        <span class="mb-2 w-full flex items-center text-center justify-center"><button class="rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center" @click="isOpen = !isOpen">Toggle dropdown</button></span>
+        <div v-if="isOpen" id="dropdown-content"> 
             <slot name="filter">
 
             </slot>

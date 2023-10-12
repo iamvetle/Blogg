@@ -5,7 +5,7 @@
 			<ListArticles class="col-span-6 mx-auto" />
 			<div class="col-span-4 mx-auto">
 
-				<base-dropdown-menu>
+				<base-dropdown-menu class="mb-4">
 
 					<template #filter>
 						<FilterTool />

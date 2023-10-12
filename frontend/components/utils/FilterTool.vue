@@ -1,7 +1,7 @@
 <template>
-	<div>
-		<div v-for="category in categories" :key="category.name">
-			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
+	<div class="py-1">
+		<div class="py-1 ml-2" v-for="category in categories" :key="category.name">
+			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name"  />
 		</div>
 		<!-- <div v-if="selectedCategoryNames">
 			<span> 
@@ -87,3 +87,9 @@ watchEffect(async () => {
  */
 
 </script>
+
+<style scoped>
+.checkbox :checked {
+	text-decoration: 'red';
+}
+</style>
