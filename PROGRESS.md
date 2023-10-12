@@ -180,6 +180,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 - [ ] Expand the registration form to include more information options
 - [ ] Fix the emit between new post and editorcard when it comes to border color and such
 - [ ] fix the connection bettwen the search composables and the related components, integrate more, properly
+- [ ] Rydde opp i alle composables
+- [ ] Dele opp stores
 
 ### thoughts
 
@@ -210,6 +212,8 @@ Not so important right now:
 
 (I want users to be able to 'like' other posts.
 (Share? - much later in project at least))
+
+- new posts by the people you follow? - in listarticlessidebar? idea
 
 - Vil bruke 
 

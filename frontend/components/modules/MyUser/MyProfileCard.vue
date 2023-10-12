@@ -11,8 +11,8 @@
 
 				</h2>
 				<span>
-					<p id="card-name" class="text-onPrimaryContainer ">
-						<slot name="full-name">Fullt navn(har ikke fullt navn)</slot>
+					<p @click="redirect_to_my_profile_page" id="card-name" class="hover:text-onSurfaceVariant cursor-pointer text-onPrimaryContainer" >
+						<slot name="full-name">Fullt navn</slot>
 					</p>
 				</span>
 			</div>
@@ -34,6 +34,11 @@
 defineProps({
 	profilePictureProp: String
 })
+
+const redirect_to_my_profile_page = () => {
+
+return navigateTo(`/min-side/`)
+}
 
 </script>
 

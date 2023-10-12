@@ -1,23 +1,13 @@
 <template>
-	<div class="py-1">
-		<div class="py-1 ml-2" v-for="category in categories" :key="category.name">
-			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name"  />
+	<div class="py-1" v-if="categories">
+		<div class="py-1 ml-2" v-for="(category, index) in categories" :key="index">
+			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
 		</div>
-		<!-- <div v-if="selectedCategoryNames">
-			<span> 
-				Custom url {{ customURL }}
-			</span>
-		</div> -->
 	</div>
 </template>
 
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
-
-/** 
- * I don not fant the fetch all tags to be fetched everytime I toggle the button, fix that
- * @todo - for some reasen the list articles are also being fetched again, fix that
- */
 
 /** 
  * The component is a base for filtering. It has input fields that can be 
@@ -35,6 +25,9 @@ const selectedCategories = ref<any>({})
 const store = useGeneralStore()
 const categories = ref<Category[]>([])
 
+/**
+ * Fetches all possible tags
+ */
 onMounted(async () => {
 	await fetchAllTags()
 	categories.value = store.allTags ?? []
@@ -88,8 +81,4 @@ watchEffect(async () => {
 
 </script>
 
-<style scoped>
-.checkbox :checked {
-	text-decoration: 'red';
-}
-</style>
+<style scoped></style>

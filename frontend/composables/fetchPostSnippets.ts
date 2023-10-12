@@ -1,42 +1,50 @@
-// async
-
-import axios from 'axios' 
+import axios from 'axios'
 import { useGeneralStore } from '~/store/generalStore';
 
-export const fetchPostSnippets = async (optionalURL:string) => {
-  const store = useGeneralStore()
+/**
+ * The function fetches post snippets
+ * @param optionalURL 
+ */
+export const fetchPostSnippets = async (optionalURL?: string) => {
+	const store = useGeneralStore()
 
-  try {
-    const token = localStorage.getItem("token");
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token}`,
-    };
-    console.log(token)
-    console.log(headers)
+	try {
+		const token = localStorage.getItem("token");
 
-    let response;
+		const headers = {
+			"Content-Type": "application/json",
+			Authorization: `Token ${token}`,
+		};
 
-    if (optionalURL) {
-      response = await axios.get(optionalURL, { headers })
-    } else {
-      response = await axios.get(store.baseFeedURL, { headers });
-    }
+		console.log(token) // print to self
+		console.log(headers) // print to self
 
-    console.log(toRaw(response))
+		let response;
 
-    if (response.data != null) {
-      console.log("OK: Posts fetched", response.data); // print to self
+		if (optionalURL) {
+			response = await axios.get(optionalURL, { headers })
+		} else {
+			response = await axios.get(store.baseFeedURL, { headers });
+		}
 
-      await fixPagination(response.data) // calls the pagination composable for the paginatioin.vue
-      
-      store.posts = response.data as ArticlesSnippetsType;
-    
-    } else {
-      console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self
-    }
+		console.log(toRaw(response)) // print to self
 
-  } catch (error) {
-    console.error("ERROR: An error occured while trying to fetch posts: ", error); // print to self
-  }
+		if (response.data != null) {
+
+			console.log("OK: Posts fetched", response.data); // print to self
+
+			/** Makes the pagination-bar correspond to the posts that are fetched */
+			await fixPagination(response.data)
+
+			store.posts = response.data as ArticlesSnippetsType;
+
+			return response.data
+
+		} else {
+			console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self
+		}
+
+	} catch (error) {
+		console.error("ERROR: An error occured while trying to fetch posts: ", error); // print to self
+	}
 };

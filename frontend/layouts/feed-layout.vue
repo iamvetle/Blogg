@@ -15,13 +15,16 @@
       </div>
     </div>
     <div class="mt-auto">
-      <FeedPagination/>
+      <FeedPagination v-if="store.personalUser"/>
       <TheFooter />
     </div>  
   </div>
 </template>
 
 <script setup lang="ts">
+import { useGeneralStore } from '~/store/generalStore';
+
+const store = useGeneralStore()
 
 // Used by index.vue
 console.log("'feed-layout' layout is selected");
