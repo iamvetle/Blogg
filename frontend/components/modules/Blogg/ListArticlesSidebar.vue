@@ -13,12 +13,24 @@
 					{{ full_name }}
 				</template>
 
-				<template #amount-of-followers v-if="store.personalUser.num_of_followers">
-					Antall følgere: {{ store.personalUser.num_of_followers }}
+				<template #amount-of-followers>
+					<span v-if="store.personalUser.num_of_followers">
+						Antall følgere: {{ store.personalUser.num_of_followers }}
+					</span>
+					<span v-else>
+						Du har ingen følgere
+					</span>
 				</template>
 
-				<template #amount-of-saved-posts v-if="store.personalUser.num_of_saved_posts">
-					Lagrede innlegg: {{ store.personalUser.num_of_saved_posts }}
+				<template #amount-of-saved-posts>
+
+					<span v-if="store.personalUser.num_of_saved_posts">
+						Innlegg lagret: {{ store.personalUser.num_of_saved_posts }}
+					</span>
+
+					<span v-else>
+						Innlegg lagret: 0
+					</span>
 				</template>
 
 			</my-profile-card>
@@ -39,6 +51,9 @@
 
 			<p v-if="store.personalUser.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">
 				Se alle
+			</p>
+			<p v-else>
+				Du har ingen lagrede innlegg
 			</p>
 
 		</div>

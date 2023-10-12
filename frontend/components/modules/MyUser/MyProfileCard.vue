@@ -11,9 +11,9 @@
 
 				</h2>
 				<span>
-					<p @click="redirect_to_my_profile_page" id="card-name" class="hover:text-onSurfaceVariant cursor-pointer text-onPrimaryContainer" >
+					<span @click="redirect_to_my_profile_page" id="card-name" class="hover:text-onSurfaceVariant cursor-pointer text-onPrimaryContainer" >
 						<slot name="full-name">Fullt navn</slot>
-					</p>
+					</span>
 				</span>
 			</div>
 		</div>
