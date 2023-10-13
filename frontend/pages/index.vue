@@ -1,56 +1,54 @@
 <template>
-    	<div>
-			<section class="bg-white dark:bg-gray-900">
-				<p></p>
-				<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-					<div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-						<h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Siste blogginnlegg</h2>
-						<p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Her er de siste blogginnleggene.</p>
-					</div>
+	<div id="site-wrapper" v-if="store.isAuthenticated" class="mt-8">
+		<div class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
+			<ListArticles class="col-span-6 mx-auto" />
+			<div class="col-span-4 mx-auto">
 
-					<div id="main" class="grid gap-8 lg:grid-cols-2" v-if="posts">
-						<PostWindow
-						v-for="post in posts" 
-						:key="post.id"
-						:postDetail="post"
-						/>
-					</div>
-					<div v-else>
-						<p>There are no posts. Return value from fetch is {{ typeof posts }}</p> <!-- print to self -->
-					</div>
-				</div>
-			</section>
-		</div>    	
+				<base-dropdown-menu v-if="store.personalUser" class="mb-4">
+
+					<template #filter>
+
+						<FilterTool />
+
+					</template>
+
+				</base-dropdown-menu>
+
+				<ListArticlesSidebar />
+			</div>
+		</div>
+	</div>
+	<div v-if="store.isAuthenticated != true">
+		<Wait />
+	</div>
 </template>
 
 <script setup lang="ts">
+import { useGeneralStore } from '~/store/generalStore';
+import FilterTool from '~/components/utils/FilterTool.vue';
 
-definePageMeta({
-	layout:"index-layout"
+const store = useGeneralStore()
+
+console.log(store.isAuthenticated); // print to self
+/**
+ * Updates the page layout to a plain one if you are 'unauthenticated'. 
+ * The function 'watches' the 'global' variable that says if you are 'unauthenticated'.
+ */
+watchEffect(() => {
+	if (store.isAuthenticated === false) {
+		setPageLayout("blank");
+	}
 })
-
-interface PostType {
-    id:number;
-    title:string;    
-    content:string;
-    date_published:string;
-    last_modified:string;
-    author: {
-        username:string;
-        first_name:string;
-        last_name:string;
-    };
-}
-
-const posts = ref<PostType[] | null>([]);
-
-;( async () => {
-	const baseURL = "http://localhost:8888/api/feed/"
-		posts.value = await fetchAllPosts(baseURL)
-})();
+/**
+ * Updates the page layout to one meant for 'feed/listing articles', if you are 'authenticated/logged in'. 
+ * The function 'watches' the 'global' variable that says if you are 'authenticated'.
+ */
+watchEffect(() => {
+	if (store.isAuthenticated === true) {
+		setPageLayout("feed-layout");
+	}
+})
 
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style></style>
