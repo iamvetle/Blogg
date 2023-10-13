@@ -36,7 +36,7 @@ export const fetchPostSnippets = async (optionalURL?: string) => {
 			/** Makes the pagination-bar correspond to the posts that are fetched */
 			await fixPagination(response.data)
 
-			store.posts = response.data as ArticlesSnippetsType;
+			store.posts = response.data as SnippetPostMultipleType;
 
 			return response.data
 

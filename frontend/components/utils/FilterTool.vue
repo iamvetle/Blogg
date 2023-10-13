@@ -23,7 +23,7 @@ const setupTagURL = `${baseGroundURL}?`
 const selectedCategories = ref<any>({})
 
 const store = useGeneralStore()
-const categories = ref<Category[]>([])
+const categories = ref<CategoryType[]>([])
 
 /**
  * Fetches all possible tags

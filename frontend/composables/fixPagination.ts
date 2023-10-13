@@ -2,7 +2,7 @@
 
 import { useGeneralStore } from "~/store/generalStore"
 
-export const fixPagination = async (response:ArticlesSnippetsType) => {
+export const fixPagination = async (response:SnippetPostMultipleType) => {
     if(response != null) {
 
         const store = await useGeneralStore()

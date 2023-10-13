@@ -1,4 +1,4 @@
-export interface AccountType {
+export interface NormalUserProfileType {
 	num_of_followers: number,
 	username: string,
 	first_name: string,
@@ -21,7 +21,7 @@ export interface AccountType {
 }
 
 // plural
-export interface ArticlesSnippetsType {
+export interface SnippetPostMultipleType {
 	count: number;
 	next: string | null;
 	previous: string | null;
@@ -45,7 +45,7 @@ export interface ArticlesSnippetsType {
 }
 
 // singel
-export interface ArticleSnippetSingleType {
+export interface SnippetPostSingleType {
 	id: number;
 	title: string;
 	content_snippet: string;
@@ -60,7 +60,7 @@ export interface ArticleSnippetSingleType {
 }
 
 
-export interface PersonalPostType {
+export interface LoggedInUserPostType {
 	id: number;
 	title: string;
 	content_snippet: string;
@@ -74,7 +74,7 @@ export interface PersonalPostType {
 	categories: null | Array<string>
 }
 
-export interface SinglePostType {
+export interface PostSingleType {
 	id: number;
 	title: string;
 	content: string;
@@ -88,7 +88,7 @@ export interface SinglePostType {
 	categories: null | Array<string>
 }
 
-export interface PersonalUserType { // Logged In user Type
+export interface LoggedInUserProfileType { // Logged In user Type
 	id: number;
 	email: string;
 	username: string;
@@ -132,16 +132,16 @@ export interface FollowerType {
 	username: string;
 }
 
-export interface Tag {
+export interface TagType {
 	name: string
 }
 
-export interface Category {
+export interface CategoryType {
 	name: string
 }
 
 
-export interface PostSaved {
+export interface PostSavedType {
 	user: {
 		first_name: string,
 		last_name: string,

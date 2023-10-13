@@ -439,7 +439,7 @@
 									Followers
 								&lt;/h3&gt;
 								&lt;div v-if="followers"&gt;
-									&lt;Follower v-for="f, index in followers" :key="index" :follower="f" /&gt;
+									&lt;FollowerType v-for="f, index in followers" :key="index" :follower="f" /&gt;
 								&lt;/div&gt;
 								&lt;div v-else&gt;
 									&lt;span&gt;No followers&lt;/span&gt;
@@ -490,7 +490,7 @@ import { useGeneralStore } from '~/store/generalStore';
 &nbsp;
 const store = useGeneralStore()
 &nbsp;
-const user = ref&lt;PersonalUserType | null&gt;(null);
+const user = ref&lt;LoggedInUserProfileType | null&gt;(null);
 const followers = ref&lt;FollowerType | null&gt;(null)
 &nbsp;
 onMounted(async () =&gt; {

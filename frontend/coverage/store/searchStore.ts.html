@@ -110,13 +110,13 @@
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span></td><td class="text"><pre class="prettyprint lang-js">import { defineStore } from 'pinia'
-import { ArticlesSnippetsType } from '~/typescript/interfaces'
+import { SnippetPostMultipleType } from '~/typescript/interfaces'
 &nbsp;
 export const useSearchStore = defineStore("search", () =&gt; {
     
     // STATES 
 &nbsp;
-    const searchPosts = ref&lt;ArticlesSnippetsType | null&gt;(null)
+    const searchPosts = ref&lt;SnippetPostMultipleType | null&gt;(null)
     const lastSearch = ref("")
     const baseSearchURL = ref("http://localhost:8888/api/search/")
 &nbsp;

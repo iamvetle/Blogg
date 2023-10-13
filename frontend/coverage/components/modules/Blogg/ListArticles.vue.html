@@ -413,19 +413,19 @@ onBeforeMount(async () =&gt; {
 	console.log(store.posts)
 })
 &nbsp;
-const redirect_to_author_page = async (post: ArticleSnippetSingleType) =&gt; {
+const redirect_to_author_page = async (post: SnippetPostSingleType) =&gt; {
 	const author_profile_page = post.author.username
 &nbsp;
 	return await navigateTo(`/user/${author_profile_page}`)
 }
 &nbsp;
-const redirect_to_post_page = async (post: ArticleSnippetSingleType) =&gt; {
+const redirect_to_post_page = async (post: SnippetPostSingleType) =&gt; {
 	const post_article_page = post.id
 &nbsp;
 	return await navigateTo(`/post/${post_article_page}`)
 }
 &nbsp;
-const author_full_name = (post: ArticleSnippetSingleType) =&gt; {
+const author_full_name = (post: SnippetPostSingleType) =&gt; {
 &nbsp;
 	console.log("author full name function being called")
 	console.log(post.author)

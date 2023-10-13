@@ -138,7 +138,7 @@ export const fetchPersonalPosts = async () =&gt; {
       Authorization: `Token ${token}`,
     };
 &nbsp;
-    const response = await axios.get&lt;PersonalPostType&gt;(store.personal_post_snippets_url, { headers }<span class="branch-0 cbranch-no" title="branch not covered" >);</span>
+    const response = await axios.get&lt;LoggedInUserPostType&gt;(store.personal_post_snippets_url, { headers }<span class="branch-0 cbranch-no" title="branch not covered" >);</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    if (response.data != null) {</span>
 <span class="cstat-no" title="statement not covered" >      console.log("OK: Personal posts fetched", response.data); // print to self</span>

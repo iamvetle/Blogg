@@ -148,7 +148,7 @@
 <span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { defineStore } from "pinia";
-import { PersonalPostType } from '../typescript/interfaces';
+import { LoggedInUserPostType } from '../typescript/interfaces';
 &nbsp;
 export const useGeneralStore = defineStore("general", () =&gt; {
 &nbsp;
@@ -157,11 +157,11 @@ export const useGeneralStore = defineStore("general", () =&gt; {
   const username = ref&lt;string | null&gt;(null);
 &nbsp;
   // Posts
-  const posts = ref&lt;ArticlesSnippetsType | null&gt;(null)
+  const posts = ref&lt;SnippetPostMultipleType | null&gt;(null)
 &nbsp;
   // Min side
-  const theUser = ref&lt;PersonalPostType | null&gt;(null) 
-  const personalPosts = ref&lt;ArticlesSnippetsType | null&gt;(null)
+  const theUser = ref&lt;LoggedInUserPostType | null&gt;(null) 
+  const personalPosts = ref&lt;SnippetPostMultipleType | null&gt;(null)
 &nbsp;
   // Links
   const baseFeedURL = "http://localhost:8888/api/search/"

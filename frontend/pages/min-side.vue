@@ -74,7 +74,7 @@
 									Followers
 								</h3>
 								<div v-if="store.personalUser.followers">
-									<Follower v-for="f, index in followers" :key="index" :follower="f" />
+									<FollowerType v-for="f, index in followers" :key="index" :follower="f" />
 								</div>
 								<div v-else>
 									<span>No followers</span>

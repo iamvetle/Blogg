@@ -1,11 +1,11 @@
 import { VueWrapper, mount } from '@vue/test-utils'
-import Follower from '~/components/modules/MyUser/Follower.vue'
+import FollowerType from '~/components/modules/MyUser/FollowerType.vue'
 
-describe('Follower testing', () => {
+describe('FollowerType testing', () => {
     let wrapper:VueWrapper;
 
     beforeEach(() => {
-        wrapper = mount(Follower)
+        wrapper = mount(FollowerType)
     })
 
     test('exists', () => {
