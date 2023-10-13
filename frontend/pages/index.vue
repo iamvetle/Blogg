@@ -30,7 +30,6 @@ import FilterTool from '~/components/utils/FilterTool.vue';
 const store = useGeneralStore()
 
 console.log(store.isAuthenticated); // print to self
-
 /**
  * Updates the page layout to a plain one if you are 'unauthenticated'. 
  * The function 'watches' the 'global' variable that says if you are 'unauthenticated'.
@@ -40,7 +39,6 @@ watchEffect(() => {
 		setPageLayout("blank");
 	}
 })
-
 /**
  * Updates the page layout to one meant for 'feed/listing articles', if you are 'authenticated/logged in'. 
  * The function 'watches' the 'global' variable that says if you are 'authenticated'.
