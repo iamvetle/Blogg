@@ -43,7 +43,7 @@ Det er den tingen jeg savner mest og hva jeg ønsker å fokusere på.
 
 ### Serializers og views
 
-- [ ] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
+- [x] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
 
 ---
 
