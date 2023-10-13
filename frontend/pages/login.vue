@@ -1,31 +1,28 @@
 <template>
-    <section class="bg-gray-50 dark:bg-gray-900">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-
-            <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-
-                    <div id="login_form">
-                        <FormLogin />
-                    </div>
-
-                </div>
-            </div>
-
+  <section class="bg-surface">
+    <div
+      class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+    >
+      <div
+        class="w-full bg-surfaceContainerLowest border-surfaceContainerLowest border rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"
+      >
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <div id="login_form">
+            <LoginCard :redirect="true" />
+          </div>
         </div>
-    </section>
-</template> 
+      </div>
+    </div>
+  </section>
+</template>
 
 <script setup lang="ts">
 
-definePageMeta({
-    middleware:["has-token-redirect"]
-})
+setPageLayout('form-layout')
+
+
 
 // husk definpagedata senere
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
