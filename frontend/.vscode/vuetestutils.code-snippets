@@ -16,36 +16,76 @@
 	// 	"description": "Log output to console"
 	// }
 
-	"Vue Test Utils beforeEach": {
-		"prefix": "vbeforeeach",
+	"Vue Test Utils beforeEach and afterEach": {
+		"prefix": "vueTestSetup",
 		"body": [
-			"import OneComponent from '~/components';",
+			"import $1",
 			"import { VueWrapper, shallowMount } from '@vue/test-utils';",
 			"import { createTestingPinia } from '@pinia/testing';",
 			"import { useGeneralStore } from '~/store/generalStore';",
 			"",
-			"let wrapper;",
-			"let store;",
+			"describe('$2', () => {",
+			"  let wrapper: VueWrapper;",
+			"  let store: any;",
 			"",
-			"beforeEach(() => {",
-			"  const pinia = createTestingPinia();",
-			"  store = useGeneralStore(pinia);",
+			"  beforeEach(() => {",
+			"    const pinia = createTestingPinia();",
+			"    store = useGeneralStore(pinia);",
 			"",
-			"  wrapper = shallowMount(OneComponent, {",
-			"    global: {",
-			"      plugins: [pinia],",
-			"      mocks: { },",
-			"      stubs: { }",
-			"    },",
+			"    wrapper = shallowMount($3, {",
+			"      global: {",
+			"        plugins: [pinia],",
+			"        components: {$4},",
+			"        mocks: {},",
+			"        stubs: {}",
+			"      },",
+			"		props:{$5}",
+			"    });",
 			"  });",
-			"});",
 			"",
-			"afterEach(() => {",
-			"  if (wrapper) {",
-			"    wrapper.unmount();",
-			"  }",
+			"  afterEach(() => {",
+			"    if (wrapper) {",
+			"      wrapper.unmount();",
+			"    }",
+			"  });",
+			"",
+			"  $0",
 			"});"
 		],
-		"description": "Vue Test Utils beforeEach setup with Pinia."
+		"description": "Snippet for setting up Vue Test Utils with beforeEach and afterEach"
+	},
+
+	"Vue Mount Component": {
+		"prefix": "vueMount",
+		"body": [
+		"const wrapper = shallowMount($1, {",
+		"  global: {",
+		"    plugins: [$2],",
+		"    components: {$3},",
+		"    mocks: {},",
+		"    stubs: {}",
+		"  },",
+		"	props:{$4}",
+		"})"
+		"$0"
+		],
+		"description": "Snippet for mounting a Vue component with Vue Test Utils"
+	},
+
+	"Vue Test Block": {
+		"prefix": "vueTest",
+		"body": [
+		"test('$1', () => {",
+		"  $0",
+		"})"
+		],
+		"description": "Snippet for a simple Vue test block"
+	},
+	"Vue Expect": {
+		"prefix": "vueExpect",
+		"body": [
+		"expect($1).$2"
+		],
+		"description": "Snippet for writing an expect statement in Vue tests"
 	}
 }

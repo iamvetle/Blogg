@@ -2,7 +2,7 @@
 	<div class="flex pb-8">
 		<img :src="article_image" class="w-14 h-12">
 		<div class="ml-2" v-if="savedArticleProp">
-			<span class="flex ms-1 font-bold">
+			<span @click="redirect_to_post_page(savedArticleProp.post)" class="cursor-pointer flex ms-1 font-bold">
 				{{ savedArticleProp.post.title }}
 			</span>
 			<span class="flex">
@@ -14,7 +14,7 @@
 					</svg>
 				</span>
 				<span class="flex ms-1">
-					<span>
+					<span @click="redirect_to_author_page(savedArticleProp.user)" class="cursor-pointer">
 						{{ savedArticleProp.user.username }}
 					</span>
 				</span>
@@ -29,6 +29,19 @@
 const article_image = "https://picsum.photos/500/300"
 
 const { savedArticleProp } = defineProps(['savedArticleProp'])
+
+const redirect_to_post_page = async (post: SnippetPostSingleType) => {
+	const post_article_page = post.id
+
+	return await navigateTo(`/post/${post_article_page}`)
+}
+
+const redirect_to_author_page = async (post: SnippetPostSingleType) => {
+	const author_profile_page = post.username
+
+	return await navigateTo(`/user/${author_profile_page}`)
+}
+
 
 </script>
 

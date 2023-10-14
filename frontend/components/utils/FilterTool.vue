@@ -1,6 +1,6 @@
 <template>
-	<div class="py-1" v-if="categories">
-		<div class="py-1 ml-2" v-for="(category, index) in categories" :key="index">
+	<div class="py-1" v-if="store.allTags">
+		<div class="py-1 ml-2" v-for="(category, index) in store.allTags" :key="index">
 			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
 		</div>
 	</div>
@@ -23,15 +23,6 @@ const setupTagURL = `${baseGroundURL}?`
 const selectedCategories = ref<any>({})
 
 const store = useGeneralStore()
-const categories = ref<CategoryType[]>([])
-
-/**
- * Fetches all possible tags
- */
-onMounted(async () => {
-	await fetchAllTags()
-	categories.value = store.allTags ?? []
-})
 
 const selectedCategoryNames = computed(() => {
 	return Object.keys(selectedCategories.value).filter(key => selectedCategories.value[key]);
@@ -61,7 +52,7 @@ const customURL = computed(() => {
  * Fetches new posts automatically based on the customURL
  */
 watchEffect(async () => {
-	await fetchPostSnippets(customURL.value)
+	await fetchPostSnippets(customURL.value) // maybe I should please <- this one longer up?
 })
 
 /**

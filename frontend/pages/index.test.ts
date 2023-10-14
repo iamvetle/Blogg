@@ -4,8 +4,6 @@ import index from "~/pages/index.vue"
 import { useGeneralStore } from '~/store/generalStore';
 import ListArticles from '~/components/modules/Blogg/ListArticles.vue';
 import BaseDropdownMenu from "~/components/base/BaseDropdownMenu.vue";
-import ListArticlesSidebar from '~/components/modules/Blogg/ListArticlesSidebar.vue';
-import Wait from '~/components/layout/Wait.vue';
 
 describe('index page testing', () => {
     let wrapper:VueWrapper

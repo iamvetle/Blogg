@@ -1,14 +1,15 @@
-import { mount } from '@vue/test-utils'
+import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import BaseDropdownMenu from '~/components/base/BaseDropdownMenu.vue'
 
 describe('BaseDropDownMenu testing', () => {
-    let wrapper;
+    let wrapper:VueWrapper;
     let store;
     let pinia;
 
     beforeEach(() => {
+
         pinia = createTestingPinia()
         store = useGeneralStore(pinia)
         wrapper = mount(BaseDropdownMenu, {
@@ -25,6 +26,18 @@ describe('BaseDropDownMenu testing', () => {
         const button = wrapper.find('button')
         expect(button.text()).toContain("Toggle dropdown")
     })
-    test('')
+
+    test("button isnt dropped down", () => {
+        expect(wrapper.text()).not.toContain("Dropdown items")
+    })
+    test('button toggles dropdown', async () => {
+        let button = wrapper.get('button')
+        
+        button.trigger('click')
+
+        await wrapper.vm.$nextTick()
+
+        expect(wrapper.text()).toContain("Dropdown items")
+    })
 
 })

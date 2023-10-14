@@ -9,6 +9,6 @@ describe('folgere page testing', () => {
     })
 
     test('renders followers', () => {
-        expect(wrapper.findComponent({ name: "FollowerType"}))
+        expect(wrapper.findComponent({ name: "Follower"}))
     })
 })

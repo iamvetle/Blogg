@@ -5,7 +5,7 @@
         v-for="f, index in followers" 
         :key="index"
       >
-        <FollowerType
+        <Follower
           :follower="f"
         />
       </div>

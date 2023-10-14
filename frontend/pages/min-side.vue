@@ -1,5 +1,5 @@
 <template>
-	<div v-if="store.personalPosts && store.personalUser">
+	<div v-if="(store.personalPosts) && (store.personalUser)">
 		<div class="py-12 px-8">
 			<div class="container mx-auto py-8">
 				<div class="grid grid-cols-4 sm:grid-cols-12 gap-12 px-4">
@@ -74,7 +74,7 @@
 									Followers
 								</h3>
 								<div v-if="store.personalUser.followers">
-									<FollowerType v-for="f, index in followers" :key="index" :follower="f" />
+									<Follower v-for="(f, index) in followers" :key="index" :follower="f" v-once/>
 								</div>
 								<div v-else>
 									<span>No followers</span>
@@ -120,18 +120,22 @@
 
 <script setup lang="ts">
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
-
 import { useGeneralStore } from '~/store/generalStore';
+
+definePageMeta({
+	layout:'default'
+
+})
 
 const store = useGeneralStore()
 
 const followers = ref<FollowerType | null>(null)
 
-onMounted(async () => {
+onBeforeMount(async () => {
 	await fetchPersonalPosts()
 })
 
-onMounted(async () => {
+onBeforeMount(async () => {
 	await fetchPersonalUser()
 })
 
