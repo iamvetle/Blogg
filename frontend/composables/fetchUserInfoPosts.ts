@@ -18,7 +18,7 @@ export const fetchUserInfoPosts = async (userURL:string) => {
     if (response.data != null) {
       console.log("OK: data fetched", response.data); // print to self
       
-      store.theUser = response.data
+      store.theUser = response.data as NormalUserProfileType
 
     } else {
       console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self
