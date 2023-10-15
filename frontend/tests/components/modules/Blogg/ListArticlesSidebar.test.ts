@@ -20,7 +20,7 @@ describe('ListArticlesSidebar testing', () => {
 		store = useGeneralStore(pinia)
 
 
-		// Mock the fetchPersonalUser function
+		// Mock the getLoggedInUserProfile function
 		store.personalUser = {
 			"id": 13,
 			"email": "person@gmail.com",

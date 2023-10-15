@@ -20,7 +20,7 @@
 
 // import noimage from '~/assets/noimage.jpg'
 
-const post = ref<SinglePostType | null>(null);
+const post = ref<PostSingleType | null>(null);
 
 onMounted(async () => {
 	const route = useRoute();

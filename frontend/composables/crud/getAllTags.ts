@@ -2,7 +2,7 @@ import axios from "axios";
 import { useGeneralStore } from '~/store/generalStore';
 /** Fetches all tags possible */
 
-export const fetchAllTags = async () => {
+export const getAllTags = async () => {
     const baseURL = "http://localhost:8888/api/tags/"
     const store = useGeneralStore()
 

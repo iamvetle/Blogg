@@ -97,7 +97,7 @@ const toPlainText = (htmlContent: string) => {
  * All posts are fetched before the DOM is mounted
  */
 onBeforeMount(async () => {
-	await fetchPostSnippets()
+	await getPostMultipleSnippet()
 	console.log(store.posts)
 })
 
@@ -105,7 +105,7 @@ onBeforeMount(async () => {
  * Redirects the web client to the profile page of the author
  * @param username 
  */
-const redirect_to_author_page = (username: ArticleSnippetSingleType) => {
+const redirect_to_author_page = (username: SnippetPostSingleType) => {
 
 	return navigateTo(`/user/${username}`)
 }
@@ -114,7 +114,7 @@ const redirect_to_author_page = (username: ArticleSnippetSingleType) => {
  * Redirects the web client to the page of the post 
  * @param post 
  */
-const redirect_to_post_page = (postId: ArticleSnippetSingleType) => {
+const redirect_to_post_page = (postId: SnippetPostSingleType) => {
 
 	return navigateTo(`/post/${postId}`)
 }
@@ -128,7 +128,7 @@ const unsave = async (post: number) => {
 
 	store.idArrayOfSavedPosts.splice(index, 1)
 
-	await doSavePost(post)
+	await getSaveOrUnsavePost(post)
 }
 
 /**
@@ -137,14 +137,14 @@ const unsave = async (post: number) => {
  */
 const save = async (post: number) => {
 
-	await doSavePost(post)
+	await getSaveOrUnsavePost(post)
 }
 
 /**
  * 
  * @param author - the 'author' part of the relevant 'post'
  */
-const author_full_name = (author: ArticleSnippetSingleType) => {
+const author_full_name = (author: SnippetPostSingleType) => {
 
 	console.log(author) // print to self
 

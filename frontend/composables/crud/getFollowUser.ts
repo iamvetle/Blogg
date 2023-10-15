@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const followUser = async (url: string) => {
+export const getFollowUser = async (url: string) => {
   try {
     const token = localStorage.getItem("token");
     !token ? console.log("no token") : "";

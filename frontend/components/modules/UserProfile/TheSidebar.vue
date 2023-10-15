@@ -29,7 +29,7 @@
       <span
         id="follow"
         :class="followClass"
-        @click="followUserAction"
+        @click="getFollowUserAction"
         @mouseover="hoverAction('on')"
         @mouseleave="hoverAction('off')"
       >
@@ -145,13 +145,13 @@ const hoverAction = (text:string) => {
     }
 }
 
-const followUserAction = async () => {
+const getFollowUserAction = async () => {
     const followURL = `http://localhost:8888/api/${sideBarProp}/follow/`
     const unfollowURL = `http://localhost:8888/api/${sideBarProp}/unfollow/`
 
     if (followingState.value === false ) {
 
-        const response = await followUser(followURL)
+        const response = await getFollowUser(followURL)
         console.log(response)
 
         if (response != null ) {
@@ -167,7 +167,7 @@ const followUserAction = async () => {
 
     } else {
 
-        const response = await unfollowUser(unfollowURL)
+        const response = await getUnfollowUser(unfollowURL)
 
         if (response != 404) {
 

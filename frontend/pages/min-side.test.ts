@@ -1,38 +1,15 @@
 import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore';
-import minSide from '~/pages/min-side.vue';  // dont know why not working
-
-const personalUser = {
-    id: 3,
-    email: "test@example.com",
-    username: "test32",
-    first_name: "Test",
-    last_name: "Testanson",
-    age: 24,
-    address: "Someaddress 7, 4713 City, Country",
-    nickname: "Tt",
-    num_of_followers: 4,
-};
-
-const personalPosts = [{
-    "id": 17,
-    "title": "This is a title that is made by bob",
-    "author": {
-        "username": "bob",
-        "first_name": "Bob",
-        "last_name": "Smith",
-    },
-    "content_snippet": "Lorem ipsum...",
-    "date_published": "08-12-2021",
-}]
+import minSideVue from '~/pages/min-side.vue';
 
 
-vi.stubGlobal('fetchAllFollowers', () => {
+
+vi.stubGlobal('getLoggedInUserAllFollowers', () => {
     return null
 })
 
-vi.stubGlobal('fetchPersonalPosts', () => {
+vi.stubGlobal('getSnippetPostAllLoggedInUser', () => {
     return null
 })
 
@@ -41,6 +18,29 @@ let store;
 let pinia;
 
 describe('min-side page testing', () => {
+    const personalUser = {
+        id: 3,
+        email: "test@example.com",
+        username: "test32",
+        first_name: "Test",
+        last_name: "Testanson",
+        age: 24,
+        address: "Someaddress 7, 4713 City, Country",
+        nickname: "Tt",
+        num_of_followers: 4,
+    };
+    
+    const personalPosts = [{
+        "id": 17,
+        "title": "This is a title that is made by bob",
+        "author": {
+            "username": "bob",
+            "first_name": "Bob",
+            "last_name": "Smith",
+        },
+        "content_snippet": "Lorem ipsum...",
+        "date_published": "08-12-2021",
+    }]
 
     beforeEach(async () => {
         pinia = createTestingPinia()
@@ -49,7 +49,7 @@ describe('min-side page testing', () => {
         store.personalUser = personalUser
         store.personalPosts = personalPosts
 
-        wrapper = mount(minSide, {
+        wrapper = mount(minSideVue, {
             global: {
                 plugins: [pinia],
             },

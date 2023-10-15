@@ -5,7 +5,7 @@ import { useGeneralStore } from '~/store/generalStore';
  * The function fetches post snippets
  * @param optionalURL 
  */
-export const fetchPostSnippets = async (optionalURL?: string) => {
+export const getPostMultipleSnippet = async (optionalURL?: string) => {
 	const store = useGeneralStore()
 
 	try {
@@ -36,7 +36,7 @@ export const fetchPostSnippets = async (optionalURL?: string) => {
 			/** Makes the pagination-bar correspond to the posts that are fetched */
 			await fixPagination(response.data)
 
-			store.posts = response.data as ArticlesSnippetsType;
+			store.posts = response.data as SnippetPostMultipleType;
 
 			return response.data
 

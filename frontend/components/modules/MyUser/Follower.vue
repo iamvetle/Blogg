@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import user_profile_picture from '~/assets/account-circle-line.svg'
 
-const { follower } = defineProps({
+defineProps({
   follower: {
     type: Object,
     default: null

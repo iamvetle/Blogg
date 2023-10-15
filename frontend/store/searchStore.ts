@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
-import { ArticlesSnippetsType } from '~/typescript/interfaces'
+import { SnippetPostMultipleType } from '~/typescript/interfaces'
 
 export const useSearchStore = defineStore("search", () => {
     
     // STATES 
 
-    const searchPosts = ref<ArticlesSnippetsType | null>(null)
+    const searchPosts = ref<SnippetPostMultipleType | null>(null)
     const lastSearch = ref("")
     const baseSearchURL = ref("http://localhost:8888/api/search/")
 

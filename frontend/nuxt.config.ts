@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     },
   ],
   imports: {
-    dirs:['./typescript', './store']
+    dirs:['./typescript', './store', './composables/crud']
   },
   modules: [
     "@nuxtjs/tailwindcss",

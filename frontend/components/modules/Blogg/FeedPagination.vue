@@ -85,7 +85,7 @@ const click_next_page = async () => {
 	if (store.next_page_link != null) {
 		store.baseFeedURL = store.next_page_link
 
-		await fetchPostSnippets()
+		await getPostMultipleSnippet()
 	} else {
 		console.log("cannot go any further")
 	}
@@ -96,7 +96,7 @@ const click_previous_page = async () => {
 	if (store.previous_page_link != null) {
 		store.baseFeedURL = store.previous_page_link
 
-		await fetchPostSnippets()
+		await getPostMultipleSnippet()
 	} else {
 		console.log("cannot go any more back")
 	}
@@ -113,7 +113,7 @@ const click_previous_page = async () => {
 
 // 		console.log(store.baseSearchURL)
 
-// 		await fetchPostSnippets()
+// 		await getPostMultipleSnippet()
 // 	} else {
 // 		console.log("cannot go any further back")
 // 	}

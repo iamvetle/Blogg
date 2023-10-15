@@ -43,7 +43,7 @@ Det er den tingen jeg savner mest og hva jeg ønsker å fokusere på.
 
 ### Serializers og views
 
-- [ ] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
+- [x] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
 
 ---
 
@@ -90,6 +90,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
   - [x] Antall _jeg følger_
   - [x] Brukerne, navnene til de jeg følger
   - [ ] Finne ut av hva jeg skal gjøre med "**_les mer_**" feltet. Skal jeg bli 'redirected' et sted?
+  - [ ] make it possible to go to the posts that I have saved
 
 
 ---
@@ -120,6 +121,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 - [ ] Put pagnation there if the users have a lot of posts
 - [ ] Give users the ability to edit their own posts
   - How?
+    - i should probebly make it possible to make propper posts first
   - 
 - [ ] Fix the pagnation bottom bar that currently has no functionality
 
@@ -143,14 +145,14 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ---
 
-- [ ] -> Implementere "tags" eller categories inn i "search" eller "sorter"
+- [x] -> Implementere "tags" eller categories inn i "search" eller "sorter"
   - Sorter og søk kan kanskje være det samme. Tags og categories kan kanskje også være det.
 
 ---
 
 **Sortere/finne artikler etter tags/categories**
 
-- [ ] Først lage en prototype hvor jeg lister **alle tagsa** og så kan jeg velge **én** som jeg kan sortere etter
+- [x]ish Først lage en prototype hvor jeg lister **alle tagsa** og så kan jeg velge **én** som jeg kan sortere etter
   - deretter øke derifra
   - kanskej dropdown
   - kanskje velge flere eller bare en,

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchAllFollowers = async (url: string) => {
+export const getLoggedInUserAllFollowers = async (url: string) => {
 	
 try {
 	const token = localStorage.getItem("token");

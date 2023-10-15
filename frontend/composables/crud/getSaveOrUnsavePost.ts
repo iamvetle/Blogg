@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const doSavePost = async (postId:any) => {
+export const getSaveOrUnsavePost = async (postId:any) => {
 		try {
 			const token = localStorage.getItem("token");
 	
@@ -15,7 +15,7 @@ export const doSavePost = async (postId:any) => {
 			// }
 			
 			/** Calls the composable that fetches profile information about the logged in user, so that the saved posts can be updated */
-			await fetchPersonalUser()
+			await getLoggedInUserProfile()
 			
 			return response.data;
 		} catch (e) {

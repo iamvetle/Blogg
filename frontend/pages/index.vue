@@ -1,10 +1,12 @@
 <template>
 	<div id="site-wrapper" v-if="store.isAuthenticated" class="mt-8">
-		<div class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
+		<div v-if="store.posts && store.personalUser" class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
 			<ListArticles class="col-span-6 mx-auto" />
+			
+			
 			<div class="col-span-4 mx-auto">
 
-				<base-dropdown-menu v-if="store.personalUser" class="mb-4">
+				<base-dropdown-menu  v-if="store.idArrayOfSavedPosts" class="mb-4">
 
 					<template #filter>
 
@@ -14,11 +16,11 @@
 
 				</base-dropdown-menu>
 
-				<ListArticlesSidebar />
+				<ListArticlesSidebar/>
 			</div>
 		</div>
 	</div>
-	<div v-if="store.isAuthenticated != true">
+	<div v-if="store.isAuthenticated === false">
 		<Wait />
 	</div>
 </template>
@@ -33,21 +35,35 @@ console.log(store.isAuthenticated); // print to self
 /**
  * Updates the page layout to a plain one if you are 'unauthenticated'. 
  * The function 'watches' the 'global' variable that says if you are 'unauthenticated'.
+ * or the other way around
  */
-watchEffect(() => {
-	if (store.isAuthenticated === false) {
-		setPageLayout("blank");
-	}
-})
-/**
- * Updates the page layout to one meant for 'feed/listing articles', if you are 'authenticated/logged in'. 
- * The function 'watches' the 'global' variable that says if you are 'authenticated'.
- */
+
 watchEffect(() => {
 	if (store.isAuthenticated === true) {
 		setPageLayout("feed-layout");
 	}
+	if (store.isAuthenticated === false) {
+		setPageLayout("blank");
+	}
 })
+
+onBeforeMount(async () => {
+	await getLoggedInUserProfile()
+})
+
+onBeforeMount(async () => {
+	await getPostMultipleSnippet()
+	console.log(store.posts)
+})
+
+/**
+ * Fetches all possible tags
+ */
+onBeforeMount(async () => {
+	await getAllTags()
+})
+
+
 
 </script>
 

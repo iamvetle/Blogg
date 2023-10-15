@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const createNewPost = async (url: string, formData: object) => {
+export const postCreateNewPost = async (url: string, formData: object) => {
   const token = localStorage.getItem("token");
 
   try {

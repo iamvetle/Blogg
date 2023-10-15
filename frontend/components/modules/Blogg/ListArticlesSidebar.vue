@@ -45,8 +45,8 @@
 			</h3>
 
 			<div class="saved-article" v-if="store.personalUser.saved_posts">
-				<ArticleSavedCard v-for="(post, index) in store.personalUser.saved_posts" :saved-article-prop="post"
-					:key="index" />
+				<ArticleSavedCard v-for="post in store.personalUser.saved_posts" :saved-article-prop="post"
+					:key="post.id" />
 			</div>
 
 			<p v-if="store.personalUser.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">
@@ -88,10 +88,6 @@ import profile_picture from '~/assets/placeholder-profile-picture.png'
 import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
-
-onBeforeMount(async () => {
-	await fetchPersonalUser()
-})
 
 /**
  * Either returns the full name of the user, or returns only the username (which is not supposed to actually happen)

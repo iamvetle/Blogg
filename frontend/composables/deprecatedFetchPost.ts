@@ -1,4 +1,7 @@
 // async
+/**
+ * @deprecated
+ */
 
 import axios from 'axios' 
 

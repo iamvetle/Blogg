@@ -7,14 +7,14 @@ export const useGeneralStore = defineStore("general", () => {
   const username = ref<string | null>(null);
 
   // Posts
-  const posts = ref<ArticlesSnippetsType | null>(null)
+  const posts = ref<SnippetPostMultipleType | null>(null)
 
   // [id] user
-  const theUser = ref<AccountType | null>(null) 
+  const theUser = ref<NormalUserProfileType | null>(null) 
 
   // Min side
-  const personalPosts = ref<ArticlesSnippetsType | null>(null)
-  const personalUser = ref<PersonalUserType | null>(null)
+  const personalPosts = ref<SnippetPostMultipleType | null>(null)
+  const personalUser = ref<LoggedInUserProfileType | null>(null)
 
   // Links
   const baseFeedURL = "http://localhost:8888/api/search/"
@@ -37,7 +37,7 @@ export const useGeneralStore = defineStore("general", () => {
   const search_bar_show = ref(false)
 
   /** Contains names of all the tags possible */
-  const allTags = ref<Category[]>([])
+  const allTags = ref<CategoryType[]>([])
 
   const idArrayOfSavedPosts = ref<number[]>([])
 

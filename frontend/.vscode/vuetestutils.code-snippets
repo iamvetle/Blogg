@@ -1,0 +1,91 @@
+{
+	// Place your frontend workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"Vue Test Utils beforeEach and afterEach": {
+		"prefix": "vueTestSetup",
+		"body": [
+			"import $1",
+			"import { VueWrapper, shallowMount } from '@vue/test-utils';",
+			"import { createTestingPinia } from '@pinia/testing';",
+			"import { useGeneralStore } from '~/store/generalStore';",
+			"",
+			"describe('$2', () => {",
+			"  let wrapper: VueWrapper;",
+			"  let store: any;",
+			"",
+			"  beforeEach(() => {",
+			"    const pinia = createTestingPinia();",
+			"    store = useGeneralStore(pinia);",
+			"",
+			"    wrapper = shallowMount($3, {",
+			"      global: {",
+			"        plugins: [pinia],",
+			"        components: {$4},",
+			"        mocks: {},",
+			"        stubs: {}",
+			"      },",
+			"		props:{$5}",
+			"    });",
+			"  });",
+			"",
+			"  afterEach(() => {",
+			"    if (wrapper) {",
+			"      wrapper.unmount();",
+			"    }",
+			"  });",
+			"",
+			"  $0",
+			"});"
+		],
+		"description": "Snippet for setting up Vue Test Utils with beforeEach and afterEach"
+	},
+
+	"Vue Mount Component": {
+		"prefix": "vueMount",
+		"body": [
+		"const wrapper = shallowMount($1, {",
+		"  global: {",
+		"    plugins: [$2],",
+		"    components: {$3},",
+		"    mocks: {},",
+		"    stubs: {}",
+		"  },",
+		"	props:{$4}",
+		"})"
+		"$0"
+		],
+		"description": "Snippet for mounting a Vue component with Vue Test Utils"
+	},
+
+	"Vue Test Block": {
+		"prefix": "vueTest",
+		"body": [
+		"test('$1', () => {",
+		"  $0",
+		"})"
+		],
+		"description": "Snippet for a simple Vue test block"
+	},
+	"Vue Expect": {
+		"prefix": "vueExpect",
+		"body": [
+		"expect($1).$2"
+		],
+		"description": "Snippet for writing an expect statement in Vue tests"
+	}
+}

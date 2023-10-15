@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useGeneralStore } from "~/store/generalStore";
 
-export const fetchPersonalUser = async () => {
+export const getLoggedInUserProfile = async () => {
   try {
     const store = useGeneralStore()
 
@@ -18,7 +18,7 @@ export const fetchPersonalUser = async () => {
     const response = await axios.get(LoggedinUserURL, { headers });
     console.log("OK: fetched personal user account", response.data); // print to self
     
-    store.personalUser = response.data as PersonalUserType
+    store.personalUser = response.data as LoggedInUserProfileType
     console.dir(response.data)
 
     for (const savedPost of store.personalUser.saved_posts) {
