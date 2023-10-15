@@ -47,7 +47,7 @@ if (postState.value == false) {
 
 const publishPost = async (request_body: object) => {
 	const baseURL = "http://localhost:8888/api/newpost/"
-	postState.value = await createNewPost(baseURL, request_body)
+	postState.value = await postCreateNewPost(baseURL, request_body)
 }
 </script>
 

@@ -11,7 +11,7 @@ declare global {
   const checkLocalInfo: typeof import('./composables/checkLocalInfo')['checkLocalInfo']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
-  const createNewPost: typeof import('./composables/createNewPost')['createNewPost']
+  const createNewPost: typeof import('./composables/crud/postCreateNewPost')['createNewPost']
   const customRef: typeof import('vue')['customRef']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
@@ -66,7 +66,7 @@ declare global {
   const toRefs: typeof import('vue')['toRefs']
   const toValue: typeof import('vue')['toValue']
   const triggerRef: typeof import('vue')['triggerRef']
-  const unfollowUser: typeof import('./composables/unfollowUser')['unfollowUser']
+  const unfollowUser: typeof import('./composables/getUnfollowUser')['unfollowUser']
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
@@ -92,7 +92,7 @@ declare module 'vue' {
     readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
-    readonly createNewPost: UnwrapRef<typeof import('./composables/createNewPost')['createNewPost']>
+    readonly createNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['createNewPost']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
@@ -147,7 +147,7 @@ declare module 'vue' {
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
-    readonly unfollowUser: UnwrapRef<typeof import('./composables/unfollowUser')['unfollowUser']>
+    readonly unfollowUser: UnwrapRef<typeof import('./composables/getUnfollowUser')['unfollowUser']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
@@ -167,7 +167,7 @@ declare module '@vue/runtime-core' {
     readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
-    readonly createNewPost: UnwrapRef<typeof import('./composables/createNewPost')['createNewPost']>
+    readonly createNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['createNewPost']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
@@ -222,7 +222,7 @@ declare module '@vue/runtime-core' {
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
-    readonly unfollowUser: UnwrapRef<typeof import('./composables/unfollowUser')['unfollowUser']>
+    readonly unfollowUser: UnwrapRef<typeof import('./composables/getUnfollowUser')['unfollowUser']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>

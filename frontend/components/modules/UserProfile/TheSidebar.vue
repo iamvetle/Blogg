@@ -167,7 +167,7 @@ const getFollowUserAction = async () => {
 
     } else {
 
-        const response = await ungetFollowUser(unfollowURL)
+        const response = await getUnfollowUser(unfollowURL)
 
         if (response != 404) {
 
