@@ -132,7 +132,7 @@ const store = useGeneralStore()
 const followers = ref<FollowerType | null>(null)
 
 onBeforeMount(async () => {
-	await fetchPersonalPosts()
+	await getSnippetPostAllLoggedInUser()
 })
 
 onBeforeMount(async () => {

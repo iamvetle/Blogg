@@ -5,11 +5,11 @@ import minSideVue from '~/pages/min-side.vue';
 
 
 
-vi.stubGlobal('fetchAllFollowers', () => {
+vi.stubGlobal('getLoggedInUserAllFollowers', () => {
     return null
 })
 
-vi.stubGlobal('fetchPersonalPosts', () => {
+vi.stubGlobal('getSnippetPostAllLoggedInUser', () => {
     return null
 })
 

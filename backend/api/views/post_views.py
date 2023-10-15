@@ -35,7 +35,7 @@ CustomUser = get_user_model()
 # queryset = Post.objects.all().order_by("-date_published")
 
 
-class PostAllLoggedInUserView(APIView):
+class PostAllLoggedInUserView(APIView): # they are also shortened, snippets
     """Retrieves all posts created by the logged in user"""
 
     permission_classes = [IsAuthenticated]

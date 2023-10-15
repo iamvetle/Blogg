@@ -77,7 +77,7 @@ class UnfollowUserView(APIView):
             print("Failed to unfollow")
             return Response("Failed to unfollow", status=status.HTTP_400_BAD_REQUEST)
 
-class CurrentFollowersView(APIView):
+class LoggedInUserAllFollowers(APIView):
     ''' Returns a list of users following the logged-in user '''
     permission_classes = [IsAuthenticated]
     

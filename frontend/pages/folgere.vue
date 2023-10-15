@@ -21,7 +21,7 @@ const followers = ref<object | null>(null)
 
 onMounted(() => {
     (async() => {
-        followers.value = await fetchAllFollowers(baseURL)
+        followers.value = await getLoggedInUserAllFollowers(baseURL)
     })()
 })
 

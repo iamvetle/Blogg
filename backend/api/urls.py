@@ -16,7 +16,7 @@ from api.views.user_views import (
     LoggedInUserProfileView,
     NormalUserProfileView,
     FollowUserView,
-    CurrentFollowersView,
+    LoggedInUserAllFollowers,
     UnfollowUserView,
     CurrentFollowingView,
 )
@@ -31,7 +31,7 @@ urlpatterns = [
     path("tags/", AllTagsView.as_view(), name="tags"),
     path("categories/", AllCategoriesView.as_view(), name="tags"),
     path("min-side/posts/", PostAllLoggedInUserView.as_view(), name="my_posts"),
-    path("min-side/followers/", CurrentFollowersView.as_view(), name="my_followers"),
+    path("min-side/followers/", LoggedInUserAllFollowers.as_view(), name="my_followers"),
     path("min-side/", LoggedInUserProfileView.as_view(), name="min_side"),
     path("feed/", PostMultipleShortenedView.as_view(), name="all_posts"),
     path("login/", LoginView.as_view(), name="login"),

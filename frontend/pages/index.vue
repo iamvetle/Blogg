@@ -60,7 +60,7 @@ onBeforeMount(async () => {
  * Fetches all possible tags
  */
 onBeforeMount(async () => {
-	await fetchAllTags()
+	await getAllTags()
 })
 
 
