@@ -102,8 +102,8 @@
 				</div>
 
 				<div id="sidebar" class="px-5 col-span-4 border-v border-red-500">
-					<TheUserSidebar v-if="store.theUser[0].posts" :side-bar-prop="userProp"
-						:num_of_followers="followers" />
+					<TheUserSidebar v-if="store.theUser[0].posts" :username="username"
+						:num_of_followers="followers ?? 0" />
 				</div>
 			</div>
 		</div>
@@ -128,10 +128,9 @@ const toPlainText = (raw: string) => {
 
 const store = useGeneralStore()
 
-const userProp = ref(null);
 const first_name = ref(null);
 const last_name = ref(null);
-const followers = ref(null)
+const followers = ref(null);
 const username = ref(null)
 const color = ref("fill-black")
 
@@ -158,9 +157,8 @@ onBeforeMount(async () => {
 	//
 	first_name.value = store.theUser[0].posts[0].author.first_name ?? null
 	last_name.value = store.theUser[0].posts[0].author.last_name ?? null
-	username.value = store.theUser[0].posts[0].author.username
 
-	userProp.value = username.value;
+	username.value = store.theUser[0].posts[0].author.username
 
 })
 
