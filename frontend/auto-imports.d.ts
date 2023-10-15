@@ -26,7 +26,7 @@ declare global {
   const fetchPostSnippets: typeof import('./composables/fetchPostSnippets')['fetchPostSnippets']
   const fetchUserInfoPosts: typeof import('./composables/fetchUserInfoPosts')['fetchUserInfoPosts']
   const fixPagination: typeof import('./composables/fixPagination')['fixPagination']
-  const followUser: typeof import('./composables/followUser')['followUser']
+  const followUser: typeof import('./composables/getFollowUser')['followUser']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const h: typeof import('vue')['h']
@@ -107,7 +107,7 @@ declare module 'vue' {
     readonly fetchPostSnippets: UnwrapRef<typeof import('./composables/fetchPostSnippets')['fetchPostSnippets']>
     readonly fetchUserInfoPosts: UnwrapRef<typeof import('./composables/fetchUserInfoPosts')['fetchUserInfoPosts']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
-    readonly followUser: UnwrapRef<typeof import('./composables/followUser')['followUser']>
+    readonly followUser: UnwrapRef<typeof import('./composables/getFollowUser')['followUser']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
@@ -182,7 +182,7 @@ declare module '@vue/runtime-core' {
     readonly fetchPostSnippets: UnwrapRef<typeof import('./composables/fetchPostSnippets')['fetchPostSnippets']>
     readonly fetchUserInfoPosts: UnwrapRef<typeof import('./composables/fetchUserInfoPosts')['fetchUserInfoPosts']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
-    readonly followUser: UnwrapRef<typeof import('./composables/followUser')['followUser']>
+    readonly followUser: UnwrapRef<typeof import('./composables/getFollowUser')['followUser']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
