@@ -128,7 +128,7 @@ const unsave = async (post: number) => {
 
 	store.idArrayOfSavedPosts.splice(index, 1)
 
-	await doSavePost(post)
+	await getSaveOrUnsavePost(post)
 }
 
 /**
@@ -137,7 +137,7 @@ const unsave = async (post: number) => {
  */
 const save = async (post: number) => {
 
-	await doSavePost(post)
+	await getSaveOrUnsavePost(post)
 }
 
 /**
