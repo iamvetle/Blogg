@@ -24,7 +24,7 @@ declare global {
   const fetchPersonalUser: typeof import('./composables/crud/getLoggedInUserProfile')['fetchPersonalUser']
   const fetchPost: typeof import('./composables/deprecatedFetchPost')['fetchPost']
   const fetchPostSnippets: typeof import('./composables/getPostMultipleSnippet')['fetchPostSnippets']
-  const fetchUserInfoPosts: typeof import('./composables/fetchUserInfoPosts')['fetchUserInfoPosts']
+  const fetchUserInfoPosts: typeof import('./composables/getNormalUserProfileAndPosts')['fetchUserInfoPosts']
   const fixPagination: typeof import('./composables/fixPagination')['fixPagination']
   const followUser: typeof import('./composables/getFollowUser')['followUser']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
@@ -50,7 +50,7 @@ declare global {
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
-  const postForm: typeof import('./composables/postForm')['postForm']
+  const postForm: typeof import('./composables/crud/postForm')['postForm']
   const provide: typeof import('vue')['provide']
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
@@ -105,7 +105,7 @@ declare module 'vue' {
     readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['fetchPersonalUser']>
     readonly fetchPost: UnwrapRef<typeof import('./composables/deprecatedFetchPost')['fetchPost']>
     readonly fetchPostSnippets: UnwrapRef<typeof import('./composables/getPostMultipleSnippet')['fetchPostSnippets']>
-    readonly fetchUserInfoPosts: UnwrapRef<typeof import('./composables/fetchUserInfoPosts')['fetchUserInfoPosts']>
+    readonly fetchUserInfoPosts: UnwrapRef<typeof import('./composables/getNormalUserProfileAndPosts')['fetchUserInfoPosts']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
     readonly followUser: UnwrapRef<typeof import('./composables/getFollowUser')['followUser']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -131,7 +131,7 @@ declare module 'vue' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
-    readonly postForm: UnwrapRef<typeof import('./composables/postForm')['postForm']>
+    readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
@@ -180,7 +180,7 @@ declare module '@vue/runtime-core' {
     readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['fetchPersonalUser']>
     readonly fetchPost: UnwrapRef<typeof import('./composables/deprecatedFetchPost')['fetchPost']>
     readonly fetchPostSnippets: UnwrapRef<typeof import('./composables/getPostMultipleSnippet')['fetchPostSnippets']>
-    readonly fetchUserInfoPosts: UnwrapRef<typeof import('./composables/fetchUserInfoPosts')['fetchUserInfoPosts']>
+    readonly fetchUserInfoPosts: UnwrapRef<typeof import('./composables/getNormalUserProfileAndPosts')['fetchUserInfoPosts']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
     readonly followUser: UnwrapRef<typeof import('./composables/getFollowUser')['followUser']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -206,7 +206,7 @@ declare module '@vue/runtime-core' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
-    readonly postForm: UnwrapRef<typeof import('./composables/postForm')['postForm']>
+    readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>

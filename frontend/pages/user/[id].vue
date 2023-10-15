@@ -117,7 +117,7 @@ import placeholder_header_image from '~/assets/placeholder-image.jpg'
 // import UserPostCard from '~/components/modules/Blogg/UserPostCard.vue';
 import TheSidebar from '~/components/modules/UserProfile/TheSidebar.vue';
 import { useGeneralStore } from '~/store/generalStore';
-import { fetchUserInfoPosts } from '../../composables/fetchUserInfoPosts';
+import { getNormalUserProfileAndPosts } from '../../composables/getNormalUserProfileAndPosts';
 const post_image = ref('https://picsum.photos/500/300')
 
 /** Essentially 'dumps' the input into a div and returns the plain text */
@@ -146,7 +146,7 @@ onBeforeMount(async () => {
 	const route = useRoute();
 	const theUserURL = `http://localhost:8888/api/${route.params.id}/`;
 
-	await fetchUserInfoPosts(theUserURL);
+	await getNormalUserProfileAndPosts(theUserURL);
 	console.dir(toRaw(store.theUser[0]))
 
 	followers.value = store.theUser[0].posts[0].num_of_followers;
@@ -200,3 +200,4 @@ const save = async (post: number) => {
 </script>
 
 <style scoped></style>
+../../composables/getNormalUserProfile
