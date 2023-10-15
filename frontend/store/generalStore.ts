@@ -41,9 +41,11 @@ export const useGeneralStore = defineStore("general", () => {
 
   const idArrayOfSavedPosts = ref<number[]>([])
 
+  const idArrayOfFollowingUsers = ref<string[]>([])
+
   const changeAuthenticated = (state: boolean) => {
     isAuthenticated.value = state;
   };
 
-  return { posts, allTags, idArrayOfSavedPosts, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
+  return { posts, idArrayOfFollowingUsers, allTags, idArrayOfSavedPosts, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
 });

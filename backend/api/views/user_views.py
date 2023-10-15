@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 ## Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
@@ -87,11 +88,32 @@ class LoggedInUserAllFollowers(APIView):
         print(followers.data)
         
         if followers.data is not None:            
-            print("List of users that you are following", followers.data)
+            print("List of followers", followers.data)
             return Response(followers.data, status=status.HTTP_200_OK)
         else:
             print("You have no followers lol (or there is an error)", followers.errors)
             return Response("You have no followers lol (or there is an error)", status=status.HTTP_204_NO_CONTENT)
+
+
+class LoggedInUserAllFollowing(ListAPIView):
+    '''Returns a list of users that the logged-in user is following'''
+    permission_classes = [IsAuthenticated]
+    
+    def get(self, request):
+        
+        following = MyProfileService.get_all_following(request)
+        print(following.data)
+        
+        if following.data is not None:
+            print("List of users that you are following", following.data)
+            return Response(following.data, status=status.HTTP_200_OK)
+        else:
+            print("You are not following anybody")
+            return Response("You are not following anybody", status=status.HTTP_204_NO_CONTENT)
+        
+
+
+
 
 class CurrentFollowingView(APIView):
     ''' Returns a list of the users the logged-in user is following '''

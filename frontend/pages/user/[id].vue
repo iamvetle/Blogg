@@ -131,7 +131,7 @@ const store = useGeneralStore()
 const first_name = ref(null);
 const last_name = ref(null);
 const followers = ref(null);
-const username = ref(null)
+const username = ref<string>("")
 const color = ref("fill-black")
 
 const redirect_to_post_page = async (post: SnippetPostSingleType) => {
@@ -158,7 +158,7 @@ onBeforeMount(async () => {
 	first_name.value = store.theUser[0].posts[0].author.first_name ?? null
 	last_name.value = store.theUser[0].posts[0].author.last_name ?? null
 
-	username.value = store.theUser[0].posts[0].author.username
+	username.value = store.theUser[0].posts[0].author.username ?? ""
 
 })
 

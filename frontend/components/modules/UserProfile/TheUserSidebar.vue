@@ -72,31 +72,38 @@
 
 import placeholder_user_profile_picture from '~/assets/placeholder-profile-picture.png'
 import user_profile_picture from '~/assets/account-circle-line.svg'
-
+import { useGeneralStore } from '~/store/generalStore';
 import three_doties from '~/assets/three-dots.svg'
+import { checkIfFollowingUser } from '../../../composables/checkIfFollowingUser';
 
+const store = useGeneralStore()
 const props = defineProps<{
-	username :string | null,
+	username :string,
 	num_of_followers:number,
 }>();
 
 const three_dots = three_doties
 
-const followers = ref(props.num_of_followers)
+const followers = computed(() => {
+	return store.idArrayOfFollowingUsers.length
+})
 const followText = ref<string>("Follow")
-const followingState = ref(false)
+
+const followingState = computed(() => {
+	return checkIfFollowingUser(props.username)
+})
 
 const followClass = ref("bg-secondary px-3 py-2 text-onSecondary rounded-md text-sm hover:bg-secondaryFixedDim")
 
 const hoverAction = (text: string) => {
 	if (text === "on" && followingState.value === true && followText.value === "Following") {
 		followText.value = "Unfollow"
-		followClass.value = "bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-warning-low"
+		followClass.value = "bg-secondary text-onSecondary px-3 py-2 rounded-md text-sm hover:bg-secondaryFixed"
 
 
 	} else if (text === "off" && followingState.value === true && followText.value === "Unfollow") {
 		followText.value = "Following"
-		followClass.value = "bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-secondary-low"
+		followClass.value = "bg-secondary text-onSecondary px-3 py-2 rounded-md text-sm hover:bg-secondaryFixed"
 
 	}
 }
@@ -110,12 +117,13 @@ const getFollowUserAction = async () => {
 		const response = await getFollowUser(followURL)
 		console.log(response)
 
-		if (response != null) {
+		if (response) {
+			console.log("followuser")
+
 
 			followText.value = "Following"
-			followingState.value = true
-			followClass.value = "bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-secondary-low"
-			followers.value++
+			followClass.value = "bg-secondary text-onSecondary px-3 py-2 rounded-md text-sm hover:bg-secondaryFixed"
+			store.idArrayOfFollowingUsers.push(props.username)
 
 		} else {
 			console.log("something went wrong. did not manage to follow") // print to self
@@ -124,13 +132,16 @@ const getFollowUserAction = async () => {
 	} else {
 
 		const response = await getUnfollowUser(unfollowURL)
+		console.log(response)
 
-		if (response != 404) {
+		if (response != null) {
 
+			console.log("unfollowuser")
 			followText.value = "Follow"
-			followingState.value = false
-			followClass.value = "bg-secondary-base text-plain px-3 py-2 rounded-md text-sm hover:bg-secondary-low"
-			followers.value--
+			followClass.value = "bg-secondary text-onSecondary px-3 py-2 rounded-md text-sm hover:bg-secondaryFixed"
+			
+			const index = store.idArrayOfFollowingUsers.findIndex((id) => id === props.username)
+			store.idArrayOfFollowingUsers.splice(index, 1)
 		}
 	}
 

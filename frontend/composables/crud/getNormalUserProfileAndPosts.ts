@@ -23,6 +23,7 @@ export const getNormalUserProfileAndPosts = async (userURL:string) => {
     } else {
       console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self
     }
+    await getLoggedInUserAllFollowing()
 
   } catch (error) {
     console.error("ERROR: An error occured while trying to fetch data: ", error); // print to self
