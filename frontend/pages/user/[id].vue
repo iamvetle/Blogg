@@ -102,7 +102,7 @@
 				</div>
 
 				<div id="sidebar" class="px-5 col-span-4 border-v border-red-500">
-					<TheUserSidebar v-if="store.theUser[0].posts" :username="username"
+					<TheUserSidebar v-if="store.theUser" :username="username"
 						:num_of_followers="followers ?? 0" />
 				</div>
 			</div>
