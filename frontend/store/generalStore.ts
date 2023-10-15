@@ -19,7 +19,7 @@ export const useGeneralStore = defineStore("general", () => {
   // Links
   const baseFeedURL = "http://localhost:8888/api/search/"
   const post_snippets_url = ref<string>("http://localhost:8888/api/feed/")
-  const personal_post_snippets_url = ref<string>("http://localhost:8888/api/min-side/posts/")
+  const personal_post_snippets_url = ref<string>("http://localhost:8888/api/minkonto/posts/")
 
   const next_page_link = ref<string>("")
   const previous_page_link = ref<string>("")

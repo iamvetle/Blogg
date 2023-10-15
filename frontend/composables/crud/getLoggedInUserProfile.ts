@@ -5,7 +5,7 @@ export const getLoggedInUserProfile = async () => {
   try {
     const store = useGeneralStore()
 
-    const LoggedinUserURL = "http://localhost:8888/api/min-side/"
+    const LoggedinUserURL = "http://localhost:8888/api/minkonto/"
 
     const token = localStorage.getItem("token");
     !token ? console.log("no token") : "";

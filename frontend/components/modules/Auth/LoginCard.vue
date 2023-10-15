@@ -59,7 +59,7 @@ const submitForm = async (formData) => {
 
 		setTimeout(() => {
 			if (redirect === true) {
-				return navigateTo("min-side");
+				return navigateTo("minkonto");
 			}
 		}, 1000);
 	} else {

@@ -38,7 +38,7 @@ defineProps({
 
 const redirect_to_my_profile_page = () => {
 
-	return navigateTo(`/min-side/`)
+	return navigateTo(`/minkonto/`)
 }
 
 </script>

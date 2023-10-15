@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-// For the posts in the 'min-side'
+// For the posts in the 'minkonto'
 
 const { postProp } = defineProps(["postProp"]);
 console.log(postProp)

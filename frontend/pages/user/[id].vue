@@ -102,7 +102,7 @@
 				</div>
 
 				<div id="sidebar" class="px-5 col-span-4 border-v border-red-500">
-					<TheSidebar v-if="store.theUser[0].posts" :side-bar-prop="userProp"
+					<TheUserSidebar v-if="store.theUser[0].posts" :side-bar-prop="userProp"
 						:num_of_followers="followers" />
 				</div>
 			</div>
@@ -115,7 +115,7 @@
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
 // import UserPostCard from '~/components/modules/Blogg/UserPostCard.vue';
-import TheSidebar from '~/components/modules/UserProfile/TheSidebar.vue';
+import TheUserSidebar from '~/components/modules/UserProfile/TheUserSidebar.vue';
 import { useGeneralStore } from '~/store/generalStore';
 const post_image = ref('https://picsum.photos/500/300')
 

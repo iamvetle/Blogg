@@ -28,7 +28,7 @@ describe("thenavvbarr testing", () => {
         expect(wrapper.text()).toContain("Min profil")
 
     })
-    test("does not render nytt innleg and min-side icons when not authenticated", () => {
+    test("does not render nytt innleg and minkonto icons when not authenticated", () => {
         wrapper.unmount()
 
         store.isAuthenticated = false

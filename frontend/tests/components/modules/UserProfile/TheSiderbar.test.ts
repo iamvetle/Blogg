@@ -1,15 +1,15 @@
 import { VueWrapper, mount } from '@vue/test-utils'
-import TheSidebar from '~/components/modules/UserProfile/TheSidebar.vue'
+import TheUserSidebar from '~/components/modules/UserProfile/TheUserSidebar.vue'
 
 vi.stubGlobal("useRoute", () => {
     
 })
 
-describe('min-side page testing', () => {
+describe('minkonto page testing', () => {
     let wrapper:VueWrapper
 
     beforeEach(() => {
-        wrapper = mount(TheSidebar)
+        wrapper = mount(TheUserSidebar)
     })
 
     test('exists', () => {

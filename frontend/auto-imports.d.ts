@@ -27,8 +27,17 @@ declare global {
   const fetchUserInfoPosts: typeof import('./composables/getNormalUserProfileAndPosts')['fetchUserInfoPosts']
   const fixPagination: typeof import('./composables/fixPagination')['fixPagination']
   const followUser: typeof import('./composables/getFollowUser')['followUser']
+  const getAllTags: typeof import('./composables/crud/getAllTags')['getAllTags']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getFollowUser: typeof import('./composables/crud/getFollowUser')['getFollowUser']
+  const getLoggedInUserAllFollowers: typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']
+  const getLoggedInUserProfile: typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']
+  const getNormalUserProfileAndPosts: typeof import('./composables/crud/getNormalUserProfileAndPosts')['getNormalUserProfileAndPosts']
+  const getPostMultipleSnippet: typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']
+  const getSaveOrUnsavePost: typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']
+  const getSnippetPostAllLoggedInUser: typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']
+  const getUnfollowUser: typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']
   const h: typeof import('vue')['h']
   const inject: typeof import('vue')['inject']
   const isProxy: typeof import('vue')['isProxy']
@@ -50,6 +59,7 @@ declare global {
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
+  const postCreateNewPost: typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']
   const postForm: typeof import('./composables/crud/postForm')['postForm']
   const provide: typeof import('vue')['provide']
   const reactive: typeof import('vue')['reactive']
@@ -92,24 +102,24 @@ declare module 'vue' {
     readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
-    readonly createNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['createNewPost']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
-    readonly doSavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['doSavePost']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
-    readonly fetchAllFollowers: UnwrapRef<typeof import('./composables/crud/getAllLoggedInUserFollowers')['fetchAllFollowers']>
-    readonly fetchAllTags: UnwrapRef<typeof import('./composables/getAllTags')['fetchAllTags']>
-    readonly fetchPersonalPosts: UnwrapRef<typeof import('./composables/getSnippetPostsAllLoggedInUser')['fetchPersonalPosts']>
-    readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['fetchPersonalUser']>
     readonly fetchPost: UnwrapRef<typeof import('./composables/deprecatedFetchPost')['fetchPost']>
-    readonly fetchPostSnippets: UnwrapRef<typeof import('./composables/getPostMultipleSnippet')['fetchPostSnippets']>
-    readonly fetchUserInfoPosts: UnwrapRef<typeof import('./composables/getNormalUserProfileAndPosts')['fetchUserInfoPosts']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
-    readonly followUser: UnwrapRef<typeof import('./composables/getFollowUser')['followUser']>
+    readonly getAllTags: UnwrapRef<typeof import('./composables/crud/getAllTags')['getAllTags']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getFollowUser: UnwrapRef<typeof import('./composables/crud/getFollowUser')['getFollowUser']>
+    readonly getLoggedInUserAllFollowers: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']>
+    readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
+    readonly getNormalUserProfileAndPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserProfileAndPosts')['getNormalUserProfileAndPosts']>
+    readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
+    readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
+    readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']>
+    readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
@@ -131,6 +141,7 @@ declare module 'vue' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
@@ -147,7 +158,6 @@ declare module 'vue' {
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
-    readonly unfollowUser: UnwrapRef<typeof import('./composables/getUnfollowUser')['unfollowUser']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
@@ -167,24 +177,24 @@ declare module '@vue/runtime-core' {
     readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
-    readonly createNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['createNewPost']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
-    readonly doSavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['doSavePost']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
-    readonly fetchAllFollowers: UnwrapRef<typeof import('./composables/crud/getAllLoggedInUserFollowers')['fetchAllFollowers']>
-    readonly fetchAllTags: UnwrapRef<typeof import('./composables/getAllTags')['fetchAllTags']>
-    readonly fetchPersonalPosts: UnwrapRef<typeof import('./composables/getSnippetPostsAllLoggedInUser')['fetchPersonalPosts']>
-    readonly fetchPersonalUser: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['fetchPersonalUser']>
     readonly fetchPost: UnwrapRef<typeof import('./composables/deprecatedFetchPost')['fetchPost']>
-    readonly fetchPostSnippets: UnwrapRef<typeof import('./composables/getPostMultipleSnippet')['fetchPostSnippets']>
-    readonly fetchUserInfoPosts: UnwrapRef<typeof import('./composables/getNormalUserProfileAndPosts')['fetchUserInfoPosts']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
-    readonly followUser: UnwrapRef<typeof import('./composables/getFollowUser')['followUser']>
+    readonly getAllTags: UnwrapRef<typeof import('./composables/crud/getAllTags')['getAllTags']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getFollowUser: UnwrapRef<typeof import('./composables/crud/getFollowUser')['getFollowUser']>
+    readonly getLoggedInUserAllFollowers: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']>
+    readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
+    readonly getNormalUserProfileAndPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserProfileAndPosts')['getNormalUserProfileAndPosts']>
+    readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
+    readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
+    readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']>
+    readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
@@ -206,6 +216,7 @@ declare module '@vue/runtime-core' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
@@ -222,7 +233,6 @@ declare module '@vue/runtime-core' {
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
-    readonly unfollowUser: UnwrapRef<typeof import('./composables/getUnfollowUser')['unfollowUser']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>

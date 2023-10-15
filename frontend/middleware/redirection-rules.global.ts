@@ -23,7 +23,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       // No token
 
       switch (path_place) {
-        case "/min-side":
+        case "/minkonto":
           return navigateTo("/login");
         case "/newpost":
           return navigateTo("/login");
@@ -43,7 +43,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         case "/registrer":
           return navigateTo("/");
         case "/login":
-          return navigateTo("/min-side");
+          return navigateTo("/minkonto");
         default:
           console.log(
             "Allowed navigation route: ",
