@@ -38,7 +38,7 @@
 
 								<template #author v-if="post.author">
 									<span>
-										<p class="font-bold" v-text="author_full_name(post.author)">
+										<p class="font-bold">
 										</p>
 									</span>
 								</template>
