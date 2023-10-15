@@ -38,7 +38,7 @@
 
 								<template #author v-if="post.author">
 									<span>
-										<p class="font-bold">
+										<p class="font-bold" v-text="author_full_name(post)">
 										</p>
 									</span>
 								</template>
@@ -169,10 +169,11 @@ const author_full_name = (post: SnippetPostSingleType) => {
 
 console.log("author full name function being called")
 console.log(post.author)
+console.log(toRaw(post))
 const author = post.author
 
 const full = `${author.first_name} ${author.last_name}` ?? author.username
-return full.trim() == "" ? author.username : full
+return full
 }
 
 /**
