@@ -48,11 +48,11 @@ watchEffect(() => {
 })
 
 onBeforeMount(async () => {
-	await fetchPersonalUser()
+	await getLoggedInUserProfile()
 })
 
 onBeforeMount(async () => {
-	await fetchPostSnippets()
+	await getPostMultipleSnippet()
 	console.log(store.posts)
 })
 

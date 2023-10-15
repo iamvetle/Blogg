@@ -97,7 +97,7 @@ const toPlainText = (htmlContent: string) => {
  * All posts are fetched before the DOM is mounted
  */
 onBeforeMount(async () => {
-	await fetchPostSnippets()
+	await getPostMultipleSnippet()
 	console.log(store.posts)
 })
 

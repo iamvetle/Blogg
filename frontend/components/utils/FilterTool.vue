@@ -52,7 +52,7 @@ const customURL = computed(() => {
  * Fetches new posts automatically based on the customURL
  */
 watchEffect(async () => {
-	await fetchPostSnippets(customURL.value) // maybe I should please <- this one longer up?
+	await getPostMultipleSnippet(customURL.value) // maybe I should please <- this one longer up?
 })
 
 /**

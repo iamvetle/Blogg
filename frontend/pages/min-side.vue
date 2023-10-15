@@ -136,7 +136,7 @@ onBeforeMount(async () => {
 })
 
 onBeforeMount(async () => {
-	await fetchPersonalUser()
+	await getLoggedInUserProfile()
 })
 
 </script>
