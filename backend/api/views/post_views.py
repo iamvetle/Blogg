@@ -74,7 +74,7 @@ class PostAllSavedLoggedInUserView(APIView):
             return Response([], status=status.HTTP_200_OK)
 
 
-class PostMultipleShortenedView(ListAPIView):
+class PostMultipleSnippetView(ListAPIView):
     """Retrieves all posts as snippets, and returns them paginated"""
 
     permission_classes = [IsAuthenticated]
