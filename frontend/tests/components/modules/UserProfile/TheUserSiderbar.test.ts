@@ -16,13 +16,17 @@ describe('testign theusersidebar', () => {
     vi.stubGlobal('leaveAction', () => {
         return null
     })
+    
 
 
     beforeEach(async () => {
         const pinia = createTestingPinia();
         store = useGeneralStore(pinia);
-
         store.idArrayOfLoggedInUserFollowingUsers = ['hello', 'hello2']
+
+        store.theUser = [{
+            num_of_followers:9
+        }]
 
         wrapper = mount(TheUserSidebar, {
             global: {
@@ -32,8 +36,7 @@ describe('testign theusersidebar', () => {
                 stubs: {}
             },
             props: {
-                username: "testuser",
-                num_of_followers: 8
+                username: "testuser"
             }
         });
 
@@ -53,7 +56,7 @@ describe('testign theusersidebar', () => {
 
     test('props are being rendered', () => {
         expect(wrapper.html()).toContain("testuser")
-        expect(wrapper.html()).toContain("8")
+        expect(wrapper.html()).toContain("9")
     })
 
     test('basefollowbutton is being rendered', async () => {
