@@ -17,6 +17,8 @@ describe('index page testing', () => {
         const pinia = createTestingPinia()
         store = useGeneralStore(pinia)
         store.isAuthenticated = true
+        store.idArrayOfSavedPosts = true
+        store.posts = true
         store.personalUser = true
         wrapper = shallowMount(index, {
             global: {

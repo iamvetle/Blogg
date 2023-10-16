@@ -21,6 +21,8 @@ export const getLoggedInUserProfile = async () => {
     store.personalUser = response.data as LoggedInUserProfileType
     console.dir(response.data)
 
+    store.idArrayOfSavedPosts = []
+
     for (const savedPost of store.personalUser.saved_posts) {
       console.log(savedPost.post.id) // print to self
 

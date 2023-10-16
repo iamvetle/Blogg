@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '#imports';
+import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
 

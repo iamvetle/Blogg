@@ -1,33 +1,44 @@
 import TheUserSidebar from '~/components/modules/UserProfile/TheUserSidebar.vue';
-import { VueWrapper, flushPromises, shallowMount } from '@vue/test-utils';
+import { VueWrapper, flushPromises, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from '~/store/generalStore';
 import BaseFollowButton from '~/components/base/BaseFollowButton.vue';
+
+let followText = ref("")
 
 describe('testign theusersidebar', () => {
     let wrapper: VueWrapper;
     let store: any;
 
-    beforeEach(() => {
+    vi.stubGlobal('hoverAction', () => {
+        return null
+    })
+    vi.stubGlobal('leaveAction', () => {
+        return null
+    })
+
+
+    beforeEach(async () => {
         const pinia = createTestingPinia();
         store = useGeneralStore(pinia);
 
-        let basebuttonText = "Follow"
+        store.idArrayOfLoggedInUserFollowingUsers = ['hello', 'hello2']
 
-        wrapper = shallowMount(TheUserSidebar, {
+        wrapper = mount(TheUserSidebar, {
             global: {
                 plugins: [pinia],
                 components: { BaseFollowButton },
-                mocks: { basebuttonText },
+                mocks: { followText },
                 stubs: {}
             },
             props: {
-                username:"testuser",
-                num_of_followers:8
+                username: "testuser",
+                num_of_followers: 8
             }
         });
 
-        flushPromises()
+        await flushPromises()
+
     });
 
     afterEach(() => {
@@ -41,8 +52,8 @@ describe('testign theusersidebar', () => {
     })
 
     test('props are being rendered', () => {
-      expect(wrapper.text()).toContain("testuser")
-      expect(wrapper.text()).toContain("8")
+        expect(wrapper.html()).toContain("testuser")
+        expect(wrapper.html()).toContain("8")
     })
 
     test('basefollowbutton is being rendered', async () => {
@@ -50,8 +61,21 @@ describe('testign theusersidebar', () => {
 
         expect(followbutton.exists()).toBe(true)
     })
-    test('the prop is rendered correctly', () => {
+    test('following is rendered correctly', async () => {
+        followText.value = "Following"
+
         console.log(wrapper.html())
+
+        await flushPromises()
+
+        expect(wrapper.html()).toContain("Following")
+    })
+    test('follw is rendered correctly', async () => {
+        followText.value = "Follow"
+
+        console.log(wrapper.html())
+
+        await flushPromises()
 
         expect(wrapper.html()).toContain("Follow")
     })

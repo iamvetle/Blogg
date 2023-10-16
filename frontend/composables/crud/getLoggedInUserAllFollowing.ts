@@ -18,13 +18,15 @@ export const getLoggedInUserAllFollowing = async () => {
         if (response.data != null) {
             console.dir("OK: The users that the logged-in user is following, is fetched", response.data); // print to self
 
+            store.idArrayOfLoggedInUserFollowingUsers = []
+
             for (const following of response.data) {
                 console.log(following.username) // print to self
 
-                store.idArrayOfFollowingUsers.push(following.username)
+                store.idArrayOfLoggedInUserFollowingUsers.push(following.username)
             }
 
-            console.log(store.idArrayOfFollowingUsers)
+            console.log(store.idArrayOfLoggedInUserFollowingUsers)
 
             return response.data;
 

@@ -34,7 +34,7 @@
 					<div id="main" class="pt-[50px]" v-if="store.theUser[0].posts">
 						<div class="article" v-for="post in store.theUser[0].posts" :key="post.id">
 
-							<article-card>
+							<article-card :hide-profile-image="true">
 
 								<template #author v-if="post.author">
 									<span>
@@ -101,9 +101,10 @@
 					</div>
 				</div>
 
-				<div id="sidebar" class="px-5 col-span-4 border-v border-red-500">
-					<TheUserSidebar v-if="store.theUser" :username="username"
-						:num_of_followers="followers ?? 0" />
+				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
+					<div class="sticky top-0 overflow-y-scroll">
+						<TheUserSidebar v-if="store.theUser" :username="username" :num_of_followers="followers ?? 0" />
+					</div>
 				</div>
 			</div>
 		</div>
@@ -145,13 +146,13 @@ onBeforeMount(async () => {
 	const theUserURL = `http://localhost:8888/api/${route.params.id}/`;
 
 	await getNormalUserProfileAndPosts(theUserURL);
-	console.dir(toRaw(store.theUser[0]))
+	console.dir(toRaw(store.theUser[0])) // print to self
 
 	followers.value = store.theUser[0].posts[0].num_of_followers;
-	console.log(toRaw(followers.value))
+	console.log(toRaw(followers.value)) // print to self
 
-	console.log(toRaw(store.theUser[0].posts))
-	console.log(toRaw(store.theUser[0].posts[0].author.first_name))
+	console.log(toRaw(store.theUser[0].posts)) // print to self
+	console.log(toRaw(store.theUser[0].posts[0].author.first_name)) // print to self
 	//
 
 	//
@@ -164,13 +165,13 @@ onBeforeMount(async () => {
 
 const author_full_name = (post: SnippetPostSingleType) => {
 
-console.log("author full name function being called")
-console.log(post.author)
-console.log(toRaw(post))
-const author = post.author
+	console.log("author full name function being called") // print to self
+	console.log(post.author) // print to self
+	console.log(toRaw(post)) // print to self
+	const author = post.author
 
-const full = `${author.first_name} ${author.last_name}` ?? author.username
-return full
+	const full = `${author.first_name} ${author.last_name}` ?? author.username
+	return full
 }
 
 /**
@@ -197,4 +198,3 @@ const save = async (post: number) => {
 </script>
 
 <style scoped></style>
-../../composables/getNormalUserProfile

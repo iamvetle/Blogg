@@ -7,6 +7,7 @@ export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const apiEndpointCheck: typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']
+  const checkIfFollowingUser: typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']
   const checkIfPostIsSaved: typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']
   const checkLocalInfo: typeof import('./composables/checkLocalInfo')['checkLocalInfo']
   const computed: typeof import('vue')['computed']
@@ -32,6 +33,7 @@ declare global {
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getFollowUser: typeof import('./composables/crud/getFollowUser')['getFollowUser']
   const getLoggedInUserAllFollowers: typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']
+  const getLoggedInUserAllFollowing: typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']
   const getLoggedInUserProfile: typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']
   const getNormalUserProfileAndPosts: typeof import('./composables/crud/getNormalUserProfileAndPosts')['getNormalUserProfileAndPosts']
   const getPostMultipleSnippet: typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']
@@ -98,6 +100,7 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly apiEndpointCheck: UnwrapRef<typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']>
+    readonly checkIfFollowingUser: UnwrapRef<typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']>
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
     readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -114,6 +117,7 @@ declare module 'vue' {
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getFollowUser: UnwrapRef<typeof import('./composables/crud/getFollowUser')['getFollowUser']>
     readonly getLoggedInUserAllFollowers: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']>
+    readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
     readonly getNormalUserProfileAndPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserProfileAndPosts')['getNormalUserProfileAndPosts']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
@@ -173,6 +177,7 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly apiEndpointCheck: UnwrapRef<typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']>
+    readonly checkIfFollowingUser: UnwrapRef<typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']>
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
     readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
@@ -189,6 +194,7 @@ declare module '@vue/runtime-core' {
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getFollowUser: UnwrapRef<typeof import('./composables/crud/getFollowUser')['getFollowUser']>
     readonly getLoggedInUserAllFollowers: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']>
+    readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
     readonly getNormalUserProfileAndPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserProfileAndPosts')['getNormalUserProfileAndPosts']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>

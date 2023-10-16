@@ -1,4 +1,4 @@
-<template>
+	<template>
 	<div class="prose max-w-3xl py-[100px] mx-auto">
 		<div v-if="post" class="w-full px-[60px] py-[30px] bg-white">
 			<h1 class="">

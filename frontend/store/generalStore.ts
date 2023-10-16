@@ -19,7 +19,7 @@ export const useGeneralStore = defineStore("general", () => {
   // Links
   const baseFeedURL = "http://localhost:8888/api/search/"
   const post_snippets_url = ref<string>("http://localhost:8888/api/feed/")
-  const personal_post_snippets_url = ref<string>("http://localhost:8888/api/minkonto/posts/")
+  const personal_post_snippets_url = ref<string>("http://localhost:8888/api/min-side/posts/")
 
   const next_page_link = ref<string>("")
   const previous_page_link = ref<string>("")
@@ -41,11 +41,12 @@ export const useGeneralStore = defineStore("general", () => {
 
   const idArrayOfSavedPosts = ref<number[]>([])
 
-  const idArrayOfFollowingUsers = ref<string[]>([])
+  const idArrayOfLoggedInUserFollowingUsers = ref<string[]>([])
+
 
   const changeAuthenticated = (state: boolean) => {
     isAuthenticated.value = state;
   };
 
-  return { posts, idArrayOfFollowingUsers, allTags, idArrayOfSavedPosts, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
+  return { posts, idArrayOfLoggedInUserFollowingUsers, allTags, idArrayOfSavedPosts, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
 });
