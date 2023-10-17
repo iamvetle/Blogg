@@ -101,6 +101,7 @@
 					</div>
 				</div>
 
+				<!-- 4/12 sidebar -->
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 					<div class="sticky top-0 overflow-y-scroll">
 						<TheUserSidebar v-if="store.theUser" :username="username" :num_of_followers="followers ?? 0" />
@@ -134,6 +135,8 @@ const last_name = ref(null);
 const followers = ref(null);
 const username = ref<string>("")
 const color = ref("fill-black")
+const route = useRoute();
+const theUserURL = `http://localhost:8888/api/${route.params.id}/`;
 
 const redirect_to_post_page = async (post: SnippetPostSingleType) => {
 	const post_article_page = post.id
@@ -141,9 +144,7 @@ const redirect_to_post_page = async (post: SnippetPostSingleType) => {
 	return await navigateTo(`/post/${post_article_page}`)
 }
 
-onBeforeMount(async () => {
-	const route = useRoute();
-	const theUserURL = `http://localhost:8888/api/${route.params.id}/`;
+onMounted(async () => {
 
 	await getNormalUserProfileAndPosts(theUserURL);
 	console.dir(toRaw(store.theUser[0])) // print to self
