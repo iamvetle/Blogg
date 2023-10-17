@@ -1,7 +1,7 @@
 <template>
 	<div id="site-wrapper" v-if="store.isAuthenticated" class="mt-8">
-		<div v-if="store.posts && store.personalUser" class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
-			<ListArticles class="col-span-6 mx-auto" />
+		<div v-if="(store.posts) && (store.personalUser)" class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
+			<ListArticles v-if="store.posts" class="col-span-6 mx-auto" />
 			
 			
 			<div class="col-span-4 mx-auto">
@@ -10,13 +10,15 @@
 
 					<template #filter>
 
-						<FilterTool />
+						<FilterTool 
+						date-test="filter-tool"
+						/>
 
 					</template>
 
 				</base-dropdown-menu>
 
-				<ListArticlesSidebar/>
+				<ListArticlesSidebar v-if="store.personalUser"/>
 			</div>
 		</div>
 	</div>
@@ -33,9 +35,7 @@ const store = useGeneralStore()
 
 console.log(store.isAuthenticated); // print to self
 /**
- * Updates the page layout to a plain one if you are 'unauthenticated'. 
- * The function 'watches' the 'global' variable that says if you are 'unauthenticated'.
- * or the other way around
+ * Changes the layout based on whether the user is authenticated or not
  */
 
 watchEffect(() => {
@@ -47,25 +47,31 @@ watchEffect(() => {
 	}
 })
 
-onBeforeMount(async () => {
+onMounted(async () => {
+	/**
+	 * Fetches the profile information of the logged in user
+	 * @var store.personalUser - assigns the response data here
+	 */
 	await getLoggedInUserProfile()
 })
 
-onBeforeMount(async () => {
+onMounted(async () => {
+	/**
+	 * Fetches all posts in snippets (not full content length)
+	 * @var store.posts - assigns the response data here
+	 */
 	await getPostMultipleSnippet()
 	console.log(store.posts)
 })
 
-/**
- * Fetches all possible tags
- */
-onBeforeMount(async () => {
+
+onMounted(async () => {
+	/**
+ 	* Fetches all possible tags
+	* @var store.allTags - assigns the response data here
+ 	*/
 	await getAllTags()
 })
-
-// definePageMeta({
-// 	layout:"feed-layout"
-// })
 
 </script>
 

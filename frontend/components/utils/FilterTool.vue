@@ -55,21 +55,6 @@ watchEffect(async () => {
 	await getPostMultipleSnippet(customURL.value) // maybe I should please <- this one longer up?
 })
 
-/**
- * The difference between watchEffect and computed:
- * 
- * computed:
- * "lazy by nature". Will only re-evaluate if some of its reactive dependencies have changed.
- * It returns a readonly "ref" object.
- * 
- * watchEffect:
- * runs immediately when created and whenever reactive dependencies change.
- * It does not return a new "ref", instead you directly manipulate other "ref"s
- * or execute side effects within it.
- * 
- * a side effect like making an api call.
- */
-
 </script>
 
 <style scoped></style>

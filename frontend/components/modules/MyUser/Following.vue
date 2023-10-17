@@ -2,7 +2,7 @@
   <div>
     <span class="mb-4 flex items-center">
       <img :src="profile_picture" class="w-6 h-auto">
-      <p class="ms-2"><nuxt-link :to="author_link">{{ props.username }}</nuxt-link></p>
+      <nuxt-link :to="author_link"><p class="ms-2">{{ props.username }}</p></nuxt-link>
     </span>
   </div>
 </template>

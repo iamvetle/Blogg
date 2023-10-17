@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-// Used by index.vue
+console.log("tiptap-layout selected")
 
 </script>
 

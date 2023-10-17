@@ -24,7 +24,7 @@ describe('BaseDropDownMenu testing', () => {
     })
     test('there is a button', () => {
         const button = wrapper.find('button')
-        expect(button.text()).toContain("Toggle dropdown")
+        expect(button.text()).toContain("Filter posts")
     })
 
     test("button isnt dropped down", () => {
