@@ -13,7 +13,7 @@
 		</div>
 		<div class="mt-auto">
 			<FeedPagination v-if="store.posts" />
-			<TheFooter />
+			<LazyTheFooter />
 		</div>
 	</div>
 </template>
@@ -23,8 +23,6 @@ import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
 
-// Used by index.vue
-console.log("'feed-layout' layout is selected");
 </script>
 
 <style scoped></style>

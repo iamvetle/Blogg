@@ -180,13 +180,45 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ---
 
+### How to API
+
+- [ ] Take all of the **API fetching on the page level**
+
+- When i am retrieving tokens from **LocalStorage**, all of my fetching becomes on the client side.
+  - The means *initial load* can be very slow
+- Put fetching at PAGE-LEVEL
+  - I should fetch my api data at the page level, so I centralize the data-fetching logic and makes it easier to **manage state**
+- If a component required data that ISN'T shared with other components, it might be best to just have it there, inside the component
+- Seperate the api fetching into: place fetching.., function that does the fetching
+- Follow having a hybrid apporach to where to placing the api logic.
+  - one main for common API, logic, headers, configurations, maybe tokens
+  - another for specific areas (maybe the different endpoints)
+- Follow DRY (Don't Repeat Yourself) for API
+- Fetching data on the **server-side** is best for performance and SEO
+- Use state management, pinia
+
+---
+
 ## General
 
+- [ ] Documentere ordentlig alle sidene og composables
 - [ ] Expand the registration form to include more information options
 - [ ] Fix the emit between new post and editorcard when it comes to border color and such
 - [ ] fix the connection bettwen the search composables and the related components, integrate more, properly
 - [ ] Rydde opp i alle composables
 - [ ] Dele opp stores
+- [ ] Find a workaround for **the problem that all of the fetching is happening from the client side**
+  - [ ] split the onMounted hooks for ones reqairing auth, and the ones not requiring it
+    - But all require it..
+    - Or maybe cachin in some hay?
+
+---
+
+### Composables
+
+- [ ] Slette ubrukte composables
+- [ ] Lage en "hybrid appraoch" til composables
+  - [ ] Sette sammen composables slik at det blir mer enklere
 
 ### thoughts
 
@@ -199,6 +231,10 @@ There are features I generally want to implement, but not sure how.
       - Se på medium.com
 
 - Hva skjedde med _likes_?
+
+- I want to avoid layout shifts when fetching from api:
+  - I can do v-if="all of the api variables"
+  - Skeleton loaders
 
 - Text editor for publishing posts
 - maybe relevant [simplemde](https://simplemde.com/)
