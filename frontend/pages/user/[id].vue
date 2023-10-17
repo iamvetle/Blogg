@@ -195,6 +195,10 @@ const save = async (post: number) => {
 	await getSaveOrUnsavePost(post)
 }
 
+definePageMeta({
+	layout:"default"
+})
+
 </script>
 
 <style scoped></style>

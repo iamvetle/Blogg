@@ -1,11 +1,8 @@
 <template>
   <div>
     <span class="mb-4 flex items-center">
-      <img
-        :src="profile_picture"
-        class="w-6 h-auto"
-      >
-      <p class="ms-2">{{ followingProp.username }}</p>
+      <img :src="profile_picture" class="w-6 h-auto">
+      <p class="ms-2"><nuxt-link :to="author_link">{{ props.username }}</nuxt-link></p>
     </span>
   </div>
 </template>
@@ -14,10 +11,12 @@
 
 import profile_picture from '~/assets/placeholder-profile-picture.png'
 
-const { followingProp } = defineProps(['followingProp'])
+const props = defineProps<{
+  username: string
+}>()
+
+const author_link = `http://localhost:3000/user/${props.username}`
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

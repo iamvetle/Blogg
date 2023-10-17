@@ -132,7 +132,6 @@ const getFollowUserAction = async () => {
 }
 
 onMounted( async () => {
-	console.log(store.theUser.num_of_followers)
 	followers.value = store.theUser[0].num_of_followers
 })
 

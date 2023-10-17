@@ -90,7 +90,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
   - [x] Antall _jeg følger_
   - [x] Brukerne, navnene til de jeg følger
   - [ ] Finne ut av hva jeg skal gjøre med "**_les mer_**" feltet. Skal jeg bli 'redirected' et sted?
-  - [ ] make it possible to go to the posts that I have saved
+    - [ ] Legge til (x), '***total antall***'
+  - [x] make it possible to go to the posts that I have saved
 
 
 ---
@@ -98,7 +99,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### [id] single post
 
 - [ ] Vise alle **taggene** som er assosierte med posten
-- [ ] Mulighet til å **følge** forfatteren
+- [ ] Mulighet til å **følge** forfatteren derifra
 - [ ] Muligheten til å **lagre post** derifra også
 - [ ] Kan se kommentarer
 - [ ] Kan lage kommentar
@@ -107,11 +108,13 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ### [id] user page
 
-- [ ] Pengjøre veldig og rydd opp.
-  - [ ] den er tulla til og fungerer ikke orden. den hermer etter index/feed noe den ikke skal
-- [ ] Fjern spor av tidligere prop og slett den gamle component.
-- [ ] Ønsker å få den **følg** og **slutt å følg** funksjonen til å fungere
+- [ ] Fix api fetching so it becomes correct 
+- [x] Pengjøre veldig og rydd opp.
+- [~] Fjern spor av tidligere prop og slett den gamle component.
+- [ish] Ønsker å få den **følg** og **slutt å følg** funksjonen til å fungere
 - [ ] Lage en ordentlig side for den
+- [ ] fix pagnation - find out if it is necesarry, and if how to have it in that case
+  - should I make a new one? or take an old one
 
 ---
 

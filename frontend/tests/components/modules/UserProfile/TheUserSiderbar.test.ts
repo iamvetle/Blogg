@@ -22,6 +22,10 @@ describe('testign theusersidebar', () => {
         const pinia = createTestingPinia();
         store = useGeneralStore(pinia);
 
+        store.theUser = [{
+            num_of_followers:818
+        }]
+
         store.idArrayOfLoggedInUserFollowingUsers = ['hello', 'hello2']
 
         wrapper = mount(TheUserSidebar, {
@@ -33,7 +37,6 @@ describe('testign theusersidebar', () => {
             },
             props: {
                 username: "testuser",
-                num_of_followers: 8
             }
         });
 
@@ -53,7 +56,7 @@ describe('testign theusersidebar', () => {
 
     test('props are being rendered', () => {
         expect(wrapper.html()).toContain("testuser")
-        expect(wrapper.html()).toContain("8")
+        expect(wrapper.html()).toContain("818")
     })
 
     test('basefollowbutton is being rendered', async () => {
