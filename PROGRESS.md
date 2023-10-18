@@ -44,6 +44,8 @@ Det er den tingen jeg savner mest og hva jeg ønsker å fokusere på.
 ### Serializers og views
 
 - [x] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
+- [ ] Endre slik at det er mulig å legge til tags på post create
+  - [ ] -> klare å utføre det fra postman
 
 ---
 
@@ -57,6 +59,14 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### admin.py - Admin Panel
 
 - [x] Få tags og categories som er assosiert med en post til å vises i post list i admin panel
+
+---
+
+### General
+
+- [ ] Bytte til ***generics*** istedenfor vanlig **APIView**
+
+---
 
 ---
 
@@ -163,11 +173,11 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ---
 
-- [X] Gi en bruker muligheten, en knapp de kan trykke på
+- [x] Gi en bruker muligheten, en knapp de kan trykke på
   - Helt svart hvis lagret, delvis hvit hvis ikke lagret. ide
-    hver post, for å **lagre** en post
-  - [X] Trenger å lage en **_fetch call_** for den
-- [X] Muligheten for en bruker til å **fjerne** en post som de har lagret
+    - hver post, for å **lagre** en post
+  - [x] Trenger å lage en **_fetch call_** for den
+- [x] Muligheten for en bruker til å **fjerne** en post som de har lagret
 
 ### text editor
 
@@ -182,7 +192,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ### How to API
 
-- [ ] Take all of the **API fetching on the page level**
+- [x] Take all of the **API fetching on the page level**
 
 - When i am retrieving tokens from **LocalStorage**, all of my fetching becomes on the client side.
   - The means *initial load* can be very slow
