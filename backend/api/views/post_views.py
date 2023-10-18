@@ -17,7 +17,8 @@ from rest_framework.generics import ListAPIView
 
 # Django Filter
 from django_filters.rest_framework import DjangoFilterBackend
-from ..pagination import CustomLimitOffsetPagination
+from api.services.pagination_services import CustomLimitOffsetPagination
+from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 # Local application imports
 from api.models import Post, SavedPost
@@ -82,7 +83,7 @@ class PostAllNormalUserView(ListAPIView):
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
-    pagination_class = CustomLimitOffsetPagination
+    pagination_class = GenericPagination
     
     queryset = Post.objects.all()
 
@@ -107,7 +108,7 @@ class PostMultipleSnippetView(ListAPIView):
     filter_backends = [DjangoFilterBackend]
     filterset_class = PostFilter
     # Filters the queryset
-    pagination_class = GenericCustomLimitOffsetPagination
+    pagination_class = GenericPagination
 
     http_method_names = ["get"]
 
