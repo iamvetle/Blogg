@@ -1,5 +1,5 @@
 import { createTestingPinia } from "@pinia/testing"
-import { VueWrapper, shallowMount } from "@vue/test-utils"
+import { VueWrapper, shallowMount, flushPromises } from '@vue/test-utils';
 import index from "~/pages/index.vue"
 import { useGeneralStore } from '~/store/generalStore';
 import ListArticles from '~/components/modules/Blogg/ListArticles.vue';
@@ -73,5 +73,16 @@ describe('index page testing', () => {
         await wrapper.vm.$nextTick()
 
         expect(wrapper.findComponent({ name:'Wait' }).exists()).toBe(false)
-    }) 
+    })
+    test('content not rendered if no posts and personal user is being retrieved', async () => {
+        store.posts = false
+        store.personalUser = false
+
+        await flushPromises()
+
+        const element = wrapper.find("[date-test='filter-tool']")
+
+        expect(element.exists()).toBe(false)
+      
+    })
 })

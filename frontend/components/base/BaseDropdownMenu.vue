@@ -4,7 +4,7 @@
             <button
                 class="hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
                 @click="isOpen = !isOpen">
-                Toggle dropdown
+                Filter posts
             </button>
         </span>
         <div v-if="isOpen" id="dropdown-content">

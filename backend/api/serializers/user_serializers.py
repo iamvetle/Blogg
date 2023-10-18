@@ -1,12 +1,10 @@
 # Standard libraries
 from django.contrib.auth import get_user_model
+
+# Django Rest Framework
 from rest_framework import serializers
 
-# Third-party libraries
-
 # Local application imports
-from api.models import Post
-from api.serializers.post_serializers import PostShortenSerializer
 from api.serializers.post_serializers import PostSaveStyleSerializer
 
 CustomUser = get_user_model()
@@ -17,10 +15,10 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
 
     saved_posts = serializers.SerializerMethodField()
     num_of_saved_posts = serializers.SerializerMethodField()
-    
+
     following = serializers.SerializerMethodField()
     num_of_following = serializers.SerializerMethodField()
-    
+
     def get_saved_posts(self, obj):
         saved_posts = obj.saved_posts.all()
         serializer = PostSaveStyleSerializer(saved_posts, many=True)
@@ -40,7 +38,7 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             return 0
 
     def get_followers(self, obj):
-        ''' Returns all followers objects '''
+        """Returns all followers objects"""
         followers = obj.followers.all()
         serializer = FollowerSerializer(followers, many=True)
 
@@ -60,22 +58,22 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             return num_of_followers
 
     def get_following(self, obj):
-        ''' Returns all follwing objects '''
-        
+        """Returns all follwing objects"""
+
         try:
             queryset = obj.following.all()
-            
+
             serializer = FollowerSerializer(queryset, many=True)
-            
+
             if serializer.is_valid:
                 return serializer.data
             else:
                 return 0
         except:
             return 0
-        
+
     def get_num_of_following(self, obj):
-        ''' Calculates the amount the logged in user is following '''
+        """Calculates the amount the logged in user is following"""
         num_of_following = 0
 
         try:
@@ -114,17 +112,26 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             "username": {"required": True},
         }
 
-class NormalUserSerializer(serializers.ModelSerializer):
-    posts = serializers.SerializerMethodField()
-    num_of_followers = serializers.SerializerMethodField()
 
-    def get_posts(self, obj):
-        posts = Post.objects.filter(author__username=obj.username)
-        return PostShortenSerializer(posts, many=True).data
+class NormalUserSerializer(serializers.ModelSerializer):
+    num_of_followers = serializers.SerializerMethodField()
+    num_of_following = serializers.SerializerMethodField()
+
+    class Meta:
+        model = CustomUser
+
+        fields = [
+            "num_of_followers",
+            "num_of_following",
+            "username",
+            "first_name",
+            "last_name",
+            "posts",
+        ]
 
     def get_num_of_followers(self, obj):
+        """Calculates the total number of follwers the object has"""
         num_of_followers = 0
-        print(obj)
 
         try:
             followers = list(obj.followers.all())
@@ -135,10 +142,19 @@ class NormalUserSerializer(serializers.ModelSerializer):
         except:
             return num_of_followers
 
-    class Meta:
-        model = CustomUser
+    def get_num_of_following(self, obj):
+        """Calculates the amount the logged in user is following"""
+        num_of_following = 0
 
-        fields = ["num_of_followers", "username", "first_name", "last_name", "posts"]
+        try:
+            following = list(obj.following.all())
+
+            num_of_following = len(following)
+            return num_of_following
+
+        except:
+            return num_of_following
+
 
 class FollowerSerializer(serializers.ModelSerializer):
     """Returns the username of the object"""
@@ -147,6 +163,7 @@ class FollowerSerializer(serializers.ModelSerializer):
         model = CustomUser
 
         fields = ["username"]
+
 
 class JustLoggedInSerializer(serializers.ModelSerializer):
     class Meta:

@@ -31,7 +31,6 @@ import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
 
-console.log("'form-layout' layout is selected");
 </script>
 
 <style scoped></style>

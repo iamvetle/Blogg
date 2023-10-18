@@ -25,17 +25,21 @@ from api.serializers.post_serializers import (
     PostSaveStyleSerializer,
     PostShortenSerializer,
 )
+from api.serializers.user_serializers import NormalUserSerializer 
 from api.filters import PostFilter
 from api.services.post_services import CreatePostService, PostSnippetService
 from api.services.search_services import SearchService
-from api.services.pagination_services import CustomLimitOffsetPagination, GenericCustomLimitOffsetPagination
+from api.services.pagination_services import (
+    CustomLimitOffsetPagination,
+    GenericCustomLimitOffsetPagination,
+)
 
 CustomUser = get_user_model()
 
 # queryset = Post.objects.all().order_by("-date_published")
 
 
-class PostAllLoggedInUserView(APIView): # they are also shortened, snippets
+class PostAllLoggedInUserView(APIView):  # they are also shortened, snippets
     """Retrieves all posts created by the logged in user"""
 
     permission_classes = [IsAuthenticated]
@@ -49,7 +53,6 @@ class PostAllLoggedInUserView(APIView): # they are also shortened, snippets
 
         if serializer.is_valid:
             return Response(serializer.data, status=status.HTTP_200_OK)
-
 
 class PostAllSavedLoggedInUserView(APIView):
     """Retrieves all posts saved by the user"""
@@ -74,21 +77,41 @@ class PostAllSavedLoggedInUserView(APIView):
             return Response([], status=status.HTTP_200_OK)
 
 
+class PostAllNormalUserView(ListAPIView):   
+    """Returns information about a specified user"""
+
+    permission_classes = [IsAuthenticated]
+    serializer_class = PostShortenSerializer
+    queryset = Post.objects.all()
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        username = self.kwargs["username"]
+        queryset = queryset.filter(author__username=username)
+        return queryset
+    
+    def finalize_response(self, request, response, *args, **kwargs):
+        print(f"Type of response: {type(response)}, value: {response}")
+        return super().finalize_response(request, response, *args, **kwargs)
+
+    
+    
+
+
 class PostMultipleSnippetView(ListAPIView):
     """Retrieves all posts as snippets, and returns them paginated"""
 
     permission_classes = [IsAuthenticated]
-    
+
     serializer_class = PostShortenSerializer
     queryset = Post.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_class = PostFilter
     # Filters the queryset
     pagination_class = GenericCustomLimitOffsetPagination
-    
-    http_method_names=['get']
-    
-    
+
+    http_method_names = ["get"]
+
 
 class PostMultipleAfterSearchView(APIView):  ## filters based on post title
     """Filters posts based on the request query"""

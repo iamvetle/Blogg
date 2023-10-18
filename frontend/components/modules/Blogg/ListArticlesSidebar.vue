@@ -50,7 +50,7 @@
 			</div>
 
 			<p v-if="store.personalUser.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">
-				Se alle
+				Se alle ({{ store.personalUser.num_of_saved_posts }})
 			</p>
 			<p v-else>
 				Du har ingen lagrede innlegg
@@ -67,10 +67,10 @@
 					Du følger
 				</h3>
 				<div id="following">
-					<Following v-for="(following, index) in store.personalUser.following" :followingProp="following"
+					<Following v-for="(following, index) in store.personalUser.following" :username="following.username"
 						:key="index" />
 				</div>
-				<span class="text-xs text-primary hover:text-primaryFixed">Se alle</span>
+				<span class="text-xs text-primary hover:text-primaryFixed">Se alle ({{ store.personalUser.num_of_following }})</span>
 			</div>
 
 			<div v-if="store.personalUser.num_of_following == 0">

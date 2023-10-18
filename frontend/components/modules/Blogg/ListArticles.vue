@@ -94,14 +94,6 @@ const toPlainText = (htmlContent: string) => {
 }
 
 /**
- * All posts are fetched before the DOM is mounted
- */
-onBeforeMount(async () => {
-	await getPostMultipleSnippet()
-	console.log(store.posts)
-})
-
-/**
  * Redirects the web client to the profile page of the author
  * @param username 
  */
