@@ -126,8 +126,8 @@ class NormalUserSerializer(serializers.ModelSerializer):
             "username",
             "first_name",
             "last_name",
-            "posts",
         ]
+        depth=1
 
     def get_num_of_followers(self, obj):
         """Calculates the total number of follwers the object has"""

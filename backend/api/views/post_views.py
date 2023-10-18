@@ -17,6 +17,7 @@ from rest_framework.generics import ListAPIView
 
 # Django Filter
 from django_filters.rest_framework import DjangoFilterBackend
+from ..pagination import CustomLimitOffsetPagination
 
 # Local application imports
 from api.models import Post, SavedPost
@@ -30,7 +31,6 @@ from api.filters import PostFilter
 from api.services.post_services import CreatePostService, PostSnippetService
 from api.services.search_services import SearchService
 from api.services.pagination_services import (
-    CustomLimitOffsetPagination,
     GenericCustomLimitOffsetPagination,
 )
 
@@ -82,17 +82,16 @@ class PostAllNormalUserView(ListAPIView):
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
+    pagination_class = CustomLimitOffsetPagination
+    
     queryset = Post.objects.all()
 
     def get_queryset(self):
         queryset = super().get_queryset()
         username = self.kwargs["username"]
         queryset = queryset.filter(author__username=username)
+        
         return queryset
-    
-    def finalize_response(self, request, response, *args, **kwargs):
-        print(f"Type of response: {type(response)}, value: {response}")
-        return super().finalize_response(request, response, *args, **kwargs)
 
     
     

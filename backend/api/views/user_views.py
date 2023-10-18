@@ -36,6 +36,7 @@ class NormalUserProfileView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = NormalUserSerializer
     http_method_names = ['get']
+    queryset = CustomUser.objects.all()
     
     def get_queryset(self):
         queryset = super().get_queryset()

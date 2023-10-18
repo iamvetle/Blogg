@@ -137,7 +137,6 @@ INTERNAL_IPS = ["127.0.0.1", "localhost"]  # For Django Debug Toolbar
 REST_FRAMEWORK = {  # For token authentication (DRF)
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.TokenAuthentication",
-        #temporarly removed pagination from here because it caused troubled with listapi in normaluserthing than view
     ),
 
 }
