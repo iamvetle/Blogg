@@ -25,10 +25,6 @@ describe('testign theusersidebar', () => {
 
         store.idArrayOfLoggedInUserFollowingUsers = ['hello', 'hello2']
 
-        store.theUser = [{
-            num_of_followers:9
-        }]
-
         wrapper = mount(TheUserSidebar, {
             global: {
                 plugins: [pinia],
@@ -38,6 +34,7 @@ describe('testign theusersidebar', () => {
             },
             props: {
                 username: "testuser",
+                num_of_followers:9
             }
         });
 

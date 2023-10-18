@@ -12,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # Local application imports
 from api.models import Post, Comment
+from django.shortcuts import get_object_or_404
 from api.services.user_services import UserProfileService, MyProfileService
 from api.serializers.user_serializers import LoggedInUserSerializer, NormalUserSerializer
 
@@ -19,20 +20,27 @@ from api.serializers.user_serializers import LoggedInUserSerializer, NormalUserS
 
 CustomUser = get_user_model()
 
-class LoggedInUserProfileView(APIView):
+class LoggedInUserProfileView(RetrieveAPIView):
     ''' Returns profile information about the LOGGED-IN user '''
     permission_classes = [IsAuthenticated]
+    serializer_class = LoggedInUserSerializer
     
-    def get(self, request):
-        serializer = LoggedInUserSerializer(request.user)
-        print(serializer)
-        if serializer.is_valid:
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+    def get_object(self):
+        # my_user = CustomUser.objects.get(username=self.request.user)
+        my_user = get_object_or_404(CustomUser, username=self.request.user)
+        return my_user
+    
+        
+        
+        # serializer = LoggedInUserSerializer(request.user)
+        # print(serializer)
+        # if serializer.is_valid:
+        #     return Response(serializer.data, status=status.HTTP_200_OK)
+        # else:
+        #     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class NormalUserProfileView(RetrieveAPIView):
-    ''' Returns information about a specified user '''
+    ''' Returns information about a SPECIFIC user '''
     permission_classes = [IsAuthenticated]
     serializer_class = NormalUserSerializer
     queryset = CustomUser.objects.all()
