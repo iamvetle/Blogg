@@ -1,23 +1,31 @@
 export interface NormalUserProfileType {
-	num_of_followers: number,
-	username: string,
-	first_name: string,
-	last_name: string,
-	posts: [
-		{
-			id: number,
-			title: string,
-			author: {
-				username: string,
-				first_name: string,
-				last_name: string,
-			},
-			content_snippet: string,
-			date_published: string,
-			tags: null | Array<string>,
-			categories: null | Array<string>
+	username: string;
+	first_name: string;
+	last_name: string;
+	num_of_followers: number;
+	num_of_following: number;
+}
+
+export interface NormalUserSnippetPostType {
+	count: number,
+	next: string | null,
+	previous: string | null,
+	current_page: number | null,
+	results: {
+		id: number;
+		title: string;
+		author: {
+			username: string;
+			first_name: string;
+			last_name: string;
 		},
-	]
+		content_snippet: string;
+		date_published: string;
+		num_of_followers: string;
+
+		tags: string[];
+		categories: string[];
+	}
 }
 
 // plural
@@ -25,7 +33,7 @@ export interface SnippetPostMultipleType {
 	count: number;
 	next: string | null;
 	previous: string | null;
-	current_page: number;
+	current_page: number | null;
 	results: [
 		{
 			id: number;
@@ -38,8 +46,8 @@ export interface SnippetPostMultipleType {
 				first_name: string;
 				last_name: string;
 			},
-			tags: null | Array<string>,
-			categories: null | Array<string>
+			tags: string[];
+			categories: string[];
 		}
 	]
 }
@@ -58,7 +66,6 @@ export interface SnippetPostSingleType {
 	tags: null | Array<string>,
 	categories: null | Array<string>
 }
-
 
 export interface LoggedInUserPostType {
 	id: number;

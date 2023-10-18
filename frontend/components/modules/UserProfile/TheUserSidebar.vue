@@ -43,17 +43,15 @@ const props = defineProps<{
 	num_of_followers:number,
 }>();
 const hoverState = ref(false)
-const followers = ref<any>("0")
+const followers = ref(0)
 const hoverOverText = "Unfollow"
 const followClass = ref("bg-primary px-3 py-2 text-onPrimary rounded-md text-sm hover:bg-primaryFixedDim")
 const followText = ref<string | null>(null)
 
-
-
-
 const followingState = computed(() => {
 	return checkIfFollowingUser(props.username)
 })
+
 
 watchEffect(() => {
 	console.log("watcheffect being called") // print to self
@@ -92,8 +90,8 @@ const leaveAction = () => {
 
 const getFollowUserAction = async () => {
 	console.log("getfollwuser action called")
-	const followURL = `http://localhost:8888/api/${props.username }/follow/`
-	const unfollowURL = `http://localhost:8888/api/${props.username }/unfollow/`
+	const followURL = `http://localhost:8888/api/${props.username}/follow/`
+	const unfollowURL = `http://localhost:8888/api/${props.username}/unfollow/`
 
 	if (followingState.value === false) {
 
@@ -132,7 +130,7 @@ const getFollowUserAction = async () => {
 }
 
 onMounted( async () => {
-	followers.value = store.theUser[0].num_of_followers
+	followers.value = props.num_of_followers
 })
 
 

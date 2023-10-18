@@ -35,7 +35,9 @@ declare global {
   const getLoggedInUserAllFollowers: typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']
   const getLoggedInUserAllFollowing: typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']
   const getLoggedInUserProfile: typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']
-  const getNormalUserProfileAndPosts: typeof import('./composables/crud/getNormalUserProfileAndPosts')['getNormalUserProfileAndPosts']
+  const getNormalUserPosts: typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']
+  const getNormalUserProfile: typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']
+  const getNormalUserProfileAndPosts: typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfileAndPosts']
   const getPostMultipleSnippet: typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']
   const getSaveOrUnsavePost: typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']
   const getSnippetPostAllLoggedInUser: typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']
@@ -119,7 +121,8 @@ declare module 'vue' {
     readonly getLoggedInUserAllFollowers: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']>
     readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
-    readonly getNormalUserProfileAndPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserProfileAndPosts')['getNormalUserProfileAndPosts']>
+    readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
+    readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
     readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']>
@@ -196,7 +199,8 @@ declare module '@vue/runtime-core' {
     readonly getLoggedInUserAllFollowers: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']>
     readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
-    readonly getNormalUserProfileAndPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserProfileAndPosts')['getNormalUserProfileAndPosts']>
+    readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
+    readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
     readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']>

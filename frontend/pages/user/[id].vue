@@ -1,6 +1,6 @@
 <template>
 	<div id="site-wrapper">
-		<div v-if="store.theUser" class="w-9/12 mx-auto border-v pb-[60px]">
+		<div v-if="normalUserProfile && normalUserPosts" class="w-9/12 mx-auto border-v pb-[60px]">
 			<div class="w-full px-[80px] grid grid-cols-12 gap-[80px]">
 				<div class="inline-block col-start-1 col-end-9 border-v border-blue-500">
 					<!-- 8/12 main content-->
@@ -12,7 +12,7 @@
 					<div id="top" class="px-2 pt-[50px]">
 						<div id="heading" class="prose">
 							<h2 class="text-4xl leading-[52px] font-medium tracking-[-0.03em]">
-								{{ first_name }} {{ last_name }}
+								{{ normalUserProfile.first_name }} {{ normalUserProfile.last_name }}
 							</h2>
 						</div>
 
@@ -31,8 +31,8 @@
 						</div>
 						<hr class="mt-2">
 					</div>
-					<div id="main" class="pt-[50px]" v-if="store.theUser[0].posts">
-						<div class="article" v-for="post in store.theUser[0].posts" :key="post.id">
+					<div id="main" class="pt-[50px]" v-if="normalUserPosts.results">
+						<div class="article" v-for="post in normalUserPosts.results" :key="post.id">
 
 							<article-card :hide-profile-image="true">
 
@@ -104,7 +104,7 @@
 				<!-- 4/12 sidebar -->
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 					<div class="sticky top-0 overflow-y-scroll">
-						<TheUserSidebar v-if="store.theUser" :username="username" :num_of_followers="followers ?? 0" />
+						<TheUserSidebar v-if="normalUserProfile" :username="normalUserProfile.username" :num_of_followers="normalUserProfile.num_of_followers?? 0" />
 					</div>
 				</div>
 			</div>
@@ -130,15 +130,15 @@ const toPlainText = (raw: string) => {
 
 const store = useGeneralStore()
 
-const first_name = ref(null);
-const last_name = ref(null);
-const followers = ref(null);
-const username = ref<string>("")
 const color = ref("fill-black")
 const route = useRoute();
-const theUserURL = `http://localhost:8888/api/${route.params.id}/`;
+const theNormalUserProfileURL = `http://localhost:8888/api/${route.params.id}/`;
+const theNormalUserPostsURL = `http://localhost:8888/api/${route.params.id}/posts/`;
 
-const redirect_to_post_page = async (post: SnippetPostSingleType) => {
+const normalUserProfile = ref<NormalUserProfileType | null>(null)
+const normalUserPosts = ref<NormalUserSnippetPostType | null>(null)
+
+const redirect_to_post_page = async (post:any) => {
 	const post_article_page = post.id
 
 	return await navigateTo(`/post/${post_article_page}`)
@@ -146,22 +146,11 @@ const redirect_to_post_page = async (post: SnippetPostSingleType) => {
 
 onMounted(async () => {
 
-	await getNormalUserProfileAndPosts(theUserURL);
-	console.dir(toRaw(store.theUser[0])) // print to self
+	normalUserProfile.value = await getNormalUserProfile(theNormalUserProfileURL);
+	
+	normalUserPosts.value = await getNormalUserPosts(theNormalUserPostsURL);
 
-	followers.value = store.theUser[0].posts[0].num_of_followers;
-	console.log(toRaw(followers.value)) // print to self
-
-	console.log(toRaw(store.theUser[0].posts)) // print to self
-	console.log(toRaw(store.theUser[0].posts[0].author.first_name)) // print to self
-	//
-
-	//
-	first_name.value = store.theUser[0].posts[0].author.first_name ?? null
-	last_name.value = store.theUser[0].posts[0].author.last_name ?? null
-
-	username.value = store.theUser[0].posts[0].author.username ?? ""
-
+	console.dir(toRaw(normalUserPosts)) // print to self
 })
 
 const author_full_name = (post: SnippetPostSingleType) => {
@@ -171,8 +160,13 @@ const author_full_name = (post: SnippetPostSingleType) => {
 	console.log(toRaw(post)) // print to self
 	const author = post.author
 
-	const full = `${author.first_name} ${author.last_name}` ?? author.username
-	return full
+	if (author.first_name && author.last_name) {
+		const full = `${author.first_name} ${author.last_name}` ?? author.username
+		return full
+	} else {
+		return author.username
+	}
+
 }
 
 /**

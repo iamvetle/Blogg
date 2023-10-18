@@ -1,7 +1,16 @@
 import IdVue from './[id].vue';
-import { VueWrapper, flushPromises, shallowMount } from '@vue/test-utils';
+import { VueWrapper, shallowMount, flushPromises } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from '~/store/generalStore';
+
+
+let mockNormalUserProfile = [{
+    username:"testuser",
+    first_name:"test_first_name",
+    last_name:"test_last_name"
+}]
+
+let mockNormalUserPosts = true
 
 describe('', () => {
     let wrapper: VueWrapper;
@@ -22,7 +31,11 @@ describe('', () => {
             }
         })
 
-        vi.stubGlobal('getNormalUserProfileAndPosts', () => {
+        vi.stubGlobal('getNormalUserPosts', () => {
+            return null
+        })
+
+        vi.stubGlobal('getNormalUserProfile', () => {
             return null
         })
 
@@ -63,31 +76,31 @@ describe('', () => {
             props: {}
         });
         
-        store.theUser = [{
-            posts: [
-                {
-                    id: 111,
-                    title: "test title 1",
-                    content: "content1",
-                    author: {
-                        username:"testguy1",
-                        first_name:"testfirstname1",
-                        last_name:"testlastname1"
-                    }
-                },
-                {
-                    id: 222,
-                    title: "test title 2",
-                    content: "content2",
-                    author: {
-                        username:"testguy1",
-                        first_name:"testfirstname1",
-                        last_name:"testlastname1"
-                    },
-                    num_of_followers: 543,
-                },
-            ],
-        }]
+        // store.theUser = [{
+        //     posts: [
+        //         {
+        //             id: 111,
+        //             title: "test title 1",
+        //             content: "content1",
+        //             author: {
+        //                 username:"testguy1",
+        //                 first_name:"testfirstname1",
+        //                 last_name:"testlastname1"
+        //             }
+        //         },
+        //         {
+        //             id: 222,
+        //             title: "test title 2",
+        //             content: "content2",
+        //             author: {
+        //                 username:"testguy1",
+        //                 first_name:"testfirstname1",
+        //                 last_name:"testlastname1"
+        //             },
+        //             num_of_followers: 543,
+        //         },
+        //     ],
+        // }]
         
     });
     
@@ -113,5 +126,16 @@ describe('', () => {
 
     //     expect(wrapper.html()).toContain(543)
     // })
+    test('username renders', async () => {
+        wrapper.vm.normalUserPosts.value = mockNormalUserPosts
+
+        wrapper.vm.normalUserProfile.value = mockNormalUserProfile
+
+        await flushPromises()
+
+        console.log(wrapper.html())
+
+        expect(wrapper.text()).toContain('testuser')
+    })
 
 });

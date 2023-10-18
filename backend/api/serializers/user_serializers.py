@@ -90,10 +90,10 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
 
         fields = (
             "id",
-            "email",
             "username",
             "first_name",
             "last_name",
+            "email",
             "age",
             "address",
             "phone_number",
@@ -121,13 +121,12 @@ class NormalUserSerializer(serializers.ModelSerializer):
         model = CustomUser
 
         fields = [
-            "num_of_followers",
-            "num_of_following",
             "username",
             "first_name",
             "last_name",
+            "num_of_followers",
+            "num_of_following",
         ]
-        depth=1
 
     def get_num_of_followers(self, obj):
         """Calculates the total number of follwers the object has"""
