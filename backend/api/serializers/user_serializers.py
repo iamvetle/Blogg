@@ -114,8 +114,8 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
 
 
 class NormalUserSerializer(serializers.ModelSerializer):
-    num_of_followers = serializers.SerializerMethodField()
-    num_of_following = serializers.SerializerMethodField()
+    # num_of_followers = serializers.SerializerMethodField()
+    # num_of_following = serializers.SerializerMethodField()
 
     class Meta:
         model = CustomUser
@@ -124,35 +124,35 @@ class NormalUserSerializer(serializers.ModelSerializer):
             "username",
             "first_name",
             "last_name",
-            "num_of_followers",
-            "num_of_following",
+            # "num_of_followers",
+            # "num_of_following",
         ]
 
-    def get_num_of_followers(self, obj):
-        """Calculates the total number of follwers the object has"""
-        num_of_followers = 0
+    # def get_num_of_followers(self, obj):
+    #     """Calculates the total number of follwers the object has"""
+    #     num_of_followers = 0
 
-        try:
-            followers = list(obj.followers.all())
+    #     try:
+    #         followers = list(obj.followers.all())
 
-            num_of_followers = len(followers)
-            return num_of_followers
+    #         num_of_followers = len(followers)
+    #         return num_of_followers
 
-        except:
-            return num_of_followers
+    #     except:
+    #         return num_of_followers
 
-    def get_num_of_following(self, obj):
-        """Calculates the amount the logged in user is following"""
-        num_of_following = 0
+    # def get_num_of_following(self, obj):
+    #     """Calculates the amount the logged in user is following"""
+    #     num_of_following = 0
 
-        try:
-            following = list(obj.following.all())
+    #     try:
+    #         following = list(obj.following.all())
 
-            num_of_following = len(following)
-            return num_of_following
+    #         num_of_following = len(following)
+    #         return num_of_following
 
-        except:
-            return num_of_following
+    #     except:
+    #         return num_of_following
 
 
 class FollowerSerializer(serializers.ModelSerializer):

@@ -1,19 +1,6 @@
-// async
+import axios from 'axios'
 
-
-/**
- * 
- * 
- * I think I have to split up the api to smaller parts
- * like not everything from a user in one api request
- * and also, I have to awear of where i am actually calling the api - in the pages?, component, composable?
- *  i have to find a system for that
- */
-
-import axios from 'axios' 
-import { useGeneralStore } from '~/store/generalStore';
-
-export const getNormalUserProfile = async (userURL:string) => {
+export const getNormalUserProfile = async (userURL: string) => {
 
   try {
     const token = localStorage.getItem("token");
@@ -32,7 +19,7 @@ export const getNormalUserProfile = async (userURL:string) => {
       return response.data
 
 
-    } 
+    }
     else {
       console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self
     }

@@ -11,7 +11,7 @@ export interface NormalUserSnippetPostType {
 	next: string | null,
 	previous: string | null,
 	current_page: number | null,
-	results: {
+	results: [{
 		id: number;
 		title: string;
 		author: {
@@ -25,7 +25,7 @@ export interface NormalUserSnippetPostType {
 
 		tags: string[];
 		categories: string[];
-	}
+	}]
 }
 
 // plural

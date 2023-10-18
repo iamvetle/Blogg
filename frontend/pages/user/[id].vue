@@ -103,8 +103,8 @@
 
 				<!-- 4/12 sidebar -->
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
-					<div class="sticky top-0 overflow-y-scroll">
-						<TheUserSidebar v-if="normalUserProfile" :username="normalUserProfile.username" :num_of_followers="normalUserProfile.num_of_followers?? 0" />
+					<div class="sticky top-0 overflow-y-scroll" v-if="normalUserProfile">
+						<TheUserSidebar :username="normalUserProfile.username" :num_of_followers="normalUserProfile.num_of_followers?? 0" />
 					</div>
 				</div>
 			</div>
@@ -117,7 +117,6 @@
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
 // import UserPostCard from '~/components/modules/Blogg/UserPostCard.vue';
-import TheUserSidebar from '~/components/modules/UserProfile/TheUserSidebar.vue';
 import { useGeneralStore } from '~/store/generalStore';
 const post_image = ref('https://picsum.photos/500/300')
 
@@ -135,23 +134,32 @@ const route = useRoute();
 const theNormalUserProfileURL = `http://localhost:8888/api/${route.params.id}/`;
 const theNormalUserPostsURL = `http://localhost:8888/api/${route.params.id}/posts/`;
 
-const normalUserProfile = ref<NormalUserProfileType | null>(null)
-const normalUserPosts = ref<NormalUserSnippetPostType | null>(null)
+const normalUserProfile = ref<NormalUserProfileType | null >(null);
+const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
+
+onMounted(async () => {
+
+	const response = await getNormalUserProfile(theNormalUserProfileURL);
+
+	normalUserProfile.value = response
+
+	console.log(normalUserProfile)
+	
+})
+
+onMounted(async () => {
+	const response = await getNormalUserPosts(theNormalUserPostsURL);
+
+	normalUserPosts.value = response
+
+})
+
 
 const redirect_to_post_page = async (post:any) => {
 	const post_article_page = post.id
 
 	return await navigateTo(`/post/${post_article_page}`)
 }
-
-onMounted(async () => {
-
-	normalUserProfile.value = await getNormalUserProfile(theNormalUserProfileURL);
-	
-	normalUserPosts.value = await getNormalUserPosts(theNormalUserPostsURL);
-
-	console.dir(toRaw(normalUserPosts)) // print to self
-})
 
 const author_full_name = (post: SnippetPostSingleType) => {
 

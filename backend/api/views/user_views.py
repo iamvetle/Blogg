@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 ## Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
@@ -31,18 +31,15 @@ class LoggedInUserProfileView(APIView):
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-class NormalUserProfileView(ListAPIView):
+class NormalUserProfileView(RetrieveAPIView):
     ''' Returns information about a specified user '''
     permission_classes = [IsAuthenticated]
     serializer_class = NormalUserSerializer
-    http_method_names = ['get']
     queryset = CustomUser.objects.all()
     
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        username = self.kwargs['username']
-
-        return queryset.filter(username=username)
+    lookup_field="username"
+    http_method_names = ['get']
+    
 
 # NOT FINISHED, BELOW
 class FollowUserView(APIView): # Currently workign with this

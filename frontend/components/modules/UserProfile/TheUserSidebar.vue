@@ -4,8 +4,7 @@
 		<img id="profilbilde" :src="placeholder_user_profile_picture" class="w-[80px] h-[80px] mt-[40px] mb-[10px]">
 
 		<div id="info-wrapper">
-			<p id="username" class="font-bold leading-7">
-				{{ props.username  }}
+			<p id="username" class="font-bold leading-7" v-text="props.username">
 			</p>
 			<!-- Through props - not the best-->
 			<span id="followers">
@@ -39,8 +38,8 @@ import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
 const props = defineProps<{
-	username :string,
 	num_of_followers:number,
+	username:string,
 }>();
 const hoverState = ref(false)
 const followers = ref(0)
@@ -51,7 +50,6 @@ const followText = ref<string | null>(null)
 const followingState = computed(() => {
 	return checkIfFollowingUser(props.username)
 })
-
 
 watchEffect(() => {
 	console.log("watcheffect being called") // print to self
