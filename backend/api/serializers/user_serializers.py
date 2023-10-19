@@ -89,7 +89,6 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
         model = CustomUser
 
         fields = (
-            "id",
             "username",
             "first_name",
             "last_name",

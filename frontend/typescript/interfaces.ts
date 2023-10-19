@@ -6,6 +6,18 @@ export interface NormalUserProfileType {
 	num_of_following: number;
 }
 
+export interface LoggedInUserProfileType extends NormalUserProfileType { // Logged In user Type
+	email: string;
+	age: number | null;
+	address: string | null;
+	phone_number: string | null;
+	nickname: string | null;
+	following: FollowingType[]
+	followers: FollowerType[]
+	saved_posts: PostSavedType[]
+	num_of_saved_posts: number;
+}
+
 export interface NormalUserSnippetPostType {
 	count: number,
 	next: string | null,
@@ -28,31 +40,17 @@ export interface NormalUserSnippetPostType {
 	}]
 }
 
-// plural
+/**
+ * The interface nests the common post type inside
+ * of @var results, and sorround it with pagination
+ */
 export interface SnippetPostMultipleType {
 	count: number;
 	next: string | null;
 	previous: string | null;
 	current_page: number | null;
-	results: [
-		{
-			id: number;
-			title: string;
-			content_snippet: string;
-			date_published: string;
-			num_of_followers: string;
-			author: {
-				username: string;
-				first_name: string;
-				last_name: string;
-			},
-			tags: string[];
-			categories: string[];
-		}
-	]
+	results: SnippetPostSingleType[]
 }
-
-// singel
 export interface SnippetPostSingleType {
 	id: number;
 	title: string;
@@ -63,22 +61,8 @@ export interface SnippetPostSingleType {
 		first_name: string;
 		last_name: string;
 	},
-	tags: null | Array<string>,
-	categories: null | Array<string>
-}
-
-export interface LoggedInUserPostType {
-	id: number;
-	title: string;
-	content_snippet: string;
-	date_published: string;
-	author: {
-		username: string;
-		first_name: string;
-		last_name: string;
-	},
-	tags: null | Array<string>,
-	categories: null | Array<string>
+	tags: null | TagType[],
+	categories: null | CategoryType[]
 }
 
 export interface PostSingleType {
@@ -91,62 +75,30 @@ export interface PostSingleType {
 		first_name: string;
 		last_name: string;
 	};
-	tags: null | Array<string>,
-	categories: null | Array<string>
+	tags: null | TagType[],
+	categories: null | CategoryType[]
 }
 
-export interface LoggedInUserProfileType { // Logged In user Type
+export interface LoggedInUserMultiplePostType {
+	count: number;
+	next: string | null;
+	previous: string | null;
+	current_page: number | null;
+	results: LoggedInUserSinglePostType[]
+}
+export interface LoggedInUserSinglePostType {
 	id: number;
-	email: string;
-	username: string;
-	first_name: string;
-	last_name: string;
-	age: number | null;
-	address: string | null;
-	phone_number: string | null;
-	nickname: string | null;
-	following: [
-		{
-			username: string
-		}
-	]
-	num_of_following: number;
-	followers: [
-		{
-			username: string
-		}
-	]
-	num_of_followers: number;
-	saved_posts: [
-		{
-			user: {
-				username: string,
-				first_name: string,
-				last_name: string,
-			},
-			post: {
-				id: number,
-				title: string,
-			}
-		}
-	]
-	num_of_saved_posts: number;
+	title: string;
+	content_snippet: string;
+	date_published: string;
+	author: {
+		username: string;
+		first_name: string;
+		last_name: string;
+	},
+	tags: null | TagType[],
+	categories: null | CategoryType[]
 }
-
-// no bio is being sent
-
-export interface FollowerType {
-	username: string;
-}
-
-export interface TagType {
-	name: string
-}
-
-export interface CategoryType {
-	name: string
-}
-
 
 export interface PostSavedType {
 	user: {
@@ -155,9 +107,28 @@ export interface PostSavedType {
 		username: string,
 	},
 	post: {
+		id:number,
 		title: string
 	}
 }
+
+// no bio is being sent
+
+export interface FollowerType {
+	username: string;
+}
+export interface FollowingType {
+	username: string;
+}
+
+export interface TagType {
+	name: string
+}
+export interface CategoryType {
+	name: string
+}
+
+
 
 // not using ->
 
