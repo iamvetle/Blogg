@@ -2,17 +2,22 @@
 
 There are stuff I want the web client to be able to do, that I have not yet implemented. There are also things I want my blogg application to be able to do.
 
-Det jeg tenker aller mest på at jeg savner i blogg-appen min, er evnen til å sortere etter tags. 
-Det er den tingen jeg savner mest og hva jeg ønsker å fokusere på.
-
 ### Implementere tags sortering/søk
-- [ ] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
+- [~] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
 
 ---
 
 - [x] Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg ønsker å ha bloggen min.
 
 ## Backend
+
+### Generics
+
+- [x] Ta 'Tag' og 'Category' til generics og gjøre det mulig å hente og å lage nye uten å gjøre dem til duplikater
+- [ ] Gjøre det mulig til å oppdatere/edit sine **egne** posts
+  - da trenger jeg å endre på generics
+    - patch eller put?
+- [ ] Vil også gjøre det mulig å **redigere brukeren sin** på frontend 
 
 ### models.py
 
@@ -44,8 +49,8 @@ Det er den tingen jeg savner mest og hva jeg ønsker å fokusere på.
 ### Serializers og views
 
 - [x] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
-- [ ] Endre slik at det er mulig å legge til tags på post create
-  - [ ] -> klare å utføre det fra postman
+- [ ] Endre slik at det er mulig å *legge til tags* på post create
+  - [x] -> klare å utføre det fra postman
 
 ---
 
@@ -59,13 +64,15 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### admin.py - Admin Panel
 
 - [x] Få tags og categories som er assosiert med en post til å vises i post list i admin panel
+- [ ] Ta til betrakning at jeg har gjort det mulig å "create" og kanskje "delete" med generics nå, så jeg må huske å gjøre det mulig å fjerne dem også med adminpanel
 
 ---
 
 ### General
 
-- [ ] Bytte til ***generics*** istedenfor vanlig **APIView**
-
+- [x] Bytte til ***generics*** istedenfor vanlig **APIView**
+  - [ ] Gjøre det også på loginviews og registerviews
+- [ ] Rydde i services, gjøre det mer riktig
 ---
 
 ---
@@ -84,7 +91,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 > Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
-- [ ] Fjern 'searchRequest' og 'searchPagnation' (det som er igjen)
+- [ ] Fjern 'searchRequest' og [x]'searchPagnation' (det som er igjen)
+  - [ ] trenger da også fikset krøllet som er mellom feed og search (vanskelig å forstå search på backend)
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
 - [ ] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
   - keep-alive?
@@ -211,6 +219,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ## General
 
+- [ ] Ta code snippets som du bruker med **Vue Test Utils**, og i **Postman** og legg dem systematisk på Notion
 - [ ] Documentere ordentlig alle sidene og composables
 - [ ] Expand the registration form to include more information options
 - [ ] Fix the emit between new post and editorcard when it comes to border color and such

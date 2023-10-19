@@ -1,14 +1,14 @@
-from api.models import CustomUser, Post, Comment, Tag, Category, SavedPost
+from api.models import Post, Comment, Tag, Category, SavedPost
 from api.serializers.only_serializers import (
     OnlyAuthorCustomUserSerializer,
     OnlyTitlePostSerializer,
 )
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from time import strftime
 from django.utils.safestring import mark_safe
 
 CustomUser = get_user_model()
+
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,6 +20,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ["name"]
+
 
 class PostSerializer(serializers.ModelSerializer):
     """Serializes the input. Can be used on both single and multiple post objects"""

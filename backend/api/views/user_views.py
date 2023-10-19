@@ -12,9 +12,8 @@ from rest_framework.permissions import IsAuthenticated
 
 
 # Local application imports
-from api.models import Post, Comment
 from django.shortcuts import get_object_or_404
-from api.services.user_services import UserProfileService, MyProfileService
+from api.services.user_services import UserProfileService
 from api.serializers.user_serializers import (
     LoggedInUserSerializer,
     NormalUserSerializer,
