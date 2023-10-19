@@ -10,20 +10,6 @@ from api.pagination import CustomLimitOffsetPagination as GenericPagination
 from rest_framework.generics import ListCreateAPIView
 from rest_framework import serializers
 
-# class AllCategoriesView(APIView):
-#     ''' Returns all categories '''
-#     permission_classes = [IsAuthenticated]
-
-#     def get(self, request):
-#         queryset = Category.objects.all()
-
-#         serializer = CategorySerializer(queryset, many=True)
-
-#         if serializer.is_valid:
-#             return Response(serializer.data, status=status.HTTP_200_OK)
-#         else:
-#             return Response(status=status.HTTP_400_BAD_REQUEST)
-
 
 class AllCategoriesView(ListCreateAPIView):
     """Returns all categories"""
@@ -37,6 +23,7 @@ class AllCategoriesView(ListCreateAPIView):
     http_method_names = ["get", "post"]
 
     def create(self, request, *args, **kwargs):
+        """Sends a 'category already exists' error"""
         try:
             return super().create(request, *args, **kwargs)
         except serializers.ValidationError:

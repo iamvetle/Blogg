@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView
-from api.serializers.post_serializers import PostSerializer, TagSerializer
+from api.serializers.post_serializers import TagSerializer
 from rest_framework import status
 from api.models import Tag
 from rest_framework import serializers
@@ -13,7 +13,6 @@ from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 class AllTagsView(ListCreateAPIView):
     """Returns all tags"""
-
     permission_classes = [IsAuthenticated]
     serializer_class = TagSerializer
     pagination_class = GenericPagination  # will probably remove this later
@@ -23,6 +22,7 @@ class AllTagsView(ListCreateAPIView):
     http_method_names = ["get", "post"]
 
     def create(self, request, *args, **kwargs):
+        """Sends a 'tag already exists' error"""
         try:
             return super().create(request, *args, **kwargs)
         except serializers.ValidationError:

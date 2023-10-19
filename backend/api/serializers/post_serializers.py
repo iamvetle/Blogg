@@ -6,9 +6,9 @@ from api.serializers.only_serializers import (
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 
 CustomUser = get_user_model()
-
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
@@ -42,8 +42,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_content(self, obj):
         content = obj.content
-        content = mark_safe(content)
-
+        
+        content = format_html(content)
         return content
 
     def get_date_published(self, obj):

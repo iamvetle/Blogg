@@ -12,7 +12,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 
 # Django Filter
@@ -79,7 +79,6 @@ class PostAllNormalUserView(ListAPIView): # /api/<str:username>/
         
         return queryset
 
-    
 class PostMultipleSnippetView(ListAPIView): # /api/feed/
     """Responds {x} amount of posts as snippets"""
 
@@ -121,17 +120,12 @@ class PostMultipleAfterSearchView(APIView): # /api/search/
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-
-class PostSingleView(APIView):
+class PostSingleView(RetrieveAPIView):
     """Retrieves a single post"""
-
     permission_classes = [IsAuthenticated]
-
-    def get(self, request, pk):
-        post = get_object_or_404(Post, pk=pk)
-        serializer = PostSerializer(post)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
+    serializer_class = PostSerializer
+    lookup_field = "pk"
+    queryset = Post.objects.all()
 
 class PostSaveView(APIView):
     """Saves or un-saves a requested post for the user"""
