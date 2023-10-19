@@ -31,52 +31,37 @@ from api.serializers.user_serializers import NormalUserSerializer
 from api.filters import PostFilter
 from api.services.post_services import CreatePostService, PostSnippetService
 from api.services.search_services import SearchService
-from api.services.pagination_services import (
-    GenericCustomLimitOffsetPagination,
-)
 
 CustomUser = get_user_model()
 
 # queryset = Post.objects.all().order_by("-date_published")
 
-
-class PostAllLoggedInUserView(APIView):  # they are also shortened, snippets
+class PostAllLoggedInUserView(ListAPIView):  # return snippet posts
     """Retrieves all posts created by the logged in user"""
-
     permission_classes = [IsAuthenticated]
+    serializer_class = PostShortenSerializer
+    pagination_class = GenericPagination
+    
+    http_method_names = ['get']
+    
+    def get_queryset(self):
+        logged_in_user = self.request.user
+        
+        return logged_in_user.posts.all()
 
-    def get(self, request):
-        author = request.user.id
-        queryset = Post.objects.filter(author_id=author)
-        serializer = PostShortenSerializer(
-            queryset, many=True
-        )  # also post snippets now, NOT full ones
-
-        if serializer.is_valid:
-            return Response(serializer.data, status=status.HTTP_200_OK)
-
-class PostAllSavedLoggedInUserView(APIView):
+class PostAllSavedLoggedInUserView(ListAPIView):
     """Retrieves all posts saved by the user"""
-
     permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        userId = request.user.id
-
-        queryset = SavedPost.objects.filter(user=userId)
-
-        if queryset.exists:
-            try:
-                serializer = PostSaveStyleSerializer(queryset, many=True)
-
-                print(serializer.data)  # print to self
-
-                return Response(serializer.data, status=status.HTTP_200_OK)
-            except:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
-        else:
-            return Response([], status=status.HTTP_200_OK)
-
+    serializer_class = PostSaveStyleSerializer
+    pagination_class = GenericPagination
+    # pagination just crashes here (although not so important)
+    
+    http_method_names = ['get']
+    
+    def get_queryset(self):
+        logged_in_user = self.request.user
+        
+        return logged_in_user.saved_posts.all()
 
 class PostAllNormalUserView(ListAPIView):   
     """Returns information about a specified user"""
@@ -84,6 +69,8 @@ class PostAllNormalUserView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
     pagination_class = GenericPagination
+    
+    http_method_names = ['get']
     
     queryset = Post.objects.all()
 
@@ -95,19 +82,16 @@ class PostAllNormalUserView(ListAPIView):
         return queryset
 
     
-    
-
-
 class PostMultipleSnippetView(ListAPIView):
     """Retrieves all posts as snippets, and returns them paginated"""
 
     permission_classes = [IsAuthenticated]
-
     serializer_class = PostShortenSerializer
     queryset = Post.objects.all()
+    
     filter_backends = [DjangoFilterBackend]
     filterset_class = PostFilter
-    # Filters the queryset
+
     pagination_class = GenericPagination
 
     http_method_names = ["get"]
