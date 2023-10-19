@@ -1,3 +1,10 @@
+
+// HUSK no bio is being sent
+
+
+/**
+ * url: /api/<str>:username/
+ */
 export interface NormalUserProfileType {
 	username: string;
 	first_name: string;
@@ -6,6 +13,9 @@ export interface NormalUserProfileType {
 	num_of_following: number;
 }
 
+/**
+ * url: /api/min-side/
+ */
 export interface LoggedInUserProfileType extends NormalUserProfileType { // Logged In user Type
 	email: string;
 	age: number | null;
@@ -16,8 +26,13 @@ export interface LoggedInUserProfileType extends NormalUserProfileType { // Logg
 	followers: FollowerType[]
 	saved_posts: PostSavedType[]
 	num_of_saved_posts: number;
+	
+	// NormalUserProfileType ...
 }
 
+/**
+ * url: /api/<str>:username/posts/
+ */
 export interface NormalUserSnippetPostType {
 	count: number,
 	next: string | null,
@@ -44,6 +59,10 @@ export interface NormalUserSnippetPostType {
  * The interface nests the common post type inside
  * of @var results, and sorround it with pagination
  */
+
+/**
+ * url: /api/feed/
+ */
 export interface SnippetPostMultipleType {
 	count: number;
 	next: string | null;
@@ -65,6 +84,9 @@ export interface SnippetPostSingleType {
 	categories: null | CategoryType[]
 }
 
+/**
+ * url: /api/post/<int>:post_id/
+ */
 export interface PostSingleType {
 	id: number;
 	title: string;
@@ -79,6 +101,9 @@ export interface PostSingleType {
 	categories: null | CategoryType[]
 }
 
+/**
+ * url: /api/min-side/posts/
+ */
 export interface LoggedInUserMultiplePostType {
 	count: number;
 	next: string | null;
@@ -100,29 +125,78 @@ export interface LoggedInUserSinglePostType {
 	categories: null | CategoryType[]
 }
 
+/**
+ * url: /api/posts/saved/
+ */
+
+export interface AllPostSavedType {
+	count: number;
+	next: string | null;
+	previous: string | null;
+	current_page: number | null;
+	results: PostSavedType[]
+}
 export interface PostSavedType {
-	user: {
-		first_name: string,
-		last_name: string,
-		username: string,
-	},
 	post: {
 		id:number,
-		title: string
+		title: string,
+		username: string,
+		first_name: string,
+		last_name: string,
 	}
 }
 
-// no bio is being sent
-
+/**
+ * url: /api/min-side/followers/
+ */
+export interface AllFollowersType {
+	count: number;
+	next: string | null;
+	previous: string | null;
+	current_page: number | null;
+	results: FollowerType[]
+}
 export interface FollowerType {
 	username: string;
+}
+
+/**
+ * url: /api/min-side/following/
+ */
+export interface AllFollowingType {
+	count: number;
+	next: string | null;
+	previous: string | null;
+	current_page: number | null;
+	results: FollowingType[]
 }
 export interface FollowingType {
 	username: string;
 }
 
+/**
+ * url: /api/tags/
+ */
+export interface AllTagsType {
+	count: number;
+	next: string | null;
+	previous: string | null;
+	current_page: number | null;
+	results: TagType[]
+}
 export interface TagType {
 	name: string
+}
+
+/**
+ * url: /api/categories/
+ */
+export interface AllCategoriesType {
+	count: number;
+	next: string | null;
+	previous: string | null;
+	current_page: number | null;
+	results: CategoryType[]
 }
 export interface CategoryType {
 	name: string

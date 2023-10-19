@@ -37,7 +37,7 @@
 		</div>
 
 		<hr class="mb-8">
-
+	
 		<div id="saved-posts" class="mx-auto w-full mb-8">
 
 			<h3 class=" text-[28px] mb-9">
@@ -45,8 +45,8 @@
 			</h3>
 
 			<div class="saved-article" v-if="store.personalUser.saved_posts">
-				<ArticleSavedCard v-for="post in store.personalUser.saved_posts" :saved-article-prop="post"
-					:key="post.id" />
+				<ArticleSavedCard v-for="post in store.personalUser.saved_posts" :saved-post="post"
+					:key="post.post.id" />
 			</div>
 
 			<p v-if="store.personalUser.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">

@@ -156,7 +156,7 @@ onMounted(async () => {
 
 
 const redirect_to_post_page = async (post:any) => {
-	const post_article_page = post.id
+	const post_article_page = post
 
 	return await navigateTo(`/post/${post_article_page}`)
 }

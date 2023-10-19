@@ -1,9 +1,9 @@
 <template>
 	<div class="flex pb-8">
 		<img :src="article_image" class="w-14 h-12">
-		<div class="ml-2" v-if="savedArticleProp">
-			<span @click="redirect_to_post_page(savedArticleProp.post)" class="cursor-pointer flex ms-1 font-bold">
-				{{ savedArticleProp.post.title }}
+		<div class="ml-2" v-if="savedPost">
+			<span @click="redirect_to_post_page(savedPost.post.id)" class="cursor-pointer flex ms-1 font-bold">
+				{{ savedPost.post.title }}
 			</span>
 			<span class="flex">
 				<span><svg width="24" height="24" viewBox="0 0 24 24" class="fill-onBackground"
@@ -14,8 +14,8 @@
 					</svg>
 				</span>
 				<span class="flex ms-1">
-					<span @click="redirect_to_author_page(savedArticleProp.user)" class="cursor-pointer">
-						{{ savedArticleProp.user.username }}
+					<span @click="redirect_to_author_page(savedPost.post.username)" class="cursor-pointer">
+						{{ savedPost.post.username }}
 					</span>
 				</span>
 			</span>
@@ -28,16 +28,16 @@
 // temperory solution
 const article_image = "https://picsum.photos/500/300"
 
-const { savedArticleProp } = defineProps(['savedArticleProp'])
+const { savedPost } = defineProps(['savedPost'])
 
 const redirect_to_post_page = async (post: SnippetPostSingleType) => {
-	const post_article_page = post.id
+	const post_article_page = post
 
 	return await navigateTo(`/post/${post_article_page}`)
 }
 
-const redirect_to_author_page = async (post: SnippetPostSingleType) => {
-	const author_profile_page = post.username
+const redirect_to_author_page = async (username:any) => {
+	const author_profile_page = username
 
 	return await navigateTo(`/user/${author_profile_page}`)
 }

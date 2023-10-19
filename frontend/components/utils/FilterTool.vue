@@ -1,6 +1,6 @@
 <template>
 	<div class="py-1" v-if="store.allTags">
-		<div class="py-1 ml-2" v-for="(category, index) in store.allTags" :key="index">
+		<div class="py-1 ml-2" v-for="(category, index) in store.allTags.results" :key="index">
 			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
 		</div>
 	</div>

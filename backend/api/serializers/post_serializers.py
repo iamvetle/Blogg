@@ -10,6 +10,7 @@ from django.utils.html import format_html
 
 CustomUser = get_user_model()
 
+
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
@@ -42,7 +43,7 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_content(self, obj):
         content = obj.content
-        
+
         content = format_html(content)
         return content
 
@@ -132,9 +133,31 @@ class CommentSerializer(serializers.ModelSerializer):  # Not in use
 
 
 class PostSaveStyleSerializer(serializers.ModelSerializer):
-    user = OnlyAuthorCustomUserSerializer()
-    post = OnlyTitlePostSerializer()
+    """Proccesses the data and returns only the post that is saved.
+    so 'user' has been ommitted, since it is a referance to the
+    customuser whom saved it - which is uninteresting for us."""
+
+    post = serializers.SerializerMethodField()
 
     class Meta:
         model = SavedPost
-        fields = ["user", "post"]
+        fields = ["post"]
+
+    def get_post(self, obj):
+        post = {
+            "id": obj.post.id,
+            "title": obj.post.title,
+            "username": obj.post.author.username,
+            "first_name": obj.post.author.first_name,
+            "last_name": obj.post.author.last_name,
+        }
+        return post
+
+
+# class PostSaveStyleSerializer(serializers.ModelSerializer):
+#     user = OnlyAuthorCustomUserSerializer()
+#     post = OnlyTitlePostSerializer()
+
+#     class Meta:
+#         model = SavedPost
+#         fields = ["user", "post"]

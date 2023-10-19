@@ -50,10 +50,8 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
 
         try:
             followers = list(obj.followers.all())
-
             num_of_followers = len(followers)
             return num_of_followers
-
         except:
             return num_of_followers
 
@@ -62,9 +60,7 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
 
         try:
             queryset = obj.following.all()
-
             serializer = FollowerSerializer(queryset, many=True)
-
             if serializer.is_valid:
                 return serializer.data
             else:
@@ -89,6 +85,7 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
         model = CustomUser
 
         fields = (
+            "id",
             "username",
             "first_name",
             "last_name",

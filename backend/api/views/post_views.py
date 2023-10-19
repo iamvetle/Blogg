@@ -53,7 +53,6 @@ class PostAllSavedLoggedInUserView(ListAPIView): # /api/saved/
     """Retrieves a small part of all posts saved by the user"""
     permission_classes = [IsAuthenticated]
     serializer_class = PostSaveStyleSerializer
-    pagination_class = GenericPagination
     
     http_method_names = ['get']
     
