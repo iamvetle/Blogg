@@ -7,6 +7,7 @@ import Following from "~/components/modules/MyUser/Following.vue";
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from "~/store/generalStore";
 import { ref } from 'vue'
+import { LoggedInUserProfileType } from '../../../../typescript/interfaces';
 
 let wrapper: VueWrapper
 let store
@@ -46,28 +47,26 @@ describe('ListArticlesSidebar testing', () => {
 			"num_of_followers": 1,
 			"saved_posts": [
 				{
-					"user": {
+					"post": {
+						"id":1,
+						"title": " saved1testtitle",
 						"username": "saved1guy",
 						"first_name": "saved1guyfirstname",
 						"last_name": "saved1guylastname",
-					},
-					"post": {
-						"title": " saved1testtitle"
 					}
 				},
 				{
-					"user": {
+					"post": {
+						"id":2,
+						"title": " saved2testtitle",
 						"username": "saved2guy",
 						"first_name": "saved2guyfirstname",
 						"last_name": "saved2guylastname",
-					},
-					"post": {
-						"title": " saved2testtitle"
 					}
-				}
+				},
 			],
 			"num_of_saved_posts": 192
-		};
+		} as LoggedInUserProfileType;
 
 		const full_name = ref("iamfirstname iamlastname")
 
