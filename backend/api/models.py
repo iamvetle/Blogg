@@ -154,4 +154,6 @@ class SavedPost(models.Model):
     def __str__(self):
         return f"{self.post.title}"
     class Meta:
-        unique_together = ("user", "post")
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'post'], name='unique_user_post')
+        ]
