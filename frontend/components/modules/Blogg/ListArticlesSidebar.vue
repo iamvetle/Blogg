@@ -37,16 +37,32 @@
 		</div>
 
 		<hr class="mb-8">
-	
+
 		<div id="saved-posts" class="mx-auto w-full mb-8">
 
 			<h3 class=" text-[28px] mb-9">
 				Lagrede innlegg
 			</h3>
 
-			<div class="saved-article" v-if="store.personalUser.saved_posts">
+			<!-- <div class="saved-article" v-if="store.personalUser.saved_posts">
 				<ArticleSavedCard v-for="post in store.personalUser.saved_posts" :saved-post="post"
 					:key="post.post.id" />
+			</div> -->
+
+			<div id="saved_articles" v-for="post in store.personalUser.saved_posts">
+				<article-saved-card :key="post.post.id">
+
+					<template #title>
+						<span @click="redirect_to_author_page(post.post.username)" data-test="redirect_to_author" class="cursor-pointer">{{ post.post.title
+						}}</span>
+					</template>
+
+					<template #author>
+						<span @click="redirect_to_post_page(post.post.id)" data-test="redirect_to_post" class="cursor-pointer">{{ post.post.username
+						}}</span>
+					</template>
+
+				</article-saved-card>
 			</div>
 
 			<p v-if="store.personalUser.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">
@@ -70,7 +86,8 @@
 					<Following v-for="(following, index) in store.personalUser.following" :username="following.username"
 						:key="index" />
 				</div>
-				<span class="text-xs text-primary hover:text-primaryFixed">Se alle ({{ store.personalUser.num_of_following }})</span>
+				<span class="text-xs text-primary hover:text-primaryFixed">Se alle ({{ store.personalUser.num_of_following
+				}})</span>
 			</div>
 
 			<div v-if="store.personalUser.num_of_following == 0">
@@ -101,6 +118,17 @@ const full_name = computed(() => {
 		return name
 	}
 })
+
+
+const redirect_to_post_page = async (postId: any) => {
+
+	return await navigateTo(`/post/${postId}`)
+}
+
+const redirect_to_author_page = async (username: any) => {
+
+	return await navigateTo(`/user/${username}`)
+}
 
 </script>
 

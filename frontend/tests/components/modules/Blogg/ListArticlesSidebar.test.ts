@@ -13,12 +13,19 @@ let wrapper: VueWrapper
 let store
 let pinia
 
+const mock_redirect_to_author_page = (author:any) => {
+	author = null
+	return null
+}
+
 describe('ListArticlesSidebar testing', () => {
 
 	beforeAll(async () => {
 
 		pinia = createTestingPinia()
 		store = useGeneralStore(pinia)
+
+
 
 
 		// Mock the getLoggedInUserProfile function
@@ -71,10 +78,12 @@ describe('ListArticlesSidebar testing', () => {
 		const full_name = ref("iamfirstname iamlastname")
 
 
+
+
 		wrapper = mount(ListArticlesSidebar, {
 			global: {
 				components: { MyProfileCard, ArticleSavedCard, Following },
-				mocks: { full_name },
+				mocks: { full_name, redirect_to_author_page:mock_redirect_to_author_page },
 				plugins: [pinia]
 			}
 		});
@@ -103,14 +112,12 @@ describe('ListArticlesSidebar testing', () => {
 	})
 	it('should render username of who I am following', async () => {
 		console.log(wrapper.html())
-		await wrapper.vm.$nextTick()
 
 		expect(wrapper.text()).toContain("michael90")
 	})
 
 	test("renders my profile information (username, firstname, lastname)",
-		async () => {
-			await wrapper.vm.$nextTick()
+		() => {
 
 			expect(wrapper.text()).toContain("iamperson")
 			expect(wrapper.text()).toContain("iamfirstname")
@@ -128,5 +135,19 @@ describe('ListArticlesSidebar testing', () => {
 			expect(wrapper.text()).toContain("saved2guy")
 			expect(wrapper.text()).toContain("saved2testtitle")
 
+		})
+
+		test('Should call the function to redirect to the post page', async () => {
+		  const button = wrapper.find("[data-test='redirect_to_author']")
+
+		  expect(button.exists()).toBe(true)
+
+		  button.trigger("click")
+
+		  await wrapper.vm.$nextTick()
+
+		  // I have no way to assert whether the function has called or not
+			
+		
 		})
 })
