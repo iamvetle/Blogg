@@ -152,12 +152,3 @@ class PostSaveStyleSerializer(serializers.ModelSerializer):
             "last_name": obj.post.author.last_name,
         }
         return post
-
-
-# class PostSaveStyleSerializer(serializers.ModelSerializer):
-#     user = OnlyAuthorCustomUserSerializer()
-#     post = OnlyTitlePostSerializer()
-
-#     class Meta:
-#         model = SavedPost
-#         fields = ["user", "post"]
