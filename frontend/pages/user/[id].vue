@@ -112,17 +112,18 @@
 							<template #amount-of-followers>
 								<p class="font-light text-sm leading-7">
 									{{ followers }} followers
-								</p>	
+								</p>
 							</template>
 
 							<template #follow-button>
 
 								<base-follow-button>
-									<span class="w-fit h-fit cursor-pointer"
+									<div class="w-fit h-fit cursor-pointer bg-primary text-onPrimary"
 										v-if="checkIfFollowingUser(normalUserProfile.username) === true" id="following"
-										@click="unFollowUser(normalUserProfile.username)">
+										@click="unFollowUser(normalUserProfile.username)"
+										>
 										<p>Following</p>
-									</span>
+							</div>
 
 									<span class="w-fit h-fit cursor-pointer"
 										v-if="checkIfFollowingUser(normalUserProfile.username) === false" id="follow"
@@ -145,19 +146,6 @@
 <script setup lang="ts">
 // a user's page
 
-import placeholder_header_image from '~/assets/placeholder-image.jpg'
-// import UserPostCard from '~/components/modules/Blogg/UserPostCard.vue';
-import { useGeneralStore } from '~/store/generalStore';
-// import Following from '~/components/modules/MyUser/Following.vue';
-const post_image = ref('https://picsum.photos/500/300')
-
-/** Essentially 'dumps' the input into a div and returns the plain text */
-const toPlainText = (raw: string) => {
-	const div = document.createElement('div')
-	div.innerHTML = raw
-	return div.textContent || div.innerText
-}
-
 const store = useGeneralStore()
 
 const color = ref("fill-black")
@@ -171,29 +159,53 @@ const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
 
 const followers = ref(0)
 
+import placeholder_header_image from '~/assets/placeholder-image.jpg'
+import { useGeneralStore } from '~/store/generalStore';
+
+
+const post_image = ref('https://picsum.photos/500/300')
+
+/** 
+ * Essentially 'dumps' the input into a div and returns the plain text 
+ * @param - the html that is going to be formated
+ * @returns - returns the plain text version
+ */
+const toPlainText = (raw: string) => {
+	const div = document.createElement('div')
+	div.innerHTML = raw
+	return div.textContent || div.innerText
+}
+
+
+
 
 /**
  * Fetches, GET, the profile information about the user
+ * an its fetches, GET, its posts
  */
 onMounted(async () => {
-	const response = await getNormalUserProfile(theNormalUserProfileURL);
-	await getLoggedInUserProfile();
 
-	followers.value = response.num_of_followers
+	/**
+	 * Checks if data of who the logged in user is following is present
+	 */
 
-	console.log(response)
+	if (!Array.isArray(store.idArrayOfLoggedInUserFollowingUsers) || !store.idArrayOfLoggedInUserFollowingUsers.length) {
+		await getLoggedInUserProfile();
+	}
+	const response_user = await getNormalUserProfile(theNormalUserProfileURL);
+	followers.value = response_user.num_of_followers
+	console.log(response_user) // print to self
+	normalUserProfile.value = response_user
 
-	normalUserProfile.value = response
+	const response_post = await getNormalUserPosts(theNormalUserPostsURL);
+	normalUserPosts.value = response_post
 })
 
 /**
  * Fetches, GET, posts the user has made
  */
 onMounted(async () => {
-	const response = await getNormalUserPosts(theNormalUserPostsURL);
 
-
-	normalUserPosts.value = response
 })
 
 /**
@@ -227,10 +239,10 @@ const author_full_name = (post: SnippetPostSingleType) => {
  * @param post - the post that you want to unsave
  */
 const unsave = async (post: number) => {
-	// const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
+	const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
 
 
-	// store.idArrayOfSavedPosts.splice(index, 1)
+	store.idArrayOfSavedPosts.splice(index, 1)
 
 	await getSaveOrUnsavePost(post)
 }
@@ -251,7 +263,9 @@ const unFollowUser = async (username: string) => {
 	await getUnfollowUser(theNormalUserProfileUNSAVEURL)
 
 	const index = store.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
+
 	store.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
+
 	followers.value--
 
 }
@@ -267,6 +281,11 @@ const followUser = async (username: string) => {
 }
 
 onDeactivated(() => {
+	followers.value = 0
+	store.idArrayOfLoggedInUserFollowingUsers = []
+})
+
+onUnmounted(() => {
 	followers.value = 0
 	store.idArrayOfLoggedInUserFollowingUsers = []
 })
