@@ -11,7 +11,8 @@ export const checkIfFollowingUser = (username:string) => {
     console.log(username) // print to self
     
     console.log(typeof store.idArrayOfLoggedInUserFollowingUsers) // print to self
-    
+    console.log(store.idArrayOfLoggedInUserFollowingUsers)
+
     if (store.idArrayOfLoggedInUserFollowingUsers.includes(username)) {
         console.log("true") // print to self
         return true

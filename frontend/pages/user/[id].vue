@@ -1,6 +1,6 @@
 <template>
 	<div id="site-wrapper">
-		<div v-if="normalUserProfile && normalUserPosts" class="w-9/12 mx-auto border-v pb-[60px]">
+		<div v-if="(normalUserProfile != null) && (normalUserPosts != null)" class="w-9/12 mx-auto border-v pb-[60px]">
 			<div class="w-full px-[80px] grid grid-cols-12 gap-[80px]">
 				<div class="inline-block col-start-1 col-end-9 border-v border-blue-500">
 					<!-- 8/12 main content-->
@@ -105,27 +105,27 @@
 
 				<!-- 4/12 sidebar -->
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
-					<div class="sticky top-0 overflow-y-scroll" v-if="normalUserProfile">
+					<div class="sticky top-0 overflow-y-scroll" v-if="normalUserProfile != null">
 
-						<the-user-sidebar :username="normalUserProfile.username" :num_of_followers="followers ?? 0">
+						<the-user-sidebar :username="normalUserProfile.username">
 
 							<template #amount-of-followers>
 								<p class="font-light text-sm leading-7">
 									{{ followers }} followers
-								</p>
+								</p>	
 							</template>
 
 							<template #follow-button>
 
 								<base-follow-button>
 									<span class="w-fit h-fit cursor-pointer"
-										v-if="checkIfFollowingUser(normalUserProfile.username)" id="follow"
+										v-if="checkIfFollowingUser(normalUserProfile.username) === true" id="following"
 										@click="unFollowUser(normalUserProfile.username)">
 										<p>Following</p>
 									</span>
 
 									<span class="w-fit h-fit cursor-pointer"
-										v-if="!checkIfFollowingUser(normalUserProfile.username)" id="follow"
+										v-if="checkIfFollowingUser(normalUserProfile.username) === false" id="follow"
 										@click="followUser(normalUserProfile.username)">
 										<p>Follow</p>
 									</span>
@@ -177,7 +177,11 @@ const followers = ref(0)
  */
 onMounted(async () => {
 	const response = await getNormalUserProfile(theNormalUserProfileURL);
+	await getLoggedInUserProfile();
+
 	followers.value = response.num_of_followers
+
+	console.log(response)
 
 	normalUserProfile.value = response
 })
@@ -187,7 +191,6 @@ onMounted(async () => {
  */
 onMounted(async () => {
 	const response = await getNormalUserPosts(theNormalUserPostsURL);
-	await getLoggedInUserProfile();
 
 
 	normalUserPosts.value = response
@@ -224,10 +227,10 @@ const author_full_name = (post: SnippetPostSingleType) => {
  * @param post - the post that you want to unsave
  */
 const unsave = async (post: number) => {
-	const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
+	// const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
 
 
-	store.idArrayOfSavedPosts.splice(index, 1)
+	// store.idArrayOfSavedPosts.splice(index, 1)
 
 	await getSaveOrUnsavePost(post)
 }
@@ -255,13 +258,18 @@ const unFollowUser = async (username: string) => {
 
 
 const followUser = async (username: string) => {
-	const theNormalUserProfileSAVEURL = `http://localhost:8888/api/${username}/unfollow/`;
+	const theNormalUserProfileSAVEURL = `http://localhost:8888/api/${username}/follow/`;
 
 	await getFollowUser(theNormalUserProfileSAVEURL)
 
 	store.idArrayOfLoggedInUserFollowingUsers.push(username)
 	followers.value++
 }
+
+onDeactivated(() => {
+	followers.value = 0
+	store.idArrayOfLoggedInUserFollowingUsers = []
+})
 
 
 

@@ -9,7 +9,7 @@
 
 			<span id="followers">
 
-				<slot name="amount-of-followers"/>
+				<slot name="amount-of-followers"></slot>
 
 			</span>
 			
@@ -21,7 +21,7 @@
 			</div>
 			
 			<div>
-				<slot name="follow-button" />
+				<slot name="follow-button"></slot>
 			</div>
 			
 			
@@ -48,7 +48,6 @@ import placeholder_user_profile_picture from '~/assets/placeholder-profile-pictu
 
 // const store = useGeneralStore()
 const props = defineProps<{
-	num_of_followers: number,
 	username: string,
 }>();
 // const hoverState = ref(false)
