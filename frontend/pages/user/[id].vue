@@ -105,7 +105,7 @@
 
 				<!-- 4/12 sidebar -->
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
-					<div class="sticky top-0 overflow-y-scroll" v-if="normalUserProfile != null">
+					<div v-if="normalUserProfile != null">
 
 						<the-user-sidebar :username="normalUserProfile.username">
 
@@ -118,18 +118,19 @@
 							<template #follow-button>
 
 								<base-follow-button>
-									<div class="w-fit h-fit cursor-pointer bg-primary text-onPrimary"
+									<div class="w-fit h-fit cursor-pointer bg-primary text-onPrimary hover:bg-inversePrimary p-1 rounded-md"
 										v-if="checkIfFollowingUser(normalUserProfile.username) === true" id="following"
 										@click="unFollowUser(normalUserProfile.username)"
+										@mouseover="followText = 'Unfollow'" @mouseleave="followText = 'Following'"
 										>
-										<p>Following</p>
+										<p>{{followText}}</p>
 							</div>
 
-									<span class="w-fit h-fit cursor-pointer"
+									<div class="w-fit h-fit cursor-pointer p-1 rounded-md bg-inversePrimary text-onPrimary hover:bg-primary"
 										v-if="checkIfFollowingUser(normalUserProfile.username) === false" id="follow"
 										@click="followUser(normalUserProfile.username)">
 										<p>Follow</p>
-									</span>
+									</div>
 
 								</base-follow-button>
 
@@ -156,6 +157,7 @@ const theNormalUserPostsURL = `http://localhost:8888/api/${route.params.id}/post
 
 const normalUserProfile = ref<NormalUserProfileType | null>(null);
 const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
+const followText = ref("Following")
 
 const followers = ref(0)
 
@@ -197,15 +199,11 @@ onMounted(async () => {
 	console.log(response_user) // print to self
 	normalUserProfile.value = response_user
 
-	const response_post = await getNormalUserPosts(theNormalUserPostsURL);
-	normalUserPosts.value = response_post
-})
-
-/**
+	/**
  * Fetches, GET, posts the user has made
  */
-onMounted(async () => {
-
+	const response_post = await getNormalUserPosts(theNormalUserPostsURL);
+	normalUserPosts.value = response_post
 })
 
 /**
