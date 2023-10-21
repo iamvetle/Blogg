@@ -16,7 +16,9 @@
 					tempore nesciunt?
 				</p>
 			</div>
-
+			<div>
+				<slot name="follow_button" />
+			</div>
 			<base-follow-button id="follow" :class="followClass" @click="getFollowUserAction" @mouseover="hoverAction()"
 				@mouseleave="leaveAction()">
 				<span v-if="hoverState == false">
@@ -26,7 +28,7 @@
 					{{ hoverOverText }}
 				</span>
 			</base-follow-button>
-			
+
 		</div>
 	</div>
 </template>
@@ -38,8 +40,8 @@ import { useGeneralStore } from '~/store/generalStore';
 
 const store = useGeneralStore()
 const props = defineProps<{
-	num_of_followers:number,
-	username:string,
+	num_of_followers: number,
+	username: string,
 }>();
 const hoverState = ref(false)
 const followers = ref(0)
@@ -52,10 +54,7 @@ const followingState = computed(() => {
 })
 
 watchEffect(() => {
-	console.log("watcheffect being called") // print to self
 	let check = checkIfFollowingUser(props.username)
-
-	console.log(check, "checkyya")
 
 	if (check) {
 		followText.value = "Following"
@@ -90,7 +89,7 @@ const getFollowUserAction = async () => {
 	console.log("getfollwuser action called")
 	const followURL = `http://localhost:8888/api/${props.username}/follow/`
 	const unfollowURL = `http://localhost:8888/api/${props.username}/unfollow/`
-
+	
 	if (followingState.value === false) {
 
 		const response = await getFollowUser(followURL)
@@ -100,7 +99,7 @@ const getFollowUserAction = async () => {
 			console.log("followuser")
 
 			followText.value = "Following"
-			followers.value = followers.value + 1 
+			followers.value = followers.value + 1
 			followClass.value = "bg-primary text-onPrimary px-3 py-2 rounded-md text-sm hover:bg-primaryFixedDim"
 			store.idArrayOfLoggedInUserFollowingUsers.push(props.username)
 
@@ -115,19 +114,19 @@ const getFollowUserAction = async () => {
 
 		if (response != null) {
 
-			console.log("unfollowuser") // print to self
 			followText.value = "Follow"
 			followers.value = followers.value - 1
 			followClass.value = "bg-primary text-onPrimary px-3 py-2 rounded-md text-sm bg-primaryFixedDim"
-			
+
 			const index = store.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === props.username)
 			store.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
 		}
 	}
+	// await getNormalUserProfile(userurl)
 
 }
 
-onMounted( async () => {
+onMounted(() => {
 	followers.value = props.num_of_followers
 })
 

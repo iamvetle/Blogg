@@ -35,6 +35,9 @@ describe('testign theusersidebar', () => {
             props: {
                 username: "testuser",
                 num_of_followers:9
+            },
+            slots: {
+                follow_button: "<p>This is the slot 'follow_button'</p>"
             }
         });
 
@@ -79,6 +82,9 @@ describe('testign theusersidebar', () => {
         await flushPromises()
 
         expect(wrapper.html()).toContain("Follow")
+    })
+    test('Should render the "follow_button" slot', () => {
+        expect(wrapper.html()).toContain("<p>This is the slot 'follow_button'</p>")      
     })
 
     // i can find the component and checkk the text directly inside because it is using slot ^
