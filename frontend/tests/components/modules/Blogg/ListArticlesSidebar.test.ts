@@ -7,7 +7,7 @@ import Following from "~/components/modules/MyUser/Following.vue";
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from "~/store/generalStore";
 import { ref } from 'vue'
-import { LoggedInUserProfileType } from '../../../../typescript/interfaces';
+import { LoggedInUserProfileType } from '../../../../typescript/post_interfaces';
 
 let wrapper: VueWrapper
 let store

@@ -22,12 +22,19 @@ export const getLoggedInUserProfile = async () => {
     console.dir(response.data)
 
     store.idArrayOfSavedPosts = []
+	  store.idArrayOfLoggedInUserFollowingUsers = []
 
+
+    
     for (const savedPost of store.personalUser.saved_posts) {
       console.log(savedPost.post.id) // print to self
 
       store.idArrayOfSavedPosts.push(savedPost.post.id)
 
+    }
+
+    for (const follower of store.personalUser.followers) {
+      store.idArrayOfLoggedInUserFollowingUsers.push(follower.username)
     }
     
     return response.data;

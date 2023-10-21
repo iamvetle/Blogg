@@ -14,8 +14,6 @@ export const getNormalUserProfile = async (userURL: string) => {
     if (response.data != null) {
       console.log("OK: data fetched", response.data); // print to self
 
-      await getLoggedInUserAllFollowing()
-
       return response.data
 
 

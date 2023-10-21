@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { AllTagsType } from '../typescript/interfaces';
+import { AllTagsType } from '../typescript/post_interfaces';
 
 export const useGeneralStore = defineStore("general", () => {
 

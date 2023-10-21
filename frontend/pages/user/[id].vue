@@ -16,7 +16,7 @@
 							</h2>
 						</div>
 
-						<div class="pt-[30px]">
+						<div id="nav" class="pt-[30px]">
 							<ul class="flex justify-start items-center space-x-4">
 								<li class="prose">
 									Home
@@ -31,7 +31,9 @@
 						</div>
 						<hr class="mt-2">
 					</div>
+
 					<div id="main" class="pt-[50px]" v-if="normalUserPosts.results">
+
 						<div class="article" v-for="post in normalUserPosts.results" :key="post.id">
 
 							<article-card :hide-profile-image="true">
@@ -104,7 +106,26 @@
 				<!-- 4/12 sidebar -->
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 					<div class="sticky top-0 overflow-y-scroll" v-if="normalUserProfile">
-						<TheUserSidebar :username="normalUserProfile.username" :num_of_followers="normalUserProfile.num_of_followers?? 0" />
+
+						<the-user-sidebar :username="normalUserProfile.username"
+							:num_of_followers="followers ?? 0">
+
+							<template #follow-button>
+
+							<base-follow-button>
+									<span class="w-fit h-fit cursor-pointer" v-if="checkIfFollowingUser(normalUserProfile.username)" id="follow" @click="unFollowUser(normalUserProfile.username)">
+										<p>Following</p>
+									</span>
+
+									<span class="w-fit h-fit cursor-pointer" v-if="!checkIfFollowingUser(normalUserProfile.username)" id="follow" @click="followUser(normalUserProfile.username)">
+										<p>Follow</p>
+									</span>
+
+								</base-follow-button>
+
+							</template>
+
+						</the-user-sidebar>
 					</div>
 				</div>
 			</div>
@@ -118,6 +139,7 @@
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
 // import UserPostCard from '~/components/modules/Blogg/UserPostCard.vue';
 import { useGeneralStore } from '~/store/generalStore';
+// import Following from '~/components/modules/MyUser/Following.vue';
 const post_image = ref('https://picsum.photos/500/300')
 
 /** Essentially 'dumps' the input into a div and returns the plain text */
@@ -134,38 +156,48 @@ const route = useRoute();
 const theNormalUserProfileURL = `http://localhost:8888/api/${route.params.id}/`;
 const theNormalUserPostsURL = `http://localhost:8888/api/${route.params.id}/posts/`;
 
-const normalUserProfile = ref<NormalUserProfileType | null >(null);
+const normalUserProfile = ref<NormalUserProfileType | null>(null);
 const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
 
-onMounted(async () => {
+const followers = ref(0)
 
+
+/**
+ * Fetches, GET, the profile information about the user
+ */
+onMounted(async () => {
 	const response = await getNormalUserProfile(theNormalUserProfileURL);
+	followers.value = response.num_of_followers
 
 	normalUserProfile.value = response
-
-	console.log(normalUserProfile)
-	
 })
 
+/**
+ * Fetches, GET, posts the user has made
+ */
 onMounted(async () => {
 	const response = await getNormalUserPosts(theNormalUserPostsURL);
+	await getLoggedInUserProfile();
+
 
 	normalUserPosts.value = response
-
 })
 
-
-const redirect_to_post_page = async (post:any) => {
+/**
+ * Navigates, or redirects, the web client to the
+ * specific page for the post
+ * @param post - the id of the post
+ */
+const redirect_to_post_page = async (post: any) => {
 	const post_article_page = post
 
 	return await navigateTo(`/post/${post_article_page}`)
 }
 
+
+
 const author_full_name = (post: SnippetPostSingleType) => {
 
-	console.log("author full name function being called") // print to self
-	console.log(post.author) // print to self
-	console.log(toRaw(post)) // print to self
 	const author = post.author
 
 	if (author.first_name && author.last_name) {
@@ -198,8 +230,26 @@ const save = async (post: number) => {
 	await getSaveOrUnsavePost(post)
 }
 
+
+const unFollowUser = async (username:string) => {
+	await getUnfollowUser(username)
+
+	const index = store.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
+	store.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)}
+	followers.value--
+
+
+const followUser = async (username:string) => {
+	await getFollowUser(username)
+
+	store.idArrayOfLoggedInUserFollowingUsers.push(username)
+	followers.value++
+}
+
+
+
 definePageMeta({
-	layout:"default"
+	layout: "default"
 })
 
 </script>

@@ -111,4 +111,4 @@ definePageMeta({
 
 </script>
 
-<style scoped></style>
+<style scoped></style>~/typescript/post_interfaces

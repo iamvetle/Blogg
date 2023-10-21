@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { SnippetPostMultipleType } from '~/typescript/interfaces'
+import { SnippetPostMultipleType } from '~/typescript/post_interfaces'
 
 export const useSearchStore = defineStore("search", () => {
     
