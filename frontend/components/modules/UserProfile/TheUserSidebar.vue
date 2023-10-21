@@ -8,7 +8,9 @@
 			<p id="username" class="font-bold leading-7" v-text="props.username"></p>
 
 			<span id="followers">
-				<p class="font-light text-sm leading-7">{{ num_of_followers }} followers</p>
+
+				<slot name="amount-of-followers"/>
+
 			</span>
 			
 			<div id="bio" class="pt-4 pb-7 text-sm">

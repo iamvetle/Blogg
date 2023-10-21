@@ -107,17 +107,26 @@
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 					<div class="sticky top-0 overflow-y-scroll" v-if="normalUserProfile">
 
-						<the-user-sidebar :username="normalUserProfile.username"
-							:num_of_followers="followers ?? 0">
+						<the-user-sidebar :username="normalUserProfile.username" :num_of_followers="followers ?? 0">
+
+							<template #amount-of-followers>
+								<p class="font-light text-sm leading-7">
+									{{ followers }} followers
+								</p>
+							</template>
 
 							<template #follow-button>
 
-							<base-follow-button>
-									<span class="w-fit h-fit cursor-pointer" v-if="checkIfFollowingUser(normalUserProfile.username)" id="follow" @click="unFollowUser(normalUserProfile.username)">
+								<base-follow-button>
+									<span class="w-fit h-fit cursor-pointer"
+										v-if="checkIfFollowingUser(normalUserProfile.username)" id="follow"
+										@click="unFollowUser(normalUserProfile.username)">
 										<p>Following</p>
 									</span>
 
-									<span class="w-fit h-fit cursor-pointer" v-if="!checkIfFollowingUser(normalUserProfile.username)" id="follow" @click="followUser(normalUserProfile.username)">
+									<span class="w-fit h-fit cursor-pointer"
+										v-if="!checkIfFollowingUser(normalUserProfile.username)" id="follow"
+										@click="followUser(normalUserProfile.username)">
 										<p>Follow</p>
 									</span>
 
@@ -154,6 +163,7 @@ const store = useGeneralStore()
 const color = ref("fill-black")
 const route = useRoute();
 const theNormalUserProfileURL = `http://localhost:8888/api/${route.params.id}/`;
+
 const theNormalUserPostsURL = `http://localhost:8888/api/${route.params.id}/posts/`;
 
 const normalUserProfile = ref<NormalUserProfileType | null>(null);
@@ -216,6 +226,7 @@ const author_full_name = (post: SnippetPostSingleType) => {
 const unsave = async (post: number) => {
 	const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
 
+
 	store.idArrayOfSavedPosts.splice(index, 1)
 
 	await getSaveOrUnsavePost(post)
@@ -231,16 +242,22 @@ const save = async (post: number) => {
 }
 
 
-const unFollowUser = async (username:string) => {
-	await getUnfollowUser(username)
+const unFollowUser = async (username: string) => {
+	const theNormalUserProfileUNSAVEURL = `http://localhost:8888/api/${username}/unfollow/`;
+
+	await getUnfollowUser(theNormalUserProfileUNSAVEURL)
 
 	const index = store.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
-	store.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)}
+	store.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
 	followers.value--
 
+}
 
-const followUser = async (username:string) => {
-	await getFollowUser(username)
+
+const followUser = async (username: string) => {
+	const theNormalUserProfileSAVEURL = `http://localhost:8888/api/${username}/unfollow/`;
+
+	await getFollowUser(theNormalUserProfileSAVEURL)
 
 	store.idArrayOfLoggedInUserFollowingUsers.push(username)
 	followers.value++
