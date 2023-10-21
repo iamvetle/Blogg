@@ -110,9 +110,15 @@
 						<the-user-sidebar :username="normalUserProfile.username">
 
 							<template #amount-of-followers>
-								<p class="font-light text-sm leading-7">
-									{{ followers }} followers
-								</p>
+								<div class="font-light text-sm leading-7">
+									<p v-if="followers === 1">
+										{{ followers }} follower
+									</p>
+									<p v-else>
+										{{ followers }} followers
+									</p>
+								</div>
+	
 							</template>
 
 							<template #follow-button>
@@ -121,10 +127,9 @@
 									<div class="w-fit h-fit cursor-pointer bg-primary text-onPrimary hover:bg-inversePrimary p-1 rounded-md"
 										v-if="checkIfFollowingUser(normalUserProfile.username) === true" id="following"
 										@click="unFollowUser(normalUserProfile.username)"
-										@mouseover="followText = 'Unfollow'" @mouseleave="followText = 'Following'"
-										>
-										<p>{{followText}}</p>
-							</div>
+										@mouseover="followText = 'Unfollow'" @mouseleave="followText = 'Following'">
+										<p>{{ followText }}</p>
+									</div>
 
 									<div class="w-fit h-fit cursor-pointer p-1 rounded-md bg-inversePrimary text-onPrimary hover:bg-primary"
 										v-if="checkIfFollowingUser(normalUserProfile.username) === false" id="follow"
@@ -190,18 +195,16 @@ onMounted(async () => {
 	/**
 	 * Checks if data of who the logged in user is following is present
 	 */
-
 	if (!Array.isArray(store.idArrayOfLoggedInUserFollowingUsers) || !store.idArrayOfLoggedInUserFollowingUsers.length) {
 		await getLoggedInUserProfile();
 	}
 	const response_user = await getNormalUserProfile(theNormalUserProfileURL);
 	followers.value = response_user.num_of_followers
-	console.log(response_user) // print to self
 	normalUserProfile.value = response_user
 
 	/**
- * Fetches, GET, posts the user has made
- */
+  * Fetches, GET, posts the user has made
+  */
 	const response_post = await getNormalUserPosts(theNormalUserPostsURL);
 	normalUserPosts.value = response_post
 })
@@ -216,8 +219,6 @@ const redirect_to_post_page = async (post: any) => {
 
 	return await navigateTo(`/post/${post_article_page}`)
 }
-
-
 
 const author_full_name = (post: SnippetPostSingleType) => {
 
@@ -239,7 +240,6 @@ const author_full_name = (post: SnippetPostSingleType) => {
 const unsave = async (post: number) => {
 	const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
 
-
 	store.idArrayOfSavedPosts.splice(index, 1)
 
 	await getSaveOrUnsavePost(post)
@@ -254,6 +254,10 @@ const save = async (post: number) => {
 	await getSaveOrUnsavePost(post)
 }
 
+/**
+ * Unfollows the user
+ * @param username - the username that the web client wants to unfollow
+ */
 
 const unFollowUser = async (username: string) => {
 	const theNormalUserProfileUNSAVEURL = `http://localhost:8888/api/${username}/unfollow/`;
@@ -268,7 +272,10 @@ const unFollowUser = async (username: string) => {
 
 }
 
-
+/**
+ * Follows the user
+ * @param username - the username that the web client wants to follow
+ */
 const followUser = async (username: string) => {
 	const theNormalUserProfileSAVEURL = `http://localhost:8888/api/${username}/follow/`;
 
@@ -287,8 +294,6 @@ onUnmounted(() => {
 	followers.value = 0
 	store.idArrayOfLoggedInUserFollowingUsers = []
 })
-
-
 
 definePageMeta({
 	layout: "default"
