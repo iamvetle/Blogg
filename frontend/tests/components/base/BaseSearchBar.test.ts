@@ -1,17 +1,17 @@
-import { mount } from '@vue/test-utils'
+import { VueWrapper, shallowMount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import BaseSearchbar from '~/components/base/BaseSearchBar.vue'
 
 describe('basesearchbar testing testing', () => {
-    let wrapper;
+    let wrapper:VueWrapper
     let store;
     let pinia;
 
     beforeEach(() => {
         pinia = createTestingPinia()
         store = useGeneralStore(pinia)
-        wrapper = mount(BaseSearchbar, {
+        wrapper = shallowMount(BaseSearchbar, {
             global: {
                 plugins: [pinia],
             },

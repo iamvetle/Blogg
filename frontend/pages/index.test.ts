@@ -6,8 +6,8 @@ import ListArticles from '~/components/modules/Blogg/ListArticles.vue';
 import BaseDropdownMenu from "~/components/base/BaseDropdownMenu.vue";
 
 describe('index page testing', () => {
-    let wrapper:VueWrapper
-    let store:any
+    let wrapper: VueWrapper
+    let store: any
 
     beforeEach(() => {
         vi.stubGlobal("setPageLayout", () => {
@@ -27,9 +27,9 @@ describe('index page testing', () => {
                     ListArticles,
                     BaseDropdownMenu,
                 },
-                stubs:{ 'Wait':true, 'FilterTool':true, 'ListArticlesSidebar':true }
+                stubs: { 'Wait': true, 'FilterTool': true, 'ListArticlesSidebar': true }
             }
-            
+
         })
     })
 
@@ -45,7 +45,7 @@ describe('index page testing', () => {
         console.log(store.isAuthenticated)  // Should print true
         console.log(wrapper.html())  // Should show the rendered HTML
 
-        let listarticles = wrapper.findComponent({ name: 'ListArticles' }) 
+        let listarticles = wrapper.findComponent({ name: 'ListArticles' })
 
         expect(listarticles.exists()).toBe(true)
 
@@ -53,36 +53,38 @@ describe('index page testing', () => {
 
         await wrapper.vm.$nextTick()
 
-        listarticles = wrapper.findComponent({ name: 'ListArticles' }) 
+        listarticles = wrapper.findComponent({ name: 'ListArticles' })
         expect(listarticles.exists()).toBe(false)
     });
 
     test("base-dropdown-menu is being rendered", async () => {
         await wrapper.vm.$nextTick()
 
-        let basedropmenu = wrapper.findComponent({ name:'BaseDropdownMenu' })
-        expect(basedropmenu.exists()).toBe(true)      
+        let basedropmenu = wrapper.findComponent({ name: 'BaseDropdownMenu' })
+        expect(basedropmenu.exists()).toBe(true)
     })
     test("the wait component is being rendered correctly conditentially", async () => {
         store.isAuthenticated = false
         await wrapper.vm.$nextTick()
 
-        expect(wrapper.findComponent({ name:'Wait' }).exists()).toBe(true)
+        expect(wrapper.findComponent({ name: 'Wait' }).exists()).toBe(true)
 
         store.isAuthenticated = true
         await wrapper.vm.$nextTick()
 
-        expect(wrapper.findComponent({ name:'Wait' }).exists()).toBe(false)
+        expect(wrapper.findComponent({ name: 'Wait' }).exists()).toBe(false)
     })
     test('content not rendered if no posts and personal user is being retrieved', async () => {
         store.posts = false
         store.personalUser = false
 
         await flushPromises()
+        await wrapper.vm.$nextTick()
+
 
         const element = wrapper.find("[date-test='filter-tool']")
 
         expect(element.exists()).toBe(false)
-      
+
     })
 })

@@ -17,6 +17,7 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const doSavePost: typeof import('./composables/crud/getSaveOrUnsavePost')['doSavePost']
+  const doSearch: typeof import('./composables/crud/getSearch')['doSearch']
   const effectScope: typeof import('vue')['effectScope']
   const extractTitleAndContent: typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']
   const fetchAllFollowers: typeof import('./composables/crud/getAllLoggedInUserFollowers')['fetchAllFollowers']
@@ -110,6 +111,7 @@ declare module 'vue' {
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
+    readonly doSearch: UnwrapRef<typeof import('./composables/crud/getSearch')['doSearch']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fetchPost: UnwrapRef<typeof import('./composables/deprecatedFetchPost')['fetchPost']>
@@ -188,6 +190,7 @@ declare module '@vue/runtime-core' {
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
+    readonly doSearch: UnwrapRef<typeof import('./composables/crud/getSearch')['doSearch']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fetchPost: UnwrapRef<typeof import('./composables/deprecatedFetchPost')['fetchPost']>

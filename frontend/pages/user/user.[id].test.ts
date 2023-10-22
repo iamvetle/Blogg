@@ -47,6 +47,11 @@ describe('', () => {
             return null
         })
 
+        
+        vi.stubGlobal('check_if_following_user', () => {
+            return true
+        })
+
 
 
         wrapper = shallowMount(IdVue, {
