@@ -12,7 +12,8 @@ export const getUnfollowUser = async (url: string) => {
 
 		const response = await axios.post(url, {}, { headers });
 		console.log("OK: unfollowed user", response.data); // print to self
-		return response.data;
+		
+		return response;
 
 	} catch (error) {
 		console.log("did not manage to UNfollow user", error); // print to self

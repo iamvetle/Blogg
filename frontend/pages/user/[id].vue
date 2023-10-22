@@ -235,7 +235,7 @@ onMounted(async () => {
 	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
 	 */
 	normalUserProfile.value = await getNormalUserProfile(theNormalUserProfileURL);
-	
+
 	followers.value = normalUserProfile.value.num_of_followers
 
 	const theNormalUserPostsURL = `http://localhost:8888/api/${username}/posts/`
@@ -266,7 +266,7 @@ const redirect_to_post_page = async (post: any) => {
  * 
  * @returns Either the complete name of the user. Or just the username 
  */
-const author_full_name = (author:any) => {
+const author_full_name = (author: any) => {
 
 	// If the user doesn't have a first name or last name, the username is instead returned
 	if (author.first_name && author.last_name) {
@@ -309,7 +309,12 @@ const save = async (post: number) => {
 const unFollowUser = async (username: string) => {
 	const theNormalUserProfileUnfollowURL = `http://localhost:8888/api/${username}/unfollow/`;
 
-	await getUnfollowUser(theNormalUserProfileUnfollowURL)
+	const response: any = await getUnfollowUser(theNormalUserProfileUnfollowURL)
+
+	// Makes sure that no changes are made if the request was not successfull
+	if (response.status !== 200) {
+		return null
+	}
 
 	const index = store.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
 
@@ -328,7 +333,12 @@ const unFollowUser = async (username: string) => {
 const followUser = async (username: string) => {
 	const theNormalUserProfileFollowURL = `http://localhost:8888/api/${username}/follow/`;
 
-	await getFollowUser(theNormalUserProfileFollowURL)
+	const response: any = await getFollowUser(theNormalUserProfileFollowURL)
+
+	// Makes sure that no changes are made if the request was not successfull
+	if (response.status !== 200) {
+		return null
+	}
 
 	store.idArrayOfLoggedInUserFollowingUsers.push(username)
 
