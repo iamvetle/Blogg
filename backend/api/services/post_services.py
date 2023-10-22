@@ -33,7 +33,7 @@ class PostSnippetService:
     def get_posts(request):
         queryset = Post.objects.all().order_by("-date_published")
         
-        # post_filter = CustomPostFilter(request.GET, queryset=queryset)
+        post_filter = CustomPostFilter(request.GET, queryset=queryset)
 
         paginator = (
             CustomLimitOffsetPagination()
