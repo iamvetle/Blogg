@@ -3,10 +3,9 @@ from api.models import Post
 from django_filters import DateFromToRangeFilter
 
 class CustomPostFilter(filters.FilterSet):
-    title = filters.CharFilter(field_name='title', lookup_expr='icontains')
-    author = filters.CharFilter(field_name='author__username', lookup_expr='icontains')
-    categories = filters.CharFilter(field_name='categories__name', lookup_expr='icontains')
-    tags = filters.CharFilter(field_name='tags__name', lookup_expr='icontains')
+    author = filters.CharFilter(field_name='author__username', lookup_expr='iexact')
+    categories = filters.CharFilter(field_name='categories__name', lookup_expr="iexact")
+    tags = filters.CharFilter(field_name='tags__name', lookup_expr='iexact')
     date_published = DateFromToRangeFilter(field_name='date_published')
 
     class Meta:

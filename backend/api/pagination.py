@@ -9,7 +9,7 @@ class CustomLimitOffsetPagination(LimitOffsetPagination):
         current_page = self.get_current_page()
 
         return Response({
-            "count": self.count,
+            "count": self.get_count(data),
             "next": self.get_next_link(),
             "previous": self.get_previous_link(),
             "current_page": current_page,
@@ -23,3 +23,5 @@ class CustomLimitOffsetPagination(LimitOffsetPagination):
         if limit:
             return (offset // limit) + 1
         return 1
+    
+    

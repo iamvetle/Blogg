@@ -140,7 +140,6 @@ class PostAdmin(admin.ModelAdmin):
 
     readonly_fields = ("date_published", "body")
 
-    date_hierarchy = "date_published"
 
     fieldsets = (
         (None, {"fields": ("title", "body", "content", "author")}),

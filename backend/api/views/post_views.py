@@ -132,7 +132,7 @@ class PostMultipleAfterSearchView(ListAPIView):  # /api/search/
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
-    pagination_class = GenericPagination 
+
     filter_backends = [filters.DjangoFilterBackend, SearchFilter]
     filterset_class = CustomPostFilter
 
