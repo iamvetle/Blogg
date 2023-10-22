@@ -23,8 +23,11 @@
 												Nytt innlegg
 											</button>
 										</nuxt-link>
-										<span
+										<span v-if="store.personalUser.num_of_followers === 1"
 											class="bg-onPrimary border-onPrimaryContainer border-2 text-onPrimaryContainer py-2 px-4 rounded">
+											{{ store.personalUser.num_of_followers }} follower
+										</span>
+										<span v-else>
 											{{ store.personalUser.num_of_followers }} followers
 										</span>
 										<!-- Figure this out later -->
@@ -71,7 +74,7 @@
 						<div>
 							<div class="items-center pt-2 ms-6">
 								<h3 class="text-lg py-3">
-									Followers
+									People following you
 								</h3>
 								<div v-if="store.personalUser.followers">
 									<Follower v-for="(f, index) in followers" :key="index" :follower="f" v-once/>
@@ -89,7 +92,7 @@
 									Bio
 								</h2>
 								<p v-if="store.personalUser.bio" v-text="store.personalUser.bio"></p>
-								<p v-else class="">
+								<p v-else id="placeholder-bio">
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
 									finibus est vitae tortor ullamcorper, ut vestibulum velit
 									convallis. Aenean posuere risus non velit egestas suscipit. Nunc

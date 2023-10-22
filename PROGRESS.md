@@ -19,6 +19,11 @@ There are stuff I want the web client to be able to do, that I have not yet impl
     - patch eller put?
 - [ ] Vil også gjøre det mulig å **redigere brukeren sin** på frontend 
 
+### Search and filter functionality
+
+-[ ] Jeg lage en bedre search og filter funksjonalitet. Bruke generics sammen med djangofilterbacken og searchfilter. Det skal ikke være så vanskelig.
+  - det er å fikse det først på frontend som kommer til å bli krongelete.
+
 ### models.py
 
 - **CustomUser** ->

@@ -19,16 +19,16 @@ describe("thenavvbarr testing", () => {
         store.isAuthenticated = true
     })
 
-    test('exists', () => {
+    test('Should exist', () => {
         expect(wrapper.exists()).toBe(true)
     })
 
-    test("renders text", () => {
+    test("Should render the default navbar text", () => {
         expect(wrapper.text()).toContain("Nytt innlegg")
         expect(wrapper.text()).toContain("Min profil")
 
     })
-    test("does not render nytt innleg and minkonto icons when not authenticated", () => {
+    test("Should not render content on navbar when the web client is not authenticated", () => {
         wrapper.unmount()
 
         store.isAuthenticated = false

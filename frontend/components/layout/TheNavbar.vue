@@ -1,7 +1,9 @@
 <template>
 	<div id="container-navbar" class="w-full py-4 text-onPrimary bg-primary mb-16">
 		<div id="navbar" class="h-[50px] mx-auto flex items-center max-w-[1000px] bg-primary justify-between">
+
 			<span class="flex items-center">
+
 				<nuxt-link to="/">
 					<span @click="logoclick" id="logo">
 						<svg class="w-8 h-auto fill-onPrimary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -10,16 +12,26 @@
 						</svg>
 					</span>
 				</nuxt-link>
-				<span v-if="store2.isAuthenticated" id="searchbar" class="ms-8">
-					<input v-model="search_input" placeholder="Søk"
+
+				<span v-if="store.isAuthenticated" id="searchbar" class="ms-8">
+					<BaseSearchbar
+					@search-do="doSearch"
+					/>
+					
+
+
+
+					<!-- <input v-model.trim="search_input" placeholder="Søk"
 						class="border border-transparent rounded-2xl w-96 h-auto bg-surface text-onSurface" type="text"
-						@keyup.enter="trySearch">
+						@keyup.enter="trySearch()"> -->
 
 				</span>
 			</span>
 
+
 			<span class="flex items-center">
-				<span v-if="store2.isAuthenticated" id="new-post" class="me-4 flex items-center flex-col">
+
+				<span v-if="store.isAuthenticated" id="new-post" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/newpost"><svg class="mb-1 w-7 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
@@ -27,7 +39,8 @@
 						</svg></nuxt-link>
 					<span class="text-xs"><nuxt-link to="/newpost">Nytt innlegg</nuxt-link></span>
 				</span>
-				<span v-if="store2.isAuthenticated" class="me-4 flex items-center flex-col">
+
+				<span v-if="store.isAuthenticated" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/minkonto"><svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
@@ -35,58 +48,45 @@
 						</svg></nuxt-link>
 					<span class="text-xs"><nuxt-link to="/minkonto">Min profil</nuxt-link></span>
 				</span>
-				<span v-if="store2.isAuthenticated" class="me-4 flex items-center flex-col">
+
+				<span v-if="store.isAuthenticated" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/loggut">
 						<svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
 								d="M1.99805 21.0003V19.0003L3.99805 19.0001V4.83489C3.99805 4.35161 4.34367 3.93748 4.81916 3.85102L14.2907 2.12892C14.6167 2.06965 14.9291 2.28589 14.9884 2.61191C14.9948 2.64733 14.998 2.68325 14.998 2.71924V4.00014L18.998 4.00032C19.5503 4.00032 19.998 4.44803 19.998 5.00032V19.0001L21.998 19.0003V21.0003H17.998V6.00032L14.998 6.00014V21.0003H1.99805ZM12.998 4.39674L5.99805 5.66947V19.0003H12.998V4.39674ZM11.998 11.0003V13.0003H9.99805V11.0003H11.998Z">
 							</path>
-						</svg> </nuxt-link>
+						</svg> 
+					</nuxt-link>
 					<span class="text-xs"><nuxt-link to="/loggut">loggut</nuxt-link></span>
 				</span>
+
 			</span>
+
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { useSearchStore } from '~/store/searchStore';
 import { useGeneralStore } from '~/store/generalStore';
+import { doSearch } from '../../composables/crud/getSearch';
+import BaseSearchbar from '~/components/base/BaseSearchBar.vue';
 
 const search_input = ref("")
 
-const store = useSearchStore()
-const store2 = useGeneralStore()
+// const trySearch = async () => {
+// 	await doSearch(search_input.value)
 
-/** Calls the composable 'searchReuqest' and cleans up the search query input field  */
-const trySearch = async () => {
-	store.lastSearch = search_input.value
+// 	search_input.value = ""
 
-	/** If the input field is empty, the function is not continued */
-	if (search_input.value.trim() != "") {
+// }
 
-		/** Updates the global "current" search variable for the search function to see later */
-		store.baseSearchURL = `http://localhost:8888/api/search/?q=${search_input.value}`
-		/** Retrieves 'all' posts if no search query was made - normal retrievel */
-	} else {
-		store.baseSearchURL = `http://localhost:8888/api/feed/`
-	}
-	/** The composable function that deals with the search logic
-	* Takes the value of 'store.baseSearchURL' in to GET request
-	*/
-	await searchRequest()
-	console.log(search_input.value)
-	search_input.value = ""
-
-	/** Redirects the web client to the corresponding url of the search query */
-	return await navigateTo("/")
-}
+const store = useGeneralStore()
 
 /** 'Resets' to default. All posts are retrieved and search input is cleared */
 const logoclick = async () => {
 
-	store.baseSearchURL = `http://localhost:8888/api/feed/`
+	//store.baseSearchURL = `http://localhost:8888/api/feed/`
 
 	await searchRequest()
 
