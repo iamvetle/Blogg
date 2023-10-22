@@ -2,7 +2,7 @@ import { useSearchStore } from '~/store/searchStore'
 
 /** Calls the composable 'searchReuqest' and cleans up the search query input field  */
 
-export const doSearch = async (searchInput:string) => {
+export const getSearch = async (searchInput:string) => {
     const store = useSearchStore()
 
 	/** If the input field is empty, the function is not continued */
@@ -11,7 +11,7 @@ export const doSearch = async (searchInput:string) => {
         console.log("not empty", searchInput)
 
 		/** Updates the global "current" search variable for the search function to see later */
-		store.baseSearchURL = `http://localhost:8888/api/search/?q=${searchInput}`
+		store.baseSearchURL = `http://localhost:8888/api/search/?search=${searchInput}`
 		/** Retrieves 'all' posts if no search query was made - normal retrievel */
         await searchRequest()
 	} else {

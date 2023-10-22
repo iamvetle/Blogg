@@ -5,20 +5,20 @@
 	v-model.trim="search_input"
 	type="text"
 	placeholder="Søk.."
-	@keyup.enter="handleEnter"
+	@keyup.enter="handleSearch"
 	>
 </div>
 </template>
 
 <script setup lang="ts">
 
-const emit = defineEmits(['searchDo'])
+const emit = defineEmits(['searchAction'])
 
 const search_input = ref("")
 
-const handleEnter = () => {
+const handleSearch = () => {
 	
-	emit("searchDo", search_input.value)
+	emit("searchAction", search_input.value)
 
 	search_input.value = ""
 	

@@ -8,7 +8,7 @@
 #     @staticmethod
 #     def create_post()
 
-from api.filters import PostFilter
+from api.filters import CustomPostFilter
 from api.serializers.post_serializers import PostSerializer, PostShortenSerializer
 from ..models import Post
 from django.contrib.auth import get_user_model

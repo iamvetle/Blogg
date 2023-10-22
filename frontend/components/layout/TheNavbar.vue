@@ -15,7 +15,7 @@
 
 				<span v-if="store.isAuthenticated" id="searchbar" class="ms-8">
 					<BaseSearchbar
-					@search-do="doSearch"
+					@search-action="getSearch"
 					class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex"
 					/>
 				</span>
@@ -62,17 +62,18 @@
 
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
-import { doSearch } from '../../composables/crud/getSearch';
 import BaseSearchbar from '~/components/base/BaseSearchBar.vue';
-
-const search_input = ref("")
+import { getSearch } from '~/composables/crud/getSearch';
 
 // const trySearch = async () => {
-// 	await doSearch(search_input.value)
+// 	await getSearch(search_input.value)
 
 // 	search_input.value = ""
 
 // }
+
+
+
 
 const store = useGeneralStore()
 
@@ -83,7 +84,6 @@ const logoclick = async () => {
 
 	await searchRequest()
 
-	search_input.value = ""
 	return await navigateTo("/")
 
 
