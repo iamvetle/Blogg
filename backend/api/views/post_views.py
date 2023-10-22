@@ -98,35 +98,6 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
 
     http_method_names = ["get"]
 
-# class PostMultipleAfterSearchView(APIView):  # /api/search/
-#     """Responds with a filter list of {x} amount of posts"""  # for filtering options look at filters.py
-
-#     permission_classes = [IsAuthenticated]
-
-#     def get(self, request, *args, **kwargs):
-#         query = request.query_params.get("q", None)
-
-#         if query is not None:
-#             queryset = SearchService.filtered_search(request)
-#             # Filters the search
-
-#             if queryset is None:
-#                 return Response("No results found", status=status.HTTP_400_BAD_REQUEST)
-#         else:
-#             queryset = Post.objects.all()
-
-#         paginator = CustomLimitOffsetPagination()
-#         paginated_results = paginator.paginate_queryset(queryset, request)
-
-#         serializer = PostShortenSerializer(paginated_results, many=True)
-#         response = paginator.get_paginated_response(serializer.data)
-
-#         if response != None:
-#             return Response(response, status=status.HTTP_200_OK)
-
-#         else:
-#             return Response(status=status.HTTP_400_BAD_REQUEST)
-
 class PostMultipleAfterSearchView(ListAPIView):  # /api/search/
     """Responds with a filter list of {x} amount of posts"""  # for filtering options look at filters.py
 
@@ -144,36 +115,6 @@ class PostMultipleAfterSearchView(ListAPIView):  # /api/search/
     
     http_method_names = ['get']
     
-    # def get(self, request):
-    #     all_posts = self.get_queryset()
-    #     return all_posts
-        
-
-    # def get(self, request, *args, **kwargs):
-    #     query = request.query_params.get("q", None)
-
-    #     if query is not None:
-    #         queryset = SearchService.filtered_search(request)
-    #         # Filters the search
-
-    #         if queryset is None:
-    #             return Response("No results found", status=status.HTTP_400_BAD_REQUEST)
-    #     else:
-    #         queryset = Post.objects.all()
-
-    #     paginator = CustomLimitOffsetPagination()
-    #     paginated_results = paginator.paginate_queryset(queryset, request)
-
-    #     serializer = PostShortenSerializer(paginated_results, many=True)
-    #     response = paginator.get_paginated_response(serializer.data)
-
-    #     if response != None:
-    #         return Response(response, status=status.HTTP_200_OK)
-
-    #     else:
-    #         return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
 
 class PostSingleView(RetrieveAPIView):
     """Retrieves a single post"""

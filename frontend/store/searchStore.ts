@@ -7,7 +7,13 @@ export const useSearchStore = defineStore("search", () => {
 
     const searchPosts = ref<SnippetPostMultipleType | null>(null)
     const lastSearch = ref("")
-    const baseSearchURL = ref("http://localhost:8888/api/search/")
+
+    const searchPart = ref("")
+    const filterPart = ref("")
+
+    const baseSearchURL = computed(() => {
+        return `http://localhost:8888/api/search/${searchPart.value}${filterPart.value}`
+    })
 
     // Pagnation
     const next_page_link = ref("")
@@ -20,5 +26,5 @@ export const useSearchStore = defineStore("search", () => {
 
     // ACTIONS ...
 
-    return { baseSearchURL, searchPosts, lastSearch, next_page_link, previous_page_link, last_page_link, total_pages_count, number_of_posts_count, current_page }
+    return { baseSearchURL, searchPart, filterPart, searchPosts, lastSearch, next_page_link, previous_page_link, last_page_link, total_pages_count, number_of_posts_count, current_page }
 })

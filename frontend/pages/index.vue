@@ -29,8 +29,10 @@
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
 import FilterTool from '~/components/utils/FilterTool.vue';
+import { useSearchStore } from '~/store/searchStore';
 
 const store = useGeneralStore()
+const searchStore = useSearchStore()
 
 /**
  * Changes the layout based on whether the user is authenticated or not
@@ -45,6 +47,14 @@ watchEffect(() => {
 		setPageLayout("blank");
 	}
 })
+
+watch(
+  () => searchStore.baseSearchURL,
+  async (newUrl, oldUrl) => {
+    // Trigger data fetching here
+    await searchRequest();  // Replace with your actual fetching function
+  }
+);
 
 onMounted(async () => {
 	/**

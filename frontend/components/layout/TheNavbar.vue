@@ -14,10 +14,8 @@
 				</nuxt-link>
 
 				<span v-if="store.isAuthenticated" id="searchbar" class="ms-8">
-					<BaseSearchbar
-					@search-action="getSearch"
-					class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex"
-					/>
+					<BaseSearchbar @search-action="search"
+						class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex" />
 				</span>
 			</span>
 
@@ -49,7 +47,7 @@
 							<path
 								d="M1.99805 21.0003V19.0003L3.99805 19.0001V4.83489C3.99805 4.35161 4.34367 3.93748 4.81916 3.85102L14.2907 2.12892C14.6167 2.06965 14.9291 2.28589 14.9884 2.61191C14.9948 2.64733 14.998 2.68325 14.998 2.71924V4.00014L18.998 4.00032C19.5503 4.00032 19.998 4.44803 19.998 5.00032V19.0001L21.998 19.0003V21.0003H17.998V6.00032L14.998 6.00014V21.0003H1.99805ZM12.998 4.39674L5.99805 5.66947V19.0003H12.998V4.39674ZM11.998 11.0003V13.0003H9.99805V11.0003H11.998Z">
 							</path>
-						</svg> 
+						</svg>
 					</nuxt-link>
 					<span class="text-xs"><nuxt-link to="/loggut">loggut</nuxt-link></span>
 				</span>
@@ -63,19 +61,28 @@
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
 import BaseSearchbar from '~/components/base/BaseSearchBar.vue';
-import { getSearch } from '~/composables/crud/getSearch';
+import { useSearchStore } from '~/store/searchStore';
 
-// const trySearch = async () => {
-// 	await getSearch(search_input.value)
+const store = useGeneralStore();
+const searchStore = useSearchStore();
 
-// 	search_input.value = ""
+const searchPart = ref<any>(null)
 
-// }
+const search = (payload: any) => {
+	console.log(payload)
+	if (payload.trim() != "") {
+
+		searchPart.value = `?search=${payload}`
+		searchStore.searchPart = searchPart.value
+		console.log(searchStore.baseSearchURL)
+
+	} else {
+		searchStore.searchPart = ""
+		console.log(searchStore.baseSearchURL)
+	}
 
 
-
-
-const store = useGeneralStore()
+}
 
 /** 'Resets' to default. All posts are retrieved and search input is cleared */
 const logoclick = async () => {

@@ -2,7 +2,7 @@
 	<div class="py-1" v-if="store.allTags">
 		<div class="py-1 ml-2" v-for="(category, index) in store.allTags.results" :key="index">
 			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
-		</div>
+		</div>		
 	</div>
 </template>
 
@@ -38,7 +38,7 @@ const customURL = computed(() => {
 	let url = setupTagURL
 
 	for (let category of selectedCategoryNames.value) {
-		url += `tags=${category}&`
+		url += `categories=${category}&`
 	}
 	if (url != setupTagURL) {
 		return url.slice(0, -1)
