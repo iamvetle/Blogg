@@ -16,15 +16,8 @@
 				<span v-if="store.isAuthenticated" id="searchbar" class="ms-8">
 					<BaseSearchbar
 					@search-do="doSearch"
+					class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex"
 					/>
-					
-
-
-
-					<!-- <input v-model.trim="search_input" placeholder="Søk"
-						class="border border-transparent rounded-2xl w-96 h-auto bg-surface text-onSurface" type="text"
-						@keyup.enter="trySearch()"> -->
-
 				</span>
 			</span>
 
