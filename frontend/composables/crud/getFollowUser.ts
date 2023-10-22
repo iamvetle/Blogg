@@ -10,7 +10,7 @@ export const getFollowUser = async (url: string) => {
 			Authorization: `Token ${token}`,
 		};
 
-		const response = await axios.get(url, { headers });
+		const response = await axios.post(url, {}, { headers });
 		console.log("OK: Managed to follow user", response.data); // print to self
 		return response.data;
 

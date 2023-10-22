@@ -1,12 +1,13 @@
 # Standard libraries
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ObjectDoesNotExist
 
 # Third-party libraries
 
 ## Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
@@ -51,52 +52,60 @@ class NormalUserProfileView(RetrieveAPIView):
     lookup_field = "username"
     http_method_names = ["get"]
 
-
-class FollowUserView(APIView):  # maybe change function type later
+class FollowUserView(RetrieveAPIView):
     """Follows specified user"""
-
     permission_classes = [IsAuthenticated]
+    pagination_class = None
+    serializer_class = FollowerSerializer
+    
+    queryset = CustomUser.objects.all()
+    lookup_field = 'username'
+    
+    http_method_names = ['post']
+    
+    def post(self, request, *args, **kwargs):
+        
+        try:
+            username = self.get_object()
+        except ObjectDoesNotExist:
+            return Response({ "message": "User doesn't exist" }, status=status.HTTP_404_NOT_FOUND)  
 
-    def get(self, request, username):
-        response = UserProfileService.follow_user(request, username)
-
-        if response["status"] != False:
-            print(
-                f"{response['current_user']} started following {response['user_to_follow']}"
-            )  # print to self
-            return Response(
-                f"{response['current_user']} started following {response['user_to_follow']}",
-                status=status.HTTP_200_OK,
-            )
+        if username == request.user:
+            return Response({ "message": "You can't follow yourself" }, status=status.HTTP_400_BAD_REQUEST)
+                
+        if username in request.user.following.all():
+            return Response({ "message": "You are already following this user" }, status=status.HTTP_400_BAD_REQUEST)           
         else:
-            print(
-                f"{response['current_user']} did NOT start following {response['user_to_follow']}"
-            )  # print to self
-            return Response(
-                f"{response['current_user']} did NOT start following {response['user_to_follow']}",
-                status=status.HTTP_400_BAD_REQUEST,
-            )  # print to self
+            request.user.following.add(username)
+            return Response({ "message": "Started following" }, status=status.HTTP_200_OK)        
 
-
-class UnfollowUserView(APIView):  # maybe change function type later
+class UnfollowUserView(RetrieveAPIView):
     """Unfollows specified user"""
-
     permission_classes = [IsAuthenticated]
+    pagination_class = None
+    serializer_class = FollowerSerializer
+    
+    queryset = CustomUser.objects.all()
+    lookup_field = 'username'
+    
+    http_method_names = ['post']
+    
+    def post(self, request, *args, **kwargs):
+        
+        try:
+            username = self.get_object()
+        except ObjectDoesNotExist:
+            return Response({ "message": "User doesn't exist" }, status=status.HTTP_404_NOT_FOUND)  
 
-    def get(self, request, username):
-        response = UserProfileService.unfollow_user(request, username)
-
-        if response != None:
-            print(f"Successfully unfollwed {response['user_to_unfollow']}")
-            return Response(
-                f"Successfully unfollowed {response['user_to_unfollow']}",
-                status=status.HTTP_200_OK,
-            )
-
+        if username == request.user:
+            request.user.following.remove(username) # I have temporarily put this here to make users able to unfollow themselves, but not follow again
+            return Response({ "message": "You can't unfollow yourself" }, status=status.HTTP_400_BAD_REQUEST)
+                
+        if username not in request.user.following.all():
+            return Response({ "message": "You are not following this user. There is nobody to unfollow" }, status=status.HTTP_400_BAD_REQUEST)           
         else:
-            print("Failed to unfollow")
-            return Response("Failed to unfollow", status=status.HTTP_400_BAD_REQUEST)
-
+            request.user.following.remove(username)
+            return Response({ "message": "Unfollowed user" }, status=status.HTTP_200_OK)     
 
 class LoggedInUserAllFollowers(ListAPIView):
     """Returns a list of users following the logged-in user"""

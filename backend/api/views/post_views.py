@@ -98,7 +98,6 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
 
     http_method_names = ["get"]
 
-
 class PostMultipleAfterSearchView(APIView):  # /api/search/
     """Responses with a filter list of {x} amount of posts"""  # for filtering options look at filters.py
 
