@@ -1,8 +1,6 @@
-from api.models import CustomUser, Post, Comment, Tag, Category, SavedPost
+from api.models import CustomUser, Post
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from time import strftime
-from django.utils.safestring import mark_safe
 
 CustomUser = get_user_model()
 

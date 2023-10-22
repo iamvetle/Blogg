@@ -16,17 +16,14 @@ describe('testign theusersidebar', () => {
     vi.stubGlobal('leaveAction', () => {
         return null
     })
-    
+
 
 
     beforeEach(async () => {
         const pinia = createTestingPinia();
         store = useGeneralStore(pinia);
-        store.idArrayOfLoggedInUserFollowingUsers = ['hello', 'hello2']
 
-        store.theUser = [{
-            num_of_followers:9
-        }]
+        store.idArrayOfLoggedInUserFollowingUsers = ['hello', 'hello2']
 
         wrapper = mount(TheUserSidebar, {
             global: {
@@ -36,7 +33,11 @@ describe('testign theusersidebar', () => {
                 stubs: {}
             },
             props: {
-                username: "testuser"
+                username: "testuser",
+            },
+            slots: {
+                "follow-button": "<p>This is the slot 'follow_button'</p>",
+                "amount-of-followers": "<h3>5</h3>"
             }
         });
 
@@ -54,33 +55,12 @@ describe('testign theusersidebar', () => {
         expect(wrapper.exists()).toBe(true)
     })
 
-    test('props are being rendered', () => {
+    test('Should render the username', () => {
         expect(wrapper.html()).toContain("testuser")
-        expect(wrapper.html()).toContain("9")
     })
 
-    test('basefollowbutton is being rendered', async () => {
-        let followbutton = wrapper.findComponent({ name: 'BaseFollowButton' })
-
-        expect(followbutton.exists()).toBe(true)
-    })
-    test('following is rendered correctly', async () => {
-        followText.value = "Following"
-
-        console.log(wrapper.html())
-
-        await flushPromises()
-
-        expect(wrapper.html()).toContain("Following")
-    })
-    test('follw is rendered correctly', async () => {
-        followText.value = "Follow"
-
-        console.log(wrapper.html())
-
-        await flushPromises()
-
-        expect(wrapper.html()).toContain("Follow")
+    test('Should render the "follow_button" slot', () => {
+        expect(wrapper.html()).toContain("<p>This is the slot 'follow_button'</p>")
     })
 
     // i can find the component and checkk the text directly inside because it is using slot ^

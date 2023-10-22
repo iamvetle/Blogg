@@ -105,8 +105,8 @@
 							</h2>
 
 							<!-- Post begin -->
-							<div v-if="store.personalPosts">
-								<ListMyPosts v-for="post in store.personalPosts" :key="post.id"
+							<div v-if="store.personalPosts.results">
+								<ListMyPosts v-for="post in store.personalPosts.results" :key="post.id"
 									:post-prop="post" />
 							</div>
 							<!-- Post end -->

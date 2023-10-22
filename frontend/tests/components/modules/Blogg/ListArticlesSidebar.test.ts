@@ -7,10 +7,16 @@ import Following from "~/components/modules/MyUser/Following.vue";
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from "~/store/generalStore";
 import { ref } from 'vue'
+import { LoggedInUserProfileType } from '../../../../typescript/post_interfaces';
 
 let wrapper: VueWrapper
 let store
 let pinia
+
+const mock_redirect_to_author_page = (author:any) => {
+	author = null
+	return null
+}
 
 describe('ListArticlesSidebar testing', () => {
 
@@ -18,6 +24,8 @@ describe('ListArticlesSidebar testing', () => {
 
 		pinia = createTestingPinia()
 		store = useGeneralStore(pinia)
+
+
 
 
 		// Mock the getLoggedInUserProfile function
@@ -46,36 +54,36 @@ describe('ListArticlesSidebar testing', () => {
 			"num_of_followers": 1,
 			"saved_posts": [
 				{
-					"user": {
+					"post": {
+						"id":1,
+						"title": " saved1testtitle",
 						"username": "saved1guy",
 						"first_name": "saved1guyfirstname",
 						"last_name": "saved1guylastname",
-					},
-					"post": {
-						"title": " saved1testtitle"
 					}
 				},
 				{
-					"user": {
+					"post": {
+						"id":2,
+						"title": " saved2testtitle",
 						"username": "saved2guy",
 						"first_name": "saved2guyfirstname",
 						"last_name": "saved2guylastname",
-					},
-					"post": {
-						"title": " saved2testtitle"
 					}
-				}
+				},
 			],
 			"num_of_saved_posts": 192
-		};
+		} as LoggedInUserProfileType;
 
 		const full_name = ref("iamfirstname iamlastname")
+
+
 
 
 		wrapper = mount(ListArticlesSidebar, {
 			global: {
 				components: { MyProfileCard, ArticleSavedCard, Following },
-				mocks: { full_name },
+				mocks: { full_name, redirect_to_author_page:mock_redirect_to_author_page },
 				plugins: [pinia]
 			}
 		});
@@ -104,14 +112,12 @@ describe('ListArticlesSidebar testing', () => {
 	})
 	it('should render username of who I am following', async () => {
 		console.log(wrapper.html())
-		await wrapper.vm.$nextTick()
 
 		expect(wrapper.text()).toContain("michael90")
 	})
 
 	test("renders my profile information (username, firstname, lastname)",
-		async () => {
-			await wrapper.vm.$nextTick()
+		() => {
 
 			expect(wrapper.text()).toContain("iamperson")
 			expect(wrapper.text()).toContain("iamfirstname")
@@ -129,5 +135,19 @@ describe('ListArticlesSidebar testing', () => {
 			expect(wrapper.text()).toContain("saved2guy")
 			expect(wrapper.text()).toContain("saved2testtitle")
 
+		})
+
+		test('Should call the function to redirect to the post page', async () => {
+		  const button = wrapper.find("[data-test='redirect_to_author']")
+
+		  expect(button.exists()).toBe(true)
+
+		  button.trigger("click")
+
+		  await wrapper.vm.$nextTick()
+
+		  // I have no way to assert whether the function has called or not
+			
+		
 		})
 })

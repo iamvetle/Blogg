@@ -19,7 +19,6 @@
   
 <script setup lang="ts">
 
-console.log("'feed-layout' layout is selected");
 </script>
   
 <style scoped></style>

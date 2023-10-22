@@ -1,14 +1,7 @@
-from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from api.serializers.user_serializers import LoggedInUserSerializer, NormalUserSerializer
-from api.serializers.post_serializers import PostSerializer, PostShortenSerializer
 from rest_framework import status
-from rest_framework.authtoken.models import Token
-from django.contrib.auth import authenticate
-from ..models import Post, Comment
 from django.contrib.auth import get_user_model
-from rest_framework.permissions import IsAuthenticated
 from api.services.auth_services import LoginService, NewUserService
 
 CustomUser = get_user_model()

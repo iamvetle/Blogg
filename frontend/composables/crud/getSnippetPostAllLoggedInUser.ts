@@ -13,7 +13,7 @@ export const getSnippetPostAllLoggedInUser = async () => {
       Authorization: `Token ${token}`,
     };
 
-    const response = await axios.get<LoggedInUserPostType>(store.personal_post_snippets_url, { headers });
+    const response = await axios.get<LoggedInUserMultiplePostType>(store.personal_post_snippets_url, { headers });
 
     if (response.data != null) {
       console.log("OK: Personal posts fetched", response.data); // print to self

@@ -1,133 +1,137 @@
-# Standard libraries 
+# Standard libraries
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ObjectDoesNotExist
 
 # Third-party libraries
 
 ## Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
-# Local application imports
-from api.models import Post, Comment
-from api.services.user_services import UserProfileService, MyProfileService
-from api.serializers.user_serializers import LoggedInUserSerializer
 
-# A view is responsible for processing incomming HTTP requests and returning HTTP responses - handle user-facing logic. 
+# Local application imports
+from django.shortcuts import get_object_or_404
+from api.services.user_services import UserProfileService
+from api.serializers.user_serializers import (
+    LoggedInUserSerializer,
+    NormalUserSerializer,
+    FollowerSerializer,
+)
+
+from api.pagination import CustomLimitOffsetPagination as GenericPagination
+
+# A view is responsible for processing incomming HTTP requests and returning HTTP responses - handle user-facing logic.
 
 CustomUser = get_user_model()
 
-class LoggedInUserProfileView(APIView):
-    ''' Returns profile information about the LOGGED-IN user '''
+
+class LoggedInUserProfileView(RetrieveAPIView):
+    """Returns profile information about the LOGGED-IN user"""
+
     permission_classes = [IsAuthenticated]
+    serializer_class = LoggedInUserSerializer
+
+    http_method_names = ["get"]
+
+    def get_object(self):
+        # my_user = CustomUser.objects.get(username=self.request.user)
+        my_user = get_object_or_404(CustomUser, username=self.request.user)
+        return my_user
+
+
+class NormalUserProfileView(RetrieveAPIView):
+    """Returns information about a SPECIFIC user"""
+
+    permission_classes = [IsAuthenticated]
+    serializer_class = NormalUserSerializer
+    queryset = CustomUser.objects.all()
+
+    lookup_field = "username"
+    http_method_names = ["get"]
+
+class FollowUserView(RetrieveAPIView):
+    """Follows specified user"""
+    permission_classes = [IsAuthenticated]
+    pagination_class = None
+    serializer_class = FollowerSerializer
     
-    def get(self, request):
-        serializer = LoggedInUserSerializer(request.user)
-        print(serializer)
-        if serializer.is_valid:
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+    queryset = CustomUser.objects.all()
+    lookup_field = 'username'
     
-class NormalUserProfileView(APIView):
-    ''' Returns information about a specified user '''
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, username):
-        response = UserProfileService.get_user_profile(username)
-
-        if response is not None:
-            print(f"Data from '{username}' retrieved:", response)
-            return Response(response, status=status.HTTP_200_OK)    
-
-        else:
-            print(f"The user '{username}' does not exist")
-            return Response(status=status.HTTP_404_NOT_FOUND) 
-
-# NOT FINISHED, BELOW
-class FollowUserView(APIView): # Currently workign with this
-    ''' Follows specified user '''
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, username):
-
-        response = UserProfileService.follow_user(request, username)
-        
-        if response["status"] != False :
-            print(f"{response['current_user']} started following {response['user_to_follow']}") # print to self
-            return Response(f"{response['current_user']} started following {response['user_to_follow']}", status=status.HTTP_200_OK) # print to client console
-        else:
-            print(f"{response['current_user']} did NOT start following {response['user_to_follow']}") # print to self
-            return Response(f"{response['current_user']} did NOT start following {response['user_to_follow']}", status=status.HTTP_400_BAD_REQUEST) # print to self
-
-class UnfollowUserView(APIView):
-    ''' Unfollows specified user '''
-    permission_classes = [IsAuthenticated]
+    http_method_names = ['post']
     
-    def get(self, request, username):
+    def post(self, request, *args, **kwargs):
         
-        response = UserProfileService.unfollow_user(request, username)
-        
-        if response != None:
-            print(f"Successfully unfollwed {response['user_to_unfollow']}")
-            return Response(f"Successfully unfollwed {response['user_to_unfollow']}", status=status.HTTP_200_OK)
+        try:
+            username = self.get_object()
+        except ObjectDoesNotExist:
+            return Response({ "message": "User doesn't exist" }, status=status.HTTP_404_NOT_FOUND)  
 
+        if username == request.user:
+            return Response({ "message": "You can't follow yourself" }, status=status.HTTP_400_BAD_REQUEST)
+                
+        if username in request.user.following.all():
+            return Response({ "message": "You are already following this user" }, status=status.HTTP_400_BAD_REQUEST)           
         else:
-            print("Failed to unfollow")
-            return Response("Failed to unfollow", status=status.HTTP_400_BAD_REQUEST)
+            request.user.following.add(username)
+            return Response({ "message": "Started following" }, status=status.HTTP_200_OK)        
 
-class LoggedInUserAllFollowers(APIView):
-    ''' Returns a list of users following the logged-in user '''
+class UnfollowUserView(RetrieveAPIView):
+    """Unfollows specified user"""
     permission_classes = [IsAuthenticated]
+    pagination_class = None
+    serializer_class = FollowerSerializer
     
-    def get(self, request):
+    queryset = CustomUser.objects.all()
+    lookup_field = 'username'
+    
+    http_method_names = ['post']
+    
+    def post(self, request, *args, **kwargs):
         
-        followers = MyProfileService.get_all_followers(request)
-        print(followers.data)
-        
-        if followers.data is not None:            
-            print("List of followers", followers.data)
-            return Response(followers.data, status=status.HTTP_200_OK)
+        try:
+            username = self.get_object()
+        except ObjectDoesNotExist:
+            return Response({ "message": "User doesn't exist" }, status=status.HTTP_404_NOT_FOUND)  
+
+        if username == request.user:
+            request.user.following.remove(username) # I have temporarily put this here to make users able to unfollow themselves, but not follow again
+            return Response({ "message": "You can't unfollow yourself" }, status=status.HTTP_400_BAD_REQUEST)
+                
+        if username not in request.user.following.all():
+            return Response({ "message": "You are not following this user. There is nobody to unfollow" }, status=status.HTTP_400_BAD_REQUEST)           
         else:
-            print("You have no followers lol (or there is an error)", followers.errors)
-            return Response("You have no followers lol (or there is an error)", status=status.HTTP_204_NO_CONTENT)
+            request.user.following.remove(username)
+            return Response({ "message": "Unfollowed user" }, status=status.HTTP_200_OK)     
+
+class LoggedInUserAllFollowers(ListAPIView):
+    """Returns a list of users following the logged-in user"""
+
+    permission_classes = [IsAuthenticated]
+    pagination_class = GenericPagination
+
+    serializer_class = FollowerSerializer
+
+    def get_queryset(self):
+        logged_in_user = self.request.user
+        followers_list = logged_in_user.followers.all()
+
+        return followers_list
 
 
 class LoggedInUserAllFollowing(ListAPIView):
-    '''Returns a list of users that the logged-in user is following'''
+    """Returns a list of users that the logged-in user is following"""
+
     permission_classes = [IsAuthenticated]
-    
-    def get(self, request):
-        
-        following = MyProfileService.get_all_following(request)
-        print(following.data)
-        
-        if following.data is not None:
-            print("List of users that you are following", following.data)
-            return Response(following.data, status=status.HTTP_200_OK)
-        else:
-            print("You are not following anybody")
-            return Response("You are not following anybody", status=status.HTTP_204_NO_CONTENT)
-        
 
+    serializer_class = FollowerSerializer
+    pagination_class = GenericPagination
 
+    def get_queryset(self):
+        logged_in_user = self.request.user
+        user_is_following = logged_in_user.following.all()
 
-
-class CurrentFollowingView(APIView):
-    ''' Returns a list of the users the logged-in user is following '''
-    permission_classes = [IsAuthenticated]
-    
-    def get(self, request):
-        
-        # make a service later
-        following = MyProfileService.get_all_following(request)
-        print(following.data)
-        
-        if following.data is not None:
-            print("List of users that you are following")
-            return Response(following.data, status=status.HTTP_200_OK)
-        else:
-            print("You are not following anybody")
-            return Response("You are not following anybody")
+        return user_is_following

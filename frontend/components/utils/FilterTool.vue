@@ -1,6 +1,6 @@
 <template>
 	<div class="py-1" v-if="store.allTags">
-		<div class="py-1 ml-2" v-for="(category, index) in store.allTags" :key="index">
+		<div class="py-1 ml-2" v-for="(category, index) in store.allTags.results" :key="index">
 			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
 		</div>
 	</div>
@@ -54,21 +54,6 @@ const customURL = computed(() => {
 watchEffect(async () => {
 	await getPostMultipleSnippet(customURL.value) // maybe I should please <- this one longer up?
 })
-
-/**
- * The difference between watchEffect and computed:
- * 
- * computed:
- * "lazy by nature". Will only re-evaluate if some of its reactive dependencies have changed.
- * It returns a readonly "ref" object.
- * 
- * watchEffect:
- * runs immediately when created and whenever reactive dependencies change.
- * It does not return a new "ref", instead you directly manipulate other "ref"s
- * or execute side effects within it.
- * 
- * a side effect like making an api call.
- */
 
 </script>
 

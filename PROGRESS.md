@@ -2,17 +2,22 @@
 
 There are stuff I want the web client to be able to do, that I have not yet implemented. There are also things I want my blogg application to be able to do.
 
-Det jeg tenker aller mest på at jeg savner i blogg-appen min, er evnen til å sortere etter tags. 
-Det er den tingen jeg savner mest og hva jeg ønsker å fokusere på.
-
 ### Implementere tags sortering/søk
-- [ ] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
+- [~] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
 
 ---
 
 - [x] Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg ønsker å ha bloggen min.
 
 ## Backend
+
+### Generics
+
+- [x] Ta 'Tag' og 'Category' til generics og gjøre det mulig å hente og å lage nye uten å gjøre dem til duplikater
+- [ ] Gjøre det mulig til å oppdatere/edit sine **egne** posts
+  - da trenger jeg å endre på generics
+    - patch eller put?
+- [ ] Vil også gjøre det mulig å **redigere brukeren sin** på frontend 
 
 ### models.py
 
@@ -44,6 +49,8 @@ Det er den tingen jeg savner mest og hva jeg ønsker å fokusere på.
 ### Serializers og views
 
 - [x] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
+- [ ] Endre slik at det er mulig å *legge til tags* på post create
+  - [x] -> klare å utføre det fra postman
 
 ---
 
@@ -57,6 +64,16 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### admin.py - Admin Panel
 
 - [x] Få tags og categories som er assosiert med en post til å vises i post list i admin panel
+- [ ] Ta til betrakning at jeg har gjort det mulig å "create" og kanskje "delete" med generics nå, så jeg må huske å gjøre det mulig å fjerne dem også med adminpanel
+
+---
+
+### General
+
+- [x] Bytte til ***generics*** istedenfor vanlig **APIView**
+  - [ ] Gjøre det også på loginviews og registerviews
+- [ ] Rydde i services, gjøre det mer riktig
+---
 
 ---
 
@@ -74,7 +91,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 > Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
-- [ ] Fjern 'searchRequest' og 'searchPagnation' (det som er igjen)
+- [ ] Fjern 'searchRequest' og [x]'searchPagnation' (det som er igjen)
+  - [ ] trenger da også fikset krøllet som er mellom feed og search (vanskelig å forstå search på backend)
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
 - [ ] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
   - keep-alive?
@@ -90,7 +108,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
   - [x] Antall _jeg følger_
   - [x] Brukerne, navnene til de jeg følger
   - [ ] Finne ut av hva jeg skal gjøre med "**_les mer_**" feltet. Skal jeg bli 'redirected' et sted?
-  - [ ] make it possible to go to the posts that I have saved
+    - [ ] Legge til (x), '***total antall***'
+  - [x] make it possible to go to the posts that I have saved
 
 
 ---
@@ -98,7 +117,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### [id] single post
 
 - [ ] Vise alle **taggene** som er assosierte med posten
-- [ ] Mulighet til å **følge** forfatteren
+- [ ] Mulighet til å **følge** forfatteren derifra
 - [ ] Muligheten til å **lagre post** derifra også
 - [ ] Kan se kommentarer
 - [ ] Kan lage kommentar
@@ -107,11 +126,13 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ### [id] user page
 
-- [ ] Pengjøre veldig og rydd opp.
-  - [ ] den er tulla til og fungerer ikke orden. den hermer etter index/feed noe den ikke skal
-- [ ] Fjern spor av tidligere prop og slett den gamle component.
-- [ ] Ønsker å få den **følg** og **slutt å følg** funksjonen til å fungere
+- [ ] Fix api fetching so it becomes correct 
+- [x] Pengjøre veldig og rydd opp.
+- [~] Fjern spor av tidligere prop og slett den gamle component.
+- [ish] Ønsker å få den **følg** og **slutt å følg** funksjonen til å fungere
 - [ ] Lage en ordentlig side for den
+- [ ] fix pagnation - find out if it is necesarry, and if how to have it in that case
+  - should I make a new one? or take an old one
 
 ---
 
@@ -160,11 +181,11 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ---
 
-- [X] Gi en bruker muligheten, en knapp de kan trykke på
+- [x] Gi en bruker muligheten, en knapp de kan trykke på
   - Helt svart hvis lagret, delvis hvit hvis ikke lagret. ide
-    hver post, for å **lagre** en post
-  - [X] Trenger å lage en **_fetch call_** for den
-- [X] Muligheten for en bruker til å **fjerne** en post som de har lagret
+    - hver post, for å **lagre** en post
+  - [x] Trenger å lage en **_fetch call_** for den
+- [x] Muligheten for en bruker til å **fjerne** en post som de har lagret
 
 ### text editor
 
@@ -177,13 +198,46 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ---
 
+### How to API
+
+- [x] Take all of the **API fetching on the page level**
+
+- When i am retrieving tokens from **LocalStorage**, all of my fetching becomes on the client side.
+  - The means *initial load* can be very slow
+- Put fetching at PAGE-LEVEL
+  - I should fetch my api data at the page level, so I centralize the data-fetching logic and makes it easier to **manage state**
+- If a component required data that ISN'T shared with other components, it might be best to just have it there, inside the component
+- Seperate the api fetching into: place fetching.., function that does the fetching
+- Follow having a hybrid apporach to where to placing the api logic.
+  - one main for common API, logic, headers, configurations, maybe tokens
+  - another for specific areas (maybe the different endpoints)
+- Follow DRY (Don't Repeat Yourself) for API
+- Fetching data on the **server-side** is best for performance and SEO
+- Use state management, pinia
+
+---
+
 ## General
 
+- [ ] Ta code snippets som du bruker med **Vue Test Utils**, og i **Postman** og legg dem systematisk på Notion
+- [ ] Documentere ordentlig alle sidene og composables
 - [ ] Expand the registration form to include more information options
 - [ ] Fix the emit between new post and editorcard when it comes to border color and such
 - [ ] fix the connection bettwen the search composables and the related components, integrate more, properly
 - [ ] Rydde opp i alle composables
 - [ ] Dele opp stores
+- [ ] Find a workaround for **the problem that all of the fetching is happening from the client side**
+  - [ ] split the onMounted hooks for ones reqairing auth, and the ones not requiring it
+    - But all require it..
+    - Or maybe cachin in some hay?
+
+---
+
+### Composables
+
+- [ ] Slette ubrukte composables
+- [ ] Lage en "hybrid appraoch" til composables
+  - [ ] Sette sammen composables slik at det blir mer enklere
 
 ### thoughts
 
@@ -196,6 +250,10 @@ There are features I generally want to implement, but not sure how.
       - Se på medium.com
 
 - Hva skjedde med _likes_?
+
+- I want to avoid layout shifts when fetching from api:
+  - I can do v-if="all of the api variables"
+  - Skeleton loaders
 
 - Text editor for publishing posts
 - maybe relevant [simplemde](https://simplemde.com/)

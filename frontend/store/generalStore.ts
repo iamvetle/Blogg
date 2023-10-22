@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { AllTagsType } from '../typescript/post_interfaces';
 
 export const useGeneralStore = defineStore("general", () => {
 
@@ -13,7 +14,7 @@ export const useGeneralStore = defineStore("general", () => {
   const theUser = ref<NormalUserProfileType | null>(null) 
 
   // Min side
-  const personalPosts = ref<SnippetPostMultipleType | null>(null)
+  const personalPosts = ref<LoggedInUserMultiplePostType | null>(null)
   const personalUser = ref<LoggedInUserProfileType | null>(null)
 
   // Links
@@ -37,7 +38,8 @@ export const useGeneralStore = defineStore("general", () => {
   const search_bar_show = ref(false)
 
   /** Contains names of all the tags possible */
-  const allTags = ref<CategoryType[]>([])
+  const allTags = ref<AllTagsType | null>(null)
+  const allCategories = ref<AllCategoriesType>([])
 
   const idArrayOfSavedPosts = ref<number[]>([])
 
@@ -48,5 +50,5 @@ export const useGeneralStore = defineStore("general", () => {
     isAuthenticated.value = state;
   };
 
-  return { posts, idArrayOfLoggedInUserFollowingUsers, allTags, idArrayOfSavedPosts, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
+  return { posts, allCategories, idArrayOfLoggedInUserFollowingUsers, allTags, idArrayOfSavedPosts, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
 });

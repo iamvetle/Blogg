@@ -138,6 +138,6 @@ REST_FRAMEWORK = {  # For token authentication (DRF)
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.TokenAuthentication",
     ),
-    "DEFAULT_PAGINATION_CLASS": "api.services.other.CustomPageNumberPagination",
-    "PAGE_SIZE": 10,
+    'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomLimitOffsetPagination',
+    'PAGE_SIZE': 10
 }
