@@ -1,13 +1,14 @@
 <template>
 	<div id="site-wrapper">
 		<div v-if="(normalUserProfile != null) && (normalUserPosts != null)" class="w-9/12 mx-auto border-v pb-[60px]">
-			<div class="w-full px-[80px] grid grid-cols-12 gap-[80px]">
-				<div class="inline-block col-start-1 col-end-9 border-v border-blue-500">
-					<!-- 8/12 main content-->
 
+			<!-- 12/12 Grid col-->
+			<div class="w-full px-[80px] grid grid-cols-12 gap-[80px]">
+
+				<!-- 8/12 Main content-->
+				<div class="inline-block col-start-1 col-end-9 border-v border-blue-500">
 					<img id="header" :src="placeholder_header_image"
 						class="h-[150px] w-full object-cover border-v border-slate-500">
-					<!-- The IMAGE -->
 
 					<div id="top" class="px-2 pt-[50px]">
 						<div id="heading" class="prose">
@@ -40,7 +41,7 @@
 
 								<template #author v-if="post.author">
 									<span>
-										<p class="font-bold" v-text="author_full_name(post)">
+										<p class="font-bold" v-text="author_full_name(post.author)">
 										</p>
 									</span>
 								</template>
@@ -105,8 +106,8 @@
 
 				<!-- 4/12 sidebar -->
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
-					<div v-if="normalUserProfile != null">
 
+					<div>
 						<the-user-sidebar :username="normalUserProfile.username">
 
 							<template #amount-of-followers>
@@ -118,12 +119,11 @@
 										{{ followers }} followers
 									</p>
 								</div>
-	
 							</template>
 
 							<template #follow-button>
-
 								<base-follow-button>
+
 									<div class="w-fit h-fit cursor-pointer bg-primary text-onPrimary hover:bg-inversePrimary p-1 rounded-md"
 										v-if="checkIfFollowingUser(normalUserProfile.username) === true" id="following"
 										@click="unFollowUser(normalUserProfile.username)"
@@ -138,7 +138,6 @@
 									</div>
 
 								</base-follow-button>
-
 							</template>
 
 						</the-user-sidebar>
@@ -150,32 +149,64 @@
 </template>
 
 <script setup lang="ts">
-// a user's page
-
-const store = useGeneralStore()
-
-const color = ref("fill-black")
-const route = useRoute();
-const theNormalUserProfileURL = `http://localhost:8888/api/${route.params.id}/`;
-
-const theNormalUserPostsURL = `http://localhost:8888/api/${route.params.id}/posts/`;
-
-const normalUserProfile = ref<NormalUserProfileType | null>(null);
-const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
-const followText = ref("Following")
-
-const followers = ref(0)
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
 import { useGeneralStore } from '~/store/generalStore';
 
+/**
+ * User Page
+ * 
+ * This page is dedicated for the profile of each user, and displays their posts, profile information, 
+ * and following status, in addition to the ability to follow and unfollow the user.
+ * 
+ * It fetches data from two API endpoints to retrieve information user profile information, and the posts
+ * that the user has made. It compares the followers the user has against the whom the logged in user is following.
+ */
 
+const store = useGeneralStore()
+
+/**
+ * Stores the color that the bookmark icon is rendered with.
+ */
+const color = ref("fill-black")
+
+/**
+ * Stores information about the current, active URL
+ */
+const route = useRoute();
+
+/**
+ * Stores all of the user profile information
+ */
+const normalUserProfile = ref<NormalUserProfileType | null>(null);
+
+/**
+ * Stores all of the posts made by the user
+ */
+const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
+
+/**
+ * Represents the text that is going to be displayed on the (un)follow button
+ */
+const followText = ref("Following")
+
+/**
+ * Counts the number of followers the user has
+ */
+const followers = ref(0)
+
+/**
+ * @todo remove this and add the proper pictures made with the post
+ * 
+ * Stores the image that is temporarly being used with each post. The picture from the URL changes dynamically upon each request. 
+ */
 const post_image = ref('https://picsum.photos/500/300')
 
 /** 
- * Essentially 'dumps' the input into a div and returns the plain text 
- * @param - the html that is going to be formated
- * @returns - returns the plain text version
+ * Takes the HTML input and returns the pure text version of it.
+ * 
+ * @param raw The raw HTML
+ * @returns The plain text version
  */
 const toPlainText = (raw: string) => {
 	const div = document.createElement('div')
@@ -183,35 +214,43 @@ const toPlainText = (raw: string) => {
 	return div.textContent || div.innerText
 }
 
-
-
-
-/**
- * Fetches, GET, the profile information about the user
- * an its fetches, GET, its posts
- */
 onMounted(async () => {
 
 	/**
-	 * Checks if data of who the logged in user is following is present
+	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
 	if (!Array.isArray(store.idArrayOfLoggedInUserFollowingUsers) || !store.idArrayOfLoggedInUserFollowingUsers.length) {
 		await getLoggedInUserProfile();
 	}
-	const response_user = await getNormalUserProfile(theNormalUserProfileURL);
-	followers.value = response_user.num_of_followers
-	normalUserProfile.value = response_user
 
 	/**
-  * Fetches, GET, posts the user has made
-  */
-	const response_post = await getNormalUserPosts(theNormalUserPostsURL);
-	normalUserPosts.value = response_post
+	 * @param id The username of the user profile page
+	 */
+	const username = route.params.id
+
+	const theNormalUserProfileURL = `http://localhost:8888/api/${username}/`;
+	/**
+	 * Fetches the profile data about the user through the API address of the user.
+	 * 
+	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
+	 */
+	normalUserProfile.value = await getNormalUserProfile(theNormalUserProfileURL);
+	
+	followers.value = normalUserProfile.value.num_of_followers
+
+	const theNormalUserPostsURL = `http://localhost:8888/api/${username}/posts/`
+	/**
+	 * Fetches the posts the user has made through the API address of the user.
+	 * 
+	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
+	 */
+	normalUserPosts.value = await getNormalUserPosts(theNormalUserPostsURL);
 })
 
 /**
  * Navigates, or redirects, the web client to the
  * specific page for the post
+ * 
  * @param post - the id of the post
  */
 const redirect_to_post_page = async (post: any) => {
@@ -220,10 +259,16 @@ const redirect_to_post_page = async (post: any) => {
 	return await navigateTo(`/post/${post_article_page}`)
 }
 
-const author_full_name = (post: SnippetPostSingleType) => {
+/**
+ * Makes a full name variable of the user
+ * 
+ * @param author The author of each post (will always be the same)
+ * 
+ * @returns Either the complete name of the user. Or just the username 
+ */
+const author_full_name = (author:any) => {
 
-	const author = post.author
-
+	// If the user doesn't have a first name or last name, the username is instead returned
 	if (author.first_name && author.last_name) {
 		const full = `${author.first_name} ${author.last_name}` ?? author.username
 		return full
@@ -234,8 +279,9 @@ const author_full_name = (post: SnippetPostSingleType) => {
 }
 
 /**
- * Removes the clicked upon post from 'saved posts' 
- * @param post - the post that you want to unsave
+ * Unsaves the post from the logged-in user
+ * 
+ * @param post The post to unsave
  */
 const unsave = async (post: number) => {
 	const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
@@ -246,8 +292,9 @@ const unsave = async (post: number) => {
 }
 
 /**
- * Adds the clicked upon post to 'saved posts' 
- * @param post - the post that you want to save
+ * Saves the post for the logged-in user
+ * 
+ * @param post The post to be saved
  */
 const save = async (post: number) => {
 
@@ -256,45 +303,60 @@ const save = async (post: number) => {
 
 /**
  * Unfollows the user
- * @param username - the username that the web client wants to unfollow
+ * 
+ * @param username The username of the user that is going to be unfollowed
  */
-
 const unFollowUser = async (username: string) => {
-	const theNormalUserProfileUNSAVEURL = `http://localhost:8888/api/${username}/unfollow/`;
+	const theNormalUserProfileUnfollowURL = `http://localhost:8888/api/${username}/unfollow/`;
 
-	await getUnfollowUser(theNormalUserProfileUNSAVEURL)
+	await getUnfollowUser(theNormalUserProfileUnfollowURL)
 
 	const index = store.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
 
 	store.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
 
+	// Decrements the number of followers the user has
 	followers.value--
 
 }
 
 /**
  * Follows the user
- * @param username - the username that the web client wants to follow
+ * 
+ * @param username The username of the user that is going to be followed
  */
 const followUser = async (username: string) => {
-	const theNormalUserProfileSAVEURL = `http://localhost:8888/api/${username}/follow/`;
+	const theNormalUserProfileFollowURL = `http://localhost:8888/api/${username}/follow/`;
 
-	await getFollowUser(theNormalUserProfileSAVEURL)
+	await getFollowUser(theNormalUserProfileFollowURL)
 
 	store.idArrayOfLoggedInUserFollowingUsers.push(username)
+
+	// Increases the number of followers the user has
 	followers.value++
 }
 
+/**
+ * Makes sure that data made with 'optimistic ui update' is removed. That is to ensure that the numbers doesn't get duplicated
+ * upon revisit. This can happen because the pinia store caches it's data. The collision happens because the data get's refetched
+ * each time the page is mounted. 
+ */
 onDeactivated(() => {
 	followers.value = 0
 	store.idArrayOfLoggedInUserFollowingUsers = []
 })
 
+/**
+ * This makes sure the data mentioned above definetly gets removed.
+ */
 onUnmounted(() => {
 	followers.value = 0
 	store.idArrayOfLoggedInUserFollowingUsers = []
 })
 
+/**
+ * Decides what layout the page is going to be rendered with (navbar, footer, etc.). 
+ */
 definePageMeta({
 	layout: "default"
 })

@@ -65,7 +65,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     followers = models.ManyToManyField(
-        "self", related_name="following", symmetrical=False, blank=True
+        "self", related_name="following", symmetrical=False, blank=True,
     )
 
     objects = CustomUserManager()

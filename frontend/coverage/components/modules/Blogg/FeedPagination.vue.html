@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.4% </span>
+                <span class="strong">97.6% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>123/125</span>
+                <span class='fraction'>122/125</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">98.4% </span>
+                <span class="strong">97.6% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>123/125</span>
+                <span class='fraction'>122/125</span>
             </div>
         
             
@@ -205,7 +205,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -217,7 +217,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -335,16 +335,16 @@
 				&lt;/div&gt;
 				&lt;div&gt;
 					&lt;nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination"&gt;
-						&lt;div class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-3<span class="branch-0 cbranch-no" title="branch not covered" >00 hover:bg-gray-50 focus:z-20 focus:outline-offs</span>et-0"
+						&lt;div class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:b<span class="branch-0 cbranch-no" title="branch not covered" >g-gray-50 focus:z-20 focus:outline-offset-0"</span>
 							@click="click_previous_page"&gt;
 							&lt;span class="sr-only"&gt;Previous&lt;/span&gt;
-							&lt;svg class="h-5 w-5" viewBox="0 0 20 20" fill=<span class="fstat-no" title="function not covered" >"currentColor" aria-hidden="true"&gt;</span>
+							&lt;svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentCo<span class="fstat-no" title="function not covered" >lor" aria-hidden="true"&gt;</span>
 <span class="cstat-no" title="statement not covered" >								&lt;path fill-rule="evenodd"</span>
 <span class="cstat-no" title="statement not covered" >									d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"</span>
-									clip-rule="evenodd" /&gt;
+<span class="cstat-no" title="statement not covered" >									clip-rule="evenodd" /&gt;</span>
 							&lt;/svg&gt;
-<span class="fstat-no" title="function not covered" >						&lt;/div&gt;</span>
-						&lt;!-- Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" --&gt;
+						&lt;/div&gt;
+						&lt;<span class="fstat-no" title="function not covered" >!-- Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" </span>--&gt;
 &nbsp;
 						&lt;div id="current-page"
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 z-10 bg-primary text-onPrimary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"&gt;
@@ -398,7 +398,7 @@ const click_next_page = async () =&gt; {
 	if (store.next_page_link != null) {
 		store.baseFeedURL = store.next_page_link
 &nbsp;
-		await fetchPostSnippets()
+		await getPostMultipleSnippet()
 	} else {
 		console.log("cannot go any further")
 	}
@@ -409,7 +409,7 @@ const click_previous_page = async () =&gt; {
 	if (store.previous_page_link != null) {
 		store.baseFeedURL = store.previous_page_link
 &nbsp;
-		await fetchPostSnippets()
+		await getPostMultipleSnippet()
 	} else {
 		console.log("cannot go any more back")
 	}
@@ -426,7 +426,7 @@ const click_previous_page = async () =&gt; {
 &nbsp;
 // 		console.log(store.baseSearchURL)
 &nbsp;
-// 		await fetchPostSnippets()
+// 		await getPostMultipleSnippet()
 // 	} else {
 // 		console.log("cannot go any further back")
 // 	}
@@ -442,7 +442,7 @@ const click_previous_page = async () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-14T10:17:56.291Z
+                at 2023-10-22T08:55:07.955Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
