@@ -29,7 +29,12 @@
  * All of the ones above are working good.
  */
 
+/**
+ * This is the array of items that you want to create a list of checkboxes for
+ */
 const example_list = ["Hello", "Banana", "Aspergas", "Truth", "Lies"]
+
+
 const selected_object = ref<any>({})
 
 await getAllTags()

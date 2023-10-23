@@ -3,22 +3,24 @@
 		<div v-if="(store.posts) && (store.personalUser)"
 			class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
 			<ListArticles v-if="store.posts" class="col-span-6 mx-auto" />
+			{{ searchStore.filterPart }}
 
 
 			<div class="col-span-4 mx-auto">
 
-				<base-dropdown-menu v-if="store.idArrayOfSavedPosts" class="mb-4">  temp disabled
-				<!-- <base-dropdown-menu v-if="false" class="mb-4"> -->
+				<base-dropdown-menu v-if="store.idArrayOfSavedPosts" class="mb-4">
+					<!-- <base-dropdown-menu v-if="false" class="mb-4"> -->
 
 
-				<template #filter>
+					<template #filter>
 
-						<FilterBox :list-of-options="listName" class="bg-red-500 text-black mb-2" 
-						@theSelected="action"
-						/>
+						<FilterBox :list-of-options="tagOptions" class="bg-red-500 text-black mb-2" @output="action" />
 
 						<!-- <FilterTool date-test="filter-tool" /> -->
-						<div>{{ it }}</div>
+						<div>{{ searchStore.filterPart }}s</div>
+						<div>{{ searchStore.searchPart }}s</div>
+
+
 
 					</template>
 
@@ -35,29 +37,11 @@
 
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
-import FilterTool from '~/components/utils/FilterTool.vue';
 import { useSearchStore } from '~/store/searchStore';
 
 const store = useGeneralStore()
 const searchStore = useSearchStore()
 
-const listName = computed(() => {
-	let temp = []
-
-	if (store.allTags != null) {
-		for (let i of store.allTags.results) {
-			temp.push(i.name)
-		}
-	}
-	return temp
-
-})
-
-const it = ref<any>(null)
-
-const action = (items:any) => {
-	it.value = items 
-}
 
 /**
  * Changes the layout based on whether the user is authenticated or not
@@ -73,13 +57,16 @@ watchEffect(() => {
 	}
 })
 
-watch(
-	() => searchStore.baseSearchURL,
-	async (newUrl, oldUrl) => {
-		// Trigger data fetching here
-		await searchRequest();  // Replace with your actual fetching function
-	}
-);
+// watch(
+// 	() => searchStore.baseSearchURL,
+// 	async (newUrl, oldUrl) => {
+// 		// Trigger data fetching here
+// 		await searchRequest();  // Replace with your actual fetching function
+// 	}
+// );
+
+
+
 
 onMounted(async () => {
 	/**
@@ -99,6 +86,58 @@ onMounted(async () => {
 	*/
 	await getAllTags()
 })
+
+
+const tagOptions = computed(() => {
+	let temp = []
+
+	if (store.allTags != null) {
+		for (let i of store.allTags.results) {
+			temp.push(i.name)
+		}
+	}
+	return temp
+
+})
+
+
+const action = (items: any) => {
+	searchStore.filterPart = items
+
+	alert(constructURL())
+
+}
+
+const constructURL = () => {
+	// Construct the URL based on the state
+	let url = '/api/posts';
+	let params = [];
+	if (searchStore.searchPart) {
+		params.push(`q=${searchStore.searchPart}`);
+	}
+	if (searchStore.filterPart.length > 0) {
+		for (let tag of searchStore.filterPart) {
+			params.push(`tags=${tag}`)
+		}
+	}
+	if (params.length > 0) {
+		url += `?${params.join('&')}`;
+	}
+
+	return url
+}
+
+onDeactivated(() => {
+	searchStore.filterPart = null
+	searchStore.searchPart = null
+})
+
+onUnmounted(() => {
+	searchStore.filterPart = null
+	searchStore.searchPart = null
+})
+
+
 
 </script>
 

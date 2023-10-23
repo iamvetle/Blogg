@@ -4,6 +4,10 @@ There are stuff I want the web client to be able to do, that I have not yet impl
 
 ### Implementere tags sortering/søk
 - [~] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
+- [ ] Make a filter for one of the possible filter-codes that I can use
+  - think il use tags
+  - [ ] Make a custom url in the pinia store for SEARCH and the FILTER
+  - [ ] Have the watcher in the index page
 
 ---
 

@@ -66,19 +66,12 @@ import { useSearchStore } from '~/store/searchStore';
 const store = useGeneralStore();
 const searchStore = useSearchStore();
 
-const searchPart = ref<any>(null)
-
 const search = (payload: any) => {
-	console.log(payload)
 	if (payload.trim() != "") {
-
-		searchPart.value = `?search=${payload}`
-		searchStore.searchPart = searchPart.value
-		console.log(searchStore.baseSearchURL)
-
+		searchStore.searchPart = payload
+		alert(searchStore.searchPart)		
 	} else {
 		searchStore.searchPart = ""
-		console.log(searchStore.baseSearchURL)
 	}
 
 

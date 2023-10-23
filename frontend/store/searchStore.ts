@@ -8,8 +8,8 @@ export const useSearchStore = defineStore("search", () => {
     const searchPosts = ref<SnippetPostMultipleType | null>(null)
     const lastSearch = ref("")
 
-    const searchPart = ref("")
-    const filterPart = ref("")
+    const searchPart = ref<any>(null)
+    const filterPart = ref<any>(null)
 
     const baseSearchURL = computed(() => {
         return `http://localhost:8888/api/search/${searchPart.value}${filterPart.value}`

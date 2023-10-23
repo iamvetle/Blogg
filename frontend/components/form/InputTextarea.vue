@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 
-const modelValue = defineModel()
+const modelValue = defineModel<any>()
 
 defineProps<{
     label?:string
