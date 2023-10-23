@@ -7,11 +7,18 @@
 
 			<div class="col-span-4 mx-auto">
 
-				<base-dropdown-menu v-if="store.idArrayOfSavedPosts" class="mb-4">
+				<base-dropdown-menu v-if="store.idArrayOfSavedPosts" class="mb-4">  temp disabled
+				<!-- <base-dropdown-menu v-if="false" class="mb-4"> -->
 
-					<template #filter>
 
-						<FilterTool date-test="filter-tool" />
+				<template #filter>
+
+						<FilterBox :list-of-options="listName" class="bg-red-500 text-black mb-2" 
+						@theSelected="action"
+						/>
+
+						<!-- <FilterTool date-test="filter-tool" /> -->
+						<div>{{ it }}</div>
 
 					</template>
 
@@ -34,6 +41,24 @@ import { useSearchStore } from '~/store/searchStore';
 const store = useGeneralStore()
 const searchStore = useSearchStore()
 
+const listName = computed(() => {
+	let temp = []
+
+	if (store.allTags != null) {
+		for (let i of store.allTags.results) {
+			temp.push(i.name)
+		}
+	}
+	return temp
+
+})
+
+const it = ref<any>(null)
+
+const action = (items:any) => {
+	it.value = items 
+}
+
 /**
  * Changes the layout based on whether the user is authenticated or not
  * 
@@ -49,11 +74,11 @@ watchEffect(() => {
 })
 
 watch(
-  () => searchStore.baseSearchURL,
-  async (newUrl, oldUrl) => {
-    // Trigger data fetching here
-    await searchRequest();  // Replace with your actual fetching function
-  }
+	() => searchStore.baseSearchURL,
+	async (newUrl, oldUrl) => {
+		// Trigger data fetching here
+		await searchRequest();  // Replace with your actual fetching function
+	}
 );
 
 onMounted(async () => {
@@ -64,7 +89,7 @@ onMounted(async () => {
 
 	/**
 	 * Fetches all posts in snippets (not full content length)
- 	 */
+	   */
 	await getPostMultipleSnippet()
 	console.log(store.posts) // print to self
 

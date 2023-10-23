@@ -1,7 +1,7 @@
 <template>
 	<div class="py-1" v-if="store.allTags">
-		<div class="py-1 ml-2" v-for="(category, index) in store.allTags.results" :key="index">
-			<BaseCheckboxOption v-model="selectedCategories[category.name]" :label="category.name" />
+		<div class="py-1 ml-2" v-for="(category, index) in store.allTags.results">
+			<BaseCheckboxOption :key="index" v-model="selectedCategories[category.name]" :label="category.name" />
 		</div>		
 	</div>
 </template>
@@ -51,9 +51,9 @@ const customURL = computed(() => {
 /**
  * Fetches new posts automatically based on the customURL
  */
-watchEffect(async () => {
-	await getPostMultipleSnippet(customURL.value) // maybe I should please <- this one longer up?
-})
+	watchEffect(async () => {
+		await getPostMultipleSnippet(customURL.value) // maybe I should please <- this one longer up?
+	})
 
 </script>
 

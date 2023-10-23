@@ -1,7 +1,7 @@
 <template>
 	<div class="flex items-center">
 		<label class="flex items-center space-x-2">
-			<input type="checkbox" v-model="localChecked" @change="handleChange" v-bind="$attrs"/>
+			<input type="checkbox" v-model="localChecked" @change="handleChange" v-bind="$attrs" />
 			<span>{{ props.label }}</span>
 		</label>
 	</div>
@@ -12,10 +12,10 @@
 const emit = defineEmits(['update:modelValue']);
 
 const props = defineProps<{
-	modelValue:any,
-	label:string,
-	placeholder?:string
-	
+	modelValue: any,
+	label?: string,
+	placeholder?: string
+
 }>()
 
 const localChecked = ref(props.modelValue);
