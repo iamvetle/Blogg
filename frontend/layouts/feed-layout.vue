@@ -12,16 +12,16 @@
 			</div>
 		</div>
 		<div class="mt-auto">
-			<FeedPagination v-if="store.posts" />
+			<FeedPagination v-if="postStore.posts" />
 			<LazyTheFooter />
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '~/store/generalStore';
+import { usePostStore } from '~/store/postStore';
 
-const store = useGeneralStore()
+const postStore = usePostStore()
 
 </script>
 

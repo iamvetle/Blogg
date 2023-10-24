@@ -1,10 +1,10 @@
 // async
 
 import axios from 'axios' 
-import { useGeneralStore } from '~/store/generalStore';
+import { usePostStore } from '~/store/postStore';
 
 export const getSnippetPostAllLoggedInUser = async () => {
-  const store = useGeneralStore()
+  const postStore = usePostStore()
 
   try {
     const token = localStorage.getItem("token");
@@ -13,12 +13,12 @@ export const getSnippetPostAllLoggedInUser = async () => {
       Authorization: `Token ${token}`,
     };
 
-    const response = await axios.get<LoggedInUserMultiplePostType>(store.personal_post_snippets_url, { headers });
+    const response = await axios.get<LoggedInUserMultiplePostType>(postStore.baseLoggedInUserPostsURL, { headers });
 
     if (response.data != null) {
       console.log("OK: Personal posts fetched", response.data); // print to self
       
-      store.personalPosts = response.data;
+      postStore.loggedInUserPosts = response.data;
     
     } else {
       console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self

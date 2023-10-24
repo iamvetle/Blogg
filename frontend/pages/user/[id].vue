@@ -151,7 +151,7 @@
 <script setup lang="ts">
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
-import { useGeneralStore } from '~/store/generalStore';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /**
  * User Page
@@ -163,7 +163,7 @@ import { useGeneralStore } from '~/store/generalStore';
  * that the user has made. It compares the followers the user has against the whom the logged in user is following.
  */
 
-const store = useGeneralStore()
+const loggedInUserStore = useLoggedInUserStore()
 
 /**
  * Stores the color that the bookmark icon is rendered with.
@@ -219,7 +219,7 @@ onMounted(async () => {
 	/**
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
-	if (!Array.isArray(store.idArrayOfLoggedInUserFollowingUsers) || !store.idArrayOfLoggedInUserFollowingUsers.length) {
+	if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
 		await getLoggedInUserProfile();
 	}
 
@@ -284,9 +284,9 @@ const author_full_name = (author: any) => {
  * @param post The post to unsave
  */
 const unsave = async (post: number) => {
-	const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
+	const index = loggedInUserStore.idArrayOfSavedPosts.findIndex((id) => id === post)
 
-	store.idArrayOfSavedPosts.splice(index, 1)
+	loggedInUserStore.idArrayOfSavedPosts.splice(index, 1)
 
 	await getSaveOrUnsavePost(post)
 }
@@ -316,9 +316,9 @@ const unFollowUser = async (username: string) => {
 		return null
 	}
 
-	const index = store.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
+	const index = loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
 
-	store.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
+	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
 
 	// Decrements the number of followers the user has
 	followers.value--
@@ -340,7 +340,7 @@ const followUser = async (username: string) => {
 		return null
 	}
 
-	store.idArrayOfLoggedInUserFollowingUsers.push(username)
+	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.push(username)
 
 	// Increases the number of followers the user has
 	followers.value++
@@ -353,7 +353,7 @@ const followUser = async (username: string) => {
  */
 onDeactivated(() => {
 	followers.value = 0
-	store.idArrayOfLoggedInUserFollowingUsers = []
+	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers = []
 })
 
 /**
@@ -361,7 +361,7 @@ onDeactivated(() => {
  */
 onUnmounted(() => {
 	followers.value = 0
-	store.idArrayOfLoggedInUserFollowingUsers = []
+	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers = []
 })
 
 /**

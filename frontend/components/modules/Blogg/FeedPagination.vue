@@ -84,9 +84,14 @@ watchEffect(() => {
 const click_next_page = async () => {
 
 	if (paginationStore.next_page != null) {
-		paginationStore.activeFetchURL = paginationStore.next_page
+		alert(paginationStore.next_page)
+		alert(paginationStore.activeFetchURL)
 
-		await getPostMultipleSnippet()
+		paginationStore.activeFetchURL = paginationStore.next_page
+		alert(paginationStore.activeFetchURL)
+
+
+		await searchRequest()
 	} else {
 		console.log("cannot go any further")
 	}
@@ -97,12 +102,14 @@ const click_previous_page = async () => {
 	if (paginationStore.previous_page != null) {
 		paginationStore.activeFetchURL = paginationStore.previous_page
 
-		await getPostMultipleSnippet()
+		await searchRequest()
 	} else {
 		console.log("cannot go any more back")
 	}
 }
 
+
+/**@todo */
 // FIX: later
 // const click_last_page = async () => {
 // 	paginationStore.baseSearchURL = paginationStore.last_page_link
@@ -114,7 +121,7 @@ const click_previous_page = async () => {
 
 // 		console.log(paginationStore.baseSearchURL)
 
-// 		await getPostMultipleSnippet()
+// 		await searchRequest()
 // 	} else {
 // 		console.log("cannot go any further back")
 // 	}

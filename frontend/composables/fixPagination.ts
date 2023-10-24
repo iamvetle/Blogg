@@ -1,23 +1,23 @@
+import { usePaginationStore } from '~/store/paginationStore';
 // ASSUMES URL
-
-import { useGeneralStore } from "~/store/generalStore"
 
 export const fixPagination = async (response:SnippetPostMultipleType) => {
     if(response != null) {
 
-        const store = await useGeneralStore()
+        const paginationStore = usePaginationStore()
 
-        store.number_of_posts_count = response.count
+        paginationStore.number_of_posts = response.count
 
+        /** i dont know if this works */
         const calculate_total_pages = () => {
-            const num = store.number_of_posts_count as number / 10
+            const num = paginationStore.number_of_posts as number / 10
             return Math.ceil(num)
         }
 
-        store.total_pages_count = calculate_total_pages()
-        store.next_page_link = response.next
-        store.previous_page_link = response.previous
-        store.current_page = response.current_page
+        paginationStore.all_pages_count = calculate_total_pages()
+        paginationStore.next_page = response.next
+        paginationStore.previous_page = response.previous
+        paginationStore.current_page_number = response.current_page
     } else {
         console.log("pagination error on composable")
     }

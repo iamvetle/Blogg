@@ -10,7 +10,7 @@ export const usePostStore = defineStore("Store for containing posts and related 
     /**
      * The API url endpoint for fetching logged-in user posts
      */
-    const personalPosts = ref<LoggedInUserMultiplePostType | null>(null)
+    const loggedInUserPosts = ref<LoggedInUserMultiplePostType | null>(null)
 
     // Links
     /**
@@ -28,5 +28,5 @@ export const usePostStore = defineStore("Store for containing posts and related 
      */
     const allCategories = ref<AllCategoriesType>([])
 
-    return { posts, allCategories, allTags, personalPosts, baseFeedURL, baseLoggedInUserPostsURL };
+    return { posts, allCategories, allTags, loggedInUserPosts, baseFeedURL, baseLoggedInUserPostsURL };
 });

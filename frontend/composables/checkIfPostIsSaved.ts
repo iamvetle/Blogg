@@ -1,9 +1,9 @@
-import { useGeneralStore } from "~/store/generalStore"
+import { useLoggedInUserStore } from '~/store/loggedInUserStore'
 
 export const checkIfPostIsSaved = (postId:number) => {
-    const store = useGeneralStore()
+    const loggedInUserStore = useLoggedInUserStore()
     
-    if (store.idArrayOfSavedPosts.includes(postId)) {
+    if (loggedInUserStore.idArrayOfSavedPosts.includes(postId)) {
         return true
     } else {
         return false

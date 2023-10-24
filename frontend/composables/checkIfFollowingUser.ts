@@ -1,5 +1,4 @@
-import { useGeneralStore } from "~/store/generalStore"
-
+import { useLoggedInUserStore } from "~/store/loggedInUserStore"
 
 /**
  * Takes the parameter and checks whether the logged in user is following it or not
@@ -7,13 +6,12 @@ import { useGeneralStore } from "~/store/generalStore"
  * @returns - true or false depending on whether the logged-in-user is follow ing the user
  */
 export const checkIfFollowingUser = (username:string) => {
-    const store = useGeneralStore()
+    const loggedInUserStore = useLoggedInUserStore()
     console.log(username) // print to self
     
-    console.log(typeof store.idArrayOfLoggedInUserFollowingUsers) // print to self
-    console.log(store.idArrayOfLoggedInUserFollowingUsers)
-
-    if (store.idArrayOfLoggedInUserFollowingUsers.includes(username)) {
+    console.log(typeof loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) // print to self
+    console.log(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers)
+    if (loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.includes(username)) {
         console.log("true") // print to self
         return true
     } else {

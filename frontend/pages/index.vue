@@ -33,9 +33,11 @@ import { usePostStore } from '~/store/postStore'
 import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import { usePaginationStore } from '~/store/paginationStore';
 
 const postStore = usePostStore()
 const generalStore = useGeneralStore()
+const paginationStore = usePaginationStore()
 const searchStore = useSearchStore()
 const loggedInUserStore = useLoggedInUserStore()
 
@@ -140,13 +142,13 @@ const constructURL = computed(() => {
  * 
  * Fetches new data whenever a new search is made, or whenever a new filtercheckbox is checked
  */
-watchEffect(async () => {
-	let url = constructURL.value
+// watchEffect(async () => {
+// 	let url = constructURL.value
 
-	searchStore.baseSearchURL = url
+// 	paginationStore.activeFetchURL = url
 
-	await searchRequest()
-})
+// 	await searchRequest()
+// })
 
 
 /**

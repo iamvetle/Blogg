@@ -1,6 +1,4 @@
 import axios from 'axios'
-import { useSearchStore } from '~/store/searchStore';
-import { useGeneralStore } from '~/store/generalStore';
 import { usePostStore } from '~/store/postStore'
 import { usePaginationStore } from '~/store/paginationStore';
 
@@ -10,8 +8,6 @@ export const searchRequest = async () => {
 
 	if (process.client) {
 		try {
-			const searchStore = useSearchStore()
-			const generalStore = useGeneralStore()
 			const postStore = usePostStore()
 			const paginationStore = usePaginationStore()
 
@@ -22,7 +18,7 @@ export const searchRequest = async () => {
 			console.log(token)
 			console.log(headers)
 
-			const response = await axios.get(searchStore.baseSearchURL, { headers });
+			const response = await axios.get(paginationStore.activeFetchURL, { headers });
 			
 			console.log(toRaw(response))
 
@@ -30,7 +26,7 @@ export const searchRequest = async () => {
 				console.log("OK: Followers fetched", response.status, response.data); // print to self
 
 				postStore.posts = response.data
-				await fixPagination(postStore.posts)
+				await fixPagination(response.data)
 
 				paginationStore.number_of_posts = response.data.count
 

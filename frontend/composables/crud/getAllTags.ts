@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useGeneralStore } from '~/store/generalStore';
+import { usePostStore } from '~/store/postStore';
 /** Fetches all tags possible */
+
+/** @todo Jeg burde kanskje ha et sted hvor jeg fetcher alle "filters?" */
 
 export const getAllTags = async () => {
     const baseURL = "http://localhost:8888/api/tags/"
-    const store = useGeneralStore()
+    const postStore = usePostStore()
 
     try {
         const token = localStorage.getItem("token");
@@ -18,9 +20,9 @@ export const getAllTags = async () => {
         if (response.data != null) {
             console.dir("OK: tags fetched", response.data); // print to self
 
-            store.allTags = response.data
+            postStore.allTags = response.data
 
-            console.log(toRaw(store.allTags))
+            console.log(toRaw(postStore.allTags))
 
             return response.data;
 

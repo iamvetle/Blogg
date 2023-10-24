@@ -1,20 +1,20 @@
 <template>
-	<div v-if="(postStore.personalPosts) && (loggedInUserStore.personalUser)">
+	<div v-if="(postStore.loggedInUserPosts) && (loggedInUserStore.loggedInUserProfile)">
 		<div class="py-12 px-8">
 			<div class="container mx-auto py-8">
 				<div class="grid grid-cols-4 sm:grid-cols-12 gap-12 px-4">
 					<div class="col-span-4 sm:col-span-5 xl:col-span-3">
 						<div id="wrapper" class="bg-primary rounded-lg p-6">
-							<div v-if="loggedInUserStore.personalUser" class="px-5 py-5 bg-onPrimary rounded-xl">
+							<div v-if="loggedInUserStore.loggedInUserProfile" class="px-5 py-5 bg-onPrimary rounded-xl">
 								<div class="flex flex-col items-center">
 									<img :src="placeholder_profile_picture"
 										class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" alt="Profilbilde">
 									<!-- </img> -->
 									<h1 class="text-xl text-plain font-bold">
-										{{ loggedInUserStore.personalUser.first_name }} {{ loggedInUserStore.personalUser.last_name }}
+										{{ loggedInUserStore.loggedInUserProfile.first_name }} {{ loggedInUserStore.loggedInUserProfile.last_name }}
 									</h1>
 									<p class="">
-										{{ loggedInUserStore.personalUser.username }}
+										{{ loggedInUserStore.loggedInUserProfile.username }}
 									</p>
 									<div class="mt-6 flex flex-wrap gap-4 justify-center">
 										<nuxt-link to="/newpost">
@@ -23,12 +23,12 @@
 												Nytt innlegg
 											</button>
 										</nuxt-link>
-										<span v-if="loggedInUserStore.personalUser.num_of_followers === 1"
+										<span v-if="loggedInUserStore.loggedInUserProfile.num_of_followers === 1"
 											class="bg-onPrimary border-onPrimaryContainer border-2 text-onPrimaryContainer py-2 px-4 rounded">
-											{{ loggedInUserStore.personalUser.num_of_followers }} follower
+											{{ loggedInUserStore.loggedInUserProfile.num_of_followers }} follower
 										</span>
 										<span v-else>
-											{{ loggedInUserStore.personalUser.num_of_followers }} followers
+											{{ loggedInUserStore.loggedInUserProfile.num_of_followers }} followers
 										</span>
 										<!-- Figure this out later -->
 									</div>
@@ -37,35 +37,35 @@
 								<div class="flex flex-col">
 									<span class="uppercase font-bold tracking-wider mb-2">Info</span>
 									<ul class="">
-										<li v-if="loggedInUserStore.personalUser.email" class="mb-2 flex">
+										<li v-if="loggedInUserStore.loggedInUserProfile.email" class="mb-2 flex">
 											<p class="font-bold me-2">
 												Epost:
 											</p>
-											{{ loggedInUserStore.personalUser.email }}
+											{{ loggedInUserStore.loggedInUserProfile.email }}
 										</li>
-										<li v-if="loggedInUserStore.personalUser.phone_number" class="mb-2">
+										<li v-if="loggedInUserStore.loggedInUserProfile.phone_number" class="mb-2">
 											<p class="font-bold me-2">
 												Tlf.nr:
 											</p>
-											{{ loggedInUserStore.personalUser.phone_number }}
+											{{ loggedInUserStore.loggedInUserProfile.phone_number }}
 										</li>
-										<li v-if="loggedInUserStore.personalUser.nickname" class="mb-2">
+										<li v-if="loggedInUserStore.loggedInUserProfile.nickname" class="mb-2">
 											<p class="font-bold me-2">
 												Kallenavn:
 											</p>
-											{{ loggedInUserStore.personalUser.nickname }}
+											{{ loggedInUserStore.loggedInUserProfile.nickname }}
 										</li>
-										<li v-if="loggedInUserStore.personalUser.address" class="mb-2">
+										<li v-if="loggedInUserStore.loggedInUserProfile.address" class="mb-2">
 											<p class="font-bold me-2">
 												Addresse:
 											</p>
-											{{ loggedInUserStore.personalUser.address }}
+											{{ loggedInUserStore.loggedInUserProfile.address }}
 										</li>
-										<li v-if="loggedInUserStore.personalUser.age" class="mb-2">
+										<li v-if="loggedInUserStore.loggedInUserProfile.age" class="mb-2">
 											<p class="font-bold me-2">
 												Alder:
 											</p>
-											{{ loggedInUserStore.personalUser.age }}
+											{{ loggedInUserStore.loggedInUserProfile.age }}
 										</li>
 									</ul>
 								</div>
@@ -76,7 +76,7 @@
 								<h3 class="text-lg py-3">
 									People following you
 								</h3>
-								<div v-if="loggedInUserStore.personalUser.followers">
+								<div v-if="loggedInUserStore.loggedInUserProfile.followers">
 									<Follower v-for="(f, index) in followers" :key="index" :follower="f" v-once/>
 								</div>
 								<div v-else>
@@ -91,7 +91,7 @@
 								<h2 class="text-xl font-bold mb-4">
 									Bio
 								</h2>
-								<p v-if="loggedInUserStore.personalUser.bio" v-text="loggedInUserStore.personalUser.bio"></p>
+								<p v-if="loggedInUserStore.loggedInUserProfile.bio" v-text="loggedInUserStore.loggedInUserProfile.bio"></p>
 								<p v-else id="placeholder-bio">
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
 									finibus est vitae tortor ullamcorper, ut vestibulum velit
@@ -104,12 +104,12 @@
 							</div>
 
 							<h2 class="text-xl text-onPrimary font-bold mt-8 mb-6">
-								All posts by {{ loggedInUserStore.personalUser.first_name }}
+								All posts by {{ loggedInUserStore.loggedInUserProfile.first_name }}
 							</h2>
 
 							<!-- Post begin -->
-							<div v-if="postStore.personalPosts.results">
-								<ListMyPosts v-for="post in postStore.personalPosts.results" :key="post.id"
+							<div v-if="postStore.loggedInUserPosts.results">
+								<ListMyPosts v-for="post in postStore.loggedInUserPosts.results" :key="post.id"
 									:post-prop="post" />
 							</div>
 							<!-- Post end -->
@@ -123,11 +123,9 @@
 
 <script setup lang="ts">
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
-import { useGeneralStore } from '~/store/generalStore';
 import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
-const generalStore = useGeneralStore()
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
 

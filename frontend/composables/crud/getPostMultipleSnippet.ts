@@ -1,12 +1,14 @@
 import axios from 'axios'
-import { useGeneralStore } from '~/store/generalStore';
+import { useSearchStore } from '~/store/searchStore';
+import { usePostStore } from '~/store/postStore';
 
 /**
  * The function fetches post snippets
  * @param optionalURL 
  */
 export const getPostMultipleSnippet = async (optionalURL?: string) => {
-	const store = useGeneralStore()
+	const postStore = usePostStore()
+	const searchStore = useSearchStore()
 
 	try {
 		const token = localStorage.getItem("token");
@@ -24,7 +26,7 @@ export const getPostMultipleSnippet = async (optionalURL?: string) => {
 		if (optionalURL) {
 			response = await axios.get(optionalURL, { headers })
 		} else {
-			response = await axios.get(store.baseFeedURL, { headers });
+			response = await axios.get(paginationStore.activeFetchURL, { headers });
 		}
 
 		console.log(toRaw(response)) // print to self
@@ -36,7 +38,7 @@ export const getPostMultipleSnippet = async (optionalURL?: string) => {
 			/** Makes the pagination-bar correspond to the posts that are fetched */
 			await fixPagination(response.data)
 
-			store.posts = response.data as SnippetPostMultipleType;
+			postStore.posts = response.data
 
 			return response.data
 

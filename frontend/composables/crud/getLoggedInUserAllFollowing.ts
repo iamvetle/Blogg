@@ -1,17 +1,20 @@
 import axios from "axios";
-import { useGeneralStore } from '~/store/generalStore';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+
 /** Fetches all tags possible */
+
+/** @todo brukes denne? */
 
 export const getLoggedInUserAllFollowing = async () => {
     const baseURL = "http://localhost:8888/api/min-side/following/"
-    const store = useGeneralStore()
+    const loggedInUserStore = useLoggedInUserStore()
 
     try {
         const token = localStorage.getItem("token");
         const headers = {
             "Content-Type": "application/json",
-            Authorization: `Token ${token}`,
-        };
+            Authorization: `Token ${token}`
+        }
 
 
         // SE HER. Okay, så "following, num_of_following, followers, num_of_followers, saved_post, og num_of_saved post"
@@ -24,15 +27,15 @@ export const getLoggedInUserAllFollowing = async () => {
         if (response.data != null) {
             console.dir("OK: The users that the logged-in user is following, is fetched", response.data); // print to self
 
-            store.idArrayOfLoggedInUserFollowingUsers = []
+            loggedInUserStore.idArrayOfLoggedInUserFollowingUsers = []
 
             for (const following of response.data.results) {
                 console.log(following.username) // print to self
 
-                store.idArrayOfLoggedInUserFollowingUsers.push(following.username)
+                loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.push(following.username)
             }
 
-            console.log(store.idArrayOfLoggedInUserFollowingUsers)
+            console.log(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers)
 
             return response.data;
 

@@ -1,13 +1,13 @@
 <template>
-	<div class="py-1" v-if="store.allTags">
-		<div class="py-1 ml-2" v-for="(category, index) in store.allTags.results">
+	<div class="py-1" v-if="postStore.allTags">
+		<div class="py-1 ml-2" v-for="(category, index) in postStore.allTags.results">
 			<BaseCheckboxOption :key="index" v-model="selectedCategories[category.name]" :label="category.name" />
 		</div>		
 	</div>
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '~/store/generalStore';
+import { usePostStore } from '~/store/postStore';
 
 /** 
  * The component is a base for filtering. It has input fields that can be 
@@ -22,7 +22,7 @@ const setupTagURL = `${baseGroundURL}?`
 
 const selectedCategories = ref<any>({})
 
-const store = useGeneralStore()
+const postStore = usePostStore()
 
 const selectedCategoryNames = computed(() => {
 	return Object.keys(selectedCategories.value).filter(key => selectedCategories.value[key]);

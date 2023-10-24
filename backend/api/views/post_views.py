@@ -105,6 +105,7 @@ class PostMultipleAfterSearchView(ListAPIView):  # /api/search/
     serializer_class = PostShortenSerializer
 
     filter_backends = [filters.DjangoFilterBackend, SearchFilter]
+    
     filterset_class = CustomPostFilter
 
     

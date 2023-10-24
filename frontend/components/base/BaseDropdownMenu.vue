@@ -17,10 +17,8 @@
 
 <script setup lang="ts">
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { useGeneralStore } from '~/store/generalStore';
 
 const loggedInUserStore = useLoggedInUserStore()
-const generalStore = useGeneralStore()
 
 const isOpen = ref(false)
 
