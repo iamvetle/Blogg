@@ -11,9 +11,7 @@ export const useSearchStore = defineStore("search", () => {
     const searchPart = ref<any>(null)
     const filterPart = ref<any>(null)
 
-    const baseSearchURL = computed(() => {
-        return `http://localhost:8888/api/search/${searchPart.value}${filterPart.value}`
-    })
+    const baseSearchURL = ref<any>(null)
 
     // Pagnation
     const next_page_link = ref("")

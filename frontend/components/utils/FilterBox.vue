@@ -3,33 +3,32 @@
         <span v-for="(option, index) in props.listOfOptions">
             <BaseCheckboxOption v-model="selected[option]" @change="updateList" :key="index" :label="option" v-bind="$attrs" />
         </span>
-        <p>{{ selected }}</p>
-
-        <pre>{{ selectedItems }}</pre>
     </div>
 </template>
 
 <script setup lang="ts">
-
 /**
  * Filter box
  * 
- * An array with string should be passed as a prop to this component. It will return the 
+ * @var props.listOfoptions - An array with strings should be passed as a prop to this component. 
  * 
- * The component loops over the items in an array, (props.filter), and display
- * them as checkboxes. 
+ * Each item in the array will be displayed as a checkbox option.
  * 
- * When the checkboxes are checked they are stored in an array.
+ * @updateList - The event will return an array back with only the selected items, the boxes
+ * that is checked.
+ * 
  */
 
 /**
- * Stores the list of selected(checked) checkboxes
+ * Stores the list of selected items
+ * 
+ * in a { "item": true/false } state
  */
 const selected = ref<any>({})
 const emit = defineEmits(['output'])
 
 /**
- * Creates a list of items based ONLY on the items, keys, that have the value, true, checked
+ * Returns a computed propety array containing only the items that are selected
  * @returns A list of the checked checkboxes
  */
 const selectedItems = computed(() => {
@@ -40,19 +39,20 @@ const selectedItems = computed(() => {
             only_true_list.push(key)
         }
     }
-
     return only_true_list
-
 })
 
 const updateList = () => {
     emit('output', selectedItems)
 }
 
-
+/**
+ * The prop contains an array of all of the options that can be selected from
+ */
 const props = defineProps<{
     listOfOptions: any
 }>();
+
 </script>
 
 <style lang="scss" scoped></style>

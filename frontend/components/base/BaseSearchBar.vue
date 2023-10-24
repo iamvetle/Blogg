@@ -5,7 +5,7 @@
 	v-model.trim="search_input"
 	type="text"
 	placeholder="Søk.."
-	@keyup.enter="handleSearch"
+	@keydown.enter="handleSearch"
 	>
 </div>
 </template>
@@ -20,7 +20,7 @@ const handleSearch = () => {
 	
 	emit("searchAction", search_input.value)
 
-	search_input.value = ""
+	// search_input.value = ""
 	
 }
 </script>

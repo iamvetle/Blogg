@@ -3,23 +3,18 @@
 		<div v-if="(store.posts) && (store.personalUser)"
 			class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
 			<ListArticles v-if="store.posts" class="col-span-6 mx-auto" />
-			{{ searchStore.filterPart }}
-
 
 			<div class="col-span-4 mx-auto">
 
 				<base-dropdown-menu v-if="store.idArrayOfSavedPosts" class="mb-4">
-					<!-- <base-dropdown-menu v-if="false" class="mb-4"> -->
-
 
 					<template #filter>
 
-						<FilterBox :list-of-options="tagOptions" class="bg-red-500 text-black mb-2" @output="action" />
+						<FilterBox :list-of-options="tagOptions" class="mb-2" @output="action" />
 
 						<!-- <FilterTool date-test="filter-tool" /> -->
-						<div>{{ searchStore.filterPart }}s</div>
-						<div>{{ searchStore.searchPart }}s</div>
-
+						<div>'{{ searchStore.filterPart }}' - filterPart</div>
+						<div>'{{ searchStore.searchPart }}' - searchpart</div>
 
 
 					</template>
@@ -57,17 +52,6 @@ watchEffect(() => {
 	}
 })
 
-// watch(
-// 	() => searchStore.baseSearchURL,
-// 	async (newUrl, oldUrl) => {
-// 		// Trigger data fetching here
-// 		await searchRequest();  // Replace with your actual fetching function
-// 	}
-// );
-
-
-
-
 onMounted(async () => {
 	/**
 	* Fetches the profile information of the logged-in user
@@ -103,19 +87,19 @@ const tagOptions = computed(() => {
 
 const action = (items: any) => {
 	searchStore.filterPart = items
-
-	alert(constructURL())
-
 }
 
-const constructURL = () => {
+const constructURL = computed(() => {
 	// Construct the URL based on the state
-	let url = '/api/posts';
+	let url = 'http://localhost:8888/api/search/';
+
 	let params = [];
+
 	if (searchStore.searchPart) {
-		params.push(`q=${searchStore.searchPart}`);
+		console.log(searchStore.searchPart)
+		params.push(`search=${searchStore.searchPart}`);
 	}
-	if (searchStore.filterPart.length > 0) {
+	if (searchStore.filterPart && searchStore.filterPart.length > 0) {
 		for (let tag of searchStore.filterPart) {
 			params.push(`tags=${tag}`)
 		}
@@ -123,13 +107,22 @@ const constructURL = () => {
 	if (params.length > 0) {
 		url += `?${params.join('&')}`;
 	}
+	console.log(url)
 
 	return url
-}
+})
+watchEffect(async () => {
+	let url = constructURL.value
+
+	searchStore.baseSearchURL = url
+
+	console.log(searchStore.baseSearchURL)
+
+	await searchRequest()
+})
+
 
 onDeactivated(() => {
-	searchStore.filterPart = null
-	searchStore.searchPart = null
 })
 
 onUnmounted(() => {

@@ -14,9 +14,9 @@
 				</nuxt-link>
 
 				<span v-if="store.isAuthenticated" id="searchbar" class="ms-8">
-					<BaseSearchbar @search-action="search"
+					<BaseSearchBar @search-action="search"
 						class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex" />
-				</span>
+					</span>
 			</span>
 
 
@@ -60,7 +60,6 @@
 
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
-import BaseSearchbar from '~/components/base/BaseSearchBar.vue';
 import { useSearchStore } from '~/store/searchStore';
 
 const store = useGeneralStore();
@@ -69,7 +68,6 @@ const searchStore = useSearchStore();
 const search = (payload: any) => {
 	if (payload.trim() != "") {
 		searchStore.searchPart = payload
-		alert(searchStore.searchPart)		
 	} else {
 		searchStore.searchPart = ""
 	}
