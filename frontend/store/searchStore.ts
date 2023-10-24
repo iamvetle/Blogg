@@ -8,8 +8,14 @@ export const useSearchStore = defineStore("search", () => {
     const searchPosts = ref<SnippetPostMultipleType | null>(null)
     const lastSearch = ref("")
 
+    // Parameters for url
+
     const searchPart = ref<any>(null)
-    const filterPart = ref<any>(null)
+
+    const tagFilterPart = ref<any>(null)
+    const categoryFilterPart = ref<any>(null)
+    const authorFilterPart = ref<any>(null)
+
 
     const baseSearchURL = ref<any>(null)
 
@@ -24,5 +30,5 @@ export const useSearchStore = defineStore("search", () => {
 
     // ACTIONS ...
 
-    return { baseSearchURL, searchPart, filterPart, searchPosts, lastSearch, next_page_link, previous_page_link, last_page_link, total_pages_count, number_of_posts_count, current_page }
+    return { baseSearchURL, searchPart, categoryFilterPart, authorFilterPart, tagFilterPart, searchPosts, lastSearch, next_page_link, previous_page_link, last_page_link, total_pages_count, number_of_posts_count, current_page }
 })

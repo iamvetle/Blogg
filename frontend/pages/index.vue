@@ -9,12 +9,10 @@
 				<base-dropdown-menu v-if="store.idArrayOfSavedPosts" class="mb-4">
 
 					<template #filter>
-
+						<h3 class="">Tags</h3>
 						<FilterBox :list-of-options="tagOptions" class="mb-2" @output="action" />
 
 						<!-- <FilterTool date-test="filter-tool" /> -->
-						<div>'{{ searchStore.filterPart }}' - filterPart</div>
-						<div>'{{ searchStore.searchPart }}' - searchpart</div>
 
 
 					</template>
@@ -86,7 +84,7 @@ const tagOptions = computed(() => {
 
 
 const action = (items: any) => {
-	searchStore.filterPart = items
+	searchStore.tagFilterPart = items
 }
 
 const constructURL = computed(() => {
@@ -99,8 +97,8 @@ const constructURL = computed(() => {
 		console.log(searchStore.searchPart)
 		params.push(`search=${searchStore.searchPart}`);
 	}
-	if (searchStore.filterPart && searchStore.filterPart.length > 0) {
-		for (let tag of searchStore.filterPart) {
+	if (searchStore.tagFilterPart && searchStore.tagFilterPart.length > 0) {
+		for (let tag of searchStore.tagFilterPart) {
 			params.push(`tags=${tag}`)
 		}
 	}
@@ -126,7 +124,7 @@ onDeactivated(() => {
 })
 
 onUnmounted(() => {
-	searchStore.filterPart = null
+	searchStore.tagFilterPart = null
 	searchStore.searchPart = null
 })
 
