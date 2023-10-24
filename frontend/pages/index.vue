@@ -142,13 +142,14 @@ const constructURL = computed(() => {
  * 
  * Fetches new data whenever a new search is made, or whenever a new filtercheckbox is checked
  */
-// watchEffect(async () => {
-// 	let url = constructURL.value
 
-// 	paginationStore.activeFetchURL = url
+watchEffect(async () => {
+	let url = constructURL.value
 
-// 	await searchRequest()
-// })
+	paginationStore.activeFetchURL = url
+
+	await searchRequest()
+})
 
 
 /**
@@ -158,10 +159,7 @@ const constructURL = computed(() => {
  * This is important because if that does not happen, the checkboxes status might be restarted, but not the state of them,
  * and ends them up not being syncronous.
  */
-onUnmounted(() => {
-	searchStore.tagFilterPart = null
-	searchStore.searchPart = null
-})
+
 
 
 
