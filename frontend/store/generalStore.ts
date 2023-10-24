@@ -1,54 +1,34 @@
-import { defineStore } from "pinia";
-import { AllTagsType } from '../typescript/post_interfaces';
+export const useGeneralStore = defineStore("General store for general things", () => {
 
-export const useGeneralStore = defineStore("general", () => {
+  /**
+ * This is the base url of the API endpoint where everything is fetched.
+ */
+  const baseAPIURL = ref<string>("http://localhost:8888") // baseSearchURL (<any>null)
 
-  // Local storage
+  /**
+   * Is true or false depending on whether the web client has a valid token (is logged-in or not).
+   * The middleware (or composable, or plugins?) is what test it beforehand (I think)
+   */
   const isAuthenticated = ref(false);
+
+  /**
+   * Has the username of the authenticated web client. Is given at the login page (i think)
+   */
   const username = ref<string | null>(null);
 
-  // Posts
-  const posts = ref<SnippetPostMultipleType | null>(null)
-
-  // [id] user
-  const theUser = ref<NormalUserProfileType | null>(null) 
-
-  // Min side
-  const personalPosts = ref<LoggedInUserMultiplePostType | null>(null)
-  const personalUser = ref<LoggedInUserProfileType | null>(null)
-
-  // Links
-  const baseFeedURL = "http://localhost:8888/api/search/"
-  const post_snippets_url = ref<string>("http://localhost:8888/api/feed/")
-  const personal_post_snippets_url = ref<string>("http://localhost:8888/api/min-side/posts/")
-
-  const next_page_link = ref<string>("")
-  const previous_page_link = ref<string>("")
-  const last_page_link = ref<string>("")
-
-  // pagnation
-  const total_pages_count = ref<number>(0);
-  const number_of_posts_count = ref<number>(0);
-  const current_page = ref<number>(1);
-
-  // error pages
+  /**
+   * @deprecated
+   * Is offline. (Function not in use)
+   * 
+   * Is supposed to store the state of whether the api server is online or not
+   * 
+   */
   const apiDownError = ref(false);
 
-  //other
+  /**
+   * Decides whether the search bar in the navbar should be shown (depending on if web client is authenticated)
+   */
   const search_bar_show = ref(false)
-
-  /** Contains names of all the tags possible */
-  const allTags = ref<AllTagsType | null>(null)
-  const allCategories = ref<AllCategoriesType>([])
-
-  const idArrayOfSavedPosts = ref<number[]>([])
-
-  const idArrayOfLoggedInUserFollowingUsers = ref<string[]>([])
-
-
-  const changeAuthenticated = (state: boolean) => {
-    isAuthenticated.value = state;
-  };
-
-  return { posts, allCategories, idArrayOfLoggedInUserFollowingUsers, allTags, idArrayOfSavedPosts, personalUser, theUser, search_bar_show, personalPosts, personal_post_snippets_url, current_page, baseFeedURL, post_snippets_url, isAuthenticated, apiDownError, username, total_pages_count, number_of_posts_count, next_page_link, previous_page_link, last_page_link, changeAuthenticated };
+  
+  return { search_bar_show, isAuthenticated, apiDownError, username, baseAPIURL }
 });

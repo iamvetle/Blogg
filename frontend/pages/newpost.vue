@@ -28,8 +28,10 @@
 <script setup lang="ts">
 import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 
-// huske definepagedata senere
-
+/**
+ * @todo
+ * huske definepagedata senere
+ */
 const postState = ref<false | true | null>(null);
 
 let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")

@@ -1,12 +1,12 @@
 <template>
-	<div v-if="store.personalUser" id="aside" class="h-auto w-full mb-14">
+	<div v-if="loggedInUserStore.loggedInUserProfile" id="aside" class="h-auto w-full mb-14">
 
 		<div data-test="myprofile" class="w-full">
 
 			<my-profile-card :profile-picture-prop="profile_picture">
 
-				<template #username v-if="store.personalUser.username">
-					{{ store.personalUser.username }}
+				<template #username v-if="loggedInUserStore.loggedInUserProfile.username">
+					{{ loggedInUserStore.loggedInUserProfile.username }}
 				</template>
 
 				<template #full-name v-if="full_name">
@@ -14,8 +14,8 @@
 				</template>
 
 				<template #amount-of-followers>
-					<span v-if="store.personalUser.num_of_followers">
-						Antall følgere: {{ store.personalUser.num_of_followers }}
+					<span v-if="loggedInUserStore.loggedInUserProfile.num_of_followers">
+						Antall følgere: {{ loggedInUserStore.loggedInUserProfile.num_of_followers }}
 					</span>
 					<span v-else>
 						Du har ingen følgere
@@ -24,8 +24,8 @@
 
 				<template #amount-of-saved-posts>
 
-					<span v-if="store.personalUser.num_of_saved_posts">
-						Innlegg lagret: {{ store.personalUser.num_of_saved_posts }}
+					<span v-if="loggedInUserStore.loggedInUserProfile.num_of_saved_posts">
+						Innlegg lagret: {{ loggedInUserStore.loggedInUserProfile.num_of_saved_posts }}
 					</span>
 
 					<span v-else>
@@ -44,12 +44,12 @@
 				Lagrede innlegg
 			</h3>
 
-			<!-- <div class="saved-article" v-if="store.personalUser.saved_posts">
-				<ArticleSavedCard v-for="post in store.personalUser.saved_posts" :saved-post="post"
+			<!-- <div class="saved-article" v-if="loggedInUserStore.loggedInUserProfile.saved_posts">
+				<ArticleSavedCard v-for="post in loggedInUserStore.loggedInUserProfile.saved_posts" :saved-post="post"
 					:key="post.post.id" />
 			</div> -->
 
-			<div id="saved_articles" v-for="post in store.personalUser.saved_posts">
+			<div id="saved_articles" v-for="post in loggedInUserStore.loggedInUserProfile.saved_posts">
 				<article-saved-card :key="post.post.id">
 
 					<template #title>
@@ -65,8 +65,8 @@
 				</article-saved-card>
 			</div>
 
-			<p v-if="store.personalUser.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">
-				Se alle ({{ store.personalUser.num_of_saved_posts }})
+			<p v-if="loggedInUserStore.loggedInUserProfile.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">
+				Se alle ({{ loggedInUserStore.loggedInUserProfile.num_of_saved_posts }})
 			</p>
 			<p v-else>
 				Du har ingen lagrede innlegg
@@ -78,19 +78,19 @@
 
 		<div id="following-card" class="mx-auto w-full">
 
-			<div v-if="store.personalUser.num_of_following != 0">
+			<div v-if="loggedInUserStore.loggedInUserProfile.num_of_following != 0">
 				<h3 class="text-[28px] mb-9">
 					Du følger
 				</h3>
 				<div id="following">
-					<Following v-for="(following, index) in store.personalUser.following" :username="following.username"
+					<Following v-for="(following, index) in loggedInUserStore.loggedInUserProfile.following" :username="following.username"
 						:key="index" />
 				</div>
-				<span class="text-xs text-primary hover:text-primaryFixed">Se alle ({{ store.personalUser.num_of_following
+				<span class="text-xs text-primary hover:text-primaryFixed">Se alle ({{ loggedInUserStore.loggedInUserProfile.num_of_following
 				}})</span>
 			</div>
 
-			<div v-if="store.personalUser.num_of_following == 0">
+			<div v-if="loggedInUserStore.loggedInUserProfile.num_of_following == 0">
 				<h3>Du følger ingen</h3>
 			</div>
 
@@ -102,15 +102,16 @@
 <script setup lang="ts">
 
 import profile_picture from '~/assets/placeholder-profile-picture.png'
-import { useGeneralStore } from '~/store/generalStore';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
-const store = useGeneralStore()
+const loggedInUserStore = useLoggedInUserStore()
+
 
 /**
  * Either returns the full name of the user, or returns only the username (which is not supposed to actually happen)
  */
 const full_name = computed(() => {
-	let name = `${store.personalUser.first_name} ${store.personalUser.last_name}`
+	let name = `${loggedInUserStore.loggedInUserProfile.first_name} ${loggedInUserStore.loggedInUserProfile.last_name}`
 
 	if (name.trim() == "") {
 		return null

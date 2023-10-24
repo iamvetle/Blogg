@@ -1,5 +1,5 @@
 <template>
-    <div v-if="store.idArrayOfSavedPosts" class="bg-primary rounded-lg text-onPrimary">
+    <div v-if="loggedInUserStore.idArrayOfSavedPosts" class="bg-primary rounded-lg text-onPrimary">
         <span class="mb-2 w-full flex items-center text-center justify-center">
             <slot name="toggle">
                 <button
@@ -16,9 +16,11 @@
 </template>
 
 <script setup lang="ts">
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { useGeneralStore } from '~/store/generalStore';
 
-const store = useGeneralStore()
+const loggedInUserStore = useLoggedInUserStore()
+const generalStore = useGeneralStore()
 
 const isOpen = ref(false)
 

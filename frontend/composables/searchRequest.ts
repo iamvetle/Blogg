@@ -1,12 +1,20 @@
 import axios from 'axios'
-import { useSearchStore } from '../store/searchStore';
+import { useSearchStore } from '~/store/searchStore';
+import { useGeneralStore } from '~/store/generalStore';
+import { usePostStore } from '~/store/postStore'
+import { usePaginationStore } from '~/store/paginationStore';
+
+
 // with the full url query path
 export const searchRequest = async () => {
 
 	if (process.client) {
 		try {
-			const store = useSearchStore()
-			const store2 = useGeneralStore()
+			const searchStore = useSearchStore()
+			const generalStore = useGeneralStore()
+			const postStore = usePostStore()
+			const paginationStore = usePaginationStore()
+
 			const token = localStorage.getItem("token");
 			const headers = {
 				"Authorization": `Token ${token}`,
@@ -14,36 +22,36 @@ export const searchRequest = async () => {
 			console.log(token)
 			console.log(headers)
 
-			const response = await axios.get(store.baseSearchURL, { headers });
+			const response = await axios.get(searchStore.baseSearchURL, { headers });
 			
 			console.log(toRaw(response))
 
 			if (response.data != null) {
 				console.log("OK: Followers fetched", response.status, response.data); // print to self
 
-				store2.posts = response.data
-				await fixPagination(store2.posts)
+				postStore.posts = response.data
+				await fixPagination(postStore.posts)
 
-				store.number_of_posts_count = response.data.count
+				paginationStore.number_of_posts = response.data.count
 
 				const calculate_total_pages = () => {
-					const num = store.number_of_posts_count as number / 10
+					const num = paginationStore.number_of_posts as number / 10
 					return Math.ceil(num)
 				}
 
-				store.total_pages_count = calculate_total_pages()
-				store.next_page_link = response.data.next
-				store.previous_page_link = response.data.previous
-				//store.last_page_link = `http://localhost:8888/api/search/?limit=10&offset${store.total_pages_count*10}`
-				store.current_page = response.data.current_page
+				paginationStore.all_pages_count = calculate_total_pages()
+				paginationStore.next_page = response.data.next
+				paginationStore.previous_page = response.data.previous
+				//paginationStore.last_page_link = `http://localhost:8888/api/search/?limit=10&offset${paginationStore.all_pages_count*10}`
+				paginationStore.current_page_number = response.data.current_page_number
 
-				store2.posts= response.data
+				postStore.posts= response.data
 
 				// returns 'custom' response when the request was successfull
 				return true
 			} else {
 				console.log("OBS! Fetching succedded, but response(data) was:", response.status, response.data) // print to self
-				store2.posts = null
+				postStore.posts = null
 				return null
 			}
 		} catch (error) {

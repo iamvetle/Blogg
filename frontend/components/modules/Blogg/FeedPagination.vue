@@ -9,10 +9,10 @@
 			</div>
 			<div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
 				<div>
-					<span class="text-sm text-gray-700" v-if="store.number_of_posts_count">
+					<span class="text-sm text-gray-700" v-if="paginationStore.number_of_posts">
 						A total of
 						<span class="font-medium">
-							{{ store.number_of_posts_count }}
+							{{ paginationStore.number_of_posts }}
 						</span>
 
 						<span class="font-medium">
@@ -35,16 +35,16 @@
 
 						<div id="current-page"
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 z-10 bg-primary text-onPrimary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-							{{ store.current_page }}
+							{{ paginationStore.current_page_number }}
 						</div>
 
 
 						<span v-if="under_last_page"
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0 ">...</span>
 
-						<span v-if="store.current_page != store.total_pages_count"
+						<span v-if="paginationStore.current_page_number != paginationStore.all_pages_count"
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">{{
-								store.total_pages_count }}</span>
+								paginationStore.all_pages_count }}</span>
 
 
 						<div class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
@@ -65,16 +65,17 @@
 
 <script setup lang="ts">
 
-import { useGeneralStore } from '~/store/generalStore'
+import { usePaginationStore } from '~/store/paginationStore';
 
-const store = useGeneralStore()
+const paginationStore = usePaginationStore()
+
 const under_last_page = ref(true)
 
 watchEffect(() => {
-	if (store.current_page + 1 >= store.total_pages_count) {
+	if (paginationStore.current_page_number + 1 >= paginationStore.all_pages_count) {
 		under_last_page.value = false
 	}
-	if (store.current_page + 1 < store.total_pages_count) {
+	if (paginationStore.current_page_number + 1 < paginationStore.all_pages_count) {
 		under_last_page.value = true
 	}
 })
@@ -82,8 +83,8 @@ watchEffect(() => {
 
 const click_next_page = async () => {
 
-	if (store.next_page_link != null) {
-		store.baseFeedURL = store.next_page_link
+	if (paginationStore.next_page != null) {
+		paginationStore.activeFetchURL = paginationStore.next_page
 
 		await getPostMultipleSnippet()
 	} else {
@@ -93,8 +94,8 @@ const click_next_page = async () => {
 
 const click_previous_page = async () => {
 
-	if (store.previous_page_link != null) {
-		store.baseFeedURL = store.previous_page_link
+	if (paginationStore.previous_page != null) {
+		paginationStore.activeFetchURL = paginationStore.previous_page
 
 		await getPostMultipleSnippet()
 	} else {
@@ -104,14 +105,14 @@ const click_previous_page = async () => {
 
 // FIX: later
 // const click_last_page = async () => {
-// 	store.baseSearchURL = store.last_page_link
+// 	paginationStore.baseSearchURL = paginationStore.last_page_link
 
-// 	const new_page_link = `http://localhost:8888/api/search/?page=${store.total_pages_count}`
+// 	const new_page_link = `http://localhost:8888/api/search/?page=${paginationStore.all_pages_count}`
 
 // 	if (new_page_link != "") {
-// 		store.baseSearchURL = store.last_page_link
+// 		paginationStore.baseSearchURL = paginationStore.last_page_link
 
-// 		console.log(store.baseSearchURL)
+// 		console.log(paginationStore.baseSearchURL)
 
 // 		await getPostMultipleSnippet()
 // 	} else {

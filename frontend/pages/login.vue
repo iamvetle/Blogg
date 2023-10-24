@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-surface">
+  <section class="bg-surface" v-if="generalStore.isAuthenticated">
     <div
       class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
     >
@@ -18,11 +18,18 @@
 
 <script setup lang="ts">
 
-setPageLayout('form-layout')
+import { useGeneralStore } from '~/store/generalStore';
+
+const generalStore = useGeneralStore()
+
+// setPageLayout('form-layout')
 
 
+definePageMeta({
+  layout:"form-layout"
+})
 
-// husk definpagedata senere
+// husk definpagedata senere -- hvorfor skrev jeg dette?
 </script>
 
 <style scoped></style>

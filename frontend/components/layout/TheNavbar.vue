@@ -13,7 +13,7 @@
 					</span>
 				</nuxt-link>
 
-				<span v-if="store.isAuthenticated" id="searchbar" class="ms-8">
+				<span v-if="generalStore.isAuthenticated" id="searchbar" class="ms-8">
 					<BaseSearchBar @search-action="search"
 						class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex" />
 					</span>
@@ -22,7 +22,7 @@
 
 			<span class="flex items-center">
 
-				<span v-if="store.isAuthenticated" id="new-post" class="me-4 flex items-center flex-col">
+				<span v-if="generalStore.isAuthenticated" id="new-post" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/newpost"><svg class="mb-1 w-7 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
@@ -31,7 +31,7 @@
 					<span class="text-xs"><nuxt-link to="/newpost">Nytt innlegg</nuxt-link></span>
 				</span>
 
-				<span v-if="store.isAuthenticated" class="me-4 flex items-center flex-col">
+				<span v-if="generalStore.isAuthenticated" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/minkonto"><svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
@@ -40,7 +40,7 @@
 					<span class="text-xs"><nuxt-link to="/minkonto">Min profil</nuxt-link></span>
 				</span>
 
-				<span v-if="store.isAuthenticated" class="me-4 flex items-center flex-col">
+				<span v-if="generalStore.isAuthenticated" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/loggut">
 						<svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -62,7 +62,7 @@
 import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
 
-const store = useGeneralStore();
+const generalStore = useGeneralStore();
 const searchStore = useSearchStore();
 
 const search = (payload: any) => {

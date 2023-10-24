@@ -6,12 +6,12 @@
     <div>
       <h2 class="text-2xl inline">
         Search results for: <span class="inline pl-2">
-          '{{ store.lastSearch }}'
+          '{{ searchStore.lastSearch }}'
         </span>
       </h2>
-      <div v-if="store.searchPosts">
+      <div v-if="postStore.posts">
         <ArticleCard
-          v-for="post, index in store.searchPosts.results"
+          v-for="post, index in postStore.posts.results"
           :key="index"
           :post-detail="post"
         />
@@ -24,15 +24,20 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * ? @deprecated
+ */
 
 import { useSearchStore } from '~/store/searchStore'
+import { usePostStore } from '~/store/postStore'
 
-const store = useSearchStore()
+const searchStore = useSearchStore()
+const postStore = usePostStore()
 
 const no_posts_found = ref(false)
 
 definePageMeta({
-    layout:"search-layout"
+    layout:"default"
 })
 
 </script>

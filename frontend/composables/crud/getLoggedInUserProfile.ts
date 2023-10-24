@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useGeneralStore } from "~/store/generalStore";
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 export const getLoggedInUserProfile = async () => {
 try {
-	const store = useGeneralStore()
+	const loggedInUserStore = useLoggedInUserStore()
 
 	const LoggedinUserURL = "http://localhost:8888/api/min-side/"
 
@@ -18,22 +18,22 @@ try {
 	const response = await axios.get(LoggedinUserURL, { headers });
 	console.log("OK: fetched personal user account", response.data); // print to self
 
-	store.personalUser = response.data as LoggedInUserProfileType
+	loggedInUserStore.loggedInUserProfile = response.data as LoggedInUserProfileType
 	console.dir(response.data)
 
-	store.idArrayOfSavedPosts = []
-	store.idArrayOfLoggedInUserFollowingUsers=[]
+	loggedInUserStore.idArrayOfSavedPosts = []
+	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers=[]
 
 
-	for (const savedPost of store.personalUser.saved_posts) {
+	for (const savedPost of loggedInUserStore.loggedInUserProfile.saved_posts) {
 	console.log(savedPost.post.id) // print to self
 
-	store.idArrayOfSavedPosts.push(savedPost.post.id)
+	loggedInUserStore.idArrayOfSavedPosts.push(savedPost.post.id)
 
 	}
 
-	for (const follower of store.personalUser.following) {
-		store.idArrayOfLoggedInUserFollowingUsers.push(follower.username)
+	for (const follower of loggedInUserStore.loggedInUserProfile.following) {
+		loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.push(follower.username)
 		console.log(follower.username)
 
 	}
