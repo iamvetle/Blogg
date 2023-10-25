@@ -61,30 +61,35 @@
 <script setup lang="ts">
 import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
+import { usePaginationStore } from '~/store/paginationStore';
 
 const generalStore = useGeneralStore();
 const searchStore = useSearchStore();
+const paginationStore = usePaginationStore();
+const route = useRoute()
 
 const search = (payload: any) => {
+	if (route.path != "/") {
+		navigateTo("/")
+	}
 	if (payload.trim() != "") {
 		searchStore.searchPart = payload
 	} else {
 		searchStore.searchPart = ""
 	}
-
-
 }
 
-/** 'Resets' to default. All posts are retrieved and search input is cleared */
+/** 
+ * 'Resets' to default. Goes and fetches the "normal" all posts, without extra
+ * queries
+ */
 const logoclick = async () => {
 
-	//store.baseSearchURL = `http://localhost:8888/api/feed/`
+	paginationStore.activeFetchURL = `http://localhost:8888/api/search/`
 
 	await searchRequest()
 
 	return await navigateTo("/")
-
-
 }
 
 </script>

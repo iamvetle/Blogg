@@ -159,7 +159,13 @@ watchEffect(async () => {
  * This is important because if that does not happen, the checkboxes status might be restarted, but not the state of them,
  * and ends them up not being syncronous.
  */
+onDeactivated(() => {
+	onPageSwitch()
+})
 
+onUnmounted(() => {
+	onPageSwitch()
+})
 
 
 
