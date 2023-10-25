@@ -8,6 +8,7 @@
 
 <script setup lang="ts">
 import { usePostStore } from '~/store/postStore';
+import { usePaginationStore } from '~/store/paginationStore';
 
 /** 
  * The component is a base for filtering. It has input fields that can be 
@@ -23,6 +24,7 @@ const setupTagURL = `${baseGroundURL}?`
 const selectedCategories = ref<any>({})
 
 const postStore = usePostStore()
+const paginationStore = usePaginationStore()
 
 const selectedCategoryNames = computed(() => {
 	return Object.keys(selectedCategories.value).filter(key => selectedCategories.value[key]);
@@ -52,7 +54,8 @@ const customURL = computed(() => {
  * Fetches new posts automatically based on the customURL
  */
 	watchEffect(async () => {
-		await getPostMultipleSnippet(customURL.value) // maybe I should please <- this one longer up?
+		paginationStore.activeFetchURL = customURL.value 
+		await getPostMultipleSnippet() // maybe I should please <- this one longer up?
 	})
 
 

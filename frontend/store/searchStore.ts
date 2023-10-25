@@ -3,12 +3,6 @@ export const useSearchStore = defineStore("search", () => {
     // searchPosts
     const lastSearch = ref("")
 
-    /**
-     * The URL that api fetches regarding search generally go to
-     */
-    const baseSearchURL = "http://localhost:8888/api/search/" // baseFeedURL
-
-
     // Parameters for the URL
 
     /**
@@ -29,5 +23,5 @@ export const useSearchStore = defineStore("search", () => {
     // not in use
     const authorFilterPart = ref<any>(null)
 
-    return { baseSearchURL, searchPart, categoryFilterPart, authorFilterPart, tagFilterPart, lastSearch }
+    return { searchPart, categoryFilterPart, authorFilterPart, tagFilterPart, lastSearch }
 })

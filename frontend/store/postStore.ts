@@ -12,11 +12,11 @@ export const usePostStore = defineStore("Store for containing posts and related 
      */
     const loggedInUserPosts = ref<LoggedInUserMultiplePostType | null>(null)
 
-    // Links
     /**
-     * kan egentlig likesågjerne bare fetch alt fra search (eller feed senere)
+     * The URL that api fetches regarding search generally go to
      */
-    const baseFeedURL = ref<string>("http://localhost:8888/api/feed/") // post_snippets_url
+
+    const baseFetchURL = ref<string>("http://localhost:8888/api/feed/") // post_snippets_url
     const baseLoggedInUserPostsURL = ref<string>("http://localhost:8888/api/min-side/posts/") // personal_post_snippets_url
 
     /** 
@@ -28,5 +28,5 @@ export const usePostStore = defineStore("Store for containing posts and related 
      */
     const allCategories = ref<AllCategoriesType>([])
 
-    return { posts, allCategories, allTags, loggedInUserPosts, baseFeedURL, baseLoggedInUserPostsURL };
+    return { posts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
 });

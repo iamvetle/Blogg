@@ -27,8 +27,16 @@ onMounted(async () => {
 	const postURL = `http://localhost:8888/api/post/${route.params.id}/`;
 
 
+	/**
+	 * Fetches the one post
+	 */
 	post.value = await fetchPost(postURL);
 });
+
+
+definePageMeta({
+	layout:'default'
+})
 
 </script>
 

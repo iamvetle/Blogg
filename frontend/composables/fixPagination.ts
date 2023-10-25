@@ -1,8 +1,8 @@
 import { usePaginationStore } from '~/store/paginationStore';
 // ASSUMES URL
 
-export const fixPagination = async (response:SnippetPostMultipleType) => {
-    if(response != null) {
+export const fixPagination = async (response: SnippetPostMultipleType) => {
+    if (response != null) {
 
         const paginationStore = usePaginationStore()
 
@@ -17,6 +17,7 @@ export const fixPagination = async (response:SnippetPostMultipleType) => {
         paginationStore.all_pages_count = calculate_total_pages()
         paginationStore.next_page = response.next
         paginationStore.previous_page = response.previous
+        //paginationStore.last_page_link = `http://localhost:8888/api/search/?limit=10&offset${paginationStore.all_pages_count*10}`
         paginationStore.current_page_number = response.current_page
     } else {
         console.log("pagination error on composable")

@@ -87,7 +87,7 @@ const logoclick = async () => {
 
 	paginationStore.activeFetchURL = `http://localhost:8888/api/search/`
 
-	await searchRequest()
+	await getPostMultipleSnippet()
 
 	return await navigateTo("/")
 }

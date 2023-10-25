@@ -164,40 +164,27 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
  */
 
 const loggedInUserStore = useLoggedInUserStore()
-
-/**
- * Stores the color that the bookmark icon is rendered with.
- */
-const color = ref("fill-black")
-
-/**
- * Stores information about the current, active URL
- */
 const route = useRoute();
 
-/**
- * Stores all of the user profile information
- */
+
+/** Stores the color that the bookmark icon is rendered with. */
+const color = ref("fill-black")
+
+
+/** Stores all of the user profile information */
 const normalUserProfile = ref<NormalUserProfileType | null>(null);
 
-/**
- * Stores all of the posts made by the user
- */
+/** Stores all of the posts made by the user */
 const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
 
-/**
- * Represents the text that is going to be displayed on the (un)follow button
- */
+/** Represents the text that is going to be displayed on the (un)follow button */
 const followText = ref("Following")
 
-/**
- * Counts the number of followers the user has
- */
+/** Has the **number count** of users that the (normal)user has */
 const followers = ref(0)
 
 /**
  * @todo remove this and add the proper pictures made with the post
- * 
  * Stores the image that is temporarly being used with each post. The picture from the URL changes dynamically upon each request. 
  */
 const post_image = ref('https://picsum.photos/500/300')
@@ -205,7 +192,7 @@ const post_image = ref('https://picsum.photos/500/300')
 /** 
  * Takes the HTML input and returns the pure text version of it.
  * 
- * @param raw The raw HTML
+ * @param raw The raw HTML to be converted
  * @returns The plain text version
  */
 const toPlainText = (raw: string) => {
@@ -229,6 +216,7 @@ onMounted(async () => {
 	const username = route.params.id
 
 	const theNormalUserProfileURL = `http://localhost:8888/api/${username}/`;
+	
 	/**
 	 * Fetches the profile data about the user through the API address of the user.
 	 * 
@@ -236,11 +224,15 @@ onMounted(async () => {
 	 */
 	normalUserProfile.value = await getNormalUserProfile(theNormalUserProfileURL);
 
+	/** Populates/updates the constant that counts the number of followers the normal-user has */
 	followers.value = normalUserProfile.value.num_of_followers
 
 	const theNormalUserPostsURL = `http://localhost:8888/api/${username}/posts/`
+	
 	/**
 	 * Fetches the posts the user has made through the API address of the user.
+	 * And puts them in a reactive variable.
+	 * 
 	 * 
 	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
 	 */
@@ -268,7 +260,7 @@ const redirect_to_post_page = async (post: any) => {
  */
 const author_full_name = (author: any) => {
 
-	// If the user doesn't have a first name or last name, the username is instead returned
+	// This is only really relevant to 'Iamvetle' user. If the user doesn't have a first name or last name, the username is instead returned // PRINT TO SELF remove later
 	if (author.first_name && author.last_name) {
 		const full = `${author.first_name} ${author.last_name}` ?? author.username
 		return full
@@ -298,7 +290,7 @@ const unsave = async (post: number) => {
  */
 const save = async (post: number) => {
 
-	await getSaveOrUnsavePost(post)
+	await getSaveOrUnsavePost(post) // i have to put in a logic that makes it not possible to save a post - it  cancesl if hte status code is not 200
 }
 
 /**
@@ -320,7 +312,7 @@ const unFollowUser = async (username: string) => {
 
 	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
 
-	// Decrements the number of followers the user has
+	/** Decrements the number of followers the user has */
 	followers.value--
 
 }
@@ -342,7 +334,7 @@ const followUser = async (username: string) => {
 
 	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.push(username)
 
-	// Increases the number of followers the user has
+	/** Increases the number of followers the user has */
 	followers.value++
 }
 

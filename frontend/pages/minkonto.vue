@@ -129,15 +129,17 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
 
-
 const followers = ref<FollowerType | null>(null)
 
-onBeforeMount(async () => {
+/**
+ * Fetches all of the posts (in snippets) made by the logged in user.
+ * 
+ * ALso fetches all user profile information by the logged in user.
+ */
+onMounted(async () => {
 	await getSnippetPostAllLoggedInUser()
-})
-
-onBeforeMount(async () => {
 	await getLoggedInUserProfile()
+
 })
 
 definePageMeta({

@@ -1,5 +1,7 @@
+import { usePostStore } from "~/store/postStore"
 export const usePaginationStore = defineStore("Pagination Store", () => {
 
+    const postStore = usePostStore()
     /**
      * This store contains links associated pagination.
      * 
@@ -11,7 +13,7 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
      * This url gets update frequently. It is supposed to represent the 
      * last url a fetch call for index posts was made to.
      */
-    const activeFetchURL = ref<any>(null)
+    const activeFetchURL = ref<any>(postStore.baseFetchURL)
     
     const next_page = ref("") // next_page_link
     const previous_page = ref("") // previous_page_link

@@ -17,7 +17,7 @@ export const getSaveOrUnsavePost = async (postId:any) => {
 			/** Calls the composable that fetches profile information about the logged in user, so that the saved posts can be updated */
 			await getLoggedInUserProfile()
 			
-			return response.data;
+			return response
 		} catch (e) {
 			console.log("FAILED: did not manage to save post for reading later") // print to self - not working at all, no idea why
 			// is it only with get requests?

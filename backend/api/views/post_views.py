@@ -85,36 +85,37 @@ class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
 
 class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     """Responds {x} amount of posts as snippets.
-    The response is tailored after the filter parameters in the url fetch."""
+    The response is tailored after the search and filter parameters in the url fetch."""
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
-    pagination_class = GenericPagination
-
-    # filter_backends = [DjangoFilterBackend]
-    # filterset_class = CustomPostFilter
+    # It paginates automatically - se settings.py
+    filter_backends = [filters.DjangoFilterBackend, SearchFilter] # TODO might add sorting later
+    filterset_class = CustomPostFilter
+    
+    search_fields = ['title', 'content', 'author__username']
 
     queryset = Post.objects.all()
 
     http_method_names = ["get"]
 
-class PostMultipleAfterSearchView(ListAPIView):  # /api/search/
-    """Responds with a filter list of {x} amount of posts"""  # for filtering options look at filters.py
+# class PostMultipleAfterSearchView(ListAPIView):  # /api/search/
+#     """Responds with a filter list of {x} amount of posts"""  # for filtering options look at filters.py
 
-    permission_classes = [IsAuthenticated]
-    serializer_class = PostShortenSerializer
+#     permission_classes = [IsAuthenticated]
+#     serializer_class = PostShortenSerializer
 
-    filter_backends = [filters.DjangoFilterBackend, SearchFilter]
+#     filter_backends = [filters.DjangoFilterBackend, SearchFilter]
     
-    filterset_class = CustomPostFilter
+#     filterset_class = CustomPostFilter
 
     
-    search_fields = ['title', 'content', 'author__username']
+#     search_fields = ['title', 'content', 'author__username']
     
-    queryset = Post.objects.all()
+#     queryset = Post.objects.all()
     
     
-    http_method_names = ['get']
+#     http_method_names = ['get']
     
 
 class PostSingleView(RetrieveAPIView):

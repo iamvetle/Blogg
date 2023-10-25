@@ -8,7 +8,7 @@ from api.views.post_views import (
     PostCreateView,
     PostAllLoggedInUserView,
     PostMultipleSnippetView,
-    PostMultipleAfterSearchView,
+    # PostMultipleAfterSearchView,
     PostSaveView,
     PostAllSavedLoggedInUserView,
     PostAllNormalUserView,
@@ -29,7 +29,7 @@ from api.views.other_views import HealthCheck
 urlpatterns = [
     
     # General paths
-    path("search/", PostMultipleAfterSearchView.as_view(), name="search"),
+    # path("search/", PostMultipleAfterSearchView.as_view(), name="search"),
     path("feed/", PostMultipleSnippetView.as_view(), name="all_posts"),
     path("tags/", AllTagsView.as_view(), name="tags"),
     path("categories/", AllCategoriesView.as_view(), name="categories"),

@@ -68,8 +68,7 @@ onMounted(async () => {
 	/**
 	 * Fetches all posts in snippets (not full content length)
 	   */
-	await searchRequest()
-
+	await getPostMultipleSnippet()
 
 	/** 
 	 * Fetches all possible tags. And then assigns all of them in a variable in the post store
@@ -116,7 +115,7 @@ const action = (items: any) => {
  */
 const constructURL = computed(() => {
 	// Construct the URL based on the state
-	let url = 'http://localhost:8888/api/search/';
+	let url = postStore.baseFetchURL
 
 	let params = [];
 
@@ -148,7 +147,7 @@ watchEffect(async () => {
 
 	paginationStore.activeFetchURL = url
 
-	await searchRequest()
+	await getPostMultipleSnippet()
 })
 
 
