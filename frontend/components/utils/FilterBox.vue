@@ -53,6 +53,22 @@ const props = defineProps<{
     listOfOptions: any
 }>();
 
+onMounted(() => {
+  console.log('FilterBox component is mounted.');
+});
+
+onActivated(() => {
+  console.log('FilterBox component is activated.');
+});
+
+onUnmounted(() => {
+  console.log('FilterBox component is unmounted.');
+});
+
+onDeactivated(() => {
+  console.log('FilterBox component is deactivated.');
+});
+
 </script>
 
 <style lang="scss" scoped></style>

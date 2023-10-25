@@ -1,28 +1,21 @@
 <template>
-	<div id="site-wrapper" v-if="generalStore.isAuthenticated" class="mt-8">
-		<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
-			class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
-			<ListArticles v-if="postStore.posts" class="col-span-6 mx-auto" />
-
-			<div class="col-span-4 mx-auto">
-
-				<base-dropdown-menu v-if="loggedInUserStore.idArrayOfSavedPosts" class="mb-4">
-
-					<template #filter>
-						<h3 class="">Tags</h3>
-						<FilterBox :list-of-options="tagOptions" class="mb-2" @output="action" />
-
-						<!-- <FilterTool date-test="filter-tool" /> -->
-
-
-					</template>
-
-				</base-dropdown-menu>
-
-				<ListArticlesSidebar v-if="loggedInUserStore.loggedInUserProfile" />
+		<div id="site-wrapper" v-if="generalStore.isAuthenticated" class="mt-8">
+			<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
+				class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
+				<ListArticles v-if="postStore.posts" class="col-span-6 mx-auto" />
+				<div class="col-span-4 mx-auto">
+					<base-dropdown-menu v-if="loggedInUserStore.idArrayOfSavedPosts" class="mb-4">
+						<template #filter>
+							<h3 class="">Tags</h3>
+		
+								<FilterBox :list-of-options="tagOptions" class="mb-2" @output="action" />
+							<!-- <FilterTool date-test="filter-tool" /> -->
+						</template>
+					</base-dropdown-menu>
+					<ListArticlesSidebar v-if="loggedInUserStore.loggedInUserProfile" />
+				</div>
 			</div>
 		</div>
-	</div>
 	<div v-if="generalStore.isAuthenticated === false">
 		<Wait />
 	</div>
@@ -47,12 +40,12 @@ const loggedInUserStore = useLoggedInUserStore()
  * 
  * @todo endre denne til en function med computed istedenfor (?)
  */
-watchEffect(() => {
+const dynamicLayout = computed (() => {
 	if (generalStore.isAuthenticated === true) {
-		setPageLayout("feed-layout");
+		return "feed-layout"
 	}
 	if (generalStore.isAuthenticated === false) {
-		setPageLayout("blank");
+		return "blank"
 	}
 })
 
@@ -159,14 +152,14 @@ watchEffect(async () => {
  * and ends them up not being syncronous.
  */
 onDeactivated(() => {
-	onPageSwitch()
+	// onPageSwitch()
 })
 
 onUnmounted(() => {
-	onPageSwitch()
+	// onPageSwitch()
 })
 
-
+setPageLayout(dynamicLayout.value)
 
 </script>
 

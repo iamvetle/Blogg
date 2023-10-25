@@ -128,7 +128,6 @@ declare module 'vue' {
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
-    readonly getSearch: UnwrapRef<typeof import('./composables/crud/getSearch')['getSearch']>
     readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
@@ -160,7 +159,6 @@ declare module 'vue' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
-    readonly searchRequest: UnwrapRef<typeof import('./composables/searchRequest')['searchRequest']>
     readonly setLocalInfo: UnwrapRef<typeof import('./composables/setLocalInfo')['setLocalInfo']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
@@ -208,7 +206,6 @@ declare module '@vue/runtime-core' {
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
-    readonly getSearch: UnwrapRef<typeof import('./composables/crud/getSearch')['getSearch']>
     readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
@@ -240,7 +237,6 @@ declare module '@vue/runtime-core' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
-    readonly searchRequest: UnwrapRef<typeof import('./composables/searchRequest')['searchRequest']>
     readonly setLocalInfo: UnwrapRef<typeof import('./composables/setLocalInfo')['setLocalInfo']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
