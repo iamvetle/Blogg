@@ -1,23 +1,29 @@
 <template>
-		<div id="site-wrapper" v-if="generalStore.isAuthenticated" class="mt-8">
-			<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
-				class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
-				<ListArticles v-if="postStore.posts" class="col-span-6 mx-auto" />
-				<div class="col-span-4 mx-auto">
-					<base-dropdown-menu v-if="loggedInUserStore.idArrayOfSavedPosts" class="mb-4">
-						<template #filter>
-							<h3 class="">Tags</h3>
-		
-								<FilterBox :list-of-options="tagOptions" class="mb-2" @output="action" />
-							<!-- <FilterTool date-test="filter-tool" /> -->
-						</template>
-					</base-dropdown-menu>
-					<ListArticlesSidebar v-if="loggedInUserStore.loggedInUserProfile" />
-				</div>
+	<div id="site-wrapper" v-if="generalStore.isAuthenticated" class="mt-8">
+		<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
+			class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
+			<ListArticles v-if="postStore.posts" class="col-span-6 mx-auto" />
+			<div class="col-span-4 mx-auto">
+					<div id="dropdown-menu" v-if="loggedInUserStore.idArrayOfSavedPosts" class="mb-4 bg-primary rounded-lg text-onPrimary">
+						<span class="mb-2 w-full flex items-center text-center justify-center">
+								<button
+									class="hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
+									@click="changeDropdown">
+									Filter posts
+								</button>
+						</span>
+						<KeepAlive>
+							<component :is="dropdown" id="dropdown-content" :list-of-options="tagOptions" class="mb-2" @output="action" />
+						</KeepAlive>
+					</div>
+				<ListArticlesSidebar v-if="loggedInUserStore.loggedInUserProfile" />
 			</div>
 		</div>
+	</div>
 	<div v-if="generalStore.isAuthenticated === false">
 		<Wait />
+
+
 	</div>
 </template>
 
@@ -27,6 +33,7 @@ import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePaginationStore } from '~/store/paginationStore';
+import { FilterBox } from '#components';
 
 const postStore = usePostStore()
 const generalStore = useGeneralStore()
@@ -40,7 +47,7 @@ const loggedInUserStore = useLoggedInUserStore()
  * 
  * @todo endre denne til en function med computed istedenfor (?)
  */
-const dynamicLayout = computed (() => {
+const dynamicLayout = computed(() => {
 	if (generalStore.isAuthenticated === true) {
 		return "feed-layout"
 	}
@@ -48,6 +55,23 @@ const dynamicLayout = computed (() => {
 		return "blank"
 	}
 })
+
+/**
+ * Toggles between showing the filterbox component and not.
+ * 
+ * The 'component' together with 'KeepAlive' caches the component state 
+ * so that what is 'checked' with checkboxes doesnt dissapear when the tab is toggled
+ */
+const dropdown = shallowRef<any>(false)
+
+const changeDropdown = () => {
+	if (dropdown.value == FilterBox) {
+		dropdown.value = false
+	} else {
+		dropdown.value = FilterBox
+	}
+}
+
 
 /**
  * All of the data that is needed from the api endpoint is fetched here.
@@ -151,12 +175,9 @@ watchEffect(async () => {
  * This is important because if that does not happen, the checkboxes status might be restarted, but not the state of them,
  * and ends them up not being syncronous.
  */
-onDeactivated(() => {
-	// onPageSwitch()
-})
 
 onUnmounted(() => {
-	// onPageSwitch()
+	onResetStore()
 })
 
 setPageLayout(dynamicLayout.value)
