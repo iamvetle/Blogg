@@ -2,7 +2,10 @@
 	<div id="site-wrapper" v-if="generalStore.isAuthenticated" class="mt-8">
 		<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
 			class="max-w-[1100px] h-fit mx-auto px-6 grid grid-cols-10 gap-28">
-			<ListArticles v-if="postStore.posts" class="col-span-6 mx-auto" />
+			<div class="col-span-6 mx-auto w-full" >
+				<h2 class="mb-10 text-4xl" v-if="searchStore.searchPart != ''">Søkeresultater for '{{ searchStore.searchPart }}' </h2>
+				<ListArticles v-if="postStore.posts" class="w-full"/>
+			</div>
 			<div class="col-span-4 mx-auto">
 					<div id="dropdown-menu" v-if="loggedInUserStore.idArrayOfSavedPosts" class="mb-4 bg-primary rounded-lg text-onPrimary">
 						<span class="mb-2 w-full flex items-center text-center justify-center">

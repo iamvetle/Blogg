@@ -105,7 +105,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
 - [ ] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
   - keep-alive?
-
+- [~] Gjøre slik at det står "Søke resultater for: ..."
+  - [ ] ønsker i tillegg å vise de "tags" og mer som er i bruk
 ---
 
 ### ListArticlesSidebar
