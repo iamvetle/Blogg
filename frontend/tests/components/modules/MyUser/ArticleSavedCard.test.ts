@@ -1,15 +1,12 @@
 import ArticleSavedCard from '~/components/modules/MyUser/ArticleSavedCard.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
-import { useGeneralStore } from '~/store/generalStore';
 
 describe('Testing the component "ArticleSavedCard"', () => {
     let wrapper: VueWrapper;
-    let store: any;
 
     beforeEach(() => {
         const pinia = createTestingPinia();
-        store = useGeneralStore(pinia);
 
         wrapper = shallowMount(ArticleSavedCard, {
             global: {
@@ -40,6 +37,10 @@ describe('Testing the component "ArticleSavedCard"', () => {
     })
     test('Should render the name of the author', () => {
         expect(wrapper.text()).toContain("TheAuthorName")
+    })
+
+    test('Should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot()
     })
 
 });

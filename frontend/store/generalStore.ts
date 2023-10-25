@@ -1,3 +1,5 @@
+import { defineStore } from 'pinia';
+
 export const useGeneralStore = defineStore("General store for general things", () => {
 
   /**

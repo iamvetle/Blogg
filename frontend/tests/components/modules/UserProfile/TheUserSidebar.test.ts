@@ -1,10 +1,5 @@
 import TheUserSidebar from '~/components/modules/UserProfile/TheUserSidebar.vue';
-import { VueWrapper, flushPromises, mount } from '@vue/test-utils';
-import { createTestingPinia } from '@pinia/testing';
-import { useGeneralStore } from '~/store/generalStore';
-import BaseFollowButton from '~/components/base/BaseFollowButton.vue';
-
-let followText = ref("")
+import { VueWrapper, flushPromises, shallowMount } from '@vue/test-utils';
 
 describe('testign theusersidebar', () => {
     let wrapper: VueWrapper;
@@ -20,16 +15,8 @@ describe('testign theusersidebar', () => {
 
 
     beforeEach(async () => {
-        const pinia = createTestingPinia();
-        store = useGeneralStore(pinia);
-
-        store.idArrayOfLoggedInUserFollowingUsers = ['hello', 'hello2']
-
-        wrapper = mount(TheUserSidebar, {
+        wrapper = shallowMount(TheUserSidebar, {
             global: {
-                plugins: [pinia],
-                components: { BaseFollowButton },
-                mocks: { followText },
                 stubs: {}
             },
             props: {
@@ -61,6 +48,22 @@ describe('testign theusersidebar', () => {
 
     test('Should render the "follow_button" slot', () => {
         expect(wrapper.html()).toContain("<p>This is the slot 'follow_button'</p>")
+    })
+
+    test('Should render the amount of followers slot', () => {
+        expect(wrapper.html()).toContain("<h3>5</h3>")
+    })
+
+    test('Should not render content when slot is not given/provided', async () => {
+        wrapper.unmount()
+
+        wrapper = shallowMount(TheUserSidebar)
+
+        await wrapper.vm.$nextTick()
+
+        expect(wrapper.html()).not.toContain("<p>This is the slot 'follow_button'</p>")
+        expect(wrapper.html()).not.toContain("<h3>5</h3>")
+
     })
 
     // i can find the component and checkk the text directly inside because it is using slot ^

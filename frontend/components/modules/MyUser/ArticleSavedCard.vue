@@ -3,7 +3,7 @@
 		<img :src="article_image" class="w-14 h-12">
 		<div class="ml-2">
 			<span class="flex ms-1 font-bold">
-				<slot name="title"/>
+				<slot name="title"></slot>
 			</span>
 			<span class="flex">
 				<span><svg width="24" height="24" viewBox="0 0 24 24" class="fill-onBackground"
@@ -14,7 +14,7 @@
 					</svg>
 				</span>
 				<span class="flex ms-1">
-						<slot name="author"/>
+						<slot name="author"></slot>
 
 				</span>
 			</span>
