@@ -1,11 +1,13 @@
 import { VueWrapper, shallowMount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import { useGeneralStore } from '~/store/generalStore';
 import minkonto from '~/pages/minkonto.vue'
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import { usePostStore } from '~/store/postStore';
 
 let wrapper: VueWrapper
-let store:any;
+let loggedInUserStore:any;
 let pinia;
+let postStore:any;
 
 describe('Testing the page minkonto', () => {
 
@@ -23,7 +25,8 @@ describe('Testing the page minkonto', () => {
         })
 
         pinia = createTestingPinia();
-        store = useGeneralStore(pinia);
+        loggedInUserStore = useLoggedInUserStore(pinia);
+        postStore = usePostStore(pinia);
 
         wrapper = shallowMount(minkonto, {
             global: {
@@ -51,7 +54,7 @@ describe('Testing the page minkonto', () => {
     })
     test('Should render all of the logged in user information correctly', async () => {
         
-        store.personalUser = {
+        loggedInUserStore.loggedInUserProfile = {
             id: 3,
             email: "test@example.com",
             username: "test32",
@@ -62,7 +65,7 @@ describe('Testing the page minkonto', () => {
             nickname: "Tt",
             num_of_followers: 4,
         };
-        store.personalPosts = {
+        postStore.loggedInUserPosts = {
             id: 17,
             title: "This is a title that is made by bob",
             author: {
@@ -97,7 +100,7 @@ describe('Testing the page minkonto', () => {
     })
 
     test("Should change the text about followers after the amount", async () => {
-        store.personalUser = {
+        loggedInUserStore.loggedInUserProfile = {
             id: 3,
             email: "test@example.com",
             username: "test32",
@@ -108,7 +111,7 @@ describe('Testing the page minkonto', () => {
             nickname: "Tt",
             num_of_followers: 1,
         };
-        store.personalPosts = {
+        postStore.loggedInUserPosts = {
             id: 17,
             title: "This is a title that is made by bob",
             author: {

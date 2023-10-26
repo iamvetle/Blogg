@@ -5,7 +5,7 @@
 	v-model.trim="search_input"
 	type="text"
 	placeholder="Søk.."
-	@keydown.enter="handleSearch"
+	@keyup.enter="handleSearch"
 	>
 </div>
 </template>

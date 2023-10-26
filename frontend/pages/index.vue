@@ -106,7 +106,7 @@ const tagOptions = computed(() => {
 	let temp = []
 
 	if (postStore.allTags != null) {
-		for (let i of postStore.allTags.results) {
+		for (let i of postStore.allTags) {
 			temp.push(i.name)
 		}
 	}

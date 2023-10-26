@@ -5,18 +5,23 @@ import { useGeneralStore } from '~/store/generalStore'
 
 describe("thenavvbarr testing", () => {
     let wrapper:VueWrapper;
-    let store: any; 
+    let generalStore: any; 
     let pinia: any;
 
     beforeEach(() => {
         pinia = createTestingPinia()
-        store = useGeneralStore(pinia)
+        generalStore = useGeneralStore(pinia)
+        generalStore.isAuthenticated = true
         wrapper = mount(TheNavbar, {
             global: {
                 plugins: [pinia],
+                stubs: {
+                    "BaseSearchBar":true,
+                    "nuxt-link":true,
+
+                }
             },
         })
-        store.isAuthenticated = true
     })
 
     test('Should exist', () => {
@@ -31,7 +36,7 @@ describe("thenavvbarr testing", () => {
     test("Should not render content on navbar when the web client is not authenticated", () => {
         wrapper.unmount()
 
-        store.isAuthenticated = false
+        generalStore.isAuthenticated = false
         
         wrapper = mount(TheNavbar, {
             global: {

@@ -3,18 +3,21 @@ import { VueWrapper, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from '~/store/generalStore';
 import BaseCheckboxOption from '~/components/base/BaseCheckboxOption.vue';
+import { usePostStore } from '~/store/postStore';
 
 describe('FilterTool testing', () => {
     let wrapper:VueWrapper
     let store;
+    let postStore:any;
     let pinia:any;
 
     beforeEach(async () => {
         pinia = createTestingPinia();
         store = useGeneralStore(pinia);
+        postStore = usePostStore(pinia)
 
         // Set initial state for categories if it comes from the store
-        store.allTags = [
+        postStore.allTags = [
             { name: "tag1" },
             { name: "tag2" },
             { name: "tag3" }

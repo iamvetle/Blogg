@@ -16,7 +16,7 @@
 				<span v-if="generalStore.isAuthenticated" id="searchbar" class="ms-8">
 					<BaseSearchBar @search-action="search"
 						class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex" />
-					</span>
+				</span>
 			</span>
 
 

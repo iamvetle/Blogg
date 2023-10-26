@@ -34,6 +34,7 @@ describe('Testing the BaseSearchBar component', () => {
 
         await wrapper.vm.$nextTick()
         
+        
         expect(wrapper.emitted()).toHaveProperty("searchAction")
         expect(wrapper.emitted('searchAction')).toHaveLength(1)
         expect((wrapper.emitted('searchAction') as any)[0]).toEqual(["inputtext"])

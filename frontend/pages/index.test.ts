@@ -4,8 +4,9 @@ import index from "~/pages/index.vue"
 import { useGeneralStore } from '~/store/generalStore';
 import ListArticles from '~/components/modules/Blogg/ListArticles.vue';
 import BaseDropdownMenu from "~/components/base/BaseDropdownMenu.vue";
+import { FilterBox } from '#components';
 
-describe('index page testing', () => {
+describe('index page testing', () => { 
     let wrapper: VueWrapper
     let store: any
 
@@ -26,6 +27,7 @@ describe('index page testing', () => {
                 components: {
                     ListArticles,
                     BaseDropdownMenu,
+                    FilterBox
                 },
                 stubs: { 'Wait': true, 'FilterTool': true, 'ListArticlesSidebar': true }
             }
