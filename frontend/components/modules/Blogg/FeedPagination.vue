@@ -22,9 +22,12 @@
 				</div>
 				<div>
 					<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-						<div class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+						
+						<div id="back-icon" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
 							@click="click_previous_page">
+							
 							<span class="sr-only">Previous</span>
+							
 							<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 								<path fill-rule="evenodd"
 									d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
@@ -34,28 +37,34 @@
 						<!-- Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" -->
 
 						<div id="current-page"
-							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 z-10 bg-primary text-onPrimary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0 z-10 bg-primary text-onPrimary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							>
 							{{ paginationStore.current_page_number }}
 						</div>
 
 
-						<span v-if="under_last_page"
+						<span id="dott-dott-dott" v-if="under_last_page"
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0 ">...</span>
 
-						<span v-if="paginationStore.current_page_number != paginationStore.all_pages_count"
+						<span id="last-page" v-if="paginationStore.current_page_number != paginationStore.all_pages_count"
 							class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">{{
 								paginationStore.all_pages_count }}</span>
 
 
-						<div class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+						<div id="forward-icon" class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
 							@click="click_next_page">
-							<span class="sr-only">Next</span>
+
+							<span class="sr-only">
+								Next
+							</span>
+							
 							<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 								<path fill-rule="evenodd"
 									d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
 									clip-rule="evenodd" />
 							</svg>
 						</div>
+
 					</nav>
 				</div>
 			</div>
@@ -72,23 +81,24 @@ const paginationStore = usePaginationStore()
 const under_last_page = ref(true)
 
 watchEffect(() => {
-	if (paginationStore.current_page_number + 1 >= paginationStore.all_pages_count) {
+	if (paginationStore.current_page_number >= paginationStore.all_pages_count - 1) {
 		under_last_page.value = false
 	}
-	if (paginationStore.current_page_number + 1 < paginationStore.all_pages_count) {
+	else {
 		under_last_page.value = true
 	}
 })
 
 
+/**
+ * When the 'next page' icon ( > ) is clicked new data is fetched
+ * based on the next_page variable in the pagination store
+ */
 const click_next_page = async () => {
 
 	if (paginationStore.next_page != null) {
-		alert(paginationStore.next_page)
-		alert(paginationStore.activeFetchURL)
 
 		paginationStore.activeFetchURL = paginationStore.next_page
-		alert(paginationStore.activeFetchURL)
 
 
 		await getPostMultipleSnippet()
@@ -97,6 +107,10 @@ const click_next_page = async () => {
 	}
 }
 
+/**
+ * When the 'previous page' icon ( < ) is clicked new data is fetched
+ * based on the next_page variable in the pagination store
+ */
 const click_previous_page = async () => {
 
 	if (paginationStore.previous_page != null) {
@@ -107,26 +121,6 @@ const click_previous_page = async () => {
 		console.log("cannot go any more back")
 	}
 }
-
-
-/**@todo */
-// FIX: later
-// const click_last_page = async () => {
-// 	paginationStore.baseSearchURL = paginationStore.last_page_link
-
-// 	const new_page_link = `http://localhost:8888/api/search/?page=${paginationStore.all_pages_count}`
-
-// 	if (new_page_link != "") {
-// 		paginationStore.baseSearchURL = paginationStore.last_page_link
-
-// 		console.log(paginationStore.baseSearchURL)
-
-// 		await searchRequest()
-// 	} else {
-// 		console.log("cannot go any further back")
-// 	}
-// }
-// links
 
 </script>
 

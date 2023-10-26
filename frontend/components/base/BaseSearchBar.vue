@@ -20,7 +20,7 @@ const handleSearch = () => {
 	
 	emit("searchAction", search_input.value)
 
-	// search_input.value = ""
+	search_input.value = ""
 	
 }
 </script>

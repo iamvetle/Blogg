@@ -2,6 +2,14 @@
 
 There are stuff I want the web client to be able to do, that I have not yet implemented. There are also things I want my blogg application to be able to do.
 
+Er det bedre at jeg lager en røff versjon av flere ting jeg ønsker meg?
+
+Eller er det bedre at jeg fullfører helt ÉN og ÉN ting?
+
+Ettersom jeg er ganske noob på dette greiene her, så blir jeg fort stuck og treig hvis jeg bare skal jobbe med ÉN ting fullstendog
+
+Gir det mening?
+
 ### Implementere tags sortering/søk
 - [~] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
 - [ ] Make a filter for one of the possible filter-codes that I can use
@@ -25,7 +33,7 @@ There are stuff I want the web client to be able to do, that I have not yet impl
 
 ### Search and filter functionality
 
--[ ] Jeg lage en bedre search og filter funksjonalitet. Bruke generics sammen med djangofilterbacken og searchfilter. Det skal ikke være så vanskelig.
+-[x] Jeg lage en bedre search og filter funksjonalitet. Bruke generics sammen med djangofilterbacken og searchfilter. Det skal ikke være så vanskelig.
   - det er å fikse det først på frontend som kommer til å bli krongelete.
 
 ### models.py
@@ -100,11 +108,11 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 > Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
-- [ ] Fjern 'searchRequest' og [x]'searchPagnation' (det som er igjen)
-  - [ ] trenger da også fikset krøllet som er mellom feed og search (vanskelig å forstå search på backend)
+- [~] Fjern 'searchRequest' og [x]'searchPagnation' (det som er igjen)
+  - [~] trenger da også fikset krøllet som er mellom feed og search (vanskelig å forstå search på backend)
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
-- [ ] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
-  - keep-alive?
+- [~] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
+  - keep-alive - for å holde akkurat den filteren oppe.
 - [~] Gjøre slik at det står "Søke resultater for: ..."
   - [ ] ønsker i tillegg å vise de "tags" og mer som er i bruk
 ---
@@ -127,11 +135,13 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### [id] single post
 
 - [ ] Vise alle **taggene** som er assosierte med posten
-- [ ] Mulighet til å **følge** forfatteren derifra
+- [ ] Vise forfatteren
+  - [ ] Mulighet til å **følge** forfatteren derifra
 - [ ] Muligheten til å **lagre post** derifra også
 - [ ] Kan se kommentarer
 - [ ] Kan lage kommentar
   - Kan kikke rund på andre blogg-lignende plattformerer og **_se hvordan de har 'kommentarer'_**
+  - Det er faktisk felre steder som har mye av det jeg kunne ønsker meg her
 - Recommendations/post av samme fyr på bunnen?
 
 ### [id] user page

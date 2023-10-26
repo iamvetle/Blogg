@@ -24,11 +24,11 @@ export const usePostStore = defineStore("Store for containing posts and related 
     /** 
      * Has all (paginated) tags 
     */
-    const allTags = ref<AllTagsType | null>(null)
+    const allTags = ref<TagType[] | null>(null)
     /**
      * Has all (paginated) tags 
      */
-    const allCategories = ref<AllCategoriesType>([])
+    const allCategories = ref<CategoryType[] | null>(null)
 
     return { posts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
 });

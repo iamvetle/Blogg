@@ -59,7 +59,7 @@ declare global {
   const onDeactivated: typeof import('vue')['onDeactivated']
   const onErrorCaptured: typeof import('vue')['onErrorCaptured']
   const onMounted: typeof import('vue')['onMounted']
-  const onPageSwitch: typeof import('./composables/onResetStore')['onPageSwitch']
+  const onPageSwitch: typeof import('./composables/onResetAllStore')['onPageSwitch']
   const onRenderTracked: typeof import('vue')['onRenderTracked']
   const onRenderTriggered: typeof import('vue')['onRenderTriggered']
   const onResetStore: typeof import('./composables/onResetStore')['onResetStore']

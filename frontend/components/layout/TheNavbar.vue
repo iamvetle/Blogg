@@ -62,13 +62,15 @@
 import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
 import { usePaginationStore } from '~/store/paginationStore';
+import { usePostStore } from '~/store/postStore';
 
 const generalStore = useGeneralStore();
 const searchStore = useSearchStore();
 const paginationStore = usePaginationStore();
 const route = useRoute()
+const postStore = usePostStore()
 
-const search = (payload: any) => {
+const search = async (payload: any) => {
 	if (route.path != "/") {
 		navigateTo("/")
 	}
@@ -77,19 +79,23 @@ const search = (payload: any) => {
 	} else {
 		searchStore.searchPart = ""
 	}
+	constructURL()
+	await getPostMultipleSnippet()
 }
 
 /** 
  * 'Resets' to default. Goes and fetches the "normal" all posts, without extra
  * queries
+ * 
+ * Is suppose to be a "close everything and go back"
  */
 const logoclick = async () => {
 
-	paginationStore.activeFetchURL = `http://localhost:8888/api/search/`
+	onResetAllStore()
+
+	paginationStore.activeFetchURL = postStore.baseFetchURL
 
 	await getPostMultipleSnippet()
-
-	return await navigateTo("/")
 }
 
 </script>
