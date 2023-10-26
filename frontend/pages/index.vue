@@ -17,10 +17,12 @@
 							Filter posts
 						</button>
 					</span>
-					<KeepAlive>
-						<component :is="dropdown" id="dropdown-content" :list-of-options="tagOptions" class="mb-2"
-							@output="action" />
-					</KeepAlive>
+					<div>
+						<KeepAlive>
+							<component :is="dropdown" id="dropdown-content" :list-of-options="tagOptions" class="mb-2"
+								@output="action" />
+						</KeepAlive>
+					</div>
 				</div>
 				<ListArticlesSidebar v-if="loggedInUserStore.loggedInUserProfile" />
 			</div>
@@ -43,9 +45,10 @@ import { FilterBox } from '#components';
 
 const postStore = usePostStore()
 const generalStore = useGeneralStore()
-const paginationStore = usePaginationStore()
+// const paginationStore = usePaginationStore()
 const searchStore = useSearchStore()
 const loggedInUserStore = useLoggedInUserStore()
+const paginationStore = usePaginationStore()
 
 
 /**
@@ -146,9 +149,13 @@ const action = async (items: any) => {
  */
 
 onUnmounted(() => {
-    searchStore.$reset
-    postStore.$reset
-    paginationStore.$reset})
+	searchStore.$reset
+	
+	postStore.posts = null
+
+	paginationStore.$reset
+
+})
 
 setPageLayout(dynamicLayout.value)
 

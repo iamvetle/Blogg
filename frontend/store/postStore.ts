@@ -21,6 +21,8 @@ export const usePostStore = defineStore("Store for containing posts and related 
     const baseFetchURL = ref<string>("http://localhost:8888/api/feed/") // post_snippets_url
     const baseLoggedInUserPostsURL = ref<string>("http://localhost:8888/api/min-side/posts/") // personal_post_snippets_url
 
+
+
     /** 
      * Has all (paginated) tags 
     */

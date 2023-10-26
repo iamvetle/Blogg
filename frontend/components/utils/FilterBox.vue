@@ -1,7 +1,7 @@
 <template>
     <div>
         <span v-for="(option, index) in props.listOfOptions">
-            <BaseCheckboxOption v-model="selected[option]" @change="updateList" :key="index" :label="option" v-bind="$attrs" />
+            <BaseCheckboxOption v-model="selected[option]" @update:model-value="updateList" :key="index" :label="option" v-bind="$attrs" />
         </span>
     </div>
 </template>
@@ -16,6 +16,9 @@
  * 
  * @updateList - The event will return an array back with only the selected items, the boxes
  * that is checked.
+ * 
+ * I have to use it like this " ... v-model="selected[option]" @update:model-value="updateList" />"
+ * so that I don't emit TWICE and then fetch twice
  * 
  */
 
