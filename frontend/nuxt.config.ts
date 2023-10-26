@@ -7,6 +7,13 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+  vite: {
+    vue: {
+      script: {
+        defineModel: true,
+      },
+    },
+  },
   components: [
     {
     path: '~/components',

@@ -86,6 +86,7 @@ const changeDropdown = () => {
  * All of the data that is needed from the api endpoint is fetched here.
  */
 onMounted(async () => {
+	console.log("Index is mounted")
 	/**
 	* Fetches the profile information of the logged-in user
 	*/
@@ -148,10 +149,11 @@ const action = async (items: any) => {
  * and ends them up not being syncronous.
  */
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
+	console.log("Index is unmounted")
+
 	searchStore.$reset
-	
-	postStore.posts = null
+	postStore.$reset
 
 	paginationStore.$reset
 

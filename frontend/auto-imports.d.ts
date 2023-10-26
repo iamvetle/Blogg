@@ -11,6 +11,7 @@ declare global {
   const checkIfPostIsSaved: typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']
   const checkLocalInfo: typeof import('./composables/checkLocalInfo')['checkLocalInfo']
   const computed: typeof import('vue')['computed']
+  const constructURL: typeof import('./composables/constructURL')['constructURL']
   const createApp: typeof import('vue')['createApp']
   const createNewPost: typeof import('./composables/crud/postCreateNewPost')['createNewPost']
   const customRef: typeof import('vue')['customRef']
@@ -62,6 +63,7 @@ declare global {
   const onPageSwitch: typeof import('./composables/onResetAllStore')['onPageSwitch']
   const onRenderTracked: typeof import('vue')['onRenderTracked']
   const onRenderTriggered: typeof import('vue')['onRenderTriggered']
+  const onResetAllStore: typeof import('./composables/onResetAllStore')['onResetAllStore']
   const onResetStore: typeof import('./composables/onResetStore')['onResetStore']
   const onScopeDispose: typeof import('vue')['onScopeDispose']
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
@@ -110,6 +112,7 @@ declare module 'vue' {
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
     readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
+    readonly constructURL: UnwrapRef<typeof import('./composables/constructURL')['constructURL']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -148,7 +151,7 @@ declare module 'vue' {
     readonly onMounted: UnwrapRef<typeof import('vue')['onMounted']>
     readonly onRenderTracked: UnwrapRef<typeof import('vue')['onRenderTracked']>
     readonly onRenderTriggered: UnwrapRef<typeof import('vue')['onRenderTriggered']>
-    readonly onResetStore: UnwrapRef<typeof import('./composables/onResetStore')['onResetStore']>
+    readonly onResetAllStore: UnwrapRef<typeof import('./composables/onResetAllStore')['onResetAllStore']>
     readonly onScopeDispose: UnwrapRef<typeof import('vue')['onScopeDispose']>
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
@@ -188,6 +191,7 @@ declare module '@vue/runtime-core' {
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
     readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
+    readonly constructURL: UnwrapRef<typeof import('./composables/constructURL')['constructURL']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
@@ -226,7 +230,7 @@ declare module '@vue/runtime-core' {
     readonly onMounted: UnwrapRef<typeof import('vue')['onMounted']>
     readonly onRenderTracked: UnwrapRef<typeof import('vue')['onRenderTracked']>
     readonly onRenderTriggered: UnwrapRef<typeof import('vue')['onRenderTriggered']>
-    readonly onResetStore: UnwrapRef<typeof import('./composables/onResetStore')['onResetStore']>
+    readonly onResetAllStore: UnwrapRef<typeof import('./composables/onResetAllStore')['onResetAllStore']>
     readonly onScopeDispose: UnwrapRef<typeof import('vue')['onScopeDispose']>
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>

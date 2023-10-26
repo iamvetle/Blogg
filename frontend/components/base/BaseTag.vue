@@ -1,12 +1,19 @@
 <template>
-	<span class="tag text-xs py-1 px-1 bg-primary text-onPrimary rounded-lg">
-		{{ textProp.name }}
+	<span :class="props.class" v-bind="$attrs">
+		{{ props.text }}
 	</span>
 </template>
 
 <script setup lang="ts">
 
-const { textProp } = defineProps(["textProp"])
+
+const props = withDefaults(defineProps<{
+	text:string,
+	class?:string
+}>(), {
+	text:"text",
+	class:"tag text-xs py-1 px-1 bg-primary text-onPrimary rounded-lg"
+})
 
 </script>
 

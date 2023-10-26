@@ -12,19 +12,23 @@ describe("thenavvbarr testing", () => {
         pinia = createTestingPinia()
         generalStore = useGeneralStore(pinia)
         generalStore.isAuthenticated = true
+
         wrapper = mount(TheNavbar, {
             global: {
                 plugins: [pinia],
                 stubs: {
-                    "BaseSearchBar":true,
-                    "nuxt-link":true,
-
                 }
             },
         })
     })
+    afterEach(() => {
+        if (wrapper) {
+            wrapper.unmount()
+        }
+    })
 
     test('Should exist', () => {
+        console.log(wrapper.html())
         expect(wrapper.exists()).toBe(true)
     })
 
@@ -36,7 +40,7 @@ describe("thenavvbarr testing", () => {
     test("Should not render content on navbar when the web client is not authenticated", () => {
         wrapper.unmount()
 
-        generalStore.isAuthenticated = false
+        generalStore.isAtuhenticated = false
         
         wrapper = mount(TheNavbar, {
             global: {

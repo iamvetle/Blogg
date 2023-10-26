@@ -56,7 +56,7 @@ describe('index page testing', () => {
         await wrapper.vm.$nextTick()
 
         listarticles = wrapper.findComponent({ name: 'ListArticles' })
-        expect(listarticles.exists()).toBe(false)
+        expect(listarticles.exists()).toBe(false)w
     });
 
     test("base-dropdown-menu is being rendered", async () => {

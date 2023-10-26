@@ -27,23 +27,23 @@ class PostSerializer(serializers.ModelSerializer):
     """Serializes the input. Can be used on both single and multiple post objects"""
 
     author = OnlyAuthorCustomUserSerializer(read_only=True)
-    # Makes sure that not everything in the 'author' object gets returned
-
     date_published = serializers.SerializerMethodField()
+    content = serializers.SerializerMethodField()
+    
+    tags = serializers.StringRelatedField(many=True)
+    categories = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Post
 
-        content = serializers.SerializerMethodField()
-
-        fields = ["id", "title", "content", "author", "date_published"]
+        fields = ["id", "title", "content", "author", "date_published", "tags", "categories"]
         extra_kwargs = {
             "date_published": {"read_only": True},
         }
 
     def get_content(self, obj):
         content = obj.content
-
+        
         content = format_html(content)
         return content
 
@@ -52,16 +52,16 @@ class PostSerializer(serializers.ModelSerializer):
             return obj.date_published.strftime("%d-%m-%Y")
 
 
-class PostShortenSerializer(serializers.ModelSerializer):  # Bare en liten del av posts
-    """Shortenes the content. Can be used on both multiple and single posts"""
+class PostShortenSerializer(serializers.ModelSerializer):
+    """Shortenes the post. Can be used on both multiple and single posts"""
 
-    content_snippet = serializers.SerializerMethodField()  # Limited to 225 char
+    content_snippet = serializers.SerializerMethodField()  # Limited to 200 char
     author = OnlyAuthorCustomUserSerializer(read_only=True)
     date_published = serializers.SerializerMethodField()
 
     tags = TagSerializer(many=True, read_only=True)
     categories = CategorySerializer(many=True, read_only=True)
-
+    
     class Meta:
         model = Post
 
@@ -74,19 +74,18 @@ class PostShortenSerializer(serializers.ModelSerializer):  # Bare en liten del a
             "tags",
             "categories",
         ]
+        
         extra_kwargs = {
             "id": {"read_only": True},
             "date_published": {"read_only": True},
             "title": {"read_only": True},
             "content_snippet": {"read_only": True},
             "author": {"read_only": True},
-            "tags": {"read_only": True},
-            "categories": {"read_only": True},
         }
 
     def get_content_snippet(self, obj):
-        content_snippet = obj.content[:225]
-        if len(content_snippet) >= 100:
+        content_snippet = obj.content[:200]
+        if len(content_snippet) >= 200:
             content_snippet = content_snippet + " ..."
 
         return content_snippet

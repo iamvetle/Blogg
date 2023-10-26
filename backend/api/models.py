@@ -150,10 +150,11 @@ class SavedPost(models.Model):
     )
     post = models.ForeignKey("Post", related_name="saved_by", on_delete=models.CASCADE)
     saved_at = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return f"{self.post.title}"
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['user', 'post'], name='unique_user_post')
         ]
+        
+    def __str__(self):
+        return f"{self.post.title}"
