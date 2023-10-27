@@ -57,16 +57,19 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True, max_length=100, blank=False)  # Required
     first_name = models.CharField(max_length=30, blank=False)  # Required
     last_name = models.CharField(max_length=30, blank=False)  # Required
-    age = models.PositiveIntegerField(blank=True)
-    address = models.TextField(blank=True, default="")
+    age = models.PositiveIntegerField(blank=True, null=True)
+    address = models.TextField(blank=True, null=True, default="")
     last_online = models.DateTimeField(auto_now=True)
+    
     phone_number = models.CharField(max_length=20, blank=True, default="")
     nickname = models.CharField(max_length=30, blank=True, default="")
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     followers = models.ManyToManyField(
-        "self", related_name="following", symmetrical=False, blank=True,
+        "self", related_name="following", symmetrical=False, blank=True, default=0
     )
+    
+    profile_picture = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
 
     objects = CustomUserManager()
 

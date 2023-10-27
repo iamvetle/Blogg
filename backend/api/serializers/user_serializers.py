@@ -100,12 +100,15 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             "num_of_followers",
             "saved_posts",
             "num_of_saved_posts",
+            "profile_picture",
         )
         extra_kwargs = {
             "first_name": {"required": True},
             "last_name": {"required": True},
             "email": {"required": True},
             "username": {"required": True},
+            "profile_picture": {"required": False},
+
         }
 
 
@@ -122,6 +125,7 @@ class NormalUserSerializer(serializers.ModelSerializer):
             "last_name",
             "num_of_followers",
             "num_of_following",
+            "profile_picture",
         ]
 
     def get_num_of_followers(self, obj):

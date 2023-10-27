@@ -22,6 +22,17 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ["name"]
 
+        
+class PostImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostImage
+        fields = ['image']
+        
+class PostVideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostVideo
+        fields = ['video']
+
 
 class PostSerializer(serializers.ModelSerializer):
     """Serializes the input. Can be used on both single and multiple post objects"""
@@ -32,11 +43,14 @@ class PostSerializer(serializers.ModelSerializer):
     
     tags = serializers.StringRelatedField(many=True)
     categories = serializers.StringRelatedField(many=True)
+    
+    images = PostImageSerializer(many=True)
+    videos = PostVideoSerializer(many=True)
 
     class Meta:
         model = Post
 
-        fields = ["id", "title", "content", "author", "date_published", "tags", "categories"]
+        fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos"]
         extra_kwargs = {
             "date_published": {"read_only": True},
         }
@@ -52,17 +66,6 @@ class PostSerializer(serializers.ModelSerializer):
             return obj.date_published.strftime("%d-%m-%Y")
         
         # def create?
-        
-        
-class PostImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PostImage
-        fields = ['image']
-        
-class PostVideoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PostVideo
-        fields = ['video']
 
 
 class PostShortenSerializer(serializers.ModelSerializer):
@@ -75,6 +78,8 @@ class PostShortenSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
     categories = CategorySerializer(many=True, read_only=True)
     
+    images = PostImageSerializer(many=True)
+    
     class Meta:
         model = Post
 
@@ -86,6 +91,7 @@ class PostShortenSerializer(serializers.ModelSerializer):
             "date_published",
             "tags",
             "categories",
+            "images",
         ]
         
         extra_kwargs = {
@@ -94,6 +100,7 @@ class PostShortenSerializer(serializers.ModelSerializer):
             "title": {"read_only": True},
             "content_snippet": {"read_only": True},
             "author": {"read_only": True},
+            "images": {"read_only": True},
         }
 
     def get_content_snippet(self, obj):
