@@ -125,6 +125,16 @@ class Post(models.Model):
         return self.title
 
 
+class PostImage(models.Model):
+    post = models.ForeignKey(Post, related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='post_images/')
+
+class PostVideos(models.Model):
+    post = models.ForeignKey(Post, related_name="videos", on_delete=models.CASCADE)
+    video = models.FileField(upload_to="post_videos")
+
+
+
 class Comment(models.Model):
     """Each post can have comments, and each post comment is this model"""
 
