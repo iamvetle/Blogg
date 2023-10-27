@@ -56,21 +56,21 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=30, unique=True, blank=False)  # Required
     email = models.EmailField(unique=True, max_length=100, blank=False)  # Required
-    phone_number = models.CharField(max_length=20, blank=True, default=None)
+    phone_number = models.CharField(max_length=20, blank=True, default="")
     
     first_name = models.CharField(max_length=50, blank=False)  # Required
     last_name = models.CharField(max_length=50, blank=False)  # Required
     
-    gender = models.CharField(max_length=10, blank=True, default=None)
+    gender = models.CharField(max_length=10, blank=True, default="")
     date_of_birth = models.DateField(null=True, blank=True)    
         
-    address = models.TextField(max_length=500, blank=True, default=None)
-    city = models.CharField(max_length=30, blank=True, default=None)
-    state = models.CharField(max_length=30, blank=True, default=None)
-    postal_code = models.CharField(max_length=10, blank=True, default=None)
-    country = models.CharField(max_length=30, blank=True, default=None)
+    address = models.TextField(max_length=500, blank=True, default="")
+    city = models.CharField(max_length=30, blank=True, default="")
+    state = models.CharField(max_length=30, blank=True, default="")
+    postal_code = models.CharField(max_length=10, blank=True, default="")
+    country = models.CharField(max_length=30, blank=True, default="")
         
-    bio = models.TextField(max_length=500, blank=True)
+    bio = models.TextField(max_length=500, blank=True, default="")
     profile_picture = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
     
     date_joined = models.DateTimeField(default=timezone.now)
