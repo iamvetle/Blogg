@@ -6,6 +6,7 @@ from django.contrib.auth.models import (
 )
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 
 class CustomUserManager(BaseUserManager):
@@ -53,23 +54,36 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=15, unique=True, blank=False)  # Required
+    username = models.CharField(max_length=30, unique=True, blank=False)  # Required
     email = models.EmailField(unique=True, max_length=100, blank=False)  # Required
-    first_name = models.CharField(max_length=30, blank=False)  # Required
-    last_name = models.CharField(max_length=30, blank=False)  # Required
-    age = models.PositiveIntegerField(blank=True, null=True)
-    address = models.TextField(blank=True, null=True, default="")
-    last_online = models.DateTimeField(auto_now=True)
+    phone_number = models.CharField(max_length=20, blank=True, default=None)
     
-    phone_number = models.CharField(max_length=20, blank=True, default="")
-    nickname = models.CharField(max_length=30, blank=True, default="")
+    first_name = models.CharField(max_length=50, blank=False)  # Required
+    last_name = models.CharField(max_length=50, blank=False)  # Required
+    
+    gender = models.CharField(max_length=10, blank=True, default=None)
+    date_of_birth = models.DateField(null=True, blank=True)    
+        
+    address = models.TextField(max_length=500, blank=True, default=None)
+    city = models.CharField(max_length=30, blank=True, default=None)
+    state = models.CharField(max_length=30, blank=True, default=None)
+    postal_code = models.CharField(max_length=10, blank=True, default=None)
+    country = models.CharField(max_length=30, blank=True, default=None)
+        
+    bio = models.TextField(max_length=500, blank=True)
+    profile_picture = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
+    
+    date_joined = models.DateTimeField(default=timezone.now)
+    last_login = models.DateTimeField(default=timezone.now)
+    
     is_active = models.BooleanField(default=True)
+    
     is_staff = models.BooleanField(default=False)
+    
     followers = models.ManyToManyField(
         "self", related_name="following", symmetrical=False, blank=True, default=0
     )
     
-    profile_picture = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
 
     objects = CustomUserManager()
 
