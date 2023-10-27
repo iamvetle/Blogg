@@ -1,3 +1,4 @@
+import profile_picture from '~/assets/placeholder-profile-picture.png';
 
 // HUSK no bio is being sent, or user picture field . or customizations
 
@@ -11,6 +12,7 @@ export interface NormalUserProfileType {
 	last_name: string;
 	num_of_followers: number;
 	num_of_following: number;
+	profile_picture:string;
 }
 
 /**
@@ -21,7 +23,7 @@ export interface NormalUserProfileType {
  */
 export interface LoggedInUserProfileType extends NormalUserProfileType {
 	email: string;
-	age: number | null;
+	date_of_birth: null | string;
 	address: string | null;
 	phone_number: string | null;
 	nickname: string | null;

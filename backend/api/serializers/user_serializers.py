@@ -92,6 +92,12 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             "email",
             "date_of_birth",
             "address",
+            "city",
+            "state",
+            "postal_code",
+            "country",
+            "date_joined",
+            "gender",
             "phone_number",
             "following",
             "num_of_following",
@@ -107,6 +113,7 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             "email": {"required": True},
             "username": {"required": True},
             "profile_picture": {"required": False},
+            "date_joined": {"read_only": True}
 
         }
 
@@ -124,6 +131,7 @@ class NormalUserSerializer(serializers.ModelSerializer):
             "last_name",
             "num_of_followers",
             "num_of_following",
+            "bio",
             "profile_picture",
         ]
 

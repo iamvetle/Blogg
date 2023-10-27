@@ -7,7 +7,7 @@
 						<div id="wrapper" class="bg-primary rounded-lg p-6">
 							<div v-if="loggedInUserStore.loggedInUserProfile" class="px-5 py-5 bg-onPrimary rounded-xl">
 								<div class="flex flex-col items-center">
-									<img :src="placeholder_profile_picture"
+									<img :src="loggedInUserStore.loggedInUserProfile.profile_picture != '' ? loggedInUserStore.loggedInUserProfile.profile_picture : placeholder_profile_picture"
 										class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" alt="Profilbilde">
 									<!-- </img> -->
 									<h1 class="text-xl text-plain font-bold">
@@ -61,11 +61,11 @@
 											</p>
 											{{ loggedInUserStore.loggedInUserProfile.address }}
 										</li>
-										<li v-if="loggedInUserStore.loggedInUserProfile.age" class="mb-2">
+										<li v-if="loggedInUserStore.loggedInUserProfile.date_of_birth" class="mb-2">
 											<p class="font-bold me-2">
-												Alder:
+												Fødselsdato:
 											</p>
-											{{ loggedInUserStore.loggedInUserProfile.age }}
+											{{ loggedInUserStore.loggedInUserProfile.date_of_birth }}
 										</li>
 									</ul>
 								</div>

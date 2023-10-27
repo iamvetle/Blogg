@@ -3,7 +3,7 @@
 
 		<div data-test="myprofile" class="w-full">
 
-			<my-profile-card :profile-picture-prop="profile_picture">
+			<my-profile-card :profile-picture-prop="loggedInUserStore.loggedInUserProfile.profile_picture != '' ? loggedInUserStore.loggedInUserProfile.profile_picture : profile_picture">
 
 				<template #username v-if="loggedInUserStore.loggedInUserProfile.username">
 					{{ loggedInUserStore.loggedInUserProfile.username }}
