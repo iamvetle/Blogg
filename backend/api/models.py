@@ -129,7 +129,7 @@ class PostImage(models.Model):
     post = models.ForeignKey(Post, related_name="images", on_delete=models.CASCADE)
     image = models.ImageField(upload_to='post_images/')
 
-class PostVideos(models.Model):
+class PostVideo(models.Model):
     post = models.ForeignKey(Post, related_name="videos", on_delete=models.CASCADE)
     video = models.FileField(upload_to="post_videos")
 

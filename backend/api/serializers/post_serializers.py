@@ -1,4 +1,4 @@
-from api.models import Post, Comment, Tag, Category, SavedPost
+from api.models import Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
 from api.serializers.only_serializers import (
     OnlyAuthorCustomUserSerializer,
     OnlyTitlePostSerializer,
@@ -50,6 +50,16 @@ class PostSerializer(serializers.ModelSerializer):
     def get_date_published(self, obj):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
+
+class PostImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostImage
+        fields = ['image']
+        
+class PostVideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostVideo
+        fields = ['video']
 
 
 class PostShortenSerializer(serializers.ModelSerializer):
