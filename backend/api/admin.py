@@ -202,7 +202,7 @@ class CustomUserAdmin(UserAdmin):
         (None, {"fields": ("username", "email", "first_name", "last_name")}),
         (
             "Personal Information",
-            {"fields": ("age", "address", "phone_number", "nickname")},
+            {"fields": ("gender", "date_of_birth", "address", "phone_number", "bio", "profile_picture", "followers", "date_joined")},
         ),
     )
 
@@ -223,7 +223,7 @@ class CustomUserAdmin(UserAdmin):
         ),
         (
             "Additional information",
-            {"fields": ("age", "address", "phone_number", "nickname")},
+            {"fields": ("gender", "date_of_birth", "address", "phone_number", "bio", "profile_picture")},
         ),
     )
 

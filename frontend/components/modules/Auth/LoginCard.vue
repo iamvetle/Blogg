@@ -1,5 +1,5 @@
 <template>
-	<div class="p-6 space-y-4 md:space-y-6 sm:p-8 bg-surfaceContainerLowest rounded-lg text-onSurface">
+	<div class="p-6 space-y-4 md:space-y-6 sm:p-8 bg-surfaceContainerLowest rounded-lg text-onSurface" v-if="generalStore.isAuthenticated === false">
 		<h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">
 			Sign in to your account
 		</h1>
@@ -40,19 +40,23 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+//@ts-nocheck
+import { useGeneralStore } from '~/store/generalStore';
+
+const generalStore = useGeneralStore()
 const loginerror = ref(false);
 const loginsucess = ref(false);
 
 const baseURL = "http://localhost:8888/api/login/";
 const { redirect } = defineProps(["redirect"]);
 
-const submitForm = async (formData) => {
+const submitForm = async (formData:any) => {
 	const response = await postForm(baseURL, formData)
 
-	if (response?.token != null || response?.username != null) {
+	if (response?.data.token != null || response?.data.username != null) {
 
-		setLocalInfo(response.token, response.username);
+		setLocalInfo(response.data.token, response.data.username);
 
 		loginsucess.value = true;
 		loginerror.value = false;

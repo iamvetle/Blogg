@@ -128,7 +128,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=10000)
     date_published = models.DateTimeField(
-        default=None, null=True, blank=True
+        auto_created=timezone.now(), null=True, blank=True
     )  # this is not working correctly. it is not appearing when I check on 'publish
 
     author = models.ForeignKey(

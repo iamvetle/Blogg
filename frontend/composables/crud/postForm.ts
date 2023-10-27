@@ -10,7 +10,7 @@ export const postForm = async (url: string, formData: object) => {
     const response = await axios.post<FetchResponseType>(url, formData);
     
     console.log("OK: form posted") // print to self
-    return response?.data
+    return response
   
   } catch (error) {
     console.log("FAILED: no form posted"); // print to self

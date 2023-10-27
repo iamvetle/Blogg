@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-surface" v-if="generalStore.isAuthenticated">
+  <section class="bg-surface" v-if="generalStore.isAuthenticated == false">
     <div
       class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
     >

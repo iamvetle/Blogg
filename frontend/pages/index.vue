@@ -86,6 +86,10 @@ const changeDropdown = () => {
  * All of the data that is needed from the api endpoint is fetched here.
  */
 onMounted(async () => {
+
+	if (checkLocalInfo() == null) {
+		return null
+	}
 	console.log("Index is mounted")
 	/**
 	* Fetches the profile information of the logged-in user
