@@ -50,7 +50,10 @@ class PostSerializer(serializers.ModelSerializer):
     def get_date_published(self, obj):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
-
+        
+        # def create?
+        
+        
 class PostImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostImage
@@ -139,7 +142,6 @@ class CommentSerializer(serializers.ModelSerializer):  # Not in use
     def get_date_published(self, obj):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
-
 
 class PostSaveStyleSerializer(serializers.ModelSerializer):
     """Proccesses the data and returns only the post that is saved.
