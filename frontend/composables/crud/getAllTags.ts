@@ -7,7 +7,9 @@ import { getToken } from '../getToken';
 /**
  * Fetches all tags.
  * 
- * @returns The response (with .data and .status) for the GET request. Or null.
+ * The tags in store is updated if the request was successfull
+ * 
+ * @returns - The request response (.data, .status)
  */
 export const getAllTags = async () => {
     const baseURL = "http://localhost:8888/api/tags/"
@@ -17,7 +19,7 @@ export const getAllTags = async () => {
      * Fetches the token from local storage, or just returns null.
      */
     const token = getToken()
-    
+
     if (token) {
         const headers = {
             "Content-Type": "application/json",

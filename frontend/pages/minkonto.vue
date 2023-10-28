@@ -46,12 +46,7 @@
 											</p>
 											{{ loggedInUserStore.loggedInUserProfile.phone_number }}
 										</li>
-										<li v-if="loggedInUserStore.loggedInUserProfile.nickname" class="mb-2">
-											<p class="font-bold me-2">
-												Kallenavn:
-											</p>
-											{{ loggedInUserStore.loggedInUserProfile.nickname }}
-										</li>
+
 										<li v-if="loggedInUserStore.loggedInUserProfile.address" class="mb-2">
 											<p class="font-bold me-2">
 												Addresse:
@@ -129,7 +124,7 @@ const loggedInUserStore = useLoggedInUserStore()
  * ALso fetches all user profile information by the logged in user.
  */
 onMounted(async () => {
-	await getSnippetPostAllLoggedInUser()
+	await getLoggedInUserAllPostSnippets()
 	await getLoggedInUserProfile()
 
 })

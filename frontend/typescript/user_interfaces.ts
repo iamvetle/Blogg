@@ -1,5 +1,3 @@
-import profile_picture from '~/assets/placeholder-profile-picture.png';
-
 // HUSK no bio is being sent, or user picture field . or customizations
 
 
@@ -26,7 +24,6 @@ export interface LoggedInUserProfileType extends NormalUserProfileType {
 	date_of_birth: null | string;
 	address: string | null;
 	phone_number: string | null;
-	nickname: string | null;
 	following: FollowingType[]
 	followers: FollowerType[]
 	saved_posts: PostSavedType[]

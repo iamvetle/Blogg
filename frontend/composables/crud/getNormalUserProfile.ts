@@ -1,30 +1,34 @@
-import axios from 'axios'
+import { getToken } from '../getToken';
 
+/**
+ * Fetches the information about the user, specified in the url.
+ * 
+ * @param userURL - The url that the request is going to try to fetch from
+ *  
+ * @returns - The request response (.data, .status)
+ */
 export const getNormalUserProfile = async (userURL: string) => {
 
-  
+  /**
+   * Fetches the token from local storage, or just returns null.
+   */
+  const token = getToken()
 
-  try {
-    const token = localStorage.getItem("token");
+  if (token) {
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Token ${token}`,
     };
 
-    const response = await axios.get(userURL, { headers });
+    const response = await getMethod(userURL, headers)
 
-    if (response.data != null) {
-      console.log("OK: data fetched", response.data); // print to self
+    if (response) {
 
-      return response.data
+      return response
 
+    } else {
 
+      return null
     }
-    else {
-      console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self
-    }
-
-  } catch (error) {
-    console.error("ERROR: An error occured while trying to fetch data: ", error); // print to self
   }
-};
+}

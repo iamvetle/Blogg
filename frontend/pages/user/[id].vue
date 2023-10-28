@@ -234,7 +234,7 @@ onMounted(async () => {
 	 * And puts them in a reactive variable.
 	 * 
 	 * 
-	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
+	 * @param theNormalUserPostsURL The URL address that the function is going to fetch from.
 	 */
 	normalUserPosts.value = await getNormalUserPosts(theNormalUserPostsURL);
 })

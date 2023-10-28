@@ -44,7 +44,7 @@ declare global {
   const getPostMultipleSnippet: typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']
   const getSaveOrUnsavePost: typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']
   const getSearch: typeof import('./composables/crud/getSearch')['getSearch']
-  const getSnippetPostAllLoggedInUser: typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']
+  const getSnippetPostAllLoggedInUser: typeof import('./composables/crud/getLoggedInUserAllPostSnippets')['getSnippetPostAllLoggedInUser']
   const getUnfollowUser: typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']
   const h: typeof import('vue')['h']
   const inject: typeof import('vue')['inject']
@@ -134,7 +134,7 @@ declare module 'vue' {
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
-    readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']>
+    readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllPostSnippets')['getSnippetPostAllLoggedInUser']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
@@ -214,7 +214,7 @@ declare module '@vue/runtime-core' {
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
-    readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getSnippetPostAllLoggedInUser')['getSnippetPostAllLoggedInUser']>
+    readonly getSnippetPostAllLoggedInUser: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllPostSnippets')['getSnippetPostAllLoggedInUser']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
