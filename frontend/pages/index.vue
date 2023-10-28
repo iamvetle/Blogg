@@ -65,6 +65,13 @@ const dynamicLayout = computed(() => {
 	}
 })
 
+watchEffect(() => {
+	setPageLayout(dynamicLayout.value)
+})
+/**
+ * This changes the layout the pages uses dynamically, based on wait.vue or not.
+ */
+
 /**
  * Toggles between showing the filterbox component and not.
  * 
@@ -163,7 +170,11 @@ onBeforeUnmount(() => {
 
 })
 
-setPageLayout(dynamicLayout.value)
+definePageMeta({
+  layout: false,
+});
+
+
 
 </script>
 
