@@ -12,10 +12,10 @@ Gir det mening?
 
 ### Implementere tags sortering/søk
 - [~] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
-- [ ] Make a filter for one of the possible filter-codes that I can use
+- [~] Make a filter for one of the possible filter-codes that I can use
   - think il use tags
-  - [ ] Make a custom url in the pinia store for SEARCH and the FILTER
-  - [ ] Have the watcher in the index page
+  - [?] Make a custom url in the pinia store for SEARCH and the FILTER
+  - [?] Have the watcher in the index page
 
 ---
 
@@ -40,6 +40,7 @@ Gir det mening?
 
 - **CustomUser** ->
 - [ ] new field: profile picture upload / img upload
+- [x] Man kan se det på frontend - hvis man allerede har på backend
 
 ---
 
@@ -81,21 +82,18 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### admin.py - Admin Panel
 
 - [x] Få tags og categories som er assosiert med en post til å vises i post list i admin panel
-- [ ] Ta til betrakning at jeg har gjort det mulig å "create" og kanskje "delete" med generics nå, så jeg må huske å gjøre det mulig å fjerne dem også med adminpanel
 
 ---
 
 ### General
 
 - [x] Bytte til ***generics*** istedenfor vanlig **APIView**
-  - [ ] Gjøre det også på loginviews og registerviews
+- [ ] Bytte til generics på loginviews og registerviews også
 - [ ] Rydde i services, gjøre det mer riktig
----
 
 ---
 
 ## Frontend
-
 
 **'fetchen' på api personlig bruker backend**
 
@@ -126,7 +124,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
   - [x] Antall _jeg følger_
   - [x] Brukerne, navnene til de jeg følger
   - [ ] Finne ut av hva jeg skal gjøre med "**_les mer_**" feltet. Skal jeg bli 'redirected' et sted?
-    - [ ] Legge til (x), '***total antall***'
+    - [x] Legge til (x), '***total antall***'
   - [x] make it possible to go to the posts that I have saved
 
 
@@ -134,9 +132,9 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ### [id] single post
 
-- [ ] Vise alle **taggene** som er assosierte med posten
-- [ ] Vise forfatteren
-  - [ ] Mulighet til å **følge** forfatteren derifra
+- [x] Vise alle **taggene** som er assosierte med posten
+- [x] Vise forfatteren
+  - [ ] Mulighet til å **følge** forfatteren derifra (skal jeg gjøre det?)
 - [ ] Muligheten til å **lagre post** derifra også
 - [ ] Kan se kommentarer
 - [ ] Kan lage kommentar
@@ -146,11 +144,11 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ### [id] user page
 
-- [ ] Fix api fetching so it becomes correct 
+- [?x] Fix api fetching so it becomes correct 
 - [x] Pengjøre veldig og rydd opp.
 - [~] Fjern spor av tidligere prop og slett den gamle component.
 - [ish] Ønsker å få den **følg** og **slutt å følg** funksjonen til å fungere
-- [ ] Lage en ordentlig side for den
+- [x] Lage en ordentlig side for den
 - [ ] fix pagnation - find out if it is necesarry, and if how to have it in that case
   - should I make a new one? or take an old one
 
@@ -164,7 +162,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
   - How?
     - i should probebly make it possible to make propper posts first
   - 
-- [ ] Fix the pagnation bottom bar that currently has no functionality
+- [x] Fix the pagnation bottom bar that currently has no functionality
 
 ---
 
@@ -240,12 +238,12 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ## General
 
 - [ ] Ta code snippets som du bruker med **Vue Test Utils**, og i **Postman** og legg dem systematisk på Notion
-- [ ] Documentere ordentlig alle sidene og composables
+- [~ jobber med det] Documentere ordentlig alle sidene og composables
 - [ ] Expand the registration form to include more information options
 - [ ] Fix the emit between new post and editorcard when it comes to border color and such
 - [ ] fix the connection bettwen the search composables and the related components, integrate more, properly
 - [ ] Rydde opp i alle composables
-- [ ] Dele opp stores
+- [x] Dele opp stores
 - [ ] Find a workaround for **the problem that all of the fetching is happening from the client side**
   - [ ] split the onMounted hooks for ones reqairing auth, and the ones not requiring it
     - But all require it..
