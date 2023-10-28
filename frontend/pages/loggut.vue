@@ -12,6 +12,10 @@
 <script setup lang="ts">
 import { useGeneralStore } from "~/store/generalStore";
 
+definePageMeta({
+  layout:"blank"
+})
+
 const generalStore = useGeneralStore();
 
 const removed = ref(false);
@@ -38,7 +42,7 @@ const logoutFunction = () => {
 };
 
 onMounted(logoutFunction);
+
 </script>
 
 <style scoped></style>
-store/generalStore
