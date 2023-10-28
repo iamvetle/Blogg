@@ -54,18 +54,16 @@ const { redirect } = defineProps(["redirect"]);
 const submitForm = async (formData:any) => {
 	const response = await postForm(baseURL, formData)
 
-	if (response?.data.token != null || response?.data.username != null) {
+	if (response.data?.token != null) {
 
 		setLocalInfo(response.data.token, response.data.username);
 
 		loginsucess.value = true;
 		loginerror.value = false;
 
-		setTimeout(() => {
 			if (redirect === true) {
 				return navigateTo("minkonto");
 			}
-		}, 1000);
 	} else {
 		loginsucess.value = false;
 		loginerror.value = true;

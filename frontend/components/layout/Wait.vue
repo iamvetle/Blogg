@@ -24,7 +24,7 @@
           <div class="max-w-md w-full space-y-8">
             <div
               class="w-full shadow-md rounded-lg md:mt-0 sm:max-w-md xl:p-0">
-              <LoginCard />
+              <LoginCard :redirect="true"/>
             </div>
           </div>
         </div>
