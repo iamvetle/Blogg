@@ -1,21 +1,21 @@
-import axios from 'axios'
+import axios, { type AxiosResponse } from 'axios'
 /**
  * getMethod sends a GET request to a specified url, with a possibly custom header
  * 
  * @param url The url that the request is going to
  * @param header The header that is going to be passed together with the fetch
  */
-export const getMethod = async (url:string, headers?:object): Promise<object | null> => {
+export const getMethod = async (url:string, headers?:object): Promise<AxiosResponse | null> => {
     
     try {
-        let response = await axios.get(url, { headers })
+        let response:AxiosResponse = await axios.get(url, { headers })
         // console.log(toRaw(response)) // print to self
 
-        if(response.status != null) {
+        if(response.status !== null) {
             // console.log(`Request to ${url} returned ${response.status}`) // print to self
         }
 
-        if(response.data == null) {
+        if(response.data === null) {
             // console.log(`The request to ${url} was returned with 'null' data:`, response.data) // print to self
         }
 

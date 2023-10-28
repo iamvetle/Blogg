@@ -2,6 +2,8 @@ import axios from 'axios'
 
 export const getNormalUserProfile = async (userURL: string) => {
 
+  
+
   try {
     const token = localStorage.getItem("token");
     const headers = {

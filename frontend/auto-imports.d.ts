@@ -37,6 +37,7 @@ declare global {
   const getLoggedInUserAllFollowers: typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']
   const getLoggedInUserAllFollowing: typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']
   const getLoggedInUserProfile: typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']
+  const getMethod: typeof import('./composables/getMethod')['getMethod']
   const getNormalUserPosts: typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']
   const getNormalUserProfile: typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']
   const getNormalUserProfileAndPosts: typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfileAndPosts']
@@ -128,6 +129,7 @@ declare module 'vue' {
     readonly getLoggedInUserAllFollowers: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']>
     readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
+    readonly getMethod: UnwrapRef<typeof import('./composables/getMethod')['getMethod']>
     readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
@@ -207,6 +209,7 @@ declare module '@vue/runtime-core' {
     readonly getLoggedInUserAllFollowers: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowers')['getLoggedInUserAllFollowers']>
     readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
+    readonly getMethod: UnwrapRef<typeof import('./composables/getMethod')['getMethod']>
     readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
