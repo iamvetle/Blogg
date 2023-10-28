@@ -219,6 +219,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### How to API
 
 - [x] Take all of the **API fetching on the page level**
+- [ ] use a method to access and save to local storage easoer
+- [ ] make get(crud) composables to use a common library that is of a composable, so if I want to change from 'axios' to something else, it'll be easy
 
 - When i am retrieving tokens from **LocalStorage**, all of my fetching becomes on the client side.
   - The means *initial load* can be very slow

@@ -90,6 +90,7 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "email",
+            "bio",
             "date_of_birth",
             "address",
             "city",

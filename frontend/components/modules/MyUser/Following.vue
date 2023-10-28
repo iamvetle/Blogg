@@ -15,6 +15,7 @@ const props = defineProps<{
   username: string
 }>()
 
+
 const author_link = `http://localhost:3000/user/${props.username}`
 
 </script>

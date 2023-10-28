@@ -1,62 +1,60 @@
 <template>
 	<div class="p-2">
 		<div id="editor-container" class="w-full min-h-[270px] mb-12">
+
 			<div id="editor-area">
+
 				<floating-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
 					class="not-prose flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md">
+
 					<button @click="addImage()">
 						<img class="h-5 flex items-center" :src="add_image_icon" alt="add_image">
 					</button>
 
-					<button :class="{ 'is-active': editor.isActive('link') }" class="" @click="setLink()">
-						<img class="h-5 flex items-center" :src="link_icon" alt="link">
-					</button>
 
-					<button :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }" class=""
-						@click="editor.chain().focus().toggleHeading({ level: 3 }).run()">
-						<img class="h-5 flex items-center" :src="heading_1_icon">
-					</button>
+					<EditorButton :is-active="editor.isActive('link')" @button-click="setLink()" :icon="link_icon"
+						alt="link" />
 
-					<button :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }" class=""
-						@click="editor.chain().focus().toggleHeading({ level: 4 }).run()">
-						<img class="h-5 flex items-center" :src="heading_2_icon">
-					</button>
+					<EditorButton :is-active="editor.isActive('heading', { level: 1 })"
+						@button-click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :icon="heading_1_icon"
+						alt="heading 1" />
 
-					<button @click="editor.chain().focus().setHorizontalRule().run()">
-						<img class="h-5 flex items-center" :src="seperator_icon" alt="seperator">
-					</button>
+					<EditorButton :is-active="editor.isActive('heading', { level: 2 })"
+						@button-click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :icon="heading_2_icon"
+						alt="heading 2" />
+
+					<EditorButton :is-active="editor.isActive('heading', { level: 2 })"
+						@button-click="editor.chain().focus().setHorizontalRule().run()" :icon="seperator_icon"
+						alt="seperator" />
 				</floating-menu>
+
 				<bubble-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
 					class="not-prose space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md">
-					<button :class="{ 'is-active': editor.isActive('bold') }" class=""
-						@click="editor.commands.toggleBold()">
-						<img class="h-5 flex items-center" :src="bold_icon">
-					</button>
 
-					<button :class="{ 'is-active': editor.isActive('italic') }" class=""
-						@click="editor.commands.toggleItalic()">
-						<img class="h-5 flex items-center" :src="italic_icon" alt="italic">
-					</button>
+					<EditorButton :is-active="editor.isActive('bold')" @button-click="editor.commands.toggleBold()"
+						:icon="bold_icon" alt="bold" />
 
-					<button :class="{ 'is-active': editor.isActive('underline') }"
-						@click="editor.chain().focus().toggleUnderline().run()">
-						<img class="h-5 flex items-center" :src="underline_icon">
-					</button>
+					<EditorButton :is-active="editor.isActive('italic')" @button-click="editor.commands.toggleItalic()"
+						:icon="italic_icon" alt="italic" />
 
-					<button :class="{ 'is-active': editor.isActive('code') }"
-						@click="editor.chain().focus().toggleCode().run()">
-						<img class="h-5 flex items-center" :src="code_snip_icon" alt="code">
-					</button>
+					<EditorButton :is-active="editor.isActive('underline')"
+						@button-click="editor.chain().focus().toggleUnderline().run()" :icon="underline_icon"
+						alt="underline" />
 
-					<button :class="{ 'is-active': editor.isActive('blockquote') }" class=""
-						@click="editor.chain().focus().toggleBlockquote().run()">
-						<img class="h-5 flex items-center" :src="double_quotes_icon">
-					</button>
+					<EditorButton :is-active="editor.isActive('code')"
+						@button-click="editor.chain().focus().toggleCode().run()" :icon="code_snip_icon" alt="code" />
+
+					<EditorButton :is-active="editor.isActive('blockquote')"
+						@button-click="editor.chain().focus().toggleBlockquote().run()" :icon="double_quotes_icon"
+						alt="blockquote" />
 				</bubble-menu>
-				<div class="">
+
+				<div>
 					<editor-content :editor="editor" />
 				</div>
+
 			</div>
+
 		</div>
 		<hr class="mb-4">
 		<div class="buttons flex">
@@ -96,6 +94,7 @@ import Blockquote from '@tiptap/extension-blockquote'
 import Dropcursor from '@tiptap/extension-dropcursor'
 import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
+import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
 
@@ -141,6 +140,7 @@ const editor = useEditor({
 		Italic,
 		Link,
 		Bold,
+		Underline,
 		Code,
 		Placeholder.configure({
 			placeholder: 'Write something ...'
@@ -158,6 +158,11 @@ const editor = useEditor({
 const emit = defineEmits()
 
 const html = ref(null)
+
+/**
+ * To tract whether the editor is empty or not 	
+ */
+const isEditorEmpty = computed(() => !editor.value?.content?.trim());
 
 onMounted(() => {
 	editor.value.on("update", () => {
@@ -243,7 +248,7 @@ const cancelClick = () => {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 /* Basic editor styles */
 .tiptap {
 	>*+* {
@@ -257,4 +262,5 @@ const cancelClick = () => {
 	color: #adb5bd;
 	pointer-events: none;
 	height: 0;
-}</style>
+}
+</style>

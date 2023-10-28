@@ -1,4 +1,3 @@
-import axios from "axios";
 import { usePostStore } from '~/store/postStore';
 /** Fetches all tags possible */
 
@@ -8,32 +7,21 @@ export const getAllTags = async () => {
     const baseURL = "http://localhost:8888/api/tags/"
     const postStore = usePostStore()
 
-    try {
-        const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
+    if (token) {
         const headers = {
             "Content-Type": "application/json",
             Authorization: `Token ${token}`,
         };
 
-        const response = await axios.get(baseURL, { headers });
+        const response = await getMethod(baseURL, headers)
 
-        if (response.data != null) {
-            console.dir("OK: tags fetched", response.data); // print to self
-
+        if (response) { //@ts-ignore
             postStore.allTags = response.data
-
-            console.log(toRaw(postStore.allTags))
-
-            return response.data;
-
+            
+            return response
         } else {
-            console.log("OBS! Fetching succedded, but response(data) was:", response.status, response.data) // print to self
-
-            return response.data
+            return null
         }
-
-    } catch (error) {
-        console.error("ERROR: An error occured while trying to fetch tags: ", error); // print to self
-        return null;
     }
-};
+}

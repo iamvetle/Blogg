@@ -17,12 +17,9 @@
 										{{ loggedInUserStore.loggedInUserProfile.username }}
 									</p>
 									<div class="mt-6 flex flex-wrap gap-4 justify-center">
-										<nuxt-link to="/newpost">
-											<button
-												class="bg-secondary text-onSecondary hover:bg-secondaryFixedDim hover:text-onSecondaryFixed py-2 px-4 rounded">
-												Nytt innlegg
-											</button>
-										</nuxt-link>
+	
+										<span v-if="loggedInUserStore.loggedInUserProfile.bio">{{ loggedInUserStore.loggedInUserProfile.num_of_following }} following</span>
+
 										<span v-if="loggedInUserStore.loggedInUserProfile.num_of_followers === 1"
 											class="bg-onPrimary border-onPrimaryContainer border-2 text-onPrimaryContainer py-2 px-4 rounded">
 											{{ loggedInUserStore.loggedInUserProfile.num_of_followers }} follower
@@ -72,15 +69,12 @@
 							</div>
 						</div>
 						<div>
-							<div class="items-center pt-2 ms-6">
+							<div v-if="loggedInUserStore.loggedInUserProfile.num_of_following != 0" class="items-center pt-2 ms-6">
 								<h3 class="text-lg py-3">
-									People following you
+									You are following:
 								</h3>
-								<div v-if="loggedInUserStore.loggedInUserProfile.followers">
-									<Follower v-for="(f, index) in followers" :key="index" :follower="f" v-once/>
-								</div>
-								<div v-else>
-									<span>No followers</span>
+								<div>
+									<Following v-for="(f, index) in loggedInUserStore.idArrayOfLoggedInUserFollowingUsers" :key="index" :username="f"/>
 								</div>
 							</div>
 						</div>
@@ -128,8 +122,6 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
-
-const followers = ref<FollowerType | null>(null)
 
 /**
  * Fetches all of the posts (in snippets) made by the logged in user.
