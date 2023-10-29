@@ -27,7 +27,8 @@ describe("thenavvbarr testing", () => {
             global: {
                 plugins: [pinia],
                 stubs: {
-                    BaseSearchBar: true
+                    BaseSearchBar: true,
+                    FormKit:true
                 },
             },
         })
@@ -55,3 +56,7 @@ describe("thenavvbarr testing", () => {
     })
 
 })
+
+/**
+ * bare ga opp med å ha store.isauthenticated jeg
+ */

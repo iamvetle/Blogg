@@ -1,5 +1,5 @@
 <template>
-	<div class="p-6 space-y-4 md:space-y-6 sm:p-8 bg-surfaceContainerLowest rounded-lg text-onSurface" v-if="generalStore.isAuthenticated === false">
+	<div class="p-6 space-y-4 md:space-y-6 sm:p-8 bg-surfaceContainerLowest rounded-lg text-onSurface">
 		<h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">
 			Sign in to your account
 		</h1>
@@ -42,9 +42,7 @@
 
 <script setup lang="ts">
 //@ts-nocheck
-import { useGeneralStore } from '~/store/generalStore';
 
-const generalStore = useGeneralStore()
 const loginerror = ref(false);
 const loginsucess = ref(false);
 
