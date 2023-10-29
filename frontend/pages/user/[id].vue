@@ -74,7 +74,7 @@
 
 								<template #tags v-if="post.tags">
 									<span>
-										<BaseTag v-for="tag in post.tags" :key="post.id" :text-prop="tag" class="me-1" />
+										<BaseTag v-for="tag in post.tags" :key="post.id" :text="tag" class="me-1" />
 									</span>
 								</template>
 
@@ -170,7 +170,6 @@ const route = useRoute();
 /** Stores the color that the bookmark icon is rendered with. */
 const color = ref("fill-black")
 
-
 /** Stores all of the user profile information */
 const normalUserProfile = ref<NormalUserProfileType | null>(null);
 
@@ -189,6 +188,10 @@ const followers = ref(0)
  */
 const post_image = ref('https://picsum.photos/500/300')
 
+
+
+
+
 /** 
  * Takes the HTML input and returns the pure text version of it.
  * 
@@ -202,7 +205,6 @@ const toPlainText = (raw: string) => {
 }
 
 onMounted(async () => {
-
 	/**
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
@@ -216,7 +218,7 @@ onMounted(async () => {
 	const username = route.params.id
 
 	const theNormalUserProfileURL = `http://localhost:8888/api/${username}/`;
-	
+
 	/**
 	 * Fetches the profile data about the user through the API address of the user.
 	 * 
@@ -225,14 +227,14 @@ onMounted(async () => {
 	const response_profile = await getNormalUserProfile(theNormalUserProfileURL);
 
 	if (response_profile) {
-		normalUserProfile.value = response_profile.data as NormalUserProfileType 
+		normalUserProfile.value = response_profile.data as NormalUserProfileType
 
 		/** Populates/updates the constant that counts the number of followers the normal-user has */
 		followers.value = normalUserProfile.value.num_of_followers
 	}
-	
+
 	const theNormalUserPostsURL = `http://localhost:8888/api/${username}/posts/`
-	
+
 	/**
 	 * Fetches the posts the user has made through the API address of the user.
 	 * And puts them in a reactive variable.
@@ -243,7 +245,7 @@ onMounted(async () => {
 	const response_user_posts = await getNormalUserPosts(theNormalUserPostsURL);
 
 	if (response_user_posts) {
-		normalUserPosts.value = response_user_posts.data		
+		normalUserPosts.value = response_user_posts.data
 	}
 })
 
@@ -362,6 +364,25 @@ onDeactivated(() => {
 onUnmounted(() => {
 	followers.value = 0
 	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers = []
+})
+
+
+/**
+ * @todo Change this into something smarter, more efficiant
+ * 
+ * Acts as a type of route gard
+ *
+ * Makes sure that the logged-in user can't access it's own [id]user page. 
+ */
+watchEffect(() => {
+	if (normalUserProfile.value) {
+		const localUsername = localStorage.getItem("username")
+		if (normalUserProfile.value.username === localUsername) {
+			console.log("Can't access it's own [id] user page") // print to self
+
+			navigateTo("/minkonto")
+		}
+	}
 })
 
 /**

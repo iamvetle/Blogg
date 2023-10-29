@@ -15,7 +15,22 @@
     "taailwind.config.ts": true,
     "yarn-error.log": true,
     "yarn.lock": true,
-    "README.md": true
+    "README.md": true,
+    "vue-shims.d.ts": true,
+    ".prettierignore": true,
+    ".prettierrc": true,
+    "auto-imports.d.ts": true,
+    "components.d.ts": true,
+    "tailwind.config.ts": true,
+    "tsconfig.json": true,
+    "vitest.config.ts": true,
+    "nuxt.config.ts": true,
+    "app.vue": true,
+    "Topics.json": true,
+    "server": true,
+    "plugins": true,
+    "assets": true,
+    "coverage": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
