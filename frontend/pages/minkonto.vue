@@ -18,7 +18,7 @@
 									</p>
 									<div class="mt-6 flex flex-wrap gap-4 justify-center">
 	
-										<span v-if="loggedInUserStore.loggedInUserProfile.bio">{{ loggedInUserStore.loggedInUserProfile.num_of_following }} following</span>
+										<span v-if="loggedInUserStore.loggedInUserProfile.num_of_following">{{ loggedInUserStore.loggedInUserProfile.num_of_following }} following</span>
 
 										<span v-if="loggedInUserStore.loggedInUserProfile.num_of_followers === 1"
 											class="bg-onPrimary border-onPrimaryContainer border-2 text-onPrimaryContainer py-2 px-4 rounded">

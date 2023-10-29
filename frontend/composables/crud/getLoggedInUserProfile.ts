@@ -18,7 +18,6 @@ export const getLoggedInUserProfile = async () => {
 	 * Fetches the token from local storage, or just returns null.
 	 */
 	const loggedInUserStore = useLoggedInUserStore()
-	const postStore = usePostStore()
 	const loggedInUserProfileURL = "http://localhost:8888/api/min-side/"
 
 	const token = getToken()

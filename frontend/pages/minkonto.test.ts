@@ -60,10 +60,11 @@ describe('Testing the page minkonto', () => {
             username: "test32",
             first_name: "Test",
             last_name: "Testanson",
-            age: 24,
             address: "Someaddress 7, 4713 City, Country",
-            nickname: "Tt",
             num_of_followers: 4,
+            num_of_following:9898,
+            date_of_birth:"12-12-3212",
+            bio:"my bio"
         };
         postStore.loggedInUserPosts = {
             id: 17,
@@ -83,14 +84,14 @@ describe('Testing the page minkonto', () => {
         expect(wrapper.text()).toContain("test32")
         expect(wrapper.text()).toContain("test")
         expect(wrapper.text()).toContain("Test")
+        expect(wrapper.text()).toContain(9898)
+        expect(wrapper.text()).toContain("my bio")
         expect(wrapper.text()).toContain("Testanson")
-        expect(wrapper.text()).toContain(24);
+        expect(wrapper.text()).toContain("12-12-3212")
         expect(wrapper.text()).toContain("Someaddress 7, 4713 City, Country")
-        expect(wrapper.text()).toContain("Tt")
-        // expect(wrapper.text()).toContain("19-01-2021") # last_online 
         expect(wrapper.text()).toContain(4)
         expect(wrapper.text()).toContain("4 followers")
-        expect(wrapper.text()).toContain("People following you")
+        expect(wrapper.text()).toContain("You are following")
     })
 
     test('Should not render anything if there are no data from the fetches', () => {
@@ -108,7 +109,6 @@ describe('Testing the page minkonto', () => {
             last_name: "Testanson",
             age: 24,
             address: "Someaddress 7, 4713 City, Country",
-            nickname: "Tt",
             num_of_followers: 1,
         };
         postStore.loggedInUserPosts = {
@@ -126,5 +126,6 @@ describe('Testing the page minkonto', () => {
         await wrapper.vm.$nextTick()
 
         expect(wrapper.text()).toContain("1 follower")
+        expect(wrapper.text()).not.toContain("followers")
     })
 })

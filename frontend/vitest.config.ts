@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitest/config'
 import Vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
+import { alias } from './alias'
 
 export default defineConfig({
     plugins: [
@@ -16,9 +17,7 @@ export default defineConfig({
         environment:"happy-dom"
     },
     resolve: {
-        alias: {
-            "~":".",
-            '@/': new URL('./', import.meta.url).pathname,
-        }
+        alias,
     }
 })
+

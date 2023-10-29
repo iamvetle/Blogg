@@ -1,10 +1,10 @@
 import { createTestingPinia } from "@pinia/testing"
 import { VueWrapper, shallowMount, flushPromises } from '@vue/test-utils';
-import index from "~/pages/index.vue"
+import index from "~/pages/index.vue";
 import { useGeneralStore } from '~/store/generalStore';
 import ListArticles from '~/components/modules/Blogg/ListArticles.vue';
 import BaseDropdownMenu from "~/components/base/BaseDropdownMenu.vue";
-import { FilterBox } from '#components';
+
 
 describe('index page testing', () => { 
     let wrapper: VueWrapper
@@ -27,9 +27,8 @@ describe('index page testing', () => {
                 components: {
                     ListArticles,
                     BaseDropdownMenu,
-                    FilterBox
                 },
-                stubs: { 'Wait': true, 'FilterTool': true, 'ListArticlesSidebar': true }
+                stubs: { 'Wait': true, FilterBox:true, 'ListArticlesSidebar': true }
             }
 
         })
@@ -56,7 +55,7 @@ describe('index page testing', () => {
         await wrapper.vm.$nextTick()
 
         listarticles = wrapper.findComponent({ name: 'ListArticles' })
-        expect(listarticles.exists()).toBe(false)w
+        expect(listarticles.exists()).toBe(false)
     });
 
     test("base-dropdown-menu is being rendered", async () => {

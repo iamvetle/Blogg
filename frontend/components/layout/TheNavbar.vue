@@ -14,7 +14,7 @@
 					</span>
 				</nuxt-link>
 
-				<span v-if="generalStore.isAuthenticated" id="searchbar" class="ms-8">
+				<span v-if="generalStore.isAuthenticated === true" id="searchbar" class="ms-8">
 					<BaseSearchBar @search-action="search"
 						class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex" />
 				</span>
@@ -41,7 +41,7 @@
 					<span class="text-xs"><nuxt-link to="/minkonto">Min profil</nuxt-link></span>
 				</span>
 
-				<span v-if="generalStore.isAuthenticated" class="me-4 flex items-center flex-col">
+				<span v-if="generalStore.isAuthenticated === true" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/loggut">
 						<svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -60,19 +60,20 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
 import { usePostStore } from '~/store/postStore';
-import { usePaginationStore } from '../../store/paginationStore';
+import { usePaginationStore } from '~/store/paginationStore';
+import { useGeneralStore } from '~/store/generalStore';
 
 const paginationStore = usePaginationStore()
 const postStore = usePostStore()
-
 const generalStore = useGeneralStore();
 const searchStore = useSearchStore();
-const route = useRoute()
 
 const search = async (payload: any) => {
+	const route = useRoute()
+
+
 	if (route.path != "/") {
 		navigateTo("/")
 	}
@@ -94,6 +95,8 @@ const search = async (payload: any) => {
  * something else: in index when the logo is click here the page gets refreshsen twices i donn't know why
  */
 const logoclick = async () => {
+	const route = useRoute()
+
 
 	/**
 	 * the keep alive component is forced to rerender because the

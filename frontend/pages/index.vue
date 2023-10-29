@@ -41,7 +41,6 @@ import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePaginationStore } from '~/store/paginationStore';
-import { FilterBox } from '#components';
 
 const postStore = usePostStore()
 const generalStore = useGeneralStore()
@@ -80,11 +79,13 @@ watchEffect(() => {
  */
 const dropdown = shallowRef<any>(false)
 
+const f = resolveComponent('FilterBox')
+
 const changeDropdown = () => {
-	if (dropdown.value == FilterBox) {
+	if (dropdown.value == f) {
 		dropdown.value = false
 	} else {
-		dropdown.value = FilterBox
+		dropdown.value = f
 	}
 }
 

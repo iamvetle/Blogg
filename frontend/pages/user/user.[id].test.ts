@@ -9,21 +9,15 @@ import BaseIconSaveArticleSaved from '~/components/base/BaseIconSaveArticleSaved
 import BaseIconSaveArticleUnSaved from '~/components/base/BaseIconSaveArticleUnSaved.vue';
 import TheUserSidebar from '~/components/modules/UserProfile/TheUserSidebar.vue';
 import BaseFollowButton from '~/components/base/BaseFollowButton.vue';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePostStore } from '~/store/postStore';
 
 describe('', () => {
     let wrapper: VueWrapper;
     let store;
-    let loggedInUserStore;
     let pinia;
-    let postStore;
 
     beforeEach(() => {
         pinia = createTestingPinia()
         store = useGeneralStore(pinia)
-        postStore = usePostStore()
-        loggedInUserStore = useLoggedInUserStore(pinia)
 
         vi.stubGlobal('definePageMeta', () => {
             return null
@@ -129,7 +123,7 @@ describe('', () => {
 
         await wrapper.vm.$nextTick()
 
-            ; console.log(wrapper.html())
+            ; //console.log(wrapper.html()) // print to self
         expect(wrapper.text()).toContain('test_first_name')
         expect(wrapper.text()).toContain('test_last_name')
     })

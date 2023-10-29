@@ -9,6 +9,7 @@
 		"postinstall": "nuxt prepare",
 		"test": "vitest --dom",
 		"test:ui": "vitest --ui",
+		"test:unit": "vitest --watch",
 		"coverage": "vitest run --coverage",
 		"typecheck": "npx nuxi typecheck",
 		"lint": "eslint ."

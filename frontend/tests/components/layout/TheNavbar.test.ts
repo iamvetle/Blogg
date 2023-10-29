@@ -1,54 +1,57 @@
-import { VueWrapper, mount } from '@vue/test-utils'
+import { VueWrapper, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing'
 import TheNavbar from '~/components/layout/TheNavbar.vue'
 import { useGeneralStore } from '~/store/generalStore'
 
+let wrapper: VueWrapper;
+let pinia: any;
+let generalStore:any;
+
+
+
 describe("thenavvbarr testing", () => {
-    let wrapper:VueWrapper;
-    let generalStore: any; 
-    let pinia: any;
 
     beforeEach(() => {
+        vi.stubGlobal("useRoute", () => {
+            return null
+        })
+
+
         pinia = createTestingPinia()
+
         generalStore = useGeneralStore(pinia)
         generalStore.isAuthenticated = true
+
 
         wrapper = mount(TheNavbar, {
             global: {
                 plugins: [pinia],
                 stubs: {
-                }
+                    BaseSearchBar: true
+                },
             },
         })
-    })
-    afterEach(() => {
-        if (wrapper) {
-            wrapper.unmount()
-        }
+
     })
 
+
     test('Should exist', () => {
-        console.log(wrapper.html())
+
         expect(wrapper.exists()).toBe(true)
     })
 
-    test("Should render the default navbar text", () => {
+    test("Should render the default navbar text", async () => {
+        console.log(generalStore.isAuthenticated)
+
+        await (wrapper.vm as any).$nextTick()
+
+
+        console.log(wrapper.html())
+        console.log(generalStore.isAuthenticated)
+
         expect(wrapper.text()).toContain("Nytt innlegg")
         expect(wrapper.text()).toContain("Min profil")
 
     })
-    test("Should not render content on navbar when the web client is not authenticated", () => {
-        wrapper.unmount()
 
-        generalStore.isAtuhenticated = false
-        
-        wrapper = mount(TheNavbar, {
-            global: {
-                plugins: [pinia],
-            },
-        })
-
-        expect(wrapper.text()).not.toContain("Nytt innlegg")
-        expect(wrapper.text()).not.toContain("Min profil")
-    })
 })

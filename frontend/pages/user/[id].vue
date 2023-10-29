@@ -224,11 +224,13 @@ onMounted(async () => {
 	 */
 	const response_profile = await getNormalUserProfile(theNormalUserProfileURL);
 
-	normalUserProfile.value = response_profile?.data
+	if (response_profile) {
+		normalUserProfile.value = response_profile.data as NormalUserProfileType 
 
-	/** Populates/updates the constant that counts the number of followers the normal-user has */
-	followers.value = normalUserProfile.value.num_of_followers
-
+		/** Populates/updates the constant that counts the number of followers the normal-user has */
+		followers.value = normalUserProfile.value.num_of_followers
+	}
+	
 	const theNormalUserPostsURL = `http://localhost:8888/api/${username}/posts/`
 	
 	/**
@@ -240,7 +242,9 @@ onMounted(async () => {
 	 */
 	const response_user_posts = await getNormalUserPosts(theNormalUserPostsURL);
 
-	normalUserPosts.value = response_user_posts?.data
+	if (response_user_posts) {
+		normalUserPosts.value = response_user_posts.data		
+	}
 })
 
 /**
