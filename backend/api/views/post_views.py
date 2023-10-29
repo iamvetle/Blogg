@@ -167,12 +167,13 @@ class PostCreateView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
+        
         post_data = request
 
-        response = CreatePostService.create_new_post(post_data)
-
-        if response is not None:
-            print(response.data)
-            return Response(response.data, status=status.HTTP_201_CREATED)
+        serializer = PostSerializer(data=post_data)
+        if serializer.is_valid():
+            serializer.save(author=post_data.user)
+                        
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)

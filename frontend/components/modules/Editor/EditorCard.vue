@@ -1,8 +1,8 @@
 <template>
 	<div class="p-2">
-		<div id="editor-container" class="w-full min-h-[270px] mb-12">
+		<div id="editor-container" class="w-full min-h-[270px] mb-12" @click="editor.commands.focus()">
 
-			<div id="editor-area">
+			<div id="editor-area" class="w-full">
 
 				<EditorFloatingMenu :editor="editor" @addImage="addImage" @setLink="setLink"
 					@toggleHeading1="toggleHeading(1)" @toggleHeading2="toggleHeading(2)"
@@ -43,7 +43,7 @@
 			</button>
 			<button
 				class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
-				@click="newPostMaterial">
+				@click="newMaterial">
 				Post
 			</button>
 		</div>
@@ -76,6 +76,9 @@ import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
 import Youtube from '@tiptap/extension-youtube'
+import Subscript from '@tiptap/extension-subscript'
+import Superscript from '@tiptap/extension-superscript'
+import CharacterCount from '@tiptap/extension-character-count'
 
 import Table from '@tiptap/extension-table'
 import TableCell from '@tiptap/extension-table-cell'
@@ -84,6 +87,8 @@ import TableRow from '@tiptap/extension-table-row'
 
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
+
+import Highlight from '@tiptap/extension-highlight'
 
 // Images (svgs)
 import underline_icon from '~/assets/icons/underline.svg'
@@ -104,6 +109,7 @@ const editor = useEditor({
 			levels: [1, 2, 3]
 		}),
 		Blockquote,
+		Subscript,
 		BulletList,
 		Image.configure({
 			allowBase64: true,
@@ -118,6 +124,8 @@ const editor = useEditor({
 		HorizontalRule,
 		ListItem,
 		OrderedList,
+		Superscript,
+		Subscript,
 		Strike,
 		Gapcursor,
 		Table.configure({
@@ -139,7 +147,9 @@ const editor = useEditor({
 			nested: true,
 		}),
 		Italic,
-		Link,
+		Link.configure({
+			validate: href => /^https?:\/\//.test(href),
+		}),
 		Bold,
 		Underline,
 		Code,
@@ -156,10 +166,10 @@ const editor = useEditor({
 			// class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',	
 		},
 	},
-	autofocus: true
+	autofocus: 'start'
 })
 
-const emit = defineEmits()
+const emit = defineEmits([''])
 
 const html = ref(null)
 
@@ -218,9 +228,13 @@ function addImage() {
 }
 
 /**
- * Is called when the 'new post' button is clicked
+ * Is called when the 'new post' button is clicked.
+ * 
+ * It trims current content and emits it "upward"
  */
-const newPostMaterial = async () => {
+const newMaterial = async () => {
+	html.value = editor.value.getHTML()
+	alert(html.value)
 
 	const { title, body } = extractTitleAndContent(html.value)
 
@@ -235,6 +249,8 @@ const newPostMaterial = async () => {
 		errorHappened.value = false
 		// editor.value.commands.clearContent()
 		editor.value.chain().focus().clearContent().run()
+
+		alert(JSON.stringify(request_body))
 
 		emit('newPostMaterial', request_body)
 
@@ -312,14 +328,18 @@ const toggleItalic = () => {
 	>*+* {
 		margin-top: 0.75em;
 	}
+	img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .tiptap p.is-editor-empty:first-child::before {
-	content: attr(data-placeholder);
-	float: left;
-	color: #adb5bd;
-	pointer-events: none;
-	height: 0;
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
 }
 
 
@@ -471,5 +491,16 @@ code {
     background-color: rgba(#616161, 0.1);
     color: #616161;
     box-decoration-break: clone;
+  }
+
+  mark {
+  background-color: #ffe066;
+  padding: 0.125em 0;
+  border-radius: 0.25em;
+  box-decoration-break: clone;
+}
+
+a {
+    color: #68CEF8;
   }
 </style>

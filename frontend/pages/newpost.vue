@@ -2,7 +2,7 @@
 	<div id="postFormWrapper" class="mt-2 mb-16">
 		<div class="max-w-3xl py-4 mx-auto prose">
 			<div id="direct-editor" :class="editorContainerClass">
-				<EditorCard @newPostMaterial="publishPost" />
+				<EditorCard @newPostMaterial="publishPost()" />
 			</div>
 
 			<!-- icons -->
@@ -23,6 +23,7 @@
 </template>
 
 <script setup lang="ts">
+import { request } from 'http';
 import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 
 /**
@@ -46,7 +47,13 @@ watchEffect(() => {
 
 const publishPost = async (request_body: any) => {
 	const baseURL = "http://localhost:8888/api/newpost/"
-	postState.value = await postCreateNewPost(baseURL, request_body)
+	const response = await postCreateNewPost(baseURL, request_body)
+	alert(request_body)
+	if (response) {
+		alert(response.status)
+		postState.value = response.data
+	}
+	
 }
 </script>
 
