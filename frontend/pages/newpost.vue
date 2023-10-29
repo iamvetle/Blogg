@@ -1,10 +1,7 @@
 <template>
 	<div id="postFormWrapper" class="mt-2 mb-16">
 		<div class="max-w-3xl py-4 mx-auto prose">
-			<div id="direct-editor"
-				:class="editorContainerClass"
-				
-				>
+			<div id="direct-editor" :class="editorContainerClass">
 				<EditorCard @newPostMaterial="publishPost" />
 			</div>
 
@@ -37,17 +34,17 @@ const postState = ref<false | true | null>(null);
 let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
 watchEffect(() => {
-	if (postState.value == true) { 
-		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-green-300 shadow-lg"	
-}
-if (postState.value == false) {
-	return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-red-300 shadow-lg"	
-}
+	if (postState.value == true) {
+		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-green-300 shadow-lg"
+	}
+	if (postState.value == false) {
+		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-red-300 shadow-lg"
+	}
 
 })
 
 
-const publishPost = async (request_body: object) => {
+const publishPost = async (request_body:any) => {
 	const baseURL = "http://localhost:8888/api/newpost/"
 	postState.value = await postCreateNewPost(baseURL, request_body)
 }

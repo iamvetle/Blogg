@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
     icon:string,
     alt?:string
     iconImgClass?:string,
-    isActive:string,
+    isActive?:string | boolean,
 }>(), {
     class:"h-5 flex items-center"
 })

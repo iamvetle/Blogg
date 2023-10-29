@@ -4,29 +4,14 @@
 
 			<div id="editor-area">
 
-				<floating-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
-					class="not-prose flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md">
-
-					<button @click="addImage()">
-						<img class="h-5 flex items-center" :src="add_image_icon" alt="add_image">
-					</button>
-
-
-					<EditorButton :is-active="editor.isActive('link')" @button-click="setLink()" :icon="link_icon"
-						alt="link" />
-
-					<EditorButton :is-active="editor.isActive('heading', { level: 1 })"
-						@button-click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :icon="heading_1_icon"
-						alt="heading 1" />
-
-					<EditorButton :is-active="editor.isActive('heading', { level: 2 })"
-						@button-click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :icon="heading_2_icon"
-						alt="heading 2" />
-
-					<EditorButton :is-active="editor.isActive('heading', { level: 2 })"
-						@button-click="editor.chain().focus().setHorizontalRule().run()" :icon="seperator_icon"
-						alt="seperator" />
-				</floating-menu>
+				<EditorFloatingMenu
+				:editor="editor"
+				@addImage="addImage"
+				@setLink="setLink"
+				@toggleHeading1="toggleHeading(1)"
+				@toggleHeading2="toggleHeading(2)"
+				@setHorizontalRule="horizontalRule"
+				/>
 
 				<bubble-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
 					class="not-prose space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md">
@@ -73,7 +58,7 @@
 </template>
 
 <script setup>
-import { useEditor, EditorContent, FloatingMenu } from '@tiptap/vue-3'
+import { useEditor, EditorContent } from '@tiptap/vue-3'
 import { BubbleMenu } from '@tiptap/vue-3';
 import Document from '@tiptap/extension-document'
 import BulletList from '@tiptap/extension-bullet-list'
@@ -99,20 +84,14 @@ import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
 
 // Images (svgs)
-import add_image_icon from '~/assets/icons/image-add-line.svg'
 import underline_icon from '~/assets/icons/underline.svg'
 import code_snip_icon from '~/assets/icons/code-view.svg'
 import double_quotes_icon from '~/assets/icons/double-quotes-r.svg'
 import italic_icon from '~/assets/icons/italic.svg'
 import bold_icon from '~/assets/icons/bold.svg'
-import link_icon from '~/assets/icons/link.svg'
-import seperator_icon from '~/assets/separator.svg'
-
-import heading_1_icon from '~/assets/icons/h-1.svg'
-import heading_2_icon from '~/assets/icons/h-2.svg'
-
 
 // const emit = defineEmits()
+
 const errorHappened = ref(null)
 
 const editor = useEditor({
@@ -145,7 +124,6 @@ const editor = useEditor({
 		Placeholder.configure({
 			placeholder: 'Write something ...'
 		}),
-		FloatingMenu,
 
 	],
 	editorProps: {
@@ -213,7 +191,6 @@ function addImage() {
 	}
 }
 
-
 const newPostMaterial = async () => {
 
 	const { title, body } = extractTitleAndContent(html.value)
@@ -225,10 +202,11 @@ const newPostMaterial = async () => {
 			"title": title,
 			"content": body,
 		}
-		emit('newPostMaterial', request_body)
 
 		errorHappened.value = false
 		editor.value.commands.clearContent()
+
+		emit('newPostMaterial', request_body)
 
 	} else {
 		console.log("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
@@ -246,6 +224,29 @@ const cancelClick = () => {
 	const place = router.go(-1)
 	return navigateTo(place)
 }
+
+const toggleHeading = (level) => {
+  editor.value.chain().focus().toggleHeading({ level }).run();
+};
+
+const horizontalRule = () => {
+	editor.value.chain().focus().setHorizontalRule().run()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
 <style scoped lang="scss">

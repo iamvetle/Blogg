@@ -222,7 +222,9 @@ onMounted(async () => {
 	 * 
 	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
 	 */
-	normalUserProfile.value = await getNormalUserProfile(theNormalUserProfileURL);
+	const response_profile = await getNormalUserProfile(theNormalUserProfileURL);
+
+	normalUserProfile.value = response_profile?.data
 
 	/** Populates/updates the constant that counts the number of followers the normal-user has */
 	followers.value = normalUserProfile.value.num_of_followers
@@ -236,7 +238,9 @@ onMounted(async () => {
 	 * 
 	 * @param theNormalUserPostsURL The URL address that the function is going to fetch from.
 	 */
-	normalUserPosts.value = await getNormalUserPosts(theNormalUserPostsURL);
+	const response_user_posts = await getNormalUserPosts(theNormalUserPostsURL);
+
+	normalUserPosts.value = response_user_posts?.data
 })
 
 /**

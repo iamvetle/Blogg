@@ -4,11 +4,7 @@ There are stuff I want the web client to be able to do, that I have not yet impl
 
 Er det bedre at jeg lager en røff versjon av flere ting jeg ønsker meg?
 
-Eller er det bedre at jeg fullfører helt ÉN og ÉN ting?
-
-Ettersom jeg er ganske noob på dette greiene her, så blir jeg fort stuck og treig hvis jeg bare skal jobbe med ÉN ting fullstendog
-
-Gir det mening?
+Jeg tenker det er best at jeg prøver å gjøre ferdig én og én ting, men **ikke** sitte og prøve å gjøre noe *perfekt*
 
 ### Implementere tags sortering/søk
 - [~] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
@@ -33,14 +29,15 @@ Gir det mening?
 
 ### Search and filter functionality
 
--[x] Jeg lage en bedre search og filter funksjonalitet. Bruke generics sammen med djangofilterbacken og searchfilter. Det skal ikke være så vanskelig.
+- [x] Jeg lage en bedre search og filter funksjonalitet. Bruke generics sammen med djangofilterbacken og searchfilter. Det skal ikke være så vanskelig.
   - det er å fikse det først på frontend som kommer til å bli krongelete.
 
 ### models.py
 
 - **CustomUser** ->
-- [ ] new field: profile picture upload / img upload
+- [x] new field: profile picture upload / img upload
 - [x] Man kan se det på frontend - hvis man allerede har på backend
+  - [ ] må gjøre slik at man kan laste opp og fjerne fra frontend da
 
 ---
 
@@ -191,6 +188,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 **Sortere/finne artikler etter tags/categories**
 
+- [ ] !!! Fikse slik at filterene jeg setter på ikke forsvinner rett etterpå
 - [x]ish Først lage en prototype hvor jeg lister **alle tagsa** og så kan jeg velge **én** som jeg kan sortere etter
   - deretter øke derifra
   - kanskej dropdown
