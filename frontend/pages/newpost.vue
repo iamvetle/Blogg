@@ -44,7 +44,7 @@ watchEffect(() => {
 })
 
 
-const publishPost = async (request_body:any) => {
+const publishPost = async (request_body: any) => {
 	const baseURL = "http://localhost:8888/api/newpost/"
 	postState.value = await postCreateNewPost(baseURL, request_body)
 }

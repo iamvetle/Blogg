@@ -4,34 +4,27 @@
 
 			<div id="editor-area">
 
-				<EditorFloatingMenu
-				:editor="editor"
-				@addImage="addImage"
-				@setLink="setLink"
-				@toggleHeading1="toggleHeading(1)"
-				@toggleHeading2="toggleHeading(2)"
-				@setHorizontalRule="horizontalRule"
-				/>
+				<EditorFloatingMenu :editor="editor" @addImage="addImage" @setLink="setLink"
+					@toggleHeading1="toggleHeading(1)" @toggleHeading2="toggleHeading(2)"
+					@setHorizontalRule="horizontalRule" />
 
 				<bubble-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
 					class="not-prose space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md">
 
-					<EditorButton :is-active="editor.isActive('bold')" @button-click="editor.commands.toggleBold()"
-						:icon="bold_icon" alt="bold" />
+					<EditorButton :is-active="editor.isActive('bold')" @button-click="toggleBold()" :icon="bold_icon"
+						alt="bold" />
 
-					<EditorButton :is-active="editor.isActive('italic')" @button-click="editor.commands.toggleItalic()"
-						:icon="italic_icon" alt="italic" />
+					<EditorButton :is-active="editor.isActive('italic')" @button-click="toggleItalic()" :icon="italic_icon"
+						alt="italic" />
 
-					<EditorButton :is-active="editor.isActive('underline')"
-						@button-click="editor.chain().focus().toggleUnderline().run()" :icon="underline_icon"
-						alt="underline" />
+					<EditorButton :is-active="editor.isActive('underline')" @button-click="toggleUnderline()"
+						:icon="underline_icon" alt="underline" />
 
-					<EditorButton :is-active="editor.isActive('code')"
-						@button-click="editor.chain().focus().toggleCode().run()" :icon="code_snip_icon" alt="code" />
+					<EditorButton :is-active="editor.isActive('code')" @button-click="toggleCode()" :icon="code_snip_icon"
+						alt="code" />
 
-					<EditorButton :is-active="editor.isActive('blockquote')"
-						@button-click="editor.chain().focus().toggleBlockquote().run()" :icon="double_quotes_icon"
-						alt="blockquote" />
+					<EditorButton :is-active="editor.isActive('blockquote')" @button-click="toggleBlockquote()"
+						:icon="double_quotes_icon" alt="blockquote" />
 				</bubble-menu>
 
 				<div>
@@ -60,7 +53,7 @@
 <script setup>
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import { BubbleMenu } from '@tiptap/vue-3';
-import Document from '@tiptap/extension-document'
+import Document from '@tiptap/extension-document' // required
 import BulletList from '@tiptap/extension-bullet-list'
 import CodeBlock from '@tiptap/extension-code-block'
 import HardBreak from '@tiptap/extension-hard-break'
@@ -82,6 +75,15 @@ import History from '@tiptap/extension-history'
 import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
+import Youtube from '@tiptap/extension-youtube'
+
+import Table from '@tiptap/extension-table'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
+import TableRow from '@tiptap/extension-table-row'
+
+import TaskItem from '@tiptap/extension-task-item'
+import TaskList from '@tiptap/extension-task-list'
 
 // Images (svgs)
 import underline_icon from '~/assets/icons/underline.svg'
@@ -103,34 +105,58 @@ const editor = useEditor({
 		}),
 		Blockquote,
 		BulletList,
-		Image,
-		CodeBlock,
-		HardBreak,
+		Image.configure({
+			allowBase64: true,
+		}),
+		CodeBlock.configure({
+			exitOnTripleEnter: true,
+			languageClassPrefix: 'javascript',
+		}),
+		HardBreak.configure({
+			keepMarks: false,
+		}),
 		HorizontalRule,
 		ListItem,
 		OrderedList,
 		Strike,
 		Gapcursor,
+		Table.configure({
+			resizable: true,
+		}),
+		TableRow,
+		TableHeader,
+		TableCell,
 		History,
+		Youtube.configure({
+			nocookie: true,
+		}),
 		Dropcursor,
 		Document,
 		Paragraph,
-		Text,
+		Text, // required
+		TaskList,
+		TaskItem.configure({
+			nested: true,
+		}),
 		Italic,
 		Link,
 		Bold,
 		Underline,
 		Code,
+		// Youtube,
 		Placeholder.configure({
 			placeholder: 'Write something ...'
 		}),
 
 	],
+
 	editorProps: {
 		attributes: {
 			class: 'm-5 focus:outline-none',
+			// class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',	
 		},
 	},
+	autofocus: true
 })
 
 const emit = defineEmits()
@@ -191,6 +217,9 @@ function addImage() {
 	}
 }
 
+/**
+ * Is called when the 'new post' button is clicked
+ */
 const newPostMaterial = async () => {
 
 	const { title, body } = extractTitleAndContent(html.value)
@@ -204,7 +233,8 @@ const newPostMaterial = async () => {
 		}
 
 		errorHappened.value = false
-		editor.value.commands.clearContent()
+		// editor.value.commands.clearContent()
+		editor.value.chain().focus().clearContent().run()
 
 		emit('newPostMaterial', request_body)
 
@@ -218,6 +248,10 @@ const newPostMaterial = async () => {
 
 }
 
+/**
+ * Is called when the 'cancel' button is clicked.
+ * Clears and empties the entire content
+ */
 const cancelClick = () => {
 	const router = useRouter()
 	editor.value.commands.clearContent
@@ -226,11 +260,34 @@ const cancelClick = () => {
 }
 
 const toggleHeading = (level) => {
-  editor.value.chain().focus().toggleHeading({ level }).run();
+	editor.value.chain().focus().toggleHeading({ level }).run();
 };
 
 const horizontalRule = () => {
 	editor.value.chain().focus().setHorizontalRule().run()
+};
+
+const toggleUnderline = () => {
+	editor.value.chain().focus().toggleUnderline().run()
+}
+
+const toggleCode = () => {
+	editor.value.chain().focus().toggleCode().run()
+}
+
+const toggleBlockquote = () => {
+	editor.value.chain().focus().toggleBlockquote().run()
+
+}
+
+const toggleBold = () => {
+	editor.value.chain().focus().toggleBold().run()
+
+}
+
+const toggleItalic = () => {
+	editor.value.chain().focus().toggleItalic().run()
+
 }
 
 
@@ -264,4 +321,155 @@ const horizontalRule = () => {
 	pointer-events: none;
 	height: 0;
 }
+
+
+blockquote {
+	padding-left: 1rem;
+	border-left: 3px solid rgba(#0D0D0D, 0.1);
+}
+
+ul,
+ol {
+	padding: 0 1rem;
+}
+
+
+
+
+pre {
+	background: #0D0D0D;
+	color: #FFF;
+	font-family: 'JetBrainsMono', monospace;
+	padding: 0.75rem 1rem;
+	border-radius: 0.5rem;
+
+	code {
+		color: inherit;
+		padding: 0;
+		background: none;
+		font-size: 0.8rem;
+	}
+}
+
+hr.ProseMirror-selectednode {
+	border-top: 1px solid #68CEF8;
+}
+
+
+
+img {
+	max-width: 100%;
+	height: auto;
+
+	&.ProseMirror-selectednode {
+		outline: 3px solid #68CEF8;
+	}
+}
+
+.tiptap {
+	table {
+		border-collapse: collapse;
+		table-layout: fixed;
+		width: 100%;
+		margin: 0;
+		overflow: hidden;
+
+		td,
+		th {
+			min-width: 1em;
+			border: 2px solid #ced4da;
+			padding: 3px 5px;
+			vertical-align: top;
+			box-sizing: border-box;
+			position: relative;
+
+			>* {
+				margin-bottom: 0;
+			}
+		}
+
+		th {
+			font-weight: bold;
+			text-align: left;
+			background-color: #f1f3f5;
+		}
+
+		.selectedCell:after {
+			z-index: 2;
+			position: absolute;
+			content: "";
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background: rgba(200, 200, 255, 0.4);
+			pointer-events: none;
+		}
+
+		.column-resize-handle {
+			position: absolute;
+			right: -2px;
+			top: 0;
+			bottom: -2px;
+			width: 4px;
+			background-color: #adf;
+			pointer-events: none;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
+.tableWrapper {
+	padding: 1rem 0;
+	overflow-x: auto;
+}
+
+.resize-cursor {
+	cursor: ew-resize;
+	cursor: col-resize;
+}
+
+ul[data-type="taskList"] {
+	list-style: none;
+	padding: 0;
+
+	p {
+		margin: 0;
+	}
+
+	li {
+		display: flex;
+
+		>label {
+			flex: 0 0 auto;
+			margin-right: 0.5rem;
+			user-select: none;
+		}
+
+		>div {
+			flex: 1 1 auto;
+		}
+
+		ul li,
+		ol li {
+			display: list-item;
+		}
+
+		ul[data-type="taskList"]>li {
+			display: flex;
+		}
+	}
+}
+
+code {
+    font-size: 0.9rem;
+    padding: 0.25em;
+    border-radius: 0.25em;
+    background-color: rgba(#616161, 0.1);
+    color: #616161;
+    box-decoration-break: clone;
+  }
 </style>
