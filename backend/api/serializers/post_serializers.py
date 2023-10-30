@@ -52,7 +52,6 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
 
         fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos"]
-        
         read_only_fields = ["title"]
 
     def get_content(self, obj):
@@ -67,18 +66,17 @@ class PostSerializer(serializers.ModelSerializer):
         
         # def create?
 
-
 class PostShortenSerializer(serializers.ModelSerializer):
     """Shortenes the post. Can be used on both multiple and single posts"""
 
-    content_snippet = serializers.SerializerMethodField()  # Limited to 200 char
+    content_snippet = serializers.SerializerMethodField(read_only=True)  # Limited to 200 char
     author = OnlyAuthorCustomUserSerializer(read_only=True)
-    date_published = serializers.SerializerMethodField()
+    date_published = serializers.SerializerMethodField(read_only=True)
 
     tags = TagSerializer(many=True, read_only=True)
     categories = CategorySerializer(many=True, read_only=True)
     
-    images = PostImageSerializer(many=True)
+    images = PostImageSerializer(many=True, read_only=True)
     
     class Meta:
         model = Post
@@ -94,7 +92,7 @@ class PostShortenSerializer(serializers.ModelSerializer):
             "images",
         ]
         
-        read_only_fields = ['__all__']
+        read_only_fields = ['title']
 
     def get_content_snippet(self, obj):
         content_snippet = obj.content[:200]
