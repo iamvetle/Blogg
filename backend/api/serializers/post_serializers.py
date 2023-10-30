@@ -42,7 +42,7 @@ class PostSerializer(serializers.ModelSerializer):
     # SerialiserMethodField is read_only by default
     date_published = serializers.SerializerMethodField(required=False) # I don't want to end up being able to update date_published    
     
-    content = serializers.SerializerMethodField()
+    content = serializers.CharField(max_length=10000)
     tags = serializers.StringRelatedField(many=True, required=False)
     categories = serializers.StringRelatedField(many=True, required=False)
     
@@ -56,7 +56,7 @@ class PostSerializer(serializers.ModelSerializer):
         read_only_fields = ["id"]
     
     def create(self, validated_data):
-        # Assuming 'request' context and 'user' attribute are available
+        validated_data['content'] = format_html(validated_data['content'])
         author = self.context['request'].user
         post = Post.objects.create(**validated_data, author=author)
         return post

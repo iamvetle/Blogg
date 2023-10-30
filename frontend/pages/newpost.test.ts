@@ -5,6 +5,9 @@ describe('newpost page testing', () => {
     let wrapper:VueWrapper
 
     beforeEach(() => {
+        vi.stubGlobal("definePageMeta", () => {
+            return null
+        })
         wrapper = mount(newpost)
     })
 

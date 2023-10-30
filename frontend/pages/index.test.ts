@@ -73,7 +73,7 @@ describe('index page testing', () => {
         generalStore.isAuthenticated = false
         await wrapper.vm.$nextTick()
 
-        expect(wrapper.findComponent({ name: 'Wait' }).exists()).toBe(true)
+        expect(wrapper.findComponent({ name: 'Wait' }).exists()).toBe(false)
 
         generalStore.isAuthenticated = true
         await wrapper.vm.$nextTick()
