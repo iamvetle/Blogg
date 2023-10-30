@@ -28,9 +28,14 @@
     "app.vue": true,
     "Topics.json": true,
     "server": true,
-    "plugins": true,
     "assets": true,
-    "coverage": true
+    "coverage": true,
+    "typescript\\deprecated_interfaces.ts": true,
+    "store\\TIPS.md": true,
+    "composables\\testing guide.text": true,
+    "pages\\testing.vue": true,
+    "pages\\search.vue": true,
+    "pages\\search.test.ts": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": true,

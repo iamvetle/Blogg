@@ -1,6 +1,6 @@
 <template>
 	<div v-if="(postStore.loggedInUserPosts) && (loggedInUserStore.loggedInUserProfile)">
-		<div class="py-12 px-8">
+		<div name="default" class="py-12 px-8">
 			<div class="container mx-auto py-8">
 				<div class="grid grid-cols-4 sm:grid-cols-12 gap-12 px-4">
 					<div class="col-span-4 sm:col-span-5 xl:col-span-3">
@@ -115,6 +115,11 @@ import placeholder_profile_picture from '~/assets/placeholder-profile-picture.pn
 import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
+definePageMeta({
+	layout:'default'
+
+})
+
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
 
@@ -126,11 +131,6 @@ const loggedInUserStore = useLoggedInUserStore()
 onMounted(async () => {
 	await getLoggedInUserAllPostSnippets()
 	await getLoggedInUserProfile()
-
-})
-
-definePageMeta({
-	layout:'default'
 
 })
 </script>

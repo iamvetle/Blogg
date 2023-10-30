@@ -20,6 +20,8 @@
 	>
 		<ErrorAPIDown />
 	</div>
+	<span>form</span>
+
 	<div class="mt-auto">
 		<LazyTheFooter />
 	</div>

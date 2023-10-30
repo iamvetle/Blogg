@@ -28,11 +28,6 @@
 			</div>
 		</div>
 	</div>
-	<div v-if="generalStore.isAuthenticated === false">
-		<Wait />
-
-
-	</div>
 </template>
 
 <script setup lang="ts">
@@ -49,24 +44,15 @@ const searchStore = useSearchStore()
 const loggedInUserStore = useLoggedInUserStore()
 const paginationStore = usePaginationStore()
 
+definePageMeta({
+	layout:"feed-layout"
+})
 
 /**
- * Changes the layout based on whether the user is authenticated or not
- * 
- * @todo endre denne til en function med computed istedenfor (?)
+ * Middleware in the background makes sure that only authenticated users can access this page,
+ * or else they are redirected to the /wait page
  */
-const dynamicLayout = computed(() => {
-	if (generalStore.isAuthenticated === true) {
-		return "feed-layout"
-	}
-	if (generalStore.isAuthenticated === false) {
-		return "blank"
-	}
-})
 
-watchEffect(() => {
-	setPageLayout(dynamicLayout.value)
-})
 /**
  * This changes the layout the pages uses dynamically, based on wait.vue or not.
  */
@@ -170,10 +156,6 @@ onBeforeUnmount(() => {
 	paginationStore.$reset
 
 })
-
-definePageMeta({
-  layout: false,
-});
 
 
 

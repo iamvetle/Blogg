@@ -1,9 +1,7 @@
 <template>
-	<div id="site-wrapper" class="bg-background flex flex-col min-h-screen">
-		<div id="modal-root"></div>
-
+	<div id="site-wrapper" class="bg-background flex flex-col min-h-screen flex-1">
 		<!-- Background color -->
-		<div class="flex-1 flex flex-col">
+		<div class="">
 			<ClientOnly>
 				<TheNavbar />
 			</ClientOnly>
@@ -11,6 +9,7 @@
 				<slot />
 			</div>
 		</div>
+		<span>feed</span>
 		<div class="mt-auto">
 			<FeedPagination v-if="postStore.posts" />
 			<LazyTheFooter />

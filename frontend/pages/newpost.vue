@@ -23,8 +23,11 @@
 </template>
 
 <script setup lang="ts">
-import { request } from 'http';
 import EditorCard from '~/components/modules/Editor/EditorCard.vue';
+
+definePageMeta({
+	layout:"feed-layout"
+})
 
 /**
  * @todo
@@ -34,15 +37,15 @@ const postState = ref<false | true | null>(null);
 
 let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
-watchEffect(() => {
-	if (postState.value == true) {
-		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-green-300 shadow-lg"
-	}
-	if (postState.value == false) {
-		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-red-300 shadow-lg"
-	}
+// watchEffect(() => {
+// 	if (postState.value == true) {
+// 		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-green-300 shadow-lg"
+// 	}
+// 	if (postState.value == false) {
+// 		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-red-300 shadow-lg"
+// 	}
 
-})
+// })
 
 
 const publishPost = async (request_body: any) => {
