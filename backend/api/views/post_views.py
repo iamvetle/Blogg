@@ -168,11 +168,10 @@ class PostCreateView(APIView):
 
     def post(self, request):
         
-        post_data = request
 
-        serializer = PostSerializer(data=post_data)
+        serializer = PostSerializer(data=request.data, context={'request': request})        
         if serializer.is_valid():
-            serializer.save(author=post_data.user)
+            serializer.save()
                         
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:

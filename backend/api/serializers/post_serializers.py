@@ -34,25 +34,32 @@ class PostVideoSerializer(serializers.ModelSerializer):
         fields = ['video']
 
 
-# I Might be able to Combine this and also USE IT FOR POST CREATE
+# Is used for create and for detail retrieve
 class PostSerializer(serializers.ModelSerializer):
     """Serializes the input. Can be used on both single and multiple post objects"""
 
     author = OnlyAuthorCustomUserSerializer(read_only=True)
-    date_published = serializers.SerializerMethodField(read_only=True)
-    content = serializers.SerializerMethodField(read_only=True)
+    # SerialiserMethodField is read_only by default
+    date_published = serializers.SerializerMethodField(required=False) # I don't want to end up being able to update date_published    
     
-    tags = serializers.StringRelatedField(many=True, read_only=True)
-    categories = serializers.StringRelatedField(many=True, read_only=True)
+    content = serializers.SerializerMethodField()
+    tags = serializers.StringRelatedField(many=True, required=False)
+    categories = serializers.StringRelatedField(many=True, required=False)
     
-    images = PostImageSerializer(many=True, read_only=True)
-    videos = PostVideoSerializer(many=True, read_only=True)
+    images = PostImageSerializer(many=True, required=False)
+    videos = PostVideoSerializer(many=True, required=False)
 
     class Meta:
         model = Post
 
         fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos"]
-        read_only_fields = ["title"]
+        read_only_fields = ["id"]
+    
+    def create(self, validated_data):
+        # Assuming 'request' context and 'user' attribute are available
+        author = self.context['request'].user
+        post = Post.objects.create(**validated_data, author=author)
+        return post
 
     def get_content(self, obj):
         content = obj.content
