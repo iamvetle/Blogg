@@ -34,26 +34,26 @@ class PostVideoSerializer(serializers.ModelSerializer):
         fields = ['video']
 
 
+# I Might be able to Combine this and also USE IT FOR POST CREATE
 class PostSerializer(serializers.ModelSerializer):
     """Serializes the input. Can be used on both single and multiple post objects"""
 
     author = OnlyAuthorCustomUserSerializer(read_only=True)
-    date_published = serializers.SerializerMethodField()
-    content = serializers.SerializerMethodField()
+    date_published = serializers.SerializerMethodField(read_only=True)
+    content = serializers.SerializerMethodField(read_only=True)
     
-    tags = serializers.StringRelatedField(many=True)
-    categories = serializers.StringRelatedField(many=True)
+    tags = serializers.StringRelatedField(many=True, read_only=True)
+    categories = serializers.StringRelatedField(many=True, read_only=True)
     
-    images = PostImageSerializer(many=True)
-    videos = PostVideoSerializer(many=True)
+    images = PostImageSerializer(many=True, read_only=True)
+    videos = PostVideoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Post
 
         fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos"]
-        extra_kwargs = {
-            "date_published": {"read_only": True},
-        }
+        
+        read_only_fields = ["title"]
 
     def get_content(self, obj):
         content = obj.content
@@ -94,14 +94,7 @@ class PostShortenSerializer(serializers.ModelSerializer):
             "images",
         ]
         
-        extra_kwargs = {
-            "id": {"read_only": True},
-            "date_published": {"read_only": True},
-            "title": {"read_only": True},
-            "content_snippet": {"read_only": True},
-            "author": {"read_only": True},
-            "images": {"read_only": True},
-        }
+        read_only_fields = ['__all__']
 
     def get_content_snippet(self, obj):
         content_snippet = obj.content[:200]

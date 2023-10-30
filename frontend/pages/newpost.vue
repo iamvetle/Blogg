@@ -2,7 +2,7 @@
 	<div id="postFormWrapper" class="mt-2 mb-16">
 		<div class="max-w-3xl py-4 mx-auto prose">
 			<div id="direct-editor" :class="editorContainerClass">
-				<EditorCard @newPostMaterial="publishPost()" />
+				<EditorCard @newPostMaterial="publishPost" />
 			</div>
 
 			<!-- icons -->
