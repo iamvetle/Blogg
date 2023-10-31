@@ -80,7 +80,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     bio = models.TextField(max_length=500, blank=True, default="")
     profile_picture = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
     
-    date_joined = models.DateTimeField(default=timezone.now)
+    date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(default=timezone.now)
     
     is_active = models.BooleanField(default=True)

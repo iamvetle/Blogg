@@ -199,6 +199,8 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ("is_active",)
 
     search_fields = ("username", "email", "phone_number")
+    
+    readonly_fields = ("date_joined",)
 
     fieldsets = (
         (None, {"fields": ("username", "email", "first_name", "last_name")}),
