@@ -52,6 +52,13 @@ class CustomUserManager(BaseUserManager):
 
         return user
 
+    # DateField: Only stores the date (Year, Month, Day).
+    # DateTimeField: Stores both date and time.
+    
+    # auto_now: Automatically update the field to now every time the object is saved.
+    # auto_now_add: Automatically set the field to now when the object is first created.
+
+# In Django, you cannot use auto_now or auto_now_add with default. These options are mutually exclusive.
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=30, unique=True, blank=False)  # Required
