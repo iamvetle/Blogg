@@ -1,10 +1,14 @@
-import { flushPromises, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import newpost from './newpost.vue';
 import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 
 // Mock the postCreateNewPost function
 
 vi.stubGlobal("definePageMeta", () => {
+    return null
+} )
+
+vi.stubGlobal("publishPost", () => {
     return null
 } )
 
@@ -22,7 +26,7 @@ describe('newPost', () => {
         vi.clearAllMocks(); // Clear the mocked function's call count after each test
     });
 
-    it('calls publishPost and triggers alert on success', async () => {
+    it('Should emit event and should change text if poststate is differnt', async () => {
         // Mock successful API response
 
         const wrapper = mount(newpost, {
@@ -38,8 +42,11 @@ describe('newPost', () => {
         await wrapper.vm.$nextTick();
 
 
+        /**
+         * does nothing right now
+         */
         vi.mock("~/composables/crud/postCreateNewPost", () => ({
-            postCreateNewPost: (ass, baseURL) => {
+            postCreateNewPost: () => {
                 vi.fn().mockResolvedValue({ status: 200, data: true })
             }
         }));
@@ -48,9 +55,9 @@ describe('newPost', () => {
         // Trigger button click to call publishPost
         wrapper.vm.$emit("newPostMaterial", "ass");
 
-        
-        await wrapper.vm.$nextTick();
+        (wrapper.vm as any).postState = true
 
+        await wrapper.vm.$nextTick();
 
         // Verify if postCreateNewPost was called
         // expect("publishPost").toHaveBeenCalled();

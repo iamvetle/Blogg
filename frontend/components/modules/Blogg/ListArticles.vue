@@ -40,8 +40,8 @@
 					</template>
 
 					<template #tags v-if="post.tags">
-						<span class="me-1">
-							<BaseTag v-for="tag in post.tags" :key="post.id" :text="tag.name"/>
+						<span class="me-1" v-for="tag in post.tags">
+							<BaseTag :key="post.id" :text="tag.name"/>
 						</span>
 					</template>
 

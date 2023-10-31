@@ -248,6 +248,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
   - [ ] split the onMounted hooks for ones reqairing auth, and the ones not requiring it
     - But all require it..
     - Or maybe cachin in some hay?
+- [ ] Gi en error message som sier at "denne brukeren fins ikke" når noen prøver å access */user/enbrukersomikkefins*
 
 ---
 

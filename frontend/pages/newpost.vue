@@ -35,7 +35,6 @@ definePageMeta({
  * huske definepagedata senere
  */
 const postState = ref<false | true | null>(null);
-	console.log("rectum")
 
 let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 

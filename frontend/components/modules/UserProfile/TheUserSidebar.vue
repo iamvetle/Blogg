@@ -1,6 +1,6 @@
 <template>
 	<div id="sidebar-component" class="w-full">
-		<img id="profile-picture" :src="placeholder_user_profile_picture" class="w-[80px] h-[80px] mt-[40px] mb-[10px]">
+		<img id="profile-picture" :src="props.profilePicture ? props.profilePicture : placeholder" class="w-[80px] h-[80px] mt-[40px] mb-[10px]">
 
 		<div id="info-wrapper">
 			
@@ -35,6 +35,8 @@
  */
 import placeholder_user_profile_picture from '~/assets/placeholder-profile-picture.png'
 
+const placeholder = ref(placeholder_user_profile_picture)
+
 /**
  * The username that is going to be rendered 
  * 
@@ -42,6 +44,10 @@ import placeholder_user_profile_picture from '~/assets/placeholder-profile-pictu
  */
 const props = defineProps<{
 	username: string,
+	/** If a profile picture is passed as a prop, it is rendered, if
+	 * not profile picture prop is provided, the placeholder image is used instead.
+	 */
+	profilePicture?: string,
 }>();
 
 </script>

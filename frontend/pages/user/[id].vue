@@ -66,15 +66,15 @@
 
 
 								<template #lesmer v-if="post.id">
-									<span class="cursor-pointer text text-primary hover:text-primaryFixed"
+									<span class="cursor-pointer text-primary hover:text-primaryFixed"
 										@click="redirect_to_post_page(post.id)">
 										Les mer
 									</span>
 								</template>
 
 								<template #tags v-if="post.tags">
-									<span>
-										<BaseTag v-for="tag in post.tags" :key="post.id" :text="tag" class="me-1" />
+									<span class="me-1" v-for="tag in post.tags">
+										<BaseTag :key="post.id" :text="tag.name"/>
 									</span>
 								</template>
 
@@ -108,7 +108,7 @@
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 
 					<div>
-						<the-user-sidebar :username="normalUserProfile.username">
+						<the-user-sidebar :username="normalUserProfile.username" :profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
 
 							<template #amount-of-followers>
 								<div class="font-light text-sm leading-7">

@@ -12,8 +12,6 @@ describe('testign theusersidebar', () => {
         return null
     })
 
-
-
     beforeEach(async () => {
         wrapper = shallowMount(TheUserSidebar, {
             global: {
@@ -21,6 +19,7 @@ describe('testign theusersidebar', () => {
             },
             props: {
                 username: "testuser",
+                profilePicture: "~/path/to/profile_picture.jpg"
             },
             slots: {
                 "follow-button": "<p>This is the slot 'follow_button'</p>",
@@ -63,6 +62,55 @@ describe('testign theusersidebar', () => {
 
         expect(wrapper.html()).not.toContain("<p>This is the slot 'follow_button'</p>")
         expect(wrapper.html()).not.toContain("<h3>5</h3>")
+
+    })
+
+    test("Should have a profile picture prop", () => {
+        // arrange?
+
+        // act?
+
+        // Assert
+        
+        expect(wrapper.props("profilePicture")).toBeTruthy() // Basically, checks if the component HAS a prop named that
+        expect(wrapper.props("profilePicture")).toEqual("~/path/to/profile_picture.jpg") // Asserts that the prop contains what we actually told the prop to contain
+    })
+
+    test('Should render the profile picture if there is a profile picture', () => {
+        
+        // Arrange
+        let image = wrapper.get('img(id="profile-picture")');
+        expect(image.attributes("src")).toBe("~/path/to/profile_picture.jpg")
+        // act?
+
+        // Assert
+        expect(image.exists()).toBe(true)
+
+    })
+    test("Should render temporary profile image if no profile picture prop is provided", async () => {
+        await wrapper.unmount()
+
+        // Arrange
+        
+        /** Makes a new wrapper that this time doesnt have a profilePicture prop */
+        wrapper = shallowMount(TheUserSidebar, {
+            props: {
+                username: "test_username",
+            }
+        })
+
+        await wrapper.vm.$nextTick()
+        ;(wrapper.vm as any).placeholder = "placeholderImage"
+
+        await wrapper.vm.$nextTick()
+        
+        let image = wrapper.get("img(id='profile-picture')")
+
+        // act?
+
+        // Arrange
+
+        expect(image.attributes("src")).toBe("placeholderImage")
 
     })
 
