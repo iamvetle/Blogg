@@ -20,13 +20,12 @@
 
 import { useGeneralStore } from '~/store/generalStore';
 
-const generalStore = useGeneralStore()
-
 definePageMeta({
   layout:"form-layout"
 })
 
-// husk definpagedata senere -- hvorfor skrev jeg dette?
+const generalStore = useGeneralStore()
+
 </script>
 
 <style scoped></style>

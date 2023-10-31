@@ -24,9 +24,10 @@
 
 <script setup lang="ts">
 import EditorCard from '~/components/modules/Editor/EditorCard.vue';
+import { postCreateNewPost } from '../composables/crud/postCreateNewPost';
 
 definePageMeta({
-	layout:"feed-layout"
+	layout: "feed-layout"
 })
 
 /**
@@ -37,27 +38,17 @@ const postState = ref<false | true | null>(null);
 
 let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
-// watchEffect(() => {
-// 	if (postState.value == true) {
-// 		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-green-300 shadow-lg"
-// 	}
-// 	if (postState.value == false) {
-// 		return editorContainerClass.value = "w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-red-300 shadow-lg"
-// 	}
-
-// })
-
-
 const publishPost = async (request_body: any) => {
 	const baseURL = "http://localhost:8888/api/newpost/"
 	const response = await postCreateNewPost(baseURL, request_body)
-	alert(request_body)
 	if (response) {
 		alert(response.status)
 		postState.value = response.data
 	}
-	
+
 }
+
+onMounted(() => publishPost)
 </script>
 
 <style scoped></style>
