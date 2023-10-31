@@ -8,10 +8,10 @@ from api.views.post_views import (
     PostCreateView,
     PostAllLoggedInUserView,
     PostMultipleSnippetView,
-    # PostMultipleAfterSearchView,
     PostSaveView,
     PostAllSavedLoggedInUserView,
     PostAllNormalUserView,
+    PostDeleteView
 )
 from api.views.user_views import (
     LoggedInUserProfileView,
@@ -42,6 +42,7 @@ urlpatterns = [
     # Paths related to the logged-in user
     path("min-side/", LoggedInUserProfileView.as_view(), name="min_side"),
     path("min-side/posts/", PostAllLoggedInUserView.as_view(), name="my_posts"),
+    path("min-side/posts/<int:post_id>/delete/", PostDeleteView.as_view(), name="delete_my_post"),  
     path("min-side/followers/", LoggedInUserAllFollowers.as_view(), name="my_followers"),
     path("min-side/following/", LoggedInUserAllFollowing.as_view(), name="my_following"),
     

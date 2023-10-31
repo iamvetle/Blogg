@@ -125,9 +125,11 @@ class PostAdmin(admin.ModelAdmin):
 
     list_display = (
         "title",
-        "date_published",
+        "id",
+        # "date_published",
         "list_categories",
         "list_tags",
+        "author"
     )
 
     list_filter = ("date_published",)

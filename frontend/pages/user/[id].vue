@@ -108,6 +108,7 @@
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 
 					<div>
+						<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
 						<the-user-sidebar :username="normalUserProfile.username" :profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
 
 							<template #amount-of-followers>
@@ -187,9 +188,6 @@ const followers = ref(0)
  * Stores the image that is temporarly being used with each post. The picture from the URL changes dynamically upon each request. 
  */
 const post_image = ref('https://picsum.photos/500/300')
-
-
-
 
 
 /** 

@@ -98,26 +98,7 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     queryset = Post.objects.all()
 
     http_method_names = ["get"]
-
-# class PostMultipleAfterSearchView(ListAPIView):  # /api/search/
-#     """Responds with a filter list of {x} amount of posts"""  # for filtering options look at filters.py
-
-#     permission_classes = [IsAuthenticated]
-#     serializer_class = PostShortenSerializer
-
-#     filter_backends = [filters.DjangoFilterBackend, SearchFilter]
     
-#     filterset_class = CustomPostFilter
-
-    
-#     search_fields = ['title', 'content', 'author__username']
-    
-#     queryset = Post.objects.all()
-    
-    
-#     http_method_names = ['get']
-    
-
 class PostSingleView(RetrieveAPIView):
     """Retrieves a single post"""
 
@@ -125,7 +106,19 @@ class PostSingleView(RetrieveAPIView):
     serializer_class = PostSerializer
     lookup_field = "pk"
     queryset = Post.objects.all()
-
+    
+class PostDeleteView(APIView):
+    ''' Deletes a post, if ask for by the user owning the post'''
+    permission_classes = [IsAuthenticated]
+    
+    def delete(self, request, post_id):
+        post = get_object_or_404(Post, id=post_id)
+        
+        if post.author != request.user:
+            return Response(status=status.HTTP_403_FORBIDDEN, data={"detail": "You do not have permission to delete this post."})
+        else:
+            post.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PostSaveView(APIView):
     """Saves or un-saves a requested post for the user"""
