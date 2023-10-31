@@ -33,7 +33,6 @@
     "typescript\\deprecated_interfaces.ts": true,
     "store\\TIPS.md": true,
     "composables\\testing guide.text": true,
-    "pages\\testing.vue": true,
     "pages\\search.vue": true,
     "pages\\search.test.ts": true
   },

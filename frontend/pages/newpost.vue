@@ -35,20 +35,22 @@ definePageMeta({
  * huske definepagedata senere
  */
 const postState = ref<false | true | null>(null);
+	console.log("rectum")
 
 let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
 const publishPost = async (request_body: any) => {
+	console.log("rectum")
 	const baseURL = "http://localhost:8888/api/newpost/"
 	const response = await postCreateNewPost(baseURL, request_body)
 	if (response) {
-		alert(response.status)
 		postState.value = response.data
+	} else {
+		console.log("rectum")
 	}
 
 }
 
-onMounted(() => publishPost)
 </script>
 
 <style scoped></style>

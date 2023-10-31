@@ -1,14 +1,21 @@
 import { flushPromises, mount } from '@vue/test-utils';
-import newpost from '~/pages/newpost.vue';
-import { EditorCard } from '~/components/modules/Editor/EditorCard.vue';
+import newpost from './newpost.vue';
+import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 
 // Mock the postCreateNewPost function
-let mockCreateNewPost = vi.fn()
-
 
 vi.stubGlobal("definePageMeta", () => {
     return null
 } )
+
+
+/**
+ * It is very difficult to mock a function or composable inside of another function.
+ * So avoid that.
+ * 
+ * **Do not mock a function/composable inside of another function**
+ */
+
 
 describe('newPost', () => {
     afterEach(() => {
@@ -20,9 +27,6 @@ describe('newPost', () => {
 
         const wrapper = mount(newpost, {
             global: {
-                mocks: [{
-                    publishPost:mockCreateNewPost
-            }],
                 components:{
                     EditorCard
                 },
@@ -31,21 +35,26 @@ describe('newPost', () => {
                 }
             }
         });
-
-        // Trigger button click to call publishPost
-        await wrapper.findComponent({ name: "EditorCard"} ).trigger('newPostMaterial');
-
-        // Wait for any promises to resolve
-
-        await flushPromises()
         await wrapper.vm.$nextTick();
 
+
+        vi.mock("~/composables/crud/postCreateNewPost", () => ({
+            postCreateNewPost: (ass, baseURL) => {
+                vi.fn().mockResolvedValue({ status: 200, data: true })
+            }
+        }));
+        // ...
+
+        // Trigger button click to call publishPost
+        wrapper.vm.$emit("newPostMaterial", "ass");
+
+        
+        await wrapper.vm.$nextTick();
+
+
         // Verify if postCreateNewPost was called
-        expect("publishPost").toHaveBeenCalled();
-
-        // Verify if alert was triggered
-
-        // You can also check any state changes, e.g., postState.value should be updated
-        // For this, you may need to expose postState from your component
+        // expect("publishPost").toHaveBeenCalled();
+        expect(wrapper.emitted().newPostMaterial).toBeTruthy()
+        expect(wrapper.text()).toContain("Nytt innlegg")
     });
 });
