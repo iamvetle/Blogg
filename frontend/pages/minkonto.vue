@@ -7,7 +7,7 @@
 						<div id="wrapper" class="bg-primary rounded-lg p-6">
 							<div v-if="loggedInUserStore.loggedInUserProfile" class="px-5 py-5 bg-onPrimary rounded-xl">
 								<div class="flex flex-col items-center">
-									<img :src="loggedInUserStore.loggedInUserProfile.profile_picture != '' ? loggedInUserStore.loggedInUserProfile.profile_picture : placeholder_profile_picture"
+									<img id="profile_picture" :src="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : placeholder"
 										class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" alt="Profilbilde">
 									<!-- </img> -->
 									<h1 class="text-xl text-plain font-bold">
@@ -34,6 +34,18 @@
 								<div class="flex flex-col">
 									<span class="uppercase font-bold tracking-wider mb-2">Info</span>
 									<ul class="">
+										<li v-if="loggedInUserStore.loggedInUserProfile.num_of_saved_posts" class="mb-2 flex">
+											<p class="font-bold me-2">
+												Antall lagrede posts: 
+											</p>
+											{{ loggedInUserStore.loggedInUserProfile.num_of_saved_posts }}
+										</li>
+										<li v-if="loggedInUserStore.loggedInUserProfile.gender" class="mb-2 flex">
+											<p class="font-bold me-2">
+												Kjønn: 
+											</p>
+											{{ loggedInUserStore.loggedInUserProfile.gender }}
+										</li>
 										<li v-if="loggedInUserStore.loggedInUserProfile.email" class="mb-2 flex">
 											<p class="font-bold me-2">
 												Epost:
@@ -59,6 +71,13 @@
 											</p>
 											{{ loggedInUserStore.loggedInUserProfile.date_of_birth }}
 										</li>
+										<li v-if="loggedInUserStore.loggedInUserProfile.date_joined" class="mb-2">
+											<p class="font-bold me-2">
+												Datoen du ble med i Bloggen:
+											</p>
+											{{ loggedInUserStore.loggedInUserProfile.date_joined }}
+										</li>
+
 									</ul>
 								</div>
 							</div>
@@ -120,6 +139,7 @@ definePageMeta({
 
 })
 
+const placeholder = ref(placeholder_profile_picture)
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
 

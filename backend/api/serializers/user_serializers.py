@@ -85,7 +85,7 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
         model = CustomUser
 
         fields = (
-            "id",
+            "id", # do I HAVE TO include this?
             "username",
             "first_name",
             "last_name",

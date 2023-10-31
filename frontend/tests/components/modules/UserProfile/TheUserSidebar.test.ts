@@ -79,12 +79,11 @@ describe('testign theusersidebar', () => {
     test('Should render the profile picture if there is a profile picture', () => {
         
         // Arrange
-        let image = wrapper.get('img(id="profile-picture")');
-        expect(image.attributes("src")).toBe("~/path/to/profile_picture.jpg")
+        let image = wrapper.get('img[id="profile-picture"]');
         // act?
 
         // Assert
-        expect(image.exists()).toBe(true)
+        expect(image.attributes("src")).toBe("~/path/to/profile_picture.jpg")
 
     })
     test("Should render temporary profile image if no profile picture prop is provided", async () => {
