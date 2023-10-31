@@ -126,7 +126,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "id",
-        # "date_published",
+        "date_published",
         "list_categories",
         "list_tags",
         "author"
@@ -200,13 +200,13 @@ class CustomUserAdmin(UserAdmin):
 
     search_fields = ("username", "email", "phone_number")
     
-    readonly_fields = ("date_joined",)
+    readonly_fields = ("date_joined", "last_login")
 
     fieldsets = (
         (None, {"fields": ("username", "email", "first_name", "last_name")}),
         (
             "Personal Information",
-            {"fields": ("gender", "date_of_birth", "address", "phone_number", "bio", "profile_picture", "followers", "date_joined")},
+            {"fields": ("gender", "date_of_birth", "address", "phone_number", "bio", "profile_picture", "followers", "last_login", "date_joined")},
         ),
     )
 

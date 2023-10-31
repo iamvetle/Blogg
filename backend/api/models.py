@@ -81,7 +81,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     profile_picture = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
     
     date_joined = models.DateTimeField(auto_now_add=True)
-    last_login = models.DateTimeField(default=timezone.now)
+    last_login = models.DateTimeField(auto_now=True)
     
     is_active = models.BooleanField(default=True)
     
@@ -134,9 +134,7 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=10000)
-    date_published = models.DateTimeField(
-        auto_created=timezone.now(), null=True, blank=True
-    )  # this is not working correctly. it is not appearing when I check on 'publish
+    date_published = models.DateTimeField(auto_now_add=True)  # this is not working correctly. it is not appearing when I check on 'publish
 
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posts"
