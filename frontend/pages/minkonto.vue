@@ -30,104 +30,36 @@
 										<span v-else>
 											{{ loggedInUserStore.loggedInUserProfile.num_of_followers }} followers
 										</span>
-										<!-- Figure this out later -->
 									</div>
 								</div>
+								
 								<hr class="my-6 border-t border-2 roundend-sm border-primary">
-								<div class="flex flex-col">
-									<span class="uppercase font-bold tracking-wider mb-2">Info</span>
-									<ul class="">
-										<li v-if="loggedInUserStore.loggedInUserProfile.num_of_saved_posts"
-											class="mb-2 flex">
-											<p class="font-bold me-2">
-												Antall lagrede posts:
-											</p>
-											{{ loggedInUserStore.loggedInUserProfile.num_of_saved_posts }}
-										</li>
-										<li v-if="loggedInUserStore.loggedInUserProfile.gender" class="mb-2 flex">
-											<p class="font-bold me-2">
-												Kjønn:
-											</p>
-											{{ loggedInUserStore.loggedInUserProfile.gender }}
-										</li>
-										<li v-if="loggedInUserStore.loggedInUserProfile.email" class="mb-2 flex">
-											<p class="font-bold me-2">
-												Epost:
-											</p>
-											{{ loggedInUserStore.loggedInUserProfile.email }}
-										</li>
-										<li v-if="loggedInUserStore.loggedInUserProfile.phone_number" class="mb-2">
-											<p class="font-bold me-2">
-												Tlf.nr:
-											</p>
-											{{ loggedInUserStore.loggedInUserProfile.phone_number }}
-										</li>
 
-										<li v-if="loggedInUserStore.loggedInUserProfile.address" class="mb-2">
-											<p class="font-bold me-2">
-												Addresse:
-											</p>
-											{{ loggedInUserStore.loggedInUserProfile.address }}
-										</li>
-										<li v-if="loggedInUserStore.loggedInUserProfile.date_of_birth" class="mb-2">
-											<p class="font-bold me-2">
-												Fødselsdato:
-											</p>
-											{{ loggedInUserStore.loggedInUserProfile.date_of_birth }}
-										</li>
-										<li v-if="loggedInUserStore.loggedInUserProfile.date_joined" class="mb-2">
-											<p class="font-bold me-2">
-												Datoen du ble med i Bloggen:
-											</p>
-											{{ loggedInUserStore.loggedInUserProfile.date_joined }}
-										</li>
-
-									</ul>
+								<div id="profile-information">
+									<MyProfileInformation />
 								</div>
 							</div>
 						</div>
 						<div>
-							<div v-if="loggedInUserStore.loggedInUserProfile.num_of_following != 0"
+							<div id="following" v-if="loggedInUserStore.loggedInUserProfile.num_of_following != 0"
 								class="items-center pt-2 ms-6">
 								<h3 class="text-lg py-3">
 									You are following:
 								</h3>
 								<div>
 									<Following v-for="(f, index) in loggedInUserStore.idArrayOfLoggedInUserFollowingUsers"
-										:key="index" :username="f" />
+									:key="index" :username="f" />
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-span-4 sm:col-span-7 xl:col-span-9">
-						<div class="bg-primary rounded-lg p-6">
-							<div class="px-5 py-7 bg-onPrimary border-primary border rounded-md">
-								<h2 class="text-xl font-bold mb-4">
-									Bio
-								</h2>
-								<p v-if="loggedInUserStore.loggedInUserProfile.bio"
-									v-text="loggedInUserStore.loggedInUserProfile.bio"></p>
-								<p v-else id="placeholder-bio">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-									finibus est vitae tortor ullamcorper, ut vestibulum velit
-									convallis. Aenean posuere risus non velit egestas suscipit. Nunc
-									finibus vel ante id euismod. Vestibulum ante ipsum primis in
-									faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam
-									erat volutpat. Nulla vulputate pharetra tellus, in luctus risus
-									rhoncus id.
-								</p>
-							</div>
+						<div id="bio">
+							<MyProfileBio />
+						</div>
 
-							<h2 class="text-xl text-onPrimary font-bold mt-8 mb-6">
-								All posts by {{ loggedInUserStore.loggedInUserProfile.first_name }}
-							</h2>
-
-							<!-- Post begin -->
-							<div v-if="postStore.loggedInUserPosts.results">
-								<ListMyPosts v-for="post in postStore.loggedInUserPosts.results" :key="post.id"
-									:post-prop="post" />
-							</div>
-							<!-- Post end -->
+						<div id="all-posts">
+							<MyProfilePostList />
 						</div>
 					</div>
 				</div>
@@ -140,6 +72,7 @@
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
 import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import MyProfilePostList from '~/components/modules/MyUser/MyProfilePostList.vue';
 
 definePageMeta({
 	layout: 'default'

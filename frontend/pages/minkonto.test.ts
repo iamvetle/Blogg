@@ -33,7 +33,7 @@ describe('Testing the page minkonto', () => {
                 plugins: [pinia],
                 stubs:{
                     Follower:true,
-                    ListMyPosts:true,
+                    MyProfilePostList:true,
                     "nuxt-link":true
                 },
             }
@@ -99,7 +99,7 @@ describe('Testing the page minkonto', () => {
         expect(wrapper.text()).toContain(54321) // num_of_following'
         expect(wrapper.text()).toContain(9172) // num_of_saved_posts
 
-        expect(wrapper.text()).toContain("9876 followers")
+        expect(wrapper.text()).toContain("9876 followers")  
         expect(wrapper.text()).toContain("You are following")
     })
 

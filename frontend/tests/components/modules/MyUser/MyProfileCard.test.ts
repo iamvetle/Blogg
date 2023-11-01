@@ -1,11 +1,11 @@
-import MyProfileCard from '~/components/modules/MyUser/MyProfileCard.vue';
+import LoggedInUserProfileCard.vue from '~/components/modules/MyUser/LoggedInUserProfileCard.vue.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 
-describe('testing myprofilecard', () => {
+describe('testing LoggedInUserProfileCard.vue', () => {
   let wrapper: VueWrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(MyProfileCard, {
+    wrapper = shallowMount(LoggedInUserProfileCard.vue, {
       global: {
         mocks: {},
         stubs: {},

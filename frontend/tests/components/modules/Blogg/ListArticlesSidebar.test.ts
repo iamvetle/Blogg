@@ -1,7 +1,7 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 
 import ListArticlesSidebar from "~/components/modules/Blogg/ListArticlesSidebar.vue";
-import MyProfileCard from "~/components/modules/MyUser/MyProfileCard.vue";
+import LoggedInUserProfileCard.vue from "~/components/modules/MyUser/LoggedInUserProfileCard.vue.vue";
 import ArticleSavedCard from "~/components/modules/MyUser/ArticleSavedCard.vue";
 import Following from "~/components/modules/MyUser/Following.vue";
 import { createTestingPinia } from '@pinia/testing';
@@ -79,7 +79,7 @@ describe('ListArticlesSidebar testing', () => {
 
 		wrapper = mount(ListArticlesSidebar, {
 			global: {
-				components: { MyProfileCard, ArticleSavedCard, Following },
+				components: { LoggedInUserProfileCard.vue, ArticleSavedCard, Following },
 				mocks: { full_name, redirect_to_author_page: mock_redirect_to_author_page },
 				plugins: [pinia]
 			}
@@ -93,7 +93,7 @@ describe('ListArticlesSidebar testing', () => {
 		expect(wrapper.exists()).toBe(true)
 	})
 
-	it('renders MyProfileCard when userdata is available', () => {
+	it('renders LoggedInUserProfileCard.vue when userdata is available', () => {
 		const myProfile = wrapper.find('[data-test="myprofile"]')
 		expect(myProfile.exists()).toBe(true)
 	})
