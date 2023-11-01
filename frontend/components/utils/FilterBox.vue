@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <span v-for="(option, index) in props.listOfOptions">
-            <BaseCheckboxOption v-model="selected[option]" @update:model-value="updateList" :key="index" :label="option" v-bind="$attrs" />
+    <div v-for="(option, index) in props.listOfOptions" :class="props.class" class="w-full">
+        <span>
+            <BaseCheckboxOption v-model="selected[option]" @update:model-value="updateList" :key="index" :label="option" v-bind="$attrs"/>
         </span>
     </div>
 </template>
@@ -53,7 +53,9 @@ const updateList = () => {
  * The prop contains an array of all of the options that can be selected from
  */
 const props = defineProps<{
-    listOfOptions: any
+    listOfOptions: any,
+    class?:string,
+    inputClass?:string,
 }>();
 
 onMounted(() => {

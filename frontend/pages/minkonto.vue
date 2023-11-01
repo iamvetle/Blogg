@@ -7,18 +7,21 @@
 						<div id="wrapper" class="bg-primary rounded-lg p-6">
 							<div v-if="loggedInUserStore.loggedInUserProfile" class="px-5 py-5 bg-onPrimary rounded-xl">
 								<div class="flex flex-col items-center">
-									<img id="profile_picture" :src="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : placeholder"
+									<img id="profile_picture"
+										:src="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : placeholder"
 										class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" alt="Profilbilde">
 									<!-- </img> -->
 									<h1 class="text-xl text-plain font-bold">
-										{{ loggedInUserStore.loggedInUserProfile.first_name }} {{ loggedInUserStore.loggedInUserProfile.last_name }}
+										{{ loggedInUserStore.loggedInUserProfile.first_name }} {{
+											loggedInUserStore.loggedInUserProfile.last_name }}
 									</h1>
 									<p class="">
 										{{ loggedInUserStore.loggedInUserProfile.username }}
 									</p>
 									<div class="mt-6 flex flex-wrap gap-4 justify-center">
-	
-										<span v-if="loggedInUserStore.loggedInUserProfile.num_of_following">{{ loggedInUserStore.loggedInUserProfile.num_of_following }} following</span>
+
+										<span v-if="loggedInUserStore.loggedInUserProfile.num_of_following">{{
+											loggedInUserStore.loggedInUserProfile.num_of_following }} following</span>
 
 										<span v-if="loggedInUserStore.loggedInUserProfile.num_of_followers === 1"
 											class="bg-onPrimary border-onPrimaryContainer border-2 text-onPrimaryContainer py-2 px-4 rounded">
@@ -34,15 +37,16 @@
 								<div class="flex flex-col">
 									<span class="uppercase font-bold tracking-wider mb-2">Info</span>
 									<ul class="">
-										<li v-if="loggedInUserStore.loggedInUserProfile.num_of_saved_posts" class="mb-2 flex">
+										<li v-if="loggedInUserStore.loggedInUserProfile.num_of_saved_posts"
+											class="mb-2 flex">
 											<p class="font-bold me-2">
-												Antall lagrede posts: 
+												Antall lagrede posts:
 											</p>
 											{{ loggedInUserStore.loggedInUserProfile.num_of_saved_posts }}
 										</li>
 										<li v-if="loggedInUserStore.loggedInUserProfile.gender" class="mb-2 flex">
 											<p class="font-bold me-2">
-												Kjønn: 
+												Kjønn:
 											</p>
 											{{ loggedInUserStore.loggedInUserProfile.gender }}
 										</li>
@@ -83,12 +87,14 @@
 							</div>
 						</div>
 						<div>
-							<div v-if="loggedInUserStore.loggedInUserProfile.num_of_following != 0" class="items-center pt-2 ms-6">
+							<div v-if="loggedInUserStore.loggedInUserProfile.num_of_following != 0"
+								class="items-center pt-2 ms-6">
 								<h3 class="text-lg py-3">
 									You are following:
 								</h3>
 								<div>
-									<Following v-for="(f, index) in loggedInUserStore.idArrayOfLoggedInUserFollowingUsers" :key="index" :username="f"/>
+									<Following v-for="(f, index) in loggedInUserStore.idArrayOfLoggedInUserFollowingUsers"
+										:key="index" :username="f" />
 								</div>
 							</div>
 						</div>
@@ -99,7 +105,8 @@
 								<h2 class="text-xl font-bold mb-4">
 									Bio
 								</h2>
-								<p v-if="loggedInUserStore.loggedInUserProfile.bio" v-text="loggedInUserStore.loggedInUserProfile.bio"></p>
+								<p v-if="loggedInUserStore.loggedInUserProfile.bio"
+									v-text="loggedInUserStore.loggedInUserProfile.bio"></p>
 								<p v-else id="placeholder-bio">
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
 									finibus est vitae tortor ullamcorper, ut vestibulum velit
@@ -135,7 +142,7 @@ import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 definePageMeta({
-	layout:'default'
+	layout: 'default'
 
 })
 

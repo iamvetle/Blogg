@@ -12,14 +12,14 @@
 					class="mb-4 bg-primary rounded-lg text-onPrimary">
 					<span class="mb-2 w-full flex items-center text-center justify-center">
 						<button
-							class="hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
+							class="text-lg hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
 							@click="changeDropdown">
 							Filter posts
 						</button>
 					</span>
 					<div>
 						<KeepAlive>
-							<component :is="dropdown" id="dropdown-content" :list-of-options="tagOptions" class="mb-2"
+							<component :is="dropdown" id="dropdown-content" :list-of-options="tagOptions" class="w-full mb-2 px-2 py-1"
 								@output="action" />
 						</KeepAlive>
 					</div>
