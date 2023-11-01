@@ -156,7 +156,7 @@ class PostImage(models.Model):
 
 class PostVideo(models.Model):
     post = models.ForeignKey(Post, related_name="videos", on_delete=models.CASCADE)
-    video = models.FileField(upload_to="post_videos")
+    video = models.FileField(upload_to="post_videos/")
     
     def __str__(self):
         return f'Video for post {self.post}'

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, Post, Comment, Tag, Category, SavedPost
+from .models import CustomUser, Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 
@@ -80,12 +80,19 @@ class CategoryAdmin(admin.ModelAdmin):
 
     readonly_field = ("name",)
 
+class PostVideoInline(admin.TabularInline):
+    model = PostVideo
+    extra = 1
+    
+class PostImageInline(admin.TabularInline):
+    model = PostImage
+    extra = 1
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     save_on_top = True
     model = Post
-    inlines = [CommentInline]
+    inlines = [CommentInline, PostVideoInline, PostImageInline]
 
     def list_categories(self, obj):
         """Turns each object/tag into a string, that are concatenated into one long string"""
@@ -140,11 +147,11 @@ class PostAdmin(admin.ModelAdmin):
         "content",
     )
 
-    readonly_fields = ("date_published", "body")
+    readonly_fields = ("id", "date_published", "body")
 
 
     fieldsets = (
-        (None, {"fields": ("title", "body", "content", "author")}),
+        (None, {"fields": ("id", "title", "body", "content", "author")}),
         ("Additional", {"fields": ("tags", "categories")}),
         ("Extra", {"fields": ("date_published",)}),
     )
