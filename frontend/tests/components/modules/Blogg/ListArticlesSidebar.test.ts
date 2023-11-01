@@ -1,11 +1,10 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 
 import ListArticlesSidebar from "~/components/modules/Blogg/ListArticlesSidebar.vue";
-import LoggedInUserProfileCard.vue from "~/components/modules/MyUser/LoggedInUserProfileCard.vue.vue";
+import LoggedInUserProfileCard from "~/components/modules/MyUser/LoggedInUserProfileCard.vue";
 import ArticleSavedCard from "~/components/modules/MyUser/ArticleSavedCard.vue";
 import Following from "~/components/modules/MyUser/Following.vue";
 import { createTestingPinia } from '@pinia/testing';
-import { useGeneralStore } from "~/store/generalStore";
 import { ref } from 'vue'
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
@@ -79,7 +78,7 @@ describe('ListArticlesSidebar testing', () => {
 
 		wrapper = mount(ListArticlesSidebar, {
 			global: {
-				components: { LoggedInUserProfileCard.vue, ArticleSavedCard, Following },
+				components: { LoggedInUserProfileCard, ArticleSavedCard, Following },
 				mocks: { full_name, redirect_to_author_page: mock_redirect_to_author_page },
 				plugins: [pinia]
 			}
@@ -93,7 +92,7 @@ describe('ListArticlesSidebar testing', () => {
 		expect(wrapper.exists()).toBe(true)
 	})
 
-	it('renders LoggedInUserProfileCard.vue when userdata is available', () => {
+	it('renders LoggedInUserProfileCard when userdata is available', () => {
 		const myProfile = wrapper.find('[data-test="myprofile"]')
 		expect(myProfile.exists()).toBe(true)
 	})
@@ -126,11 +125,11 @@ describe('ListArticlesSidebar testing', () => {
 	}),
 
 		test("renders my saved posts", () => {
-			expect(wrapper.text()).toContain("saved1guy")
-			expect(wrapper.text()).toContain("saved1testtitle")
+			expect(wrapper.html()).toContain("saved1guy")
+			expect(wrapper.html()).toContain("saved1testtitle")
 
-			expect(wrapper.text()).toContain("saved2guy")
-			expect(wrapper.text()).toContain("saved2testtitle")
+			expect(wrapper.html()).toContain("saved2guy")
+			expect(wrapper.html()).toContain("saved2testtitle")
 
 		})
 

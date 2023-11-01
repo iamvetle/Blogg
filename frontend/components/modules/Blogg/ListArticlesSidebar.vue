@@ -3,7 +3,7 @@
 
 		<div data-test="myprofile" class="w-full">
 
-			<my-profile-card class="w-full" :profile-picture-prop="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : profile_picture">
+			<logged-in-user-profile-card class="w-full" :profile-picture-prop="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : profile_picture">
 
 				<template #username v-if="loggedInUserStore.loggedInUserProfile.username">
 					{{ loggedInUserStore.loggedInUserProfile.username }}
@@ -33,7 +33,7 @@
 					</span>
 				</template>
 
-			</my-profile-card>
+			</logged-in-user-profile-card>
 		</div>
 
 		<hr class="mb-8">
