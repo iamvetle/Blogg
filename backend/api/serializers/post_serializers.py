@@ -41,21 +41,20 @@ class PostSerializer(serializers.ModelSerializer):
     """Serializes the input. Can be used on both single and multiple post objects"""
 
     author = OnlyAuthorCustomUserSerializer(read_only=True)
-    # SerialiserMethodField is read_only by default
-    date_published = serializers.SerializerMethodField(required=False) # I don't want to end up being able to update date_published    
+    date_published = serializers.SerializerMethodField(required=False) # read only by deafault I don't want to end up being able to update date_published    
     
     content = serializers.CharField(max_length=10000)
     tags = serializers.StringRelatedField(many=True, required=False)
     categories = serializers.StringRelatedField(many=True, required=False)
     
-    images = PostImageSerializer(many=True, required=False)
-    videos = PostVideoSerializer(many=True, required=False)
+    images = PostImageSerializer(many=True, required=False) # Cannot be updated
+    videos = PostVideoSerializer(many=True, required=False) # Cannot be updated
 
     class Meta:
         model = Post
 
         fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos"]
-        read_only_fields = ["id"]
+        read_only_fields = ["id", "date_published", "author"]
     
     def create(self, validated_data):
         validated_data['content'] = format_html(validated_data['content'])

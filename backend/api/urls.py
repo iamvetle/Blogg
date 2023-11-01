@@ -4,14 +4,15 @@ from django.urls import path
 # Local
 from api.views.auth_views import LoginView, RegisterUserView
 from api.views.post_views import (
-    PostSingleView,
+    PostReadSingleView,
     PostCreateView,
     PostAllLoggedInUserView,
     PostMultipleSnippetView,
     PostSaveView,
     PostAllSavedLoggedInUserView,
     PostAllNormalUserView,
-    PostDeleteView
+    PostDeleteView,
+    PostEditSingleView
 )
 from api.views.user_views import (
     LoggedInUserProfileView,
@@ -42,7 +43,13 @@ urlpatterns = [
     # Paths related to the logged-in user
     path("min-side/", LoggedInUserProfileView.as_view(), name="min_side"),
     path("min-side/posts/", PostAllLoggedInUserView.as_view(), name="my_posts"),
-    path("min-side/posts/<int:post_id>/delete/", PostDeleteView.as_view(), name="delete_my_post"),  
+    
+    path("min-side/posts/<int:pk>/", PostEditSingleView.as_view(), name="get_my_post"), # weird if I don't have this?
+    path("min-side/posts/<int:pk>/edit/", PostEditSingleView.as_view(), name="edit_my_post"), # DELETE, PATCH (update)
+    path("min-side/posts/<int:pk>/delete/", PostEditSingleView.as_view(), name="delete_my_post"),
+    path("min-side/posts/<int:pk>/update/", PostEditSingleView.as_view(), name="update_my_post"),
+    path("min-side/posts/<int:pk>/replace/", PostEditSingleView.as_view(), name="replace_my_post"),
+      
     path("min-side/followers/", LoggedInUserAllFollowers.as_view(), name="my_followers"),
     path("min-side/following/", LoggedInUserAllFollowing.as_view(), name="my_following"),
     
@@ -50,7 +57,7 @@ urlpatterns = [
     path("newpost/", PostCreateView.as_view(), name="new_post"),
     
     path("posts/saved/", PostAllSavedLoggedInUserView.as_view(), name="saved_posts"),
-    path("post/<int:pk>/", PostSingleView.as_view(), name="single_post"),
+    path("post/<int:pk>/", PostReadSingleView.as_view(), name="single_post"),
     path("post/<int:post_id>/save/", PostSaveView.as_view(), name="save_unsave_post"),
     
     # User-specific paths (Most general last)

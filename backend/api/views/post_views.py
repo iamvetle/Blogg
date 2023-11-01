@@ -12,7 +12,7 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.generics import ListAPIView, RetrieveAPIView, GenericAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, GenericAPIView, RetrieveUpdateDestroyAPIView
 
 
 # Django Filter
@@ -99,13 +99,35 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
 
     http_method_names = ["get"]
     
-class PostSingleView(RetrieveAPIView):
-    """Retrieves a single post"""
+class PostReadSingleView(RetrieveAPIView):
+    """Retrieves a single post to read"""
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostSerializer
     lookup_field = "pk"
     queryset = Post.objects.all()
+    
+    http_method_names = ["get"]
+
+    
+class PostEditSingleView(RetrieveUpdateDestroyAPIView):
+    """Retrieves, updates or deletes a single post"""
+    
+    permission_classes = [IsAuthenticated]
+    serializer_class = PostSerializer
+    lookup_field = "pk"
+    queryset = Post.objects.all()
+    
+    lookup_field = "pk"
+
+    
+    http_method_names = ["get", "patch", "delete"]
+    
+    def get_queryset(self):
+        all_posts = super().get_queryset()
+        posts_only_made_by_the_user = all_posts.filter(author=self.request.user)
+        
+        return posts_only_made_by_the_user
     
 class PostDeleteView(APIView):
     ''' Deletes a post, if ask for by the user owning the post'''
