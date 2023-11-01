@@ -66,7 +66,7 @@ class PostAllSavedLoggedInUserView(ListAPIView):  # /api/saved/
 
 
 class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
-    """Returns information about a specified user"""
+    """Returns All of the posts made by the specified user"""
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer

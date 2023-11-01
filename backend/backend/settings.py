@@ -140,9 +140,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 INTERNAL_IPS = ["127.0.0.1", "localhost"]  # For Django Debug Toolbar
 
 REST_FRAMEWORK = {  # For token authentication (DRF)
-    "DEFAULT_AUTHENTICATION_CLASSES": (
+    "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
-    ),
+    ],
     'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomLimitOffsetPagination',
     'PAGE_SIZE': 10
 }
