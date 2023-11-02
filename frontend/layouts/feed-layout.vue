@@ -9,7 +9,6 @@
 				<slot />
 			</div>
 		</div>
-		<span>feed</span>
 		<div class="mt-auto">
 			<FeedPagination v-if="postStore.posts" />
 			<LazyTheFooter />

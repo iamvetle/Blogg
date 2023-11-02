@@ -66,7 +66,7 @@
 			</div>
 
 			<p v-if="loggedInUserStore.loggedInUserProfile.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">
-				Se alle ({{ loggedInUserStore.loggedInUserProfile.num_of_saved_posts }})
+				<!-- Se alle ({{ loggedInUserStore.loggedInUserProfile.num_of_saved_posts }}) -->
 			</p>
 			<p v-else>
 				Du har ingen lagrede innlegg
@@ -86,8 +86,9 @@
 					<Following v-for="(following, index) in loggedInUserStore.loggedInUserProfile.following" :username="following.username"
 						:key="index" />
 				</div>
-				<span class="text-xs text-primary hover:text-primaryFixed">Se alle ({{ loggedInUserStore.loggedInUserProfile.num_of_following
-				}})</span>
+				<!-- <span class="text-xs text-primary hover:text-primaryFixed">
+					Se alle ({{ loggedInUserStore.loggedInUserProfile.num_of_following}})
+				</span> -->
 			</div>
 
 			<div v-if="loggedInUserStore.loggedInUserProfile.num_of_following == 0">
