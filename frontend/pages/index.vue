@@ -18,12 +18,14 @@
 						</button>
 					</span>
 					<div>
+						<!-- The filter dropdown compontent-->
 						<KeepAlive>
-							<component :is="dropdown" id="dropdown-content" :list-of-options="tagOptions" class="w-full mb-2 px-2 py-1"
-								@output="action" />
+							<component :is="dropdown" id="dropdown-content" :list-of-options="tagOptions"
+								class="w-full mb-2 px-2 py-1" @output="action" />
 						</KeepAlive>
 					</div>
 				</div>
+				<!-- This lists the (saved)articles in thes sidebar -->
 				<ListArticlesSidebar class="w-full" v-if="loggedInUserStore.loggedInUserProfile" />
 			</div>
 		</div>
@@ -45,7 +47,7 @@ const loggedInUserStore = useLoggedInUserStore()
 const paginationStore = usePaginationStore()
 
 definePageMeta({
-	layout:"feed-layout"
+	layout: "feed-layout"
 })
 
 /**
@@ -76,6 +78,12 @@ const changeDropdown = () => {
 }
 
 
+
+/**
+ * NEW: I removed the IF statements that was meant to check whether it was already information/posts there already,
+ * but it said it was when it wasnt sometimes, which was very weird, so I removed it on all->
+ */
+
 /**
  * All of the data that is needed from the api endpoint is fetched here.
  */
@@ -84,28 +92,22 @@ onMounted(async () => {
 	if (checkLocalInfo() == null) {
 		return null
 	}
-	console.log("Index is mounted")
 	/**
 	* Fetches the profile information of the logged-in user
 	*/
-	if (loggedInUserStore.loggedInUserProfile == null) {
-		await getLoggedInUserProfile()
-	}
+	await getLoggedInUserProfile()
 	/**
 	 * Fetches all posts in snippets (not full content length)
 	   */
-	if (postStore.posts == null) {
-		await getPostMultipleSnippet()
-	}
+	await getPostMultipleSnippet()
+
 
 	/** 
 	 * Fetches all possible tags. And then assigns all of them in a variable in the post store
 	*/
 
-	if (postStore.allTags == null) {
-		await getAllTags()
+	await getAllTags()
 
-	}
 })
 
 /**
