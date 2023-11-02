@@ -1,10 +1,18 @@
 <template>
   <div>
-    <FilterTool />
+    <button></button>
+    <span v-if="sesamy">Please</span>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
+
+const sesamy = ref(false)
+
+onMounted(() => {
+  sesamy.value = getMethod()
+})
+
 
 </script>
 

@@ -1,19 +1,18 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 
 import ListArticlesSidebar from "~/components/modules/Blogg/ListArticlesSidebar.vue";
-import MyProfileCard from "~/components/modules/MyUser/MyProfileCard.vue";
+import LoggedInUserProfileCard from "~/components/modules/MyUser/LoggedInUserProfileCard.vue";
 import ArticleSavedCard from "~/components/modules/MyUser/ArticleSavedCard.vue";
 import Following from "~/components/modules/MyUser/Following.vue";
 import { createTestingPinia } from '@pinia/testing';
-import { useGeneralStore } from "~/store/generalStore";
 import { ref } from 'vue'
-import { LoggedInUserProfileType } from '../../../../typescript/post_interfaces';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 let wrapper: VueWrapper
-let store
+let loggedInUserStore:any
 let pinia
 
-const mock_redirect_to_author_page = (author:any) => {
+const mock_redirect_to_author_page = (author: any) => {
 	author = null
 	return null
 }
@@ -23,13 +22,13 @@ describe('ListArticlesSidebar testing', () => {
 	beforeAll(async () => {
 
 		pinia = createTestingPinia()
-		store = useGeneralStore(pinia)
+		loggedInUserStore = useLoggedInUserStore()
 
 
 
 
 		// Mock the getLoggedInUserProfile function
-		store.personalUser = {
+		loggedInUserStore.loggedInUserProfile = {
 			"id": 13,
 			"email": "person@gmail.com",
 			"username": "iamperson",
@@ -55,7 +54,7 @@ describe('ListArticlesSidebar testing', () => {
 			"saved_posts": [
 				{
 					"post": {
-						"id":1,
+						"id": 1,
 						"title": " saved1testtitle",
 						"username": "saved1guy",
 						"first_name": "saved1guyfirstname",
@@ -64,7 +63,7 @@ describe('ListArticlesSidebar testing', () => {
 				},
 				{
 					"post": {
-						"id":2,
+						"id": 2,
 						"title": " saved2testtitle",
 						"username": "saved2guy",
 						"first_name": "saved2guyfirstname",
@@ -77,13 +76,10 @@ describe('ListArticlesSidebar testing', () => {
 
 		const full_name = ref("iamfirstname iamlastname")
 
-
-
-
 		wrapper = mount(ListArticlesSidebar, {
 			global: {
-				components: { MyProfileCard, ArticleSavedCard, Following },
-				mocks: { full_name, redirect_to_author_page:mock_redirect_to_author_page },
+				components: { LoggedInUserProfileCard, ArticleSavedCard, Following },
+				mocks: { full_name, redirect_to_author_page: mock_redirect_to_author_page },
 				plugins: [pinia]
 			}
 		});
@@ -96,7 +92,7 @@ describe('ListArticlesSidebar testing', () => {
 		expect(wrapper.exists()).toBe(true)
 	})
 
-	it('renders MyProfileCard when userdata is available', () => {
+	it('renders LoggedInUserProfileCard when userdata is available', () => {
 		const myProfile = wrapper.find('[data-test="myprofile"]')
 		expect(myProfile.exists()).toBe(true)
 	})
@@ -129,25 +125,25 @@ describe('ListArticlesSidebar testing', () => {
 	}),
 
 		test("renders my saved posts", () => {
-			expect(wrapper.text()).toContain("saved1guy")
-			expect(wrapper.text()).toContain("saved1testtitle")
+			expect(wrapper.html()).toContain("saved1guy")
+			expect(wrapper.html()).toContain("saved1testtitle")
 
-			expect(wrapper.text()).toContain("saved2guy")
-			expect(wrapper.text()).toContain("saved2testtitle")
+			expect(wrapper.html()).toContain("saved2guy")
+			expect(wrapper.html()).toContain("saved2testtitle")
 
 		})
 
-		test('Should call the function to redirect to the post page', async () => {
-		  const button = wrapper.find("[data-test='redirect_to_author']")
+	test('Should call the function to redirect to the post page', async () => {
+		const clickspan = wrapper.find("[data-test='redirect_to_author']")
 
-		  expect(button.exists()).toBe(true)
+		expect(clickspan.exists()).toBe(true)
 
-		  button.trigger("click")
+		clickspan.trigger("click")
 
-		  await wrapper.vm.$nextTick()
+		await wrapper.vm.$nextTick()
 
-		  // I have no way to assert whether the function has called or not
-			
-		
-		})
+		// I have no way to assert whether the function has called or not
+
+
+	})
 })

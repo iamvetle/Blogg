@@ -1,4 +1,4 @@
-from api.models import Post, Comment, Tag, Category, SavedPost
+from api.models import Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
 from api.serializers.only_serializers import (
     OnlyAuthorCustomUserSerializer,
     OnlyTitlePostSerializer,
@@ -7,6 +7,8 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from django.utils.safestring import mark_safe
 from django.utils.html import format_html
+
+from time import strftime
 
 CustomUser = get_user_model()
 
@@ -22,46 +24,68 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ["name"]
 
+        
+class PostImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostImage
+        fields = ['image']
+        
+class PostVideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PostVideo
+        fields = ['video']
 
+
+# Is used for create and for detail retrieve
 class PostSerializer(serializers.ModelSerializer):
     """Serializes the input. Can be used on both single and multiple post objects"""
 
     author = OnlyAuthorCustomUserSerializer(read_only=True)
-    # Makes sure that not everything in the 'author' object gets returned
-
-    date_published = serializers.SerializerMethodField()
+    date_published = serializers.SerializerMethodField(required=False) # read only by deafault I don't want to end up being able to update date_published    
+    
+    content = serializers.CharField(max_length=10000)
+    tags = serializers.StringRelatedField(many=True, required=False)
+    categories = serializers.StringRelatedField(many=True, required=False)
+    
+    images = PostImageSerializer(many=True, required=False) # Cannot be updated
+    videos = PostVideoSerializer(many=True, required=False) # Cannot be updated
 
     class Meta:
         model = Post
 
-        content = serializers.SerializerMethodField()
-
-        fields = ["id", "title", "content", "author", "date_published"]
-        extra_kwargs = {
-            "date_published": {"read_only": True},
-        }
+        fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos"]
+        read_only_fields = ["id", "date_published", "author"]
+    
+    def create(self, validated_data):
+        validated_data['content'] = format_html(validated_data['content'])
+        author = self.context['request'].user
+        post = Post.objects.create(**validated_data, author=author)
+        return post
 
     def get_content(self, obj):
         content = obj.content
-
+        
         content = format_html(content)
         return content
 
     def get_date_published(self, obj):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
+        
+        # def create?
 
+class PostShortenSerializer(serializers.ModelSerializer):
+    """Shortenes the post. Can be used on both multiple and single posts"""
 
-class PostShortenSerializer(serializers.ModelSerializer):  # Bare en liten del av posts
-    """Shortenes the content. Can be used on both multiple and single posts"""
-
-    content_snippet = serializers.SerializerMethodField()  # Limited to 225 char
+    content_snippet = serializers.SerializerMethodField(read_only=True)  # Limited to 200 char
     author = OnlyAuthorCustomUserSerializer(read_only=True)
-    date_published = serializers.SerializerMethodField()
+    date_published = serializers.SerializerMethodField(read_only=True)
 
     tags = TagSerializer(many=True, read_only=True)
     categories = CategorySerializer(many=True, read_only=True)
-
+    
+    images = PostImageSerializer(many=True, read_only=True)
+    
     class Meta:
         model = Post
 
@@ -73,20 +97,14 @@ class PostShortenSerializer(serializers.ModelSerializer):  # Bare en liten del a
             "date_published",
             "tags",
             "categories",
+            "images",
         ]
-        extra_kwargs = {
-            "id": {"read_only": True},
-            "date_published": {"read_only": True},
-            "title": {"read_only": True},
-            "content_snippet": {"read_only": True},
-            "author": {"read_only": True},
-            "tags": {"read_only": True},
-            "categories": {"read_only": True},
-        }
+        
+        read_only_fields = ['title']
 
     def get_content_snippet(self, obj):
-        content_snippet = obj.content[:225]
-        if len(content_snippet) >= 100:
+        content_snippet = obj.content[:200]
+        if len(content_snippet) >= 200:
             content_snippet = content_snippet + " ..."
 
         return content_snippet
@@ -130,7 +148,6 @@ class CommentSerializer(serializers.ModelSerializer):  # Not in use
     def get_date_published(self, obj):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
-
 
 class PostSaveStyleSerializer(serializers.ModelSerializer):
     """Proccesses the data and returns only the post that is saved.

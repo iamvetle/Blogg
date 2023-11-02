@@ -15,7 +15,7 @@ class AllTagsView(ListCreateAPIView):
     """Returns all tags"""
     permission_classes = [IsAuthenticated]
     serializer_class = TagSerializer
-    pagination_class = GenericPagination  # will probably remove this later
+    pagination_class = None  # will probably remove this later
 
     queryset = Tag.objects.all()
 

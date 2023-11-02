@@ -2,7 +2,7 @@
 from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
-
+from rest_framework.filters import SearchFilter
 from django.core.exceptions import ObjectDoesNotExist
 # Third-party libraries
 
@@ -12,11 +12,11 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, GenericAPIView, RetrieveUpdateDestroyAPIView
 
 
 # Django Filter
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import rest_framework as filters
 from api.services.pagination_services import CustomLimitOffsetPagination
 from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
@@ -28,7 +28,7 @@ from api.serializers.post_serializers import (
     PostShortenSerializer,
 )
 from api.serializers.user_serializers import NormalUserSerializer
-from api.filters import PostFilter
+from api.filters import CustomPostFilter
 from api.services.post_services import CreatePostService, PostSnippetService
 from api.services.search_services import SearchService
 
@@ -66,7 +66,7 @@ class PostAllSavedLoggedInUserView(ListAPIView):  # /api/saved/
 
 
 class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
-    """Returns information about a specified user"""
+    """Returns All of the posts made by the specified user"""
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
@@ -85,57 +85,62 @@ class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
 
 class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     """Responds {x} amount of posts as snippets.
-    The response is tailored after the filter parameters in the url fetch."""
+    The response is tailored after the search and filter parameters in the url fetch."""
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
-    pagination_class = GenericPagination
-
-    filter_backends = [DjangoFilterBackend]
-    filterset_class = PostFilter
+    # It paginates automatically - se settings.py
+    filter_backends = [filters.DjangoFilterBackend, SearchFilter] # TODO might add sorting later
+    filterset_class = CustomPostFilter
+    
+    search_fields = ['title', 'content', 'author__username']
 
     queryset = Post.objects.all()
 
     http_method_names = ["get"]
-
-class PostMultipleAfterSearchView(APIView):  # /api/search/
-    """Responses with a filter list of {x} amount of posts"""  # for filtering options look at filters.py
-
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request, *args, **kwargs):
-        query = request.query_params.get("q", None)
-
-        if query is not None:
-            queryset = SearchService.filtered_search(request)
-            # Filters the search
-
-            if queryset is None:
-                return Response("No results found", status=status.HTTP_400_BAD_REQUEST)
-        else:
-            queryset = Post.objects.all()
-
-        paginator = CustomLimitOffsetPagination()
-        paginated_results = paginator.paginate_queryset(queryset, request)
-
-        serializer = PostShortenSerializer(paginated_results, many=True)
-        response = paginator.get_paginated_response(serializer.data)
-
-        if response != None:
-            return Response(response, status=status.HTTP_200_OK)
-
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
-class PostSingleView(RetrieveAPIView):
-    """Retrieves a single post"""
+    
+class PostReadSingleView(RetrieveAPIView):
+    """Retrieves a single post to read"""
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostSerializer
     lookup_field = "pk"
     queryset = Post.objects.all()
+    
+    http_method_names = ["get"]
 
+    
+class PostEditSingleView(RetrieveUpdateDestroyAPIView):
+    """Retrieves, updates or deletes a single post"""
+    
+    permission_classes = [IsAuthenticated]
+    serializer_class = PostSerializer
+    lookup_field = "pk"
+    queryset = Post.objects.all()
+    
+    lookup_field = "pk"
+
+    
+    http_method_names = ["get", "patch", "delete"]
+    
+    def get_queryset(self):
+        all_posts = super().get_queryset()
+        posts_only_made_by_the_user = all_posts.filter(author=self.request.user)
+        
+        return posts_only_made_by_the_user
+    
+class PostDeleteView(APIView):
+    ''' Deletes a post, if ask for by the user owning the post'''
+    permission_classes = [IsAuthenticated]
+    
+    def delete(self, request, post_id):
+        post = get_object_or_404(Post, id=post_id)
+        
+        if post.author != request.user:
+            return Response(status=status.HTTP_403_FORBIDDEN, data={"detail": "You do not have permission to delete this post."})
+        else:
+            post.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PostSaveView(APIView):
     """Saves or un-saves a requested post for the user"""
@@ -177,12 +182,12 @@ class PostCreateView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        post_data = request
+        
 
-        response = CreatePostService.create_new_post(post_data)
-
-        if response is not None:
-            print(response.data)
-            return Response(response.data, status=status.HTTP_201_CREATED)
+        serializer = PostSerializer(data=request.data, context={'request': request})        
+        if serializer.is_valid():
+            serializer.save()
+                        
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)

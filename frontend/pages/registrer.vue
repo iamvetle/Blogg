@@ -14,5 +14,7 @@
 
 <script setup lang="ts">
 
-// huske definepagedata senere
+/** 
+ * @todo huske definepagedata senere
+ */
 </script>

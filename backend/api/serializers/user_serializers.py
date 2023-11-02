@@ -6,6 +6,7 @@ from rest_framework import serializers
 
 # Local application imports
 from api.serializers.post_serializers import PostSaveStyleSerializer
+from api.models import Post
 
 CustomUser = get_user_model()
 
@@ -18,6 +19,8 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
 
     following = serializers.SerializerMethodField()
     num_of_following = serializers.SerializerMethodField()
+    
+    num_of_posts_published = serializers.SerializerMethodField()
 
     def get_saved_posts(self, obj):
         saved_posts = obj.saved_posts.all()
@@ -29,13 +32,16 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
 
     def get_num_of_saved_posts(self, obj):
         """Calculates and returns the total number of saved posts the object has"""
+        num_of_saved_posts = 0
+        
         saved_posts = obj.saved_posts.all()
         saved_posts_list = list(saved_posts)
         num_of_saved_posts = len(saved_posts_list)
+        
         if num_of_saved_posts is not None:
             return num_of_saved_posts
         else:
-            return 0
+            return num_of_saved_posts
 
     def get_followers(self, obj):
         """Returns all followers objects"""
@@ -80,38 +86,65 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
 
         except:
             return num_of_following
-
+        
+    def get_num_of_posts_published(self, obj):
+        """Returns a number - the amount of posts the user has published"""
+        num_of_posts_published = 0
+                
+        try:
+            all_posts_published_by_the_loggedIn_user = list(obj.posts.all())
+            
+            num_of_posts_published = len(all_posts_published_by_the_loggedIn_user)
+            
+            return num_of_posts_published
+        
+        except:
+            return num_of_posts_published
+            
     class Meta:
         model = CustomUser
 
         fields = (
-            "id",
+            "id", # do I HAVE TO include this?
             "username",
             "first_name",
             "last_name",
             "email",
-            "age",
+            "bio",
+            "date_of_birth",
             "address",
+            "city",
+            "state",
+            "postal_code",
+            "country",
+            "date_joined",
+            "gender",
             "phone_number",
-            "nickname",
+            "num_of_posts_published",
             "following",
             "num_of_following",
             "followers",
             "num_of_followers",
             "saved_posts",
             "num_of_saved_posts",
+            "profile_picture",
         )
         extra_kwargs = {
             "first_name": {"required": True},
             "last_name": {"required": True},
             "email": {"required": True},
             "username": {"required": True},
+            "profile_picture": {"required": False},
+            "date_joined": {"read_only": True}
+
         }
 
 
 class NormalUserSerializer(serializers.ModelSerializer):
     num_of_followers = serializers.SerializerMethodField()
     num_of_following = serializers.SerializerMethodField()
+    
+    num_of_posts_published = serializers.SerializerMethodField()
 
     class Meta:
         model = CustomUser
@@ -122,6 +155,9 @@ class NormalUserSerializer(serializers.ModelSerializer):
             "last_name",
             "num_of_followers",
             "num_of_following",
+            "num_of_posts_published",
+            "bio",
+            "profile_picture",
         ]
 
     def get_num_of_followers(self, obj):
@@ -150,6 +186,19 @@ class NormalUserSerializer(serializers.ModelSerializer):
         except:
             return num_of_following
 
+    def get_num_of_posts_published(self, obj):
+        """Returns a number - the amount of posts the user has published"""
+        num_of_posts_published = 0
+                
+        try:
+            all_posts_published_by_the_loggedIn_user = list(obj.posts.all())
+            
+            num_of_posts_published = len(all_posts_published_by_the_loggedIn_user)
+            
+            return num_of_posts_published
+        
+        except:
+            return num_of_posts_published
 
 class FollowerSerializer(serializers.ModelSerializer):
     """Returns the username of the object"""

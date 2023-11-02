@@ -1,9 +1,7 @@
 <template>
-	<div id="site-wrapper" class="bg-background flex flex-col min-h-screen">
-		<div id="modal-root"></div>
-
+	<div id="site-wrapper" class="bg-background flex flex-col min-h-screen flex-1">
 		<!-- Background color -->
-		<div class="flex-1 flex flex-col">
+		<div class="">
 			<ClientOnly>
 				<TheNavbar />
 			</ClientOnly>
@@ -12,16 +10,16 @@
 			</div>
 		</div>
 		<div class="mt-auto">
-			<FeedPagination v-if="store.posts" />
+			<FeedPagination v-if="postStore.posts" />
 			<LazyTheFooter />
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '~/store/generalStore';
+import { usePostStore } from '~/store/postStore';
 
-const store = useGeneralStore()
+const postStore = usePostStore()
 
 </script>
 

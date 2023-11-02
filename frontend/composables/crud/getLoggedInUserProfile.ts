@@ -1,47 +1,76 @@
-import axios from "axios";
-import { useGeneralStore } from "~/store/generalStore";
+import { getToken } from '../getToken';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import { usePostStore } from '~/store/postStore';
 
+/**
+ * Fetches the profile information about the logged in user.
+ * 
+ * Also 'resets' and re-populates the two arrays of 'users following' and
+ * 'saved posts'
+ * 
+ * Stores the information in different store variables
+ *  
+ * @returns - The request response (.data, .status), or just null
+ */
 export const getLoggedInUserProfile = async () => {
-try {
-	const store = useGeneralStore()
 
-	const LoggedinUserURL = "http://localhost:8888/api/min-side/"
+	/**
+	 * Fetches the token from local storage, or just returns null.
+	 */
+	const loggedInUserStore = useLoggedInUserStore()
+	const loggedInUserProfileURL = "http://localhost:8888/api/min-side/"
 
-	const token = localStorage.getItem("token");
-	!token ? console.log("no token") : "";
+	const token = getToken()
 
-	const headers = {
-	"Content-Type": "application/json",
-	Authorization: `Token ${token}`,
-	};
+	if (token) {
+		const headers = {
+			"Content-Type": "application/json",
+			Authorization: `Token ${token}`,
+		};
 
-	const response = await axios.get(LoggedinUserURL, { headers });
-	console.log("OK: fetched personal user account", response.data); // print to self
-
-	store.personalUser = response.data as LoggedInUserProfileType
-	console.dir(response.data)
-
-	store.idArrayOfSavedPosts = []
-	store.idArrayOfLoggedInUserFollowingUsers=[]
+		/**
+		 * The actual fetching function for the logged in user profile information
+		 */
 
 
-	for (const savedPost of store.personalUser.saved_posts) {
-	console.log(savedPost.post.id) // print to self
+		const response = await getMethod(loggedInUserProfileURL, headers)
 
-	store.idArrayOfSavedPosts.push(savedPost.post.id)
+		if (response) {
+
+			loggedInUserStore.loggedInUserProfile = response.data as LoggedInUserProfileType
+
+			/**
+			 * Turn it empty, in order to populate it afterwords.
+			 */
+			loggedInUserStore.idArrayOfSavedPosts = []
+			loggedInUserStore.idArrayOfLoggedInUserFollowingUsers = []
+
+			/**
+			 * Populates the array with all of the posts (id) the user has saved
+			 */
+			for (const savedPost of loggedInUserStore.loggedInUserProfile.saved_posts) {
+				loggedInUserStore.idArrayOfSavedPosts.push(savedPost.post.id)
+
+			}
+
+			/**
+			 * Populates the array with the username of all of the users the
+			 * logged in user is following
+			 */
+			for (const following of loggedInUserStore.loggedInUserProfile.following) {
+				loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.push(following.username)
+			}
+
+
+			/**
+			 * Has both 'response.data', and 'response.status'
+			 */
+			return response
+
+		}
+		if (response == null) {
+			return null
+		}
 
 	}
-
-	for (const follower of store.personalUser.following) {
-		store.idArrayOfLoggedInUserFollowingUsers.push(follower.username)
-		console.log(follower.username)
-
-	}
-
-	return response.data;
-} catch (e) {
-	console.log("FAILED: did not fetch personal account") // print to self - not working at all, no idea why
-	// is it only with get requests?
-	return e;
 }
-};

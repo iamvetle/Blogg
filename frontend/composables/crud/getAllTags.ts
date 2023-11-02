@@ -1,37 +1,39 @@
-import axios from "axios";
-import { useGeneralStore } from '~/store/generalStore';
+import { usePostStore } from '~/store/postStore';
+import { getToken } from '../getToken';
 /** Fetches all tags possible */
 
+/** @todo Jeg burde kanskje ha et sted hvor jeg fetcher alle "filters?" */
+
+/**
+ * Fetches all tags.
+ * 
+ * The tags in store is updated if the request was successfull
+ * 
+ * @returns - The request response (.data, .status)
+ */
 export const getAllTags = async () => {
     const baseURL = "http://localhost:8888/api/tags/"
-    const store = useGeneralStore()
+    const postStore = usePostStore()
 
-    try {
-        const token = localStorage.getItem("token");
+    /**
+     * Fetches the token from local storage, or just returns null.
+     */
+    const token = getToken()
+
+    if (token) {
         const headers = {
             "Content-Type": "application/json",
             Authorization: `Token ${token}`,
         };
 
-        const response = await axios.get(baseURL, { headers });
+        const response = await getMethod(baseURL, headers)
 
-        if (response.data != null) {
-            console.dir("OK: tags fetched", response.data); // print to self
-
-            store.allTags = response.data
-
-            console.log(toRaw(store.allTags))
-
-            return response.data;
-
+        if (response) {
+            postStore.allTags = response.data
+            
+            return response
         } else {
-            console.log("OBS! Fetching succedded, but response(data) was:", response.status, response.data) // print to self
-
-            return response.data
+            return null
         }
-
-    } catch (error) {
-        console.error("ERROR: An error occured while trying to fetch tags: ", error); // print to self
-        return null;
     }
-};
+}

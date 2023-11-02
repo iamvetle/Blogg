@@ -10,10 +10,13 @@ export const checkLocalInfo = () => {
     if (token != null || username != null) {
       store.isAuthenticated = true
       store.username = username
+
+      return token
     } else {
       store.isAuthenticated = false
       store.username = null
+      
+      return null
     }
-    return token
   }
 };

@@ -1,62 +1,38 @@
 <template>
 	<div class="p-2">
-		<div id="editor-container" class="w-full min-h-[270px] mb-12">
-			<div id="editor-area">
-				<floating-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
-					class="not-prose flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md">
-					<button @click="addImage()">
-						<img class="h-5 flex items-center" :src="add_image_icon" alt="add_image">
-					</button>
+		<div id="editor-container" class="w-full min-h-[270px] mb-12" @click="editor.commands.focus()">
 
-					<button :class="{ 'is-active': editor.isActive('link') }" class="" @click="setLink()">
-						<img class="h-5 flex items-center" :src="link_icon" alt="link">
-					</button>
+			<div id="editor-area" class="w-full">
 
-					<button :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }" class=""
-						@click="editor.chain().focus().toggleHeading({ level: 3 }).run()">
-						<img class="h-5 flex items-center" :src="heading_1_icon">
-					</button>
+				<EditorFloatingMenu :editor="editor" @addImage="addImage" @setLink="setLink"
+					@toggleHeading1="toggleHeading(1)" @toggleHeading2="toggleHeading(2)"
+					@setHorizontalRule="horizontalRule" />
 
-					<button :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }" class=""
-						@click="editor.chain().focus().toggleHeading({ level: 4 }).run()">
-						<img class="h-5 flex items-center" :src="heading_2_icon">
-					</button>
-
-					<button @click="editor.chain().focus().setHorizontalRule().run()">
-						<img class="h-5 flex items-center" :src="seperator_icon" alt="seperator">
-					</button>
-				</floating-menu>
 				<bubble-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
 					class="not-prose space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md">
-					<button :class="{ 'is-active': editor.isActive('bold') }" class=""
-						@click="editor.commands.toggleBold()">
-						<img class="h-5 flex items-center" :src="bold_icon">
-					</button>
 
-					<button :class="{ 'is-active': editor.isActive('italic') }" class=""
-						@click="editor.commands.toggleItalic()">
-						<img class="h-5 flex items-center" :src="italic_icon" alt="italic">
-					</button>
+					<EditorButton :is-active="editor.isActive('bold')" @button-click="toggleBold()" :icon="bold_icon"
+						alt="bold" />
 
-					<button :class="{ 'is-active': editor.isActive('underline') }"
-						@click="editor.chain().focus().toggleUnderline().run()">
-						<img class="h-5 flex items-center" :src="underline_icon">
-					</button>
+					<EditorButton :is-active="editor.isActive('italic')" @button-click="toggleItalic()" :icon="italic_icon"
+						alt="italic" />
 
-					<button :class="{ 'is-active': editor.isActive('code') }"
-						@click="editor.chain().focus().toggleCode().run()">
-						<img class="h-5 flex items-center" :src="code_snip_icon" alt="code">
-					</button>
+					<EditorButton :is-active="editor.isActive('underline')" @button-click="toggleUnderline()"
+						:icon="underline_icon" alt="underline" />
 
-					<button :class="{ 'is-active': editor.isActive('blockquote') }" class=""
-						@click="editor.chain().focus().toggleBlockquote().run()">
-						<img class="h-5 flex items-center" :src="double_quotes_icon">
-					</button>
+					<EditorButton :is-active="editor.isActive('code')" @button-click="toggleCode()" :icon="code_snip_icon"
+						alt="code" />
+
+					<EditorButton :is-active="editor.isActive('blockquote')" @button-click="toggleBlockquote()"
+						:icon="double_quotes_icon" alt="blockquote" />
 				</bubble-menu>
-				<div class="">
+
+				<div>
 					<editor-content :editor="editor" />
 				</div>
+
 			</div>
+
 		</div>
 		<hr class="mb-4">
 		<div class="buttons flex">
@@ -67,7 +43,7 @@
 			</button>
 			<button
 				class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
-				@click="newPostMaterial">
+				@click="newMaterial">
 				Post
 			</button>
 		</div>
@@ -75,9 +51,9 @@
 </template>
 
 <script setup>
-import { useEditor, EditorContent, FloatingMenu } from '@tiptap/vue-3'
+import { useEditor, EditorContent } from '@tiptap/vue-3'
 import { BubbleMenu } from '@tiptap/vue-3';
-import Document from '@tiptap/extension-document'
+import Document from '@tiptap/extension-document' // required
 import BulletList from '@tiptap/extension-bullet-list'
 import CodeBlock from '@tiptap/extension-code-block'
 import HardBreak from '@tiptap/extension-hard-break'
@@ -96,24 +72,33 @@ import Blockquote from '@tiptap/extension-blockquote'
 import Dropcursor from '@tiptap/extension-dropcursor'
 import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
+import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
 import Placeholder from '@tiptap/extension-placeholder'
+import Youtube from '@tiptap/extension-youtube'
+import Subscript from '@tiptap/extension-subscript'
+import Superscript from '@tiptap/extension-superscript'
+import CharacterCount from '@tiptap/extension-character-count'
+
+import Table from '@tiptap/extension-table'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
+import TableRow from '@tiptap/extension-table-row'
+
+import TaskItem from '@tiptap/extension-task-item'
+import TaskList from '@tiptap/extension-task-list'
+
+import Highlight from '@tiptap/extension-highlight'
 
 // Images (svgs)
-import add_image_icon from '~/assets/icons/image-add-line.svg'
 import underline_icon from '~/assets/icons/underline.svg'
 import code_snip_icon from '~/assets/icons/code-view.svg'
 import double_quotes_icon from '~/assets/icons/double-quotes-r.svg'
 import italic_icon from '~/assets/icons/italic.svg'
 import bold_icon from '~/assets/icons/bold.svg'
-import link_icon from '~/assets/icons/link.svg'
-import seperator_icon from '~/assets/separator.svg'
-
-import heading_1_icon from '~/assets/icons/h-1.svg'
-import heading_2_icon from '~/assets/icons/h-2.svg'
-
 
 // const emit = defineEmits()
+
 const errorHappened = ref(null)
 
 const editor = useEditor({
@@ -124,40 +109,74 @@ const editor = useEditor({
 			levels: [1, 2, 3]
 		}),
 		Blockquote,
+		Subscript,
 		BulletList,
-		Image,
-		CodeBlock,
-		HardBreak,
+		Image.configure({
+			allowBase64: true,
+		}),
+		CodeBlock.configure({
+			exitOnTripleEnter: true,
+			languageClassPrefix: 'javascript',
+		}),
+		HardBreak.configure({
+			keepMarks: false,
+		}),
 		HorizontalRule,
 		ListItem,
 		OrderedList,
+		Superscript,
+		Subscript,
 		Strike,
 		Gapcursor,
+		Table.configure({
+			resizable: true,
+		}),
+		TableRow,
+		TableHeader,
+		TableCell,
 		History,
+		Youtube.configure({
+			nocookie: true,
+		}),
 		Dropcursor,
 		Document,
 		Paragraph,
-		Text,
+		Text, // required
+		TaskList,
+		TaskItem.configure({
+			nested: true,
+		}),
 		Italic,
-		Link,
+		Link.configure({
+			validate: href => /^https?:\/\//.test(href),
+		}),
 		Bold,
+		Underline,
 		Code,
+		// Youtube,
 		Placeholder.configure({
 			placeholder: 'Write something ...'
 		}),
-		FloatingMenu,
 
 	],
+
 	editorProps: {
 		attributes: {
 			class: 'm-5 focus:outline-none',
+			// class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',	
 		},
 	},
+	autofocus: 'start'
 })
 
-const emit = defineEmits()
+const emit = defineEmits([''])
 
 const html = ref(null)
+
+/**
+ * To tract whether the editor is empty or not 	
+ */
+const isEditorEmpty = computed(() => !editor.value?.content?.trim());
 
 onMounted(() => {
 	editor.value.on("update", () => {
@@ -208,8 +227,14 @@ function addImage() {
 	}
 }
 
-
-const newPostMaterial = async () => {
+/**
+ * Is called when the 'new post' button is clicked.
+ * 
+ * It trims current content and emits it "upward"
+ */
+const newMaterial = async () => {
+	html.value = editor.value.getHTML()
+	alert(html.value)
 
 	const { title, body } = extractTitleAndContent(html.value)
 
@@ -220,10 +245,14 @@ const newPostMaterial = async () => {
 			"title": title,
 			"content": body,
 		}
-		emit('newPostMaterial', request_body)
 
 		errorHappened.value = false
-		editor.value.commands.clearContent()
+		// editor.value.commands.clearContent()
+		editor.value.chain().focus().clearContent().run()
+
+		alert(JSON.stringify(request_body))
+
+		emit('newPostMaterial', request_body)
 
 	} else {
 		console.log("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
@@ -235,26 +264,243 @@ const newPostMaterial = async () => {
 
 }
 
+/**
+ * Is called when the 'cancel' button is clicked.
+ * Clears and empties the entire content
+ */
 const cancelClick = () => {
 	const router = useRouter()
 	editor.value.commands.clearContent
 	const place = router.go(-1)
 	return navigateTo(place)
 }
+
+const toggleHeading = (level) => {
+	editor.value.chain().focus().toggleHeading({ level }).run();
+};
+
+const horizontalRule = () => {
+	editor.value.chain().focus().setHorizontalRule().run()
+};
+
+const toggleUnderline = () => {
+	editor.value.chain().focus().toggleUnderline().run()
+}
+
+const toggleCode = () => {
+	editor.value.chain().focus().toggleCode().run()
+}
+
+const toggleBlockquote = () => {
+	editor.value.chain().focus().toggleBlockquote().run()
+
+}
+
+const toggleBold = () => {
+	editor.value.chain().focus().toggleBold().run()
+
+}
+
+const toggleItalic = () => {
+	editor.value.chain().focus().toggleItalic().run()
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 /* Basic editor styles */
 .tiptap {
 	>*+* {
 		margin-top: 0.75em;
 	}
+	img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .tiptap p.is-editor-empty:first-child::before {
-	content: attr(data-placeholder);
-	float: left;
-	color: #adb5bd;
-	pointer-events: none;
-	height: 0;
-}</style>
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+}
+
+
+blockquote {
+	padding-left: 1rem;
+	border-left: 3px solid rgba(#0D0D0D, 0.1);
+}
+
+ul,
+ol {
+	padding: 0 1rem;
+}
+
+
+
+
+pre {
+	background: #0D0D0D;
+	color: #FFF;
+	font-family: 'JetBrainsMono', monospace;
+	padding: 0.75rem 1rem;
+	border-radius: 0.5rem;
+
+	code {
+		color: inherit;
+		padding: 0;
+		background: none;
+		font-size: 0.8rem;
+	}
+}
+
+hr.ProseMirror-selectednode {
+	border-top: 1px solid #68CEF8;
+}
+
+
+
+img {
+	max-width: 100%;
+	height: auto;
+
+	&.ProseMirror-selectednode {
+		outline: 3px solid #68CEF8;
+	}
+}
+
+.tiptap {
+	table {
+		border-collapse: collapse;
+		table-layout: fixed;
+		width: 100%;
+		margin: 0;
+		overflow: hidden;
+
+		td,
+		th {
+			min-width: 1em;
+			border: 2px solid #ced4da;
+			padding: 3px 5px;
+			vertical-align: top;
+			box-sizing: border-box;
+			position: relative;
+
+			>* {
+				margin-bottom: 0;
+			}
+		}
+
+		th {
+			font-weight: bold;
+			text-align: left;
+			background-color: #f1f3f5;
+		}
+
+		.selectedCell:after {
+			z-index: 2;
+			position: absolute;
+			content: "";
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background: rgba(200, 200, 255, 0.4);
+			pointer-events: none;
+		}
+
+		.column-resize-handle {
+			position: absolute;
+			right: -2px;
+			top: 0;
+			bottom: -2px;
+			width: 4px;
+			background-color: #adf;
+			pointer-events: none;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
+.tableWrapper {
+	padding: 1rem 0;
+	overflow-x: auto;
+}
+
+.resize-cursor {
+	cursor: ew-resize;
+	cursor: col-resize;
+}
+
+ul[data-type="taskList"] {
+	list-style: none;
+	padding: 0;
+
+	p {
+		margin: 0;
+	}
+
+	li {
+		display: flex;
+
+		>label {
+			flex: 0 0 auto;
+			margin-right: 0.5rem;
+			user-select: none;
+		}
+
+		>div {
+			flex: 1 1 auto;
+		}
+
+		ul li,
+		ol li {
+			display: list-item;
+		}
+
+		ul[data-type="taskList"]>li {
+			display: flex;
+		}
+	}
+}
+
+code {
+    font-size: 0.9rem;
+    padding: 0.25em;
+    border-radius: 0.25em;
+    background-color: rgba(#616161, 0.1);
+    color: #616161;
+    box-decoration-break: clone;
+  }
+
+  mark {
+  background-color: #ffe066;
+  padding: 0.125em 0;
+  border-radius: 0.25em;
+  box-decoration-break: clone;
+}
+
+a {
+    color: #68CEF8;
+  }
+</style>

@@ -47,6 +47,11 @@ describe('', () => {
             return null
         })
 
+        
+        vi.stubGlobal('check_if_following_user', () => {
+            return true
+        })
+
 
 
         wrapper = shallowMount(IdVue, {
@@ -97,28 +102,28 @@ describe('', () => {
         ;await wrapper.vm.$nextTick()
 
 
-        const mockNormalUserPosts = {
+        const mockNormalUserPosts = ref({
             results: [
                 {
                     title: "title_test",
                     content_snippet: "snuppet"
                 }
             ]
-        }
+        });
 
-        const mockNormalUserProfile = {
+        const mockNormalUserProfile = ref({
             username: "testuser",
             first_name: "test_first_name",
             last_name: "test_last_name",
             num_of_followers: 7
-        };
+        });
 
-            (wrapper.vm as any).normalUserPosts = mockNormalUserPosts;
-            (wrapper.vm as any).normalUserProfile = mockNormalUserProfile;
+            (wrapper.vm as any).normalUserPosts = mockNormalUserPosts.value;
+            (wrapper.vm as any).normalUserProfile = mockNormalUserProfile.value;
 
         await wrapper.vm.$nextTick()
 
-            ; console.log(wrapper.html())
+            ; //console.log(wrapper.html()) // print to self
         expect(wrapper.text()).toContain('test_first_name')
         expect(wrapper.text()).toContain('test_last_name')
     })

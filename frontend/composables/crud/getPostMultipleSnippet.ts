@@ -1,50 +1,66 @@
 import axios from 'axios'
-import { useGeneralStore } from '~/store/generalStore';
+import { usePostStore } from '~/store/postStore'
+import { usePaginationStore } from '~/store/paginationStore';
 
 /**
- * The function fetches post snippets
- * @param optionalURL 
+ * This function fetches data in GET based to the specified URL.
+ * The URL can take query parameters and be customized. 
+ * 
+ * @returns The response from the API endpoint
  */
-export const getPostMultipleSnippet = async (optionalURL?: string) => {
-	const store = useGeneralStore()
+
+export const getPostMultipleSnippet = async () => {
 
 	try {
-		const token = localStorage.getItem("token");
+		const postStore = usePostStore()
+		const paginationStore = usePaginationStore()
 
+		const token = localStorage.getItem("token");
 		const headers = {
 			"Content-Type": "application/json",
-			Authorization: `Token ${token}`,
+			"Authorization": `Token ${token}`,
 		};
-
-		console.log(token) // print to self
+		
+		console.log({ token }) // print to self
 		console.log(headers) // print to self
 
-		let response;
-
-		if (optionalURL) {
-			response = await axios.get(optionalURL, { headers })
-		} else {
-			response = await axios.get(store.baseFeedURL, { headers });
-		}
+		/** It uses the last set URL */
+		const response = await axios.get(paginationStore.activeFetchURL, { headers });
 
 		console.log(toRaw(response)) // print to self
 
 		if (response.data != null) {
-
-			console.log("OK: Posts fetched", response.data); // print to self
-
-			/** Makes the pagination-bar correspond to the posts that are fetched */
+			console.log("OK: Followers fetched", response.status, response.data); // print to self
+			
+			/** This makes the FeedPagination component adhere to the current posts. 
+			 * This makes sure that the pagination component 'next button', for instance, is
+			 * in sync with the next expected posts.
+			*/
 			await fixPagination(response.data)
 
-			store.posts = response.data as SnippetPostMultipleType;
+			postStore.posts = response.data
 
-			return response.data
+			/**
+			 * Has the option to return the response **directly** as well.
+			 * This can be usefull to check if the response was 200 OK, for instance.
+			 */
+			return response
+		} 
 
-		} else {
-			console.log("OBS! Fetching succsedded, but response(data) was:", response.data) // print to self
+		/** If a response was given, but the content has essentially empty */
+		if (response.data == null) {
+			console.log("OBS! Fetching succedded, but response(data) was:", response.status, response.data) // print to self
+			
+			postStore.posts = null
+			/**
+			 * I *hope* it is not bad that I correct the status code, in case it returns 200OK or is just empty.
+			 */
+			response.status = 400 // 404 status code means 'bad request'
+			
+			return response
 		}
-
 	} catch (error) {
-		console.error("ERROR: An error occured while trying to fetch posts: ", error); // print to self
+		console.error("ERROR: An error occured while trying to fetch followers: ", error); // print to self
+		return error;
 	}
-};
+}

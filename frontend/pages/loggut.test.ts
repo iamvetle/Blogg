@@ -7,6 +7,11 @@ vi.stubGlobal("navigateTo", () => {
     return null
 })
 
+
+vi.stubGlobal("definePageMeta", () => {
+    return null
+})
+
 let wrapper:VueWrapper
 let store
 const pinia = createTestingPinia()

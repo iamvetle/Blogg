@@ -40,30 +40,43 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+//@ts-nocheck
+import { reset } from '@formkit/core'
 const loginerror = ref(false);
 const loginsucess = ref(false);
 
 const baseURL = "http://localhost:8888/api/login/";
 const { redirect } = defineProps(["redirect"]);
 
-const submitForm = async (formData) => {
+const submitForm = async (formData:any, node) => {
 	const response = await postForm(baseURL, formData)
 
-	if (response?.token != null || response?.username != null) {
+	
+	if (response != null && response.data != null) {
 
-		setLocalInfo(response.token, response.username);
+		setLocalInfo(response.data.token, response.data.username);
 
 		loginsucess.value = true;
+
 		loginerror.value = false;
 
-		setTimeout(() => {
 			if (redirect === true) {
 				return navigateTo("minkonto");
 			}
-		}, 1000);
+			
 	} else {
+		/**
+		 * 'Reset' clears the input fields if the if request is failed.
+		 * 
+		 * It is an imported function from the formkit core.
+		 */
+		reset("login_form")
+
+		/** A success message is shown if the request succeds */
 		loginsucess.value = false;
+
+		/** When the the request fails an 'inccorect credentials' message is shown*/
 		loginerror.value = true;
 	}
 }

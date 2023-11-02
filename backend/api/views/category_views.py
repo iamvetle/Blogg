@@ -16,7 +16,7 @@ class AllCategoriesView(ListCreateAPIView):
 
     permission_classes = [IsAuthenticated]
     serializer_class = CategorySerializer
-    pagination_class = GenericPagination  # will probably remove this later
+    pagination_class = None
 
     queryset = Category.objects.all()
 

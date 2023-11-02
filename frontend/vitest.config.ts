@@ -7,17 +7,17 @@ export default defineConfig({
         Vue(),
         AutoImport({
             imports: ['vue'],
-            dirs:['./composables', './composables/crud'],
-            vueTemplate:true,
+            dirs: ['./composables', './composables/crud'],
+            vueTemplate: true,
         }),
-     ], 
+    ],
     test: {
         globals: true,
-        environment:"happy-dom"
+        environment: "happy-dom"
     },
     resolve: {
         alias: {
-            "~":".",
+            "~": ".",
             '@/': new URL('./', import.meta.url).pathname,
         }
     }

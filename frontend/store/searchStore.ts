@@ -1,24 +1,29 @@
-import { defineStore } from 'pinia'
-import { SnippetPostMultipleType } from '~/typescript/post_interfaces'
+import { defineStore } from 'pinia';
 
 export const useSearchStore = defineStore("search", () => {
     
-    // STATES 
+    // searchPosts
+    const lastSearch = ref("");
 
-    const searchPosts = ref<SnippetPostMultipleType | null>(null)
-    const lastSearch = ref("")
-    const baseSearchURL = ref("http://localhost:8888/api/search/")
+    // Parameters for the URL
 
-    // Pagnation
-    const next_page_link = ref("")
-    const previous_page_link = ref("")
-    const last_page_link = ref("")
+    /**
+     * This constant is used to hold the search query - that is later used in fetching with '?search='
+     */
+    const searchPart = ref<any>(null);
+    /**
+     * Is used to contain all of the tags that are selected in an array
+     */
+    const tagFilterPart = ref<any>(null);
+    /**
+     * The same as above.
+     * 
+     * Is used to contain all of the categories that are selected in an array
+     */
+    const categoryFilterPart = ref<any>(null);
 
-    const total_pages_count = ref<number | null>(null);
-    const number_of_posts_count = ref<number | null>(null);
-    const current_page = ref<number | null>(null);
+    // not in use
+    const authorFilterPart = ref<any>(null);
 
-    // ACTIONS ...
-
-    return { baseSearchURL, searchPosts, lastSearch, next_page_link, previous_page_link, last_page_link, total_pages_count, number_of_posts_count, current_page }
+    return { searchPart, categoryFilterPart, authorFilterPart, tagFilterPart, lastSearch }
 })

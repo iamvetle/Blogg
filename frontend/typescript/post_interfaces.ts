@@ -112,13 +112,13 @@ export interface PostSavedType {
 /**
  * url: /api/tags/
  */
-export interface AllTagsType { // With pagination
-	count: number;
-	next: string | null;
-	previous: string | null;
-	current_page: number | null;
-	results: TagType[]
-}
+// export interface AllTagsType { // With pagination
+// 	count: number;
+// 	next: string | null;
+// 	previous: string | null;
+// 	current_page: number | null;
+// 	results: TagType[]
+// }
 export interface TagType {
 	name: string
 }
@@ -126,13 +126,13 @@ export interface TagType {
 /**
  * url: /api/categories/
  */
-export interface AllCategoriesType { // With pagination
-	count: number;
-	next: string | null;
-	previous: string | null;
-	current_page: number | null;
-	results: CategoryType[]
-}
+// export interface AllCategoriesType { // With pagination
+// 	count: number;
+// 	next: string | null;
+// 	previous: string | null;
+// 	current_page: number | null;
+// 	results: CategoryType[]
+// }
 export interface CategoryType {
 	name: string
 }

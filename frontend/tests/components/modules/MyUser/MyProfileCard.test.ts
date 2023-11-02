@@ -1,21 +1,19 @@
-import MyProfileCard from '~/components/modules/MyUser/MyProfileCard.vue';
+import LoggedInUserProfileCard from '~/components/modules/MyUser/LoggedInUserProfileCard.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
-import { createTestingPinia } from '@pinia/testing';
-import { useGeneralStore } from '~/store/generalStore';
 
-describe('testing myprofilecard', () => {
+describe('testing LoggedInUserProfileCard.vue', () => {
   let wrapper: VueWrapper;
-  let store: any;
 
   beforeEach(() => {
-    const pinia = createTestingPinia();
-    store = useGeneralStore(pinia);
-
-    wrapper = shallowMount(MyProfileCard, {
+    wrapper = shallowMount(LoggedInUserProfileCard, {
       global: {
-        plugins: [pinia],
         mocks: {},
-        stubs: {}
+        stubs: {},
+      },
+      slots: {
+        username:"testusername",
+        "full-name":"test_fulltnavn",
+        "amount-of-followers":"243",
       },
       props: {
         profilePictureProp: "~/src/something.jpg"

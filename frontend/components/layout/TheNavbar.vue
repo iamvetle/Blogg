@@ -1,25 +1,29 @@
 <template>
 	<div id="container-navbar" class="w-full py-4 text-onPrimary bg-primary mb-16">
 		<div id="navbar" class="h-[50px] mx-auto flex items-center max-w-[1000px] bg-primary justify-between">
+
 			<span class="flex items-center">
-				<nuxt-link to="/">
-					<span @click="logoclick" id="logo">
-						<svg class="w-8 h-auto fill-onPrimary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+
+				<nuxt-link to="/" @click="logoclick()">
+					<span id="logo">
+						<svg class="w-8 h-auto cursor-pointer fill-onPrimary" xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24">
 							<path
 								d="M19.9381 8H21C22.1046 8 23 8.89543 23 10V14C23 15.1046 22.1046 16 21 16H19.9381C19.446 19.9463 16.0796 23 12 23V21C15.3137 21 18 18.3137 18 15V9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9V16H3C1.89543 16 1 15.1046 1 14V10C1 8.89543 1.89543 8 3 8H4.06189C4.55399 4.05369 7.92038 1 12 1C16.0796 1 19.446 4.05369 19.9381 8ZM3 10V14H4V10H3ZM20 10V14H21V10H20ZM7.75944 15.7849L8.81958 14.0887C9.74161 14.6662 10.8318 15 12 15C13.1682 15 14.2584 14.6662 15.1804 14.0887L16.2406 15.7849C15.0112 16.5549 13.5576 17 12 17C10.4424 17 8.98882 16.5549 7.75944 15.7849Z" />
 						</svg>
 					</span>
 				</nuxt-link>
-				<span v-if="store2.isAuthenticated" id="searchbar" class="ms-8">
-					<input v-model="search_input" placeholder="Søk"
-						class="border border-transparent rounded-2xl w-96 h-auto bg-surface text-onSurface" type="text"
-						@keyup.enter="trySearch">
 
+				<span v-if="generalStore.isAuthenticated === true" id="searchbar" class="ms-8">
+					<BaseSearchBar @search-action="search"
+						class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex" />
 				</span>
 			</span>
 
+
 			<span class="flex items-center">
-				<span v-if="store2.isAuthenticated" id="new-post" class="me-4 flex items-center flex-col">
+
+				<span v-if="generalStore.isAuthenticated" id="new-post" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/newpost"><svg class="mb-1 w-7 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
@@ -27,7 +31,8 @@
 						</svg></nuxt-link>
 					<span class="text-xs"><nuxt-link to="/newpost">Nytt innlegg</nuxt-link></span>
 				</span>
-				<span v-if="store2.isAuthenticated" class="me-4 flex items-center flex-col">
+
+				<span v-if="generalStore.isAuthenticated" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/minkonto"><svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
@@ -35,64 +40,82 @@
 						</svg></nuxt-link>
 					<span class="text-xs"><nuxt-link to="/minkonto">Min profil</nuxt-link></span>
 				</span>
-				<span v-if="store2.isAuthenticated" class="me-4 flex items-center flex-col">
+
+				<span v-if="generalStore.isAuthenticated === true" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/loggut">
 						<svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path
 								d="M1.99805 21.0003V19.0003L3.99805 19.0001V4.83489C3.99805 4.35161 4.34367 3.93748 4.81916 3.85102L14.2907 2.12892C14.6167 2.06965 14.9291 2.28589 14.9884 2.61191C14.9948 2.64733 14.998 2.68325 14.998 2.71924V4.00014L18.998 4.00032C19.5503 4.00032 19.998 4.44803 19.998 5.00032V19.0001L21.998 19.0003V21.0003H17.998V6.00032L14.998 6.00014V21.0003H1.99805ZM12.998 4.39674L5.99805 5.66947V19.0003H12.998V4.39674ZM11.998 11.0003V13.0003H9.99805V11.0003H11.998Z">
 							</path>
-						</svg> </nuxt-link>
+						</svg>
+					</nuxt-link>
 					<span class="text-xs"><nuxt-link to="/loggut">loggut</nuxt-link></span>
 				</span>
+
 			</span>
+
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { useSearchStore } from '~/store/searchStore';
+import { usePostStore } from '~/store/postStore';
+import { usePaginationStore } from '~/store/paginationStore';
 import { useGeneralStore } from '~/store/generalStore';
 
-const search_input = ref("")
+const paginationStore = usePaginationStore()
+const postStore = usePostStore()
+const generalStore = useGeneralStore();
+const searchStore = useSearchStore();
 
-const store = useSearchStore()
-const store2 = useGeneralStore()
+const search = async (payload: any) => {
+	const route = useRoute()
 
-/** Calls the composable 'searchReuqest' and cleans up the search query input field  */
-const trySearch = async () => {
-	store.lastSearch = search_input.value
 
-	/** If the input field is empty, the function is not continued */
-	if (search_input.value.trim() != "") {
-
-		/** Updates the global "current" search variable for the search function to see later */
-		store.baseSearchURL = `http://localhost:8888/api/search/?q=${search_input.value}`
-		/** Retrieves 'all' posts if no search query was made - normal retrievel */
-	} else {
-		store.baseSearchURL = `http://localhost:8888/api/feed/`
+	if (route.path != "/") {
+		navigateTo("/")
 	}
-	/** The composable function that deals with the search logic
-	* Takes the value of 'store.baseSearchURL' in to GET request
-	*/
-	await searchRequest()
-	console.log(search_input.value)
-	search_input.value = ""
-
-	/** Redirects the web client to the corresponding url of the search query */
-	return await navigateTo("/")
+	if (payload.trim() != "") {
+		searchStore.searchPart = payload
+	} else {
+		searchStore.searchPart = ""
+	}
+	constructURL()
+	await getPostMultipleSnippet()
 }
 
-/** 'Resets' to default. All posts are retrieved and search input is cleared */
+/** 
+ * 'Resets' to default. Goes and fetches the "normal" all posts, without extra
+ * queries
+ * 
+ * Is suppose to be a "close everything and go back"
+ * 
+ * something else: in index when the logo is click here the page gets refreshsen twices i donn't know why
+ */
 const logoclick = async () => {
+	const route = useRoute()
 
-	store.baseSearchURL = `http://localhost:8888/api/feed/`
 
-	await searchRequest()
+	/**
+	 * the keep alive component is forced to rerender because the
+	 * store post (which it rrelias on in a v-if) gets refreshesd here */
 
-	search_input.value = ""
-	return await navigateTo("/")
+	if (route.path === "/") {
+		postStore.posts = null
 
+		paginationStore.all_pages_count = 0;
+		paginationStore.current_page_number = 0;
+		paginationStore.activeFetchURL = postStore.baseFetchURL;
+		paginationStore.next_page = "";
+		paginationStore.previous_page = "";
+		paginationStore.last_page_link = "";
+
+		searchStore.searchPart = null;
+	}
+
+	await getPostMultipleSnippet()
 
 }
 

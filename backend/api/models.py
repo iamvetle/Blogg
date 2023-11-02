@@ -6,6 +6,7 @@ from django.contrib.auth.models import (
 )
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 
 class CustomUserManager(BaseUserManager):
@@ -51,22 +52,45 @@ class CustomUserManager(BaseUserManager):
 
         return user
 
+    # DateField: Only stores the date (Year, Month, Day).
+    # DateTimeField: Stores both date and time.
+    
+    # auto_now: Automatically update the field to now every time the object is saved.
+    # auto_now_add: Automatically set the field to now when the object is first created.
+
+# In Django, you cannot use auto_now or auto_now_add with default. These options are mutually exclusive.
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=15, unique=True, blank=False)  # Required
+    username = models.CharField(max_length=30, unique=True, blank=False)  # Required
     email = models.EmailField(unique=True, max_length=100, blank=False)  # Required
-    first_name = models.CharField(max_length=30, blank=False)  # Required
-    last_name = models.CharField(max_length=30, blank=False)  # Required
-    age = models.PositiveIntegerField(blank=True)
-    address = models.TextField(blank=True, default="")
-    last_online = models.DateTimeField(auto_now=True)
     phone_number = models.CharField(max_length=20, blank=True, default="")
-    nickname = models.CharField(max_length=30, blank=True, default="")
+    
+    first_name = models.CharField(max_length=50, blank=False)  # Required
+    last_name = models.CharField(max_length=50, blank=False)  # Required
+    
+    gender = models.CharField(max_length=10, blank=True, default="")
+    date_of_birth = models.DateField(null=True, blank=True)    
+        
+    address = models.TextField(max_length=500, blank=True, default="")
+    city = models.CharField(max_length=30, blank=True, default="")
+    state = models.CharField(max_length=30, blank=True, default="")
+    postal_code = models.CharField(max_length=10, blank=True, default="")
+    country = models.CharField(max_length=30, blank=True, default="")
+        
+    bio = models.TextField(max_length=500, blank=True, default="")
+    profile_picture = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
+    
+    date_joined = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(auto_now=True)
+    
     is_active = models.BooleanField(default=True)
+    
     is_staff = models.BooleanField(default=False)
+    
     followers = models.ManyToManyField(
-        "self", related_name="following", symmetrical=False, blank=True,
+        "self", related_name="following", symmetrical=False, blank=True, default=0
     )
+    
 
     objects = CustomUserManager()
 
@@ -110,9 +134,7 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(max_length=10000)
-    date_published = models.DateTimeField(
-        auto_now=True
-    )  # this is not working correctly. it is not appearing when I check on 'publish
+    date_published = models.DateTimeField(auto_now_add=True)  # this is not working correctly. it is not appearing when I check on 'publish
 
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posts"
@@ -123,6 +145,21 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class PostImage(models.Model):
+    post = models.ForeignKey(Post, related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='post_images/')
+
+    def __str__(self):
+        return f'Image for post {self.post}'
+
+class PostVideo(models.Model):
+    post = models.ForeignKey(Post, related_name="videos", on_delete=models.CASCADE)
+    video = models.FileField(upload_to="post_videos/")
+    
+    def __str__(self):
+        return f'Video for post {self.post}'
 
 
 class Comment(models.Model):
@@ -150,10 +187,11 @@ class SavedPost(models.Model):
     )
     post = models.ForeignKey("Post", related_name="saved_by", on_delete=models.CASCADE)
     saved_at = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return f"{self.post.title}"
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['user', 'post'], name='unique_user_post')
         ]
+        
+    def __str__(self):
+        return f"{self.post.title}"

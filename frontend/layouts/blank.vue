@@ -1,6 +1,7 @@
 <template>
-  <div class="bg-surface">
+  <div id="site-wrapper" class="bg-surface">
     <slot />
+
   </div>
 </template>
 

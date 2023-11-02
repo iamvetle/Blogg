@@ -23,3 +23,5 @@ class CustomLimitOffsetPagination(LimitOffsetPagination):
         if limit:
             return (offset // limit) + 1
         return 1
+    
+    

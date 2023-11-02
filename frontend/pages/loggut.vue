@@ -12,7 +12,11 @@
 <script setup lang="ts">
 import { useGeneralStore } from "~/store/generalStore";
 
-const store = useGeneralStore();
+definePageMeta({
+  layout:"blank"
+})
+
+const generalStore = useGeneralStore();
 
 const removed = ref(false);
 
@@ -24,7 +28,7 @@ const logoutFunction = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
 
-    store.isAuthenticated = true;
+    generalStore.isAuthenticated = true;
 
     setTimeout(() => {
       removed.value = true;
@@ -38,7 +42,7 @@ const logoutFunction = () => {
 };
 
 onMounted(logoutFunction);
+
 </script>
 
 <style scoped></style>
-store/generalStore

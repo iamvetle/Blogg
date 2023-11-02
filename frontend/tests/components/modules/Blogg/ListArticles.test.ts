@@ -4,21 +4,27 @@ import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue'
 import BaseIconSaveArticleUnSaved from '~/components/base/BaseIconSaveArticleUnSaved.vue';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import { usePostStore } from '~/store/postStore'
 
 describe("list articles testing", () => {
     let wrapper: VueWrapper
-    let store: any;
+    let generalStore: any;
+    let loggedInUserStore:any;
+    let postStore:any;
     let pinia: any;
 
     beforeEach(() => { // The beforeEach block runs before each test
         // Create a new testing Pinia instance
         pinia = createTestingPinia()
 
-        // Initialize the store with mock data
-        store = useGeneralStore(pinia)
+        // Initialize the generalStore with mock data
+        generalStore = useGeneralStore(pinia)
+        loggedInUserStore = useLoggedInUserStore(pinia)
+        postStore = usePostStore(pinia)
 
-        store.isAuthenticated = true
-        store.posts = {
+        generalStore.isAuthenticated = true
+        postStore.posts = {
             "count": 31,
             "next": "http://localhost:8888/api/feed/?page=3",
             "previous": "http://localhost:8888/api/feed/",
@@ -43,20 +49,26 @@ describe("list articles testing", () => {
             global: {
                 plugins: [pinia],
                 components: {
-                    ArticleCard, BaseIconSaveArticleUnSaved
+                    ArticleCard
                 },
+                stubs: {
+                    BaseIconSaveArticleUnSaved:true,
+                    BaseIconSaveArticleSaved:true,
+                    BaseTag:true,
+                    BaseIconMoreOptions:true,
+
+                }
             },
             props: {
                 width: "23",
                 height:"51",
                 fillColor:"blue",
                 class:'',
-            }
+            },
         })
     })
 
     test("exists", () => {
-        console.log(wrapper.html())
         expect(wrapper.exists()).toBe(true)
     })
 

@@ -2,8 +2,16 @@
 
 There are stuff I want the web client to be able to do, that I have not yet implemented. There are also things I want my blogg application to be able to do.
 
+Er det bedre at jeg lager en røff versjon av flere ting jeg ønsker meg?
+
+Jeg tenker det er best at jeg prøver å gjøre ferdig én og én ting, men **ikke** sitte og prøve å gjøre noe *perfekt*
+
 ### Implementere tags sortering/søk
 - [~] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
+- [~] Make a filter for one of the possible filter-codes that I can use
+  - think il use tags
+  - [?] Make a custom url in the pinia store for SEARCH and the FILTER
+  - [?] Have the watcher in the index page
 
 ---
 
@@ -19,10 +27,17 @@ There are stuff I want the web client to be able to do, that I have not yet impl
     - patch eller put?
 - [ ] Vil også gjøre det mulig å **redigere brukeren sin** på frontend 
 
+### Search and filter functionality
+
+- [x] Jeg lage en bedre search og filter funksjonalitet. Bruke generics sammen med djangofilterbacken og searchfilter. Det skal ikke være så vanskelig.
+  - det er å fikse det først på frontend som kommer til å bli krongelete.
+
 ### models.py
 
 - **CustomUser** ->
-- [ ] new field: profile picture upload / img upload
+- [x] new field: profile picture upload / img upload
+- [x] Man kan se det på frontend - hvis man allerede har på backend
+  - [ ] må gjøre slik at man kan laste opp og fjerne fra frontend da
 
 ---
 
@@ -64,21 +79,18 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### admin.py - Admin Panel
 
 - [x] Få tags og categories som er assosiert med en post til å vises i post list i admin panel
-- [ ] Ta til betrakning at jeg har gjort det mulig å "create" og kanskje "delete" med generics nå, så jeg må huske å gjøre det mulig å fjerne dem også med adminpanel
 
 ---
 
 ### General
 
 - [x] Bytte til ***generics*** istedenfor vanlig **APIView**
-  - [ ] Gjøre det også på loginviews og registerviews
+- [ ] Bytte til generics på loginviews og registerviews også
 - [ ] Rydde i services, gjøre det mer riktig
----
 
 ---
 
 ## Frontend
-
 
 **'fetchen' på api personlig bruker backend**
 
@@ -91,12 +103,13 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 > Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
-- [ ] Fjern 'searchRequest' og [x]'searchPagnation' (det som er igjen)
-  - [ ] trenger da også fikset krøllet som er mellom feed og search (vanskelig å forstå search på backend)
+- [~] Fjern 'searchRequest' og [x]'searchPagnation' (det som er igjen)
+  - [~] trenger da også fikset krøllet som er mellom feed og search (vanskelig å forstå search på backend)
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
-- [ ] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
-  - keep-alive?
-
+- [~] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
+  - keep-alive - for å holde akkurat den filteren oppe.
+- [~] Gjøre slik at det står "Søke resultater for: ..."
+  - [ ] ønsker i tillegg å vise de "tags" og mer som er i bruk
 ---
 
 ### ListArticlesSidebar
@@ -108,7 +121,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
   - [x] Antall _jeg følger_
   - [x] Brukerne, navnene til de jeg følger
   - [ ] Finne ut av hva jeg skal gjøre med "**_les mer_**" feltet. Skal jeg bli 'redirected' et sted?
-    - [ ] Legge til (x), '***total antall***'
+    - [x] Legge til (x), '***total antall***'
   - [x] make it possible to go to the posts that I have saved
 
 
@@ -116,21 +129,23 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ### [id] single post
 
-- [ ] Vise alle **taggene** som er assosierte med posten
-- [ ] Mulighet til å **følge** forfatteren derifra
+- [x] Vise alle **taggene** som er assosierte med posten
+- [x] Vise forfatteren
+  - [ ] Mulighet til å **følge** forfatteren derifra (skal jeg gjøre det?)
 - [ ] Muligheten til å **lagre post** derifra også
 - [ ] Kan se kommentarer
 - [ ] Kan lage kommentar
   - Kan kikke rund på andre blogg-lignende plattformerer og **_se hvordan de har 'kommentarer'_**
+  - Det er faktisk felre steder som har mye av det jeg kunne ønsker meg her
 - Recommendations/post av samme fyr på bunnen?
 
 ### [id] user page
 
-- [ ] Fix api fetching so it becomes correct 
+- [?x] Fix api fetching so it becomes correct 
 - [x] Pengjøre veldig og rydd opp.
 - [~] Fjern spor av tidligere prop og slett den gamle component.
 - [ish] Ønsker å få den **følg** og **slutt å følg** funksjonen til å fungere
-- [ ] Lage en ordentlig side for den
+- [x] Lage en ordentlig side for den
 - [ ] fix pagnation - find out if it is necesarry, and if how to have it in that case
   - should I make a new one? or take an old one
 
@@ -144,7 +159,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
   - How?
     - i should probebly make it possible to make propper posts first
   - 
-- [ ] Fix the pagnation bottom bar that currently has no functionality
+- [x] Fix the pagnation bottom bar that currently has no functionality
 
 ---
 
@@ -173,6 +188,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 **Sortere/finne artikler etter tags/categories**
 
+- [ ] !!! Fikse slik at filterene jeg setter på ikke forsvinner rett etterpå
 - [x]ish Først lage en prototype hvor jeg lister **alle tagsa** og så kan jeg velge **én** som jeg kan sortere etter
   - deretter øke derifra
   - kanskej dropdown
@@ -201,6 +217,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### How to API
 
 - [x] Take all of the **API fetching on the page level**
+- [ ] use a method to access and save to local storage easoer
+- [ ] make get(crud) composables to use a common library that is of a composable, so if I want to change from 'axios' to something else, it'll be easy
 
 - When i am retrieving tokens from **LocalStorage**, all of my fetching becomes on the client side.
   - The means *initial load* can be very slow
@@ -220,16 +238,17 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ## General
 
 - [ ] Ta code snippets som du bruker med **Vue Test Utils**, og i **Postman** og legg dem systematisk på Notion
-- [ ] Documentere ordentlig alle sidene og composables
+- [~ jobber med det] Documentere ordentlig alle sidene og composables
 - [ ] Expand the registration form to include more information options
 - [ ] Fix the emit between new post and editorcard when it comes to border color and such
 - [ ] fix the connection bettwen the search composables and the related components, integrate more, properly
 - [ ] Rydde opp i alle composables
-- [ ] Dele opp stores
+- [x] Dele opp stores
 - [ ] Find a workaround for **the problem that all of the fetching is happening from the client side**
   - [ ] split the onMounted hooks for ones reqairing auth, and the ones not requiring it
     - But all require it..
     - Or maybe cachin in some hay?
+- [ ] Gi en error message som sier at "denne brukeren fins ikke" når noen prøver å access */user/enbrukersomikkefins*
 
 ---
 

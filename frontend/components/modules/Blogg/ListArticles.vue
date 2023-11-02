@@ -1,8 +1,8 @@
 <template>
-	<div v-if="store.posts" id="site-wrapper" class="bg-background text-onBackground">
-		<div v-if="store.posts.results" id="content">
+	<div v-if="postStore.posts" id="site-wrapper" class="bg-background text-onBackground">
+		<div v-if="postStore.posts.results" id="content">
 
-			<div class="article" v-for="post in store.posts.results" :key="post.id">
+			<div class="article" v-for="post in postStore.posts.results" :key="post.id">
 
 				<article-card>
 
@@ -40,8 +40,8 @@
 					</template>
 
 					<template #tags v-if="post.tags">
-						<span>
-							<BaseTag v-for="tag in post.tags" :key="post.id" :text-prop="tag" class="me-1" />
+						<span class="me-1" v-for="tag in post.tags">
+							<BaseTag :key="post.id" :text="tag.name"/>
 						</span>
 					</template>
 
@@ -73,13 +73,15 @@
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '~/store/generalStore';
 import BaseIconSaveArticleSaved from '~/components/base/BaseIconSaveArticleSaved.vue';
-
+import { usePostStore } from '~/store/postStore'
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const post_image = ref('https://picsum.photos/500/300')
 
-const store = useGeneralStore()
+const postStore = usePostStore()
+const loggedInUserStore = useLoggedInUserStore()
+
 const color = ref("fill-black")
 
 /** 
@@ -116,9 +118,9 @@ const redirect_to_post_page = (postId: SnippetPostSingleType) => {
  * @param post - the post that you want to unsave
  */
 const unsave = async (post: number) => {
-	const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
+	const index = loggedInUserStore.idArrayOfSavedPosts.findIndex((id) => id === post)
 
-	store.idArrayOfSavedPosts.splice(index, 1)
+	loggedInUserStore.idArrayOfSavedPosts.splice(index, 1)
 
 	await getSaveOrUnsavePost(post)
 }

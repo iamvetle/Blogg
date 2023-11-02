@@ -66,15 +66,15 @@
 
 
 								<template #lesmer v-if="post.id">
-									<span class="cursor-pointer text text-primary hover:text-primaryFixed"
+									<span class="cursor-pointer text-primary hover:text-primaryFixed"
 										@click="redirect_to_post_page(post.id)">
 										Les mer
 									</span>
 								</template>
 
 								<template #tags v-if="post.tags">
-									<span>
-										<BaseTag v-for="tag in post.tags" :key="post.id" :text-prop="tag" class="me-1" />
+									<span class="me-1" v-for="tag in post.tags">
+										<BaseTag :key="post.id" :text="tag.name"/>
 									</span>
 								</template>
 
@@ -108,7 +108,8 @@
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 
 					<div>
-						<the-user-sidebar :username="normalUserProfile.username">
+						<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
+						<the-user-sidebar :username="normalUserProfile.username" :profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
 
 							<template #amount-of-followers>
 								<div class="font-light text-sm leading-7">
@@ -151,7 +152,7 @@
 <script setup lang="ts">
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
-import { useGeneralStore } from '~/store/generalStore';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /**
  * User Page
@@ -163,49 +164,36 @@ import { useGeneralStore } from '~/store/generalStore';
  * that the user has made. It compares the followers the user has against the whom the logged in user is following.
  */
 
-const store = useGeneralStore()
-
-/**
- * Stores the color that the bookmark icon is rendered with.
- */
-const color = ref("fill-black")
-
-/**
- * Stores information about the current, active URL
- */
+const loggedInUserStore = useLoggedInUserStore()
 const route = useRoute();
 
-/**
- * Stores all of the user profile information
- */
+
+/** Stores the color that the bookmark icon is rendered with. */
+const color = ref("fill-black")
+
+/** Stores all of the user profile information */
 const normalUserProfile = ref<NormalUserProfileType | null>(null);
 
-/**
- * Stores all of the posts made by the user
- */
+/** Stores all of the posts made by the user */
 const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
 
-/**
- * Represents the text that is going to be displayed on the (un)follow button
- */
+/** Represents the text that is going to be displayed on the (un)follow button */
 const followText = ref("Following")
 
-/**
- * Counts the number of followers the user has
- */
+/** Has the **number count** of users that the (normal)user has */
 const followers = ref(0)
 
 /**
  * @todo remove this and add the proper pictures made with the post
- * 
  * Stores the image that is temporarly being used with each post. The picture from the URL changes dynamically upon each request. 
  */
 const post_image = ref('https://picsum.photos/500/300')
 
+
 /** 
  * Takes the HTML input and returns the pure text version of it.
  * 
- * @param raw The raw HTML
+ * @param raw The raw HTML to be converted
  * @returns The plain text version
  */
 const toPlainText = (raw: string) => {
@@ -215,11 +203,10 @@ const toPlainText = (raw: string) => {
 }
 
 onMounted(async () => {
-
 	/**
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
-	if (!Array.isArray(store.idArrayOfLoggedInUserFollowingUsers) || !store.idArrayOfLoggedInUserFollowingUsers.length) {
+	if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
 		await getLoggedInUserProfile();
 	}
 
@@ -229,22 +216,35 @@ onMounted(async () => {
 	const username = route.params.id
 
 	const theNormalUserProfileURL = `http://localhost:8888/api/${username}/`;
+
 	/**
 	 * Fetches the profile data about the user through the API address of the user.
 	 * 
 	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
 	 */
-	normalUserProfile.value = await getNormalUserProfile(theNormalUserProfileURL);
+	const response_profile = await getNormalUserProfile(theNormalUserProfileURL);
 
-	followers.value = normalUserProfile.value.num_of_followers
+	if (response_profile) {
+		normalUserProfile.value = response_profile.data as NormalUserProfileType
+
+		/** Populates/updates the constant that counts the number of followers the normal-user has */
+		followers.value = normalUserProfile.value.num_of_followers
+	}
 
 	const theNormalUserPostsURL = `http://localhost:8888/api/${username}/posts/`
+
 	/**
 	 * Fetches the posts the user has made through the API address of the user.
+	 * And puts them in a reactive variable.
 	 * 
-	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
+	 * 
+	 * @param theNormalUserPostsURL The URL address that the function is going to fetch from.
 	 */
-	normalUserPosts.value = await getNormalUserPosts(theNormalUserPostsURL);
+	const response_user_posts = await getNormalUserPosts(theNormalUserPostsURL);
+
+	if (response_user_posts) {
+		normalUserPosts.value = response_user_posts.data
+	}
 })
 
 /**
@@ -268,7 +268,7 @@ const redirect_to_post_page = async (post: any) => {
  */
 const author_full_name = (author: any) => {
 
-	// If the user doesn't have a first name or last name, the username is instead returned
+	// This is only really relevant to 'Iamvetle' user. If the user doesn't have a first name or last name, the username is instead returned // PRINT TO SELF remove later
 	if (author.first_name && author.last_name) {
 		const full = `${author.first_name} ${author.last_name}` ?? author.username
 		return full
@@ -284,9 +284,9 @@ const author_full_name = (author: any) => {
  * @param post The post to unsave
  */
 const unsave = async (post: number) => {
-	const index = store.idArrayOfSavedPosts.findIndex((id) => id === post)
+	const index = loggedInUserStore.idArrayOfSavedPosts.findIndex((id) => id === post)
 
-	store.idArrayOfSavedPosts.splice(index, 1)
+	loggedInUserStore.idArrayOfSavedPosts.splice(index, 1)
 
 	await getSaveOrUnsavePost(post)
 }
@@ -298,7 +298,7 @@ const unsave = async (post: number) => {
  */
 const save = async (post: number) => {
 
-	await getSaveOrUnsavePost(post)
+	await getSaveOrUnsavePost(post) // i have to put in a logic that makes it not possible to save a post - it  cancesl if hte status code is not 200
 }
 
 /**
@@ -316,11 +316,11 @@ const unFollowUser = async (username: string) => {
 		return null
 	}
 
-	const index = store.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
+	const index = loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
 
-	store.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
+	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
 
-	// Decrements the number of followers the user has
+	/** Decrements the number of followers the user has */
 	followers.value--
 
 }
@@ -340,9 +340,9 @@ const followUser = async (username: string) => {
 		return null
 	}
 
-	store.idArrayOfLoggedInUserFollowingUsers.push(username)
+	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.push(username)
 
-	// Increases the number of followers the user has
+	/** Increases the number of followers the user has */
 	followers.value++
 }
 
@@ -353,7 +353,7 @@ const followUser = async (username: string) => {
  */
 onDeactivated(() => {
 	followers.value = 0
-	store.idArrayOfLoggedInUserFollowingUsers = []
+	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers = []
 })
 
 /**
@@ -361,7 +361,26 @@ onDeactivated(() => {
  */
 onUnmounted(() => {
 	followers.value = 0
-	store.idArrayOfLoggedInUserFollowingUsers = []
+	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers = []
+})
+
+
+/**
+ * @todo Change this into something smarter, more efficiant
+ * 
+ * Acts as a type of route gard
+ *
+ * Makes sure that the logged-in user can't access it's own [id]user page. 
+ */
+watchEffect(() => {
+	if (normalUserProfile.value) {
+		const localUsername = localStorage.getItem("username")
+		if (normalUserProfile.value.username === localUsername) {
+			console.log("Can't access it's own [id] user page") // print to self
+
+			navigateTo("/minkonto")
+		}
+	}
 })
 
 /**
