@@ -21,11 +21,12 @@ from api.services.pagination_services import CustomLimitOffsetPagination
 from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 # Local application imports
-from api.models import Post, SavedPost
+from api.models import Post, SavedPost, Comment
 from api.serializers.post_serializers import (
     PostSerializer,
     PostSaveStyleSerializer,
     PostShortenSerializer,
+    CommentSerializer,
 )
 from api.serializers.user_serializers import NormalUserSerializer
 from api.filters import CustomPostFilter
@@ -63,7 +64,6 @@ class PostAllSavedLoggedInUserView(ListAPIView):  # /api/saved/
         logged_in_user = self.request.user
 
         return logged_in_user.saved_posts.all()
-
 
 class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
     """Returns All of the posts made by the specified user"""
@@ -170,7 +170,6 @@ class PostSaveView(APIView):
                     status=status.HTTP_201_CREATED,
                 )
 
-
 class PostCreateView(APIView):
     """Creates a new post"""
 
@@ -185,3 +184,22 @@ class PostCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class PostCommentsView(ListAPIView):
+    
+    permission_classes = [IsAuthenticated]
+    serializer_class = CommentSerializer
+    queryset = Comment.objects.all()
+    pagination_class = None
+    
+    http_method_names = ["get"]
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        post_id = self.kwargs["post_id"]
+        
+        filtered_queryset = queryset.filter(post=post_id)
+        
+        return filtered_queryset
+    
+    

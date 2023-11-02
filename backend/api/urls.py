@@ -12,7 +12,8 @@ from api.views.post_views import (
     PostAllSavedLoggedInUserView,
     PostAllNormalUserView,
     PostDeleteView,
-    PostEditSingleView
+    PostEditSingleView,
+    PostCommentsView,
 )
 from api.views.user_views import (
     LoggedInUserProfileView,
@@ -57,6 +58,10 @@ urlpatterns = [
     path("posts/saved/", PostAllSavedLoggedInUserView.as_view(), name="saved_posts"),
     path("post/<int:pk>/", PostReadSingleView.as_view(), name="single_post"),
     path("post/<int:post_id>/save/", PostSaveView.as_view(), name="save_unsave_post"),
+    
+    path("post/<int:post_id>/comments/", PostCommentsView.as_view(), name="post_comments"),
+    # path("post/<int:post_id>/add-comment/", )
+    # patj("post/<int:post-id>/remove-comment/", )
     
     # User-specific paths (Most general last)
     path("<str:username>/", NormalUserProfileView.as_view(), name="user_profile"),

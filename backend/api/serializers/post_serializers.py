@@ -20,7 +20,7 @@ class CommentSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Comment
-        fields = ["content", "author", "date_published"]
+        fields = ["post", "content", "author", "date_published"]
         
     def get_content(self, obj):
         content = obj.content
@@ -69,12 +69,10 @@ class PostSerializer(serializers.ModelSerializer):
     images = PostImageSerializer(many=True, required=False) # Cannot be updated
     videos = PostVideoSerializer(many=True, required=False) # Cannot be updated
 
-    comments = CommentSerializer(many=True, required=False)
-
     class Meta:
         model = Post
 
-        fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos", "comments"]
+        fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos"]
         read_only_fields = ["id", "date_published", "author"]
     
     def create(self, validated_data):
@@ -135,36 +133,36 @@ class PostShortenSerializer(serializers.ModelSerializer):
             return obj.date_published.strftime("%d-%m-%Y")
 
 
-class CommentSerializer(serializers.ModelSerializer):  # Not in use
-    author = serializers.SerializerMethodField()
-    post = serializers.SerializerMethodField()
-    date_published = serializers.SerializerMethodField()
+# class CommentSerializer(serializers.ModelSerializer):  # Not in use
+#     author = serializers.SerializerMethodField()
+#     post = serializers.SerializerMethodField()
+#     date_published = serializers.SerializerMethodField()
 
-    class Meta:
-        model = Comment
+#     class Meta:
+#         model = Comment
 
-        fields = ["title", "content_snippet", "date_published"]
-        extra_kwargs = {
-            "author": {"read_only": True},
-            "date_published": {"read_only": True},
-            "post": {"read_only": True},
-        }
+#         fields = ["title", "content_snippet", "date_published"]
+#         extra_kwargs = {
+#             "author": {"read_only": True},
+#             "date_published": {"read_only": True},
+#             "post": {"read_only": True},
+#         }
 
-    def get_author(self, obj):
-        author = {
-            "username": obj.author.username,
-            "first_name": obj.author.first_name,
-            "last_name": obj.author.last_name,
-        }
-        return author
+#     def get_author(self, obj):
+#         author = {
+#             "username": obj.author.username,
+#             "first_name": obj.author.first_name,
+#             "last_name": obj.author.last_name,
+#         }
+#         return author
 
-    def get_post(self, obj):
-        post = {
-            "title": obj.title,
-            "author_first_name": obj.author.first_name,
-            "author_last_name": obj.author.last_name,
-        }
-        return post
+#     def get_post(self, obj):
+#         post = {
+#             "title": obj.title,
+#             "author_first_name": obj.author.first_name,
+#             "author_last_name": obj.author.last_name,
+#         }
+#         return post
 
     def get_date_published(self, obj):
         if obj.date_published is not None:
