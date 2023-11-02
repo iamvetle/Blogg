@@ -7,8 +7,8 @@ from django.utils.html import format_html
 # Inlines -> (is put inside the admin models)
 class CommentInline(admin.TabularInline):
     model = Comment
-    fields = ["title", "content", "post", "author", "date_published"]
-    readonly_fields = ["date_published"]
+    fields = ["content", "post", "author", "date_published"]
+    readonly_fields = ["date_published", "post"]
     extra = 0  # or else, the three extra default fields are shown - annoying
     can_delete = False
     show_change_link = True
@@ -168,17 +168,17 @@ class CommentAdmin(admin.ModelAdmin):
 
     model = Comment
 
-    list_display = ("title", "post", "author")
+    list_display = ("post", "author")
 
     search_fields = (
         "post__title",
         "author__username",
     )
 
-    readonly_fields = ("date_published", "post")
+    readonly_fields = ("id", "date_published", "post")
 
     fieldsets = (
-        (None, {"fields": ("title", "content", "post")}),
+        (None, {"fields": ("id", "content", "post")}),
         (
             "Other",
             {"fields": ("date_published",)},

@@ -82,7 +82,6 @@ class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
 
         return queryset
 
-
 class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     """Responds {x} amount of posts as snippets.
     The response is tailored after the search and filter parameters in the url fetch."""
@@ -108,7 +107,6 @@ class PostReadSingleView(RetrieveAPIView):
     queryset = Post.objects.all()
     
     http_method_names = ["get"]
-
     
 class PostEditSingleView(RetrieveUpdateDestroyAPIView):
     """Retrieves, updates or deletes a single post"""
@@ -117,10 +115,7 @@ class PostEditSingleView(RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     lookup_field = "pk"
     queryset = Post.objects.all()
-    
-    lookup_field = "pk"
-
-    
+        
     http_method_names = ["get", "patch", "delete"]
     
     def get_queryset(self):
@@ -182,7 +177,6 @@ class PostCreateView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        
 
         serializer = PostSerializer(data=request.data, context={'request': request})        
         if serializer.is_valid():

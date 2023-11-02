@@ -165,20 +165,18 @@ class PostVideo(models.Model):
 class Comment(models.Model):
     """Each post can have comments, and each post comment is this model"""
 
-    title = models.CharField(max_length=50)
     content = models.TextField(max_length=500)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="comments"
     )
     date_published = models.DateField(auto_now_add=True)
-    last_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.title} (Post: {self.post})"
+        return f"{self.id}"
 
     def full_comment(self):
-        return f"{self.title}\n{self.content}"
+        return f"The post: '{self.post.title}' has a comment by '{self.author.username}'"
 
 
 class SavedPost(models.Model):
