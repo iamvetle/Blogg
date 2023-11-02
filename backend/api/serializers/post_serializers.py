@@ -12,6 +12,25 @@ from time import strftime
 
 CustomUser = get_user_model()
 
+class CommentSerializer(serializers.ModelSerializer):
+    content = serializers.SerializerMethodField()
+    date_published = serializers.SerializerMethodField()
+    
+    author = serializers.StringRelatedField()
+    
+    class Meta:
+        model = Comment
+        fields = ["content", "author", "date_published"]
+        
+    def get_content(self, obj):
+        content = obj.content
+        
+        content = format_html(content)
+        return content
+
+    def get_date_published(self, obj):
+        return obj.date_published.strftime("%d-%m-%Y")
+
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
@@ -50,10 +69,12 @@ class PostSerializer(serializers.ModelSerializer):
     images = PostImageSerializer(many=True, required=False) # Cannot be updated
     videos = PostVideoSerializer(many=True, required=False) # Cannot be updated
 
+    comments = CommentSerializer(many=True, required=False)
+
     class Meta:
         model = Post
 
-        fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos"]
+        fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos", "comments"]
         read_only_fields = ["id", "date_published", "author"]
     
     def create(self, validated_data):
