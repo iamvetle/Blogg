@@ -73,14 +73,6 @@ describe('newPost', () => {
         expect(wrapper.text()).toContain("Nytt innlegg")
     });
 
-    test("Should have a modal (popover)", () => {
-        const wrapper = factory()
-
-        const modal = wrapper.findComponent({ name: "Modal" })
-
-        expect(modal.exists()).toBe(true);
-    })
-
     test("The modal should have an emit", async () => {
         const wrapper = factory()
 

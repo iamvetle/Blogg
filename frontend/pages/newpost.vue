@@ -1,6 +1,6 @@
 <template>
 	<div id="postFormWrapper" class="mt-2 mb-16">
-		<Modal @selected="controlForPublish"/>
+		<Modal v-if="showModal" @selected="controlForPublish" />
 		<div class="max-w-3xl py-4 mx-auto prose">
 			<div id="direct-editor" :class="editorContainerClass">
 				<EditorCard @newPostMaterial="publishPost" />
@@ -36,11 +36,19 @@ definePageMeta({
  * huske definepagedata senere
  */
 const postState = ref<false | true | null>(null);
+const showModal = ref(false)
 
 let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
 const publishPost = async (request_body: any) => {
-	console.log("rectum")
+
+
+	// What I want: When the "publish" button is clicked on in the editor I want the modal
+	// to show TWO options. One that is CONFIRM, and another that is CANCEL
+	
+	// I think i want this function to set showModal to true, so that the modal will be shown, and
+	// when the modal is shown two options appear. One is confirm the other is cancel - which will automatically
+	// happen if you exit
 	const baseURL = "http://localhost:8888/api/newpost/"
 	const response = await postCreateNewPost(baseURL, request_body)
 	if (response) {

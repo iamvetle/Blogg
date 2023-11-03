@@ -38,12 +38,12 @@ import {
 
 const emit = defineEmits()
 
-const selectedBeforePublished = () => {
-    emit(controlForPublish)
-}
+const props = defineProps<{
+    
+}>();
 
-const controlForPublish = () => {
-    return "asd"
+const selectedBeforePublished = () => {
+    emit("controlForPublish")
 }
 
 const isOpen = ref<boolean>(false)
