@@ -3,7 +3,7 @@ from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from rest_framework.filters import SearchFilter
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 
 # Third-party libraries
 
@@ -19,6 +19,7 @@ from rest_framework.generics import (
     GenericAPIView,
     RetrieveUpdateDestroyAPIView,
     CreateAPIView,
+    DestroyAPIView
 )
 
 
@@ -222,32 +223,16 @@ class PostCommentsView(ListAPIView):
 
         filtered_queryset = queryset.filter(post=post_id)
 
-        return filtered_queryset
-
-
-# class PostAddCommentView(APIView):
-#     """Adds a comment to a post"""
-
-#     permission_classes = [IsAuthenticated]
-    
-#     def post(self, request, post_id):        
-        
-#         # Checks whether the post exists
-#         post = get_object_or_404(Post, pk=post_id)
-        
-#         Comment.objects.create(
-#                 post = post,
-#                 author= request.user,
-#                 content = request.data["content"],
-#             )
-#         return Response(data={"detail": "Comment added"}, status=status.HTTP_201_CREATED)  
-    
+        return filtered_queryset  
     
 class PostAddCommentView(CreateAPIView):
+    """Adds a comment to a specified post"""
     
     permission_classes = [IsAuthenticated]
     serializer_class = CommentSerializer
-    queryset = Post.objects.all()
+    queryset = Comment.objects.all()
+    
+    http_method_names = ["post"]
     
     def perform_create(self, serializer):
         # Retrieves the <int:post_id> from the url
@@ -261,3 +246,32 @@ class PostAddCommentView(CreateAPIView):
         
         # Finally a new object is created and saved
         serializer.save(post=post, content=content, author=self.request.user)
+        
+class PostDeleteCommentView(DestroyAPIView):
+    """Deletes a comment from a specified post"""
+    
+    queryset = Comment.objects.all()
+    permission_classes = [IsAuthenticated]
+    serializer_class = CommentSerializer
+    
+    lookup_field = "id"
+    lookup_url_kwarg = "comment_id"
+    
+    http_method_names = ["delete"]
+    
+    # This method makes sure that the object, or comment that was retrieved 
+    # has the author who owns the comment 
+    def get_object(self):
+        # The comment that is going to be deleted
+        comment = super().get_object()
+        post_owner = comment.post.author
+        print(post_owner)
+        
+        # Only if the author is the same as the web client will the object be returned
+        # OR
+        # The owner of the post that has the comment
+        if (comment.author == self.request.user) | (post_owner == self.request.user):
+            return comment
+        else:
+            raise PermissionDenied("You cannot delete comments made by other people")
+        

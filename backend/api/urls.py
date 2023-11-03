@@ -15,6 +15,7 @@ from api.views.post_views import (
     PostEditSingleView,
     PostCommentsView,
     PostAddCommentView,
+    PostDeleteCommentView
     
 )
 from api.views.user_views import (
@@ -63,7 +64,7 @@ urlpatterns = [
     
     path("post/<int:post_id>/comments/", PostCommentsView.as_view(), name="post_comments"),
     path("post/<int:post_id>/add-comment/", PostAddCommentView.as_view(), name="add_comment_to_post" ),
-    # patj("post/<int:post-id>/remove-comment/", )
+    path("post/<int:post_id>/remove-comment/<int:comment_id>/", PostDeleteCommentView.as_view(), name="remove_comment_from_post" ),
     
     # User-specific paths (Most general last)
     path("<str:username>/", NormalUserProfileView.as_view(), name="user_profile"),
