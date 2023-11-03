@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from rest_framework.filters import SearchFilter
 from django.core.exceptions import ObjectDoesNotExist
+
 # Third-party libraries
 
 # Django Rest Framework
@@ -12,7 +13,13 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.generics import ListAPIView, RetrieveAPIView, GenericAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import (
+    ListAPIView,
+    RetrieveAPIView,
+    GenericAPIView,
+    RetrieveUpdateDestroyAPIView,
+    CreateAPIView,
+)
 
 
 # Django Filter
@@ -65,6 +72,7 @@ class PostAllSavedLoggedInUserView(ListAPIView):  # /api/saved/
 
         return logged_in_user.saved_posts.all()
 
+
 class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
     """Returns All of the posts made by the specified user"""
 
@@ -82,6 +90,7 @@ class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
 
         return queryset
 
+
 class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     """Responds {x} amount of posts as snippets.
     The response is tailored after the search and filter parameters in the url fetch."""
@@ -89,15 +98,19 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
     # It paginates automatically - se settings.py
-    filter_backends = [filters.DjangoFilterBackend, SearchFilter] # TODO might add sorting later
+    filter_backends = [
+        filters.DjangoFilterBackend,
+        SearchFilter,
+    ]  # TODO might add sorting later
     filterset_class = CustomPostFilter
-    
-    search_fields = ['title', 'content', 'author__username']
+
+    search_fields = ["title", "content", "author__username"]
 
     queryset = Post.objects.all()
 
     http_method_names = ["get"]
-    
+
+
 class PostReadSingleView(RetrieveAPIView):
     """Retrieves a single post to read"""
 
@@ -105,37 +118,44 @@ class PostReadSingleView(RetrieveAPIView):
     serializer_class = PostSerializer
     lookup_field = "pk"
     queryset = Post.objects.all()
-    
+
     http_method_names = ["get"]
-    
+
+
 class PostEditSingleView(RetrieveUpdateDestroyAPIView):
     """Retrieves, updates or deletes a single post"""
-    
+
     permission_classes = [IsAuthenticated]
     serializer_class = PostSerializer
     lookup_field = "pk"
     queryset = Post.objects.all()
-        
+
     http_method_names = ["get", "patch", "delete"]
-    
+
     def get_queryset(self):
         all_posts = super().get_queryset()
         posts_only_made_by_the_user = all_posts.filter(author=self.request.user)
-        
+
         return posts_only_made_by_the_user
-    
+
+
 class PostDeleteView(APIView):
-    ''' Deletes a post, if ask for by the user owning the post'''
+    """Deletes a post, if ask for by the user owning the post"""
+
     permission_classes = [IsAuthenticated]
-    
+
     def delete(self, request, post_id):
         post = get_object_or_404(Post, id=post_id)
-        
+
         if post.author != request.user:
-            return Response(status=status.HTTP_403_FORBIDDEN, data={"detail": "You do not have permission to delete this post."})
+            return Response(
+                status=status.HTTP_403_FORBIDDEN,
+                data={"detail": "You do not have permission to delete this post."},
+            )
         else:
             post.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class PostSaveView(APIView):
     """Saves or un-saves a requested post for the user"""
@@ -170,36 +190,74 @@ class PostSaveView(APIView):
                     status=status.HTTP_201_CREATED,
                 )
 
+
 class PostCreateView(APIView):
     """Creates a new post"""
 
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-
-        serializer = PostSerializer(data=request.data, context={'request': request})        
+        serializer = PostSerializer(data=request.data, context={"request": request})
         if serializer.is_valid():
             serializer.save()
-                        
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+
 class PostCommentsView(ListAPIView):
-    
+    """Returns all of the comments associated with a post"""
+
     permission_classes = [IsAuthenticated]
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
     pagination_class = None
-    
+
     http_method_names = ["get"]
-    
+
     def get_queryset(self):
         queryset = super().get_queryset()
         post_id = self.kwargs["post_id"]
-        
+
         filtered_queryset = queryset.filter(post=post_id)
-        
+
         return filtered_queryset
+
+
+# class PostAddCommentView(APIView):
+#     """Adds a comment to a post"""
+
+#     permission_classes = [IsAuthenticated]
+    
+#     def post(self, request, post_id):        
+        
+#         # Checks whether the post exists
+#         post = get_object_or_404(Post, pk=post_id)
+        
+#         Comment.objects.create(
+#                 post = post,
+#                 author= request.user,
+#                 content = request.data["content"],
+#             )
+#         return Response(data={"detail": "Comment added"}, status=status.HTTP_201_CREATED)  
     
     
+class PostAddCommentView(CreateAPIView):
+    
+    permission_classes = [IsAuthenticated]
+    serializer_class = CommentSerializer
+    queryset = Post.objects.all()
+    
+    def perform_create(self, serializer):
+        # Retrieves the <int:post_id> from the url
+        id = self.kwargs["post_id"]
+        
+        # Retrieves the content data from the request
+        content = self.request.data["content"]
+        
+        # Based on 'id' the associated post is retrieved
+        post = get_object_or_404(Post, pk=id)
+        
+        # Finally a new object is created and saved
+        serializer.save(post=post, content=content, author=self.request.user)
