@@ -1,39 +1,62 @@
 <template>
-    <div id="root" v-if="isOpen" class="relative">
-        <teleport to="#modal-root">
-            <div id="modal" class="fixed z-10 inset-0 overflow-y-auto bg-black bg-opacity-50">
-                <div class="flex items-start justify-center min-h-screen pt-24 text-center">
-                    <div class="bg-white rounded-lg text-left overflow-hidden shadow-xl p-8 w-1/2">
-                        <p>{{ msg }}</p>
-                        <button @click="isOpen = false">{{ closeMsg }}</button>
-                    </div>
+    <div>
+        <button type="button" id="open" @click="setOpen">Open</button>
+
+            <Dialog :open="isOpen" @close="setClose">
+                <div class="fixed w-full h-full flex items-center justify-center inset-0">
+
+                    
+                <div class="w-[500px] h-[250px] bg-primary text-onPrimary p-8">
+                    <DialogPanel>
+                        <div>
+                            <DialogTitle class="text-center text-lg">Are you ready to publish the post?</DialogTitle>
+                            <p>
+                            </p>
+                            <div class="mt-16">
+                                <span id="choices" class="flex justify-center space-x-24">
+                                    <span class="p-4 bg-onPrimary text-primary"><button id="close" @click="setClose" >Yes</button></span>
+                                    <span class="p-4 bg-onPrimary text-primary"><button @click="setClose">No</button></span>
+                                </span>
+                            </div>
+                        </div>
+                    
+                    </DialogPanel>
                 </div>
             </div>
-        </teleport>
-    </div>
+
+            </Dialog>
+        </div>
 </template>
 
 <script setup lang="ts">
-/** The component is supposed to act as a 'popup' that can be customized. 
- * 
- * UNFINISHED! Just an idea. 
-*/
+import {
+    Dialog,
+    DialogPanel,
+    DialogTitle,
+    // DialogDescription,
+} from '@headlessui/vue'
 
-const props = withDefaults(defineProps<{
-    initial: boolean,
-    msg: string,
-    closeMsg: string,
-}>(), {
-    initial: false,
-    msg: "Post saved",
-    closeMsg: "Close",
-});
+const emit = defineEmits()
 
-const isOpen = ref(props.initial)
+const selectedBeforePublished = () => {
+    emit(controlForPublish)
+}
+
+const controlForPublish = () => {
+    return "asd"
+}
+
+const isOpen = ref<boolean>(false)
+
+const setOpen = () => {
+    isOpen.value = true
+}
+
+const setClose = () => {
+    isOpen.value = false
+}
+
 
 </script>
 
-<style scoped>
-/**
-https://dev.to/alvarosabu/create-modals-with-vue3-teleport-tailwindcss-48aj */
-</style>
+<style scoped></style>

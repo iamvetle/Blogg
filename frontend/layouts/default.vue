@@ -1,16 +1,16 @@
 <template>
-	<div id="site-wrapper" class="bg-background flex flex-col min-h-screen">
+	<div id="site-wrapper" class="bg-background">
 		<!-- Background color -->
-		<div class="flex-1 flex flex-col mb-6">
+		<div>
 			<ClientOnly>
 				<TheNavbar />
 			</ClientOnly>
-			<div class="flex-1">
+			<div class="">
 				<slot />
 			</div>
 		</div>
 
-		<div class="mt-auto">
+		<div>
 			<LazyTheFooter />
 		</div>
 	</div>

@@ -61,10 +61,11 @@ class PostVideoSerializer(serializers.ModelSerializer):
 
 # Is used for create and for detail retrieve
 class PostSerializer(serializers.ModelSerializer):
-    """Serializes the input. Can be used on both single and multiple post objects"""
+    """Serializes the input. Is used on single post"""
 
     author = OnlyAuthorCustomUserSerializer(read_only=True)
     date_published = serializers.SerializerMethodField(required=False) # read only by deafault I don't want to end up being able to update date_published    
+    num_of_comments = serializers.SerializerMethodField() # number
     
     content = serializers.CharField(max_length=10000)
     tags = serializers.StringRelatedField(many=True, required=False)
@@ -76,7 +77,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
 
-        fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos"]
+        fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos", "num_of_comments"]
         read_only_fields = ["id", "date_published", "author"]
     
     def create(self, validated_data):
@@ -95,14 +96,22 @@ class PostSerializer(serializers.ModelSerializer):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
         
-        # def create?
-
+    def get_num_of_comments(self, obj):
+        length = 0
+        
+        all_comments = obj.comments.all()
+        length = len(list(all_comments))
+        
+        return length
+        
 class PostShortenSerializer(serializers.ModelSerializer):
     """Shortenes the post. Can be used on both multiple and single posts"""
 
     content_snippet = serializers.SerializerMethodField(read_only=True)  # Limited to 200 char
     author = OnlyAuthorCustomUserSerializer(read_only=True)
     date_published = serializers.SerializerMethodField(read_only=True)
+    
+    num_of_comments = serializers.SerializerMethodField()
 
     tags = TagSerializer(many=True, read_only=True)
     categories = CategorySerializer(many=True, read_only=True)
@@ -121,6 +130,7 @@ class PostShortenSerializer(serializers.ModelSerializer):
             "tags",
             "categories",
             "images",
+            "num_of_comments",
         ]
         
         read_only_fields = ['title']
@@ -136,41 +146,13 @@ class PostShortenSerializer(serializers.ModelSerializer):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
 
-
-# class CommentSerializer(serializers.ModelSerializer):  # Not in use
-#     author = serializers.SerializerMethodField()
-#     post = serializers.SerializerMethodField()
-#     date_published = serializers.SerializerMethodField()
-
-#     class Meta:
-#         model = Comment
-
-#         fields = ["title", "content_snippet", "date_published"]
-#         extra_kwargs = {
-#             "author": {"read_only": True},
-#             "date_published": {"read_only": True},
-#             "post": {"read_only": True},
-#         }
-
-#     def get_author(self, obj):
-#         author = {
-#             "username": obj.author.username,
-#             "first_name": obj.author.first_name,
-#             "last_name": obj.author.last_name,
-#         }
-#         return author
-
-#     def get_post(self, obj):
-#         post = {
-#             "title": obj.title,
-#             "author_first_name": obj.author.first_name,
-#             "author_last_name": obj.author.last_name,
-#         }
-#         return post
-
-    def get_date_published(self, obj):
-        if obj.date_published is not None:
-            return obj.date_published.strftime("%d-%m-%Y")
+    def get_num_of_comments(self, obj):
+        length = 0
+        
+        all_comments = obj.comments.all()
+        length = len(list(all_comments))
+        
+        return length
 
 class PostSaveStyleSerializer(serializers.ModelSerializer):
     """Proccesses the data and returns only the post that is saved.

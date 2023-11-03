@@ -1,11 +1,11 @@
 <template>
-	<div id="site-wrapper" class="bg-background flex flex-col min-h-screen flex-1">
+	<div id="site-wrapper" class="bg-background">
 		<!-- Background color -->
 		<div class="">
 			<ClientOnly>
 				<TheNavbar />
 			</ClientOnly>
-			<div class="flex-1">
+			<div>
 				<slot />
 			</div>
 		</div>

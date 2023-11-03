@@ -49,6 +49,7 @@
 		"webdriverio": "^8.16.6"
 	},
 	"dependencies": {
+		"@headlessui/vue": "^1.7.16",
 		"@nuxt/eslint-config": "^0.2.0",
 		"@nuxtjs/eslint-module": "^4.1.0",
 		"@nuxtjs/tailwindcss": "^6.8.0",

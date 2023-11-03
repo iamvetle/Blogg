@@ -1,17 +1,33 @@
 import { mount } from '@vue/test-utils';
 import newpost from './newpost.vue';
 import EditorCard from '~/components/modules/Editor/EditorCard.vue';
+import Modal from '~/components/utils/Modal.vue';
 
 // Mock the postCreateNewPost function
 
 vi.stubGlobal("definePageMeta", () => {
     return null
-} )
+})
 
 vi.stubGlobal("publishPost", () => {
     return null
-} )
+})
 
+const factory = () => {
+
+
+    return mount(newpost, {
+        global: {
+            components: {
+                EditorCard,
+                Modal
+            },
+            stubs: {
+                EditorCard: true
+            }
+        }
+    });
+}
 
 /**
  * It is very difficult to mock a function or composable inside of another function.
@@ -29,16 +45,8 @@ describe('newPost', () => {
     it('Should emit event and should change text if poststate is differnt', async () => {
         // Mock successful API response
 
-        const wrapper = mount(newpost, {
-            global: {
-                components:{
-                    EditorCard
-                },
-                stubs: {
-                    EditorCard:true
-                }
-            }
-        });
+        const wrapper = factory()
+
         await wrapper.vm.$nextTick();
 
 
@@ -64,4 +72,25 @@ describe('newPost', () => {
         expect(wrapper.emitted().newPostMaterial).toBeTruthy()
         expect(wrapper.text()).toContain("Nytt innlegg")
     });
+
+    test("Should have a modal (popover)", () => {
+        const wrapper = factory()
+
+        const modal = wrapper.findComponent({ name: "Modal" })
+
+        expect(modal.exists()).toBe(true);
+    })
+
+    test("The modal should have an emit", async () => {
+        const wrapper = factory()
+
+        // const modal = wrapper.getComponent({ name: "Modal" })
+
+        wrapper.vm.$emit("controlForPublish")
+
+        await wrapper.vm.$nextTick()
+
+        expect(wrapper.emitted()).toHaveProperty("controlForPublish")
+    })
+
 });
