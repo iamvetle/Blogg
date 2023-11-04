@@ -107,7 +107,8 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
 
     search_fields = ["title", "content", "author__username"]
 
-    queryset = Post.objects.all()
+    # Makes sure that the *newest* posts are listed first by the frontend
+    queryset = Post.objects.all().order_by("-date_published")
 
     http_method_names = ["get"]
 

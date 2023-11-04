@@ -256,6 +256,8 @@ const newMaterial = async () => {
 
 	} else {
 		console.log("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
+		alert("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
+
 		errorHappened.value = true
 
 	}

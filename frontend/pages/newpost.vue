@@ -1,6 +1,8 @@
 <template>
 	<div id="postFormWrapper" class="mt-2 mb-16">
-		<Modal @selected="controlForPublish" />
+		<div v-if="showModal" id="modal-wrap">
+			<Modal @confirmPublished="confirmPublication" @cancelPublished="cancelPublication"/>
+		</div>
 		<div class="max-w-3xl py-4 mx-auto prose">
 			<div id="direct-editor" :class="editorContainerClass">
 				<EditorCard @newPostMaterial="publishPost" />
@@ -44,10 +46,12 @@ definePageMeta({
 	layout: "feed-layout"
 })
 
-/**
- * @todo
- * huske definepagedata senere
- */
+const showModal = ref<boolean>(false)
+const request = ref<any>(null)
+const baseURL = "http://localhost:8888/api/newpost/"
+
+
+
 const postState = ref<false | true | null>(null);
 
 let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
@@ -61,17 +65,29 @@ const publishPost = async (request_body: any) => {
 	// I think i want this function to set showModal to true, so that the modal will be shown, and
 	// when the modal is shown two options appear. One is confirm the other is cancel - which will automatically
 	// happen if you exit
-	const baseURL = "http://localhost:8888/api/newpost/"
-	const response = await postCreateNewPost(baseURL, request_body)
+	request.value = request_body
+	showModal.value = true
+
+	// const response = await postCreateNewPost(baseURL, request_body)
+
+	// if (response) {
+	// 	postState.value = response.data
+	// } else {
+	// 	console.log("rectum")
+	// }
+
+}
+
+const confirmPublication = async () => {
+	const response = await postCreateNewPost(baseURL, request.value)
+
 	if (response) {
 		postState.value = response.data
 	} else {
 		console.log("rectum")
-	}
+	}}
 
-}
-
-const controlForPublish = () => {
+const cancelPublication = () => {
 	return null
 }
 

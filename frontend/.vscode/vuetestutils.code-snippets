@@ -91,11 +91,36 @@
 		],
 		"description": "Snippet for a simple Vue test block"
 	},
+	"Vue Async Test Block": {
+		"prefix": "vueAsyncTest",
+		"body": [
+		"test('$1', async () => {",
+		"  $0",
+		"})"
+		],
+		"description": "Snippet for a simple async Vue test block"
+	},
 	"Vue Expect": {
 		"prefix": "vueExpect",
 		"body": [
 		"expect($1).$2"
 		],
 		"description": "Snippet for writing an expect statement in Vue tests"
+	},
+
+	"Log wrapper html": {
+		"prefix": "vueLogHTML",
+		"body": [
+			"console.log(wrapper.html())"
+		],
+		"description": "Snippet for setting up a logging setup for the wrapper html in Vue Tests"
+	},
+
+	"Wrapper nextTick()": {
+		"prefix": "vueTick",
+		"body": [
+			"await wrapper.vm.$$nextTick()$0"
+		],
+		"description": "Snippet for setting for waiting on DOM change"
 	}
 }

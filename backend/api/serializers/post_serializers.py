@@ -24,7 +24,9 @@ class CommentSerializer(serializers.ModelSerializer):
         
         read_only_fields = ["date_published"]
         
+        
         write_only_fields = ["post"]
+        
         
     def get_content(self, obj):
         content = obj.content
