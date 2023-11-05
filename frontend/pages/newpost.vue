@@ -1,13 +1,13 @@
 <template>
-	<div id="postFormWrapper" class="mt-2 mb-16">
+	<div id="postFormWrapper" class="mt-2 mb-16" :class="showModal ? 'blur-sm' : ''">
 		<div v-if="showModal" id="modal-wrap">
-			<Modal @confirmPublished="confirmPublication" @cancelPublished="cancelPublication"/>
+			<Modal @confirmPublished="confirmPublication" @cancelPublished="cancelPublication" />
 		</div>
 		<div class="max-w-3xl py-4 mx-auto prose">
 			<div id="direct-editor" :class="editorContainerClass">
-				<EditorCard @newPostMaterial="publishPost" />
-			
-			
+				<EditorCard @newPostMaterial="confirmPublication" />
+
+
 				<!-- Det jeg ideelt ønsker at at EditorCard vil klare å sende en emit som setter fram en popup
 				eller modal som gir deg valget mellom "bekreft" eller "cancel". Jeg vil gjøre ting på page-level derfor
 			må jeg i teorien først sende en emit hit, og deretter sende en prop ned til modal for så å få en emit tilbake og deretter sende den
@@ -43,25 +43,39 @@ import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 import { postCreateNewPost } from '../composables/crud/postCreateNewPost';
 
 definePageMeta({
-	layout: "feed-layout"
+	layout: "default"
 })
 
+/** 
+ * This controls whether the 'Modal' is shown or not 
+ * 
+ * If it is true, it is show. If it is false, it is hidden.
+ * */
 const showModal = ref<boolean>(false)
 const request = ref<any>(null)
+
+
 const baseURL = "http://localhost:8888/api/newpost/"
-
-
 
 const postState = ref<false | true | null>(null);
 
-let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
+/** 
+ * This controls the outer-styling that the text editor has and can be
+ * changed dynamically.
+ */
+const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
+
+/**
+ * This function is called when the text editor, or 'EditorCard' emits
+ * and event. - When the 'publish' button is pressed 
+ * 
+ * @param request_body - The data that 'EditorCard' wants to publish
+ */
 const publishPost = async (request_body: any) => {
-
-
 	// What I want: When the "publish" button is clicked on in the editor I want the modal
 	// to show TWO options. One that is CONFIRM, and another that is CANCEL
-	
+
 	// I think i want this function to set showModal to true, so that the modal will be shown, and
 	// when the modal is shown two options appear. One is confirm the other is cancel - which will automatically
 	// happen if you exit
@@ -85,10 +99,15 @@ const confirmPublication = async () => {
 		postState.value = response.data
 	} else {
 		console.log("rectum")
-	}}
+	}
+}
+
+showModal.value = false
 
 const cancelPublication = () => {
+	showModal.value = false
 	return null
+
 }
 
 </script>

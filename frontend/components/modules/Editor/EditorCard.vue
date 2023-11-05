@@ -1,7 +1,13 @@
 <template>
 	<div class="p-2">
 		<div id="editor-container" class="w-full min-h-[270px] mb-12" @click="editor.commands.focus()">
-
+			<div v-if="showModal">
+				<teleport to="body">
+					<Modal
+					@confirm-published="publishPost"
+					/>
+				</teleport>
+			</div>
 			<div id="editor-area" class="w-full">
 
 				<EditorFloatingMenu :editor="editor" @addImage="addImage" @setLink="setLink"
@@ -36,15 +42,15 @@
 		</div>
 		<hr class="mb-4">
 		<div class="buttons flex">
-			<button
+			<button id="cancel"
 				class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
 				@click="cancelClick">
 				Cancel
 			</button>
-			<button
+			<button id="publish"
 				class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
-				@click="newMaterial">
-				Post
+				@click="showModal = true">
+				Publish
 			</button>
 		</div>
 	</div>
@@ -100,6 +106,7 @@ import bold_icon from '~/assets/icons/bold.svg'
 // const emit = defineEmits()
 
 const errorHappened = ref(null)
+const showModal = ref(false)
 
 const editor = useEditor({
 	"type": "doc",
@@ -169,7 +176,7 @@ const editor = useEditor({
 	autofocus: 'start'
 })
 
-const emit = defineEmits([''])
+const emit = defineEmits(['newPostMaterial'])
 
 const html = ref(null)
 
@@ -230,40 +237,58 @@ function addImage() {
 /**
  * Is called when the 'new post' button is clicked.
  * 
- * It trims current content and emits it "upward"
+ * It checks if the text is valid (has content and such), and
+ * then either emit the data to the parent container, or cancel
+ * and does nothing.
  */
-const newMaterial = async () => {
-	html.value = editor.value.getHTML()
-	alert(html.value)
+const tryToPublishClick = async () => {
 
+	/** 
+	 * Retrieves the text that has been written in the 
+	 * text editor, as HTML.
+	 */
+	html.value = editor.value.getHTML()
+
+	/**
+	 * The function takes the whole HTML text that whas been written 
+	 * and extracts a title out of it.
+	 * 
+	 * A 'body' and a 'title' data is then returned
+	 * 
+	 * @param html.value - The raw HTML text body that the function is going
+	 * to process.
+	 * 
+	 * @return - The first paragraph of the text input, and the rest 
+	 * of the body. 
+	 * 
+	 */
 	const { title, body } = extractTitleAndContent(html.value)
 
-	console.log(title)
+	// If title and body is not null
+	if (title === null) {
+		
 
-	if (title.trim() != "" && body.trim() != "") {
-		const request_body = {
-			"title": title,
-			"content": body,
-		}
 
-		errorHappened.value = false
-		// editor.value.commands.clearContent()
-		editor.value.chain().focus().clearContent().run()
-
-		alert(JSON.stringify(request_body))
-
-		emit('newPostMaterial', request_body)
-
-	} else {
+		alert(title)
+		alert(body)
 		console.log("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
 		alert("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
 
-		errorHappened.value = true
+		errorHappened.value = true // LOOK ERE":: Can I maybe use provide and inject between pages and layout for h-sceeen at such?
 
+		errorHappened.value = false
+		html.value = ""
+
+		// alert(JSON.stringify(htmlData))
+
+		// An event is emitted together with the post content
+
+
+	} else {
+		showModal = true
+
+		// tele port for mobile conditional rendering? disable teleport por? still hav to telefport to "app" vueuse use breakpoints - breakpoints tailwind??
 	}
-
-	// emit to parent component
-
 }
 
 /**
@@ -274,8 +299,32 @@ const cancelClick = () => {
 	const router = useRouter()
 	editor.value.commands.clearContent
 	const place = router.go(-1)
+	html.value = ""
+
 	return navigateTo(place)
 }
+
+const publishPost = () => {
+	showModal.value = false
+	
+
+	const htmlData = {
+			"title": title,
+			"content": body,
+		}
+
+	emit('newPostMaterial', htmlData)
+	html.value = ""
+
+	editor.value.chain().focus().clearContent().run()
+}
+
+const cancelPublishing = () => {
+	showModal.value = false
+	return null
+}
+
+
 
 const toggleHeading = (level) => {
 	editor.value.chain().focus().toggleHeading({ level }).run();
@@ -354,9 +403,6 @@ ul,
 ol {
 	padding: 0 1rem;
 }
-
-
-
 
 pre {
 	background: #0D0D0D;
