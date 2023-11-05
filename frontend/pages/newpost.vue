@@ -1,8 +1,5 @@
 <template>
-	<div id="postFormWrapper" class="mt-2 mb-16" :class="showModal ? 'blur-sm' : ''">
-		<div v-if="showModal" id="modal-wrap">
-			<Modal @confirmPublished="confirmPublication" @cancelPublished="cancelPublication" />
-		</div>
+	<div id="postFormWrapper" class="mt-2 mb-16">
 		<div class="max-w-3xl py-4 mx-auto prose">
 			<div id="direct-editor" :class="editorContainerClass">
 				<EditorCard @newPostMaterial="confirmPublication" />
@@ -46,12 +43,6 @@ definePageMeta({
 	layout: "default"
 })
 
-/** 
- * This controls whether the 'Modal' is shown or not 
- * 
- * If it is true, it is show. If it is false, it is hidden.
- * */
-const showModal = ref<boolean>(false)
 const request = ref<any>(null)
 
 
@@ -66,32 +57,6 @@ const postState = ref<false | true | null>(null);
  */
 const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
-/**
- * This function is called when the text editor, or 'EditorCard' emits
- * and event. - When the 'publish' button is pressed 
- * 
- * @param request_body - The data that 'EditorCard' wants to publish
- */
-const publishPost = async (request_body: any) => {
-	// What I want: When the "publish" button is clicked on in the editor I want the modal
-	// to show TWO options. One that is CONFIRM, and another that is CANCEL
-
-	// I think i want this function to set showModal to true, so that the modal will be shown, and
-	// when the modal is shown two options appear. One is confirm the other is cancel - which will automatically
-	// happen if you exit
-	request.value = request_body
-	showModal.value = true
-
-	// const response = await postCreateNewPost(baseURL, request_body)
-
-	// if (response) {
-	// 	postState.value = response.data
-	// } else {
-	// 	console.log("rectum")
-	// }
-
-}
-
 const confirmPublication = async () => {
 	const response = await postCreateNewPost(baseURL, request.value)
 
@@ -100,14 +65,6 @@ const confirmPublication = async () => {
 	} else {
 		console.log("rectum")
 	}
-}
-
-showModal.value = false
-
-const cancelPublication = () => {
-	showModal.value = false
-	return null
-
 }
 
 </script>

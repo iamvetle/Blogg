@@ -1,8 +1,7 @@
 <template>
-    <div>
+    <div id="modal" class="h-sceeen w-full blur-sm">
         <Dialog :open="isOpen" @close="setClose">
             <div class="fixed w-full h-full flex items-center justify-center inset-0">
-
 
                 <div class="w-[500px] h-[250px] bg-primary text-onPrimary p-8">
                     <DialogPanel>
@@ -49,15 +48,14 @@ import {
 } from '@headlessui/vue'
 
 /**
- * Immidietly when this component is shown a choice is given:
+ * Is shown immidietly when the component is mounted.
  * 
+ * Two option are displayed that both send an emit event:
+ *  
  * Comfirm? or Cancel?
  */
 
 const emit = defineEmits(["confirmPublished", "cancelPublished"])
-
-// const props = defineProps<{
-// }>();
 
 const isOpen = ref<boolean>(true)
 
@@ -77,8 +75,6 @@ const cancel = () => {
     emit("cancelPublished")
 
 }
-
-
 
 </script>
 

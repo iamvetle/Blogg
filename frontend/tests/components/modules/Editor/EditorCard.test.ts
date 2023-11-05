@@ -15,8 +15,8 @@ describe('EditorCard testing', () => {
             global: {
                 plugins: [pinia],
                 mocks: {
-                    cancelClick:mockingCancel,
-                    tryToPublishClick:mockingPublish
+                    buttonCancelClick:mockingCancel,
+                    buttonTryPublishClick:mockingPublish
                 }
             }
         })

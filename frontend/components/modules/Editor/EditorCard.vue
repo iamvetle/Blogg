@@ -5,6 +5,7 @@
 				<teleport to="body">
 					<Modal
 					@confirm-published="publishPost"
+					@cancel-published="cancelPublishing"
 					/>
 				</teleport>
 			</div>
@@ -44,19 +45,20 @@
 		<div class="buttons flex">
 			<button id="cancel"
 				class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
-				@click="cancelClick">
+				@click="buttonCancelClick">
 				Cancel
 			</button>
 			<button id="publish"
 				class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
-				@click="showModal = true">
+				@click="buttonTryPublishClick">
 				Publish
 			</button>
 		</div>
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+//@ts-nocheck
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import { BubbleMenu } from '@tiptap/vue-3';
 import Document from '@tiptap/extension-document' // required
@@ -103,10 +105,25 @@ import double_quotes_icon from '~/assets/icons/double-quotes-r.svg'
 import italic_icon from '~/assets/icons/italic.svg'
 import bold_icon from '~/assets/icons/bold.svg'
 
-// const emit = defineEmits()
+const emit = defineEmits(['newPostMaterial'])
 
 const errorHappened = ref(null)
+
+/**
+ * This variable dictates whether the Modal is shown or not.
+ * 
+ * True: Modal is shown. 
+ * False: Modal is hidden.
+*/
 const showModal = ref(false)
+
+const html = ref(null)
+
+/** This two are just so that I can share them between the button 
+ * click function and the modal publish function*/
+const title = ref(null)
+const body = ref(null)
+
 
 const editor = useEditor({
 	"type": "doc",
@@ -176,21 +193,142 @@ const editor = useEditor({
 	autofocus: 'start'
 })
 
-const emit = defineEmits(['newPostMaterial'])
-
-const html = ref(null)
-
 /**
- * To tract whether the editor is empty or not 	
+ * Tracks the "emptyness" of the editor
  */
 const isEditorEmpty = computed(() => !editor.value?.content?.trim());
 
+/**
+ * On update it takes and updates the HTML value?
+ */
 onMounted(() => {
 	editor.value.on("update", () => {
 		html.value = editor.value.getHTML()
 	})
-
 })
+
+// BUTTON ACTIONS
+
+/**
+ * Button action
+ * 
+ * Is called when the 'new post' button is clicked.
+ * 
+ * It is called before showing the modal
+ * 
+ * It checks if the text is valid (has content and such), and
+ * then opens the Modal to give options to the web client.
+ */
+const buttonTryPublishClick = async () => {
+
+	/** 
+	 * Retrieves the text that has been written in the 
+	 * text editor, as HTML.
+	 */
+	html.value = editor.value.getHTML()
+
+	/**
+	 * @function extractTitleAndContent
+	 * 
+	 * The function takes the whole HTML text that whas been written 
+	 * and extracts a title out of it.
+	 * 
+	 * A 'body' and a 'title' data is then returned
+	 * 
+	 * @param html.value - The raw HTML text body that the function is going
+	 * to process.
+	 * 
+	 * @return - Object with two strings, or object with null
+	 */
+	// I just didn't know what to name it as
+	const answer = extractTitleAndContent(html.value)
+
+	title.value = answer?.title
+	body.value = answer?.body
+
+	alert(title.value)
+	alert(body.value)
+
+	/** If the title or body is null an alert is given, and the process is stopped */
+	if ((title.value == null) || (body.value == null)) {
+	
+		console.log(`Somethign went wrong. body: ${body}. title: ${title} `) // print to self
+		alert("Something went wrong. See console log")
+
+		/** @todo - make this do someting */
+		errorHappened.value = true // LOOK ERE":: Can I maybe use provide and inject between pages and layout for h-sceeen at such?
+
+		// Exited, stopped
+		return null
+
+	/** 
+	 * If the return object has actual values 
+	 * The Modal is shown.
+	 * 
+	 * Basically says: The post can be published now.
+	 */
+	} else {
+		showModal.value = true
+
+		// tele port for mobile conditional rendering? disable teleport por? still hav to telefport to "app" vueuse use breakpoints - breakpoints tailwind??
+	}
+}
+
+/**
+ * Button action
+ * 
+ * Clears and empties the entire content. Then redirects the user "back",
+ * probebly to the feed page.
+ * 
+ * Is called when the 'cancel' button is clicked.
+ */
+const buttonCancelClick = () => {
+	const router = useRouter()
+	editor.value.commands.clearContent
+	const place = router.go(-1)
+	html.value = ""
+
+	return navigateTo(place)
+}
+
+// MODAL EMITS/EVENTS 2/2
+
+/** The modal can return TWO things */
+
+// 1/2
+/** 
+ * Button action
+ * 
+ * This tells the parent container that the post made wants to
+ * be published. It emits an event with the content data
+ * 
+ * It is only called by the modal
+ */
+const publishPost = () => {
+	showModal.value = false
+
+	const htmlData = {
+			"title": title,
+			"content": body,
+		}
+
+	// emit('newPostMaterial', htmlData)
+	html.value = ""
+
+	editor.value.chain().focus().clearContent().run()
+}
+
+// 2/2
+/**
+ * It is called by the modal and it stops the process of making the post.
+ */
+const cancelPublishing = () => {
+	showModal.value = false
+	return null
+}
+
+
+/** METHODS FOR THE EDITOR */
 
 const setLink = () => {
 	const previousUrl = editor.value.getAttributes('link').href
@@ -222,10 +360,6 @@ const setLink = () => {
 		.run()
 }
 
-// husk at hermer etter medium
-
-// methods 
-
 function addImage() {
 	const url = window.prompt('URL')
 
@@ -233,98 +367,6 @@ function addImage() {
 		editor.value.chain().focus().setImage({ src: url }).run()
 	}
 }
-
-/**
- * Is called when the 'new post' button is clicked.
- * 
- * It checks if the text is valid (has content and such), and
- * then either emit the data to the parent container, or cancel
- * and does nothing.
- */
-const tryToPublishClick = async () => {
-
-	/** 
-	 * Retrieves the text that has been written in the 
-	 * text editor, as HTML.
-	 */
-	html.value = editor.value.getHTML()
-
-	/**
-	 * The function takes the whole HTML text that whas been written 
-	 * and extracts a title out of it.
-	 * 
-	 * A 'body' and a 'title' data is then returned
-	 * 
-	 * @param html.value - The raw HTML text body that the function is going
-	 * to process.
-	 * 
-	 * @return - The first paragraph of the text input, and the rest 
-	 * of the body. 
-	 * 
-	 */
-	const { title, body } = extractTitleAndContent(html.value)
-
-	// If title and body is not null
-	if (title === null) {
-		
-
-
-		alert(title)
-		alert(body)
-		console.log("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
-		alert("Somethign went wrong: 'body' and 'tile' either body or title had an empty value")
-
-		errorHappened.value = true // LOOK ERE":: Can I maybe use provide and inject between pages and layout for h-sceeen at such?
-
-		errorHappened.value = false
-		html.value = ""
-
-		// alert(JSON.stringify(htmlData))
-
-		// An event is emitted together with the post content
-
-
-	} else {
-		showModal = true
-
-		// tele port for mobile conditional rendering? disable teleport por? still hav to telefport to "app" vueuse use breakpoints - breakpoints tailwind??
-	}
-}
-
-/**
- * Is called when the 'cancel' button is clicked.
- * Clears and empties the entire content
- */
-const cancelClick = () => {
-	const router = useRouter()
-	editor.value.commands.clearContent
-	const place = router.go(-1)
-	html.value = ""
-
-	return navigateTo(place)
-}
-
-const publishPost = () => {
-	showModal.value = false
-	
-
-	const htmlData = {
-			"title": title,
-			"content": body,
-		}
-
-	emit('newPostMaterial', htmlData)
-	html.value = ""
-
-	editor.value.chain().focus().clearContent().run()
-}
-
-const cancelPublishing = () => {
-	showModal.value = false
-	return null
-}
-
-
 
 const toggleHeading = (level) => {
 	editor.value.chain().focus().toggleHeading({ level }).run();
@@ -349,12 +391,10 @@ const toggleBlockquote = () => {
 
 const toggleBold = () => {
 	editor.value.chain().focus().toggleBold().run()
-
 }
 
 const toggleItalic = () => {
 	editor.value.chain().focus().toggleItalic().run()
-
 }
 
 

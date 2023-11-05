@@ -10,14 +10,14 @@ interface TitleAndContentType {
  * @param htmlFromEditor - The HTML that is going to be processed
  * @returns - Either null or an object of instance TitleAndContentType
  */
-export const extractTitleAndContent = (htmlFromEditor: string): TitleAndContentType | null => {
+export const extractTitleAndContent = (htmlFromEditor): TitleAndContentType | null => {
     
     /** If a different primitive than string was provided null(s) is returned*/
     if (typeof htmlFromEditor !== "string" ) {
         const title = null
         const body = null
         console.log("The input was not a string") // print to self
-        alert("theinput was not a string")
+        alert(`The input was not a string: ${typeof htmlFromEditor}`)
         return { title, body }
     };
 
@@ -31,10 +31,8 @@ export const extractTitleAndContent = (htmlFromEditor: string): TitleAndContentT
     const allowedTags = ['H1', 'H2', 'H3']
 
     /** Assigns the first element of the document (htmlFromEditor) */
-    const firstElement = doc.body.firstChild;
-    alert(firstElement)
-//@ts-ignore
-    // Checks if that element is a part of the allowed elements list //@ts-ignore
+    const firstElement = doc.body.firstChild;// @ts-ignore
+    // Checks if that element is a part of the allowed elements list 
     if (firstElement && allowedTags.includes(firstElement.tagName)) {
         /** It takes the element and returns only the text part of it with the tag (h1, h2, h3) */
         title = firstElement.textContent;
@@ -47,11 +45,13 @@ export const extractTitleAndContent = (htmlFromEditor: string): TitleAndContentT
          * <body> It all of the html in here and assign it as the new body</body>
          */
         body = doc.body.innerHTML;
+
+    /** When the element is not part of the allowed element list */
+    } else {
+        // Makes sure that title and body doesn't return as empty strings
+        title = null
+        body = null
     }
-    /** 
-     * The title is returned as one of the elements in allowedTags,
-     * while body is the rest of the document
-     * 
-    */
+
     return { title, body };
 }

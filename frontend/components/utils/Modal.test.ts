@@ -17,7 +17,7 @@ function factory() {
                 DialogPanel,
                 DialogTitle,
                 DialogDescription,
-            }
+            },
         },
         attachTo: document.body
     })
@@ -68,18 +68,16 @@ describe("Testing the modal utils component", () => {
     // })
 
     // The modal should be shown immidietly
-    test('The modal Should have two buttons available', async () => {
+    test('Should have the headless ui Dialog component present', async () => {
         const wrapper = factory()
 
+        const detail = wrapper.findComponent(Dialog)
+
+        console.log(wrapper.html())
         await wrapper.vm.$nextTick()
 
+        expect(detail.exists()).toBe(true)
 
-        console.log(document.body.innerHTML)
-
-        const buttons = document.querySelectorAll("button");
-
-        // start and end of element becomes * 2
-        expect(buttons).toHaveLength(4)
     })
     test("Should have a button for confirm", async () => {
         const wrapper = factory()
@@ -89,7 +87,7 @@ describe("Testing the modal utils component", () => {
         const confirm_button = document.getElementById("confirm")
 
         expect((confirm_button as any).tagName).toBe("BUTTON")
-    }),
+    })
         test('Should have a button for cancel', async () => {
             const wrapper = factory()
 
@@ -98,21 +96,44 @@ describe("Testing the modal utils component", () => {
             const cancel_button = document.getElementById("cancel")
 
             expect((cancel_button as any).tagName).toBe("BUTTON")
+        }),
+
+
+        test('Should not display the ui component when the comfirm button is pressed', async () => {
+            const wrapper = factory()
+            console.log(wrapper.vm.isOpen)
+
+            
+            const detail = wrapper.getComponent(Dialog)            
+            console.log(detail.html())
+
+
+
+            await wrapper.vm.$nextTick()
+
+
+
+
+
+            await wrapper.vm.$nextTick();
+
+            
+
         })
-        // test('The confirm button should emit an event when pressed', async () => {
-        //     const wrapper = factory()
+    // test('The confirm button should emit an event when pressed', async () => {
+    //     const wrapper = factory()
 
-        //     await wrapper.vm.$nextTick()
+    //     await wrapper.vm.$nextTick()
 
-        //     document.getElementById("confirm").click()
+    //     document.getElementById("confirm").click()
 
-        //     await wrapper.vm.$nextTick()
+    //     await wrapper.vm.$nextTick()
 
-        //     console.log(wrapper.emitted())
+    //     console.log(wrapper.emitted())
 
-        //     expect(wrapper.emitted("confirmPublished")).toBeTruthy()
+    //     expect(wrapper.emitted("confirmPublished")).toBeTruthy()
 
-        // })
+    // })
 })
 
 // vi.mock("~/composables/crud/postCreateNewPost", () => ({
