@@ -2,11 +2,13 @@
 	<div class="p-2">
 		<div id="editor-container" class="w-full min-h-[270px] mb-12" @click="editor.commands.focus()">
 			<div v-if="showModal">
-				<teleport to="body">
-					<Modal
-					@confirm-published="publishPost"
-					@cancel-published="cancelPublishing"
-					/>
+				<teleport to="#modal">
+					<div class="w-full h-screen blur-sm">
+						<Modal
+						@confirm-published="publishPost"
+						@cancel-published="cancelPublishing"
+						/>
+					</div>
 				</teleport>
 			</div>
 			<div id="editor-area" class="w-full">
@@ -105,6 +107,9 @@ import double_quotes_icon from '~/assets/icons/double-quotes-r.svg'
 import italic_icon from '~/assets/icons/italic.svg'
 import bold_icon from '~/assets/icons/bold.svg'
 
+import { useGeneralStore } from '~/store/generalStore';
+
+const generalStore = useGeneralStore()
 const emit = defineEmits(['newPostMaterial'])
 
 const errorHappened = ref(null)
@@ -123,7 +128,6 @@ const html = ref(null)
  * click function and the modal publish function*/
 const title = ref(null)
 const body = ref(null)
-
 
 const editor = useEditor({
 	"type": "doc",
@@ -246,9 +250,6 @@ const buttonTryPublishClick = async () => {
 	title.value = answer?.title
 	body.value = answer?.body
 
-	alert(title.value)
-	alert(body.value)
-
 	/** If the title or body is null an alert is given, and the process is stopped */
 	if ((title.value == null) || (body.value == null)) {
 	
@@ -269,6 +270,10 @@ const buttonTryPublishClick = async () => {
 	 */
 	} else {
 		showModal.value = true
+		
+		/** This calls the store function that controls the background */
+		generalStore.turnBackgroundForModel("blur-sm")
+		
 
 		// tele port for mobile conditional rendering? disable teleport por? still hav to telefport to "app" vueuse use breakpoints - breakpoints tailwind??
 	}
@@ -306,13 +311,14 @@ const buttonCancelClick = () => {
  */
 const publishPost = () => {
 	showModal.value = false
+	generalStore.turnBackgroundForModel(null)
 
 	const htmlData = {
-			"title": title,
-			"content": body,
+			"title": title.value,
+			"content": body.value,
 		}
 
-	// emit('newPostMaterial', htmlData)
+	emit('newPostMaterial', htmlData)
 	html.value = ""
 
 	editor.value.chain().focus().clearContent().run()
@@ -324,6 +330,7 @@ const publishPost = () => {
  */
 const cancelPublishing = () => {
 	showModal.value = false
+	generalStore.turnBackgroundForModel(null)
 	return null
 }
 

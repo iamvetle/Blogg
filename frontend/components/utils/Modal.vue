@@ -1,26 +1,31 @@
 <template>
-    <div id="modal" class="h-sceeen w-full blur-sm">
+    <div>
         <Dialog :open="isOpen" @close="setClose">
             <div class="fixed w-full h-full flex items-center justify-center inset-0">
 
-                <div class="w-[500px] h-[250px] bg-primary text-onPrimary p-8">
+                <div class="rounded-xl w-[500px] h-[250px] bg-primary text-onPrimary p-8">
                     <DialogPanel>
                         <div>
-                            <DialogTitle class="text-center text-lg">Are you ready to publish the post?</DialogTitle>
+                            <DialogTitle class="text-center text-2xl">Are you ready to publish the post?</DialogTitle>
                             <p>
                             </p>
                             <div class="mt-16">
                                 <span id="choices" class="flex justify-center space-x-24">
 
-                                    <span class="p-4 bg-onPrimary text-primary">
-                                        <button id="confirm"
+                                    <span>
+                                        <button id="confirm" class="rounded-lg p-4 bg-onPrimary text-primary
+                                        hover:p-5
+                                        
+                                        "
                                             @click="confirm">
                                             Confirm
                                         </button>
                                     </span>
 
-                                    <span class="p-4 bg-onPrimary text-primary">
-                                        <button id="cancel" 
+                                    <span class="">
+                                        <button id="cancel" class="rounded-lg p-4 bg-onPrimary text-primary
+                                        hover:p-5   
+                                        " 
                                         @click="cancel"
                                         >
                                             Cancel

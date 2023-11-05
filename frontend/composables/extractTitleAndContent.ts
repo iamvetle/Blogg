@@ -10,7 +10,7 @@ interface TitleAndContentType {
  * @param htmlFromEditor - The HTML that is going to be processed
  * @returns - Either null or an object of instance TitleAndContentType
  */
-export const extractTitleAndContent = (htmlFromEditor): TitleAndContentType | null => {
+export const extractTitleAndContent = (htmlFromEditor:string): TitleAndContentType | null => {
     
     /** If a different primitive than string was provided null(s) is returned*/
     if (typeof htmlFromEditor !== "string" ) {

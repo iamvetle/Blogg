@@ -23,7 +23,6 @@
     "tailwind.config.ts": true,
     "tsconfig.json": true,
     "nuxt.config.ts": true,
-    "app.vue": true,
     "Topics.json": true,
     "server": true,
     "assets": true,
