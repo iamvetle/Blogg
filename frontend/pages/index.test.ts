@@ -1,45 +1,59 @@
 import { createTestingPinia } from "@pinia/testing"
-import { VueWrapper, shallowMount, flushPromises } from '@vue/test-utils';
+import { VueWrapper, mount, flushPromises } from '@vue/test-utils';
 import index from "~/pages/index.vue";
 import { useGeneralStore } from '~/store/generalStore';
 import ListArticles from '~/components/modules/Blogg/ListArticles.vue';
-import { useLoggedInUserStore } from '../store/loggedInUserStore';
-import { usePostStore } from '../store/postStore';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import { usePostStore } from '~/store/postStore';
+import { useSearchStore } from '~/store/searchStore';
 
 
-describe('index page testing', () => { 
-    let wrapper: VueWrapper
-    let generalStore: any
-    let postStore:any;
-    let loggedInUserStore:any;
-    let pinia:any;
+let wrapper: VueWrapper
+let generalStore: any
+let postStore: any;
+let loggedInUserStore: any;
+let searchStore: any;
+let pinia: any;
+
+const mockFeedPostSetting = vi.fn()
+const mockFollowingPostSetting = vi.fn()
+
+
+describe('index page testing', () => {
+
 
     beforeEach(() => {
         vi.stubGlobal("definePageMeta", () => {
             return null
         })
 
-        vi.stubGlobal("setPageLayout", () => {
-            return null
-        })
-
-
-
         pinia = createTestingPinia()
         generalStore = useGeneralStore(pinia)
         postStore = usePostStore(pinia)
         loggedInUserStore = useLoggedInUserStore(pinia)
+        searchStore = useSearchStore(pinia)
+
         generalStore.isAuthenticated = true
+
         loggedInUserStore.idArrayOfSavedPosts = true
-        postStore.posts = true
         loggedInUserStore.loggedInUserProfile = true
-        wrapper = shallowMount(index, {
+
+        postStore.posts = {
+            results: true
+        }
+        postStore.allTags = []
+
+        wrapper = mount(index, {
             global: {
                 plugins: [pinia],
                 components: {
                     ListArticles,
                 },
-                stubs: { 'Wait': true, FilterBox:true, 'ListArticlesSidebar': true }
+                mocks: {
+                    feedPostSetting:mockFeedPostSetting,
+                    followingPostSetting:mockFollowingPostSetting
+                },
+                stubs: { "ListArticles": true, 'ListArticlesSidebar': true, "FilterBox": true }
             }
 
         })
@@ -51,11 +65,7 @@ describe('index page testing', () => {
         }
     })
 
-    test('ListArticles component is being rendered correctly', async () => {
-
-        // Debugging
-        console.log(generalStore.isAuthenticated)  // Should print true
-        console.log(wrapper.html())  // Should show the rendered HTML
+    test('Should render ListArticles when there are posts and logged in user profile information', async () => {
 
         let listarticles = wrapper.findComponent({ name: 'ListArticles' })
 
@@ -65,32 +75,140 @@ describe('index page testing', () => {
 
         await wrapper.vm.$nextTick()
 
-        listarticles = wrapper.findComponent(ListArticles)
         expect(listarticles.exists()).toBe(false)
     });
+    test('Should NOT render ListArticles when the loggedinuser is not authenticated', async () => {
 
-    test("the wait component is being rendered correctly conditentially", async () => {
         generalStore.isAuthenticated = false
+
+        await wrapper.vm.$nextTick()
+        const listarticles = wrapper.findComponent({ name: 'ListArticles' })
+
+
+        expect(listarticles.exists()).toBe(false)
+    });
+    test('Should display stuff when there are posts / posts are true', async () => {
+
         await wrapper.vm.$nextTick()
 
-        expect(wrapper.findComponent({ name: 'Wait' }).exists()).toBe(false)
+        const element = wrapper.find("[data-test='everything']")
 
-        generalStore.isAuthenticated = true
-        await wrapper.vm.$nextTick()
+        expect(element.exists()).toBe(true)
 
-        expect(wrapper.findComponent({ name: 'Wait' }).exists()).toBe(false)
     })
-    test('content not rendered if no posts and personal user is being retrieved', async () => {
-        generalStore.posts = false
-        generalStore.personalUser = false
+    test('Should not display anything when posts is false', async () => {
+        postStore.posts = false
 
-        await flushPromises()
         await wrapper.vm.$nextTick()
 
-
-        const element = wrapper.find("[date-test='filter-tool']")
+        const element = wrapper.find("[data-test='everything']")
 
         expect(element.exists()).toBe(false)
 
+    })
+    test('Should render the dropdown filter when there are tags (and posts and profile info)', async () => {
+
+        const filter = wrapper.find("#dropdown-filter")
+
+        expect(filter.exists()).toBe(true)
+
+    })
+
+    test('Should not render the dropdown filter if there are not tags', async () => {
+        postStore.allTags = null
+
+        await wrapper.vm.$nextTick()
+
+        const filter = wrapper.find("#dropdown-filter")
+
+        expect(filter.exists()).toBe(false)
+
+    })
+    test('Should render the sidebar if the logged in user profile information are there/is true (and feed posts)', () => {
+
+        const sidebar = wrapper.findComponent({ name: "ListArticlesSidebar" })
+
+        expect(sidebar.exists()).toBe(true)
+    })
+
+    test('Should NOT render the sidebar if the logged in user profile information are there/is true (and feed posts)', async () => {
+        loggedInUserStore.loggedInUserProfile = false
+
+        await wrapper.vm.$nextTick()
+
+        const sidebar = wrapper.findComponent({ name: "ListArticlesSidebar" })
+
+        expect(sidebar.exists()).toBe(false)
+    })
+    test('Should not automatically have the filter dropdown open', async () => {
+        const sidebar = wrapper.findComponent({ name: "FilterBox" })
+
+        expect(sidebar.exists()).toBe(false)
+    })
+    test('Should render the filterbox component, containing the filter options, when the dropdown-button is CLICKED', async () => {
+
+        const dropbutton = wrapper.find("[data-test='dropdown-button']")
+        expect(dropbutton.exists()).toBe(true)
+
+        await dropbutton.trigger("click")
+
+        await wrapper.vm.$nextTick()
+
+        const sidebar = wrapper.findComponent({ name: "FilterBox" })
+
+        expect(sidebar.exists()).toBe(true)
+    })
+    test('Search result text should not be present when no search has been made', async () => {
+        expect(wrapper.html()).not.toContain("Søkeresultater for")
+    })
+    test('Search result text SHOULD be present when a search has been made', async () => {
+        searchStore.searchPart = true
+
+        await wrapper.vm.$nextTick()
+
+        expect(wrapper.html()).toContain("Søkeresultater for")
+    })
+
+    test('Should be a text giving two options', () => {
+        const following_text = "Following"
+        const feed_text = "Feed"
+
+        expect(wrapper.html()).toContain(feed_text)
+        expect(wrapper.html()).toContain(following_text)
+    })
+    test("There should be two buttons containing the two texts", () => {
+        const feed_button = wrapper.get("[data-test='feed-posts-option']")
+        const following_button = wrapper.get("[data-test='following-posts-option']")
+
+        expect(feed_button.element.tagName).toBe("BUTTON")
+        expect(following_button.element.tagName).toBe("BUTTON")
+
+        expect(feed_button.text()).toContain("Feed")
+        expect(following_button.text()).toContain("Following")        
+    })
+    test('The feed button should call a function', async () => {
+
+        const feed_button = wrapper.get("[data-test='feed-posts-option']")
+
+        expect(wrapper.vm.feedPostSetting).toBeDefined() 
+        
+        await feed_button.trigger("click")
+
+        await wrapper.vm.$nextTick()
+        
+        expect(mockFeedPostSetting).toHaveBeenCalledOnce()
+    })
+
+    test('The following button should call a function', async () => {
+
+        const following_button = wrapper.get("[data-test='following-posts-option']")
+
+        expect(wrapper.vm.followingPostSetting).toBeDefined() 
+        
+        await following_button.trigger("click")
+
+        await wrapper.vm.$nextTick()
+        
+        expect(mockFollowingPostSetting).toHaveBeenCalledOnce()
     })
 })

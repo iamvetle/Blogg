@@ -8,6 +8,7 @@ from api.views.post_views import (
     PostCreateView,
     PostAllLoggedInUserView,
     PostMultipleSnippetView,
+    PostMultipleSnippetOnlyMyFollowingView,
     PostSaveView,
     PostAllSavedLoggedInUserView,
     PostAllNormalUserView,
@@ -35,7 +36,8 @@ urlpatterns = [
     
     # General paths
     # path("search/", PostMultipleAfterSearchView.as_view(), name="search"),
-    path("feed/", PostMultipleSnippetView.as_view(), name="all_posts"),
+    path("feed/", PostMultipleSnippetView.as_view(), name="all_or_multiple_posts"),
+    path("feed/following/", PostMultipleSnippetOnlyMyFollowingView.as_view(), name="all_or_multiple_following_posts"),
     path("tags/", AllTagsView.as_view(), name="tags"),
     path("categories/", AllCategoriesView.as_view(), name="categories"),
     

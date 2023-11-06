@@ -102,7 +102,7 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     filter_backends = [
         filters.DjangoFilterBackend,
         SearchFilter,
-    ]  # TODO might add sorting later
+    ]
     filterset_class = CustomPostFilter
 
     search_fields = ["title", "content", "author__username"]
@@ -111,7 +111,34 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     queryset = Post.objects.all().order_by("-date_published")
 
     http_method_names = ["get"]
+    
+class PostMultipleSnippetOnlyMyFollowingView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = PostShortenSerializer
+    # TODO Find out if I want to have the option to filter with this class
+    # It paginates automatically - se settings.py
+    # filter_backends = [
+    #    filters.DjangoFilterBackend,
+    #    SearchFilter,
+    #]
+    # filterset_class = CustomPostFilter
 
+    # search_fields = ["title", "content", "author__username"]
+
+    # Makes sure that the *newest* posts are listed first by the frontend
+    queryset = Post.objects.all().order_by("-date_published")
+
+    http_method_names = ["get"]
+    
+    def get_queryset(self):
+        queryset_posts_all = super().get_queryset()
+        
+        queryset_following_all = self.request.user.following.all()
+        
+        filtered_queryset = queryset_posts_all.filter(author__in=queryset_following_all)
+        
+        return filtered_queryset
+    
 
 class PostReadSingleView(RetrieveAPIView):
     """Retrieves a single post to read"""

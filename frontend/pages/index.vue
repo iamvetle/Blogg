@@ -2,16 +2,21 @@
 	<div id="site-wrapper" v-if="generalStore.isAuthenticated" class="mt-8">
 		<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
 			class="max-w-[1100px] w-full h-fit mx-auto px-6 grid grid-cols-10 gap-28">
-			<div class="col-span-6 mx-auto w-full">
+			<div data-test="everything" class="col-span-6 mx-auto w-full">
 				<h2 class="mb-10 text-4xl" v-if="searchStore.searchPart">Søkeresultater for '{{ searchStore.searchPart }}'
 				</h2>
-				<ListArticles v-if="postStore.posts" class="w-full" />
+				<span class="flex jestify-center space-x-4">
+					<button data-test="feed-posts-option" @click="feedPostSetting">Feed</button>
+					<button data-test="following-posts-option" @click="followingPostSetting">Following</button>
+				</span>
+				<ListArticles v-if="postStore.posts.results" class="w-full" />
 			</div>
 			<div class="col-span-4 mx-auto w-full">
-				<div id="dropdown-menu" v-if="loggedInUserStore.idArrayOfSavedPosts"
+				<div id="dropdown-filter" v-if="postStore.allTags"
 					class="mb-4 bg-primary rounded-lg text-onPrimary">
 					<span class="mb-2 w-full flex items-center text-center justify-center">
 						<button
+						data-test="dropdown-button"
 							class="text-lg hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
 							@click="changeDropdown">
 							Filter posts
@@ -20,7 +25,7 @@
 					<div>
 						<!-- The filter dropdown compontent-->
 						<KeepAlive>
-							<component :is="dropdown" id="dropdown-content" :list-of-options="tagOptions"
+							<component :is="dropdown" data-test="filter-component" :list-of-options="tagOptions"
 								class="w-full mb-2 px-2 py-1" @output="action" />
 						</KeepAlive>
 					</div>
@@ -38,6 +43,7 @@ import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePaginationStore } from '~/store/paginationStore';
+// import Following from '~/components/modules/MyUser/Following.vue';
 
 const postStore = usePostStore()
 const generalStore = useGeneralStore()
@@ -77,8 +83,6 @@ const changeDropdown = () => {
 	}
 }
 
-
-
 /**
  * NEW: I removed the IF statements that was meant to check whether it was already information/posts there already,
  * but it said it was when it wasnt sometimes, which was very weird, so I removed it on all->
@@ -109,6 +113,15 @@ onMounted(async () => {
 	await getAllTags()
 
 })
+
+
+const feedPostSetting = () => {
+	return null
+}
+
+const followingPostSetting = () => {
+	return null
+}
 
 /**
  * Formats the ugly array-object for keeping the tags, and creates an 
