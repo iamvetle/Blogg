@@ -8,6 +8,7 @@ from rest_framework import serializers
 from api.serializers.post_serializers import PostSaveStyleSerializer
 from api.models import Post
 
+
 CustomUser = get_user_model()
 
 class LoggedInUserSerializer(serializers.ModelSerializer):

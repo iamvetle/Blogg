@@ -1,12 +1,13 @@
 import { createTestingPinia } from "@pinia/testing"
-import { VueWrapper, mount, flushPromises } from '@vue/test-utils';
+import { VueWrapper, mount } from '@vue/test-utils';
 import index from "~/pages/index.vue";
 import { useGeneralStore } from '~/store/generalStore';
 import ListArticles from '~/components/modules/Blogg/ListArticles.vue';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePostStore } from '~/store/postStore';
 import { useSearchStore } from '~/store/searchStore';
-
+import { usePaginationStore } from '~/store/paginationStore';
+import { getPostMultipleSnippet } from '../composables/crud/getPostMultipleSnippet';
 
 let wrapper: VueWrapper
 let generalStore: any
@@ -14,13 +15,10 @@ let postStore: any;
 let loggedInUserStore: any;
 let searchStore: any;
 let pinia: any;
-
-const mockFeedPostSetting = vi.fn()
-const mockFollowingPostSetting = vi.fn()
+let paginationStore:any;
 
 
 describe('index page testing', () => {
-
 
     beforeEach(() => {
         vi.stubGlobal("definePageMeta", () => {
@@ -32,6 +30,7 @@ describe('index page testing', () => {
         postStore = usePostStore(pinia)
         loggedInUserStore = useLoggedInUserStore(pinia)
         searchStore = useSearchStore(pinia)
+        paginationStore = usePaginationStore(pinia)
 
         generalStore.isAuthenticated = true
 
@@ -43,19 +42,23 @@ describe('index page testing', () => {
         }
         postStore.allTags = []
 
+        paginationStore.activeFetchURL = "something"
+
         wrapper = mount(index, {
             global: {
                 plugins: [pinia],
+                stubs: { 
+                    "ListArticles": true, 
+                    'ListArticlesSidebar': true, 
+                    "FilterBox": true
+                },
+                mocks: {
+                },
                 components: {
                     ListArticles,
                 },
-                mocks: {
-                    feedPostSetting:mockFeedPostSetting,
-                    followingPostSetting:mockFollowingPostSetting
-                },
-                stubs: { "ListArticles": true, 'ListArticlesSidebar': true, "FilterBox": true }
-            }
 
+            },
         })
     })
 
@@ -67,7 +70,7 @@ describe('index page testing', () => {
 
     test('Should render ListArticles when there are posts and logged in user profile information', async () => {
 
-        let listarticles = wrapper.findComponent({ name: 'ListArticles' })
+        const listarticles = wrapper.findComponent({ name: 'ListArticles' })
 
         expect(listarticles.exists()).toBe(true)
 
@@ -95,7 +98,7 @@ describe('index page testing', () => {
 
         expect(element.exists()).toBe(true)
 
-    })
+    });
     test('Should not display anything when posts is false', async () => {
         postStore.posts = false
 
@@ -105,14 +108,14 @@ describe('index page testing', () => {
 
         expect(element.exists()).toBe(false)
 
-    })
+    });
     test('Should render the dropdown filter when there are tags (and posts and profile info)', async () => {
 
         const filter = wrapper.find("#dropdown-filter")
 
         expect(filter.exists()).toBe(true)
 
-    })
+    });
 
     test('Should not render the dropdown filter if there are not tags', async () => {
         postStore.allTags = null
@@ -123,7 +126,7 @@ describe('index page testing', () => {
 
         expect(filter.exists()).toBe(false)
 
-    })
+    });
     test('Should render the sidebar if the logged in user profile information are there/is true (and feed posts)', () => {
 
         const sidebar = wrapper.findComponent({ name: "ListArticlesSidebar" })
@@ -186,29 +189,46 @@ describe('index page testing', () => {
         expect(feed_button.text()).toContain("Feed")
         expect(following_button.text()).toContain("Following")        
     })
-    test('The feed button should call a function', async () => {
+    test('There is a defined function meant for the feed button', async () => {
 
+        expect((wrapper.vm as any).feedPostSetting).toBeDefined() 
+    })
+
+    test('There is a defined function meant for the following posts button', async () => {
+
+        expect((wrapper.vm as any).followingPostSetting).toBeDefined()
+    })
+    test('When the following button is clicked the fetch url value that is used for fetching posts is changed ', async () => {
+        
+        const following_button = wrapper.get("[data-test='following-posts-option']")
+
+        await following_button.trigger("click")
+
+        await wrapper.vm.$nextTick()
+
+        expect(paginationStore.activeFetchURL).toEqual("http://localhost:8888/api/feed/following/")
+    })
+    test('When the following button is clicked the fetch url value that is used for fetching posts is changed ', async () => {
         const feed_button = wrapper.get("[data-test='feed-posts-option']")
-
-        expect(wrapper.vm.feedPostSetting).toBeDefined() 
         
         await feed_button.trigger("click")
 
         await wrapper.vm.$nextTick()
-        
-        expect(mockFeedPostSetting).toHaveBeenCalledOnce()
+
+        expect(paginationStore.activeFetchURL).toEqual("http://localhost:8888/api/feed/")
     })
+    // test('The fetch function should be called after changing the fetchURL on feed button click', async () => {
+    //     const mockGetPostMultipleSnippet = vi.fn();
 
-    test('The following button should call a function', async () => {
+    //     ;(wrapper.vm as any).getPostMultipleSnippet = mockGetPostMultipleSnippet;
 
-        const following_button = wrapper.get("[data-test='following-posts-option']")
+    //     await wrapper.vm.$nextTick()
 
-        expect(wrapper.vm.followingPostSetting).toBeDefined() 
         
-        await following_button.trigger("click")
+    //     const feed_button = wrapper.get("[data-test='feed-posts-option']")
+    //     await feed_button.trigger("click")
+    //     await wrapper.vm.$nextTick()
 
-        await wrapper.vm.$nextTick()
-        
-        expect(mockFollowingPostSetting).toHaveBeenCalledOnce()
-    })
+    //     expect(mockGetPostMultipleSnippet).toHaveBeenCalledOnce()
+    // })
 })

@@ -82,8 +82,8 @@ const search = async (payload: any) => {
 	} else {
 		searchStore.searchPart = ""
 	}
-	constructURL()
-	await getPostMultipleSnippet()
+	paginationStore.activeFetchURL = constructURL()
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
 /** 
@@ -103,6 +103,7 @@ const logoclick = async () => {
 	 * store post (which it rrelias on in a v-if) gets refreshesd here */
 
 	if (route.path === "/") {
+
 		postStore.posts = null
 
 		paginationStore.all_pages_count = 0;
@@ -115,8 +116,7 @@ const logoclick = async () => {
 		searchStore.searchPart = null;
 	}
 
-	await getPostMultipleSnippet()
-
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
 </script>

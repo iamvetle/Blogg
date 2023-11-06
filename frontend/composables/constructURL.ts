@@ -11,7 +11,7 @@ import { usePaginationStore } from '~/store/paginationStore';
  * 
  * @todo Find out whether I should move this to a pluging or composable or someting
  */
-export const constructURL = async () => {
+export const constructURL = () => {
 
     const postStore = usePostStore()
     const searchStore = useSearchStore()
@@ -35,6 +35,6 @@ export const constructURL = async () => {
 	}
 	console.log(url)
 
-	paginationStore.activeFetchURL = url
+	return url
 
 }

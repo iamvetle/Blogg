@@ -75,6 +75,7 @@ const dropdown = shallowRef<any>(false)
 
 const f = resolveComponent('FilterBox')
 
+
 const changeDropdown = () => {
 	if (dropdown.value == f) {
 		dropdown.value = false
@@ -92,6 +93,8 @@ const changeDropdown = () => {
  * All of the data that is needed from the api endpoint is fetched here.
  */
 onMounted(async () => {
+	// Have to put this here because this ""function"" is run before the store var is initialez earlier ^
+	const paginationStore = usePaginationStore()
 
 	if (checkLocalInfo() == null) {
 		return null
@@ -100,10 +103,13 @@ onMounted(async () => {
 	* Fetches the profile information of the logged-in user
 	*/
 	await getLoggedInUserProfile()
+
 	/**
 	 * Fetches all posts in snippets (not full content length)
 	   */
-	await getPostMultipleSnippet()
+	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
+	
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 
 
 	/** 
@@ -115,12 +121,15 @@ onMounted(async () => {
 })
 
 
-const feedPostSetting = () => {
-	return null
+const feedPostSetting = async () => {
+	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
-const followingPostSetting = () => {
-	return null
+const followingPostSetting = async () => {
+	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
+	
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
 /**
@@ -150,7 +159,7 @@ const tagOptions = computed(() => {
 const action = async (items: any) => {
 	searchStore.tagFilterPart = items
 	constructURL()
-	await getPostMultipleSnippet()
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 
 }
 
