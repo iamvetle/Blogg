@@ -21,7 +21,7 @@
 					</span>
 				</div>
 				<div>
-					<nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+					<nav v-if="paginationStore.number_of_posts > 10" data-test="post-navigation" class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
 						
 						<div id="back-icon" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
 							@click="click_previous_page">

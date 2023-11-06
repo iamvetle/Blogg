@@ -6,7 +6,7 @@ import { usePaginationStore } from '~/store/paginationStore'
 
 let wrapper:VueWrapper
 let store
-let paginationStore
+let paginationStore:any
 let pinia
 
 describe("testing Pagniation component", () => {
@@ -29,9 +29,9 @@ describe("testing Pagniation component", () => {
         })
 
     })
-    test("testing existence", () => {
 
-        expect(wrapper.exists()).toBe(true)
+    afterEach(() => {
+        wrapper.unmount()
     })
 
     test("paginationStore variables are being rendered", () => {
@@ -41,18 +41,37 @@ describe("testing Pagniation component", () => {
         expect(wrapper.text()).toContain(4)
 
     })
+    test("Should display navigation if there are 11 or more posts", async () => {
 
-    // test("test if correct props are being given", () => {
+        const navigation = wrapper.find("[data-test='post-navigation']")
 
-    //     const wrapper = mount(Pagination, {
-    //         globals: {
-    //             props: {
-    //                 total_number_of_pages: 17
-                    
-    //             }
-    //         }
-    //     })
-    //     expect(wrapper.props)
+        expect(navigation.exists()).toBe(true)
+    })
+    test("Should not display navigation if there are only 10 or less posts", async () => {
+        paginationStore.number_of_posts = 10
 
-    // })
+        await wrapper.vm.$nextTick()
+
+        const navigation = wrapper.find("[data-test='post-navigation']")
+
+        expect(navigation.exists()).toBe(false)
+    })
+    test("Should not display navigation when number of posts is 9", async () => {
+        paginationStore.number_of_posts = 9
+
+        await wrapper.vm.$nextTick()
+
+        const navigation = wrapper.find("[data-test='post-navigation']")
+
+        expect(navigation.exists()).toBe(false)
+    })
+    test("Should display navigation if there are 11 posts", async () => {
+        paginationStore.number_of_posts = 11
+
+        await wrapper.vm.$nextTick()
+
+        const navigation = wrapper.find("[data-test='post-navigation']")
+
+        expect(navigation.exists()).toBe(true)
+    })
 })

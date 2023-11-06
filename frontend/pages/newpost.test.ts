@@ -42,20 +42,12 @@ describe('newPost', () => {
         vi.clearAllMocks(); // Clear the mocked function's call count after each test
     });
 
-    test('Should show the modal component if "showModal" is true', async () => {
+    test('Should have an editor', async () => {
         const wrapper = factory()
         
-        // Changing the variable to true
-        ;(wrapper.vm as any).showModal = true 
-        
-        // Waiting for the DOM to update
-        await wrapper.vm.$nextTick()
+        const editor = wrapper.findComponent({ name:"EditorCard" })
 
-        // Tries to find the modal
-        const modal = wrapper.findComponent({name:"Modal"})
-
-        // Checks if the modal now can be found (exists)
-        expect(modal.exists()).toBe(true)
+        expect(editor.exists()).toBe(true)
 
 
     })
