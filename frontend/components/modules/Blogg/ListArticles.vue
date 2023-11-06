@@ -47,6 +47,10 @@
 						</span>
 					</template>
 
+					<template #amount_of_comments>
+						<span>{{ post.num_of_comments }} C</span>						
+					</template>
+
 					<template #save-article-icon v-if="post.id">
 
 						<BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post.id)" @click="unsave(post.id)" />

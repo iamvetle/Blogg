@@ -1,39 +1,86 @@
 <template>
-    <div id="root" v-if="isOpen" class="relative">
-        <teleport to="#modal-root">
-            <div id="modal" class="fixed z-10 inset-0 overflow-y-auto bg-black bg-opacity-50">
-                <div class="flex items-start justify-center min-h-screen pt-24 text-center">
-                    <div class="bg-white rounded-lg text-left overflow-hidden shadow-xl p-8 w-1/2">
-                        <p>{{ msg }}</p>
-                        <button @click="isOpen = false">{{ closeMsg }}</button>
-                    </div>
+    <div>
+        <Dialog :open="isOpen" @close="setClose">
+            <div class="fixed w-full h-full flex items-center justify-center inset-0">
+
+                <div class="rounded-xl w-[500px] h-[250px] bg-primary text-onPrimary p-8">
+                    <DialogPanel>
+                        <div>
+                            <DialogTitle class="text-center text-2xl">Are you ready to publish the post?</DialogTitle>
+                            <p>
+                            </p>
+                            <div class="mt-16">
+                                <span id="choices" class="flex justify-center space-x-24">
+
+                                    <span>
+                                        <button id="confirm" class="rounded-lg p-4 bg-onPrimary text-primary
+                                        hover:p-5
+                                        
+                                        "
+                                            @click="confirm">
+                                            Confirm
+                                        </button>
+                                    </span>
+
+                                    <span class="">
+                                        <button id="cancel" class="rounded-lg p-4 bg-onPrimary text-primary
+                                        hover:p-5   
+                                        " 
+                                        @click="cancel"
+                                        >
+                                            Cancel
+                                        </button>
+                                    </span>
+
+                                </span>
+                            </div>
+                        </div>
+
+                    </DialogPanel>
                 </div>
             </div>
-        </teleport>
+
+        </Dialog>
     </div>
 </template>
 
 <script setup lang="ts">
-/** The component is supposed to act as a 'popup' that can be customized. 
+import {
+    Dialog,
+    DialogPanel,
+    DialogTitle,
+    // DialogDescription,
+} from '@headlessui/vue'
+
+/**
+ * Is shown immidietly when the component is mounted.
  * 
- * UNFINISHED! Just an idea. 
-*/
+ * Two option are displayed that both send an emit event:
+ *  
+ * Comfirm? or Cancel?
+ */
 
-const props = withDefaults(defineProps<{
-    initial: boolean,
-    msg: string,
-    closeMsg: string,
-}>(), {
-    initial: false,
-    msg: "Post saved",
-    closeMsg: "Close",
-});
+const emit = defineEmits(["confirmPublished", "cancelPublished"])
 
-const isOpen = ref(props.initial)
+const isOpen = ref<boolean>(true)
+
+const setClose = () => {
+    isOpen.value = false
+}
+
+const confirm = () => {
+    isOpen.value = false
+
+    emit("confirmPublished")
+}
+
+const cancel = () => {
+    isOpen.value = false
+
+    emit("cancelPublished")
+
+}
 
 </script>
 
-<style scoped>
-/**
-https://dev.to/alvarosabu/create-modals-with-vue3-teleport-tailwindcss-48aj */
-</style>
+<style scoped></style>

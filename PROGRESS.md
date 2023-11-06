@@ -2,6 +2,30 @@
 
 There are stuff I want the web client to be able to do, that I have not yet implemented. There are also things I want my blogg application to be able to do.
 
+Jeg har sett på hvordan nettsiden *medium* er satt opp, strukturert, og jeg har prøvd å herme litt etter den. Men, jeg er ikke interresert i å lage en klone, og nå tror jeg at jeg er på det stadiet hvor jeg ikke egentlig trenger å "se" mer på den. 
+
+Det er andre, kanskje flere funksjoner jeg ønsker på min egen nettside, som medium ikke har.
+
+**Blank annet**:
+
+**text editor med flere funksjon**
+
+Jeg ønsker å ha en mer omfattende text-editor enn det medium har. Den har ikke sånn "toppbar", noe jeg ønsker at min nettside skal ha. Jeg ønsker å gjøre det mulig å tilpasse artiklene/postene man lenger ut på en mer ordentlig måte.
+
+Jeg ønsker å gi brukeren muligheten til å lagre posten til senere i *drafts* kanskje. Brukeren skal også få muligehten til å legge til et bilde som kan vises sammen med posten på "lists" og sånt.
+
+  Man *må* ikke publish post med en gang.
+
+Det skal komme en slags kontroll når "publish"-knappen (eller hva annet jeg kaller den) blir trykket på. Den kontrollerer hva som skal være tittelen og om et bilde skal være til stede.
+
+Et lite problem for meg, er at jeg ønsker i utgangspunktet at alle artiklene skal ha en stor tittel på selve artikkel siden, men kan jeg tvinge den som lager artikkelen til å gjøre det?
+
+  En ide er at jeg forteller i den popboksen som kommer etter publish-knappen. At tittelen som velges i listing blir også brukt i single post, og at alle titlene på alle postene vil være like store.
+
+  Jeg kan ta den første setningen og forslo "initiuelt" at den kommer til å bli brukt.
+
+---
+
 Er det bedre at jeg lager en røff versjon av flere ting jeg ønsker meg?
 
 Jeg tenker det er best at jeg prøver å gjøre ferdig én og én ting, men **ikke** sitte og prøve å gjøre noe *perfekt*

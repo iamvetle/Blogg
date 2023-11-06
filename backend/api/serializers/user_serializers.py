@@ -21,6 +21,12 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
     num_of_following = serializers.SerializerMethodField()
     
     num_of_posts_published = serializers.SerializerMethodField()
+    
+    date_joined = serializers.SerializerMethodField()
+    
+    
+    def get_date_joined(self, obj):
+        return obj.date_joined.strftime("%d-%m-%Y")
 
     def get_saved_posts(self, obj):
         saved_posts = obj.saved_posts.all()

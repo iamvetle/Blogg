@@ -27,10 +27,16 @@ export const useGeneralStore = defineStore("General store for general things", (
    */
   const apiDownError = ref(false);
 
+  const backgroundForModal = ref<null | string>(null)
+
+  const turnBackgroundForModel = (option:null | string) => {
+    backgroundForModal.value = option
+  }
+
   /**
    * Decides whether the search bar in the navbar should be shown (depending on if web client is authenticated)
    */
   const search_bar_show = ref(false)
   
-  return { search_bar_show, isAuthenticated, apiDownError, username, baseAPIURL }
+  return { search_bar_show, isAuthenticated, apiDownError, username, baseAPIURL, backgroundForModal, turnBackgroundForModel }
 });

@@ -8,8 +8,7 @@
             </span>
         </div>
         <div class="break-words">
-            <p class="mt-2">
-                {{ post.content_snippet }}
+            <p class="mt-2" v-html="post.content_snippet">
             </p>
         </div>
     </div>

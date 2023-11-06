@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <button></button>
-    <span v-if="sesamy">Please</span>
+  <div class="min-h-screen">
+    <Modal/>
   </div>
 </template>
 

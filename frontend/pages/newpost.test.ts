@@ -1,17 +1,33 @@
 import { mount } from '@vue/test-utils';
 import newpost from './newpost.vue';
 import EditorCard from '~/components/modules/Editor/EditorCard.vue';
+import Modal from '~/components/utils/Modal.vue';
 
 // Mock the postCreateNewPost function
 
 vi.stubGlobal("definePageMeta", () => {
     return null
-} )
+})
 
 vi.stubGlobal("publishPost", () => {
     return null
-} )
+})
 
+const factory = () => {
+
+
+    return mount(newpost, {
+        global: {
+            components: {
+                EditorCard,
+                Modal
+            },
+            stubs: {
+                EditorCard: true
+            }
+        }
+    });
+}
 
 /**
  * It is very difficult to mock a function or composable inside of another function.
@@ -26,42 +42,14 @@ describe('newPost', () => {
         vi.clearAllMocks(); // Clear the mocked function's call count after each test
     });
 
-    it('Should emit event and should change text if poststate is differnt', async () => {
-        // Mock successful API response
+    test('Should have an editor', async () => {
+        const wrapper = factory()
+        
+        const editor = wrapper.findComponent({ name:"EditorCard" })
 
-        const wrapper = mount(newpost, {
-            global: {
-                components:{
-                    EditorCard
-                },
-                stubs: {
-                    EditorCard:true
-                }
-            }
-        });
-        await wrapper.vm.$nextTick();
+        expect(editor.exists()).toBe(true)
 
 
-        /**
-         * does nothing right now
-         */
-        vi.mock("~/composables/crud/postCreateNewPost", () => ({
-            postCreateNewPost: () => {
-                vi.fn().mockResolvedValue({ status: 200, data: true })
-            }
-        }));
-        // ...
+    })
 
-        // Trigger button click to call publishPost
-        wrapper.vm.$emit("newPostMaterial", "ass");
-
-        (wrapper.vm as any).postState = true
-
-        await wrapper.vm.$nextTick();
-
-        // Verify if postCreateNewPost was called
-        // expect("publishPost").toHaveBeenCalled();
-        expect(wrapper.emitted().newPostMaterial).toBeTruthy()
-        expect(wrapper.text()).toContain("Nytt innlegg")
-    });
 });
