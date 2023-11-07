@@ -139,5 +139,5 @@ describe('Testing the page minkonto', () => {
 
             expect(profile_image.attributes("src")).toBe("~/placeholder/image.jpg")
 
-        })
+        }),
 })

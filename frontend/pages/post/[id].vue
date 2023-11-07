@@ -29,6 +29,7 @@
 			</div>
 
 			<div class="mb-4" v-html="post.content"></div>
+			
 			<button class="border-2 bg-light-blue-400 rounded-lg py-1 px-2" @click="navigateTo('/')">
 				Back
 			</button>

@@ -50,7 +50,7 @@ urlpatterns = [
     path("min-side/", LoggedInUserProfileView.as_view(), name="min_side"),
     path("min-side/posts/", PostAllLoggedInUserView.as_view(), name="my_posts"),
     
-    # NOT ACTIVE path("min-side/posts/<int:pk>/", PostEditSingleView.as_view(), name="edit_my_post"), # GET, DELETE, PATCH (update) weird if I don't have this?
+    path("min-side/posts/<int:pk>/edit/", PostEditSingleView.as_view(), name="edit_my_post"), # GET, DELETE, PATCH (update) weird if I don't have this?
     # NOT ACTIVE path("min-side/posts/<int:pk>/add-image/", PostEditSingleView.as_view(), name="add-image-to-post"), # POST add image
     # NOT ACTIVE path("min-side/posts/<int:pk>/remove-image/<int:image_id>/", PostEditSingleView.as_view(), name="remove-image-from-post"), # DELETE Image
     

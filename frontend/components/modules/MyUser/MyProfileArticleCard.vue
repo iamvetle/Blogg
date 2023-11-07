@@ -14,15 +14,18 @@
         <div class="flex">
             <span v-for="tag in post.tags" :key="tag.name">{{ tag.name }}</span>
         </div>
-        <span
-        class="cursor-pointer text text-primary hover:text-primaryFixed"
-        @click="redirectToPostPage(post.id)" data-test="read">
-            Les mer
-        </span>
+        <div>
+            <span class="cursor-pointer text text-primary hover:text-primaryFixed" @click="redirectToPostPage(post.id)"
+                data-test="read">
+                Les mer
+            </span>
+            <button class="hover:text-red-500" data-test="del" @click="deletePostRequest(post.id)">Slett</button>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import axios from 'axios'
 // For the posts in the 'minkonto'
 
 const { post } = defineProps(["post"]);
@@ -47,6 +50,34 @@ const toPlainText = (htmlContent: string) => {
     div.innerHTML = htmlContent
     const rawText = div.textContent || div.innerText
     return rawText
+}
+
+/**
+ * This function tries to delete the post that has been provided with the call
+ */
+
+const deletePostRequest = async (postId:number) => {
+    try {
+        const token = localStorage.getItem("token")
+        const headers = {
+            "Authorization":`Token ${token} `
+        }
+
+        const response = await axios.delete(`http://localhost:8888/api/min-side/posts/${postId}/edit/`, { headers })
+
+        if (response.status == 204) {
+            alert("success i think")
+        }
+
+        const minSidePostsURL = "http://localhost:8888/api/min-side/posts/"
+
+        await getLoggedInUserAllPostSnippets(minSidePostsURL)
+
+    } catch(e) {
+        alert(e)
+        console.log("delete function myprofilearticle single", e)
+    }
+    
 }
 
 

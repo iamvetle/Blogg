@@ -16,6 +16,7 @@ let pinia: any = createTestingPinia();
 // let paginationStore; 
 
 const mockRedirectToPostPage = vi.fn()
+const mockDeletePostRequest = vi.fn()
 
 const factory = () => {
     return shallowMount(MyProfileArticleCard, {
@@ -23,7 +24,8 @@ const factory = () => {
             plugins: [pinia],
             components: {},
             mocks: {
-                redirectToPostPage:mockRedirectToPostPage
+                redirectToPostPage: mockRedirectToPostPage,
+                deletePostRequest: mockDeletePostRequest
             },
             stubs: {},
         },
@@ -124,29 +126,68 @@ describe('', () => {
     expect(content.text()).not.toContain("<div><span><p>postcontentsnippet</p><p>poop poop</p></span></div>")
     expect(content.html()).not.toContain("<div><span><p>postcontentsnippet</p><p>poop poop</p></span></div>")
     expect(content.text()).toBe("postcontentsnippetpoop poop")
+
+    test('Should render tags', () => {
+        wrapper = factory()
+
+        expect(wrapper.text()).toContain("tag1")
+        expect(wrapper.text()).toContain("tag2")
+    })
+
+    test('Should have a "read more" field', () => {
+        wrapper = factory()
+
+        expect(wrapper.text()).toContain("Les mer")
+    })
+
+    test('The read more "button" should call a redirect function', async () => {
+        wrapper = factory()
+
+        const read = wrapper.get("[data-test='read']")
+
+        await read.trigger("click")
+
+        await wrapper.vm.$nextTick()
+
+        expect(mockRedirectToPostPage).toHaveBeenCalledOnce()
+
+    })
+    test('There should be a delete post button for each post', () => {
+        wrapper = factory()
+
+        const del_button = wrapper.find("[data-test='del']")
+
+        expect(del_button.exists()).toBe(true)
+    })
+    test("There should be a button called delete(slett)", () => {
+        wrapper = factory()
+
+        const del_button = wrapper.find("[data-test='del']")
+
+        expect(del_button.element.tagName).toBe("BUTTON")
+        expect(del_button.text()).toBe("Slett")
+    })
+    test('Should be a function meant for (trying) to delete posts', () => {
+        wrapper = factory()
+
+        const theDelFunc = (wrapper.vm as any).deletePostRequest
+
+        expect(theDelFunc).toBeDefined()
+        expectTypeOf(theDelFunc).toBeFunction()
+    })
+    test('The button should call a function', () => {
+        wrapper = factory()  
+
+        const del_button = wrapper.find("[data-test='del']")
+        del_button.trigger("click")
+
+
+        expect(mockDeletePostRequest).toHaveBeenCalled()
+    })
+
+
+
+
+
+
 });
-test('Should render tags', () => {
-    wrapper = factory()
-
-    expect(wrapper.text()).toContain("tag1")
-    expect(wrapper.text()).toContain("tag2")
-})
-
-test('Should have a "read more" field', () => {
-    wrapper = factory()
-
-    expect(wrapper.text()).toContain("Les mer")
-})
-
-test('The read more "button" should call a redirect function', async () => {
-    wrapper = factory()
-
-    const read = wrapper.get("[data-test='read']")
-
-    await read.trigger("click")
-
-    await wrapper.vm.$nextTick()
-
-    expect(mockRedirectToPostPage).toHaveBeenCalledOnce()
-    
-})
