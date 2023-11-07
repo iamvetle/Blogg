@@ -13,6 +13,10 @@
 
 			<div>
 
+				<div v-if="post.num_of_comments !== null" class="mb-2 flex space-x-1" id="tags">
+					<span>{{ post.num_of_comments }} comments</span>
+				</div>
+
 				<div v-if="post.tags" class="mb-2 flex space-x-1" id="tags">
 					<span class="flex" v-for="(tag, index) in post.tags">
 						<BaseTag :text="tag" :key="index" />
@@ -29,10 +33,16 @@
 			</div>
 
 			<div class="mb-4" v-html="post.content"></div>
-			
+
 			<button class="border-2 bg-light-blue-400 rounded-lg py-1 px-2" @click="navigateTo('/')">
 				Back
 			</button>
+			<div data-test="comments">
+				<h2>Comments written:</h2>
+				<div>
+					<MyProfileListArticles />
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -42,6 +52,7 @@
 // import noimage from '~/assets/noimage.jpg'
 
 const post = ref<PostSingleType | null>(null);
+const comments = ref<CommentType[] | null>(null);
 
 onMounted(async () => {
 	const route = useRoute();
@@ -52,6 +63,11 @@ onMounted(async () => {
 	 * Fetches the one post
 	 */
 	post.value = await fetchPost(postURL);
+
+
+	/
+	const commentsURL = `http://localhost:8888/api/`
+	comments.value = await getSinglePostComments()
 });
 
 

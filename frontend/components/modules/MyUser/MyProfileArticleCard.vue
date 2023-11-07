@@ -12,20 +12,25 @@
             </p>
         </div>
         <div class="flex">
-            <span v-for="tag in post.tags" :key="tag.name">{{ tag.name }}</span>
+            <span v-for="tag in post.tags" :key="tag.name" class="mr-2">
+            <BaseTag
+            :text="tag.name"
+            />
+            </span>
         </div>
-        <div>
+        <div class="flex justify-between items-center">
             <span class="cursor-pointer text text-primary hover:text-primaryFixed" @click="redirectToPostPage(post.id)"
                 data-test="read">
                 Les mer
             </span>
-            <button class="hover:text-red-500" data-test="del" @click="deletePostRequest(post.id)">Slett</button>
+            <button class="rounded-lg p-1 text-sm text-bold text-white bg-red-500 hover:bg-red-300" data-test="del" @click="deletePostRequest(post.id)">
+                Slett
+            </button>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
 // For the posts in the 'minkonto'
 
 const { post } = defineProps(["post"]);

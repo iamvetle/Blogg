@@ -242,20 +242,6 @@ describe('index page testing', () => {
 
         expect(paginationStore.activeFetchURL).toEqual("http://localhost:8888/api/feed/")
     });
-    // test('The fetch function should be called after changing the fetchURL on feed button click', async () => {
-    //     const mockGetPostMultipleSnippet = vi.fn();
-
-    //     ;(wrapper.vm as any).getPostMultipleSnippet = mockGetPostMultipleSnippet;
-
-    //     await wrapper.vm.$nextTick()
-
-
-    //     const feed_button = wrapper.get("[data-test='feed-posts-option']")
-    //     await feed_button.trigger("click")
-    //     await wrapper.vm.$nextTick()
-
-    //     expect(mockGetPostMultipleSnippet).toHaveBeenCalledOnce()
-    // })
     test('The feed button should be primary (have a class of white) from the beginning', () => {
 
         const feed_button = wrapper.find("[data-test='feed-posts-option']")
@@ -268,7 +254,7 @@ describe('index page testing', () => {
     });
     test('The following button should be primary (have a class of primary) when the value of selected shifts to true', async () => {
 
-        ; (wrapper.vm as any).followingSelected = true
+        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
 
         await wrapper.vm.$nextTick()
 
@@ -282,7 +268,7 @@ describe('index page testing', () => {
     });
     test("If the following list posts are selected, then the filter dropdown should not be shown", async () => {
 
-        ; (wrapper.vm as any).followingSelected = true
+        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
 
         await wrapper.vm.$nextTick()
 
@@ -296,7 +282,7 @@ describe('index page testing', () => {
         expect(dropdown_filter.exists()).toBe(true)
     });
     test('Should NOT (when the logged in user is following atlest one) show text saying that the logged-in user is not following anyone if that is the case when the following button is on', async () => {
-        ; (wrapper.vm as any).followingSelected = true
+        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
         loggedInUserStore.loggedInUserProfile.num_of_following = 0
 
         await wrapper.vm.$nextTick()
@@ -307,7 +293,7 @@ describe('index page testing', () => {
     });
 
     test('SHOULD show text saying that the logged-in user is not following anyone if that is the case when the following button is on', async () => {
-        ; (wrapper.vm as any).followingSelected = true;
+        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
         postStore.posts.results = []
         loggedInUserStore.loggedInUserProfile.num_of_following = 0
 
@@ -322,7 +308,7 @@ describe('index page testing', () => {
         // already set to users who have made no posts
         
         postStore.posts.results = []
-        ;(wrapper.vm as any).followingSelected = true
+        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
 
         await wrapper.vm.$nextTick()
 
@@ -337,7 +323,7 @@ describe('index page testing', () => {
         // already set to users who have made no posts
         
         postStore.posts.results = []
-        ;(wrapper.vm as any).followingSelected = true
+        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
         loggedInUserStore.loggedInUserProfile.num_of_following = 0
 
         await wrapper.vm.$nextTick()

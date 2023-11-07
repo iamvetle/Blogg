@@ -6,6 +6,7 @@ import { createTestingPinia } from '@pinia/testing';
 // import { usePostStore } from '~/store/postStore';
 // import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 // import { usePaginationStore } from '~/store/paginationStore';
+import BaseTag from '~/components/base/BaseTag.vue';
 
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
@@ -22,7 +23,9 @@ const factory = () => {
     return shallowMount(MyProfileArticleCard, {
         global: {
             plugins: [pinia],
-            components: {},
+            components: {
+                BaseTag
+            },
             mocks: {
                 redirectToPostPage: mockRedirectToPostPage,
                 deletePostRequest: mockDeletePostRequest
@@ -130,8 +133,11 @@ describe('', () => {
     test('Should render tags', () => {
         wrapper = factory()
 
-        expect(wrapper.text()).toContain("tag1")
-        expect(wrapper.text()).toContain("tag2")
+        const baseTags = wrapper.findAllComponents({name:"BaseTag"})
+
+        expect(baseTags).toHaveLength(2)
+        expect(wrapper.html()).toContain("tag1")
+        expect(wrapper.html()).toContain("tag2")
     })
 
     test('Should have a "read more" field', () => {

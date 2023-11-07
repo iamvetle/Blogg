@@ -47,8 +47,8 @@
 						</span>
 					</template>
 
-					<template #amount_of_comments>
-						<span>{{ post.num_of_comments }} C</span>						
+					<template #amount-of-comments v-if="post.num_of_comments !== null">
+						<span>{{ post.num_of_comments }} comments</span>						
 					</template>
 
 					<template #save-article-icon v-if="post.id">
