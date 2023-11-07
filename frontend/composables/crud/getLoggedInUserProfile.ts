@@ -1,6 +1,5 @@
 import { getToken } from '../getToken';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePostStore } from '~/store/postStore';
 
 /**
  * Fetches the profile information about the logged in user.
@@ -12,13 +11,12 @@ import { usePostStore } from '~/store/postStore';
  *  
  * @returns - The request response (.data, .status), or just null
  */
-export const getLoggedInUserProfile = async () => {
+export const getLoggedInUserProfile = async (loggedInUserProfileURL:string) => {
 
 	/**
 	 * Fetches the token from local storage, or just returns null.
 	 */
 	const loggedInUserStore = useLoggedInUserStore()
-	const loggedInUserProfileURL = "http://localhost:8888/api/min-side/"
 
 	const token = getToken()
 
@@ -48,18 +46,23 @@ export const getLoggedInUserProfile = async () => {
 			/**
 			 * Populates the array with all of the posts (id) the user has saved
 			 */
-			for (const savedPost of loggedInUserStore.loggedInUserProfile.saved_posts) {
-				loggedInUserStore.idArrayOfSavedPosts.push(savedPost.post.id)
-
+			if (loggedInUserStore.loggedInUserProfile.saved_posts) {
+				for (const savedPost of loggedInUserStore.loggedInUserProfile.saved_posts) {
+					loggedInUserStore.idArrayOfSavedPosts.push(savedPost.post.id)
+				}
 			}
+
 
 			/**
 			 * Populates the array with the username of all of the users the
 			 * logged in user is following
 			 */
-			for (const following of loggedInUserStore.loggedInUserProfile.following) {
-				loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.push(following.username)
+			if (loggedInUserStore.loggedInUserProfile.following) {
+				for (const following of loggedInUserStore.loggedInUserProfile.following) {
+					loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.push(following.username)
+				}
 			}
+
 
 
 			/**

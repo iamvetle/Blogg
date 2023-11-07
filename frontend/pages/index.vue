@@ -16,12 +16,12 @@
 				</span>
 
 				<p class="text-lg"
-					v-if="(num_of_following === 0) && (followingSelected) && (!postStore.posts.results.length)">You are not
+					v-if="(num_of_following === 0) && (followingSelected) && (postStore.posts.results.length == 0)">You are not
 					following anyone.</p>
 				<p class="text-lg"
-					v-if="(postStore.posts.results.length === 0) && (followingSelected) && (num_of_following > 0)">No
+					v-if="(postStore.posts?.results?.length === 0) && (followingSelected) && (num_of_following > 0)">No
 					posts are published.</p>
-				<ListArticles v-if="(postStore.posts.results)" class="w-full mt-12" />
+				<ListArticles v-if="postStore.posts.results" class="w-full mt-12" />
 			</div>
 			<div class="col-span-4 mx-auto w-full">
 				<div id="dropdown-filter" v-if="postStore.allTags && !followingSelected"
@@ -67,40 +67,11 @@ definePageMeta({
 	layout: "feed-layout"
 })
 
-/**
- * Middleware in the background makes sure that only authenticated users can access this page,
- * or else they are redirected to the /wait page
- */
+// Declerations
 
-/**
- * This changes the layout the pages uses dynamically, based on wait.vue or not.
- */
-
-const num_of_following = computed(() =>
-	loggedInUserStore.loggedInUserProfile.num_of_following
-);
-
-/**
- * Toggles between showing the filterbox component and not.
- * 
- * The 'component' together with 'KeepAlive' caches the component state 
- * so that what is 'checked' with checkboxes doesnt dissapear when the tab is toggled
- */
-const dropdown = shallowRef<any>(false)
-
-const f = resolveComponent('FilterBox')
-
-/** This const decides which button gets to look selected */
+/** FEED or FOLLOWING button selected display */
 const followingSelected = ref(false)
-//! When there are zero following and then zero posts, "you are not following anyone" should be the onlything displayed 
 
-const changeDropdown = () => {
-	if (dropdown.value == f) {
-		dropdown.value = false
-	} else {
-		dropdown.value = f
-	}
-}
 
 /**
  * NEW: I removed the IF statements that was meant to check whether it was already information/posts there already,
@@ -111,17 +82,17 @@ const changeDropdown = () => {
  * All of the data that is needed from the api endpoint is fetched here.
  */
 onMounted(async () => {
-	// Have to put this here because this ""function"" is run before the store var is initialez earlier ^
-	const paginationStore = usePaginationStore()
-
 	if (checkLocalInfo() == null) {
 		return null
 	}
 
+	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
+	const loggedInUserProfileURL = "http://localhost:8888/api/min-side/"
+
 	/**
 	* Fetches the profile information of the logged-in user
 	*/
-	await getLoggedInUserProfile()
+	await getLoggedInUserProfile(loggedInUserProfileURL)
 
 	/**
 	 * Fetches all posts in snippets (not full content length)
@@ -136,6 +107,38 @@ onMounted(async () => {
 	await getAllTags()
 })
 
+
+/**
+ * Middleware in the background makes sure that only authenticated users can access this page,
+ * or else they are redirected to the /wait page
+ */
+
+/**
+ * This changes the layout the pages uses dynamically, based on wait.vue or not.
+ */
+
+const num_of_following = computed(() =>
+	loggedInUserStore.loggedInUserProfile.num_of_following
+);
+
+/**
+ * For the dynamic component! 
+ * 
+ * Toggles between showing the filterbox component and not.
+ * 
+ * The 'component' together with 'KeepAlive' caches the component state 
+ * so that what is 'checked' with checkboxes doesnt dissapear when the tab is toggled
+ */
+const dropdown = shallowRef<any>(false)
+const f = resolveComponent('FilterBox')
+const changeDropdown = () => {
+	if (dropdown.value == f) {
+		dropdown.value = false
+	} else {
+		dropdown.value = f
+	}
+}
+
 /**
  * This is called when the 'feed button' is clicked.
  * 
@@ -148,7 +151,6 @@ const feedPostSetting = async () => {
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
 	followingSelected.value = false
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
-
 }
 
 /**
@@ -158,7 +160,7 @@ const feedPostSetting = async () => {
  * the main feed one. It then fetches all posts.
  */
 const followingPostSetting = async () => {
-	
+
 	searchStore.resetStore()
 
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"

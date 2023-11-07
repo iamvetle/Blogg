@@ -59,7 +59,7 @@
 						</div>
 
 						<div id="all-posts">
-							<MyProfilePostList />
+							<MyProfileListArticles />
 						</div>
 					</div>
 				</div>
@@ -72,26 +72,33 @@
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
 import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import MyProfilePostList from '~/components/modules/MyUser/MyProfilePostList.vue';
+import MyProfileListArticles from '~/components/modules/MyUser/MyProfileListArticles.vue';
 
 definePageMeta({
 	layout: 'default'
-
 })
 
-const placeholder = ref(placeholder_profile_picture)
+// Declaring stores
+
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
 
+/** If the user doesnt have its own picture, this picture is used instead */
+const placeholder = ref(placeholder_profile_picture)
+
 /**
- * Fetches all of the posts (in snippets) made by the logged in user.
+ * Fetches:
  * 
- * ALso fetches all user profile information by the logged in user.
+ * 1. POSTS made by the logged in user
+ * 
+ * 2. USER INFORMATION about the logged in user
  */
 onMounted(async () => {
-	await getLoggedInUserAllPostSnippets()
-	await getLoggedInUserProfile()
-
+	const loggedInUserURL = "http://localhost:8888/api/min-side/"
+	const loggedInUserPostsURL = "http://localhost:8888/api/min-side/posts/"
+	
+	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
+	await getLoggedInUserProfile(loggedInUserURL)
 })
 </script>
 

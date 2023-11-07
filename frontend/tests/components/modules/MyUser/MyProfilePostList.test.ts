@@ -1,4 +1,4 @@
-import MyProfilePostList from '~/components/modules/MyUser/MyProfilePostList.vue';
+import MyProfileListArticles from '~/components/modules/MyUser/MyProfileListArticles.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
@@ -16,7 +16,7 @@ let loggedInUserStore;
 // let paginationStore; 
 
 const factory = () => {
-    return shallowMount(MyProfilePostList, {
+    return shallowMount(MyProfileListArticles, {
         global: {
             plugins: [pinia],
             components: {},

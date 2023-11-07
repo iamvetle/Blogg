@@ -8,7 +8,7 @@ import { usePostStore } from '~/store/postStore'
  *  
  * @returns - The request response (.data, .status) or null
  */
-export const getLoggedInUserAllPostSnippets = async () => {
+export const getLoggedInUserAllPostSnippets = async (api_endpoint_url:string) => {
 
   const postStore = usePostStore()
 
@@ -23,7 +23,7 @@ export const getLoggedInUserAllPostSnippets = async () => {
       Authorization: `Token ${token}`,
     };
 
-    const response = await getMethod(postStore.baseLoggedInUserPostsURL, headers)
+    const response = await getMethod(api_endpoint_url, headers)
 
     if (response) {
 
