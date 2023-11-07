@@ -231,4 +231,43 @@ describe('index page testing', () => {
 
     //     expect(mockGetPostMultipleSnippet).toHaveBeenCalledOnce()
     // })
+    test('The feed button should be primary (have a class of white) from the beginning', () => {
+        
+        const feed_button = wrapper.find("[data-test='feed-posts-option']")
+        const following_button = wrapper.find("[data-test='following-posts-option']")
+
+        console.log(wrapper.html())
+
+        expect(feed_button.attributes("class")).toContain("bg-primary")
+        expect(following_button.attributes("class")).not.toContain("bg-primary")
+    })
+    test('The following button should be primary (have a class of primary) when the value of selected shifts to true', async () => {
+
+        ;(wrapper.vm).followingSelected = true
+
+        await wrapper.vm.$nextTick()    
+        
+        const following_button = wrapper.find("[data-test='following-posts-option']")
+        const feed_button = wrapper.find("[data-test='feed-posts-option']")
+
+        console.log(wrapper.html())
+
+        expect(following_button.attributes("class")).toContain("bg-primary")
+        expect(feed_button.attributes("class")).not.toContain("bg-primary")
+    })
+    test("If the following list posts are selected, then the filter dropdown should not be shown", async () => {
+
+        ;(wrapper.vm).followingSelected = true
+
+        await wrapper.vm.$nextTick()    
+        
+        const dropdown_filter = wrapper.find("#dropdown-filter")
+
+        expect(dropdown_filter.exists()).toBe(false)
+    })
+    test('The dropdown filter SHOULD exist if normal feed posts are shown', () => {
+        const dropdown_filter = wrapper.find("#dropdown-filter")
+
+        expect(dropdown_filter.exists()).toBe(true)
+    })
 })

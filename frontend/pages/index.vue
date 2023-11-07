@@ -5,18 +5,21 @@
 			<div data-test="everything" class="col-span-6 mx-auto w-full">
 				<h2 class="mb-10 text-4xl" v-if="searchStore.searchPart">Søkeresultater for '{{ searchStore.searchPart }}'
 				</h2>
-				<span class="flex jestify-center space-x-4">
-					<button data-test="feed-posts-option" @click="feedPostSetting">Feed</button>
-					<button data-test="following-posts-option" @click="followingPostSetting">Following</button>
+				<span class="flex jestify-center space-x-8 justify-center">
+					<button class="p-2 rounded-lg" data-test="feed-posts-option"
+						@click="feedPostSetting"
+						:class="followingSelected ? 'bg-red-500 text-white border' : 'bg-primary text-onPrimary border'">Feed</button>
+					<button class="p-2 rounded-lg" data-test="following-posts-option"
+						@click="followingPostSetting"
+						:class="followingSelected ? 'bg-primary text-onPrimary border' : 'bg-red-500 text-white border'"
+						>Following</button>
 				</span>
-				<ListArticles v-if="postStore.posts.results" class="w-full" />
+				<ListArticles v-if="postStore.posts.results" class="w-full mt-12" />
 			</div>
 			<div class="col-span-4 mx-auto w-full">
-				<div id="dropdown-filter" v-if="postStore.allTags"
-					class="mb-4 bg-primary rounded-lg text-onPrimary">
+				<div id="dropdown-filter" v-if="postStore.allTags && !followingSelected" class="mb-4 bg-primary rounded-lg text-onPrimary">
 					<span class="mb-2 w-full flex items-center text-center justify-center">
-						<button
-						data-test="dropdown-button"
+						<button data-test="dropdown-button"
 							class="text-lg hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
 							@click="changeDropdown">
 							Filter posts
@@ -75,6 +78,9 @@ const dropdown = shallowRef<any>(false)
 
 const f = resolveComponent('FilterBox')
 
+/** This var desides which button gets to look selected */
+const followingSelected = ref(false)
+
 
 const changeDropdown = () => {
 	if (dropdown.value == f) {
@@ -99,6 +105,7 @@ onMounted(async () => {
 	if (checkLocalInfo() == null) {
 		return null
 	}
+
 	/**
 	* Fetches the profile information of the logged-in user
 	*/
@@ -108,29 +115,42 @@ onMounted(async () => {
 	 * Fetches all posts in snippets (not full content length)
 	   */
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
-	
-	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 
 	/** 
 	 * Fetches all possible tags. And then assigns all of them in a variable in the post store
 	*/
-
 	await getAllTags()
-
 })
 
-
+/**
+ * This is called when the 'feed button' is clicked.
+ * 
+ * It changes the api endpoint url from where posts are fetched to 
+ * the main feed one. It then fetches all posts.
+ * 
+ * It has its base here - the url.
+ */
 const feedPostSetting = async () => {
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
+	followingSelected.value = false
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
+/**
+ * This is called when the 'feed button' is clicked.
+ * 
+ * It changes the api endpoint url from where posts are fetched to 
+ * the main feed one. It then fetches all posts.
+ */
 const followingPostSetting = async () => {
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-	
+
+	followingSelected.value = true
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
+
 
 /**
  * Formats the ugly array-object for keeping the tags, and creates an 
