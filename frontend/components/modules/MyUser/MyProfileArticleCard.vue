@@ -14,7 +14,9 @@
         <div class="flex">
             <span v-for="tag in post.tags" :key="tag.name">{{ tag.name }}</span>
         </div>
-        <span @click="redirectToPostPage(post.id)" data-test="read">
+        <span
+        class="cursor-pointer text text-primary hover:text-primaryFixed"
+        @click="redirectToPostPage(post.id)" data-test="read">
             Les mer
         </span>
     </div>

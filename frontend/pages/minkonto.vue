@@ -15,7 +15,7 @@
 										{{ loggedInUserStore.loggedInUserProfile.first_name }} {{
 											loggedInUserStore.loggedInUserProfile.last_name }}
 									</h1>
-									<p class="">
+									<p>
 										{{ loggedInUserStore.loggedInUserProfile.username }}
 									</p>
 									<div class="mt-6 flex flex-wrap gap-4 justify-center">
@@ -96,7 +96,7 @@ const placeholder = ref(placeholder_profile_picture)
 onMounted(async () => {
 	const loggedInUserURL = "http://localhost:8888/api/min-side/"
 	const loggedInUserPostsURL = "http://localhost:8888/api/min-side/posts/"
-	
+
 	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
 	await getLoggedInUserProfile(loggedInUserURL)
 })
