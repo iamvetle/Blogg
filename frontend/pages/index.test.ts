@@ -7,7 +7,6 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePostStore } from '~/store/postStore';
 import { useSearchStore } from '~/store/searchStore';
 import { usePaginationStore } from '~/store/paginationStore';
-import { getPostMultipleSnippet } from '../composables/crud/getPostMultipleSnippet';
 
 let wrapper: VueWrapper
 let generalStore: any
@@ -35,7 +34,10 @@ describe('index page testing', () => {
         generalStore.isAuthenticated = true
 
         loggedInUserStore.idArrayOfSavedPosts = true
-        loggedInUserStore.loggedInUserProfile = true
+
+        loggedInUserStore.loggedInUserProfile = {
+            "num_of_following":82
+        }
 
         postStore.posts = {
             results: true
@@ -243,7 +245,7 @@ describe('index page testing', () => {
     })
     test('The following button should be primary (have a class of primary) when the value of selected shifts to true', async () => {
 
-        ;(wrapper.vm).followingSelected = true
+        ;(wrapper.vm as any).followingSelected = true
 
         await wrapper.vm.$nextTick()    
         
@@ -257,7 +259,7 @@ describe('index page testing', () => {
     })
     test("If the following list posts are selected, then the filter dropdown should not be shown", async () => {
 
-        ;(wrapper.vm).followingSelected = true
+        ;(wrapper.vm as any).followingSelected = true
 
         await wrapper.vm.$nextTick()    
         
@@ -270,4 +272,25 @@ describe('index page testing', () => {
 
         expect(dropdown_filter.exists()).toBe(true)
     })
+    test('Should NOT (when the logged in user is following atlest one) show text saying that the logged-in user is not following anyone if that is the case when the following button is on', async () => {
+        ;(wrapper.vm as any).followingSelected = true
+
+        await wrapper.vm.$nextTick()   
+
+        const if_no_following_message = "You are not following anyone"
+
+        expect(wrapper.text()).not.toContain(if_no_following_message)
+    })
+
+    test('SHOULD not show text saying that the logged-in user is not following anyone if that is the case when the following button is on', async () => {
+        ;(wrapper.vm as any).followingSelected = true;
+        loggedInUserStore.loggedInUserProfile.num_of_following = 0
+
+        await wrapper.vm.$nextTick()   
+
+        const if_no_following_message = "You are not following anyone."
+
+        expect(wrapper.text()).toContain(if_no_following_message)
+    })
+    
 })

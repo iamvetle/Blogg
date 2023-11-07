@@ -8,13 +8,14 @@
 				<span class="flex jestify-center space-x-8 justify-center">
 					<button class="p-2 rounded-lg" data-test="feed-posts-option"
 						@click="feedPostSetting"
-						:class="followingSelected ? 'bg-red-500 text-white border' : 'bg-primary text-onPrimary border'">Feed</button>
+						:class="followingSelected ? 'bg-onPrimary text-primary border-primary border shadow-md ' : 'bg-primary text-onPrimary border'">Feed</button>
 					<button class="p-2 rounded-lg" data-test="following-posts-option"
 						@click="followingPostSetting"
-						:class="followingSelected ? 'bg-primary text-onPrimary border' : 'bg-red-500 text-white border'"
+						:class="followingSelected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'"
 						>Following</button>
 				</span>
-				<ListArticles v-if="postStore.posts.results" class="w-full mt-12" />
+				<p class="text-lg" v-if="(num_of_following === 0) && (followingSelected)">You are not following anyone.</p>
+				<ListArticles v-if="(postStore.posts.results)" class="w-full mt-12" />
 			</div>
 			<div class="col-span-4 mx-auto w-full">
 				<div id="dropdown-filter" v-if="postStore.allTags && !followingSelected" class="mb-4 bg-primary rounded-lg text-onPrimary">
@@ -68,6 +69,10 @@ definePageMeta({
  * This changes the layout the pages uses dynamically, based on wait.vue or not.
  */
 
+const num_of_following = computed(() => 
+	loggedInUserStore.loggedInUserProfile.num_of_following
+);
+
 /**
  * Toggles between showing the filterbox component and not.
  * 
@@ -80,7 +85,6 @@ const f = resolveComponent('FilterBox')
 
 /** This var desides which button gets to look selected */
 const followingSelected = ref(false)
-
 
 const changeDropdown = () => {
 	if (dropdown.value == f) {
