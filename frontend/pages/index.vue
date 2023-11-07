@@ -6,19 +6,18 @@
 				<h2 class="mb-10 text-4xl" v-if="searchStore.searchPart">Søkeresultater for '{{ searchStore.searchPart }}'
 				</h2>
 				<span class="flex jestify-center space-x-8 justify-center">
-					<button class="p-2 rounded-lg" data-test="feed-posts-option"
-						@click="feedPostSetting"
+					<button class="p-2 rounded-lg" data-test="feed-posts-option" @click="feedPostSetting"
 						:class="followingSelected ? 'bg-onPrimary text-primary border-primary border shadow-md ' : 'bg-primary text-onPrimary border'">Feed</button>
-					<button class="p-2 rounded-lg" data-test="following-posts-option"
-						@click="followingPostSetting"
-						:class="followingSelected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'"
-						>Following</button>
+					<button class="p-2 rounded-lg" data-test="following-posts-option" @click="followingPostSetting"
+						:class="followingSelected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'">Following</button>
 				</span>
-				<p class="text-lg" v-if="(num_of_following === 0) && (followingSelected)">You are not following anyone.</p>
+				<p class="text-lg" v-if="(num_of_following === 0) && (followingSelected) && (!postStore.posts.results.length)">You are not following anyone.</p>
+				<p class="text-lg" v-if="(postStore.posts.results.length === 0 )  && (followingSelected) && (num_of_following > 0)">No posts are published.</p>
 				<ListArticles v-if="(postStore.posts.results)" class="w-full mt-12" />
 			</div>
 			<div class="col-span-4 mx-auto w-full">
-				<div id="dropdown-filter" v-if="postStore.allTags && !followingSelected" class="mb-4 bg-primary rounded-lg text-onPrimary">
+				<div id="dropdown-filter" v-if="postStore.allTags && !followingSelected"
+					class="mb-4 bg-primary rounded-lg text-onPrimary">
 					<span class="mb-2 w-full flex items-center text-center justify-center">
 						<button data-test="dropdown-button"
 							class="text-lg hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
@@ -69,7 +68,7 @@ definePageMeta({
  * This changes the layout the pages uses dynamically, based on wait.vue or not.
  */
 
-const num_of_following = computed(() => 
+const num_of_following = computed(() =>
 	loggedInUserStore.loggedInUserProfile.num_of_following
 );
 
@@ -85,6 +84,7 @@ const f = resolveComponent('FilterBox')
 
 /** This var desides which button gets to look selected */
 const followingSelected = ref(false)
+//! When there are zero following and then zero posts, "you are not following anyone" should be the onlything displayed 
 
 const changeDropdown = () => {
 	if (dropdown.value == f) {
@@ -209,4 +209,4 @@ onBeforeUnmount(() => {
 
 </script>
 
-<style></style>
+<style></style>>
