@@ -58,20 +58,16 @@ const toPlainText = (htmlContent: string) => {
 
 const deletePostRequest = async (postId:number) => {
     try {
-        const token = localStorage.getItem("token")
-        const headers = {
-            "Authorization":`Token ${token} `
-        }
+        const minSideMyPostURL = `http://localhost:8888/api/min-side/posts/${postId}/edit/`
+        const minSideMyPostsURL = `http://localhost:8888/api/min-side/posts/`
 
-        const response = await axios.delete(`http://localhost:8888/api/min-side/posts/${postId}/edit/`, { headers })
-
-        if (response.status == 204) {
+        const response = await deleteLoggedInUserPost(minSideMyPostURL)
+        
+        if (response?.status == 204) {
             alert("success i think")
         }
 
-        const minSidePostsURL = "http://localhost:8888/api/min-side/posts/"
-
-        await getLoggedInUserAllPostSnippets(minSidePostsURL)
+        await getLoggedInUserAllPostSnippets(minSideMyPostsURL)
 
     } catch(e) {
         alert(e)

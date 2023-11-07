@@ -1,5 +1,5 @@
 import { usePostStore } from '~/store/postStore';
-import { getToken } from '../getToken';
+import { getMethod } from '../apiByCRUD';
 /** Fetches all tags possible */
 
 /** @todo Jeg burde kanskje ha et sted hvor jeg fetcher alle "filters?" */

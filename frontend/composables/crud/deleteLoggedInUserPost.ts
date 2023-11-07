@@ -1,13 +1,13 @@
-import { getMethod } from '../apiByCRUD';
+import { deleteMethod } from '../apiByCRUD';
 
 /**
- * Fetches the posts of a user, specified in the url.
+ * Deletes a post made by the logged in user
  * 
- * @param userURL - The url that the request is going to try to fetch from
+ * @param userURL - The url with the id of the post that is going to be deleted
  *  
- * @returns - The request response (.data, .status)
+ * @returns - The response (.data, .status)
  */
-export const getNormalUserPosts = async (userURL: string) => {
+export const deleteLoggedInUserPost = async (userURL: string) => {
 
     /**
      * Fetches the token from local storage, or just returns null.
@@ -20,7 +20,7 @@ export const getNormalUserPosts = async (userURL: string) => {
             Authorization: `Token ${token}`,
         };
 
-        const response = await getMethod(userURL, headers)
+        const response = await deleteMethod(userURL, headers)
 
         if (response) {
 

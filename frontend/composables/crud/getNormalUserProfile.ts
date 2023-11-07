@@ -1,4 +1,4 @@
-import { getToken } from '../getToken';
+import { getMethod } from '../apiByCRUD';
 
 /**
  * Fetches the information about the user, specified in the url.

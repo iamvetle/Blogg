@@ -16,6 +16,8 @@ declare global {
   const customRef: typeof import('vue')['customRef']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
+  const deleteLoggedInUserPost: typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']
+  const deleteMethod: typeof import('./composables/apiByCRUD')['deleteMethod']
   const effectScope: typeof import('vue')['effectScope']
   const extractTitleAndContent: typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']
   const fetchPost: typeof import('./composables/deprecatedFetchPost')['fetchPost']

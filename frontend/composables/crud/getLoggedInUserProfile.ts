@@ -1,4 +1,4 @@
-import { getToken } from '../getToken';
+import { getMethod } from '../apiByCRUD';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /**
