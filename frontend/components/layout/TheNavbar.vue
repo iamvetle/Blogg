@@ -70,9 +70,10 @@ const postStore = usePostStore()
 const generalStore = useGeneralStore();
 const searchStore = useSearchStore();
 
+
+/** Trims the search input/query and fetches new posts based */
 const search = async (payload: any) => {
 	const route = useRoute()
-
 
 	if (route.path != "/") {
 		navigateTo("/")
@@ -82,7 +83,7 @@ const search = async (payload: any) => {
 	} else {
 		searchStore.searchPart = ""
 	}
-	paginationStore.activeFetchURL = constructURL()
+	paginationStore.activeFetchURL = constructURL() //! There is a problem that fetching is happening here on this level - not ideal 
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 

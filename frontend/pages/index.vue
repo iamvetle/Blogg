@@ -3,16 +3,24 @@
 		<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
 			class="max-w-[1100px] w-full h-fit mx-auto px-6 grid grid-cols-10 gap-28">
 			<div data-test="everything" class="col-span-6 mx-auto w-full">
-				<h2 class="mb-10 text-4xl" v-if="searchStore.searchPart">Søkeresultater for '{{ searchStore.searchPart }}'
+
+				<h2 class="mb-10 text-4xl" v-if="searchStore.searchPart">
+					Søkeresultater for '{{ searchStore.searchPart }}'
 				</h2>
+
 				<span class="flex jestify-center space-x-8 justify-center">
 					<button class="p-2 rounded-lg" data-test="feed-posts-option" @click="feedPostSetting"
 						:class="followingSelected ? 'bg-onPrimary text-primary border-primary border shadow-md ' : 'bg-primary text-onPrimary border'">Feed</button>
 					<button class="p-2 rounded-lg" data-test="following-posts-option" @click="followingPostSetting"
 						:class="followingSelected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'">Following</button>
 				</span>
-				<p class="text-lg" v-if="(num_of_following === 0) && (followingSelected) && (!postStore.posts.results.length)">You are not following anyone.</p>
-				<p class="text-lg" v-if="(postStore.posts.results.length === 0 )  && (followingSelected) && (num_of_following > 0)">No posts are published.</p>
+
+				<p class="text-lg"
+					v-if="(num_of_following === 0) && (followingSelected) && (!postStore.posts.results.length)">You are not
+					following anyone.</p>
+				<p class="text-lg"
+					v-if="(postStore.posts.results.length === 0) && (followingSelected) && (num_of_following > 0)">No
+					posts are published.</p>
 				<ListArticles v-if="(postStore.posts.results)" class="w-full mt-12" />
 			</div>
 			<div class="col-span-4 mx-auto w-full">
@@ -46,11 +54,11 @@ import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePaginationStore } from '~/store/paginationStore';
-// import Following from '~/components/modules/MyUser/Following.vue';
+
+// Importing all stores
 
 const postStore = usePostStore()
 const generalStore = useGeneralStore()
-// const paginationStore = usePaginationStore()
 const searchStore = useSearchStore()
 const loggedInUserStore = useLoggedInUserStore()
 const paginationStore = usePaginationStore()
@@ -82,7 +90,7 @@ const dropdown = shallowRef<any>(false)
 
 const f = resolveComponent('FilterBox')
 
-/** This var desides which button gets to look selected */
+/** This const decides which button gets to look selected */
 const followingSelected = ref(false)
 //! When there are zero following and then zero posts, "you are not following anyone" should be the onlything displayed 
 
@@ -140,6 +148,7 @@ const feedPostSetting = async () => {
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
 	followingSelected.value = false
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
+
 }
 
 /**
@@ -149,6 +158,9 @@ const feedPostSetting = async () => {
  * the main feed one. It then fetches all posts.
  */
 const followingPostSetting = async () => {
+	
+	searchStore.resetStore()
+
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
 
 	followingSelected.value = true
@@ -184,7 +196,6 @@ const action = async (items: any) => {
 	searchStore.tagFilterPart = items
 	constructURL()
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
-
 }
 
 /**
@@ -194,19 +205,20 @@ const action = async (items: any) => {
  * This is important because if that does not happen, the checkboxes status might be restarted, but not the state of them,
  * and ends them up not being syncronous.
  */
-
 onBeforeUnmount(() => {
 	console.log("Index is unmounted")
 
+	/** So there are no filters present when the page gets refreshed */
 	searchStore.$reset
+
+	/** So that all posts are "removed" and forces a refetch */
 	postStore.$reset
 
+	/** So that the navigation bar / paginator at the button restarts, and starts at one  */
 	paginationStore.$reset
 
 })
 
-
-
 </script>
 
-<style></style>>
+<style></style>

@@ -1,9 +1,6 @@
 import { defineStore } from 'pinia';
 
 export const useSearchStore = defineStore("search", () => {
-    
-    // searchPosts
-    const lastSearch = ref("");
 
     // Parameters for the URL
 
@@ -25,5 +22,13 @@ export const useSearchStore = defineStore("search", () => {
     // not in use
     const authorFilterPart = ref<any>(null);
 
-    return { searchPart, categoryFilterPart, authorFilterPart, tagFilterPart, lastSearch }
+    /** Resets or puts all of the const here to it's initial values */
+
+    const resetStore = () => {
+        searchPart.value = null
+        tagFilterPart.value = null
+        categoryFilterPart.value = null        
+    }
+
+    return { searchPart, resetStore, categoryFilterPart, authorFilterPart, tagFilterPart }
 })

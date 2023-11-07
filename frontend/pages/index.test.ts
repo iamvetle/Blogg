@@ -241,7 +241,7 @@ describe('index page testing', () => {
         await wrapper.vm.$nextTick()
 
         expect(paginationStore.activeFetchURL).toEqual("http://localhost:8888/api/feed/")
-    })
+    });
     // test('The fetch function should be called after changing the fetchURL on feed button click', async () => {
     //     const mockGetPostMultipleSnippet = vi.fn();
 
@@ -265,7 +265,7 @@ describe('index page testing', () => {
 
         expect(feed_button.attributes("class")).toContain("bg-primary")
         expect(following_button.attributes("class")).not.toContain("bg-primary")
-    })
+    });
     test('The following button should be primary (have a class of primary) when the value of selected shifts to true', async () => {
 
         ; (wrapper.vm as any).followingSelected = true
@@ -279,7 +279,7 @@ describe('index page testing', () => {
 
         expect(following_button.attributes("class")).toContain("bg-primary")
         expect(feed_button.attributes("class")).not.toContain("bg-primary")
-    })
+    });
     test("If the following list posts are selected, then the filter dropdown should not be shown", async () => {
 
         ; (wrapper.vm as any).followingSelected = true
@@ -289,12 +289,12 @@ describe('index page testing', () => {
         const dropdown_filter = wrapper.find("#dropdown-filter")
 
         expect(dropdown_filter.exists()).toBe(false)
-    })
+    });
     test('The dropdown filter SHOULD exist if normal feed posts are shown', () => {
         const dropdown_filter = wrapper.find("#dropdown-filter")
 
         expect(dropdown_filter.exists()).toBe(true)
-    })
+    });
     test('Should NOT (when the logged in user is following atlest one) show text saying that the logged-in user is not following anyone if that is the case when the following button is on', async () => {
         ; (wrapper.vm as any).followingSelected = true
         loggedInUserStore.loggedInUserProfile.num_of_following = 0
@@ -304,7 +304,7 @@ describe('index page testing', () => {
         const if_no_following_message = "You are not following anyone"
 
         expect(wrapper.text()).not.toContain(if_no_following_message)
-    })
+    });
 
     test('SHOULD show text saying that the logged-in user is not following anyone if that is the case when the following button is on', async () => {
         ; (wrapper.vm as any).followingSelected = true;
@@ -316,7 +316,7 @@ describe('index page testing', () => {
         const if_no_following_message = "You are not following anyone."
 
         expect(wrapper.text()).toContain(if_no_following_message)
-    })
+    });
     test('If the users the user is following doesnt have any posts that should be notified on the screen', async () => {
         
         // already set to users who have made no posts
@@ -331,7 +331,7 @@ describe('index page testing', () => {
 
         expect(wrapper.text()).toContain("No posts are published.")
         expect(wrapper.text()).not.toContain(if_no_following_message)
-    }),
+    });
     test('If the logged in user is following no one, only the "You are not following anyone" text should be rendered', async () => {
         
         // already set to users who have made no posts
