@@ -15,7 +15,7 @@ export const getSaveOrUnsavePost = async (postId:any) => {
 			// }
 			
 			/** Calls the composable that fetches profile information about the logged in user, so that the saved posts can be updated */
-			await getLoggedInUserProfile()
+			await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
 			
 			return response
 		} catch (e) {

@@ -16,55 +16,72 @@
 	// 	"description": "Log output to console"
 	// }
 
-	"Vue Test Utils beforeEach and afterEach": {
-		"prefix": "vueTestSetup",
-		"body": [
-			"import $1",
-			"import { VueWrapper, shallowMount } from '@vue/test-utils';",
-			"import { createTestingPinia } from '@pinia/testing';",
-			"import { useGeneralStore } from '~/store/generalStore';",
-			"",
-			"describe('$2', () => {",
-			"  let wrapper: VueWrapper;",
-			"  let store: any;",
-			"  vi.stubGlobal('definePageMeta', () => {",
-			"	return null",
-			"});"
-			"vi.stubGlobal('useRoute', () => {",
-			"	return {",
-			"		params: {",
-			"			id: 1",
-			"		}",
-			"	}",
-			"});",
-			"",
-			"  beforeEach(() => {",
-			"    const pinia = createTestingPinia();",
-			"    store = useGeneralStore(pinia);",
-			"",
-			"    wrapper = shallowMount($3, {",
-			"      global: {",
-			"        plugins: [pinia],",
-			"        components: {$4},",
-			"        mocks: {},",
-			"        stubs: {}",
-			"      },",
-			"		props:{$5}",
-			"    });",
-			"  });",
-			"",
-			"  afterEach(() => {",
-			"    if (wrapper) {",
-			"      wrapper.unmount();",
-			"    }",
-			"  });",
-			"",
-			"  $0",
-			"});"
-		],
-		"description": "Snippet for setting up Vue Test Utils with beforeEach and afterEach"
-	},
-
+		"Vue Test Utils with factory function": {
+			"prefix": "vueSetupTest",
+			"body": [
+				"import $1",
+				"import { VueWrapper, shallowMount } from '@vue/test-utils';",
+				"import { createTestingPinia } from '@pinia/testing';",
+				"",
+				"import { useGeneralStore } from '~/store/generalStore';",
+				"import { usePostStore } from '~/store/postStore';",
+				"import { useLoggedInUserStore } from '~/store/loggedInUserStore';",
+				"import { usePaginationStore } from '~/store/paginationStore';",
+				"",
+				"let wrapper: VueWrapper;",
+				"let pinia: any = createTestingPinia();",
+				"",
+				"// let generalStore; $2",
+				"// let postStore; $3",
+				"// let loggedInUserStore; $4",
+				"// let paginationStore; $5",
+				"",
+				"const factory = () => {",
+				"    return shallowMount($6, {",
+				"        global: {",
+				"            plugins: [pinia],",
+				"            components: {$7},",
+				"            mocks: {},",
+				"            stubs: {},",
+				"        },",
+				"        props: {$8},",
+				"        slots: {}",
+				"    })",
+				"};",
+				"",
+				"describe('', () => {",
+				"",
+				"    vi.stubGlobal('definePageMeta', () => {",
+				"        return null",
+				"    });",
+				"",
+				"    // vi.stubGlobal('useRoute', () => {",
+				"    //     return {",
+				"    //         params: {",
+				"    //             id: 1",
+				"    //         }",
+				"    //     }",
+				"    // });",
+				"",
+				"    beforeEach(() => {",
+				"        // generalStore = useGeneralStore(pinia); $9",
+				"        // postStore = usePostStore(pinia); $10",
+				"        // loggedInUserStore = useLoggedInUserStore(pinia); $11",
+				"        // paginationStore = usePaginationStore(pinia); $12",
+				"",
+				"    });",
+				"",
+				"    afterEach(() => {",
+				"        if (wrapper) {",
+				"            wrapper.unmount();",
+				"        }",
+				"    });",
+				"",
+				"$0",
+				"});"
+			],
+			"description": "Vue Test Utils snippet with a factory function for setup"
+		},
 	"Vue Mount Component": {
 		"prefix": "vueMount",
 		"body": [
@@ -76,7 +93,7 @@
 		"    stubs: {}",
 		"  },",
 		"	props:{$4}",
-		"})"
+		"})",
 		"$0"
 		],
 		"description": "Snippet for mounting a Vue component with Vue Test Utils"
@@ -91,11 +108,42 @@
 		],
 		"description": "Snippet for a simple Vue test block"
 	},
+	"Vue Async Test Block": {
+		"prefix": "vueAsyncTest",
+		"body": [
+		"test('$1', async () => {",
+		"	$0",
+		"})"
+		],
+		"description": "Snippet for a simple async Vue test block"
+	},
 	"Vue Expect": {
 		"prefix": "vueExpect",
 		"body": [
-		"expect($1).$2"
+		"expect($1).$2",
+		"",
+		"$0"
 		],
 		"description": "Snippet for writing an expect statement in Vue tests"
+	},
+
+	"Log wrapper html": {
+		"prefix": "vueLogHTML",
+		"body": [
+			"console.log(wrapper.html())",
+			"",
+			"$0"
+		],
+		"description": "Snippet for setting up a logging setup for the wrapper html in Vue Tests"
+	},
+
+	"Wrapper nextTick()": {
+		"prefix": "vueTick",
+		"body": [
+			"await wrapper.vm.$$nextTick()",
+			"",
+			"$0"
+		],
+		"description": "Snippet for setting for waiting on DOM change"
 	}
 }

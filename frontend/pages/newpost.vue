@@ -2,15 +2,11 @@
 	<div id="postFormWrapper" class="mt-2 mb-16">
 		<div class="max-w-3xl py-4 mx-auto prose">
 			<div id="direct-editor" :class="editorContainerClass">
-				<EditorCard @newPostMaterial="publishPost" />
+				<EditorCard @newPostMaterial="publish" />
 			</div>
 
 			<!-- icons -->
 			<div class="icons flex text-gray-500 m-2">
-				<!-- <div class="count ml-auto text-gray-400 text-xs font-semibold">
-            0/300
-          	</div> -->
-				<!-- Maybe later-->
 			</div>
 			<!-- buttons -->
 			<div class="buttons flex">
@@ -27,27 +23,28 @@ import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 import { postCreateNewPost } from '../composables/crud/postCreateNewPost';
 
 definePageMeta({
-	layout: "feed-layout"
+	layout: "default"
 })
 
-/**
- * @todo
- * huske definepagedata senere
- */
+const baseURL = "http://localhost:8888/api/newpost/"
+
 const postState = ref<false | true | null>(null);
 
-let editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
-const publishPost = async (request_body: any) => {
-	console.log("rectum")
-	const baseURL = "http://localhost:8888/api/newpost/"
-	const response = await postCreateNewPost(baseURL, request_body)
+/** 
+ * This controls the outer-styling that the text editor has and can be
+ * changed dynamically.
+ */
+const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
+
+const publish = async (data:object) => {
+	const response = await postCreateNewPost(baseURL, data)
+
 	if (response) {
 		postState.value = response.data
 	} else {
-		console.log("rectum")
+		console.log("Failed to publish the post")
 	}
-
 }
 
 </script>

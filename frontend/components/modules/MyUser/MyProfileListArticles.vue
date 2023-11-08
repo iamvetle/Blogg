@@ -3,7 +3,7 @@
         <h2 class="text-xl text-onPrimary font-bold mt-8 mb-6">
             All posts by {{ loggedInUserStore.loggedInUserProfile.first_name }}
         </h2>
-        <MyProfilePostSingle v-for="post in postStore.loggedInUserPosts.results" :key="post.id" :post="post" />
+        <MyProfileArticleCard v-for="post in postStore.loggedInUserPosts.results" :key="post.id" :post="post" />
     </div>
 </template>
 

@@ -7,7 +7,11 @@ export const usePostStore = defineStore("Store for containing posts and related 
      * initial page load. They have the structure of 'SnippetPostMultipleType'
      */
 
+    /** This contains all posts on feed */
     const posts = ref<SnippetPostMultipleType | null>(null)
+
+    /** This has only the posts made by the users the logged in user is following */
+    const followingPosts = ref<SnippetPostMultipleType | null>(null)
 
     /**
      * The API url endpoint for fetching logged-in user posts
@@ -17,11 +21,8 @@ export const usePostStore = defineStore("Store for containing posts and related 
     /**
      * The URL that api fetches regarding search generally go to
      */
-
     const baseFetchURL = ref<string>("http://localhost:8888/api/feed/") // post_snippets_url
     const baseLoggedInUserPostsURL = ref<string>("http://localhost:8888/api/min-side/posts/") // personal_post_snippets_url
-
-
 
     /** 
      * Has all (paginated) tags 
@@ -32,5 +33,5 @@ export const usePostStore = defineStore("Store for containing posts and related 
      */
     const allCategories = ref<CategoryType[] | null>(null)
 
-    return { posts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
+    return { posts, followingPosts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
 });

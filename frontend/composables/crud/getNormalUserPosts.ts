@@ -1,4 +1,4 @@
-import { getToken } from '../getToken';
+import { getMethod } from '../apiByCRUD';
 
 /**
  * Fetches the posts of a user, specified in the url.

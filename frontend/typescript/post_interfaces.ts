@@ -7,21 +7,23 @@ export interface NormalUserSnippetPostType {
 	next: string | null,
 	previous: string | null,
 	current_page: number | null,
-	results: [{
-		id: number;
-		title: string;
-		author: {
-			username: string;
-			first_name: string;
-			last_name: string;
-		},
-		content_snippet: string;
-		date_published: string;
-		num_of_followers: string;
+	results: [
+		{
+			id: number;
+			title: string;
+			author: AuthorType;
+			content_snippet: string;
+			date_published: string;
+			num_of_followers: string;
 
-		tags: string[];
-		categories: string[];
-	}]
+			tags: string[];
+			categories: string[];
+
+			images: ImageType[];
+
+			num_of_comments: number;
+		}
+	]
 }
 
 /**
@@ -39,13 +41,12 @@ export interface SnippetPostSingleType {
 	title: string;
 	content_snippet: string;
 	date_published: string;
-	author: {
-		username: string;
-		first_name: string;
-		last_name: string;
-	},
-	tags: null | TagType[],
-	categories: null | CategoryType[]
+	author: AuthorType;
+	tags: null | TagType[];
+	categories: null | CategoryType[];
+
+	images: ImageType[];
+	num_of_comments: number;
 }
 
 /**
@@ -56,13 +57,14 @@ export interface PostSingleType {
 	title: string;
 	content: string;
 	date_published: string;
-	author: {
-		username: string;
-		first_name: string;
-		last_name: string;
-	};
-	tags: null | TagType[],
-	categories: null | CategoryType[]
+	author: AuthorType;
+	tags: null | TagType[];
+	categories: null | CategoryType[];
+
+	images: ImageType[];
+	videos: VideoType[];
+
+	num_of_comments: number;
 }
 
 /**
@@ -75,18 +77,7 @@ export interface LoggedInUserMultiplePostType {
 	current_page: number | null;
 	results: LoggedInUserSinglePostType[]
 }
-export interface LoggedInUserSinglePostType {
-	id: number;
-	title: string;
-	content_snippet: string;
-	date_published: string;
-	author: {
-		username: string;
-		first_name: string;
-		last_name: string;
-	},
-	tags: null | TagType[],
-	categories: null | CategoryType[]
+export interface LoggedInUserSinglePostType extends PostSingleType {
 }
 
 /**
@@ -101,7 +92,7 @@ export interface AllPostSavedType { // With pagination
 }
 export interface PostSavedType {
 	post: {
-		id:number,
+		id: number,
 		title: string,
 		username: string,
 		first_name: string,
@@ -135,4 +126,24 @@ export interface TagType {
 // }
 export interface CategoryType {
 	name: string
+}
+
+export interface ImageType {
+	image: string;
+}
+
+export interface VideoType {
+	video: string;
+}
+
+export interface CommentType {
+	content: string;
+	author: string;
+	date_published: string;
+}
+
+export interface AuthorType {
+	username: string;
+	first_name: string;
+	last_name: string;
 }

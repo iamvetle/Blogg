@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { usePostStore } from '~/store/postStore'
-import { usePaginationStore } from '~/store/paginationStore';
 
 /**
  * This function fetches data in GET based to the specified URL.
@@ -9,11 +8,10 @@ import { usePaginationStore } from '~/store/paginationStore';
  * @returns The response from the API endpoint
  */
 
-export const getPostMultipleSnippet = async () => {
+export const getPostMultipleSnippet = async (url:string) => {
 
 	try {
 		const postStore = usePostStore()
-		const paginationStore = usePaginationStore()
 
 		const token = localStorage.getItem("token");
 		const headers = {
@@ -25,7 +23,7 @@ export const getPostMultipleSnippet = async () => {
 		console.log(headers) // print to self
 
 		/** It uses the last set URL */
-		const response = await axios.get(paginationStore.activeFetchURL, { headers });
+		const response = await axios.get(url, { headers });
 
 		console.log(toRaw(response)) // print to self
 
@@ -61,6 +59,6 @@ export const getPostMultipleSnippet = async () => {
 		}
 	} catch (error) {
 		console.error("ERROR: An error occured while trying to fetch followers: ", error); // print to self
-		return error;
+		return null;
 	}
 }

@@ -3,7 +3,6 @@ import ListArticles from '~/components/modules/Blogg/ListArticles.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue'
-import BaseIconSaveArticleUnSaved from '~/components/base/BaseIconSaveArticleUnSaved.vue';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePostStore } from '~/store/postStore'
 
@@ -40,6 +39,7 @@ describe("list articles testing", () => {
                     },
                     "content_snippet": "Lorem ipsum...",
                     "date_published": "08-12-2021",
+                    "num_of_comments":526
                 }
             ]
         }
@@ -84,6 +84,10 @@ describe("list articles testing", () => {
         const save_icon = wrapper.findComponent({ name: "BaseIconSaveArticleUnSaved" }) 
 
         expect(save_icon.exists()).toBe(true)
+    })
+
+    test("Should display the number of comments", () => {
+        expect(wrapper.text()).toContain("526")
     })
     
 })

@@ -1,22 +1,25 @@
 <template>
-	<div id="site-wrapper" class="bg-background flex flex-col min-h-screen">
+	<div id="modal" :class="store.backgroundForModal">
 		<!-- Background color -->
-		<div class="flex-1 flex flex-col mb-6">
+		<div id="site-wrapper" class="bg-background">
 			<ClientOnly>
 				<TheNavbar />
 			</ClientOnly>
-			<div class="flex-1">
+			<div class="">
 				<slot />
 			</div>
 		</div>
 
-		<div class="mt-auto">
+		<div>
 			<LazyTheFooter />
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
+import { useGeneralStore } from '~/store/generalStore'
+
+const store = useGeneralStore()
 
 </script>
 

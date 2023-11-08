@@ -70,9 +70,10 @@ const postStore = usePostStore()
 const generalStore = useGeneralStore();
 const searchStore = useSearchStore();
 
+
+/** Trims the search input/query and fetches new posts based */
 const search = async (payload: any) => {
 	const route = useRoute()
-
 
 	if (route.path != "/") {
 		navigateTo("/")
@@ -82,8 +83,15 @@ const search = async (payload: any) => {
 	} else {
 		searchStore.searchPart = ""
 	}
-	constructURL()
-	await getPostMultipleSnippet()
+	/**
+	 * ! Ønsker ikke ha denne løsningen her. Passer ikke med seperation of concerns:
+	 */
+
+	paginationStore.activeFetchURL = constructURL("http://localhost:8888/api/feed/")  
+	await getPostMultipleSnippet(paginationStore.activeFetchURL) // this should happend ideally on the page level
+
+
+
 }
 
 /** 
@@ -103,6 +111,7 @@ const logoclick = async () => {
 	 * store post (which it rrelias on in a v-if) gets refreshesd here */
 
 	if (route.path === "/") {
+
 		postStore.posts = null
 
 		paginationStore.all_pages_count = 0;
@@ -115,8 +124,7 @@ const logoclick = async () => {
 		searchStore.searchPart = null;
 	}
 
-	await getPostMultipleSnippet()
-
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
 </script>

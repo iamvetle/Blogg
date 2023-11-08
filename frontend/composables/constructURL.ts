@@ -1,6 +1,4 @@
-import { usePostStore } from '~/store/postStore';
 import { useSearchStore } from '~/store/searchStore';
-import { usePaginationStore } from '~/store/paginationStore';
 
 /**
  * Constructs a new URL that we want to fetch post data from, that is based on the correct
@@ -11,13 +9,11 @@ import { usePaginationStore } from '~/store/paginationStore';
  * 
  * @todo Find out whether I should move this to a pluging or composable or someting
  */
-export const constructURL = async () => {
+export const constructURL = (fetchURL:string):string => {
 
-    const postStore = usePostStore()
     const searchStore = useSearchStore()
-    const paginationStore = usePaginationStore()
 	// Construct the URL based on 	the state
-	let url = postStore.baseFetchURL
+	let newURL = fetchURL
 
 	let params = [];
 
@@ -31,10 +27,10 @@ export const constructURL = async () => {
 		}
 	}
 	if (params.length > 0) {
-		url += `?${params.join('&')}`;
+		newURL += `?${params.join('&')}`;
 	}
-	console.log(url)
+	console.log(newURL)
 
-	paginationStore.activeFetchURL = url
+	return newURL
 
 }

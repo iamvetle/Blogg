@@ -74,8 +74,12 @@
 
 								<template #tags v-if="post.tags">
 									<span class="me-1" v-for="tag in post.tags">
-										<BaseTag :key="post.id" :text="tag.name"/>
+										<BaseTag :key="post.id" :text="tag.name" />
 									</span>
+								</template>
+
+								<template #amount-of-comments v-if="post.num_of_comments !== null">
+									<span>{{ post.num_of_comments }} comments</span>
 								</template>
 
 								<template #save-article-icon v-if="post.id">
@@ -109,7 +113,8 @@
 
 					<div>
 						<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
-						<the-user-sidebar :username="normalUserProfile.username" :profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
+						<the-user-sidebar :username="normalUserProfile.username"
+							:profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
 
 							<template #amount-of-followers>
 								<div class="font-light text-sm leading-7">
@@ -167,7 +172,6 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 const loggedInUserStore = useLoggedInUserStore()
 const route = useRoute();
 
-
 /** Stores the color that the bookmark icon is rendered with. */
 const color = ref("fill-black")
 
@@ -207,7 +211,7 @@ onMounted(async () => {
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
 	if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
-		await getLoggedInUserProfile();
+		await getLoggedInUserProfile("http://localhost:8888/api/min-side/");
 	}
 
 	/**

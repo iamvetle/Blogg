@@ -7,7 +7,7 @@
 				<article-card>
 
 					<template #author v-if="post.author">
-						<span @click="redirect_to_author_page(post.author.username)" class="cursor-pointer">
+						<span @click="redirect_to_author_page(post.author.username)" class="cursor-pointer break-words">
 							<p class="font-bold" v-text="author_full_name(post.author)">
 							</p>
 						</span>
@@ -20,15 +20,17 @@
 					</template>
 
 					<template #title v-if="post.title">
-						<span @click="redirect_to_post_page(post.id)" class="cursor-pointer">
+						<span @click="redirect_to_post_page(post.id)" class="cursor-pointer break-words">
 							<h3 class="text-[28px] mb-2" v-text="post.title">
 							</h3>
 						</span>
 					</template>
 
 					<template #content v-if="post.content_snippet">
-						<p class="mb-2" v-text="toPlainText(post.content_snippet)">
-						</p>
+						<div class="break-words">
+							<p class="mb-2" v-text="toPlainText(post.content_snippet)">
+							</p>
+						</div>
 					</template>
 
 
@@ -43,6 +45,10 @@
 						<span class="me-1" v-for="tag in post.tags">
 							<BaseTag :key="post.id" :text="tag.name"/>
 						</span>
+					</template>
+
+					<template #amount-of-comments v-if="post.num_of_comments !== null">
+						<span>{{ post.num_of_comments }} comments</span>						
 					</template>
 
 					<template #save-article-icon v-if="post.id">
