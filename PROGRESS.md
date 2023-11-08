@@ -236,7 +236,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 - [ ] The **posting functionality** i want it to be obvious when a post was SUCCESSFULL, or when it FAILED.
 - Make it possible for the user to **add pictures** when making post
   - I don't want to focus on adding and rendering images until later
-- idea but probebly not: Maybe remove 'title' input field and just use 'content'
+- idea but probebly not: Maybe remove 'title' input field and just use 'content'd
 
 ---
 
