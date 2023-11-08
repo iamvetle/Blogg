@@ -43,15 +43,23 @@
 <script setup lang="ts">
 //@ts-nocheck
 import { reset } from '@formkit/core'
+
 const loginerror = ref(false);
 const loginsucess = ref(false);
 
 const baseURL = "http://localhost:8888/api/login/";
 const { redirect } = defineProps(["redirect"]);
 
-const submitForm = async (formData:any, node) => {
+withDefaults(defineProps<{
+	redirect?: boolean
+}>(), {
+	redirect: true
+})
+
+const submitForm = async (formData: any, node) => {
 	const responseData = await postForm(baseURL, formData)
 
+	/** If the request was successfull */
 	if (responseData) {
 
 		/** Takes the username and token from the responseData and puts it in localStorage */
@@ -66,10 +74,13 @@ const submitForm = async (formData:any, node) => {
 		 * 
 		 * ? Unsure whether I this is a good idea
 		 */
-			if (redirect === true) {
-				return navigateTo("minkonto");
-			}
-			
+		if (redirect === true) {
+			return navigateTo("minkonto");
+		}
+
+		/**
+		 * If the request was null, it failed, then all fields are reset	 * 
+		*/
 	} else {
 		/**
 		 * 'Reset' clears the input fields if the if request is failed.
