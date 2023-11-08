@@ -68,6 +68,9 @@
 
 <script setup>
 
+/**
+ * ? Usikker på om jeg vil ha lik navbar
+ */
 definePageMeta({
 	layout: "default"
 })
@@ -82,6 +85,9 @@ const submitForm = async (formData) => {
 		setTimeout(() => {
 			navigateTo("/login");
 		}, 1000);
+	}
+	else {
+		console.log("The signup failed for some reason") // print to self
 	}
 };
 </script>

@@ -1,6 +1,7 @@
 import axios from "axios";
+import { postMethod } from "../apiByCRUD";
 
-export const postCreateNewPost = async (url: string, formData: object) => {
+export const postCreateNewPost = async (url: string, formData: object): Promise<object | null> => {
   
   const token = localStorage.getItem("token");
 
@@ -9,17 +10,15 @@ export const postCreateNewPost = async (url: string, formData: object) => {
     Authorization: `Token ${token}`,
   };
 
-  console.log(formData)
+  // console.log(formData) // print to self
 
-  try {
-    const response = await axios.post(url, formData, { headers })
-    console.log(toRaw(response.data)) 
-    
-    console.log("OK: a new post was created", response.data);
+  const response = await postMethod(url, formData, headers)
 
+  if (response) {
+    // console.log("OK: a new post was created", response.data); // print to self
     return response
-  } catch (error) {
-    console.log("FAILED: no new post was created:", error);
+  } else {
+    console.log("FAILED: no new post was created:") // print to self
     return null
   }
 };

@@ -28,6 +28,7 @@ definePageMeta({
 
 const baseURL = "http://localhost:8888/api/newpost/"
 
+/** If this is true a success message is rendered */
 const postState = ref<false | true | null>(null);
 
 
@@ -37,13 +38,13 @@ const postState = ref<false | true | null>(null);
  */
 const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
-const publish = async (data:object) => {
-	const response = await postCreateNewPost(baseURL, data)
+const publish = async (postContent:object) => {
+	const responseData = await postCreateNewPost(baseURL, postContent)
 
-	if (response) {
-		postState.value = response.data
+	if (responseData) {
+		postState.value = true
 	} else {
-		console.log("Failed to publish the post")
+		// console.log("Failed to publish the post") // print to self
 	}
 }
 
