@@ -14,7 +14,7 @@ Jeg ønsker å ha en mer omfattende text-editor enn det medium har. Den har ikke
 
 Jeg ønsker å gi brukeren muligheten til å lagre posten til senere i *drafts* kanskje. Brukeren skal også få muligehten til å legge til et bilde som kan vises sammen med posten på "lists" og sånt.
 
-  Man *må* ikke publish post med en gang.
+  Man *må* ikke publish post med en gang. (nærmer meg da)
 
 Det skal komme en slags kontroll når "publish"-knappen (eller hva annet jeg kaller den) blir trykket på. Den kontrollerer hva som skal være tittelen og om et bilde skal være til stede.
 
@@ -46,7 +46,8 @@ Jeg tenker det er best at jeg prøver å gjøre ferdig én og én ting, men **ik
 ### Generics
 
 - [x] Ta 'Tag' og 'Category' til generics og gjøre det mulig å hente og å lage nye uten å gjøre dem til duplikater
-- [ ] Gjøre det mulig til å oppdatere/edit sine **egne** posts
+- [x] Gjøre det mulig til å oppdatere/edit sine **egne** posts
+- [x] Gjøre det mulige å slette sine egne posts
   - da trenger jeg å endre på generics
     - patch eller put?
 - [ ] Vil også gjøre det mulig å **redigere brukeren sin** på frontend 
@@ -88,7 +89,7 @@ Jeg tenker det er best at jeg prøver å gjøre ferdig én og én ting, men **ik
 ### Serializers og views
 
 - [x] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
-- [ ] Endre slik at det er mulig å *legge til tags* på post create
+- [x] Endre slik at det er mulig å *legge til tags* på post create
   - [x] -> klare å utføre det fra postman
 
 ---
@@ -127,12 +128,12 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 > Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
 - [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
-- [~] Fjern 'searchRequest' og [x]'searchPagnation' (det som er igjen)
-  - [~] trenger da også fikset krøllet som er mellom feed og search (vanskelig å forstå search på backend)
+- [x] Fjern 'searchRequest' og [x]'searchPagnation' (det som er igjen)
+  - [x] trenger da også fikset krøllet som er mellom feed og search (vanskelig å forstå search på backend)
 - [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
-- [~] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
+- [ ] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
   - keep-alive - for å holde akkurat den filteren oppe.
-- [~] Gjøre slik at det står "Søke resultater for: ..."
+- [x] Gjøre slik at det står "Søke resultater for: ..."
   - [ ] ønsker i tillegg å vise de "tags" og mer som er i bruk
 ---
 
@@ -231,6 +232,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 - [x] When **_making a post_** I want the styling to be the same
   - [x] Also the width. So when creating the post it looks like it will be rendered.
+- [x] Make a popup for publish/confirm and cancel
 - [ ] The **posting functionality** i want it to be obvious when a post was SUCCESSFULL, or when it FAILED.
 - Make it possible for the user to **add pictures** when making post
   - I don't want to focus on adding and rendering images until later
@@ -240,9 +242,12 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ### How to API
 
+- [ ] Make a ***common method*** for POST, GET, DELETE, PATCH that the composables can use - this is so I can use a different api
+  fetch later if I would want to do that.
 - [x] Take all of the **API fetching on the page level**
 - [ ] use a method to access and save to local storage easoer
 - [ ] make get(crud) composables to use a common library that is of a composable, so if I want to change from 'axios' to something else, it'll be easy
+- [ ] Maybe move the api logic to the store?
 
 - When i am retrieving tokens from **LocalStorage**, all of my fetching becomes on the client side.
   - The means *initial load* can be very slow
@@ -261,11 +266,10 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 
 ## General
 
-- [ ] Ta code snippets som du bruker med **Vue Test Utils**, og i **Postman** og legg dem systematisk på Notion
+- [~] Ta code snippets som du bruker med **Vue Test Utils**, og i **Postman** og legg dem systematisk på Notion
 - [~ jobber med det] Documentere ordentlig alle sidene og composables
 - [ ] Expand the registration form to include more information options
-- [ ] Fix the emit between new post and editorcard when it comes to border color and such
-- [ ] fix the connection bettwen the search composables and the related components, integrate more, properly
+- [x] Fix the emit between new post and editorcard when it comes to border color and such
 - [ ] Rydde opp i alle composables
 - [x] Dele opp stores
 - [ ] Find a workaround for **the problem that all of the fetching is happening from the client side**
@@ -285,6 +289,8 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ### thoughts
 
 There are features I generally want to implement, but not sure how.
+
+- there is no mobile support
 
 - Comments have no functionality right now
 

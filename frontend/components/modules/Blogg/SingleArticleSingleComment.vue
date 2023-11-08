@@ -8,6 +8,13 @@
 
 <script setup lang="ts">
 
+/**
+ * The component goes together with the SingleArticleListComments
+ * component.
+ * 
+ * Purpose: render one comment (passed through with prop)
+ */
+
 defineProps<{
     comment: CommentType
 }>();

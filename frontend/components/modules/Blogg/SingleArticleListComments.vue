@@ -8,6 +8,10 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Loops through all comments passed down through props, and
+ * then loops through them and renders them all.
+ */
 
 defineProps<{
     comments:CommentType[] | null
