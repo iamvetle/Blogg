@@ -172,7 +172,6 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 const loggedInUserStore = useLoggedInUserStore()
 const route = useRoute();
 
-
 /** Stores the color that the bookmark icon is rendered with. */
 const color = ref("fill-black")
 

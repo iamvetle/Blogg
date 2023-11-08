@@ -59,6 +59,6 @@ export const getPostMultipleSnippet = async (url:string) => {
 		}
 	} catch (error) {
 		console.error("ERROR: An error occured while trying to fetch followers: ", error); // print to self
-		return error;
+		return null;
 	}
 }

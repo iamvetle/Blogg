@@ -3,7 +3,7 @@ import { VueWrapper, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from '~/store/generalStore';
 import BaseTag from '~/components/base/BaseTag.vue';
-import MyProfileListArticles from '~/components/modules/MyUser/MyProfileListArticles.vue';
+import SingleArticleListComments from '~/components/modules/Blogg/SingleArticleListComments.vue';
 
 describe('Testing the single post page', () => {
     let wrapper: VueWrapper;
@@ -20,8 +20,8 @@ describe('Testing the single post page', () => {
                 }
             }
         })
-
-        const pinia = createTestingPinia();
+        
+        const pinia = createTestingPinia();     
         store = useGeneralStore(pinia);
 
         wrapper = mount(IdVue, {
@@ -29,11 +29,11 @@ describe('Testing the single post page', () => {
                 plugins: [pinia],
                 components: {
                     BaseTag,
-                    MyProfileListArticles
+                    SingleArticleListComments
                 },
                 mocks: {},
                 stubs: {
-                    MyProfileListArticles:true
+                    SingleArticleListComments:true
                 }
             },
             props: {}
@@ -106,10 +106,8 @@ describe('Testing the single post page', () => {
         expect(wrapper.text()).toContain("Comments written:")
     })
     test('Should have the listcomments component', () => {
-        const listcomments = wrapper.findComponent({ name: "MyProfileListArticles" })
+        const listcomments = wrapper.findComponent({ name: "SingleArticleListComments" })
         expect(listcomments.exists()).toBe(true)
     })
-    test('Should fetch all of the comments of post from endpoint', () => {
-      
-    })
+
 });

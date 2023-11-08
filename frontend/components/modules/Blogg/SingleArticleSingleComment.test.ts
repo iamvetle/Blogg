@@ -23,7 +23,13 @@ const factory = () => {
             mocks: {},
             stubs: {},
         },
-        props: {},
+        props: {
+            comment: {
+                content: "propcontent",
+                date_published: "01-01-2009",
+                author: "proptestusername"
+            }
+        },
         slots: {}
     })
 };
@@ -60,5 +66,17 @@ describe('', () => {
         wrapper = factory()
 
         expect(wrapper.exists()).toBe(true)
+    })
+    test('Should have comment prop', () => {
+        expect(wrapper.props("comment")).toBeTruthy()
+    })
+    test('The text of the comment prop should be rendered', () => {
+        expect(wrapper.text()).toContain("propcontent")
+    })
+    test('Should display the date the comment was published', () => {
+        expect(wrapper.text()).toContain("01-01-2009")
+    })
+    test('Should display author username', () => {
+        expect(wrapper.text()).toContain("proptestusername")
     })
 });

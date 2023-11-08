@@ -165,7 +165,7 @@ class PostVideo(models.Model):
 class Comment(models.Model):
     """Each post can have comments, and each post comment is this model"""
 
-    content = models.TextField(max_length=500)
+    content = models.TextField(max_length=500, blank=False, null=False)
     post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="comments"

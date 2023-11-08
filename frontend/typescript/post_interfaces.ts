@@ -137,10 +137,9 @@ export interface VideoType {
 }
 
 export interface CommentType {
-	id: number;
 	content: string;
-	post: string;
 	author: string;
+	date_published: string;
 }
 
 export interface AuthorType {

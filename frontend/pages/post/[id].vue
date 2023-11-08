@@ -40,7 +40,9 @@
 			<div data-test="comments">
 				<h2>Comments written:</h2>
 				<div>
-					<MyProfileListArticles />
+					<SingleArticleListComments 
+					:comments="all_comments"
+					/>
 				</div>
 			</div>
 		</div>
@@ -52,10 +54,11 @@
 // import noimage from '~/assets/noimage.jpg'
 
 const post = ref<PostSingleType | null>(null);
-const comments = ref<CommentType[] | null>(null);
+const all_comments = ref<CommentType[] | null>(null);
+const route = useRoute();
+
 
 onMounted(async () => {
-	const route = useRoute();
 	const postURL = `http://localhost:8888/api/post/${route.params.id}/`;
 
 
@@ -65,9 +68,9 @@ onMounted(async () => {
 	post.value = await fetchPost(postURL);
 
 
-	/
-	const commentsURL = `http://localhost:8888/api/`
-	comments.value = await getSinglePostComments()
+	
+	const commentsURL = `http://localhost:8888/api/post/${route.params.id}/comments/`
+	all_comments.value = await getSinglePostComments(commentsURL)
 });
 
 

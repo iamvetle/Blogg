@@ -1,6 +1,7 @@
 import SingleArticleListComments from './SingleArticleListComments.vue';
-import { VueWrapper, shallowMount } from '@vue/test-utils';
+import { VueWrapper, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
+import SingleArticleSingleComment from './SingleArticleSingleComment.vue';
 
 import { useGeneralStore } from '~/store/generalStore';
 import { usePostStore } from '~/store/postStore';
@@ -16,14 +17,29 @@ let pinia: any = createTestingPinia();
 // let paginationStore; 
 
 const factory = () => {
-    return shallowMount(SingleArticleListComments, {
+    return mount(SingleArticleListComments, {
         global: {
             plugins: [pinia],
-            components: {},
+            components: {
+                SingleArticleSingleComment
+            },
             mocks: {},
             stubs: {},
         },
-        props: {},
+        props: {
+            comments:[
+                {
+                    content:"somecontent1",
+                    date_published:"01-01-2001",
+                    author:"testusername"
+                },
+                {
+                    content:"somecontent2",
+                    date_published:"03-12-2012",
+                    author:"testbobusername"
+                }
+            ]
+        },
         slots: {}
     })
 };
@@ -49,6 +65,29 @@ describe('', () => {
 
         expect(wrapper.exists()).toBe(true)
     })
+    test("Should have single comment, component", () => {
+        wrapper = factory()
 
+        const singlecomment = wrapper.findComponent({ name: "SingleArticleSingleComment" })
 
+        expect(singlecomment.exists()).toBe(true)
+    })
+
+    test("Should have list of comments props passed down", () => {
+
+        expect(wrapper.props("comments")).toBeTruthy()
+    })
+    test("The number of singlecomment instances should be equal to the number of comments", () => {
+        
+        wrapper = factory()
+
+        const all_comment_components = wrapper.findAllComponents({ name:"SingleArticleSingleComment" })
+
+        // using, 2, because wrapper props here has length 2  
+        expect(all_comment_components).toHaveLength(2)
+    })
+    test("The comments text should be displayed", () => {
+        expect(wrapper.html()).toContain("somecontent1")
+        expect(wrapper.html()).toContain("somecontent2")
+    })
 });
