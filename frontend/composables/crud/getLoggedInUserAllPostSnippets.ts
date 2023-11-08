@@ -15,7 +15,7 @@ export const getLoggedInUserAllPostSnippets = async (api_endpoint_url:string) =>
   /**
    * Fetches the token from local storage, or just returns null.
    */
-  const token = getToken()
+  const token = retrieveToken()
 
   if (token) {
     const headers = {

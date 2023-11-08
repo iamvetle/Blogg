@@ -36,7 +36,7 @@ declare global {
   const getPostMultipleSnippet: typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']
   const getSaveOrUnsavePost: typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']
   const getSinglePostComments: typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']
-  const getToken: typeof import('./composables/getToken')['getToken']
+  const getToken: typeof import('./composables/retrieveToken')['getToken']
   const getUnfollowUser: typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']
   const h: typeof import('vue')['h']
   const inject: typeof import('vue')['inject']
@@ -126,7 +126,7 @@ declare module 'vue' {
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
     readonly getSinglePostComments: UnwrapRef<typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']>
-    readonly getToken: UnwrapRef<typeof import('./composables/getToken')['getToken']>
+    readonly getToken: UnwrapRef<typeof import('./composables/retrieveToken')['getToken']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
@@ -210,7 +210,7 @@ declare module '@vue/runtime-core' {
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
     readonly getSinglePostComments: UnwrapRef<typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']>
-    readonly getToken: UnwrapRef<typeof import('./composables/getToken')['getToken']>
+    readonly getToken: UnwrapRef<typeof import('./composables/retrieveToken')['getToken']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>

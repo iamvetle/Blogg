@@ -18,7 +18,7 @@ export const getLoggedInUserProfile = async (loggedInUserProfileURL:string) => {
 	 */
 	const loggedInUserStore = useLoggedInUserStore()
 
-	const token = getToken()
+	const token = retrieveToken()
 
 	if (token) {
 		const headers = {

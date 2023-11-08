@@ -12,7 +12,7 @@ export const getNormalUserProfile = async (userURL: string) => {
   /**
    * Fetches the token from local storage, or just returns null.
    */
-  const token = getToken()
+  const token = retrieveToken()
 
   if (token) {
     const headers = {

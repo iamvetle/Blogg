@@ -50,17 +50,22 @@ const baseURL = "http://localhost:8888/api/login/";
 const { redirect } = defineProps(["redirect"]);
 
 const submitForm = async (formData:any, node) => {
-	const response = await postForm(baseURL, formData)
+	const responseData = await postForm(baseURL, formData)
 
-	
-	if (response != null && response.data != null) {
+	if (responseData) {
 
-		setLocalInfo(response.data.token, response.data.username);
+		/** Takes the username and token from the responseData and puts it in localStorage */
+		setTokenAndUsername(responseData.token, responseData.username);
 
 		loginsucess.value = true;
-
 		loginerror.value = false;
 
+		/** 
+		 * Redirects the user to the minkonto page if the prop 
+		 * passed is 'true', otherwise, not redirected
+		 * 
+		 * ? Unsure whether I this is a good idea
+		 */
 			if (redirect === true) {
 				return navigateTo("minkonto");
 			}
