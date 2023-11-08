@@ -313,10 +313,11 @@ const save = async (post: number) => {
 const unFollowUser = async (username: string) => {
 	const theNormalUserProfileUnfollowURL = `http://localhost:8888/api/${username}/unfollow/`;
 
-	const response: any = await getUnfollowUser(theNormalUserProfileUnfollowURL)
+	const responseData = await getUnfollowUser(theNormalUserProfileUnfollowURL)
 
 	// Makes sure that no changes are made if the request was not successfull
-	if (response.status !== 200) {
+	if (responseData === null) {
+		console.log("FAILED from id user: you might not have successfolly unfollowed:") // print to self
 		return null
 	}
 

@@ -20,7 +20,7 @@ export const postCreateNewPost = async (url: string, formData: object): Promise<
 
   if (response) {
     // console.log("OK: a new post was created", response.data); // print to self
-    return response
+    return response.data
   } else {
     console.log("FAILED: no new post was created:") // print to self
     return null

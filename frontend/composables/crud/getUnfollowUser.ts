@@ -1,22 +1,29 @@
-import axios from "axios";
+import { postMethod } from "../apiByCRUD";
 
-export const getUnfollowUser = async (url: string) => {
-	try {
-		const token = localStorage.getItem("token");
-		!token ? console.log("no token") : "";
+/** Sends a get request to unfollow the user 
+ * 
+ * It also takes care of the header for you
+*/
+export const getUnfollowUser = async (url: string): Promise<object | null> => {
+	const token = retrieveToken();
 
-		const headers = {
-			"Content-Type": "application/json",
-			Authorization: `Token ${token}`,
-		};
+	if (token === null) {
+		console.log("There was not token")
+		return null
+	}
 
-		const response = await axios.post(url, {}, { headers });
-		console.log("OK: unfollowed user", response.data); // print to self
-		
-		return response;
+	const headers = {
+		"Content-Type": "application/json",
+		Authorization: `Token ${token}`,
+	};
 
-	} catch (error) {
-		console.log("did not manage to UNfollow user", error); // print to self
-		return error;
+	const response = await postMethod(url, {}, { headers });
+
+	if (response) {
+		// console.log("OK: managed to unfollow user", response.data); // print to self
+		return response
+	} else {
+		console.log("FAILED: you might not have successfolly unfollowed:") // print to self
+		return null
 	}
 };
