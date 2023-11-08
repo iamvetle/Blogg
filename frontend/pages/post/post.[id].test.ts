@@ -3,6 +3,7 @@ import { VueWrapper, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from '~/store/generalStore';
 import BaseTag from '~/components/base/BaseTag.vue';
+import MyProfileListArticles from '~/components/modules/MyUser/MyProfileListArticles.vue';
 
 describe('Testing the single post page', () => {
     let wrapper: VueWrapper;
@@ -27,29 +28,32 @@ describe('Testing the single post page', () => {
             global: {
                 plugins: [pinia],
                 components: {
-                    BaseTag
+                    BaseTag,
+                    MyProfileListArticles
                 },
                 mocks: {},
-                stubs: {}
+                stubs: {
+                    MyProfileListArticles:true
+                }
             },
             props: {}
         });
 
-        wrapper.vm.post = {
+        (wrapper.vm as any).post = {
             "title": "testitle",
             "author": {
                 "username": "testusername",
                 "first_name": "testfirstname",
                 "last_name": "testlastname"
             },
-            "content":"testcontent",
-            "date_published":"2022-20-21",
-            "tags":[
+            "content": "testcontent",
+            "date_published": "2022-20-21",
+            "tags": [
                 "Purple",
                 "New",
                 "Testing",
             ],
-            "categories":[
+            "categories": [
                 "Hope",
                 "Children",
                 "Equality",
@@ -69,7 +73,7 @@ describe('Testing the single post page', () => {
         expect(wrapper.exists()).toBe(true)
     })
     test('Should render title', async () => {
-    
+
         expect(wrapper.text()).toContain("testitle")
     })
     test('Should render username', () => {
@@ -93,8 +97,19 @@ describe('Testing the single post page', () => {
         expect(wrapper.text()).toContain("Children")
         expect(wrapper.text()).toContain("Equality")
     })
+    test("Should have a div for the comments (component)", () => {
+        const comments_place = wrapper.find("[data-test='comments']")
 
-
-
-
+        expect(comments_place.exists()).toBe
+    })
+    test("Should have a comments title", () => {
+        expect(wrapper.text()).toContain("Comments written:")
+    })
+    test('Should have the listcomments component', () => {
+        const listcomments = wrapper.findComponent({ name: "MyProfileListArticles" })
+        expect(listcomments.exists()).toBe(true)
+    })
+    test('Should fetch all of the comments of post from endpoint', () => {
+      
+    })
 });

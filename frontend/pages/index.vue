@@ -69,8 +69,14 @@ definePageMeta({
 
 // Declerations
 
-/** FEED or FOLLOWING button selected display */
-const followingSelected = ref(false)
+/** 
+ * FEED or FOLLOWING button selected display 
+ * 
+ * When the buttons are clicked this changes (also by navbar search)
+ * 
+ * If the active url is the following url, this turns true, otherwise, it is false
+ */
+const followingSelected = computed(() => (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/"))
 
 
 /**
@@ -148,8 +154,9 @@ const changeDropdown = () => {
  * It has its base here - the url.
  */
 const feedPostSetting = async () => {
+	searchStore.resetStore()
+
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
-	followingSelected.value = false
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
@@ -165,7 +172,6 @@ const followingPostSetting = async () => {
 
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
 
-	followingSelected.value = true
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
@@ -196,7 +202,12 @@ const tagOptions = computed(() => {
  */
 const action = async (items: any) => {
 	searchStore.tagFilterPart = items
-	constructURL()
+
+	/** 
+	 * ? Inside of the function instead?
+	 */
+	paginationStore.activeFetchURL = constructURL("http://localhost:8888/api/feed/")
+
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 

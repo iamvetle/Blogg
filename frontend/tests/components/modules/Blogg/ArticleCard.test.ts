@@ -11,7 +11,7 @@ suite("testing PostArticle", async () => {
             date_published:'<img src="x" alt="2023-23-2">',
             lesmer:'<p>lesmer</p>',
             article_image:'<img src="~/source/to/image.jpg" alt="test">',
-            amount_of_comments: '<span>37</span>'
+            "amount-of-comments": '<span>37</span>'
         }
     }) 
     
@@ -39,5 +39,6 @@ suite("testing PostArticle", async () => {
     })
     it("Should render the number of comments a post has", () => {
         assert(wrapper.html().includes('<span>37</span>'), "the number of comments are not displayed")
+        expect(wrapper.html()).not.toContain('Number of comments.')
     })
 })

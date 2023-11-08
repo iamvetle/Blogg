@@ -83,8 +83,15 @@ const search = async (payload: any) => {
 	} else {
 		searchStore.searchPart = ""
 	}
-	paginationStore.activeFetchURL = constructURL() //! There is a problem that fetching is happening here on this level - not ideal 
-	await getPostMultipleSnippet(paginationStore.activeFetchURL)
+	/**
+	 * ! Ønsker ikke ha denne løsningen her. Passer ikke med seperation of concerns:
+	 */
+
+	paginationStore.activeFetchURL = constructURL("http://localhost:8888/api/feed/")  
+	await getPostMultipleSnippet(paginationStore.activeFetchURL) // this should happend ideally on the page level
+
+
+
 }
 
 /** 

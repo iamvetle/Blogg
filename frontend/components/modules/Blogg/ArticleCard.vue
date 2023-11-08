@@ -36,7 +36,7 @@
 
 				<span class="flex items-center">
 					<span id="comments-count" class="me-2">
-						<slot name="amount_of_comments">Number of comments.</slot>
+						<slot name="amount-of-comments">Number of comments.</slot>
 					</span>
 
 					<span id="save-article" class="me-2 w-auto h-auto mx-auto flex items-center justify-center">
