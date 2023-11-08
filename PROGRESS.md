@@ -223,7 +223,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ---
 
 - [x] Gi en bruker muligheten, en knapp de kan trykke på
-  - Helt svart hvis lagret, delvis hvit hvis ikke lagret - ide.
+  - Helt svart hvis lagret, delvis hvit hvis ikke lagret - ide
     - hver post, for å **lagre** en post
   - [x] Trenger å lage en **_fetch call_** for den
 - [x] Muligheten for en bruker til å **fjerne** en post som de har lagret
