@@ -45,6 +45,7 @@ const publish = async (postContent:object) => {
 		postState.value = true
 	} else {
 		// console.log("Failed to publish the post") // print to self
+		return null
 	}
 }
 

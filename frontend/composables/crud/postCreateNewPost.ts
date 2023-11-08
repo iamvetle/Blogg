@@ -1,9 +1,13 @@
-import axios from "axios";
 import { postMethod } from "../apiByCRUD";
 
 export const postCreateNewPost = async (url: string, formData: object): Promise<object | null> => {
   
-  const token = localStorage.getItem("token");
+  const token = retrieveToken();
+
+  if (token === null) {
+    console.log("There was not token")
+    return null
+  }
 
   const headers = {
     "Content-Type": "application/json",

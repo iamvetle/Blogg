@@ -1,9 +1,9 @@
 import { postMethod } from "../apiByCRUD";
 
-export const postForm = async (url: string, formData: object): Promise<object | null> => {
+export const postForm = async (url: string, formData: object, headers?:object): Promise<object | null> => {
 
   /** The actual POST fetch */
-  const response = await postMethod(url, formData)
+  const response = await postMethod(url, formData, headers)
 
   /** Returns the data from the response */
   if (response) {
