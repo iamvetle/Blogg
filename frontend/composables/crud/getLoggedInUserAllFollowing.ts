@@ -19,7 +19,7 @@ export const getLoggedInUserAllFollowing = async (): Promise<FollowingType[] | n
     const token = retrieveToken();
 
     if (token === null) {
-        console.log("There was not token")
+        console.log("There was no token")
         return null
     }
     const headers = {

@@ -1,5 +1,6 @@
 <template>
-  <div id="modal" :class="store.backgroundForModal">
+  <div id="modal" :class="store.backgroundForModal">  <!-- Possibly gray,blur background-->
+    <!-- Background color -->
     <div id="site-wrapper" class="bg-surface">
       <slot />
     </div>

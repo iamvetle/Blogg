@@ -17,7 +17,7 @@ export const getUnfollowUser = async (url: string): Promise<object | null> => {
 		Authorization: `Token ${token}`,
 	};
 
-	const response = await postMethod(url, {}, headers);
+	const response = await postMethod(url, {}, headers)
 
 	if (response) {
 		// console.log("OK: managed to unfollow user", response.data); // print to self

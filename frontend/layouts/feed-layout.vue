@@ -1,4 +1,5 @@
 <template>
+	<!-- Background color -->
 	<div id="site-wrapper" class="bg-background">
 		<!-- Background color -->
 		<div class="">

@@ -55,7 +55,7 @@
 
 const post = ref<PostSingleType | null>(null);
 const all_comments = ref<CommentType[] | null>(null);
-const route = useRoute();
+const route = useRoute()
 
 
 onMounted(async () => {
@@ -65,10 +65,9 @@ onMounted(async () => {
 	/**
 	 * Fetches the one post
 	 */
-	post.value = await fetchPost(postURL);
-
-
+	post.value = await getSinglePost(postURL);
 	
+
 	const commentsURL = `http://localhost:8888/api/post/${route.params.id}/comments/`
 	all_comments.value = await getSinglePostComments(commentsURL)
 });

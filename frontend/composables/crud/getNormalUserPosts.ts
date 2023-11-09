@@ -7,7 +7,7 @@ import { getMethod } from '~/services/apiByCRUD';
  *  
  * @returns - The request response (.data, .status)
  */
-export const getNormalUserPosts = async (userURL: string) => {
+export const getNormalUserPosts = async (userURL: string): Promise<NormalUserSnippetPostType | null> => {
 
     /**
      * Fetches the token from local storage, or just returns null.

@@ -48,7 +48,6 @@ const loginerror = ref(false);
 const loginsucess = ref(false);
 
 const baseURL = "http://localhost:8888/api/login/";
-const { redirect } = defineProps(["redirect"]);
 
 withDefaults(defineProps<{
 	redirect?: boolean

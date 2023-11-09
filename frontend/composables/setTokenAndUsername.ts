@@ -5,6 +5,8 @@ import { useGeneralStore } from "@/store/generalStore";
  * 
  * @param token - The string that is the token
  * @param username - The string that is username
+ * 
+ * Has no return
  */
 export const setTokenAndUsername = (token: string, username:string) => {
   if (process.client) {

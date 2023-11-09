@@ -5,6 +5,18 @@ import { useGeneralStore } from '~/store/generalStore';
 import BaseTag from '~/components/base/BaseTag.vue';
 import SingleArticleListComments from '~/components/modules/Blogg/SingleArticleListComments.vue';
 
+vi.stubGlobal("getSinglePost", () => {
+    return null
+})
+
+const mockGetSinglePostComments = () => {
+    return true
+}
+
+const mockGetSinglePost = () => {
+    return true
+}
+
 describe('Testing the single post page', () => {
     let wrapper: VueWrapper;
     let store: any;
@@ -31,36 +43,16 @@ describe('Testing the single post page', () => {
                     BaseTag,
                     SingleArticleListComments
                 },
-                mocks: {},
+                mocks: {
+                    getSinglePost: mockGetSinglePost,
+                    getSinglePostComments:mockGetSinglePostComments
+                },
                 stubs: {
                     SingleArticleListComments:true
                 }
             },
             props: {}
         });
-
-        (wrapper.vm as any).post = {
-            "title": "testitle",
-            "author": {
-                "username": "testusername",
-                "first_name": "testfirstname",
-                "last_name": "testlastname"
-            },
-            "content": "testcontent",
-            "date_published": "2022-20-21",
-            "tags": [
-                "Purple",
-                "New",
-                "Testing",
-            ],
-            "categories": [
-                "Hope",
-                "Children",
-                "Equality",
-            ]
-        }
-
-        wrapper.vm.$nextTick()
     })
 
     afterEach(() => {
@@ -70,9 +62,16 @@ describe('Testing the single post page', () => {
     });
 
     test('Should exist', () => {
+        console.log(wrapper.html())
         expect(wrapper.exists()).toBe(true)
     })
     test('Should render title', async () => {
+        
+        ;(wrapper.vm as any).post = {
+            author:"asd"
+        }; 
+
+        await wrapper.vm.nextTick()
 
         expect(wrapper.text()).toContain("testitle")
     })

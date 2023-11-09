@@ -6,9 +6,11 @@ import { usePaginationStore } from '~/store/paginationStore';
  * Takes the object and delegates the correct reactive variables
  * 
  * @param all_posts - The all posts
+ * 
+ * Has no return
  */
 
-export const fixPagination = async (all_posts: SnippetPostMultipleType) => {
+export const fixPagination = (all_posts: SnippetPostMultipleType)=> {
     if (all_posts != null) {
 
         const paginationStore = usePaginationStore()
@@ -27,5 +29,6 @@ export const fixPagination = async (all_posts: SnippetPostMultipleType) => {
         paginationStore.current_page_number = all_posts.current_page
     } else {
         console.log("pagination error on composable")
+        return null
     }
 }

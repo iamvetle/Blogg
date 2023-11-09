@@ -87,10 +87,7 @@ const followingSelected = computed(() => (paginationStore.activeFetchURL === "ht
 /**
  * All of the data that is needed from the api endpoint is fetched here.
  */
-onMounted(async () => {
-	if (checkLocalInfo() == null) {
-		return null
-	}
+	onMounted(async () => {
 
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
 	const loggedInUserProfileURL = "http://localhost:8888/api/min-side/"

@@ -35,6 +35,7 @@ declare global {
   const getNormalUserProfile: typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']
   const getPostMultipleSnippet: typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']
   const getSaveOrUnsavePost: typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']
+  const getSinglePost: typeof import('./composables/crud/getSinglePost')['getSinglePost']
   const getSinglePostComments: typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']
   const getToken: typeof import('./composables/retrieveToken')['getToken']
   const getUnfollowUser: typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']
@@ -67,7 +68,9 @@ declare global {
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
   const resolveComponent: typeof import('vue')['resolveComponent']
+  const retrieveToken: typeof import('./composables/retrieveToken')['retrieveToken']
   const setLocalInfo: typeof import('./composables/setLocalInfo')['setLocalInfo']
+  const setTokenAndUsername: typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
@@ -96,10 +99,8 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
-    readonly apiEndpointCheck: UnwrapRef<typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']>
     readonly checkIfFollowingUser: UnwrapRef<typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']>
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
-    readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly constructURL: UnwrapRef<typeof import('./composables/constructURL')['constructURL']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
@@ -107,10 +108,8 @@ declare module 'vue' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly deleteLoggedInUserPost: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']>
-    readonly deleteMethod: UnwrapRef<typeof import('./composables/apiByCRUD')['deleteMethod']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
-    readonly fetchPost: UnwrapRef<typeof import('./composables/deprecatedFetchPost')['fetchPost']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
     readonly getAllTags: UnwrapRef<typeof import('./composables/crud/getAllTags')['getAllTags']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -120,13 +119,12 @@ declare module 'vue' {
     readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserAllPostSnippets: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllPostSnippets')['getLoggedInUserAllPostSnippets']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
-    readonly getMethod: UnwrapRef<typeof import('./composables/apiByCRUD')['getMethod']>
     readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
+    readonly getSinglePost: UnwrapRef<typeof import('./composables/crud/getSinglePost')['getSinglePost']>
     readonly getSinglePostComments: UnwrapRef<typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']>
-    readonly getToken: UnwrapRef<typeof import('./composables/retrieveToken')['getToken']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
@@ -145,7 +143,6 @@ declare module 'vue' {
     readonly onMounted: UnwrapRef<typeof import('vue')['onMounted']>
     readonly onRenderTracked: UnwrapRef<typeof import('vue')['onRenderTracked']>
     readonly onRenderTriggered: UnwrapRef<typeof import('vue')['onRenderTriggered']>
-    readonly onResetAllStore: UnwrapRef<typeof import('./composables/onResetAllStore')['onResetAllStore']>
     readonly onScopeDispose: UnwrapRef<typeof import('vue')['onScopeDispose']>
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
@@ -157,7 +154,8 @@ declare module 'vue' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
-    readonly setLocalInfo: UnwrapRef<typeof import('./composables/setLocalInfo')['setLocalInfo']>
+    readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
+    readonly setTokenAndUsername: UnwrapRef<typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
@@ -180,10 +178,8 @@ declare module 'vue' {
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
-    readonly apiEndpointCheck: UnwrapRef<typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']>
     readonly checkIfFollowingUser: UnwrapRef<typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']>
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
-    readonly checkLocalInfo: UnwrapRef<typeof import('./composables/checkLocalInfo')['checkLocalInfo']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly constructURL: UnwrapRef<typeof import('./composables/constructURL')['constructURL']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
@@ -191,10 +187,8 @@ declare module '@vue/runtime-core' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly deleteLoggedInUserPost: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']>
-    readonly deleteMethod: UnwrapRef<typeof import('./composables/apiByCRUD')['deleteMethod']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
-    readonly fetchPost: UnwrapRef<typeof import('./composables/deprecatedFetchPost')['fetchPost']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
     readonly getAllTags: UnwrapRef<typeof import('./composables/crud/getAllTags')['getAllTags']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -204,13 +198,12 @@ declare module '@vue/runtime-core' {
     readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserAllPostSnippets: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllPostSnippets')['getLoggedInUserAllPostSnippets']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
-    readonly getMethod: UnwrapRef<typeof import('./composables/apiByCRUD')['getMethod']>
     readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
+    readonly getSinglePost: UnwrapRef<typeof import('./composables/crud/getSinglePost')['getSinglePost']>
     readonly getSinglePostComments: UnwrapRef<typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']>
-    readonly getToken: UnwrapRef<typeof import('./composables/retrieveToken')['getToken']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
@@ -229,7 +222,6 @@ declare module '@vue/runtime-core' {
     readonly onMounted: UnwrapRef<typeof import('vue')['onMounted']>
     readonly onRenderTracked: UnwrapRef<typeof import('vue')['onRenderTracked']>
     readonly onRenderTriggered: UnwrapRef<typeof import('vue')['onRenderTriggered']>
-    readonly onResetAllStore: UnwrapRef<typeof import('./composables/onResetAllStore')['onResetAllStore']>
     readonly onScopeDispose: UnwrapRef<typeof import('vue')['onScopeDispose']>
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
@@ -241,7 +233,8 @@ declare module '@vue/runtime-core' {
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
-    readonly setLocalInfo: UnwrapRef<typeof import('./composables/setLocalInfo')['setLocalInfo']>
+    readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
+    readonly setTokenAndUsername: UnwrapRef<typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
