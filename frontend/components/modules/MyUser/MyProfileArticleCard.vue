@@ -13,9 +13,7 @@
         </div>
         <div class="flex">
             <span v-for="tag in post.tags" :key="tag.name" class="mr-2">
-            <BaseTag
-            :text="tag.name"
-            />
+                <BaseTag :text="tag.name" />
             </span>
         </div>
         <div class="flex justify-between items-center">
@@ -23,7 +21,8 @@
                 data-test="read">
                 Les mer
             </span>
-            <button class="rounded-lg p-1 text-sm text-bold text-white bg-red-500 hover:bg-red-300" data-test="del" @click="deletePostRequest(post.id)">
+            <button class="rounded-lg p-1 text-sm text-bold text-white bg-red-500 hover:bg-red-300" data-test="del"
+                @click="deletePostRequest(post.id)">
                 Slett
             </button>
         </div>
@@ -61,25 +60,19 @@ const toPlainText = (htmlContent: string) => {
  * This function tries to delete the post that has been provided with the call
  */
 
-const deletePostRequest = async (postId:number) => {
-    try {
-        const minSideMyPostURL = `http://localhost:8888/api/min-side/posts/${postId}/edit/`
-        const minSideMyPostsURL = `http://localhost:8888/api/min-side/posts/`
+const deletePostRequest = async (postId: number) => {
+    const minSideMyPostURL = `http://localhost:8888/api/min-side/posts/${postId}/edit/`
+    const minSideMyPostsURL = `http://localhost:8888/api/min-side/posts/`
 
-        const response = await deleteLoggedInUserPost(minSideMyPostURL)
-        
-        if (response?.status == 204) {
-            alert("success i think")
-        }
+    const responseData = await deleteLoggedInUserPost(minSideMyPostURL)
 
-        await getLoggedInUserAllPostSnippets(minSideMyPostsURL)
-
-    } catch(e) {
-        alert(e)
-        console.log("delete function myprofilearticle single", e)
+    if (responseData) {
+        // alert("success i think") // print(alert) to self
     }
     
+    await getLoggedInUserAllPostSnippets(minSideMyPostsURL)
 }
+
 
 
 

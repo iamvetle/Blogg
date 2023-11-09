@@ -1,5 +1,6 @@
 import { usePostStore } from '~/store/postStore';
-import { getMethod } from '../apiByCRUD';
+import { getMethod } from '~/services/apiByCRUD';
+
 /** Fetches all tags possible */
 
 /** @todo Jeg burde kanskje ha et sted hvor jeg fetcher alle "filters?" */
@@ -11,29 +12,32 @@ import { getMethod } from '../apiByCRUD';
  * 
  * @returns - The request response (.data, .status)
  */
-export const getAllTags = async () => {
+export const getAllTags = async (): Promise<TagType[] | null> => {
     const baseURL = "http://localhost:8888/api/tags/"
     const postStore = usePostStore()
 
     /**
      * Fetches the token from local storage, or just returns null.
      */
-    const token = retrieveToken()
+    const token = retrieveToken();
 
-    if (token) {
-        const headers = {
-            "Content-Type": "application/json",
-            Authorization: `Token ${token}`,
-        };
+    if (token === null) {
+        console.log("There was not token")
+        return null
+    }
+    
+    const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+    };
 
-        const response = await getMethod(baseURL, headers)
+    const response = await getMethod(baseURL, headers)
 
-        if (response) {
-            postStore.allTags = response.data
-            
-            return response
-        } else {
-            return null
-        }
+    if (response) {
+        postStore.allTags = response.data
+
+        return response.data
+    } else {
+        return null
     }
 }

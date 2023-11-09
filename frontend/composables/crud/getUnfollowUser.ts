@@ -1,4 +1,4 @@
-import { postMethod } from "../apiByCRUD";
+import { postMethod } from "~/services/apiByCRUD";
 
 /** Sends a get request to unfollow the user 
  * 
@@ -8,7 +8,7 @@ export const getUnfollowUser = async (url: string): Promise<object | null> => {
 	const token = retrieveToken();
 
 	if (token === null) {
-		console.log("There was not token")
+		console.log("There was no token")
 		return null
 	}
 
@@ -17,11 +17,11 @@ export const getUnfollowUser = async (url: string): Promise<object | null> => {
 		Authorization: `Token ${token}`,
 	};
 
-	const response = await postMethod(url, {}, { headers });
+	const response = await postMethod(url, {}, headers);
 
 	if (response) {
 		// console.log("OK: managed to unfollow user", response.data); // print to self
-		return response
+		return response.data
 	} else {
 		console.log("FAILED: you might not have successfolly unfollowed:") // print to self
 		return null

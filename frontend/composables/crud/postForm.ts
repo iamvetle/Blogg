@@ -1,4 +1,4 @@
-import { postMethod } from "../apiByCRUD";
+import { postMethod } from "~/services/apiByCRUD";
 
 export const postForm = async (url: string, formData: object, headers?:object): Promise<object | null> => {
 

@@ -27,7 +27,6 @@ from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 CustomUser = get_user_model()
 
-
 class LoggedInUserProfileView(RetrieveAPIView):
     """Returns profile information about the LOGGED-IN user"""
 
@@ -40,7 +39,6 @@ class LoggedInUserProfileView(RetrieveAPIView):
         # my_user = CustomUser.objects.get(username=self.request.user)
         my_user = get_object_or_404(CustomUser, username=self.request.user)
         return my_user
-
 
 class NormalUserProfileView(RetrieveAPIView):
     """Returns information about a SPECIFIC user"""
@@ -111,7 +109,7 @@ class LoggedInUserAllFollowers(ListAPIView):
     """Returns a list of users following the logged-in user"""
 
     permission_classes = [IsAuthenticated]
-    pagination_class = GenericPagination
+    pagination_class = None
 
     serializer_class = FollowerSerializer
 
@@ -128,7 +126,7 @@ class LoggedInUserAllFollowing(ListAPIView):
     permission_classes = [IsAuthenticated]
 
     serializer_class = FollowerSerializer
-    pagination_class = GenericPagination
+    pagination_class = None
 
     def get_queryset(self):
         logged_in_user = self.request.user

@@ -38,11 +38,18 @@ const postState = ref<false | true | null>(null);
  */
 const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
 
+/** 
+ * * Final publishing step 
+ */
 const publish = async (postContent:object) => {
 	const responseData = await postCreateNewPost(baseURL, postContent)
 
 	if (responseData) {
 		postState.value = true
+
+		setTimeout(() => {
+			navigateTo("/minkonto");
+		}, 1000);
 	} else {
 		// console.log("Failed to publish the post") // print to self
 		return null

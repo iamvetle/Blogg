@@ -1,15 +1,15 @@
 import axios from 'axios';
+import { postMethod } from '~/services/apiByCRUD';
 
 export const getSaveOrUnsavePost = async (postId:any) => {
 		try {
 			const token = localStorage.getItem("token");
 	
-			const response = await axios.post(`http://localhost:8888/api/post/${postId}/save/`, {}, {
+			const response = await postMethod(`http://localhost:8888/api/post/${postId}/save/`, {}, {
 				headers: {
 					"Authorization": `Token ${token}`,
 				},
 			});
-			console.log(response.data); // print to self
 			// if (response.data?.message) {
 			// 	alert(response.data.message)
 			// }

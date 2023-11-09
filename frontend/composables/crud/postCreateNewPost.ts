@@ -1,11 +1,11 @@
-import { postMethod } from "../apiByCRUD";
+import { postMethod } from "~/services/apiByCRUD";
 
 export const postCreateNewPost = async (url: string, formData: object): Promise<object | null> => {
-  
+
   const token = retrieveToken();
 
   if (token === null) {
-    console.log("There was not token")
+    console.log("There was no token")
     return null
   }
 

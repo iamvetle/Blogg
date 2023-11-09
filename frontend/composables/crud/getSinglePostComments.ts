@@ -1,3 +1,5 @@
+import { getMethod } from "~/services/apiByCRUD";
+
 /**
  * This function fetches data in GET based to the specified URL.
  * The URL can take query parameters and be customized. 

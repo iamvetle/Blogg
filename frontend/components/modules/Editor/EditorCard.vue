@@ -290,7 +290,7 @@ const buttonTryPublishClick = async () => {
 const buttonCancelClick = () => {
 	const router = useRouter()
 	editor.value.commands.clearContent
-	const place = router.go(-1)
+	const place = "/"
 	html.value = ""
 
 	return navigateTo(place)

@@ -226,10 +226,10 @@ onMounted(async () => {
 	 * 
 	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
 	 */
-	const response_profile = await getNormalUserProfile(theNormalUserProfileURL);
+	const responseData_profile = await getNormalUserProfile(theNormalUserProfileURL);
 
-	if (response_profile) {
-		normalUserProfile.value = response_profile.data as NormalUserProfileType
+	if (responseData_profile) {
+		normalUserProfile.value = responseData_profile
 
 		/** Populates/updates the constant that counts the number of followers the normal-user has */
 		followers.value = normalUserProfile.value.num_of_followers
@@ -241,13 +241,12 @@ onMounted(async () => {
 	 * Fetches the posts the user has made through the API address of the user.
 	 * And puts them in a reactive variable.
 	 * 
-	 * 
 	 * @param theNormalUserPostsURL The URL address that the function is going to fetch from.
 	 */
-	const response_user_posts = await getNormalUserPosts(theNormalUserPostsURL);
+	const responseData_posts = await getNormalUserPosts(theNormalUserPostsURL);
 
-	if (response_user_posts) {
-		normalUserPosts.value = response_user_posts.data
+	if (responseData_posts) {
+		normalUserPosts.value = responseData_posts
 	}
 })
 
@@ -338,10 +337,10 @@ const unFollowUser = async (username: string) => {
 const followUser = async (username: string) => {
 	const theNormalUserProfileFollowURL = `http://localhost:8888/api/${username}/follow/`;
 
-	const response: any = await getFollowUser(theNormalUserProfileFollowURL)
+	const responseData = await getFollowUser(theNormalUserProfileFollowURL)
 
 	// Makes sure that no changes are made if the request was not successfull
-	if (response.status !== 200) {
+	if (responseData == null) {
 		return null
 	}
 
