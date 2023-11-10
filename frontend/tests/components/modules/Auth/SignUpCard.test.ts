@@ -9,6 +9,11 @@ describe('FormRegister page testing', () => {
     let pinia;
 
     beforeEach(() => {
+        vi.stubGlobal('definePageMeta', () => {
+            return null
+        })
+
+
         pinia = createTestingPinia()
         store = useGeneralStore(pinia)
         wrapper = shallowMount(SignUpCard, {
@@ -29,7 +34,8 @@ describe('FormRegister page testing', () => {
     test('suksess burde vises etter at en konto har blitt laget', async () => {
         console.log(wrapper.html())
 
-        wrapper.vm.submitted = true
+        ;(wrapper.vm as any).submitted = true
+
         await wrapper.vm.$nextTick()
 
         expect(wrapper.text()).toContain("Suksess")

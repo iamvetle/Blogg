@@ -1,13 +1,16 @@
-import MyProfileArticleCard from './MyProfileArticleCard.vue';
+import MyProfileListArticles from './MyProfileListArticles.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
+import MyProfileArticleCard from './MyProfileArticleCard.vue';
+import { usePostStore } from '~/store/postStore';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
 
-// let generalStore; 
-// let postStore; 
-// let loggedInUserStore; 
+// let generalStore;
+let loggedInUserStore:any 
+let postStore: any
 // let paginationStore; 
 
 /**
@@ -15,7 +18,7 @@ let pinia: any = createTestingPinia();
  */
 
 const factory = () => {
-    return shallowMount(MyProfileArticleCard, {
+    return shallowMount(MyProfileListArticles, {
         global: {
             plugins: [pinia],
             components: { MyProfileArticleCard },
@@ -32,9 +35,18 @@ const factory = () => {
     })
 };
 
-describe('', () => {
+describe('Testing MyprofileListarticles', () => {
 
     beforeEach(() => {
+        postStore = usePostStore()
+        loggedInUserStore = useLoggedInUserStore()
+
+        postStore.loggedInUserPosts = {
+            results:true
+        }
+        loggedInUserStore.loggedInUserProfile = {
+            first_name:true
+        }
     });
 
     afterEach(() => {
@@ -43,8 +55,10 @@ describe('', () => {
         }
     });
 
-    test('Should exist', () => {
+    test('Should exist', async () => {
         wrapper = factory()
+        
+        await wrapper.vm.$nextTick()
 
         expect(wrapper.exists()).toBe(true)
     })

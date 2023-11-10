@@ -37,7 +37,7 @@ declare global {
   const getSaveOrUnsavePost: typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']
   const getSinglePost: typeof import('./composables/crud/getSinglePost')['getSinglePost']
   const getSinglePostComments: typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']
-  const getToken: typeof import('./composables/retrieveToken')['getToken']
+  const getToken: typeof import('./composables/getToken')['getToken']
   const getUnfollowUser: typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']
   const h: typeof import('vue')['h']
   const inject: typeof import('vue')['inject']

@@ -25,7 +25,6 @@
     "nuxt.config.ts": true,
     "Topics.json": true,
     "server": true,
-    "assets": true,
     "coverage": true,
     "typescript\\deprecated_interfaces.ts": true,
     "store\\TIPS.md": true,

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="postStore.loggedInUserPosts.results && (loggedInUserStore.loggedInUserProfile.first_name)">
+    <div v-if="(postStore.loggedInUserPosts.results) && (loggedInUserStore.loggedInUserProfile.first_name)">
         <h2 class="text-xl text-onPrimary font-bold mt-8 mb-6">
             All posts by {{ loggedInUserStore.loggedInUserProfile.first_name }}
         </h2>

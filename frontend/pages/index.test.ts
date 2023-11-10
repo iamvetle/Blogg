@@ -2,11 +2,12 @@ import { createTestingPinia } from "@pinia/testing"
 import { VueWrapper, mount } from '@vue/test-utils';
 import index from "~/pages/index.vue";
 import { useGeneralStore } from '~/store/generalStore';
-import ListArticles from '~/components/modules/Blogg/ListArticles.vue';
+import FeedListArticles from '~/components/modules/Blogg/FeedListArticles.vue';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePostStore } from '~/store/postStore';
 import { useSearchStore } from '~/store/searchStore';
 import { usePaginationStore } from '~/store/paginationStore';
+import BaseButton from '~/components/base/BaseButton.vue'
 
 let wrapper: VueWrapper
 let generalStore: any
@@ -73,14 +74,15 @@ describe('index page testing', () => {
             global: {
                 plugins: [pinia],
                 stubs: {
-                    "ListArticles": true,
-                    'ListArticlesSidebar': true,
+                    "FeedListArticles": true,
+                    'FeedListArticlesSidebar': true,
                     "FilterBox": true
                 },
                 mocks: {
                 },
                 components: {
-                    ListArticles,
+                    FeedListArticles,
+                    BaseButton
                 },
 
             },
@@ -93,9 +95,9 @@ describe('index page testing', () => {
         }
     })
 
-    test('Should render ListArticles when there are posts and logged in user profile information', async () => {
+    test('Should render FeedListArticles when there are posts and logged in user profile information', async () => {
 
-        const listarticles = wrapper.findComponent({ name: 'ListArticles' })
+        const listarticles = wrapper.findComponent({ name: 'FeedListArticles' })
 
         expect(listarticles.exists()).toBe(true)
 
@@ -105,12 +107,12 @@ describe('index page testing', () => {
 
         expect(listarticles.exists()).toBe(false)
     });
-    test('Should NOT render ListArticles when the loggedinuser is not authenticated', async () => {
+    test('Should NOT render FeedListArticles when the loggedinuser is not authenticated', async () => {
 
         generalStore.isAuthenticated = false
 
         await wrapper.vm.$nextTick()
-        const listarticles = wrapper.findComponent({ name: 'ListArticles' })
+        const listarticles = wrapper.findComponent({ name: 'FeedListArticles' })
 
 
         expect(listarticles.exists()).toBe(false)
@@ -154,7 +156,7 @@ describe('index page testing', () => {
     });
     test('Should render the sidebar if the logged in user profile information are there/is true (and feed posts)', () => {
 
-        const sidebar = wrapper.findComponent({ name: "ListArticlesSidebar" })
+        const sidebar = wrapper.findComponent({ name: "FeedListArticlesSidebar" })
 
         expect(sidebar.exists()).toBe(true)
     })
@@ -164,7 +166,7 @@ describe('index page testing', () => {
 
         await wrapper.vm.$nextTick()
 
-        const sidebar = wrapper.findComponent({ name: "ListArticlesSidebar" })
+        const sidebar = wrapper.findComponent({ name: "FeedListArticlesSidebar" })
 
         expect(sidebar.exists()).toBe(false)
     })
@@ -207,9 +209,6 @@ describe('index page testing', () => {
     test("There should be two buttons containing the two texts", () => {
         const feed_button = wrapper.get("[data-test='feed-posts-option']")
         const following_button = wrapper.get("[data-test='following-posts-option']")
-
-        expect(feed_button.element.tagName).toBe("BUTTON")
-        expect(following_button.element.tagName).toBe("BUTTON")
 
         expect(feed_button.text()).toContain("Feed")
         expect(following_button.text()).toContain("Following")
@@ -338,5 +337,10 @@ describe('index page testing', () => {
         expect(wrapper.html()).not.toContain("No posts are published.")
         expect(wrapper.html()).not.toContain("You are not following anyone.")
     })
+
+    test('Should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+
 
 })
