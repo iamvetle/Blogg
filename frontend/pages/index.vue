@@ -8,29 +8,20 @@
 					Søkeresultater for '{{ searchStore.searchPart }}'
 				</h2>
 
-				<span class="flex jestify-center space-x-8 justify-center">
-
-					<BaseButton class="p-2 rounded-lg"
-						:class="followingSelected ? 'bg-onPrimary text-primary border-primary border shadow-md  ' : 'bg-primary text-onPrimary border'"
-						data-test="feed-posts-option" @click="feedPostSetting" text="Feed" />
-
-					<BaseButton class="p-2 rounded-lg" data-test="following-posts-option" @click="followingPostSetting"
-						:class="followingSelected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'"
-						text="Following" />
-
-				</span>
-
+				<FeedTopChoice
+				:followingSelected="selected"
+				/>
 				<p class="text-lg"
-					v-if="(num_of_following === 0) && (followingSelected) && (postStore.posts.results.length == 0)">You are
+					v-if="(num_of_following === 0) && (selected) && (postStore.posts.results.length == 0)">You are
 					not
 					following anyone.</p>
 				<p class="text-lg"
-					v-if="(postStore.posts?.results?.length === 0) && (followingSelected) && (num_of_following > 0)">No
+					v-if="(postStore.posts?.results?.length === 0) && (selected) && (num_of_following > 0)">No
 					posts are published.</p>
 				<FeedListArticles v-if="postStore.posts.results" class="w-full mt-12" />
 			</div>
 			<div class="col-span-4 mx-auto w-full">
-				<div id="dropdown-filter" v-if="postStore.allTags && !followingSelected"
+				<div id="dropdown-filter" v-if="postStore.allTags && !selected"
 					class="mb-4 bg-primary rounded-lg text-onPrimary">
 					<FeedDropdownFilter/>
 				</div>
@@ -69,7 +60,7 @@ definePageMeta({
  * 
  * If the active url is the following url, this turns true, otherwise, it is false
  */
-const followingSelected = computed(() => (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/"))
+const selected = computed(() => (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/"))
 
 
 /**
@@ -117,35 +108,6 @@ const num_of_following = computed(() =>
 	loggedInUserStore.loggedInUserProfile.num_of_following
 );
 
-/**
- * This is called when the 'feed button' is clicked.
- * 
- * It changes the api endpoint url from where posts are fetched to 
- * the main feed one. It then fetches all posts.
- * 
- * It has its base here - the url.
- */
-const feedPostSetting = async () => {
-	searchStore.resetStore()
-
-	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
-	await getPostMultipleSnippet(paginationStore.activeFetchURL)
-}
-
-/**
- * This is called when the 'feed button' is clicked.
- * 
- * It changes the api endpoint url from where posts are fetched to 
- * the main feed one. It then fetches all posts.
- */
-const followingPostSetting = async () => {
-
-	searchStore.resetStore()
-
-	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-
-	await getPostMultipleSnippet(paginationStore.activeFetchURL)
-}
 
 /**
  * Makes sure that the variables tracking the information for which checkboxes are checked are emptied when a refresh happens,
