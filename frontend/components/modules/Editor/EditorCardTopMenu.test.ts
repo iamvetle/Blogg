@@ -3,10 +3,15 @@ import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
 import EditorButton from './EditorButton.vue';
+
+// Icons
 import bold_icon from '~/assets/icons/bold.svg';
 import underline_icon from '~/assets/icons/underline.svg';
 import bullet_list_icon from '~/assets/icons/bullet_list.svg';
 import italic_icon from '~/assets/icons/italic.svg';
+import number_list_icon from '~/assets/icons/number_list.svg';
+import image_add_icon from '~/assets/icons/image-add-line.svg'
+
 
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
@@ -232,7 +237,7 @@ describe('Testing the EditorCard top menu', () => {
     
             const bullet_list = (wrapper as any).findComponent("[data-test='bullet_list']");
     
-            expect(bullet_list.attributes("alt")).toBe("Bullet list")
+            expect(bullet_list.attributes("alt")).toBe("Unordered list")
     
         });
         test('If the bullet_list option has a class, it should be string type', () => {
@@ -251,5 +256,93 @@ describe('Testing the EditorCard top menu', () => {
         })
     
         /** ---  */
+
+        /** NUMBER LIST OPTION TESTS */
+
+        test('Should have a "number-list" option component button', () => {
+            wrapper = factory()
+    
+            const number_list = (wrapper as any).findComponent("[data-test='number_list']");
+    
+            expect(number_list.exists()).toBe(true)
+        })
+        test('The number_list option should an "icon" prop with a "number_list" icon value', () => {
+            wrapper = factory()
+    
+            const number_list = (wrapper as any).findComponent("[data-test='number_list']");
+    
+            expect(number_list.exists()).toBe(true)
+    
+            expect(number_list.props("icon")).toBeTruthy()
+            expect(number_list.props("icon")).toBe(number_list_icon)
+        });
+        test('The number_list option should have "alt" be correct', () => {
+            wrapper = factory()
+    
+            const number_list = (wrapper as any).findComponent("[data-test='number_list']");
+    
+            expect(number_list.attributes("alt")).toBe("Ordered list")
+    
+        });
+        test('If the number_list option has a class, it should be string type', () => {
+            wrapper = factory()
+    
+            const number_list = wrapper.findComponent("[data-test='number_list']");
+    
+            if (number_list) {
+    
+                expect(number_list.attributes("class")).toBeTypeOf("string")
+    
+            } else {
+                expect(number_list).toBeFalsy()
+            }
+    
+        })
+
+        /** --- */
+
+        /** IMAGE OPTIONS */
+
+        test('Should have a "addimage" option component button', () => {
+            wrapper = factory()
+    
+            const image_add = (wrapper as any).findComponent("[data-test='image_option']");
+    
+            expect(image_add.exists()).toBe(true)
+        })
+        test('The image_add option should an "icon" prop with a "image_add" icon value', () => {
+            wrapper = factory()
+    
+            const image_add = (wrapper as any).findComponent("[data-test='image_option']");
+    
+            expect(image_add.exists()).toBe(true)
+    
+            expect(image_add.props("icon")).toBeTruthy()
+            expect(image_add.props("icon")).toBe(image_add_icon)
+        });
+        test('The image_add option should have "alt" be correct', () => {
+            wrapper = factory()
+    
+            const image_add = (wrapper as any).findComponent("[data-test='image_option']");
+    
+            expect(image_add.attributes("alt")).toBe("Add image")
+    
+        });
+        test('If the image_add option has a class, it should be string type', () => {
+            wrapper = factory()
+    
+            const image_add = wrapper.findComponent("[data-test='image_option']");
+    
+            if (image_add) {
+    
+                expect(image_add.attributes("class")).toBeTypeOf("string")
+    
+            } else {
+                expect(image_add).toBeFalsy()
+            }
+    
+        })
+
+
 
 });
