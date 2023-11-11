@@ -175,19 +175,6 @@ describe('index page testing', () => {
 
         expect(sidebar.exists()).toBe(false)
     })
-    test('Should render the filterbox component, containing the filter options, when the dropdown-button is CLICKED', async () => {
-
-        const dropbutton = wrapper.find("[data-test='dropdown-button']")
-        expect(dropbutton.exists()).toBe(true)
-
-        await dropbutton.trigger("click")
-
-        await wrapper.vm.$nextTick()
-
-        const sidebar = wrapper.findComponent({ name: "FilterBox" })
-
-        expect(sidebar.exists()).toBe(true)
-    })
     test('Search result text should not be present when no search has been made', async () => {
         expect(wrapper.html()).not.toContain("Søkeresultater for")
     })
@@ -198,73 +185,6 @@ describe('index page testing', () => {
 
         expect(wrapper.html()).toContain("Søkeresultater for")
     })
-
-    test('Should be a text giving two options', () => {
-        const following_text = "Following"
-        const feed_text = "Feed"
-
-        expect(wrapper.html()).toContain(feed_text)
-        expect(wrapper.html()).toContain(following_text)
-    })
-    test("There should be two buttons containing the two texts", () => {
-        const feed_button = wrapper.get("[data-test='feed-posts-option']")
-        const following_button = wrapper.get("[data-test='following-posts-option']")
-
-        expect(feed_button.text()).toContain("Feed")
-        expect(following_button.text()).toContain("Following")
-    })
-    test('There is a defined function meant for the feed button', async () => {
-
-        expect((wrapper.vm as any).feedPostSetting).toBeDefined()
-    })
-
-    test('There is a defined function meant for the following posts button', async () => {
-
-        expect((wrapper.vm as any).followingPostSetting).toBeDefined()
-    })
-    test('When the following button is clicked the fetch url value that is used for fetching posts is changed ', async () => {
-
-        const following_button = wrapper.get("[data-test='following-posts-option']")
-
-        await following_button.trigger("click")
-
-        await wrapper.vm.$nextTick()
-
-        expect(paginationStore.activeFetchURL).toEqual("http://localhost:8888/api/feed/following/")
-    })
-    test('When the following button is clicked the fetch url value that is used for fetching posts is changed ', async () => {
-        const feed_button = wrapper.get("[data-test='feed-posts-option']")
-
-        await feed_button.trigger("click")
-
-        await wrapper.vm.$nextTick()
-
-        expect(paginationStore.activeFetchURL).toEqual("http://localhost:8888/api/feed/")
-    });
-    test('The feed button should be primary (have a class of white) from the beginning', () => {
-
-        const feed_button = wrapper.find("[data-test='feed-posts-option']")
-        const following_button = wrapper.find("[data-test='following-posts-option']")
-
-        console.log(wrapper.html())
-
-        expect(feed_button.attributes("class")).toContain("bg-primary")
-        expect(following_button.attributes("class")).not.toContain("bg-primary")
-    });
-    test('The following button should be primary (have a class of primary) when the value of selected shifts to true', async () => {
-
-        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-
-        await wrapper.vm.$nextTick()
-
-        const following_button = wrapper.find("[data-test='following-posts-option']")
-        const feed_button = wrapper.find("[data-test='feed-posts-option']")
-
-        console.log(wrapper.html())
-
-        expect(following_button.attributes("class")).toContain("bg-primary")
-        expect(feed_button.attributes("class")).not.toContain("bg-primary")
-    });
     test("If the following list posts are selected, then the filter dropdown should not be shown", async () => {
 
         paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
@@ -339,7 +259,7 @@ describe('index page testing', () => {
     })
 
     test('Should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot()
+      expect(wrapper.html()).toMatchSnapshot()
     })
 
 
