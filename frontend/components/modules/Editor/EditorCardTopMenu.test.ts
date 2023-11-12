@@ -17,12 +17,15 @@ import url_link_add_icon from '~/assets/icons/link_add.svg'
 import go_back_icon from '~/assets/icons/go_back_icon.svg';
 import go_forward_icon from '~/assets/icons/go_forward_icon.svg';
 
+const mockEditor = new Editor(
+    "type": "doc"
+)
+
 let wrapper: any;
 let pinia: any = createTestingPinia();
 
 let mockAddImageFunction = vi.fn();
 let mockAddUrlLinkFunction = vi.fn();
-let mockEditor = vi.fn()
 
 const factory = () => {
     return shallowMount(EditorCardTopMenu, {
@@ -38,6 +41,7 @@ const factory = () => {
             },
         },
         props: {
+            editor: mockEditor
         },
         slots: {},
     })
