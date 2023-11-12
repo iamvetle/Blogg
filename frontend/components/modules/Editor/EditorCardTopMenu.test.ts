@@ -28,7 +28,7 @@ const mockEditor = {
     isActive: vi.fn().mockImplementation((name) => name),
     chain: vi.fn().mockReturnThis(),
     focus: vi.fn().mockReturnThis(),
-    toggleBold: vi.fn().mockReturnThis(),
+    // toggleBold: vi.fn().mockReturnThis(),
     run: vi.fn().mockReturnThis(),
     // Add other methods and properties as needed
 };
@@ -64,7 +64,7 @@ const factory = () => {
                 EditorButton: true
             },
         },
-        props: {
+        props: { //@ts-ignore
             editor: mockEditor
         },
         slots: {},
@@ -562,14 +562,14 @@ describe('Testing the EditorCard top menu', () => {
     test('Should have a "regret or go back" option component button', () => {
         wrapper = factory()
 
-        const go_back = (wrapper as any).findComponent("[data-test='go_back_option']");
+        const go_back = (wrapper as any).findComponent("[data-test='undo_option']");
 
         expect(go_back.exists()).toBe(true)
     })
     test('The go_back option should an "icon" prop with a "go_back" icon value', () => {
         wrapper = factory()
 
-        const go_back = (wrapper as any).findComponent("[data-test='go_back_option']");
+        const go_back = (wrapper as any).findComponent("[data-test='undo_option']");
 
         expect(go_back.exists()).toBe(true)
 
@@ -579,15 +579,15 @@ describe('Testing the EditorCard top menu', () => {
     test('The go_back option should have "alt" be correct', () => {
         wrapper = factory()
 
-        const go_back = (wrapper as any).findComponent("[data-test='go_back_option']");
+        const go_back = (wrapper as any).findComponent("[data-test='undo_option']");
 
-        expect(go_back.attributes("alt")).toBe("Go back")
+        expect(go_back.attributes("alt")).toBe("Undo")
 
     });
     test('If the go_back option has a class, it should be string type', () => {
         wrapper = factory()
 
-        const go_back = wrapper.findComponent("[data-test='go_back_option']");
+        const go_back = wrapper.findComponent("[data-test='undo_option']");
 
         if (go_back) {
 
@@ -601,7 +601,7 @@ describe('Testing the EditorCard top menu', () => {
     test('The go_back option should NOT have the "isActive" prop with the correct value', () => {
         wrapper = factory()
 
-        const go_back = (wrapper as any).findComponent("[data-test='go_back_option']");
+        const go_back = (wrapper as any).findComponent("[data-test='undo_option']");
 
         expect(go_back.exists()).toBe(true)
 
@@ -613,17 +613,17 @@ describe('Testing the EditorCard top menu', () => {
 
     /** GO FORWARD STEP OPTIONS */
 
-    test('Should have a "regret or go back" option component button', () => {
+    test('Should have a "redo" go forward option component button', () => {
         wrapper = factory()
 
-        const go_forward = (wrapper as any).findComponent("[data-test='go_forward_option']");
+        const go_forward = (wrapper as any).findComponent("[data-test='redo_option']");
 
         expect(go_forward.exists()).toBe(true)
     })
     test('The go_forward option should an "icon" prop with a "go_forward" icon value', () => {
         wrapper = factory()
 
-        const go_forward = (wrapper as any).findComponent("[data-test='go_forward_option']");
+        const go_forward = (wrapper as any).findComponent("[data-test='redo_option']");
 
         expect(go_forward.exists()).toBe(true)
 
@@ -633,15 +633,15 @@ describe('Testing the EditorCard top menu', () => {
     test('The go_forward option should have "alt" be correct', () => {
         wrapper = factory()
 
-        const go_forward = (wrapper as any).findComponent("[data-test='go_forward_option']");
+        const go_forward = (wrapper as any).findComponent("[data-test='redo_option']");
 
-        expect(go_forward.attributes("alt")).toBe("Go forward")
+        expect(go_forward.attributes("alt")).toBe("Redo")
 
     });
     test('If the go_forward option has a class, it should be string type', () => {
         wrapper = factory()
 
-        const go_forward = wrapper.findComponent("[data-test='go_forward_option']");
+        const go_forward = wrapper.findComponent("[data-test='redo_option']");
 
         if (go_forward) {
 
@@ -655,7 +655,7 @@ describe('Testing the EditorCard top menu', () => {
     test('The go_forward option should NOT have the "isActive" prop with the correct value', () => {
         wrapper = factory()
 
-        const go_forward = (wrapper as any).findComponent("[data-test='go_forward_option']");
+        const go_forward = (wrapper as any).findComponent("[data-test='redo_option']");
 
         expect(go_forward.exists()).toBe(true)
 
@@ -690,7 +690,7 @@ describe('Testing the EditorCard top menu', () => {
     test('There should be a wrapper around the "go back" and "go forward" options', () => {
         wrapper = factory()
 
-        const moveOptions = wrapper.get("#back_and_forth_options")
+        const moveOptions = wrapper.get("#undo_redo_options")
 
         expect(moveOptions.exists()).toBe(true)
         expect(moveOptions.element.tagName).toBe("DIV")
@@ -699,10 +699,10 @@ describe('Testing the EditorCard top menu', () => {
 
         expect(all_components_in_div).toHaveLength(2)
 
-        const go_back = moveOptions.findComponent("[data-test='go_back_option']")
+        const go_back = moveOptions.findComponent("[data-test='undo_option']")
         expect(go_back.exists()).toBe(true)
 
-        const go_forward = moveOptions.findComponent("[data-test='go_forward_option']")
+        const go_forward = moveOptions.findComponent("[data-test='redo_option']")
         expect(go_forward.exists()).toBe(true)
     })
 
@@ -800,7 +800,7 @@ describe("Testing if the options trigger the correct functions", () => {
 
         expect(typeof wrapper.vm.setUndo).toBe("function")
 
-        const option = wrapper.get("[data-test='go_back_option']")
+        const option = wrapper.get("[data-test='undo_option']")
 
         await option.trigger("click")
 
@@ -814,7 +814,7 @@ describe("Testing if the options trigger the correct functions", () => {
 
         expect(typeof wrapper.vm.setUndo).toBe("function")
 
-        const option = wrapper.get("[data-test='go_forward_option']")
+        const option = wrapper.get("[data-test='redo_option']")
 
         await option.trigger("click")
 

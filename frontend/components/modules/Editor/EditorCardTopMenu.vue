@@ -32,13 +32,13 @@
                 />
             </span>
         </div>¨
-        <div id="back_and_forth_options">
+        <div id="undo_redo_options">
             <span class="option-holder">
-                <EditorButton @click="setUndo(editor)" data-test="go_back_option" :icon="go_back_icon" alt="Go back"
+                <EditorButton @click="setUndo(editor)" data-test="undo_option" :icon="go_back_icon" alt="Undo"
                 />
             </span>
             <span class="option-holder">
-                <EditorButton @click="setRedo(editor)" data-test="go_forward_option" :icon="go_forward_icon" alt="Go forward"
+                <EditorButton @click="setRedo(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo"
                 />
             </span>
         </div>
