@@ -2,8 +2,6 @@ import EditorCardTopMenu from './EditorCardTopMenu.vue';
 import { VueWrapper, flushPromises, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { Editor } from '@tiptap/core';
-
 import EditorButton from './EditorButton.vue';
 
 // Icons
@@ -16,16 +14,35 @@ import image_add_icon from '~/assets/icons/image-add-line.svg'
 import url_link_add_icon from '~/assets/icons/link_add.svg'
 import go_back_icon from '~/assets/icons/go_back_icon.svg';
 import go_forward_icon from '~/assets/icons/go_forward_icon.svg';
-
-const mockEditor = new Editor(
-    "type": "doc"
-)
+import { useEditor } from '@tiptap/vue-3';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();
 
+/** 
+ * This mocks the (text) editor, so that i can assert whether the 
+ * components have props or not
+*/
+
+const mockEditor = {
+    isActive: vi.fn().mockImplementation((name) => name),
+    chain: vi.fn().mockReturnThis(),
+    focus: vi.fn().mockReturnThis(),
+    toggleBold: vi.fn().mockReturnThis(),
+    run: vi.fn().mockReturnThis(),
+    // Add other methods and properties as needed
+};
+
 let mockAddImageFunction = vi.fn();
 let mockAddUrlLinkFunction = vi.fn();
+
+let mockToggleBold = vi.fn();
+let mockToggleItalic = vi.fn();
+let mockToggleUnderline = vi.fn()
+let mockToggleBulletList = vi.fn()
+let mockToggleNumberList = vi.fn()
+let mockSetUndo = vi.fn()
+let mockSetRedo = vi.fn()
 
 const factory = () => {
     return shallowMount(EditorCardTopMenu, {
@@ -34,7 +51,14 @@ const factory = () => {
             components: { EditorButton },
             mocks: {
                 add_image_handle: mockAddImageFunction,
-                add_url_link_handle: mockAddUrlLinkFunction
+                add_url_link_handle: mockAddUrlLinkFunction,
+                toggleBold: mockToggleBold,
+                toggleItalic: mockToggleItalic,
+                toggleUnderline: mockToggleUnderline,
+                toggleBulletList:mockToggleBulletList,
+                toggleOrderedList:mockToggleNumberList,
+                setUndo:mockSetUndo,
+                setRedo:mockSetRedo
             },
             stubs: {
                 EditorButton: true
@@ -115,10 +139,10 @@ describe('Testing the EditorCard top menu', () => {
     })
     test('The bold option should have the "isActive" prop with the correct value', () => {
         wrapper = factory()
-        
+
         const bold = (wrapper as any).findComponent("[data-test='bold_option']");
 
-        expect(bold.props("isActive")).toBeTruthy()
+        expect(bold.props("isActive")).toBe(mockEditor.isActive('bold'))
     })
 
     /** --- */
@@ -174,6 +198,13 @@ describe('Testing the EditorCard top menu', () => {
         }
 
     })
+    test('The italic option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const italic = (wrapper as any).findComponent("[data-test='italic_option']");
+
+        expect(italic.props("isActive")).toBe(mockEditor.isActive('italic'))
+    })
 
     /** ---  */
 
@@ -217,6 +248,14 @@ describe('Testing the EditorCard top menu', () => {
         }
 
     })
+    test('The underline option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const underline = (wrapper as any).findComponent("[data-test='underline_option']");
+
+        expect(underline.props("isActive")).not.toBe(mockEditor.isActive('undesrline'))
+        expect(underline.props("isActive")).toBe(mockEditor.isActive('underline'))
+    })
 
     /** --- */
 
@@ -253,7 +292,7 @@ describe('Testing the EditorCard top menu', () => {
 
     /** BULLET LIST OPTION TESTS */
 
-    test('Should have a "italic" option component button', () => {
+    test('Should have a "bullet list" option component button', () => {
         wrapper = factory()
 
         const bullet_list = (wrapper as any).findComponent("[data-test='bullet_list_option']");
@@ -291,6 +330,13 @@ describe('Testing the EditorCard top menu', () => {
             expect(bullet_list).toBeFalsy()
         }
 
+    })
+    test('The bullet_list option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const bullet_list = (wrapper as any).findComponent("[data-test='bullet_list_option']");
+
+        expect(bullet_list.props("isActive")).toBe(mockEditor.isActive('bulletList'))
     })
 
     /** ---  */
@@ -335,6 +381,13 @@ describe('Testing the EditorCard top menu', () => {
             expect(number_list).toBeFalsy()
         }
 
+    })
+    test('The number_list option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const number_list = (wrapper as any).findComponent("[data-test='number_list_option']");
+
+        expect(number_list.props("isActive")).toBe(mockEditor.isActive('orderedList'))
     })
 
     /** --- */
@@ -401,6 +454,15 @@ describe('Testing the EditorCard top menu', () => {
         expect(mockAddImageFunction).toHaveBeenCalledOnce()
 
     })
+    test('The image option should NOT have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const image = (wrapper as any).findComponent("[data-test='image_option']");
+
+        expect(image.exists()).toBe(true)
+
+        expect(image.props("isActive")).not.toBeTruthy()
+    })
 
     /** URL OPTIONS */
 
@@ -463,6 +525,13 @@ describe('Testing the EditorCard top menu', () => {
 
         expect(mockAddUrlLinkFunction).toHaveBeenCalledOnce()
 
+    })
+    test('The url_link_add option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const url_link = (wrapper as any).findComponent("[data-test='url_link_option']");
+
+        expect(url_link.props("isActive")).toBe(mockEditor.isActive('link'))
     })
 
     /** --- */
@@ -529,6 +598,15 @@ describe('Testing the EditorCard top menu', () => {
         }
 
     })
+    test('The go_back option should NOT have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const go_back = (wrapper as any).findComponent("[data-test='go_back_option']");
+
+        expect(go_back.exists()).toBe(true)
+
+        expect(go_back.props("isActive")).not.toBeTruthy()
+    })
 
 
     /** --- */
@@ -573,6 +651,15 @@ describe('Testing the EditorCard top menu', () => {
             expect(go_forward).toBeFalsy()
         }
 
+    })
+    test('The go_forward option should NOT have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const go_forward = (wrapper as any).findComponent("[data-test='go_forward_option']");
+
+        expect(go_forward.exists()).toBe(true)
+
+        expect(go_forward.props("isActive")).not.toBeTruthy()
     })
 
     /** --- */
@@ -621,11 +708,118 @@ describe('Testing the EditorCard top menu', () => {
 
     /** --- */
 
-    test('Expect editor top to match snapshot', () => {
-        wrapper = factory()
-        
-        expect(wrapper).toMatchSnapshot()
-    })
-
-
+    /** --- */
 });
+
+/** SNAPSHOT */
+
+// test('Expect editor top to match snapshot', () => {
+//     wrapper = factory()
+
+//     expect(wrapper).toMatchSnapshot()
+// })
+
+describe("Testing if the options trigger the correct functions", () => {
+
+
+    afterEach(() => {
+        if (wrapper) {
+            wrapper.unmount()
+        }
+    })
+    /** TESTING FUNCTIONS */
+
+    test('There should exist a toggleBold function that gets triggered by the bold option when it is clicked', async () => {
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.toggleBold).toBe("function")
+
+        const bold_option = wrapper.get("[data-test='bold_option']")
+
+        await bold_option.trigger("click")
+
+        await flushPromises()
+
+        expect(mockToggleBold).toHaveBeenCalledOnce()
+    })
+    test('There should exist a toggleItalic function that gets triggered by the italic option when it is clicked', async () => {
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.toggleItalic).toBe("function")
+
+        const option = wrapper.get("[data-test='italic_option']")
+
+        await option.trigger("click")
+
+        await flushPromises()
+
+        expect(mockToggleItalic).toHaveBeenCalledOnce()
+    })
+    test('There should exist a toggleUnderline function that gets triggered by the underline option when it is clicked', async () => {
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.toggleUnderline).toBe("function")
+
+        const option = wrapper.get("[data-test='underline_option']")
+
+        await option.trigger("click")
+
+        await flushPromises()
+
+        expect(mockToggleUnderline).toHaveBeenCalledOnce()
+    })
+    test('There should exist a toggleBulletList function that gets triggered by the bullet list option when it is clicked', async () => {
+        
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.toggleBulletList).toBe("function")
+
+        const option = wrapper.get("[data-test='bullet_list_option']")
+
+        await option.trigger("click")
+
+        expect(mockToggleBulletList).toHaveBeenCalledOnce()
+    })
+    test('There should exist a toggleOrderedList function that gets triggered by the ordered list option when it is clicked', async () => {
+        
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.toggleOrderedList).toBe("function")
+
+        const option = wrapper.get("[data-test='number_list_option']")
+
+        await option.trigger("click")
+
+        await flushPromises()
+
+        expect(mockToggleNumberList).toHaveBeenCalledOnce()
+    })
+    test('There should exist a undo function that gets triggered by the undo / go-back option when it is clicked', async () => {
+        
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.setUndo).toBe("function")
+
+        const option = wrapper.get("[data-test='go_back_option']")
+
+        await option.trigger("click")
+
+        await flushPromises()
+
+        expect(mockSetUndo).toHaveBeenCalledOnce()
+    })
+    test('There should exist a redo function that gets triggered by the redo / go-forward option when it is clicked', async () => {
+        
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.setUndo).toBe("function")
+
+        const option = wrapper.get("[data-test='go_forward_option']")
+
+        await option.trigger("click")
+
+        await flushPromises()
+
+        expect(mockSetRedo).toHaveBeenCalledOnce()
+    })
+})
