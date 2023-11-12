@@ -14,7 +14,9 @@ import image_add_icon from '~/assets/icons/image-add-line.svg'
 import url_link_add_icon from '~/assets/icons/link_add.svg'
 import go_back_icon from '~/assets/icons/go_back_icon.svg';
 import go_forward_icon from '~/assets/icons/go_forward_icon.svg';
-import { useEditor } from '@tiptap/vue-3';
+import blockquote_icon from '~/assets/icons/double-quotes-r.svg'
+import codeblock_icon from '~/assets/icons/codeblock_icon.svg'
+
 
 let wrapper: any;
 let pinia: any = createTestingPinia();
@@ -33,16 +35,18 @@ const mockEditor = {
     // Add other methods and properties as needed
 };
 
-let mockAddImageFunction = vi.fn();
-let mockAddUrlLinkFunction = vi.fn();
+const mockAddImageFunction = vi.fn();
+const mockAddUrlLinkFunction = vi.fn();
 
-let mockToggleBold = vi.fn();
-let mockToggleItalic = vi.fn();
-let mockToggleUnderline = vi.fn()
-let mockToggleBulletList = vi.fn()
-let mockToggleNumberList = vi.fn()
-let mockSetUndo = vi.fn()
-let mockSetRedo = vi.fn()
+const mockToggleBold = vi.fn();
+const mockToggleItalic = vi.fn();
+const mockToggleUnderline = vi.fn()
+const mockToggleBulletList = vi.fn()
+const mockToggleNumberList = vi.fn()
+const mockSetUndo = vi.fn()
+const mockSetRedo = vi.fn()
+const mockToggleBlockquote = vi.fn()
+const mockToggleCodeBlock = vi.fn()
 
 const factory = () => {
     return shallowMount(EditorCardTopMenu, {
@@ -58,7 +62,9 @@ const factory = () => {
                 toggleBulletList:mockToggleBulletList,
                 toggleOrderedList:mockToggleNumberList,
                 setUndo:mockSetUndo,
-                setRedo:mockSetRedo
+                setRedo:mockSetRedo,
+                toggleBlockquote:mockToggleBlockquote,
+                toggleCodeBlock:mockToggleCodeBlock
             },
             stubs: {
                 EditorButton: true
@@ -155,6 +161,7 @@ describe('Testing the EditorCard top menu', () => {
         const topMenuContainer = (wrapper as any).find("#top-menu-container'")
 
         expect(topMenuContainer.exists()).toBe(true)
+        expect(topMenuContainer.classes()).toContain("flex")
     })
 
     /** ITALIC OPTION TESTS */
@@ -266,6 +273,7 @@ describe('Testing the EditorCard top menu', () => {
         const topThree = wrapper.find("#top-three")
 
         expect(topThree.exists()).toBe(true)
+        expect(topThree.classes()).toContain("flex")
         expect(topThree.element.tagName).toBe("DIV")
 
         const all_components_in_div = topThree.findAllComponents({ name: "EditorButton" })
@@ -541,6 +549,7 @@ describe('Testing the EditorCard top menu', () => {
 
         const addOptions = wrapper.get("#add_options")
 
+        expect(addOptions.classes()).toContain("flex")
         expect(addOptions.exists()).toBe(true)
         expect(addOptions.element.tagName).toBe("DIV")
 
@@ -664,33 +673,12 @@ describe('Testing the EditorCard top menu', () => {
 
     /** --- */
 
-    test('There should be a wrapper around the add image and add url options', () => {
-        wrapper = factory()
-
-        const addOptions = wrapper.get("#add_options")
-
-        expect(addOptions.exists()).toBe(true)
-        expect(addOptions.element.tagName).toBe("DIV")
-
-        const all_components_in_div = addOptions.findAllComponents({ name: "EditorButton" })
-
-        expect(all_components_in_div).toHaveLength(2)
-
-        const image_option = addOptions.findComponent("[data-test='image_option']")
-        expect(image_option.exists()).toBe(true)
-
-        const url_link_option = addOptions.findComponent("[data-test='url_link_option']")
-        expect(url_link_option.exists()).toBe(true)
-    })
-
-    /** --- */
-
-    /** --- */
-
     test('There should be a wrapper around the "go back" and "go forward" options', () => {
         wrapper = factory()
 
         const moveOptions = wrapper.get("#undo_redo_options")
+
+        expect(moveOptions.classes()).toContain("flex")
 
         expect(moveOptions.exists()).toBe(true)
         expect(moveOptions.element.tagName).toBe("DIV")
@@ -708,7 +696,130 @@ describe('Testing the EditorCard top menu', () => {
 
     /** --- */
 
+    /** BLOCKQUOTE */
+
+    test('Should have a "blockquote" option component button', () => {
+        wrapper = factory()
+
+        const blockquote_option = (wrapper as any).findComponent("[data-test='blockquote_option']");
+
+        expect(blockquote_option.exists()).toBe(true)
+    })
+    test('The blockquote option should have an "icon" prop with a "quote" icon value', () => {
+        wrapper = factory()
+
+        const blockquote = (wrapper as any).findComponent("[data-test='blockquote_option']");
+
+        expect(blockquote.exists()).toBe(true)
+
+        expect(blockquote.props("icon")).toBeTruthy()
+        expect(blockquote.props("icon")).toBe(blockquote_icon)
+    });
+    test('The blockquote option should have "alt" be correct', () => {
+        wrapper = factory()
+
+        const blockquote = (wrapper as any).findComponent("[data-test='blockquote_option']");
+
+        expect(blockquote.attributes("alt")).toBe("Blockquote")
+
+    });
+    test('If the blockquote option has a class, it should be string type', () => {
+        wrapper = factory()
+
+        const blockquote = wrapper.findComponent("[data-test='blockquote_option']");
+
+        if (blockquote) {
+
+            expect(blockquote.attributes("class")).toBeTypeOf("string")
+
+        } else {
+            expect(blockquote).toBeFalsy()
+        }
+    })
+    test('The blockquote option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const blockquote = (wrapper as any).findComponent("[data-test='blockquote_option']");
+
+        expect(blockquote.exists()).toBe(true)
+
+        expect(blockquote.props("isActive")).toBe(mockEditor.isActive('blockquote'))
+    })
+
+
     /** --- */
+
+        /** BLOCKQUOTE */
+
+        test('Should have a "codeblock" option component button', () => {
+            wrapper = factory()
+    
+            const codeblock_option = (wrapper as any).findComponent("[data-test='codeblock_option']");
+    
+            expect(codeblock_option.exists()).toBe(true)
+        })
+        test('The codeblock option should have an "icon" prop with a "quote" icon value', () => {
+            wrapper = factory()
+    
+            const codeblock = (wrapper as any).findComponent("[data-test='codeblock_option']");
+    
+            expect(codeblock.exists()).toBe(true)
+    
+            expect(codeblock.props("icon")).toBeTruthy()
+            expect(codeblock.props("icon")).toBe(codeblock_icon)
+        });
+        test('The codeblock option should have "alt" be correct', () => {
+            wrapper = factory()
+    
+            const codeblock = (wrapper as any).findComponent("[data-test='codeblock_option']");
+    
+            expect(codeblock.attributes("alt")).toBe("Codeblock")
+    
+        });
+        test('If the codeblock option has a class, it should be string type', () => {
+            wrapper = factory()
+    
+            const codeblock = wrapper.findComponent("[data-test='codeblock_option']");
+    
+            if (codeblock) {
+    
+                expect(codeblock.attributes("class")).toBeTypeOf("string")
+    
+            } else {
+                expect(codeblock).toBeFalsy()
+            }
+        })
+        test('The codeblock option should have the "isActive" prop with the correct value', () => {
+            wrapper = factory()
+    
+            const codeblock = (wrapper as any).findComponent("[data-test='codeblock_option']");
+    
+            expect(codeblock.exists()).toBe(true)
+    
+            expect(codeblock.props("isActive")).toBe(mockEditor.isActive('codeBlock'))
+        })
+
+            /** --- */
+
+    test('There should be a wrapper around the add blockqyote and codeblock options', () => {
+        wrapper = factory()
+
+        const addOptions = wrapper.get("#codeQuote_options")
+
+        expect(addOptions.classes()).toContain("flex")
+        expect(addOptions.exists()).toBe(true)
+        expect(addOptions.element.tagName).toBe("DIV")
+
+        const all_components_in_div = addOptions.findAllComponents({ name: "EditorButton" })
+
+        expect(all_components_in_div).toHaveLength(2)
+
+        const blockquote = addOptions.findComponent("[data-test='blockquote_option']")
+        expect(blockquote.exists()).toBe(true)
+
+        const codeblock = addOptions.findComponent("[data-test='codeblock_option']")
+        expect(codeblock.exists()).toBe(true)
+    })
 });
 
 /** SNAPSHOT */
@@ -821,5 +932,33 @@ describe("Testing if the options trigger the correct functions", () => {
         await flushPromises()
 
         expect(mockSetRedo).toHaveBeenCalledOnce()
+    })
+    test('There should exist a toggle blockquote function that gets triggered by the quote option when it is clicked', async () => {
+        
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.setUndo).toBe("function")
+
+        const option = wrapper.get("[data-test='blockquote_option']")
+
+        await option.trigger("click")
+
+        await flushPromises()
+
+        expect(mockToggleBlockquote).toHaveBeenCalledOnce()
+    })
+    test('There should exist a codeblock blockquote function that gets triggered by the codeblock option when it is clicked', async () => {
+        
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.toggleCodeBlock).toBe("function")
+
+        const option = wrapper.get("[data-test='codeblock_option']")
+
+        await option.trigger("click")
+
+        await flushPromises()
+
+        expect(mockToggleCodeBlock).toHaveBeenCalledOnce()
     })
 })

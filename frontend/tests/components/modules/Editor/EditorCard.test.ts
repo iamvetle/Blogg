@@ -1,6 +1,7 @@
 import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import EditorCard from '~/components/modules/Editor/EditorCard.vue'
+import EditorBubbleMenu from '~/components/modules/Editor/EditorBubbleMenu.vue'
 
 const mockingCancel = vi.fn()
 const mockingPublish = vi.fn()
@@ -17,6 +18,12 @@ describe('EditorCard testing', () => {
                 mocks: {
                     buttonCancelClick:mockingCancel,
                     buttonTryPublishClick:mockingPublish
+                },
+                components:{
+                    EditorBubbleMenu
+                },
+                stubs:{
+                    EditorBubbleMenu:true
                 }
             }
         })
@@ -68,5 +75,11 @@ describe('EditorCard testing', () => {
         expect(pubFunction).toBeDefined()
 
         expectTypeOf(pubFunction).toBeFunction()
+    })
+
+    test('Should have the bubblemeny component', () => {
+        const bubble = wrapper.findComponent({name:"EditorBubbleMenu"})
+        
+        expect(bubble.exists()).toBe(true)
     })
 })

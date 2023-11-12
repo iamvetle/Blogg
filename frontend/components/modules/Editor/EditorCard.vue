@@ -11,36 +11,23 @@
 					</div>
 				</teleport>
 			</div>
-			<div id="editor-area" class="w-full">
+			<div v-if="editor" id="editor-area" class="w-full">
 
 				<EditorFloatingMenu :editor="editor" @addImage="addImage" @setLink="setLink"
 					@toggleHeading1="toggleHeading(1)" @toggleHeading2="toggleHeading(2)"
 					@setHorizontalRule="horizontalRule" />
 
-				<bubble-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
-					class="not-prose space-x-3 flex items-center rounded-md border p-1 bg-plain shadow-md">
+				<EditorBubbleMenu
+				:editor="editor"
+				/>
+				<div class="w-full">
+					<EditorCardTopMenu
+					:editor="editor"/>
+				</div>
 
-					<EditorButton :is-active="editor.isActive('bold')" @button-click="toggleBold()" :icon="bold_icon"
-						alt="bold" />
-
-					<EditorButton :is-active="editor.isActive('italic')" @button-click="toggleItalic()" :icon="italic_icon"
-						alt="italic" />
-
-					<EditorButton :is-active="editor.isActive('underline')" @button-click="toggleUnderline()"
-						:icon="underline_icon" alt="underline" />
-
-					<EditorButton :is-active="editor.isActive('code')" @button-click="toggleCode()" :icon="code_snip_icon"
-						alt="code" />
-
-					<EditorButton :is-active="editor.isActive('blockquote')" @button-click="toggleBlockquote()"
-						:icon="double_quotes_icon" alt="blockquote" />
-				</bubble-menu>
-
-				<div>
+				<div class="w-full">
 					<editor-content :editor="editor" />
 				</div>
-				<EditorCardTopMenu
-				:editor="editor"/>
 
 			</div>
 
@@ -110,6 +97,7 @@ import italic_icon from '~/assets/icons/italic.svg'
 import bold_icon from '~/assets/icons/bold.svg'
 
 import { useGeneralStore } from '~/store/generalStore';
+import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 
 const generalStore = useGeneralStore()
 const emit = defineEmits(['newPostMaterial'])
