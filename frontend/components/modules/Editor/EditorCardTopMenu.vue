@@ -1,27 +1,47 @@
 <template>
-    <div id="top-menu-container">
+    <div id="top-menu-container" v-if="editor">
         <div id="top-three">
             <span class="option-holder">
-                <EditorButton data-test="bold" :icon="bold_icon" alt="Bold" />
+                <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold" :is-active="editor.isActive('bold')"/>
             </span>
             <span class="option-holder">
-                <EditorButton data-test="italic" :icon="italic_icon" alt="Italic" />
+                <EditorButton data-test="italic_option" :icon="italic_icon" alt="Italic" :is-active="editor.isActive('italic')" />
             </span>
             <span class="option-holder">
-                <EditorButton data-test="underline" :icon="underline_icon" alt="Underline" />
+                <EditorButton data-test="underline_option" :icon="underline_icon" alt="Underline" :is-active="editor.isActive('underline')" />
             </span>
         </div>
         <div id="list-options">
             <span class="option-holder">
-                <EditorButton data-test="bullet_list" :icon="bullet_list_icon" alt="Unordered list" />
+                <EditorButton data-test="bullet_list_option" :icon="bullet_list_icon" alt="Unordered list" :is-active="editor.isActive('bulletList')" />
             </span>
             <span class="option-holder">
-                <EditorButton data-test="number_list" :icon="number_list_icon" alt="Ordered list" />
+                <EditorButton data-test="number_list_option" :icon="number_list_icon" alt="Ordered list" :is-active="editor.isActive('orderedList')"/>
             </span>
         </div>
-        <span class="option-holder">
-            <EditorButton data-test="image_option" :icon="image_add_icon" alt="Add image"/>
-        </span>
+        <div id="add_options">
+            <span class="option-holder">
+                <EditorButton data-test="image_option" :icon="image_add_icon" alt="Add image"
+                @click="add_image_handle"
+                />
+            </span>
+            
+            <span class="option-holder">
+                <EditorButton data-test="url_link_option" :icon="url_link_add_icon" alt="Add hyperlink" :is-active="editor.isActive('link')"
+                @click="add_url_link_handle"
+                />
+            </span>
+        </div>¨
+        <div id="back_and_forth_options">
+            <span class="option-holder">
+                <EditorButton data-test="go_back_option" :icon="go_back_icon" alt="Go back"
+                />
+            </span>
+            <span class="option-holder">
+                <EditorButton data-test="go_forward_option" :icon="go_forward_icon" alt="Go forward"
+                />
+            </span>
+        </div>
         
     </div>
 </template>
@@ -34,6 +54,27 @@ import bold_icon from '~/assets/icons/bold.svg'
 import bullet_list_icon from '~/assets/icons/bullet_list.svg';
 import number_list_icon from '~/assets/icons/number_list.svg'
 import image_add_icon from '~/assets/icons/image-add-line.svg'
+import url_link_add_icon from '~/assets/icons/link_add.svg'
+import go_back_icon from '~/assets/icons/go_back_icon.svg'
+import go_forward_icon from '~/assets/icons/go_forward_icon.svg'
+
+import { Editor } from '@tiptap/core';
+
+defineProps<{
+  editor: Editor | undefined
+}>();
+
+const add_image_handle = () => {
+    return null
+}
+
+const add_url_link_handle = () => {
+    return null
+}
+
+const toggleBold = (editor:any) => {
+	editor.chain().focus().toggleBold().run()
+}
 
 </script>
 

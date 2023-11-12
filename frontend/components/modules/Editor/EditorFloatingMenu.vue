@@ -33,7 +33,7 @@ import { Editor } from '@tiptap/core';
 // const emit = defineEmits()
 
 defineProps<{
-  editor: Editor | undefined;
+  editor: Editor | undefined
 }>();
 
 const emit = defineEmits()

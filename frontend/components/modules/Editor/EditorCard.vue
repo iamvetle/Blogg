@@ -39,6 +39,8 @@
 				<div>
 					<editor-content :editor="editor" />
 				</div>
+				<EditorCardTopMenu
+				:editor="editor"/>
 
 			</div>
 
