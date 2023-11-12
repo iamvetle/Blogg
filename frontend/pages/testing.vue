@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div>
     <Modal/>
   </div>
 </template>

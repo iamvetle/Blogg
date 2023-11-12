@@ -73,9 +73,9 @@ const submitForm = async (formData: any, node) => {
 		 * 
 		 * ? Unsure whether I this is a good idea
 		 */
-		if (redirect === true) {
-			return navigateTo("minkonto");
-		}
+
+		return navigateTo("/minkonto");
+
 
 		/**
 		 * If the request was null, it failed, then all fields are reset	 * 

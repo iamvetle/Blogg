@@ -1,7 +1,7 @@
 <template>
-	<div id="site-wrapper" v-if="generalStore.isAuthenticated" class="mt-8">
+	<div v-if="generalStore.isAuthenticated" class="mt-8">
 		<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
-			class="max-w-[1100px] w-full h-fit mx-auto px-6 grid grid-cols-10 gap-28">
+			class="max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28">
 			<div data-test="everything" class="col-span-6 mx-auto w-full">
 
 				<h2 class="mb-10 text-4xl" v-if="searchStore.searchPart">
@@ -132,4 +132,4 @@ onBeforeUnmount(() => {
 
 </script>
 
-<style></style>
+<style scoped></style>

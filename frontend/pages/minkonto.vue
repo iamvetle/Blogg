@@ -74,7 +74,7 @@ import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 definePageMeta({
-	layout: 'default'
+	layout:'default'
 })
 
 // Declaring stores

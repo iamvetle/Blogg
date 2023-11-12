@@ -5,13 +5,12 @@
 			<ClientOnly>
 				<TheNavbar />
 			</ClientOnly>
-			<div class="">
-				<slot />
-			</div>
-		</div>
-
-		<div>
-			<LazyTheFooter />
+			<main>
+				<div>
+					<slot />
+				</div>
+			</main>
+			<TheFooter />
 		</div>
 	</div>
 </template>
@@ -23,4 +22,14 @@ const store = useGeneralStore()
 
 </script>
 
-<style scoped></style>  
+<style scoped>
+#site-wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
+}
+</style>  

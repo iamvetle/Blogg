@@ -1,19 +1,17 @@
 <template>
-	<!-- Background color -->
 	<div id="site-wrapper" class="bg-background">
-		<!-- Background color -->
-		<div class="">
-			<ClientOnly>
-				<TheNavbar />
-			</ClientOnly>
+		<ClientOnly>
+			<TheNavbar/>
+		</ClientOnly>
+		<main>
 			<div>
 				<slot />
 			</div>
-		</div>
-		<div class="mt-auto">
-			<FeedPagination v-if="postStore.posts" />
-			<LazyTheFooter />
-		</div>
+		</main>
+	<div>
+		<FeedPagination v-if="postStore.posts" />
+		<TheFooter />
+	</div>
 	</div>
 </template>
 
@@ -24,4 +22,14 @@ const postStore = usePostStore()
 
 </script>
 
-<style scoped></style>
+<style scoped>
+#site-wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
+}
+</style>

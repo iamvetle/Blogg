@@ -1,6 +1,6 @@
 <template>
-    <div id="top-menu-container" v-if="editor" class="flex bg-red-500">
-        <div id="top-three" class="flex">
+    <div id="top-menu-container" v-if="editor" class="flex space-x-10 w-full">
+        <div id="top-three" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold" :is-active="editor.isActive('bold')"/>
             </span>
@@ -11,7 +11,7 @@
                 <EditorButton @click="toggleUnderline(editor)" data-test="underline_option" :icon="underline_icon" alt="Underline" :is-active="editor.isActive('underline')" />
             </span>
         </div>
-        <div id="list-options" class="flex">
+        <div id="list-options" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton @click="toggleBulletList(editor)" data-test="bullet_list_option" :icon="bullet_list_icon" alt="Unordered list" :is-active="editor.isActive('bulletList')" />
             </span>
@@ -19,7 +19,7 @@
                 <EditorButton @click="toggleOrderedList(editor)" data-test="number_list_option" :icon="number_list_icon" alt="Ordered list" :is-active="editor.isActive('orderedList')"/>
             </span>
         </div>
-        <div id="add_options" class="flex">
+        <div id="add_options" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton @click="add_image_handle" data-test="image_option" :icon="image_add_icon" alt="Add image"
                 />
@@ -29,18 +29,18 @@
                 <EditorButton @click="add_url_link_handle" data-test="url_link_option" :icon="url_link_add_icon" alt="Add hyperlink" :is-active="editor.isActive('link')"
                 />
             </span>
-        </div>¨
-        <div id="undo_redo_options" class="flex">
+        </div>
+        <div id="undo_redo_options" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton @click="setUndo(editor)" data-test="undo_option" :icon="go_back_icon" alt="Undo"
                 />
             </span>
-            <span class="option-holder">
+            <span class="option-holder ">
                 <EditorButton @click="setRedo(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo"
                 />
             </span>
         </div>
-        <div id="codeQuote_options" class="flex">
+        <div id="codeQuote_options" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton data-test="blockquote_option" :is-active="editor.isActive('blockquote')" @click="toggleBlockquote(editor)"
                 :icon="blockquote_icon" alt="Blockquote" />

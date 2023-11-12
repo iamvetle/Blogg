@@ -23,7 +23,7 @@ import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 import { postCreateNewPost } from '../composables/crud/postCreateNewPost';
 
 definePageMeta({
-	layout: "default"
+	layout: "creating"
 })
 
 const baseURL = "http://localhost:8888/api/newpost/"
@@ -36,7 +36,7 @@ const postState = ref<false | true | null>(null);
  * This controls the outer-styling that the text editor has and can be
  * changed dynamically.
  */
-const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
+const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 rounded-lg bg-[#FFFFFF]")
 
 /** 
  * * Final publishing step 

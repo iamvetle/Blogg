@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <NuxtLayout>
-      <div>
-        <NuxtLoadingIndicator /> <!-- here -->
-        <NuxtPage />
-      </div>
-    </NuxtLayout>
-  </div>
+    <div>
+        <NuxtLayout>
+            <div>
+                <NuxtPage />
+            </div>
+        </NuxtLayout>
+    </div>
 </template>

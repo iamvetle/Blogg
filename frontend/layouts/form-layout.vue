@@ -1,17 +1,15 @@
 <template>
 	<!-- Background color -->
 	<div id="site-wrapper" class="bg-surface">
-		<div>
-			<ClientOnly>
-				<TheNavbar />
-			</ClientOnly>
+		<ClientOnly>
+			<TheNavbar />
+		</ClientOnly>
+		<main>
 			<div>
 				<slot />
 			</div>
-		</div>
-		<div>
-			<LazyTheFooter />
-		</div>
+		</main>
+		<TheFooter />
 	</div>
 </template>
 
@@ -19,4 +17,14 @@
 
 </script>
 
-<style scoped></style>
+<style scoped>
+#site-wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
+}
+</style>

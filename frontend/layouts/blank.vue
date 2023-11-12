@@ -1,8 +1,12 @@
 <template>
-  <div id="modal" :class="store.backgroundForModal">  <!-- Possibly gray,blur background-->
+  <div id="modal" :class="store.backgroundForModal">
     <!-- Background color -->
     <div id="site-wrapper" class="bg-surface">
-      <slot />
+      <main>
+        <div>
+          <slot />
+        </div>
+      </main>
     </div>
   </div>
 </template>
@@ -14,4 +18,14 @@ const store = useGeneralStore()
 
 </script>
 
-<style scoped></style>
+<style scoped>
+#site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+</style>
