@@ -1,5 +1,5 @@
 <template>
-	<div class="p-2">
+	<div class="p-2" v-if="editor">
 		<div id="editor-container" class="w-full min-h-[270px] mb-12" @click="editor.commands.focus()">
 			<div v-if="showModal">
 				<teleport to="#modal">
@@ -20,10 +20,12 @@
 				<EditorBubbleMenu
 				:editor="editor"
 				/>
-				<div class="w-full">
+				<div class="w-full not-prose mb-6">
 					<EditorCardTopMenu
 					:editor="editor"/>
 				</div>
+				<hr class="not-prose">
+				
 
 				<div class="w-full">
 					<editor-content :editor="editor" />
@@ -180,7 +182,7 @@ const editor = useEditor({
 
 	editorProps: {
 		attributes: {
-			class: 'm-5 focus:outline-none',
+			class: 'focus:outline-none',
 			// class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',	
 		},
 	},
@@ -318,7 +320,7 @@ const publishPost = () => {
 /**
  * It is called by the modal and it stops the process of making the post.
  */
-const cancelPublishing = () => {
+const cancelPublishing = () => 	{
 	showModal.value = false
 	generalStore.turnBackgroundForModel(null)
 	return null
@@ -411,181 +413,182 @@ const toggleItalic = () => {
 </script>
 
 <style scoped lang="scss">
-/* Basic editor styles */
-.tiptap {
-	>*+* {
-		margin-top: 0.75em;
-	}
-	img {
-    max-width: 100%;
-    height: auto;
-  }
-}
 
-.tiptap p.is-editor-empty:first-child::before {
-  content: attr(data-placeholder);
-  float: left;
-  color: #adb5bd;
-  pointer-events: none;
-  height: 0;
-}
+// /* Basic editor styles */
+// .tiptap {
+// 	>*+* {
+// 		margin-top: 0.75em;
+// 	}
+// 	img {
+//     max-width: 100%;
+//     height: auto;
+//   }
+// }
 
-
-blockquote {
-	padding-left: 1rem;
-	border-left: 3px solid rgba(#0D0D0D, 0.1);
-}
-
-ul,
-ol {
-	padding: 0 1rem;
-}
-
-pre {
-	background: #0D0D0D;
-	color: #FFF;
-	font-family: 'JetBrainsMono', monospace;
-	padding: 0.75rem 1rem;
-	border-radius: 0.5rem;
-
-	code {
-		color: inherit;
-		padding: 0;
-		background: none;
-		font-size: 0.8rem;
-	}
-}
-
-hr.ProseMirror-selectednode {
-	border-top: 1px solid #68CEF8;
-}
+// .tiptap p.is-editor-empty:first-child::before {
+//   content: attr(data-placeholder);
+//   float: left;
+//   color: #adb5bd;
+//   pointer-events: none;
+//   height: 0;
+// }
 
 
+// blockquote {
+// 	padding-left: 1rem;
+// 	border-left: 3px solid rgba(#0D0D0D, 0.1);
+// }
 
-img {
-	max-width: 100%;
-	height: auto;
+// ul,
+// ol {
+// 	padding: 0 1rem;
+// }
+	
+// pre {
+// 	background: #0D0D0D;
+// 	color: #FFF;
+// 	font-family: 'JetBrainsMono', monospace;
+// 	padding: 0.75rem 1rem;
+// 	border-radius: 0.5rem;
 
-	&.ProseMirror-selectednode {
-		outline: 3px solid #68CEF8;
-	}
-}
+// 	code {
+// 		color: inherit;
+// 		padding: 0;
+// 		background: none;
+// 		font-size: 0.8rem;
+// 	}
+// }
 
-.tiptap {
-	table {
-		border-collapse: collapse;
-		table-layout: fixed;
-		width: 100%;
-		margin: 0;
-		overflow: hidden;
+// hr.ProseMirror-selectednode {
+// 	border-top: 1px solid #68CEF8;
+// }
 
-		td,
-		th {
-			min-width: 1em;
-			border: 2px solid #ced4da;
-			padding: 3px 5px;
-			vertical-align: top;
-			box-sizing: border-box;
-			position: relative;
 
-			>* {
-				margin-bottom: 0;
-			}
-		}
 
-		th {
-			font-weight: bold;
-			text-align: left;
-			background-color: #f1f3f5;
-		}
+// img {
+// 	max-width: 100%;
+// 	height: auto;
 
-		.selectedCell:after {
-			z-index: 2;
-			position: absolute;
-			content: "";
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			background: rgba(200, 200, 255, 0.4);
-			pointer-events: none;
-		}
+// 	&.ProseMirror-selectednode {
+// 		outline: 3px solid #68CEF8;
+// 	}
+// }
 
-		.column-resize-handle {
-			position: absolute;
-			right: -2px;
-			top: 0;
-			bottom: -2px;
-			width: 4px;
-			background-color: #adf;
-			pointer-events: none;
-		}
+// .tiptap {
+// 	table {
+// 		border-collapse: collapse;
+// 		table-layout: fixed;
+// 		width: 100%;
+// 		margin: 0;
+// 		overflow: hidden;
 
-		p {
-			margin: 0;
-		}
-	}
-}
+// 		td,
+// 		th {
+// 			min-width: 1em;
+// 			border: 2px solid #ced4da;
+// 			padding: 3px 5px;
+// 			vertical-align: top;
+// 			box-sizing: border-box;
+// 			position: relative;
 
-.tableWrapper {
-	padding: 1rem 0;
-	overflow-x: auto;
-}
+// 			>* {
+// 				margin-bottom: 0;
+// 			}
+// 		}
 
-.resize-cursor {
-	cursor: ew-resize;
-	cursor: col-resize;
-}
+// 		th {
+// 			font-weight: bold;
+// 			text-align: left;
+// 			background-color: #f1f3f5;
+// 		}
 
-ul[data-type="taskList"] {
-	list-style: none;
-	padding: 0;
+// 		.selectedCell:after {
+// 			z-index: 2;
+// 			position: absolute;
+// 			content: "";
+// 			left: 0;
+// 			right: 0;
+// 			top: 0;
+// 			bottom: 0;
+// 			background: rgba(200, 200, 255, 0.4);
+// 			pointer-events: none;
+// 		}
 
-	p {
-		margin: 0;
-	}
+// 		.column-resize-handle {
+// 			position: absolute;
+// 			right: -2px;
+// 			top: 0;
+// 			bottom: -2px;
+// 			width: 4px;
+// 			background-color: #adf;
+// 			pointer-events: none;
+// 		}
 
-	li {
-		display: flex;
+// 		p {
+// 			margin: 0;
+// 		}
+// 	}
+// }
 
-		>label {
-			flex: 0 0 auto;
-			margin-right: 0.5rem;
-			user-select: none;
-		}
+// .tableWrapper {
+// 	padding: 1rem 0;
+// 	overflow-x: auto;
+// }
 
-		>div {
-			flex: 1 1 auto;
-		}
+// .resize-cursor {
+// 	cursor: ew-resize;
+// 	cursor: col-resize;
+// }
 
-		ul li,
-		ol li {
-			display: list-item;
-		}
+// ul[data-type="taskList"] {
+// 	list-style: none;
+// 	padding: 0;
 
-		ul[data-type="taskList"]>li {
-			display: flex;
-		}
-	}
-}
+// 	p {
+// 		margin: 0;
+// 	}
 
-code {
-    font-size: 0.9rem;
-    padding: 0.25em;
-    border-radius: 0.25em;
-    background-color: rgba(#616161, 0.1);
-    color: #616161;
-    box-decoration-break: clone;
-  }
+// 	li {
+// 		display: flex;
 
-  mark {
-  background-color: #ffe066;
-  padding: 0.125em 0;
-  border-radius: 0.25em;
-  box-decoration-break: clone;
-}
+// 		>label {
+// 			flex: 0 0 auto;
+// 			margin-right: 0.5rem;
+// 			user-select: none;
+// 		}
 
-a {
-    color: #68CEF8;
-  }
+// 		>div {
+// 			flex: 1 1 auto;
+// 		}
+
+// 		ul li,
+// 		ol li {
+// 			display: list-item;
+// 		}
+
+// 		ul[data-type="taskList"]>li {
+// 			display: flex;
+// 		}
+// 	}
+// }
+
+// code {
+//     font-size: 0.9rem;
+//     padding: 0.25em;
+//     border-radius: 0.25em;
+//     background-color: rgba(#616161, 0.1);
+//     color: #616161;
+//     box-decoration-break: clone;
+//   }
+
+//   mark {
+//   background-color: #ffe066;
+//   padding: 0.125em 0;
+//   border-radius: 0.25em;
+//   box-decoration-break: clone;
+// }
+
+// a {
+//     color: #68CEF8;
+//   }
 </style>

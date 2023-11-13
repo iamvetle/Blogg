@@ -3,22 +3,39 @@ import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import register from '~/pages/registrer.vue'
 
+let wrapper: VueWrapper
+let store;
+let pinia:any
+
+const factory = () => {
+    return mount(register, {
+        global: {
+            plugins: [pinia],
+        },
+    })
+}
+
 describe('register page testing', () => {
-    let wrapper:VueWrapper
-    let store;
-    let pinia;
+
 
     beforeEach(() => {
         pinia = createTestingPinia()
         store = useGeneralStore(pinia)
-        wrapper = mount(register, {
-            global: {
-                plugins: [pinia],
-            },
+
+        vi.stubGlobal("definePageMeta", () => {
+            return null
         })
+
+    })
+    afterEach(() => {
+        if (wrapper) {
+            wrapper.unmount()
+        }
     })
 
     test('register page exists', () => {
+        wrapper = factory()
+
         expect(wrapper.exists()).toBe(true)
     })
 })

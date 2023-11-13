@@ -43,7 +43,7 @@
         <div id="codeQuote_options" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton data-test="blockquote_option" :is-active="editor.isActive('blockquote')" @click="toggleBlockquote(editor)"
-                :icon="blockquote_icon" alt="Blockquote" />
+                :icon="blockquote_icon" alt="Blockquote"/>
             </span>
             <span class="option-holder">
                 <EditorButton data-test="codeblock_option" :is-active="editor.isActive('codeBlock')" @click="toggleCodeBlock(editor)"
