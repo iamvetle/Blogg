@@ -53,10 +53,9 @@
 
 					<template #save-article-icon v-if="post.id">
 
-						<BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post.id)" @click="unsave(post.id)" />
-
-						<BaseIconSaveArticleUnSaved v-else @mouseover="color = 'fill-primary'"
-							@mouseleave="color = 'fill-black'" @click="save(post.id)" :fill-color="color" />
+						<ArticleBookmark
+						:post="post.id"
+						/>
 
 					</template>
 
@@ -79,14 +78,11 @@
 </template>
 
 <script setup lang="ts">
-import BaseIconSaveArticleSaved from '~/components/base/BaseIconSaveArticleSaved.vue';
 import { usePostStore } from '~/store/postStore'
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const post_image = ref('https://picsum.photos/500/300')
 
 const postStore = usePostStore()
-const loggedInUserStore = useLoggedInUserStore()
 
 const color = ref("fill-black")
 
@@ -117,27 +113,6 @@ const redirect_to_author_page = (username: SnippetPostSingleType) => {
 const redirect_to_post_page = (postId: SnippetPostSingleType) => {
 
 	return navigateTo(`/post/${postId}`)
-}
-
-/**
- * Removes the clicked upon post from 'saved posts' 
- * @param post - the post that you want to unsave
- */
-const unsave = async (post: number) => {
-	const index = loggedInUserStore.idArrayOfSavedPosts.findIndex((id) => id === post)
-
-	loggedInUserStore.idArrayOfSavedPosts.splice(index, 1)
-
-	await getSaveOrUnsavePost(post)
-}
-
-/**
- * Adds the clicked upon post to 'saved posts' 
- * @param post - the post that you want to save
- */
-const save = async (post: number) => {
-
-	await getSaveOrUnsavePost(post)
 }
 
 /**

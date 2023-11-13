@@ -3,6 +3,9 @@ import { useGeneralStore } from "@/store/generalStore";
 /**
  * Effective and IN-USE
  * 
+ * ! DOES NOT CHECK THE SINGLE POST PAGES
+ * TODO ^
+ * 
  * **First**: Updates token memory 
  * 
  * Checks if there are a token in localStorage and then updates

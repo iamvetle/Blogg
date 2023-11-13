@@ -8,6 +8,7 @@ declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const apiEndpointCheck: typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']
   const checkIfFollowingUser: typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']
+  const checkIfLoggedInUser: typeof import('./composables/checkIfLoggedInUser')['checkIfLoggedInUser']
   const checkIfPostIsSaved: typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']
   const checkLocalInfo: typeof import('./composables/checkLocalInfo')['checkLocalInfo']
   const computed: typeof import('vue')['computed']
@@ -100,6 +101,7 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly checkIfFollowingUser: UnwrapRef<typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']>
+    readonly checkIfLoggedInUser: UnwrapRef<typeof import('./composables/checkIfLoggedInUser')['checkIfLoggedInUser']>
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly constructURL: UnwrapRef<typeof import('./composables/constructURL')['constructURL']>
@@ -179,6 +181,7 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly checkIfFollowingUser: UnwrapRef<typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']>
+    readonly checkIfLoggedInUser: UnwrapRef<typeof import('./composables/checkIfLoggedInUser')['checkIfLoggedInUser']>
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly constructURL: UnwrapRef<typeof import('./composables/constructURL')['constructURL']>
