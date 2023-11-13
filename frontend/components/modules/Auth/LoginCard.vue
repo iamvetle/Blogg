@@ -43,28 +43,43 @@
 <script setup lang="ts">
 //@ts-nocheck
 import { reset } from '@formkit/core'
+
 const loginerror = ref(false);
 const loginsucess = ref(false);
 
 const baseURL = "http://localhost:8888/api/login/";
-const { redirect } = defineProps(["redirect"]);
 
-const submitForm = async (formData:any, node) => {
-	const response = await postForm(baseURL, formData)
+withDefaults(defineProps<{
+	redirect?: boolean
+}>(), {
+	redirect: true
+})
 
-	
-	if (response != null && response.data != null) {
+const submitForm = async (formData: any, node) => {
+	const responseData = await postForm(baseURL, formData)
 
-		setLocalInfo(response.data.token, response.data.username);
+	/** If the request was successfull */
+	if (responseData) {
+
+		/** Takes the username and token from the responseData and puts it in localStorage */
+		setTokenAndUsername(responseData.token, responseData.username);
 
 		loginsucess.value = true;
-
 		loginerror.value = false;
 
-			if (redirect === true) {
-				return navigateTo("minkonto");
-			}
-			
+		/** 
+		 * Redirects the user to the minkonto page if the prop 
+		 * passed is 'true', otherwise, not redirected
+		 * 
+		 * ? Unsure whether I this is a good idea
+		 */
+
+		return navigateTo("/minkonto");
+
+
+		/**
+		 * If the request was null, it failed, then all fields are reset	 * 
+		*/
 	} else {
 		/**
 		 * 'Reset' clears the input fields if the if request is failed.

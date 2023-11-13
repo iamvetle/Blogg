@@ -1,5 +1,5 @@
 import { VueWrapper, mount } from '@vue/test-utils'
-import ListArticles from '~/components/modules/Blogg/ListArticles.vue'
+import FeedListArticles from '~/components/modules/Blogg/FeedListArticles.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue'
@@ -45,7 +45,7 @@ describe("list articles testing", () => {
         }
 
         // Mount the component
-        wrapper = mount(ListArticles, {
+        wrapper = mount(FeedListArticles, {
             global: {
                 plugins: [pinia],
                 components: {

@@ -1,22 +1,30 @@
-import axios from "axios";
+import { postMethod } from "~/services/apiByCRUD";
 
-export const getFollowUser = async (url: string) => {
-	try {
-		const token = localStorage.getItem("token");
-		!token ? console.log("no token") : "";
+/** Sends a get request to follow the user 
+ * 
+ * It also takes care of the header for you
+*/
+export const getFollowUser = async (url: string): Promise<object | null> => {
 
-		const headers = {
-			"Content-Type": "application/json",
-			Authorization: `Token ${token}`,
-		};
+	const token = retrieveToken();
 
-		const response = await axios.post(url, {}, { headers });
-		console.log("OK: Managed to follow user", response.data); // print to self
-		
-		return response;
+	if (token === null) {
+		console.log("There was no token")
+		return null
+	}
 
-	} catch (error) {
-		console.log("did not manage to follow user", error);
-		return error;
+	const headers = {
+		"Content-Type": "application/json",
+		Authorization: `Token ${token}`,
+	};
+
+	const response = await postMethod(url, {}, headers);
+
+	if (response) {
+		// console.log("OK: managed to follow user", response.data); // print to self
+		return response.data
+	} else {
+		console.log("FAILED: you might not have successfolly followed the user") // print to self
+		return null
 	}
 };

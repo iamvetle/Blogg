@@ -1,5 +1,5 @@
 <template>
-	<div id="container-navbar" class="w-full py-4 text-onPrimary bg-primary mb-16">
+	<div id="container-navbar" class="w-full py-6 text-onPrimary bg-primary">
 		<div id="navbar" class="h-[50px] mx-auto flex items-center max-w-[1000px] bg-primary justify-between">
 
 			<span class="flex items-center">

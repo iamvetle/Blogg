@@ -1,5 +1,4 @@
-import { deleteMethod } from '../apiByCRUD';
-
+import { deleteMethod } from "~/services/apiByCRUD";
 /**
  * Deletes a post made by the logged in user
  * 
@@ -7,28 +6,30 @@ import { deleteMethod } from '../apiByCRUD';
  *  
  * @returns - The response (.data, .status)
  */
-export const deleteLoggedInUserPost = async (userURL: string) => {
+export const deleteLoggedInUserPost = async (userURL: string): Promise<object | null> => {
 
     /**
      * Fetches the token from local storage, or just returns null.
      */
-    const token = getToken()
+    const token = retrieveToken();
 
-    if (token) {
-        const headers = {
-            "Content-Type": "application/json",
-            Authorization: `Token ${token}`,
-        };
+    if (token === null) {
+        console.log("There was no token")
+        return null
+    }
+    const headers = {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+    };
 
-        const response = await deleteMethod(userURL, headers)
+    const response = await deleteMethod(userURL, headers)
 
-        if (response) {
+    if (response) {
 
-            return response
+        return response.data
 
-        } else {
+    } else {
 
-            return null
-        }
+        return null
     }
 }

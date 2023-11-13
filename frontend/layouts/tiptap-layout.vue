@@ -1,4 +1,5 @@
 <template>
+  <!-- Background color -->
   <div id="site-wrapper" class="bg-background">
     <!-- Background color -->
     <ClientOnly>
@@ -8,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-console.log("tiptap-layout selected")
 
 </script>
 

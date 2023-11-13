@@ -3,10 +3,6 @@ import { VueWrapper, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import SingleArticleSingleComment from './SingleArticleSingleComment.vue';
 
-import { useGeneralStore } from '~/store/generalStore';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
 
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();

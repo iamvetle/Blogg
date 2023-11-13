@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`index page testing > Should match snapshot 1`] = `
+"<div class=\\"mt-8\\">
+  <div class=\\"max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28\\">
+    <div data-test=\\"everything\\" class=\\"col-span-6 mx-auto w-full\\">
+      <!--v-if-->
+      <feedtopchoice followingselected=\\"false\\"></feedtopchoice>
+      <!--v-if-->
+      <!--v-if-->
+      <feed-list-articles-stub class=\\"w-full mt-12\\"></feed-list-articles-stub>
+    </div>
+    <div class=\\"col-span-4 mx-auto w-full\\">
+      <div id=\\"dropdown-filter\\" class=\\"mb-4 bg-primary rounded-lg text-onPrimary\\">
+        <feeddropdownfilter></feeddropdownfilter>
+      </div><!-- This lists the (saved)articles in thes sidebar -->
+      <feed-list-articles-sidebar-stub class=\\"w-full\\"></feed-list-articles-sidebar-stub>
+    </div>
+  </div>
+</div>"
+`;

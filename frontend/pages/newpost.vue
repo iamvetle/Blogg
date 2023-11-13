@@ -23,27 +23,39 @@ import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 import { postCreateNewPost } from '../composables/crud/postCreateNewPost';
 
 definePageMeta({
-	layout: "default"
+	layout: "creating"
 })
 
 const baseURL = "http://localhost:8888/api/newpost/"
 
+/** If this is true a success message is rendered */
 const postState = ref<false | true | null>(null);
 
 
 /** 
  * This controls the outer-styling that the text editor has and can be
  * changed dynamically.
+ * 
+ * 
+ * 
  */
-const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
+const editorContainerClass = ref("w-full px-[60px] pt-[35px] pb-[30px] bg-white flex flex-col text-gray-800 rounded-lg bg-[#FFFFFF]")
 
-const publish = async (data:object) => {
-	const response = await postCreateNewPost(baseURL, data)
+/** 
+ * * Final publishing step 
+ */
+const publish = async (postContent:object) => {
+	const responseData = await postCreateNewPost(baseURL, postContent)
 
-	if (response) {
-		postState.value = response.data
+	if (responseData) {
+		postState.value = true
+
+		setTimeout(() => {
+			navigateTo("/minkonto");
+		}, 1000);
 	} else {
-		console.log("Failed to publish the post")
+		// console.log("Failed to publish the post") // print to self
+		return null
 	}
 }
 

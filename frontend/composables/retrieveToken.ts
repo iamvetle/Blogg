@@ -5,7 +5,7 @@
  * 
  * @returns - The token from localStorage, or null 
  */
-export const getToken = (): string | null => {
+export const retrieveToken = (): string | null => {
     if (process.client) {
         const token = localStorage.getItem("token");
 

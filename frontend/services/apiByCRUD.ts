@@ -8,7 +8,7 @@ import axios, { type AxiosResponse } from 'axios'
 export const getMethod = async (url:string, headers?:object): Promise<AxiosResponse | null> => {
     
     try {
-        let response:AxiosResponse = await axios.get(url, { headers })
+        const response:AxiosResponse = await axios.get(url, { headers })
         // console.log(toRaw(response)) // print to self
 
         if(response.status !== null) {
@@ -16,7 +16,7 @@ export const getMethod = async (url:string, headers?:object): Promise<AxiosRespo
         }
 
         if(response.data === null) {
-            // console.log(`The request to ${url} was returned with 'null' data:`, response.data) // print to self
+            console.log(`The request to ${url} was returned with 'null' data:`, response.data) // print to self
         }
 
         /**
@@ -31,7 +31,7 @@ export const getMethod = async (url:string, headers?:object): Promise<AxiosRespo
         return response
     } catch (e:unknown) {
         console.error(`An error occured when trying to send a request to ${url}`, e)
-        // console.error('The headers used was:', headers)
+        console.error('The headers used was:', headers)
 
         /**
          * If the request is failed, the error is returned.
@@ -40,18 +40,17 @@ export const getMethod = async (url:string, headers?:object): Promise<AxiosRespo
     }
 }
 
-
 /**
- * Used for accesing api endpoint with POST
+ * getMethod sends a GET request to a specified url, with a possibly custom header
  * 
- * @param url 
- * @param headers 
- * @returns 
+ * @param url The url that the request is going to
+ * @param header The header that is going to be passed together with the fetch
  */
-export const postMethod = async (url:string, headers?:object): Promise<AxiosResponse | null> => {
+
+export const deleteMethod = async (url:string, headers?:object): Promise<AxiosResponse | null> => {
     
     try {
-        let response:AxiosResponse = await axios.get(url, { headers })
+        const response:AxiosResponse = await axios.delete(url, { headers })
         // console.log(toRaw(response)) // print to self
 
         if(response.status !== null) {
@@ -74,7 +73,7 @@ export const postMethod = async (url:string, headers?:object): Promise<AxiosResp
         return response
     } catch (e:unknown) {
         console.error(`An error occured when trying to send a request to ${url}`, e)
-        // console.error('The headers used was:', headers)
+        console.error('The headers used was:', headers)
 
         /**
          * If the request is failed, the error is returned.
@@ -82,3 +81,38 @@ export const postMethod = async (url:string, headers?:object): Promise<AxiosResp
         return null
     }
 } 
+
+export const postMethod = async (url:string, formData:object, headers?:object): Promise<AxiosResponse | null> => {
+    
+    try {
+        const response:AxiosResponse = await axios.post(url, formData, { headers })
+        // console.log(toRaw(response)) // print to self
+
+        if(response.status !== null) {
+            // console.log(`Request to ${url} returned ${response.status}`) // print to self
+        }
+
+        if(response.data === null) {
+            console.log(`The request to ${url} was returned with 'null' data:`, response.data) // print to self
+        }
+
+        /**
+         * The response is returned together with the DATA and STATUS code:
+         * 
+         * response.data
+         * response.status
+         * 
+         * Regardless of whatever was received. As long as the *request* was successfull
+         * the response is returned  
+         */
+        return response
+    } catch (e:unknown) {
+        console.error(`An error occured when trying to send a request to ${url}`, e)
+        console.error('The headers used was:', headers)
+
+        /**
+         * If the request is failed, the error is returned.
+         */
+        return null
+    }
+}

@@ -1,29 +1,38 @@
-import axios from "axios";
+import { getMethod } from "~/services/apiByCRUD";
 
-export const getLoggedInUserAllFollowers = async (url: string) => {
 
-	try {
-		const token = localStorage.getItem("token");
-		const headers = {
-			"Content-Type": "application/json",
-			Authorization: `Token ${token}`,
-		};
+/**
+ * Returns a list of all the users that are following logged-in-user
+ * 
+ * ! Not in use 
+ * 
+ * @param url - the url that the request is going to
+ * @returns - the response data
+ */
+export const getLoggedInUserAllFollowers = async (url: string): Promise<FollowerType[] | null> => {
 
-		const response = await axios.get<FollowerType[]>(url, { headers });
+    /**
+     * Fetches the token from local storage, or just returns null.
+     */
+    const token = retrieveToken();
 
-		if (response.data != null) {
-			console.log("OK: Followers fetched", response.status, response.data); // print to self
+    if (token === null) {
+        console.log("There was not token")
+        return null
+    }
 
-			return response.data;
+	const headers = {
+		"Content-Type": "application/json",
+		Authorization: `Token ${token}`,
+	};
 
-		} else {
-			console.log("OBS! Fetching succedded, but response(data) was:", response.status, response.data) // print to self
+	const response = await getMethod(url, headers);
 
-			return response.data
-		}
-
-	} catch (error) {
-		console.error("ERROR: An error occured while trying to fetch followers: ", error); // print to self
-		return null;
+	if (response) {
+		// console.log("OK: got all of the followers of logged in user", response.data); // print to self
+		return response.data
+	} else {
+		console.error("FAILED: you did not fetch whom the logged in user is following") // print to self
+		return null
 	}
 };

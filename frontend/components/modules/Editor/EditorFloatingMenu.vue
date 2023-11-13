@@ -24,8 +24,8 @@ import add_image_icon from '~/assets/icons/image-add-line.svg'
 import link_icon from '~/assets/icons/link.svg'
 import seperator_icon from '~/assets/separator.svg'
 
-import heading_1_icon from '~/assets/icons/h-1.svg'
-import heading_2_icon from '~/assets/icons/h-2.svg'
+import heading_1_icon from '~/assets/icons/h1.svg'
+import heading_2_icon from '~/assets/icons/h2.svg'
 
 import { FloatingMenu } from '@tiptap/vue-3'
 import { Editor } from '@tiptap/core';
@@ -33,7 +33,7 @@ import { Editor } from '@tiptap/core';
 // const emit = defineEmits()
 
 defineProps<{
-  editor: Editor | undefined;
+  editor: Editor | undefined
 }>();
 
 const emit = defineEmits()

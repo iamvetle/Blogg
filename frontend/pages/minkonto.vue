@@ -72,10 +72,9 @@
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
 import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import MyProfileListArticles from '~/components/modules/MyUser/MyProfileListArticles.vue';
 
 definePageMeta({
-	layout: 'default'
+	layout:'default'
 })
 
 // Declaring stores

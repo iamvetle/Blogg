@@ -1,6 +1,6 @@
 import { VueWrapper, mount } from "@vue/test-utils";
 
-import ListArticlesSidebar from "~/components/modules/Blogg/ListArticlesSidebar.vue";
+import FeedListArticlesSidebar from "~/components/modules/Blogg/FeedListArticlesSidebar.vue";
 import LoggedInUserProfileCard from "~/components/modules/MyUser/LoggedInUserProfileCard.vue";
 import ArticleSavedCard from "~/components/modules/MyUser/ArticleSavedCard.vue";
 import Following from "~/components/modules/MyUser/Following.vue";
@@ -17,7 +17,7 @@ const mock_redirect_to_author_page = (author: any) => {
 	return null
 }
 
-describe('ListArticlesSidebar testing', () => {
+describe('FeedListArticlesSidebar testing', () => {
 
 	beforeAll(async () => {
 
@@ -76,7 +76,7 @@ describe('ListArticlesSidebar testing', () => {
 
 		const full_name = ref("iamfirstname iamlastname")
 
-		wrapper = mount(ListArticlesSidebar, {
+		wrapper = mount(FeedListArticlesSidebar, {
 			global: {
 				components: { LoggedInUserProfileCard, ArticleSavedCard, Following },
 				mocks: { full_name, redirect_to_author_page: mock_redirect_to_author_page },
@@ -88,7 +88,7 @@ describe('ListArticlesSidebar testing', () => {
 		await wrapper.vm.$nextTick()
 	})
 
-	it('renders the listarticlessidebar component', () => {
+	it('renders the FeedListArticlesSidebar component', () => {
 		expect(wrapper.exists()).toBe(true)
 	})
 

@@ -2,17 +2,19 @@
 	<div id="site-wrapper">
 		<div v-if="(normalUserProfile != null) && (normalUserPosts != null)" class="w-9/12 mx-auto border-v pb-[60px]">
 
-			<!-- 12/12 Grid col-->
+			<!-- 12/12 Grid -->
 			<div class="w-full px-[80px] grid grid-cols-12 gap-[80px]">
 
 				<!-- 8/12 Main content-->
 				<div class="inline-block col-start-1 col-end-9 border-v border-blue-500">
+					<!-- Profile Image -->
 					<img id="header" :src="placeholder_header_image"
 						class="h-[150px] w-full object-cover border-v border-slate-500">
 
 					<div id="top" class="px-2 pt-[50px]">
 						<div id="heading" class="prose">
 							<h2 class="text-4xl leading-[52px] font-medium tracking-[-0.03em]">
+								<!-- First name and last name -->
 								{{ normalUserProfile.first_name }} {{ normalUserProfile.last_name }}
 							</h2>
 						</div>
@@ -33,6 +35,7 @@
 						<hr class="mt-2">
 					</div>
 
+					<!-- Start: All posts -->
 					<div id="main" class="pt-[50px]" v-if="normalUserPosts.results">
 
 						<div class="article" v-for="post in normalUserPosts.results" :key="post.id">
@@ -82,20 +85,21 @@
 									<span>{{ post.num_of_comments }} comments</span>
 								</template>
 
+
+								<!-- Save/unsave article icon -->
 								<template #save-article-icon v-if="post.id">
-
 									<BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post.id)" @click="unsave(post.id)" />
-
 									<BaseIconSaveArticleUnSaved v-else @mouseover="color = 'fill-primary'"
 										@mouseleave="color = 'fill-black'" @click="save(post.id)" :fill-color="color" />
-
 								</template>
 
+								<!-- More options Icon -->
 								<template #more-options-icon v-if="post.id">
 									<BaseIconMoreOptions widthProp="24" heightProp="24" :colorProp="color"
 										@mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'" />
 								</template>
 
+								<!-- Article Image -->
 								<template #article_image v-if="post.id">
 									<img :src="post_image" alt="Bilde til artikkel" class="w-full h-auto">
 								</template>
@@ -106,11 +110,14 @@
 							<hr class="mb-16">
 						</div>
 					</div>
+					<!-- End -->
+
+
 				</div>
 
-				<!-- 4/12 sidebar -->
-				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 
+				<!-- 4/12 Sidebar -->
+				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 					<div>
 						<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
 						<the-user-sidebar :username="normalUserProfile.username"
@@ -127,23 +134,14 @@
 								</div>
 							</template>
 
+							<!-- Button to follow -->
 							<template #follow-button>
-								<base-follow-button>
+								<BaseFollowButton
+								:username="normalUserProfile.username"
+								@followers-pluss="followers++"
+								@followers-minus="followers--"
 
-									<div class="w-fit h-fit cursor-pointer bg-primary text-onPrimary hover:bg-inversePrimary p-1 rounded-md"
-										v-if="checkIfFollowingUser(normalUserProfile.username) === true" id="following"
-										@click="unFollowUser(normalUserProfile.username)"
-										@mouseover="followText = 'Unfollow'" @mouseleave="followText = 'Following'">
-										<p>{{ followText }}</p>
-									</div>
-
-									<div class="w-fit h-fit cursor-pointer p-1 rounded-md bg-inversePrimary text-onPrimary hover:bg-primary"
-										v-if="checkIfFollowingUser(normalUserProfile.username) === false" id="follow"
-										@click="followUser(normalUserProfile.username)">
-										<p>Follow</p>
-									</div>
-
-								</base-follow-button>
+								/>
 							</template>
 
 						</the-user-sidebar>
@@ -158,6 +156,7 @@
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import BaseFollowButton from '~/components/base/BaseFollowButton.vue';
 
 /**
  * User Page
@@ -182,7 +181,7 @@ const normalUserProfile = ref<NormalUserProfileType | null>(null);
 const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
 
 /** Represents the text that is going to be displayed on the (un)follow button */
-const followText = ref("Following")
+
 
 /** Has the **number count** of users that the (normal)user has */
 const followers = ref(0)
@@ -192,7 +191,6 @@ const followers = ref(0)
  * Stores the image that is temporarly being used with each post. The picture from the URL changes dynamically upon each request. 
  */
 const post_image = ref('https://picsum.photos/500/300')
-
 
 /** 
  * Takes the HTML input and returns the pure text version of it.
@@ -226,10 +224,10 @@ onMounted(async () => {
 	 * 
 	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
 	 */
-	const response_profile = await getNormalUserProfile(theNormalUserProfileURL);
+	const responseData_profile = await getNormalUserProfile(theNormalUserProfileURL);
 
-	if (response_profile) {
-		normalUserProfile.value = response_profile.data as NormalUserProfileType
+	if (responseData_profile) {
+		normalUserProfile.value = responseData_profile
 
 		/** Populates/updates the constant that counts the number of followers the normal-user has */
 		followers.value = normalUserProfile.value.num_of_followers
@@ -241,13 +239,12 @@ onMounted(async () => {
 	 * Fetches the posts the user has made through the API address of the user.
 	 * And puts them in a reactive variable.
 	 * 
-	 * 
 	 * @param theNormalUserPostsURL The URL address that the function is going to fetch from.
 	 */
-	const response_user_posts = await getNormalUserPosts(theNormalUserPostsURL);
+	const responseData_posts = await getNormalUserPosts(theNormalUserPostsURL);
 
-	if (response_user_posts) {
-		normalUserPosts.value = response_user_posts.data
+	if (responseData_posts) {
+		normalUserPosts.value = responseData_posts
 	}
 })
 
@@ -306,51 +303,6 @@ const save = async (post: number) => {
 }
 
 /**
- * Unfollows the user
- * 
- * @param username The username of the user that is going to be unfollowed
- */
-const unFollowUser = async (username: string) => {
-	const theNormalUserProfileUnfollowURL = `http://localhost:8888/api/${username}/unfollow/`;
-
-	const response: any = await getUnfollowUser(theNormalUserProfileUnfollowURL)
-
-	// Makes sure that no changes are made if the request was not successfull
-	if (response.status !== 200) {
-		return null
-	}
-
-	const index = loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.findIndex((id) => id === username)
-
-	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.splice(index, 1)
-
-	/** Decrements the number of followers the user has */
-	followers.value--
-
-}
-
-/**
- * Follows the user
- * 
- * @param username The username of the user that is going to be followed
- */
-const followUser = async (username: string) => {
-	const theNormalUserProfileFollowURL = `http://localhost:8888/api/${username}/follow/`;
-
-	const response: any = await getFollowUser(theNormalUserProfileFollowURL)
-
-	// Makes sure that no changes are made if the request was not successfull
-	if (response.status !== 200) {
-		return null
-	}
-
-	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.push(username)
-
-	/** Increases the number of followers the user has */
-	followers.value++
-}
-
-/**
  * Makes sure that data made with 'optimistic ui update' is removed. That is to ensure that the numbers doesn't get duplicated
  * upon revisit. This can happen because the pinia store caches it's data. The collision happens because the data get's refetched
  * each time the page is mounted. 
@@ -370,6 +322,8 @@ onUnmounted(() => {
 
 
 /**
+ * Makes sure that the logged in user can view its OWN normal user page
+ * 
  * @todo Change this into something smarter, more efficiant
  * 
  * Acts as a type of route gard

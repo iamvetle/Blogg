@@ -1,6 +1,14 @@
 import { useGeneralStore } from "@/store/generalStore";
 
-export const setLocalInfo = (token: string, username:string) => {
+/**
+ * Takes the arguments and sets them as info in localStorage
+ * 
+ * @param token - The string that is the token
+ * @param username - The string that is username
+ * 
+ * Has no return
+ */
+export const setTokenAndUsername = (token: string, username:string) => {
   if (process.client) {
     if (token != null || username != null) {
       

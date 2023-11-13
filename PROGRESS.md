@@ -223,7 +223,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 ---
 
 - [x] Gi en bruker muligheten, en knapp de kan trykke på
-  - Helt svart hvis lagret, delvis hvit hvis ikke lagret - ide.
+  - Helt svart hvis lagret, delvis hvit hvis ikke lagret - ide
     - hver post, for å **lagre** en post
   - [x] Trenger å lage en **_fetch call_** for den
 - [x] Muligheten for en bruker til å **fjerne** en post som de har lagret
@@ -236,7 +236,7 @@ Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større o
 - [ ] The **posting functionality** i want it to be obvious when a post was SUCCESSFULL, or when it FAILED.
 - Make it possible for the user to **add pictures** when making post
   - I don't want to focus on adding and rendering images until later
-- idea but probebly not: Maybe remove 'title' input field and just use 'content'
+- idea but probebly not: Maybe remove 'title' input field and just use 'content'd
 
 ---
 
