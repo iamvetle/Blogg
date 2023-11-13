@@ -6,8 +6,10 @@ import { useGeneralStore } from '~/store/generalStore';
 import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePaginationStore } from '~/store/paginationStore';
+import BaseIconSaveArticleSaved from '~/components/base/BaseIconSaveArticleSaved.vue';
+import BaseIconSaveArticleUnSaved from '~/components/base/BaseIconSaveArticleUnSaved.vue';
 
-let wrapper: VueWrapper;
+let wrapper: any;
 let pinia: any = createTestingPinia();
 
 // let generalStore; 
@@ -19,11 +21,14 @@ const factory = () => {
     return shallowMount(ArticleBookmark, {
         global: {
             plugins: [pinia],
-            components: {},
+            components: {
+                BaseIconSaveArticleSaved,
+                BaseIconSaveArticleUnSaved
+            },
             mocks: {},
             stubs: {
-                BaseIconSaveArticleSaved:true,
-                BaseIconSaveArticleUnSaved:true
+                BaseIconSaveArticleSaved: true,
+                BaseIconSaveArticleUnSaved: true
             },
         },
         props: {
@@ -33,7 +38,7 @@ const factory = () => {
     })
 };
 
-describe('', () => {
+describe('Testing the articlebookmark component', () => {
 
     beforeEach(() => {
         // generalStore = useGeneralStore(pinia); 
@@ -49,32 +54,33 @@ describe('', () => {
         }
     });
 
-test('Should exist', () => {
-  wrapper = factory()
+    test('Should exist', () => {
+        wrapper = factory()
 
-  expect(wrapper.exists()).toBe(true)
-})
-test("Should exist component for when article is saved", () => {
-    wrapper = factory()
+        expect(wrapper.exists()).toBe(true)
+    })
+    test("Should exist component for when article is saved", () => {
+        wrapper = factory()
 
-    expect(wrapper.findComponent({ name:"BaseIconArticleSaved" }))
-})
-test("Should exist component for when article is unsaved", () => {
-    wrapper = factory()
+        expect(wrapper.findComponent({ name: "BaseIconArticleSaved" }))
+    })
+    test("Should exist component for when article is unsaved", () => {
+        wrapper = factory()
 
-    expect(wrapper.findComponent({ name:"BaseIconArticleUnSaved" }))
-})
+        expect(wrapper.findComponent({ name: "BaseIconArticleUnSaved" }))
+    })
 
-test('Should have a prop with the id of the post passed', () => {
-  wrapper = factory()
+    test('Should have a prop with the id of the post passed', () => {
+        wrapper = factory()
 
-  expect(wrapper.props("post")).toBeTruthy()
-})
-test('The postid prop should be a number', () => {
-  wrapper = factory()
+        expect(wrapper.props("post")).toBeTruthy()
+    })
+    test('The postid prop should be a number', () => {
+        wrapper = factory()
 
-  const idProp = wrapper.props("post")
+        const idProp = wrapper.props("post")
 
-  expect(typeof idProp).toBe("number")
-})
-})
+        expect(typeof idProp).toBe("number")
+    })
+    
+});

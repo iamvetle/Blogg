@@ -73,6 +73,11 @@ import placeholder_profile_picture from '~/assets/placeholder-profile-picture.pn
 import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
+/**
+ * TODO Wish to have a "saved post" list on this page
+ */
+
+
 definePageMeta({
 	layout:'default'
 })

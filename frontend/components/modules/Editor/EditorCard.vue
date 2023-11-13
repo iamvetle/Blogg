@@ -1,20 +1,18 @@
 <template>
 	<div class="p-2" v-if="editor">
-		<div id="editor-container" class="w-full min-h-[450px] mb-12" @click="editor.commands.focus()">
+		<div id="editor-container"
+			class="w-full px-[60px] pt-[35px] pb-[30px] bg-white flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12"
+			@click="editor.commands.focus()">
+
 			<div v-if="showModal">
 				<teleport to="#modal">
 					<div class="w-full h-screen blur-sm">
-						<Modal
-						@confirm-published="publishPost"
-						@cancel-published="cancelPublishing"
-						/>
+						<Modal @confirm-published="publishPost" @cancel-published="cancelPublishing" />
 					</div>
 				</teleport>
 			</div>
-			<div v-if="editor" id="editor-area" class="w-full">
-				<div class="w-full not-prose mb-6">
 
-
+			<div class="w-full not-prose mb-6">
 				<EditorFloatingMenu :editor="editor" @addImage="addImage" @setLink="setLink"
 					@toggleHeading1="toggleHeading(1)" @toggleHeading2="toggleHeading(2)"
 					@setHorizontalRule="horizontalRule" />
@@ -22,31 +20,29 @@
 				<!-- <EditorBubbleMenu
 				:editor="editor"
 				/> -->
-					<EditorCardTopMenu
-					:editor="editor"/>
-				</div>
-				<hr class="not-prose mb-8">
-				
+				<EditorCardTopMenu :editor="editor" />
+			</div>
 
-				<div class="w-full">
-					<editor-content :editor="editor" />
-				</div>
+			<hr class="not-prose mb-8">
 
+
+			<div data-test="direct-editor" class="w-full">
+				<editor-content :editor="editor" />
 			</div>
 
 		</div>
+
 		<hr class="mb-4">
-		<div class="buttons flex">
-			<button id="cancel"
+
+		<div data-test="cancel_publish_buttons" class="buttons flex">
+
+			<BaseButton id="cancel"
 				class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
-				@click="buttonCancelClick">
-				Cancel
-			</button>
-			<button id="publish"
+				@click="buttonCancelClick" text="Cancel" />
+			<BaseButton id="publish"
 				class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
-				@click="buttonTryPublishClick">
-				Publish
-			</button>
+				@click="buttonTryPublishClick" text="Publish"/>
+
 		</div>
 	</div>
 </template>
@@ -139,7 +135,7 @@ const editor = useEditor({
 		// }),
 		BulletList,
 		Image.configure({
-				allowBase64: true,
+			allowBase64: true,
 		}),
 		CodeBlock.configure({
 			exitOnTripleEnter: true,
@@ -163,7 +159,7 @@ const editor = useEditor({
 		// TableCell,
 		History,
 		// Youtube.configure({
-			// nocookie: true,
+		// nocookie: true,
 		// }),
 		Dropcursor,
 		Document,
@@ -171,7 +167,7 @@ const editor = useEditor({
 		Text, // required
 		// TaskList,
 		// TaskItem.configure({
-			// nested: true,
+		// nested: true,
 		// }),
 		Italic,
 		Link.configure({
@@ -254,7 +250,7 @@ const buttonTryPublishClick = async () => {
 
 	/** If the title or body is null an alert is given, and the process is stopped */
 	if ((title.value == null) || (body.value == null)) {
-	
+
 		console.log(`Somethign went wrong. body: ${body}. title: ${title} `) // print to self
 		alert("Something went wrong. See console log")
 
@@ -264,18 +260,18 @@ const buttonTryPublishClick = async () => {
 		// Exited, stopped
 		return null
 
-	/** 
-	 * If the return object has actual values 
-	 * The Modal is shown.
-	 * 
-	 * Basically says: The post can be published now.
-	 */
+		/** 
+		 * If the return object has actual values 
+		 * The Modal is shown.
+		 * 
+		 * Basically says: The post can be published now.
+		 */
 	} else {
 		showModal.value = true
-		
+
 		/** This calls the store function that controls the background */
 		generalStore.turnBackgroundForModel("blur-sm")
-		
+
 
 		// tele port for mobile conditional rendering? disable teleport por? still hav to telefport to "app" vueuse use breakpoints - breakpoints tailwind??
 	}
@@ -316,9 +312,9 @@ const publishPost = () => {
 	generalStore.turnBackgroundForModel(null)
 
 	const htmlData = {
-			"title": title.value,
-			"content": body.value,
-		}
+		"title": title.value,
+		"content": body.value,
+	}
 
 	emit('newPostMaterial', htmlData)
 	html.value = ""
@@ -330,7 +326,7 @@ const publishPost = () => {
 /**
  * It is called by the modal and it stops the process of making the post.
  */
-const cancelPublishing = () => 	{
+const cancelPublishing = () => {
 	showModal.value = false
 	generalStore.turnBackgroundForModel(null)
 	return null
@@ -424,8 +420,8 @@ const toggleItalic = () => {
 
 <style scoped>
 .editor-placeholder {
-  color: grey;
-  font-style: italic;
-  /* Additional styling as needed */
+	color: grey;
+	font-style: italic;
+	/* Additional styling as needed */
 }
 </style>

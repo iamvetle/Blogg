@@ -136,7 +136,7 @@
 
 							<!-- Button to follow -->
 							<template #follow-button>
-								<BaseFollowButton
+								<BaseButtonFollow
 								:username="normalUserProfile.username"
 								@followers-pluss="followers++"
 								@followers-minus="followers--"
@@ -156,7 +156,7 @@
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import BaseFollowButton from '~/components/base/BaseFollowButton.vue';
+import BaseButtonFollow from '~/components/base/BaseButtonFollow.vue';
 
 /**
  * User Page

@@ -1,7 +1,7 @@
 <template>
 	<div id="postFormWrapper" class="mt-2 mb-16">
 		<div class="max-w-3xl py-4 mx-auto prose">
-			<div id="direct-editor" :class="editorContainerClass">
+			<div id="direct-editor">
 				<EditorCard @newPostMaterial="publish" />
 			</div>
 
@@ -30,16 +30,6 @@ const baseURL = "http://localhost:8888/api/newpost/"
 
 /** If this is true a success message is rendered */
 const postState = ref<false | true | null>(null);
-
-
-/** 
- * This controls the outer-styling that the text editor has and can be
- * changed dynamically.
- * 
- * 
- * 
- */
-const editorContainerClass = ref("w-full px-[60px] pt-[35px] pb-[30px] bg-white flex flex-col text-gray-800 rounded-lg bg-[#FFFFFF]")
 
 /** 
  * * Final publishing step 

@@ -13,7 +13,7 @@
 								- {{ post.author.username }}
 							</p>
 						</NuxtLink>
-						<!-- <BaseFollowButton v-if="!checkIfLoggedInUser(post.author.username)" :username="post.author.username" /> -->
+						<!-- <BaseButtonFollow v-if="!checkIfLoggedInUser(post.author.username)" :username="post.author.username" /> -->
 			
 					</span>
 					<span class="text-xs float-right">Published {{ post.date_published }}</span>

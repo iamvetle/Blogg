@@ -1,5 +1,7 @@
 <template >
     <!-- Background color -->
+    <div id="modal" :class="generalStore.backgroundForModal"></div>
+
     <div id="site-wrapper">
         <ClientOnly>
             <TheNavbar />
@@ -14,6 +16,9 @@
 </template>
 
 <script setup lang="ts">
+import { useGeneralStore } from '~/store/generalStore';
+
+const generalStore = useGeneralStore()
 
 </script>
 

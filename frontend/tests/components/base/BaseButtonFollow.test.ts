@@ -1,4 +1,4 @@
-import BaseFollowButton from '~/components/base/BaseFollowButton.vue';
+import BaseButtonFollow from '~/components/base/BaseButtonFollow.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { useGeneralStore } from '~/store/generalStore';
@@ -12,7 +12,7 @@ describe('testing basefollowbutton', () => {
         store = useGeneralStore(pinia);
 
 
-        wrapper = shallowMount(BaseFollowButton, {
+        wrapper = shallowMount(BaseButtonFollow, {
             global: {
                 plugins: [pinia],
                 components: {},

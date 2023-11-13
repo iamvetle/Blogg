@@ -8,7 +8,7 @@ import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue';
 import BaseIconSaveArticleSaved from '~/components/base/BaseIconSaveArticleSaved.vue';
 import BaseIconSaveArticleUnSaved from '~/components/base/BaseIconSaveArticleUnSaved.vue';
 import TheUserSidebar from '~/components/modules/UserProfile/TheUserSidebar.vue';
-import BaseFollowButton from '~/components/base/BaseFollowButton.vue';
+import BaseButtonFollow from '~/components/base/BaseButtonFollow.vue';
 
 describe('', () => {
     let wrapper: VueWrapper;
@@ -63,7 +63,7 @@ describe('', () => {
                     ArticleCard,
                     BaseIconMoreOptions,
                     TheUserSidebar,
-                    BaseFollowButton
+                    BaseButtonFollow
                 },
                 mocks: {
                     $route: {
@@ -75,7 +75,7 @@ describe('', () => {
             stubs: {
                 "ArticleCard": true,
                 "TheUserSidebar": true,
-                "BaseFollowButton": true,
+                "BaseButtonFollow": true,
                 "BaseTag": true,
                 "BaseIconSaveArticleSaved": true,
                 "BaseIconSaveArticleUnSaved": true,

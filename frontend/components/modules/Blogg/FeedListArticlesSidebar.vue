@@ -53,12 +53,12 @@
 				<article-saved-card :key="post.post.id">
 
 					<template #title>
-						<span @click="redirect_to_author_page(post.post.username)" data-test="redirect_to_author" class="cursor-pointer">{{ post.post.title
+						<span @click="redirect_to_post_page(post.post.id)" data-test="redirect_to_author" class="cursor-pointer">{{ post.post.title
 						}}</span>
 					</template>
 
 					<template #author>
-						<span @click="redirect_to_post_page(post.post.id)" data-test="redirect_to_post" class="cursor-pointer">{{ post.post.username
+						<span @click="redirect_to_author_page(post.post.username)" data-test="redirect_to_post" class="cursor-pointer">{{ post.post.username
 						}}</span>
 					</template>
 
@@ -122,14 +122,14 @@ const full_name = computed(() => {
 })
 
 
-const redirect_to_post_page = async (postId: any) => {
+const redirect_to_post_page = (postId: any) => {
 
-	return await navigateTo(`/post/${postId}`)
+	return navigateTo(`/post/${postId}`)
 }
 
-const redirect_to_author_page = async (username: any) => {
+const redirect_to_author_page = (username: any) => {
 
-	return await navigateTo(`/user/${username}`)
+	return navigateTo(`/user/${username}`)
 }
 
 </script>
