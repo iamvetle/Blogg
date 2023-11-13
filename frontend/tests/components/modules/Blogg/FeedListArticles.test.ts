@@ -3,13 +3,12 @@ import FeedListArticles from '~/components/modules/Blogg/FeedListArticles.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { useGeneralStore } from '~/store/generalStore'
 import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue'
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePostStore } from '~/store/postStore'
+import ArticleBookmark from '~/components/UI/ArticleBookmark.vue'
 
 describe("list articles testing", () => {
     let wrapper: VueWrapper
     let generalStore: any;
-    let loggedInUserStore:any;
     let postStore:any;
     let pinia: any;
 
@@ -19,7 +18,6 @@ describe("list articles testing", () => {
 
         // Initialize the generalStore with mock data
         generalStore = useGeneralStore(pinia)
-        loggedInUserStore = useLoggedInUserStore(pinia)
         postStore = usePostStore(pinia)
 
         generalStore.isAuthenticated = true
@@ -49,11 +47,11 @@ describe("list articles testing", () => {
             global: {
                 plugins: [pinia],
                 components: {
-                    ArticleCard
+                    ArticleCard,
+                    ArticleBookmark
                 },
                 stubs: {
-                    BaseIconSaveArticleUnSaved:true,
-                    BaseIconSaveArticleSaved:true,
+                    ArticleBookmark:true,
                     BaseTag:true,
                     BaseIconMoreOptions:true,
 
@@ -80,8 +78,8 @@ describe("list articles testing", () => {
         expect(wrapper.text()).toContain("Lorem ipsum...")
         expect(wrapper.text()).toContain("08-12-2021")
     })
-    test("renders the save icon component", () => {
-        const save_icon = wrapper.findComponent({ name: "BaseIconSaveArticleUnSaved" }) 
+    test("renders the article bookmark icon component", () => {
+        const save_icon = wrapper.findComponent({ name: "ArticleBookmark" }) 
 
         expect(save_icon.exists()).toBe(true)
     })
