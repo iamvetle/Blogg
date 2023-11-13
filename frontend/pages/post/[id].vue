@@ -4,22 +4,26 @@
 			<h1 class="">
 				{{ post.title }}
 			</h1>
-			<span class="mb-4 flex items-center justify-between">
-
-				<span class="flex items-center">
-					<img :src="placeholder_profile_picture" alt="" class="mr-2 h-8">
-
-					<NuxtLink :to="post.author.username" class="not-prose">
-						<p class="font-bold inline">
-							- {{ post.author.username }}
-						</p>
-					</NuxtLink>
-
-					<!-- <BaseFollowButton v-if="!checkIfLoggedInUser(post.author.username)" :username="post.author.username" /> -->
-
+			<div>
+				<span class="mb-4 flex items-center justify-between">
+					<span class="flex items-center">
+						<img :src="placeholder_profile_picture" alt="" class="mr-2 h-8">
+						<NuxtLink :to="post.author.username" class="not-prose">
+							<p class="font-bold inline">
+								- {{ post.author.username }}
+							</p>
+						</NuxtLink>
+						<!-- <BaseFollowButton v-if="!checkIfLoggedInUser(post.author.username)" :username="post.author.username" /> -->
+			
+					</span>
+					<span class="text-xs float-right">Published {{ post.date_published }}</span>
 				</span>
+			</div>
 
-				<span class="text-xs float-right">Published {{ post.date_published }}</span>
+			<span>
+				<ArticleBookmark
+						:post="post.id"
+						/>
 			</span>
 
 			<hr>
