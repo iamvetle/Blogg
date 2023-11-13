@@ -35,8 +35,11 @@ const postState = ref<false | true | null>(null);
 /** 
  * This controls the outer-styling that the text editor has and can be
  * changed dynamically.
+ * 
+ * 
+ * 
  */
-const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 rounded-lg bg-[#FFFFFF]")
+const editorContainerClass = ref("w-full px-[60px] pt-[35px] pb-[30px] bg-white flex flex-col text-gray-800 rounded-lg bg-[#FFFFFF]")
 
 /** 
  * * Final publishing step 

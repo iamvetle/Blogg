@@ -2,55 +2,72 @@
     <div id="top-menu-container" v-if="editor" class="flex space-x-10 w-full">
         <div id="top-three" class="flex space-x-2">
             <span class="option-holder">
-                <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold" :is-active="editor.isActive('bold')"/>
+                <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold"
+                    :is-active="editor.isActive('bold')" />
             </span>
             <span class="option-holder">
-                <EditorButton @click="toggleItalic(editor)" data-test="italic_option" :icon="italic_icon" alt="Italic" :is-active="editor.isActive('italic')" />
+                <EditorButton @click="toggleItalic(editor)" data-test="italic_option" :icon="italic_icon" alt="Italic"
+                    :is-active="editor.isActive('italic')" />
             </span>
             <span class="option-holder">
-                <EditorButton @click="toggleUnderline(editor)" data-test="underline_option" :icon="underline_icon" alt="Underline" :is-active="editor.isActive('underline')" />
+                <EditorButton @click="toggleUnderline(editor)" data-test="underline_option" :icon="underline_icon"
+                    alt="Underline" :is-active="editor.isActive('underline')" />
             </span>
         </div>
+        <div id="heading_options" class="flex space-x-2">
+            <span class="option-holder">
+                <EditorButton data-test="heading1_option" :is-active="editor.isActive('heading', { level: 1 })"
+                    @click="toggleHeading(editor, 1)" :icon="heading1_icon" alt="Heading 1" />
+            </span>
+            <span class="option-holder">
+                <EditorButton data-test="heading2_option" :is-active="editor.isActive('heading', { level: 2 })"
+                    @click="toggleHeading(editor, 2)" :icon="heading2_icon" alt="Heading 2" />
+            </span>
+            <span class="option-holder">
+                <EditorButton data-test="heading3_option" :is-active="editor.isActive('heading', { level: 3 })"
+                    @click="toggleHeading(editor, 3)" :icon="heading3_icon" alt="Heading 3" />
+            </span>
+        </div>
+
         <div id="list-options" class="flex space-x-2">
             <span class="option-holder">
-                <EditorButton @click="toggleBulletList(editor)" data-test="bullet_list_option" :icon="bullet_list_icon" alt="Unordered list" :is-active="editor.isActive('bulletList')" />
+                <EditorButton @click="toggleBulletList(editor)" data-test="bullet_list_option" :icon="bullet_list_icon"
+                    alt="Unordered list" :is-active="editor.isActive('bulletList')" />
             </span>
             <span class="option-holder">
-                <EditorButton @click="toggleOrderedList(editor)" data-test="number_list_option" :icon="number_list_icon" alt="Ordered list" :is-active="editor.isActive('orderedList')"/>
+                <EditorButton @click="toggleOrderedList(editor)" data-test="number_list_option" :icon="number_list_icon"
+                    alt="Ordered list" :is-active="editor.isActive('orderedList')" />
             </span>
         </div>
-        <div id="add_options" class="flex space-x-2">
+        <div v-show="false" id="add_options" class="flex space-x-2">
             <span class="option-holder">
-                <EditorButton @click="add_image_handle" data-test="image_option" :icon="image_add_icon" alt="Add image"
-                />
+                <EditorButton @click="add_image_handle" data-test="image_option" :icon="image_add_icon" alt="Add image" />
             </span>
-            
+
             <span class="option-holder">
-                <EditorButton @click="add_url_link_handle" data-test="url_link_option" :icon="url_link_add_icon" alt="Add hyperlink" :is-active="editor.isActive('link')"
-                />
-            </span>
-        </div>
-        <div id="undo_redo_options" class="flex space-x-2">
-            <span class="option-holder">
-                <EditorButton @click="setUndo(editor)" data-test="undo_option" :icon="go_back_icon" alt="Undo"
-                />
-            </span>
-            <span class="option-holder ">
-                <EditorButton @click="setRedo(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo"
-                />
+                <EditorButton @click="add_url_link_handle" data-test="url_link_option" :icon="url_link_add_icon"
+                    alt="Add hyperlink" :is-active="editor.isActive('link')" />
             </span>
         </div>
         <div id="codeQuote_options" class="flex space-x-2">
             <span class="option-holder">
-                <EditorButton data-test="blockquote_option" :is-active="editor.isActive('blockquote')" @click="toggleBlockquote(editor)"
-                :icon="blockquote_icon" alt="Blockquote"/>
+                <EditorButton data-test="blockquote_option" :is-active="editor.isActive('blockquote')"
+                    @click="toggleBlockquote(editor)" :icon="blockquote_icon" alt="Blockquote" />
             </span>
             <span class="option-holder">
-                <EditorButton data-test="codeblock_option" :is-active="editor.isActive('codeBlock')" @click="toggleCodeBlock(editor)"
-                :icon="codeblock_icon" alt="Codeblock" />
+                <EditorButton data-test="codeblock_option" :is-active="editor.isActive('codeBlock')"
+                    @click="toggleCodeBlock(editor)" :icon="codeblock_icon" alt="Codeblock" />
             </span>
         </div>
-        
+        <div id="undo_redo_options" class="flex space-x-2">
+            <span class="option-holder">
+                <EditorButton @click="setUndo(editor)" data-test="undo_option" :icon="go_back_icon" alt="Undo" />
+            </span>
+            <span class="option-holder ">
+                <EditorButton @click="setRedo(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo" />
+            </span>
+        </div>
+
     </div>
 </template>
 
@@ -68,10 +85,16 @@ import go_forward_icon from '~/assets/icons/go_forward_icon.svg'
 import blockquote_icon from '~/assets/icons/double-quotes-r.svg'
 import codeblock_icon from '~/assets/icons/codeblock_icon.svg'
 
+import heading1_icon from '~/assets/icons/h1.svg'
+import heading2_icon from '~/assets/icons/h2.svg'
+import heading3_icon from '~/assets/icons/h3.svg'
+
+
+
 import { Editor } from '@tiptap/core';
 
 defineProps<{
-  editor: Editor | undefined
+    editor: Editor | undefined
 }>();
 
 const add_image_handle = () => {
@@ -82,39 +105,39 @@ const add_url_link_handle = () => {
     return null
 }
 
-const toggleBold = (editor:any) => {
-	editor.chain().focus().toggleBold().run()
+const toggleBold = (editor: any) => {
+    editor.chain().focus().toggleBold().run()
 }
 
-const toggleItalic = (editor:any) => {
-	editor.chain().focus().toggleItalic().run()
+const toggleItalic = (editor: any) => {
+    editor.chain().focus().toggleItalic().run()
 }
 
-// const toggleHeading = (level) => {
-// 	editor.value.chain().focus().toggleHeading({ level }).run();
-// };
+const toggleHeading = (editor: any, level: any) => {
+    editor.chain().focus().toggleHeading({ level }).run();
+};
 
 // const horizontalRule = () => {
 // 	editor.value.chain().focus().setHorizontalRule().run()
 // };
 
-const toggleUnderline = (editor:any) => {
-	editor.chain().focus().toggleUnderline().run()
+const toggleUnderline = (editor: any) => {
+    editor.chain().focus().toggleUnderline().run()
 }
 
-const toggleBulletList = (editor:any) => {
+const toggleBulletList = (editor: any) => {
     return editor.chain().focus().toggleBulletList().run()
 }
 
-const toggleOrderedList = (editor:any) => {
+const toggleOrderedList = (editor: any) => {
     return editor.chain().focus().toggleOrderedList().run()
 }
 
-const setUndo = (editor:any) => {
+const setUndo = (editor: any) => {
     return editor.chain().focus().undo().run()
 }
 
-const setRedo = (editor:any) => {
+const setRedo = (editor: any) => {
     return editor.chain().focus().redo().run()
 }
 
@@ -122,11 +145,11 @@ const setRedo = (editor:any) => {
 // 	editor.value.chain().focus().toggleCode().run()
 // }
 
-const toggleBlockquote = (editor:any) => {
-	editor.chain().focus().toggleBlockquote().run()
+const toggleBlockquote = (editor: any) => {
+    editor.chain().focus().toggleBlockquote().run()
 }
 
-const toggleCodeBlock = (editor:any) => {
+const toggleCodeBlock = (editor: any) => {
     editor.chain().focus().toggleCodeBlock().run()
 }
 

@@ -17,6 +17,10 @@ import go_forward_icon from '~/assets/icons/go_forward_icon.svg';
 import blockquote_icon from '~/assets/icons/double-quotes-r.svg'
 import codeblock_icon from '~/assets/icons/codeblock_icon.svg'
 
+import heading1_icon from '~/assets/icons/h1.svg'
+import heading2_icon from '~/assets/icons/h2.svg'
+import heading3_icon from '~/assets/icons/h3.svg'
+
 
 let wrapper: any;
 let pinia: any = createTestingPinia();
@@ -47,6 +51,7 @@ const mockSetUndo = vi.fn()
 const mockSetRedo = vi.fn()
 const mockToggleBlockquote = vi.fn()
 const mockToggleCodeBlock = vi.fn()
+const mockToggleHeading = vi.fn()
 
 const factory = () => {
     return shallowMount(EditorCardTopMenu, {
@@ -59,12 +64,13 @@ const factory = () => {
                 toggleBold: mockToggleBold,
                 toggleItalic: mockToggleItalic,
                 toggleUnderline: mockToggleUnderline,
-                toggleBulletList:mockToggleBulletList,
-                toggleOrderedList:mockToggleNumberList,
-                setUndo:mockSetUndo,
-                setRedo:mockSetRedo,
-                toggleBlockquote:mockToggleBlockquote,
-                toggleCodeBlock:mockToggleCodeBlock
+                toggleBulletList: mockToggleBulletList,
+                toggleOrderedList: mockToggleNumberList,
+                setUndo: mockSetUndo,
+                setRedo: mockSetRedo,
+                toggleBlockquote: mockToggleBlockquote,
+                toggleCodeBlock: mockToggleCodeBlock,
+                toggleHeading:mockToggleHeading
             },
             stubs: {
                 EditorButton: true
@@ -164,54 +170,54 @@ describe('Testing the EditorCard top menu', () => {
         expect(topMenuContainer.classes()).toContain("flex")
     })
 
-    /** ITALIC OPTION TESTS */
+        /** ITALIC OPTION TESTS */
 
-    test('Should have a "italic" option component button', () => {
-        wrapper = factory()
-
-        const italic = (wrapper as any).findComponent("[data-test='italic_option']");
-
-        expect(italic.exists()).toBe(true)
-    })
-    test('The italic option should an "icon" prop with a "italic" icon value', () => {
-        wrapper = factory()
-
-        const italic = (wrapper as any).findComponent("[data-test='italic_option']");
-
-        expect(italic.exists()).toBe(true)
-
-        expect(italic.props("icon")).toBeTruthy()
-        expect(italic.props("icon")).toBe(italic_icon)
-    });
-    test('The italic option should have "alt" be correct', () => {
-        wrapper = factory()
-
-        const italic = (wrapper as any).findComponent("[data-test='italic_option']");
-
-        expect(italic.attributes("alt")).toBe("Italic")
-
-    });
-    test('If the italic option has a class, it should be string type', () => {
-        wrapper = factory()
-
-        const italic = wrapper.findComponent("[data-test='italic_option']");
-
-        if (italic) {
-
-            expect(italic.attributes("class")).toBeTypeOf("string")
-
-        } else {
-            expect(italic).toBeFalsy()
-        }
-
-    })
-    test('The italic option should have the "isActive" prop with the correct value', () => {
-        wrapper = factory()
-
-        const italic = (wrapper as any).findComponent("[data-test='italic_option']");
-
-        expect(italic.props("isActive")).toBe(mockEditor.isActive('italic'))
-    })
+        test('Should have a "italic" option component button', () => {
+            wrapper = factory()
+    
+            const italic = (wrapper as any).findComponent("[data-test='italic_option']");
+    
+            expect(italic.exists()).toBe(true)
+        })
+        test('The italic option should an "icon" prop with a "italic" icon value', () => {
+            wrapper = factory()
+    
+            const italic = (wrapper as any).findComponent("[data-test='italic_option']");
+    
+            expect(italic.exists()).toBe(true)
+    
+            expect(italic.props("icon")).toBeTruthy()
+            expect(italic.props("icon")).toBe(italic_icon)
+        });
+        test('The italic option should have "alt" be correct', () => {
+            wrapper = factory()
+    
+            const italic = (wrapper as any).findComponent("[data-test='italic_option']");
+    
+            expect(italic.attributes("alt")).toBe("Italic")
+    
+        });
+        test('If the italic option has a class, it should be string type', () => {
+            wrapper = factory()
+    
+            const italic = wrapper.findComponent("[data-test='italic_option']");
+    
+            if (italic) {
+    
+                expect(italic.attributes("class")).toBeTypeOf("string")
+    
+            } else {
+                expect(italic).toBeFalsy()
+            }
+    
+        })
+        test('The italic option should have the "isActive" prop with the correct value', () => {
+            wrapper = factory()
+    
+            const italic = (wrapper as any).findComponent("[data-test='italic_option']");
+    
+            expect(italic.props("isActive")).toBe(mockEditor.isActive('italic'))
+        })
 
     /** ---  */
 
@@ -749,57 +755,57 @@ describe('Testing the EditorCard top menu', () => {
 
     /** --- */
 
-        /** BLOCKQUOTE */
+    /** CODEBLOCK  */
 
-        test('Should have a "codeblock" option component button', () => {
-            wrapper = factory()
-    
-            const codeblock_option = (wrapper as any).findComponent("[data-test='codeblock_option']");
-    
-            expect(codeblock_option.exists()).toBe(true)
-        })
-        test('The codeblock option should have an "icon" prop with a "quote" icon value', () => {
-            wrapper = factory()
-    
-            const codeblock = (wrapper as any).findComponent("[data-test='codeblock_option']");
-    
-            expect(codeblock.exists()).toBe(true)
-    
-            expect(codeblock.props("icon")).toBeTruthy()
-            expect(codeblock.props("icon")).toBe(codeblock_icon)
-        });
-        test('The codeblock option should have "alt" be correct', () => {
-            wrapper = factory()
-    
-            const codeblock = (wrapper as any).findComponent("[data-test='codeblock_option']");
-    
-            expect(codeblock.attributes("alt")).toBe("Codeblock")
-    
-        });
-        test('If the codeblock option has a class, it should be string type', () => {
-            wrapper = factory()
-    
-            const codeblock = wrapper.findComponent("[data-test='codeblock_option']");
-    
-            if (codeblock) {
-    
-                expect(codeblock.attributes("class")).toBeTypeOf("string")
-    
-            } else {
-                expect(codeblock).toBeFalsy()
-            }
-        })
-        test('The codeblock option should have the "isActive" prop with the correct value', () => {
-            wrapper = factory()
-    
-            const codeblock = (wrapper as any).findComponent("[data-test='codeblock_option']");
-    
-            expect(codeblock.exists()).toBe(true)
-    
-            expect(codeblock.props("isActive")).toBe(mockEditor.isActive('codeBlock'))
-        })
+    test('Should have a "codeblock" option component button', () => {
+        wrapper = factory()
 
-            /** --- */
+        const codeblock_option = (wrapper as any).findComponent("[data-test='codeblock_option']");
+
+        expect(codeblock_option.exists()).toBe(true)
+    })
+    test('The codeblock option should have an "icon" prop with a "quote" icon value', () => {
+        wrapper = factory()
+
+        const codeblock = (wrapper as any).findComponent("[data-test='codeblock_option']");
+
+        expect(codeblock.exists()).toBe(true)
+
+        expect(codeblock.props("icon")).toBeTruthy()
+        expect(codeblock.props("icon")).toBe(codeblock_icon)
+    });
+    test('The codeblock option should have "alt" be correct', () => {
+        wrapper = factory()
+
+        const codeblock = (wrapper as any).findComponent("[data-test='codeblock_option']");
+
+        expect(codeblock.attributes("alt")).toBe("Codeblock")
+
+    });
+    test('If the codeblock option has a class, it should be string type', () => {
+        wrapper = factory()
+
+        const codeblock = wrapper.findComponent("[data-test='codeblock_option']");
+
+        if (codeblock) {
+
+            expect(codeblock.attributes("class")).toBeTypeOf("string")
+
+        } else {
+            expect(codeblock).toBeFalsy()
+        }
+    })
+    test('The codeblock option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const codeblock = (wrapper as any).findComponent("[data-test='codeblock_option']");
+
+        expect(codeblock.exists()).toBe(true)
+
+        expect(codeblock.props("isActive")).toBe(mockEditor.isActive('codeBlock'))
+    })
+
+    /** --- */
 
     test('There should be a wrapper around the add blockqyote and codeblock options', () => {
         wrapper = factory()
@@ -820,6 +826,178 @@ describe('Testing the EditorCard top menu', () => {
         const codeblock = addOptions.findComponent("[data-test='codeblock_option']")
         expect(codeblock.exists()).toBe(true)
     })
+
+    /** HEADING 2 OPTION TESTS */
+
+    test('Should have a "heading1" option component button', () => {
+        wrapper = factory()
+
+        const heading1 = (wrapper as any).findComponent("[data-test='heading1_option']");
+
+        expect(heading1.exists()).toBe(true)
+    })
+    test('The heading1 option should an "icon" prop with a "heading1" icon value', () => {
+        wrapper = factory()
+
+        const heading1 = (wrapper as any).findComponent("[data-test='heading1_option']");
+
+        expect(heading1.exists()).toBe(true)
+
+        expect(heading1.props("icon")).toBeTruthy()
+        expect(heading1.props("icon")).toBe(heading1_icon)
+    });
+    test('The heading1 option should have "alt" be correct', () => {
+        wrapper = factory()
+
+        const heading1 = (wrapper as any).findComponent("[data-test='heading1_option']");
+
+        expect(heading1.attributes("alt")).toBe("Heading 1")
+
+    });
+    test('If the heading1 option has a class, it should be string type', () => {
+        wrapper = factory()
+
+        const heading1 = wrapper.findComponent("[data-test='heading1_option']");
+
+        if (heading1) {
+
+            expect(heading1.attributes("class")).toBeTypeOf("string")
+
+        } else {
+            expect(heading1).toBeFalsy()
+        }
+
+    })
+    test('The heading1 option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const heading1 = (wrapper as any).findComponent("[data-test='heading1_option']");
+
+        expect(heading1.props("isActive")).toBe(mockEditor.isActive('heading', { level: 1 }))
+    })
+
+    /** HEADING 2 OPTION TESTS */
+
+    test('Should have a "heading2" option component button', () => {
+        wrapper = factory()
+
+        const heading2 = (wrapper as any).findComponent("[data-test='heading2_option']");
+
+        expect(heading2.exists()).toBe(true)
+    })
+    test('The heading2 option should an "icon" prop with a "heading2" icon value', () => {
+        wrapper = factory()
+
+        const heading2 = (wrapper as any).findComponent("[data-test='heading2_option']");
+
+        expect(heading2.exists()).toBe(true)
+
+        expect(heading2.props("icon")).toBeTruthy()
+        expect(heading2.props("icon")).toBe(heading2_icon)
+    });
+    test('The heading2 option should have "alt" be correct', () => {
+        wrapper = factory()
+
+        const heading2 = (wrapper as any).findComponent("[data-test='heading2_option']");
+
+        expect(heading2.attributes("alt")).toBe("Heading 2")
+
+    });
+    test('If the heading2 option has a class, it should be string type', () => {
+        wrapper = factory()
+
+        const heading2 = wrapper.findComponent("[data-test='heading2_option']");
+
+        if (heading2) {
+
+            expect(heading2.attributes("class")).toBeTypeOf("string")
+
+        } else {
+            expect(heading2).toBeFalsy()
+        }
+
+    })
+    test('The heading2 option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const heading2 = (wrapper as any).findComponent("[data-test='heading2_option']");
+
+        expect(heading2.props("isActive")).toBe(mockEditor.isActive('heading', { level: 2 }))
+    })
+
+    /** HEADING 3 OPTION TESTS */
+
+    test('Should have a "heading3" option component button', () => {
+        wrapper = factory()
+
+        const heading3 = (wrapper as any).findComponent("[data-test='heading3_option']");
+
+        expect(heading3.exists()).toBe(true)
+    })
+    test('The heading3 option should an "icon" prop with a "heading3" icon value', () => {
+        wrapper = factory()
+
+        const heading3 = (wrapper as any).findComponent("[data-test='heading3_option']");
+
+        expect(heading3.exists()).toBe(true)
+
+        expect(heading3.props("icon")).toBeTruthy()
+        expect(heading3.props("icon")).toBe(heading3_icon)
+    });
+    test('The heading3 option should have "alt" be correct', () => {
+        wrapper = factory()
+
+        const heading3 = (wrapper as any).findComponent("[data-test='heading3_option']");
+
+        expect(heading3.attributes("alt")).toBe("Heading 3")
+
+    });
+    test('If the heading3 option has a class, it should be string type', () => {
+        wrapper = factory()
+
+        const heading3 = wrapper.findComponent("[data-test='heading3_option']");
+
+        if (heading3) {
+
+            expect(heading3.attributes("class")).toBeTypeOf("string")
+
+        } else {
+            expect(heading3).toBeFalsy()
+        }
+
+    })
+    test('The heading3 option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const heading3 = (wrapper as any).findComponent("[data-test='heading3_option']");
+
+        expect(heading3.props("isActive")).toBe(mockEditor.isActive('heading', { level: 3 }))
+    })
+
+        /** --- */
+
+        test('There should be a wrapper around the add heading 1, 2 and 3 options', () => {
+            wrapper = factory()
+    
+            const addOptions = wrapper.get("#heading_options")
+    
+            expect(addOptions.classes()).toContain("flex")
+            expect(addOptions.exists()).toBe(true)
+            expect(addOptions.element.tagName).toBe("DIV")
+    
+            const all_components_in_div = addOptions.findAllComponents({ name: "EditorButton" })
+    
+            expect(all_components_in_div).toHaveLength(3)
+    
+            const heading1 = addOptions.findComponent("[data-test='heading1_option']")
+            expect(heading1.exists()).toBe(true)
+    
+            const heading2 = addOptions.findComponent("[data-test='heading2_option']")
+            expect(heading2.exists()).toBe(true)
+
+            const heading3 = addOptions.findComponent("[data-test='heading3_option']")
+            expect(heading3.exists()).toBe(true)
+        })
 });
 
 /** SNAPSHOT */
@@ -880,7 +1058,7 @@ describe("Testing if the options trigger the correct functions", () => {
         expect(mockToggleUnderline).toHaveBeenCalledOnce()
     })
     test('There should exist a toggleBulletList function that gets triggered by the bullet list option when it is clicked', async () => {
-        
+
         wrapper = factory()
 
         expect(typeof wrapper.vm.toggleBulletList).toBe("function")
@@ -892,7 +1070,7 @@ describe("Testing if the options trigger the correct functions", () => {
         expect(mockToggleBulletList).toHaveBeenCalledOnce()
     })
     test('There should exist a toggleOrderedList function that gets triggered by the ordered list option when it is clicked', async () => {
-        
+
         wrapper = factory()
 
         expect(typeof wrapper.vm.toggleOrderedList).toBe("function")
@@ -906,7 +1084,7 @@ describe("Testing if the options trigger the correct functions", () => {
         expect(mockToggleNumberList).toHaveBeenCalledOnce()
     })
     test('There should exist a undo function that gets triggered by the undo / go-back option when it is clicked', async () => {
-        
+
         wrapper = factory()
 
         expect(typeof wrapper.vm.setUndo).toBe("function")
@@ -920,7 +1098,7 @@ describe("Testing if the options trigger the correct functions", () => {
         expect(mockSetUndo).toHaveBeenCalledOnce()
     })
     test('There should exist a redo function that gets triggered by the redo / go-forward option when it is clicked', async () => {
-        
+
         wrapper = factory()
 
         expect(typeof wrapper.vm.setUndo).toBe("function")
@@ -934,7 +1112,7 @@ describe("Testing if the options trigger the correct functions", () => {
         expect(mockSetRedo).toHaveBeenCalledOnce()
     })
     test('There should exist a toggle blockquote function that gets triggered by the quote option when it is clicked', async () => {
-        
+
         wrapper = factory()
 
         expect(typeof wrapper.vm.setUndo).toBe("function")
@@ -948,7 +1126,7 @@ describe("Testing if the options trigger the correct functions", () => {
         expect(mockToggleBlockquote).toHaveBeenCalledOnce()
     })
     test('There should exist a codeblock blockquote function that gets triggered by the codeblock option when it is clicked', async () => {
-        
+
         wrapper = factory()
 
         expect(typeof wrapper.vm.toggleCodeBlock).toBe("function")
@@ -960,5 +1138,19 @@ describe("Testing if the options trigger the correct functions", () => {
         await flushPromises()
 
         expect(mockToggleCodeBlock).toHaveBeenCalledOnce()
+    })
+    test('There should exist a codeblock blockquote function that gets triggered by the codeblock option when it is clicked', async () => {
+
+        wrapper = factory()
+
+        expect(typeof wrapper.vm.toggleHeading).toBe("function")
+
+        const option = wrapper.get("[data-test='heading1_option']")
+
+        await option.trigger("click")
+
+        await flushPromises()
+
+        expect(mockToggleHeading).toHaveBeenCalledOnce()
     })
 })

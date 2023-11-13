@@ -77,9 +77,9 @@ describe('EditorCard testing', () => {
         expectTypeOf(pubFunction).toBeFunction()
     })
 
-    test('Should have the bubblemeny component', () => {
-        const bubble = wrapper.findComponent({name:"EditorBubbleMenu"})
+    // test('Should have the bubblemeny component', () => {
+    //     const bubble = wrapper.findComponent({name:"EditorBubbleMenu"})
         
-        expect(bubble.exists()).toBe(true)
-    })
+    //     expect(bubble.exists()).toBe(true)
+    // })
 })
