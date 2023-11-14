@@ -49,20 +49,8 @@
 					:key="post.post.id" />
 			</div> -->
 
-			<div id="saved_articles" v-for="post in loggedInUserStore.loggedInUserProfile.saved_posts">
-				<article-saved-card :key="post.post.id">
-
-					<template #title>
-						<span @click="redirect_to_post_page(post.post.id)" data-test="redirect_to_author" class="cursor-pointer">{{ post.post.title
-						}}</span>
-					</template>
-
-					<template #author>
-						<span @click="redirect_to_author_page(post.post.username)" data-test="redirect_to_post" class="cursor-pointer">{{ post.post.username
-						}}</span>
-					</template>
-
-				</article-saved-card>
+			<div id="saved_articles">
+				<ArticleSavedCardList/>
 			</div>
 
 			<p v-if="loggedInUserStore.loggedInUserProfile.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">
@@ -120,17 +108,6 @@ const full_name = computed(() => {
 		return name
 	}
 })
-
-
-const redirect_to_post_page = (postId: any) => {
-
-	return navigateTo(`/post/${postId}`)
-}
-
-const redirect_to_author_page = (username: any) => {
-
-	return navigateTo(`/user/${username}`)
-}
 
 </script>
 

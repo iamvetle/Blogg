@@ -8,9 +8,9 @@
 				<span class="mb-4 flex items-center justify-between">
 					<span class="flex items-center">
 						<img :src="placeholder_profile_picture" alt="" class="mr-2 h-8">
-						<NuxtLink :to="post.author.username" class="not-prose">
+						<NuxtLink :to="`/user/${post.author.username}`" class="not-prose">
 							<p class="font-bold inline">
-								- {{ post.author.username }}
+								- {{ post.author.first_name }} {{ post.author.last_name }}
 							</p>
 						</NuxtLink>
 						<!-- <BaseButtonFollow v-if="!checkIfLoggedInUser(post.author.username)" :username="post.author.username" /> -->
@@ -20,7 +20,7 @@
 				</span>
 			</div>
 
-			<span>
+			<span v-if="!checkIfLoggedInUser(post.author.username)">
 				<ArticleBookmark
 						:post="post.id"
 						/>

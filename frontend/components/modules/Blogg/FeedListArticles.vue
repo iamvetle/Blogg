@@ -51,7 +51,7 @@
 						<span>{{ post.num_of_comments }} comments</span>						
 					</template>
 
-					<template #save-article-icon v-if="post.id">
+					<template #save-article-icon v-if="(post.id) && (!checkIfLoggedInUser(post.author.username))">
 
 						<ArticleBookmark
 						:post="post.id"

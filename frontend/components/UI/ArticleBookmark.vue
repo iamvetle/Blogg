@@ -4,8 +4,6 @@
 
         <BaseIconSaveArticleUnSaved v-else @mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'"
             @click="save(post)" :fill-color="color" />
-
-
     </div>
 </template>
 

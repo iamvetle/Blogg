@@ -40,7 +40,7 @@
 					</span>
 
 					<span id="save-article" class="me-2 w-auto h-auto mx-auto flex items-center justify-center">
-						<slot name="save-article-icon">Save.</slot>
+						<slot name="save-article-icon"></slot>
 					</span>
 
 					<span id="article-options" class="w-auto h-auto mx-auto flex items-center justify-center">

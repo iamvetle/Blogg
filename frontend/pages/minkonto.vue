@@ -38,6 +38,12 @@
 								<div id="profile-information">
 									<MyProfileInformation />
 								</div>
+								<!-- Just kinda testing this-->
+								<hr class="prose">
+								<div id="saved_articles">
+									<h2>List of saved articles:</h2>
+									<ArticleSavedCardList/>
+								</div>
 							</div>
 						</div>
 						<div>
