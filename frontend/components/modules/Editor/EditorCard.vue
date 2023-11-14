@@ -403,16 +403,32 @@ const toggleItalic = () => {
 }
 
 
+/**
+ * Fils the content if there is a post content inside of sessionstorage
+ */
+onMounted(() => {
+	if (editor) {
+		const htmlPost = sessionStorage.getItem("htmlPost")
 
+		if (htmlPost) {
+			editor.value.chain().focus().insertContent(htmlPost).run()
+		}
+	}
+})
 
+/**
+ * This saves the content into sessionstorage
+ */
+onUnmounted(() => {
+		/** 
+	 * Retrieves the text that has been written in the 
+	 * text editor, as HTML.
+	 */
+	 const htmlPost = editor.value.getHTML()	 
 
+	 sessionStorage.setItem("htmlPost", htmlPost)
 
-
-
-
-
-
-
+})
 
 
 
