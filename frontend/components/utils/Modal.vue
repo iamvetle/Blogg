@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Dialog :open="isOpen" @close="setClose">
+        <Dialog :open="isOpen" @close="cancel">
             <div class="fixed w-full h-full flex items-center justify-center inset-0">
 
                 <div class="rounded-xl w-[500px] h-[250px] bg-primary text-onPrimary p-8">
@@ -63,10 +63,6 @@ import {
 const emit = defineEmits(["confirmPublished", "cancelPublished"])
 
 const isOpen = ref<boolean>(true)
-
-const setClose = () => {
-    isOpen.value = false
-}
 
 const confirm = () => {
     isOpen.value = false
