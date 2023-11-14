@@ -5,11 +5,11 @@
 				<div class="grid grid-cols-4 sm:grid-cols-12 gap-12 px-4">
 					<div class="col-span-4 sm:col-span-5 xl:col-span-3">
 						<div id="wrapper" class="bg-primary rounded-lg p-6">
-							<div v-if="loggedInUserStore.loggedInUserProfile" class="px-5 py-5 bg-onPrimary rounded-xl">
+							<div class="px-5 py-5 bg-onPrimary rounded-xl">
 								<div class="flex flex-col items-center">
-									<img id="profile_picture"
+									<BaseImage id="profile_picture"
 										:src="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : placeholder"
-										class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" alt="Profilbilde">
+										class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" alt="Profilbilde" />
 									<!-- </img> -->
 									<h1 class="text-xl text-plain font-bold">
 										{{ loggedInUserStore.loggedInUserProfile.first_name }} {{

@@ -3,6 +3,11 @@ import { createTestingPinia } from '@pinia/testing'
 import minkonto from '~/pages/minkonto.vue'
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePostStore } from '~/store/postStore';
+import BaseImage from '~/components/base/BaseImage.vue';
+import MyProfileBio from '~/components/modules/MyUser/MyProfileBio.vue';
+import MyProfileListArticles from '~/components/modules/MyUser/MyProfileListArticles.vue';
+import MyProfileInformation from '~/components/modules/MyUser/MyProfileInformation.vue';
+import Following from '~/components/modules/MyUser/Following.vue';
 
 let wrapper: VueWrapper
 let loggedInUserStore: any;
@@ -34,8 +39,20 @@ describe('Testing the page minkonto', () => {
                 stubs: {
                     Follower: true,
                     MyProfilePostList: true,
-                    "nuxt-link": true
+                    "nuxt-link": true,
+                    BaseImage:true,
+                    MyProfileBio:true,
+                    MyProfileListArticles:true,
+                    MyProfileInformation:true,
+                    Following:true
                 },
+                components: {
+                    BaseImage,
+                    MyProfileBio,
+                    MyProfileListArticles,
+                    MyProfileInformation,
+                    Following
+                }
             }
         })
 
@@ -135,9 +152,40 @@ describe('Testing the page minkonto', () => {
 
         await wrapper.vm.$nextTick()
 
-        let profile_image = wrapper.get("img[id='profile_picture']")
+        let profile_image = wrapper.get("#profile_picture")
 
         expect(profile_image.attributes("src")).toBe("~/placeholder/image.jpg")
+    })
+    test('Should have baseimage component', async () => {
+
+        loggedInUserStore.loggedInUserProfile = {
+            id: 3,
+            username: "test32",
+            first_name: "Test",
+            last_name: "Testanson",
+            num_of_followers: 9876,
+            num_of_following: 54321,
+            bio: "This is a bio of a testuser",
+            profile_picture: "~/path/to/something/image.png",
+        };
+        postStore.loggedInUserPosts = {
+            id: 17,
+            title: "This is a title that is made by bob",
+            author: {
+                username: "bob",
+                first_name: "Bob",
+                last_name: "Smith",
+            },
+            content_snippet: "Lorem ipsum...",
+            date_published: "08-12-2021",
+        }
+
+        await wrapper.vm.$nextTick()
+
+        const baseImage = wrapper.findComponent({ name:"BaseImage" })
+
+        expect(baseImage.exists()).toBe(true)
+
 
     })
 })
