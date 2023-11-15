@@ -20,6 +20,36 @@ VueWrapper {
     "_context": {
       "app": [Circular],
       "components": {
+        "ArticleBookmark": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
+          "__name": "ArticleBookmark",
+          "props": {
+            "post": {
+              "required": true,
+              "type": [Function],
+            },
+          },
+          "render": [Function],
+          "setup": [Function],
+        },
+        "ArticleTags": {
+          "name": "ArticleTags",
+        },
+        "SingleArticleListComments": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
+          "__name": "SingleArticleListComments",
+          "props": {
+            "comments": {
+              "required": true,
+              "type": [
+                [Function],
+                null,
+              ],
+            },
+          },
+          "render": [Function],
+          "setup": [Function],
+        },
         "transition": {
           "name": "transition",
         },
@@ -64,36 +94,6 @@ VueWrapper {
               [Function],
             ],
             "_s": Map {
-              "Store for storing information about the logged in user" => {
-                "$dispose": [Function],
-                "$id": "Store for storing information about the logged in user",
-                "$onAction": [Function],
-                "$patch": [MockFunction $patch],
-                "$reset": [MockFunction spy],
-                "$subscribe": [Function],
-                "_customProperties": Set {},
-                "_hmrPayload": {
-                  "actions": {},
-                  "getters": {},
-                  "hotState": RefImpl {
-                    "__v_isRef": true,
-                    "__v_isShallow": false,
-                    "_rawValue": {},
-                    "_value": {},
-                    "dep": undefined,
-                  },
-                  "state": [
-                    "loggedInUserProfile",
-                    "idArrayOfSavedPosts",
-                    "idArrayOfLoggedInUserFollowingUsers",
-                  ],
-                },
-                "_hotUpdate": [Function],
-                "_p": [Circular],
-                "idArrayOfLoggedInUserFollowingUsers": [],
-                "idArrayOfSavedPosts": [],
-                "loggedInUserProfile": null,
-              },
               "Store for containing posts and related to posts" => {
                 "$dispose": [Function],
                 "$id": "Store for containing posts and related to posts",
@@ -131,6 +131,36 @@ VueWrapper {
                 "followingPosts": null,
                 "loggedInUserPosts": null,
                 "posts": null,
+              },
+              "Store for storing information about the logged in user" => {
+                "$dispose": [Function],
+                "$id": "Store for storing information about the logged in user",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_hmrPayload": {
+                  "actions": {},
+                  "getters": {},
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "loggedInUserProfile",
+                    "idArrayOfSavedPosts",
+                    "idArrayOfLoggedInUserFollowingUsers",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": [Circular],
+                "idArrayOfLoggedInUserFollowingUsers": [],
+                "idArrayOfSavedPosts": [],
+                "loggedInUserProfile": null,
               },
             },
             "_testing": true,
@@ -284,36 +314,6 @@ VueWrapper {
             [Function],
           ],
           "_s": Map {
-            "Store for storing information about the logged in user" => {
-              "$dispose": [Function],
-              "$id": "Store for storing information about the logged in user",
-              "$onAction": [Function],
-              "$patch": [MockFunction $patch],
-              "$reset": [MockFunction spy],
-              "$subscribe": [Function],
-              "_customProperties": Set {},
-              "_hmrPayload": {
-                "actions": {},
-                "getters": {},
-                "hotState": RefImpl {
-                  "__v_isRef": true,
-                  "__v_isShallow": false,
-                  "_rawValue": {},
-                  "_value": {},
-                  "dep": undefined,
-                },
-                "state": [
-                  "loggedInUserProfile",
-                  "idArrayOfSavedPosts",
-                  "idArrayOfLoggedInUserFollowingUsers",
-                ],
-              },
-              "_hotUpdate": [Function],
-              "_p": [Circular],
-              "idArrayOfLoggedInUserFollowingUsers": [],
-              "idArrayOfSavedPosts": [],
-              "loggedInUserProfile": null,
-            },
             "Store for containing posts and related to posts" => {
               "$dispose": [Function],
               "$id": "Store for containing posts and related to posts",
@@ -351,6 +351,36 @@ VueWrapper {
               "followingPosts": null,
               "loggedInUserPosts": null,
               "posts": null,
+            },
+            "Store for storing information about the logged in user" => {
+              "$dispose": [Function],
+              "$id": "Store for storing information about the logged in user",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_hmrPayload": {
+                "actions": {},
+                "getters": {},
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "loggedInUserProfile",
+                  "idArrayOfSavedPosts",
+                  "idArrayOfLoggedInUserFollowingUsers",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": [Circular],
+              "idArrayOfLoggedInUserFollowingUsers": [],
+              "idArrayOfSavedPosts": [],
+              "loggedInUserProfile": null,
             },
           },
           "_testing": true,
@@ -464,6 +494,36 @@ VueWrapper {
       "appContext": {
         "app": [Circular],
         "components": {
+          "ArticleBookmark": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
+            "__name": "ArticleBookmark",
+            "props": {
+              "post": {
+                "required": true,
+                "type": [Function],
+              },
+            },
+            "render": [Function],
+            "setup": [Function],
+          },
+          "ArticleTags": {
+            "name": "ArticleTags",
+          },
+          "SingleArticleListComments": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
+            "__name": "SingleArticleListComments",
+            "props": {
+              "comments": {
+                "required": true,
+                "type": [
+                  [Function],
+                  null,
+                ],
+              },
+            },
+            "render": [Function],
+            "setup": [Function],
+          },
           "transition": {
             "name": "transition",
           },
@@ -508,36 +568,6 @@ VueWrapper {
                 [Function],
               ],
               "_s": Map {
-                "Store for storing information about the logged in user" => {
-                  "$dispose": [Function],
-                  "$id": "Store for storing information about the logged in user",
-                  "$onAction": [Function],
-                  "$patch": [MockFunction $patch],
-                  "$reset": [MockFunction spy],
-                  "$subscribe": [Function],
-                  "_customProperties": Set {},
-                  "_hmrPayload": {
-                    "actions": {},
-                    "getters": {},
-                    "hotState": RefImpl {
-                      "__v_isRef": true,
-                      "__v_isShallow": false,
-                      "_rawValue": {},
-                      "_value": {},
-                      "dep": undefined,
-                    },
-                    "state": [
-                      "loggedInUserProfile",
-                      "idArrayOfSavedPosts",
-                      "idArrayOfLoggedInUserFollowingUsers",
-                    ],
-                  },
-                  "_hotUpdate": [Function],
-                  "_p": [Circular],
-                  "idArrayOfLoggedInUserFollowingUsers": [],
-                  "idArrayOfSavedPosts": [],
-                  "loggedInUserProfile": null,
-                },
                 "Store for containing posts and related to posts" => {
                   "$dispose": [Function],
                   "$id": "Store for containing posts and related to posts",
@@ -575,6 +605,36 @@ VueWrapper {
                   "followingPosts": null,
                   "loggedInUserPosts": null,
                   "posts": null,
+                },
+                "Store for storing information about the logged in user" => {
+                  "$dispose": [Function],
+                  "$id": "Store for storing information about the logged in user",
+                  "$onAction": [Function],
+                  "$patch": [MockFunction $patch],
+                  "$reset": [MockFunction spy],
+                  "$subscribe": [Function],
+                  "_customProperties": Set {},
+                  "_hmrPayload": {
+                    "actions": {},
+                    "getters": {},
+                    "hotState": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": {},
+                      "_value": {},
+                      "dep": undefined,
+                    },
+                    "state": [
+                      "loggedInUserProfile",
+                      "idArrayOfSavedPosts",
+                      "idArrayOfLoggedInUserFollowingUsers",
+                    ],
+                  },
+                  "_hotUpdate": [Function],
+                  "_p": [Circular],
+                  "idArrayOfLoggedInUserFollowingUsers": [],
+                  "idArrayOfSavedPosts": [],
+                  "loggedInUserProfile": null,
                 },
               },
               "_testing": true,
@@ -728,36 +788,6 @@ VueWrapper {
               [Function],
             ],
             "_s": Map {
-              "Store for storing information about the logged in user" => {
-                "$dispose": [Function],
-                "$id": "Store for storing information about the logged in user",
-                "$onAction": [Function],
-                "$patch": [MockFunction $patch],
-                "$reset": [MockFunction spy],
-                "$subscribe": [Function],
-                "_customProperties": Set {},
-                "_hmrPayload": {
-                  "actions": {},
-                  "getters": {},
-                  "hotState": RefImpl {
-                    "__v_isRef": true,
-                    "__v_isShallow": false,
-                    "_rawValue": {},
-                    "_value": {},
-                    "dep": undefined,
-                  },
-                  "state": [
-                    "loggedInUserProfile",
-                    "idArrayOfSavedPosts",
-                    "idArrayOfLoggedInUserFollowingUsers",
-                  ],
-                },
-                "_hotUpdate": [Function],
-                "_p": [Circular],
-                "idArrayOfLoggedInUserFollowingUsers": [],
-                "idArrayOfSavedPosts": [],
-                "loggedInUserProfile": null,
-              },
               "Store for containing posts and related to posts" => {
                 "$dispose": [Function],
                 "$id": "Store for containing posts and related to posts",
@@ -795,6 +825,36 @@ VueWrapper {
                 "followingPosts": null,
                 "loggedInUserPosts": null,
                 "posts": null,
+              },
+              "Store for storing information about the logged in user" => {
+                "$dispose": [Function],
+                "$id": "Store for storing information about the logged in user",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_hmrPayload": {
+                  "actions": {},
+                  "getters": {},
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "loggedInUserProfile",
+                    "idArrayOfSavedPosts",
+                    "idArrayOfLoggedInUserFollowingUsers",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": [Circular],
+                "idArrayOfLoggedInUserFollowingUsers": [],
+                "idArrayOfSavedPosts": [],
+                "loggedInUserProfile": null,
               },
             },
             "_testing": true,
@@ -1029,6 +1089,36 @@ VueWrapper {
           "appContext": {
             "app": [Circular],
             "components": {
+              "ArticleBookmark": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
+                "__name": "ArticleBookmark",
+                "props": {
+                  "post": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "ArticleTags": {
+                "name": "ArticleTags",
+              },
+              "SingleArticleListComments": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
+                "__name": "SingleArticleListComments",
+                "props": {
+                  "comments": {
+                    "required": true,
+                    "type": [
+                      [Function],
+                      null,
+                    ],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
               "transition": {
                 "name": "transition",
               },
@@ -1073,36 +1163,6 @@ VueWrapper {
                     [Function],
                   ],
                   "_s": Map {
-                    "Store for storing information about the logged in user" => {
-                      "$dispose": [Function],
-                      "$id": "Store for storing information about the logged in user",
-                      "$onAction": [Function],
-                      "$patch": [MockFunction $patch],
-                      "$reset": [MockFunction spy],
-                      "$subscribe": [Function],
-                      "_customProperties": Set {},
-                      "_hmrPayload": {
-                        "actions": {},
-                        "getters": {},
-                        "hotState": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": {},
-                          "_value": {},
-                          "dep": undefined,
-                        },
-                        "state": [
-                          "loggedInUserProfile",
-                          "idArrayOfSavedPosts",
-                          "idArrayOfLoggedInUserFollowingUsers",
-                        ],
-                      },
-                      "_hotUpdate": [Function],
-                      "_p": [Circular],
-                      "idArrayOfLoggedInUserFollowingUsers": [],
-                      "idArrayOfSavedPosts": [],
-                      "loggedInUserProfile": null,
-                    },
                     "Store for containing posts and related to posts" => {
                       "$dispose": [Function],
                       "$id": "Store for containing posts and related to posts",
@@ -1140,6 +1200,36 @@ VueWrapper {
                       "followingPosts": null,
                       "loggedInUserPosts": null,
                       "posts": null,
+                    },
+                    "Store for storing information about the logged in user" => {
+                      "$dispose": [Function],
+                      "$id": "Store for storing information about the logged in user",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_hmrPayload": {
+                        "actions": {},
+                        "getters": {},
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "loggedInUserProfile",
+                          "idArrayOfSavedPosts",
+                          "idArrayOfLoggedInUserFollowingUsers",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": null,
                     },
                   },
                   "_testing": true,
@@ -1293,36 +1383,6 @@ VueWrapper {
                   [Function],
                 ],
                 "_s": Map {
-                  "Store for storing information about the logged in user" => {
-                    "$dispose": [Function],
-                    "$id": "Store for storing information about the logged in user",
-                    "$onAction": [Function],
-                    "$patch": [MockFunction $patch],
-                    "$reset": [MockFunction spy],
-                    "$subscribe": [Function],
-                    "_customProperties": Set {},
-                    "_hmrPayload": {
-                      "actions": {},
-                      "getters": {},
-                      "hotState": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": {},
-                        "_value": {},
-                        "dep": undefined,
-                      },
-                      "state": [
-                        "loggedInUserProfile",
-                        "idArrayOfSavedPosts",
-                        "idArrayOfLoggedInUserFollowingUsers",
-                      ],
-                    },
-                    "_hotUpdate": [Function],
-                    "_p": [Circular],
-                    "idArrayOfLoggedInUserFollowingUsers": [],
-                    "idArrayOfSavedPosts": [],
-                    "loggedInUserProfile": null,
-                  },
                   "Store for containing posts and related to posts" => {
                     "$dispose": [Function],
                     "$id": "Store for containing posts and related to posts",
@@ -1360,6 +1420,36 @@ VueWrapper {
                     "followingPosts": null,
                     "loggedInUserPosts": null,
                     "posts": null,
+                  },
+                  "Store for storing information about the logged in user" => {
+                    "$dispose": [Function],
+                    "$id": "Store for storing information about the logged in user",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_hmrPayload": {
+                      "actions": {},
+                      "getters": {},
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "loggedInUserProfile",
+                        "idArrayOfSavedPosts",
+                        "idArrayOfLoggedInUserFollowingUsers",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "idArrayOfLoggedInUserFollowingUsers": [],
+                    "idArrayOfSavedPosts": [],
+                    "loggedInUserProfile": null,
                   },
                 },
                 "_testing": true,
@@ -1476,7 +1566,47 @@ VueWrapper {
           "bu": null,
           "bum": null,
           "c": null,
-          "components": {},
+          "components": {
+            "ArticleBookmark": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
+              "__name": "ArticleBookmark",
+              "props": {
+                "post": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "ArticleTags": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleTags.vue",
+              "__name": "ArticleTags",
+              "props": {
+                "tags": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "SingleArticleListComments": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
+              "__name": "SingleArticleListComments",
+              "props": {
+                "comments": {
+                  "required": true,
+                  "type": [
+                    [Function],
+                    null,
+                  ],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+          },
           "ctx": {
             "_pStores": {
               "Store for containing posts and related to posts": {
@@ -1541,6 +1671,7 @@ VueWrapper {
                     [Function],
                   ],
                   "_s": Map {
+                    "Store for containing posts and related to posts" => [Circular],
                     "Store for storing information about the logged in user" => {
                       "$dispose": [Function],
                       "$id": "Store for storing information about the logged in user",
@@ -1571,7 +1702,6 @@ VueWrapper {
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
                     },
-                    "Store for containing posts and related to posts" => [Circular],
                   },
                   "_testing": true,
                   "app": [Circular],
@@ -1741,7 +1871,6 @@ VueWrapper {
                     [Function],
                   ],
                   "_s": Map {
-                    "Store for storing information about the logged in user" => [Circular],
                     "Store for containing posts and related to posts" => {
                       "$dispose": [Function],
                       "$id": "Store for containing posts and related to posts",
@@ -1780,6 +1909,7 @@ VueWrapper {
                       "loggedInUserPosts": null,
                       "posts": null,
                     },
+                    "Store for storing information about the logged in user" => [Circular],
                   },
                   "_testing": true,
                   "app": [Circular],
@@ -1957,7 +2087,6 @@ VueWrapper {
                   [Function],
                 ],
                 "_s": Map {
-                  "Store for storing information about the logged in user" => [Circular],
                   "Store for containing posts and related to posts" => {
                     "$dispose": [Function],
                     "$id": "Store for containing posts and related to posts",
@@ -1996,6 +2125,7 @@ VueWrapper {
                     "loggedInUserPosts": null,
                     "posts": null,
                   },
+                  "Store for storing information about the logged in user" => [Circular],
                 },
                 "_testing": true,
                 "app": [Circular],
@@ -2232,6 +2362,7 @@ VueWrapper {
                     [Function],
                   ],
                   "_s": Map {
+                    "Store for containing posts and related to posts" => [Circular],
                     "Store for storing information about the logged in user" => {
                       "$dispose": [Function],
                       "$id": "Store for storing information about the logged in user",
@@ -2262,7 +2393,6 @@ VueWrapper {
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
                     },
-                    "Store for containing posts and related to posts" => [Circular],
                   },
                   "_testing": true,
                   "app": [Circular],
@@ -2432,7 +2562,6 @@ VueWrapper {
                     [Function],
                   ],
                   "_s": Map {
-                    "Store for storing information about the logged in user" => [Circular],
                     "Store for containing posts and related to posts" => {
                       "$dispose": [Function],
                       "$id": "Store for containing posts and related to posts",
@@ -2471,6 +2600,7 @@ VueWrapper {
                       "loggedInUserPosts": null,
                       "posts": null,
                     },
+                    "Store for storing information about the logged in user" => [Circular],
                   },
                   "_testing": true,
                   "app": [Circular],
@@ -2674,7 +2804,6 @@ VueWrapper {
                   [Function],
                 ],
                 "_s": Map {
-                  "Store for storing information about the logged in user" => [Circular],
                   "Store for containing posts and related to posts" => {
                     "$dispose": [Function],
                     "$id": "Store for containing posts and related to posts",
@@ -2713,6 +2842,7 @@ VueWrapper {
                     "loggedInUserPosts": null,
                     "posts": null,
                   },
+                  "Store for storing information about the logged in user" => [Circular],
                 },
                 "_testing": true,
                 "app": [Circular],
@@ -2928,7 +3058,47 @@ VueWrapper {
           "type": {
             "__file": "C:/Users/metle/Desktop/Blogg/frontend/pages/post/[id].vue",
             "__name": "[id]",
-            "components": {},
+            "components": {
+              "ArticleBookmark": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
+                "__name": "ArticleBookmark",
+                "props": {
+                  "post": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "ArticleTags": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleTags.vue",
+                "__name": "ArticleTags",
+                "props": {
+                  "tags": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "SingleArticleListComments": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
+                "__name": "SingleArticleListComments",
+                "props": {
+                  "comments": {
+                    "required": true,
+                    "type": [
+                      [Function],
+                      null,
+                    ],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+            },
             "render": [Function],
             "setup": [Function],
           },
@@ -2972,7 +3142,47 @@ VueWrapper {
         "type": {
           "__file": "C:/Users/metle/Desktop/Blogg/frontend/pages/post/[id].vue",
           "__name": "[id]",
-          "components": {},
+          "components": {
+            "ArticleBookmark": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
+              "__name": "ArticleBookmark",
+              "props": {
+                "post": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "ArticleTags": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleTags.vue",
+              "__name": "ArticleTags",
+              "props": {
+                "tags": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "SingleArticleListComments": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
+              "__name": "SingleArticleListComments",
+              "props": {
+                "comments": {
+                  "required": true,
+                  "type": [
+                    [Function],
+                    null,
+                  ],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+          },
           "render": [Function],
           "setup": [Function],
         },
@@ -2995,6 +3205,36 @@ VueWrapper {
         "appContext": {
           "app": [Circular],
           "components": {
+            "ArticleBookmark": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
+              "__name": "ArticleBookmark",
+              "props": {
+                "post": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "ArticleTags": {
+              "name": "ArticleTags",
+            },
+            "SingleArticleListComments": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
+              "__name": "SingleArticleListComments",
+              "props": {
+                "comments": {
+                  "required": true,
+                  "type": [
+                    [Function],
+                    null,
+                  ],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
             "transition": {
               "name": "transition",
             },
@@ -3039,36 +3279,6 @@ VueWrapper {
                   [Function],
                 ],
                 "_s": Map {
-                  "Store for storing information about the logged in user" => {
-                    "$dispose": [Function],
-                    "$id": "Store for storing information about the logged in user",
-                    "$onAction": [Function],
-                    "$patch": [MockFunction $patch],
-                    "$reset": [MockFunction spy],
-                    "$subscribe": [Function],
-                    "_customProperties": Set {},
-                    "_hmrPayload": {
-                      "actions": {},
-                      "getters": {},
-                      "hotState": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": {},
-                        "_value": {},
-                        "dep": undefined,
-                      },
-                      "state": [
-                        "loggedInUserProfile",
-                        "idArrayOfSavedPosts",
-                        "idArrayOfLoggedInUserFollowingUsers",
-                      ],
-                    },
-                    "_hotUpdate": [Function],
-                    "_p": [Circular],
-                    "idArrayOfLoggedInUserFollowingUsers": [],
-                    "idArrayOfSavedPosts": [],
-                    "loggedInUserProfile": null,
-                  },
                   "Store for containing posts and related to posts" => {
                     "$dispose": [Function],
                     "$id": "Store for containing posts and related to posts",
@@ -3106,6 +3316,36 @@ VueWrapper {
                     "followingPosts": null,
                     "loggedInUserPosts": null,
                     "posts": null,
+                  },
+                  "Store for storing information about the logged in user" => {
+                    "$dispose": [Function],
+                    "$id": "Store for storing information about the logged in user",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_hmrPayload": {
+                      "actions": {},
+                      "getters": {},
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "loggedInUserProfile",
+                        "idArrayOfSavedPosts",
+                        "idArrayOfLoggedInUserFollowingUsers",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "idArrayOfLoggedInUserFollowingUsers": [],
+                    "idArrayOfSavedPosts": [],
+                    "loggedInUserProfile": null,
                   },
                 },
                 "_testing": true,
@@ -3259,36 +3499,6 @@ VueWrapper {
                 [Function],
               ],
               "_s": Map {
-                "Store for storing information about the logged in user" => {
-                  "$dispose": [Function],
-                  "$id": "Store for storing information about the logged in user",
-                  "$onAction": [Function],
-                  "$patch": [MockFunction $patch],
-                  "$reset": [MockFunction spy],
-                  "$subscribe": [Function],
-                  "_customProperties": Set {},
-                  "_hmrPayload": {
-                    "actions": {},
-                    "getters": {},
-                    "hotState": RefImpl {
-                      "__v_isRef": true,
-                      "__v_isShallow": false,
-                      "_rawValue": {},
-                      "_value": {},
-                      "dep": undefined,
-                    },
-                    "state": [
-                      "loggedInUserProfile",
-                      "idArrayOfSavedPosts",
-                      "idArrayOfLoggedInUserFollowingUsers",
-                    ],
-                  },
-                  "_hotUpdate": [Function],
-                  "_p": [Circular],
-                  "idArrayOfLoggedInUserFollowingUsers": [],
-                  "idArrayOfSavedPosts": [],
-                  "loggedInUserProfile": null,
-                },
                 "Store for containing posts and related to posts" => {
                   "$dispose": [Function],
                   "$id": "Store for containing posts and related to posts",
@@ -3326,6 +3536,36 @@ VueWrapper {
                   "followingPosts": null,
                   "loggedInUserPosts": null,
                   "posts": null,
+                },
+                "Store for storing information about the logged in user" => {
+                  "$dispose": [Function],
+                  "$id": "Store for storing information about the logged in user",
+                  "$onAction": [Function],
+                  "$patch": [MockFunction $patch],
+                  "$reset": [MockFunction spy],
+                  "$subscribe": [Function],
+                  "_customProperties": Set {},
+                  "_hmrPayload": {
+                    "actions": {},
+                    "getters": {},
+                    "hotState": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": {},
+                      "_value": {},
+                      "dep": undefined,
+                    },
+                    "state": [
+                      "loggedInUserProfile",
+                      "idArrayOfSavedPosts",
+                      "idArrayOfLoggedInUserFollowingUsers",
+                    ],
+                  },
+                  "_hotUpdate": [Function],
+                  "_p": [Circular],
+                  "idArrayOfLoggedInUserFollowingUsers": [],
+                  "idArrayOfSavedPosts": [],
+                  "loggedInUserProfile": null,
                 },
               },
               "_testing": true,
@@ -3506,36 +3746,6 @@ VueWrapper {
             [Function],
           ],
           "_s": Map {
-            "Store for storing information about the logged in user" => {
-              "$dispose": [Function],
-              "$id": "Store for storing information about the logged in user",
-              "$onAction": [Function],
-              "$patch": [MockFunction $patch],
-              "$reset": [MockFunction spy],
-              "$subscribe": [Function],
-              "_customProperties": Set {},
-              "_hmrPayload": {
-                "actions": {},
-                "getters": {},
-                "hotState": RefImpl {
-                  "__v_isRef": true,
-                  "__v_isShallow": false,
-                  "_rawValue": {},
-                  "_value": {},
-                  "dep": undefined,
-                },
-                "state": [
-                  "loggedInUserProfile",
-                  "idArrayOfSavedPosts",
-                  "idArrayOfLoggedInUserFollowingUsers",
-                ],
-              },
-              "_hotUpdate": [Function],
-              "_p": [Circular],
-              "idArrayOfLoggedInUserFollowingUsers": [],
-              "idArrayOfSavedPosts": [],
-              "loggedInUserProfile": null,
-            },
             "Store for containing posts and related to posts" => {
               "$dispose": [Function],
               "$id": "Store for containing posts and related to posts",
@@ -3573,6 +3783,36 @@ VueWrapper {
               "followingPosts": null,
               "loggedInUserPosts": null,
               "posts": null,
+            },
+            "Store for storing information about the logged in user" => {
+              "$dispose": [Function],
+              "$id": "Store for storing information about the logged in user",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_hmrPayload": {
+                "actions": {},
+                "getters": {},
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "loggedInUserProfile",
+                  "idArrayOfSavedPosts",
+                  "idArrayOfLoggedInUserFollowingUsers",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": [Circular],
+              "idArrayOfLoggedInUserFollowingUsers": [],
+              "idArrayOfSavedPosts": [],
+              "loggedInUserProfile": null,
             },
           },
           "_testing": true,

@@ -145,5 +145,61 @@
 			"$0"
 		],
 		"description": "Snippet for setting for waiting on DOM change"
-	}
+	},
+		"Post Store Detailed Initialization": {
+			"prefix": "vueInitPostSnippets",
+			"body": [
+				"postStore.posts = {",
+				"    \"count\": 31,",
+				"    \"next\": \"http://localhost:8888/api/feed/?page=3\",",
+				"    \"previous\": \"http://localhost:8888/api/feed/\",",
+				"    \"current_page\": 2,",
+				"    \"results\": [",
+				"        {",
+				"            \"id\": 17,",
+				"            \"title\": \"This is a title that is made by bob\",",
+				"            \"author\": {",
+				"                \"username\": \"bob\",",
+				"                \"first_name\": \"Bob\",",
+				"                \"last_name\": \"Smith\",",
+				"            },",
+				"            \"content_snippet\": \"Lorem ipsum...\",",
+				"            \"date_published\": \"08-12-2021\",",
+				"            \"num_of_comments\": 526,",
+				"            \"images\": [",
+				"                {",
+				"                    \"image\": \"~/src/something/image.jpeg\"",
+				"                },",
+				"                {",
+				"                    \"image\": \"~/src/fruit/life.png\"",
+				"                }",
+				"            ]",
+				"        },",
+				"        {",
+				"            \"id\": 19,",
+				"            \"title\": \"This is a title James\",",
+				"            \"author\": {",
+				"                \"username\": \"jammy\",",
+				"                \"first_name\": \"James\",",
+				"                \"last_name\": \"Brown\",",
+				"            },",
+				"            \"content_snippet\": \"Test content content yes\",",
+				"            \"date_published\": \"18-10-2022\",",
+				"            \"num_of_comments\": 98,",
+				"            \"images\": [",
+				"                {",
+				"                    \"image\": \"~/src/africa/elefant.jpeg\"",
+				"                },",
+				"                {",
+				"                    \"image\": \"~/src/vegetables/pingpong.png\"",
+				"                }",
+				"            ]",
+				"        }",
+				"    ]",
+				"}"
+			],
+			"description": "Initialize postStore with detailed sample data including images"
+		}
+	
 }
+

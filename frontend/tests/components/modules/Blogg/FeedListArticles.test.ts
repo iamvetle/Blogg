@@ -37,7 +37,35 @@ describe("list articles testing", () => {
                     },
                     "content_snippet": "Lorem ipsum...",
                     "date_published": "08-12-2021",
-                    "num_of_comments":526
+                    "num_of_comments":526,
+                    "images":[
+                        {
+                            image:"~/src/something/image.jpeg"
+                        },
+                        {
+                            image:"~/src/fruit/life.png"
+                        }
+                    ]
+                },
+                {
+                    "id": 19,
+                    "title": "This is a title James",
+                    "author": {
+                        "username": "jammy",
+                        "first_name": "James",
+                        "last_name": "Brown",
+                    },
+                    "content_snippet": "Test content content yes",
+                    "date_published": "18-10-2022",
+                    "num_of_comments":98,
+                    "images":[
+                        {
+                            image:"~/src/africa/elefant.jpeg"
+                        },
+                        {
+                            image:"~/src/vegetables/pingpong.png"
+                        }
+                    ]
                 }
             ]
         }

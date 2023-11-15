@@ -2,7 +2,8 @@ import { VueWrapper, mount } from "@vue/test-utils";
 
 import FeedListArticlesSidebar from "~/components/modules/Blogg/FeedListArticlesSidebar.vue";
 import LoggedInUserProfileCard from "~/components/modules/MyUser/LoggedInUserProfileCard.vue";
-import ArticleSavedCard from "~/components/modules/MyUser/ArticleSavedCard.vue";
+import ArticleSavedCardList from "~/components/modules/MyUser/ArticleSavedCardList.vue";
+
 import Following from "~/components/modules/MyUser/Following.vue";
 import { createTestingPinia } from '@pinia/testing';
 import { ref } from 'vue'
@@ -78,9 +79,12 @@ describe('FeedListArticlesSidebar testing', () => {
 
 		wrapper = mount(FeedListArticlesSidebar, {
 			global: {
-				components: { LoggedInUserProfileCard, ArticleSavedCard, Following },
+				components: { LoggedInUserProfileCard, ArticleSavedCardList, Following },
 				mocks: { full_name, redirect_to_author_page: mock_redirect_to_author_page },
-				plugins: [pinia]
+				plugins: [pinia],
+				stubs:{
+					ArticleSavedCardList:true
+				}
 			}
 		});
 
@@ -97,9 +101,9 @@ describe('FeedListArticlesSidebar testing', () => {
 		expect(myProfile.exists()).toBe(true)
 	})
 
-	it('ArticleSavedCard exists', () => {
-		const articleSavedCard = wrapper.findComponent(ArticleSavedCard)
-		expect(articleSavedCard.exists()).toBe(true)
+	it('articlesavedcarlist exists', () => {
+		const ArticleSavedCardList = wrapper.findComponent({ name:"ArticleSavedCardList" })
+		expect(ArticleSavedCardList.exists()).toBe(true)
 	})
 
 	it('Following exists', () => {
@@ -107,7 +111,7 @@ describe('FeedListArticlesSidebar testing', () => {
 		expect(following.exists()).toBe(true)
 	})
 	it('should render username of who I am following', async () => {
-		console.log(wrapper.html())
+		// console.log(wrapper.html())
 
 		expect(wrapper.text()).toContain("michael90")
 	})
@@ -120,30 +124,5 @@ describe('FeedListArticlesSidebar testing', () => {
 			expect(wrapper.text()).toContain("iamlastname")
 
 		})
-	test("renders the amount of posts saved", () => {
-		expect(wrapper.text()).toContain("192")
-	}),
 
-		test("renders my saved posts", () => {
-			expect(wrapper.html()).toContain("saved1guy")
-			expect(wrapper.html()).toContain("saved1testtitle")
-
-			expect(wrapper.html()).toContain("saved2guy")
-			expect(wrapper.html()).toContain("saved2testtitle")
-
-		})
-
-	test('Should call the function to redirect to the post page', async () => {
-		const clickspan = wrapper.find("[data-test='redirect_to_author']")
-
-		expect(clickspan.exists()).toBe(true)
-
-		clickspan.trigger("click")
-
-		await wrapper.vm.$nextTick()
-
-		// I have no way to assert whether the function has called or not
-
-
-	})
 })

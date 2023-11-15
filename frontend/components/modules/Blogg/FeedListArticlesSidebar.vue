@@ -44,11 +44,6 @@
 				Lagrede innlegg
 			</h3>
 
-			<!-- <div class="saved-article" v-if="loggedInUserStore.loggedInUserProfile.saved_posts">
-				<ArticleSavedCard v-for="post in loggedInUserStore.loggedInUserProfile.saved_posts" :saved-post="post"
-					:key="post.post.id" />
-			</div> -->
-
 			<div id="saved_articles">
 				<ArticleSavedCardList/>
 			</div>

@@ -14,16 +14,14 @@
 							</p>
 						</NuxtLink>
 						<!-- <BaseButtonFollow v-if="!checkIfLoggedInUser(post.author.username)" :username="post.author.username" /> -->
-			
+
 					</span>
 					<span class="text-xs float-right">Published {{ post.date_published }}</span>
 				</span>
 			</div>
 
 			<span v-if="!checkIfLoggedInUser(post.author.username)">
-				<ArticleBookmark
-						:post="post.id"
-						/>
+				<ArticleBookmark :post="post.id" />
 			</span>
 
 			<hr>
@@ -35,18 +33,16 @@
 				</div>
 				<hr>
 
-				<div v-if="post.tags" class="mb-2 flex space-x-1" id="tags">
-					<span class="flex" v-for="(tag, index) in post.tags">
-						<BaseTag :text="tag" :key="index" />
-					</span>
+				<div id="all_tags" v-if="post.tags">
+					<ArticleTags :tags="post.tags" />
 				</div>
 
-				<!-- Obviously don't want both long term-->
+				<!-- Obviously don't want both long term
 				<div v-if="post.categories" class="mb-2 flex space-x-1" id="categories">
 					<span class="flex" v-for="(category, index) in post.categories">
 						<BaseTag :text="category" :key="index" />
 					</span>
-				</div>
+				</div> -->
 
 			</div>
 
@@ -55,6 +51,9 @@
 			<button class="border-2 bg-light-blue-400 rounded-lg py-1 px-2" @click="navigateTo('/')">
 				Back
 			</button>
+
+			<hr>
+
 			<div data-test="comments">
 				<h2>Comments written:</h2>
 				<div>
@@ -99,7 +98,7 @@ onMounted(async () => {
 });
 
 onMounted(async () => {
-	
+
 	/**
 	 * I need to fetch this to be able to check if I am following the user
 	 * 
