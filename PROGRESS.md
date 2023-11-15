@@ -1,68 +1,70 @@
-# Things I want to implement into my Blogg project
 
-There are stuff I want the web client to be able to do, that I have not yet implemented. There are also things I want my blogg application to be able to do.
+# Working on my Blogg project
 
-Jeg har sett på hvordan nettsiden *medium* er satt opp, strukturert, og jeg har prøvd å herme litt etter den. Men, jeg er ikke interresert i å lage en klone, og nå tror jeg at jeg er på det stadiet hvor jeg ikke egentlig trenger å "se" mer på den. 
+## On creating my blogg application
 
-Det er andre, kanskje flere funksjoner jeg ønsker på min egen nettside, som medium ikke har.
+I am getting a lot of inspiration from the site "medium.com", and I have implemented a lot of the functionalities that it has.
+However, there is also things I want my Blogg application to do, that "medium.com" does not have.
 
-**Blank annet**:
+I find the text editor that is used in "Notion" to be much more like I want my own text editor to be, than google docs or word.
 
-**text editor med flere funksjon**
+I do not want to work with no progress. My workflow is as follows. I do small commits often and I try as best as I can to make sure that
+the tests work when I am commiting. I try to make a new branch when I am trying to create a big new feature. I try to solve one thing at a time.
+I am no going to use time to perfect one thing at a time, and I am definetly not going to use time to focus on the visual aspect of my application.
+I focus on integrating the functionalities I want each page to have and to make the options availible to use. However I do not focus on making it
+look pretty.
 
-Jeg ønsker å ha en mer omfattende text-editor enn det medium har. Den har ikke sånn "toppbar", noe jeg ønsker at min nettside skal ha. Jeg ønsker å gjøre det mulig å tilpasse artiklene/postene man lenger ut på en mer ordentlig måte.
+I use and follow best practices, and do not create huge technical debt.
 
-Jeg ønsker å gi brukeren muligheten til å lagre posten til senere i *drafts* kanskje. Brukeren skal også få muligehten til å legge til et bilde som kan vises sammen med posten på "lists" og sånt.
+The admin panel should be a rough representation on which functionalities I want each page to have on my frontend. I then have to use *inlines*, and
+customize *functions* and *custom admin classes*
 
-  Man *må* ikke publish post med en gang. (nærmer meg da)
+### Sites that I am getting inspiration from
 
-Det skal komme en slags kontroll når "publish"-knappen (eller hva annet jeg kaller den) blir trykket på. Den kontrollerer hva som skal være tittelen og om et bilde skal være til stede.
+- Medium.com
+- Notion.io
 
-Et lite problem for meg, er at jeg ønsker i utgangspunktet at alle artiklene skal ha en stor tittel på selve artikkel siden, men kan jeg tvinge den som lager artikkelen til å gjøre det?
+### User stories
 
-  En ide er at jeg forteller i den popboksen som kommer etter publish-knappen. At tittelen som velges i listing blir også brukt i single post, og at alle titlene på alle postene vil være like store.
+- ? What really is user stories?
 
-  Jeg kan ta den første setningen og forslo "initiuelt" at den kommer til å bli brukt.
 
----
-
-Er det bedre at jeg lager en røff versjon av flere ting jeg ønsker meg?
-
-Jeg tenker det er best at jeg prøver å gjøre ferdig én og én ting, men **ikke** sitte og prøve å gjøre noe *perfekt*
-
-### Implementere tags sortering/søk
-- [~] Jeg trenger å finne ut hvordan jeg kan lage **dropdown** meny
-- [~] Make a filter for one of the possible filter-codes that I can use
-  - think il use tags
-  - [?] Make a custom url in the pinia store for SEARCH and the FILTER
-  - [?] Have the watcher in the index page
+## Big current problems
 
 ---
 
-- [x] Jeg ønsker å få **admin panel** til å bli en inspirasjon på hvordan jeg ønsker å ha bloggen min.
+# The Frontend
 
-## Backend
+## The pages
 
-### Generics
+This is the pages that I have on my frontend. Here are the functionalities I have and the ones that are missing.
 
-- [x] Ta 'Tag' og 'Category' til generics og gjøre det mulig å hente og å lage nye uten å gjøre dem til duplikater
-- [x] Gjøre det mulig til å oppdatere/edit sine **egne** posts
-- [x] Gjøre det mulige å slette sine egne posts
-  - da trenger jeg å endre på generics
-    - patch eller put?
-- [ ] Vil også gjøre det mulig å **redigere brukeren sin** på frontend 
+### Index
+
+I supposed to: List all avaible posts and have the option to filter and search through the posts
+to find the ones that the web client is interrested in.
+
+There is also a user sidebar where the currently saved posts are, and some other general information about the user.
+
+**TODO**
+
+- [ ] Make the whole URL reflect on all of the filters used - and the search done
+  - [ ] Should maybe have an array in a store that saves all of the options taken
+  - [ ] Should have a *watcher* that makes sure that all of the query parameters the url have is being stored
+    - [ ] And somehow then reflect that in checkboxes? - dont know how
+  - [ ] Should have a watcher that reflects the changes made by filters into the URL so it's a **two way** communication
+
+
+
+## The Backend
 
 ### Search and filter functionality
 
-- [x] Jeg lage en bedre search og filter funksjonalitet. Bruke generics sammen med djangofilterbacken og searchfilter. Det skal ikke være så vanskelig.
-  - det er å fikse det først på frontend som kommer til å bli krongelete.
 
 ### models.py
 
-- **CustomUser** ->
-- [x] new field: profile picture upload / img upload
-- [x] Man kan se det på frontend - hvis man allerede har på backend
-  - [ ] må gjøre slik at man kan laste opp og fjerne fra frontend da
+**CustomUser** ->
+- [ ]
 
 ---
 
@@ -70,177 +72,83 @@ Jeg tenker det er best at jeg prøver å gjøre ferdig én og én ting, men **ik
 
 ---
 
-- [x] Make a '**tag**' model and connect to the '**post**' model through a manytomany field on
-- [x] **Tag** : new model. Create a new 'tag' model and connect it to CustomUser (and or post?)
-- [x] **Categories** : new model. Connect to CustomUser (or post?)
-- [x] Make it so users can **save posts** for reading later.
-- [x] --and unsave
-  - [x] Lage en ny modell (saved_post) \*models.py
-    - [x] Registrer den i admin.py
-  - [x] Lage en ny serializer for den modellen
-  - [x] urls.py
-  - [x] views.py
-  - [x] views.py for den
-  - [x] Legge rute fram til viewen slik at man kan nå den
-    - [x] Få det til å fungere med postman
+
 
 ---
 
 ### Serializers og views
 
-- [x] Endre navnene til dem til noen mer RELEVANTE og mer passende. Så jeg forstår bedre
-- [x] Endre slik at det er mulig å *legge til tags* på post create
-  - [x] -> klare å utføre det fra postman
+
 
 ---
 
 **Postman**
 
-Vil dokumentere flere api endpointer for meg selv, slik at jeg kan få større oversikt.
-- [x]
+
 
 ---
 
 ### admin.py - Admin Panel
 
-- [x] Få tags og categories som er assosiert med en post til å vises i post list i admin panel
 
 ---
 
 ### General
 
-- [x] Bytte til ***generics*** istedenfor vanlig **APIView**
-- [ ] Bytte til generics på loginviews og registerviews også
-- [ ] Rydde i services, gjøre det mer riktig
 
 ---
 
-## Frontend
+## The Frontend
 
-**'fetchen' på api personlig bruker backend**
 
-- [x] **Antallet** lagrede innlegg inkluderes
-- [x] **Tittelen** og **forfatteren** må også returneres
-- [x] API backend trenger å returnere postene som bru|keren har **lagret**
-- [x] Make the api return '**following**'
-  - [x] and **who** I am followoing
 
-> Try to use 'red (fail), green (barely work), refactor (work)' - TTD
 
-- [x] Render the created posts in '[id]' with propper html. So it can actually display each post correctly.
-- [x] Fjern 'searchRequest' og [x]'searchPagnation' (det som er igjen)
-  - [x] trenger da også fikset krøllet som er mellom feed og search (vanskelig å forstå search på backend)
-- [ ] Implementere en pop-window som kommer når visse handlinger blir gjort. Trykker 'post', sender inn skjema, registrerer, osv.
-- [ ] Fikse en type **historie** for å holde postene og artiklene på plass når web client ytter side
-  - keep-alive - for å holde akkurat den filteren oppe.
-- [x] Gjøre slik at det står "Søke resultater for: ..."
-  - [ ] ønsker i tillegg å vise de "tags" og mer som er i bruk
+> Try to use 'red (fail), green (barely work), refactor (work)' - TTD (and don't mock in components - just do direct manipulation (it is not best practise, but most benefiel here))
+
 ---
 
 ### ListArticlesSidebar
 
 - **Vis korrekt, av og for brukeren**:
-  - [x] Antallet lagrede posts
-  - [x] Lagrede posts
-  - [x] Antall _følgere_
-  - [x] Antall _jeg følger_
-  - [x] Brukerne, navnene til de jeg følger
-  - [ ] Finne ut av hva jeg skal gjøre med "**_les mer_**" feltet. Skal jeg bli 'redirected' et sted?
-    - [x] Legge til (x), '***total antall***'
-  - [x] make it possible to go to the posts that I have saved
+
 
 
 ---
 
 ### [id] single post
 
-- [x] Vise alle **taggene** som er assosierte med posten
-- [x] Vise forfatteren
-  - [ ] Mulighet til å **følge** forfatteren derifra (skal jeg gjøre det?)
-- [ ] Muligheten til å **lagre post** derifra også
-- [ ] Kan se kommentarer
-- [ ] Kan lage kommentar
-  - Kan kikke rund på andre blogg-lignende plattformerer og **_se hvordan de har 'kommentarer'_**
-  - Det er faktisk felre steder som har mye av det jeg kunne ønsker meg her
-- Recommendations/post av samme fyr på bunnen?
+
+
 
 ### [id] user page
 
-- [?x] Fix api fetching so it becomes correct 
-- [x] Pengjøre veldig og rydd opp.
-- [~] Fjern spor av tidligere prop og slett den gamle component.
-- [ish] Ønsker å få den **følg** og **slutt å følg** funksjonen til å fungere
-- [x] Lage en ordentlig side for den
-- [ ] fix pagnation - find out if it is necesarry, and if how to have it in that case
-  - should I make a new one? or take an old one
+
 
 ---
 
 ### min-side
 
-- [x] Change the **personal posts** that are received in 'min-side' to be snippets
-- [ ] Put pagnation there if the users have a lot of posts
-- [ ] Give users the ability to edit their own posts
-  - How?
-    - i should probebly make it possible to make propper posts first
-  - 
-- [x] Fix the pagnation bottom bar that currently has no functionality
 
 ---
 
 ### index
 
-- [x] The post snippets **renders the elements** \<h1\> and such which they are not supposed to do. Fix that.
-  - But far from perfect!!
-- [x] Place a temperary profile picture in the user sidebar (the same on as in min-side)
-- [x] There is a '**date_published**' problem that interfers with ordering that I need to fix.
 
-  - [x] Split '**aside**' from 'ListArticles', so it becomes two components instead.
-
-- [x] Ønsker at en post i listen ved feed kan fortelle, "si" om den har blir lagret av den aktuelle brukeren eller ikke
-  - "**mørkere icon**" hvis lagret
 
 ---
 
-- [ ] Hvis en post har blitt lagret med et bilde ønsker jeg at bilde tas med i post snippets, men hvis ikke den har bilde, listes den uten
+
 
 ---
 
-- [x] -> Implementere "tags" eller categories inn i "search" eller "sorter"
-  - Sorter og søk kan kanskje være det samme. Tags og categories kan kanskje også være det.
 
----
-
-**Sortere/finne artikler etter tags/categories**
-
-- [ ] !!! Fikse slik at filterene jeg setter på ikke forsvinner rett etterpå
-- [x]ish Først lage en prototype hvor jeg lister **alle tagsa** og så kan jeg velge **én** som jeg kan sortere etter
-  - deretter øke derifra
-  - kanskej dropdown
-  - kanskje velge flere eller bare en,
-  - favoritter, eller populære?
-
----
-
-- [x] Gi en bruker muligheten, en knapp de kan trykke på
-  - Helt svart hvis lagret, delvis hvit hvis ikke lagret - ide
-    - hver post, for å **lagre** en post
-  - [x] Trenger å lage en **_fetch call_** for den
-- [x] Muligheten for en bruker til å **fjerne** en post som de har lagret
 
 ### text editor
 
-- [x] When **_making a post_** I want the styling to be the same
-  - [x] Also the width. So when creating the post it looks like it will be rendered.
-- [x] Make a popup for publish/confirm and cancel
-- [ ] The **posting functionality** i want it to be obvious when a post was SUCCESSFULL, or when it FAILED.
-- Make it possible for the user to **add pictures** when making post
-  - I don't want to focus on adding and rendering images until later
-- idea but probebly not: Maybe remove 'title' input field and just use 'content'd
 
 ---
 
-### How to API
+### API
 
 - [ ] Make a ***common method*** for POST, GET, DELETE, PATCH that the composables can use - this is so I can use a different api
   fetch later if I would want to do that.
