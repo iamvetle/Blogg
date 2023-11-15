@@ -20,9 +20,9 @@ VueWrapper {
     "_context": {
       "app": [Circular],
       "components": {
-        "ArticleBookmark": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
-          "__name": "ArticleBookmark",
+        "PostBookmark": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
+          "__name": "PostBookmark",
           "props": {
             "post": {
               "required": true,
@@ -32,12 +32,9 @@ VueWrapper {
           "render": [Function],
           "setup": [Function],
         },
-        "ArticleTags": {
-          "name": "ArticleTags",
-        },
-        "SingleArticleListComments": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
-          "__name": "SingleArticleListComments",
+        "SinglePostCommentsList": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
+          "__name": "SinglePostCommentsList",
           "props": {
             "comments": {
               "required": true,
@@ -49,6 +46,9 @@ VueWrapper {
           },
           "render": [Function],
           "setup": [Function],
+        },
+        "TagsList": {
+          "name": "TagsList",
         },
         "transition": {
           "name": "transition",
@@ -494,9 +494,9 @@ VueWrapper {
       "appContext": {
         "app": [Circular],
         "components": {
-          "ArticleBookmark": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
-            "__name": "ArticleBookmark",
+          "PostBookmark": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
+            "__name": "PostBookmark",
             "props": {
               "post": {
                 "required": true,
@@ -506,12 +506,9 @@ VueWrapper {
             "render": [Function],
             "setup": [Function],
           },
-          "ArticleTags": {
-            "name": "ArticleTags",
-          },
-          "SingleArticleListComments": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
-            "__name": "SingleArticleListComments",
+          "SinglePostCommentsList": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
+            "__name": "SinglePostCommentsList",
             "props": {
               "comments": {
                 "required": true,
@@ -523,6 +520,9 @@ VueWrapper {
             },
             "render": [Function],
             "setup": [Function],
+          },
+          "TagsList": {
+            "name": "TagsList",
           },
           "transition": {
             "name": "transition",
@@ -1089,9 +1089,9 @@ VueWrapper {
           "appContext": {
             "app": [Circular],
             "components": {
-              "ArticleBookmark": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
-                "__name": "ArticleBookmark",
+              "PostBookmark": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
+                "__name": "PostBookmark",
                 "props": {
                   "post": {
                     "required": true,
@@ -1101,12 +1101,9 @@ VueWrapper {
                 "render": [Function],
                 "setup": [Function],
               },
-              "ArticleTags": {
-                "name": "ArticleTags",
-              },
-              "SingleArticleListComments": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
-                "__name": "SingleArticleListComments",
+              "SinglePostCommentsList": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
+                "__name": "SinglePostCommentsList",
                 "props": {
                   "comments": {
                     "required": true,
@@ -1118,6 +1115,9 @@ VueWrapper {
                 },
                 "render": [Function],
                 "setup": [Function],
+              },
+              "TagsList": {
+                "name": "TagsList",
               },
               "transition": {
                 "name": "transition",
@@ -1567,9 +1567,9 @@ VueWrapper {
           "bum": null,
           "c": null,
           "components": {
-            "ArticleBookmark": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
-              "__name": "ArticleBookmark",
+            "PostBookmark": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
+              "__name": "PostBookmark",
               "props": {
                 "post": {
                   "required": true,
@@ -1579,21 +1579,9 @@ VueWrapper {
               "render": [Function],
               "setup": [Function],
             },
-            "ArticleTags": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleTags.vue",
-              "__name": "ArticleTags",
-              "props": {
-                "tags": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
-            },
-            "SingleArticleListComments": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
-              "__name": "SingleArticleListComments",
+            "SinglePostCommentsList": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
+              "__name": "SinglePostCommentsList",
               "props": {
                 "comments": {
                   "required": true,
@@ -1601,6 +1589,18 @@ VueWrapper {
                     [Function],
                     null,
                   ],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "TagsList": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/TagsList.vue",
+              "__name": "TagsList",
+              "props": {
+                "tags": {
+                  "required": true,
+                  "type": [Function],
                 },
               },
               "render": [Function],
@@ -3059,9 +3059,9 @@ VueWrapper {
             "__file": "C:/Users/metle/Desktop/Blogg/frontend/pages/post/[id].vue",
             "__name": "[id]",
             "components": {
-              "ArticleBookmark": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
-                "__name": "ArticleBookmark",
+              "PostBookmark": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
+                "__name": "PostBookmark",
                 "props": {
                   "post": {
                     "required": true,
@@ -3071,21 +3071,9 @@ VueWrapper {
                 "render": [Function],
                 "setup": [Function],
               },
-              "ArticleTags": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleTags.vue",
-                "__name": "ArticleTags",
-                "props": {
-                  "tags": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
-              },
-              "SingleArticleListComments": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
-                "__name": "SingleArticleListComments",
+              "SinglePostCommentsList": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
+                "__name": "SinglePostCommentsList",
                 "props": {
                   "comments": {
                     "required": true,
@@ -3093,6 +3081,18 @@ VueWrapper {
                       [Function],
                       null,
                     ],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "TagsList": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/TagsList.vue",
+                "__name": "TagsList",
+                "props": {
+                  "tags": {
+                    "required": true,
+                    "type": [Function],
                   },
                 },
                 "render": [Function],
@@ -3143,9 +3143,9 @@ VueWrapper {
           "__file": "C:/Users/metle/Desktop/Blogg/frontend/pages/post/[id].vue",
           "__name": "[id]",
           "components": {
-            "ArticleBookmark": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
-              "__name": "ArticleBookmark",
+            "PostBookmark": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
+              "__name": "PostBookmark",
               "props": {
                 "post": {
                   "required": true,
@@ -3155,21 +3155,9 @@ VueWrapper {
               "render": [Function],
               "setup": [Function],
             },
-            "ArticleTags": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleTags.vue",
-              "__name": "ArticleTags",
-              "props": {
-                "tags": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
-            },
-            "SingleArticleListComments": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
-              "__name": "SingleArticleListComments",
+            "SinglePostCommentsList": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
+              "__name": "SinglePostCommentsList",
               "props": {
                 "comments": {
                   "required": true,
@@ -3177,6 +3165,18 @@ VueWrapper {
                     [Function],
                     null,
                   ],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "TagsList": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/TagsList.vue",
+              "__name": "TagsList",
+              "props": {
+                "tags": {
+                  "required": true,
+                  "type": [Function],
                 },
               },
               "render": [Function],
@@ -3205,9 +3205,9 @@ VueWrapper {
         "appContext": {
           "app": [Circular],
           "components": {
-            "ArticleBookmark": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/ArticleBookmark.vue",
-              "__name": "ArticleBookmark",
+            "PostBookmark": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
+              "__name": "PostBookmark",
               "props": {
                 "post": {
                   "required": true,
@@ -3217,12 +3217,9 @@ VueWrapper {
               "render": [Function],
               "setup": [Function],
             },
-            "ArticleTags": {
-              "name": "ArticleTags",
-            },
-            "SingleArticleListComments": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SingleArticleListComments.vue",
-              "__name": "SingleArticleListComments",
+            "SinglePostCommentsList": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
+              "__name": "SinglePostCommentsList",
               "props": {
                 "comments": {
                   "required": true,
@@ -3234,6 +3231,9 @@ VueWrapper {
               },
               "render": [Function],
               "setup": [Function],
+            },
+            "TagsList": {
+              "name": "TagsList",
             },
             "transition": {
               "name": "transition",

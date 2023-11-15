@@ -4,10 +4,10 @@ import minkonto from '~/pages/minkonto.vue'
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePostStore } from '~/store/postStore';
 import BaseImage from '~/components/base/BaseImage.vue';
-import MyProfileBio from '~/components/modules/MyUser/MyProfileBio.vue';
-import MyProfileListArticles from '~/components/modules/MyUser/MyProfileListArticles.vue';
-import MyProfileInformation from '~/components/modules/MyUser/MyProfileInformation.vue';
-import Following from '~/components/modules/MyUser/Following.vue';
+import MyProfileBio from '~/components/modules/MyProfile/MyProfileBio.vue';
+import MyProfilePostsList from '~/components/modules/MyProfile/MyProfilePostsList.vue';
+import MyProfileInformation from '~/components/modules/MyProfile/MyProfileInformation.vue';
+import Following from '~/components/UI/Following.vue';
 
 let wrapper: VueWrapper
 let loggedInUserStore: any;
@@ -38,18 +38,17 @@ describe('Testing the page minkonto', () => {
                 plugins: [pinia],
                 stubs: {
                     Follower: true,
-                    MyProfilePostList: true,
+                    MyProfilePostsList: true,
                     "nuxt-link": true,
                     BaseImage:true,
                     MyProfileBio:true,
-                    MyProfileListArticles:true,
                     MyProfileInformation:true,
                     Following:true
                 },
                 components: {
                     BaseImage,
                     MyProfileBio,
-                    MyProfileListArticles,
+                    MyProfilePostsList,
                     MyProfileInformation,
                     Following
                 }
@@ -187,5 +186,8 @@ describe('Testing the page minkonto', () => {
         expect(baseImage.exists()).toBe(true)
 
 
+    })
+    test('Should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot()
     })
 })

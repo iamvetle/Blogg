@@ -4,9 +4,9 @@ import { createTestingPinia } from '@pinia/testing';
 import { usePostStore } from '~/store/postStore';
 
 // Components in the page
-import SingleArticleListComments from '~/components/modules/Blogg/SingleArticleListComments.vue';
-import ArticleBookmark from '~/components/UI/ArticleBookmark.vue';
-import ArticleTags from '~/components/UI/ArticleTags.vue';
+import SinglePostCommentsList from '~/components/modules/Blogg/SinglePostCommentsList.vue';
+import PostBookmark from '~/components/UI/PostBookmark.vue';
+import TagsList from '~/components/UI/TagsList.vue';
 
 
 const standardPost = {
@@ -42,13 +42,13 @@ const factory = () => {
         global: {
             plugins: [pinia],
             components: {
-                SingleArticleListComments,
-                ArticleBookmark,
-                ArticleTags
+                SinglePostCommentsList,
+                PostBookmark,
+                TagsList
             },
             mocks: {},
             stubs: {
-                ArticleTags:true
+                TagsList:true
             },
         },
         props: {},
@@ -95,7 +95,7 @@ describe('', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    test('SingleArticleListComments component should be presetn if all post data is ok', async () => {
+    test('SinglePostCommentsList component should be presetn if all post data is ok', async () => {
         wrapper = factory()
 
         wrapper.vm.post = standardPost
@@ -104,18 +104,18 @@ describe('', () => {
 
         console.log(wrapper.html())
 
-        const listComments = wrapper.findComponent({ name:"SingleArticleListComments" })
+        const listComments = wrapper.findComponent({ name:"SinglePostCommentsList" })
         expect(listComments.exists()).toBe(true)
     })
 
-    test('ArticleBookmark should be present if all post data is ok', async () => {
+    test('PostBookmark should be present if all post data is ok', async () => {
         wrapper = factory()
         
         wrapper.vm.post = standardPost
 
         await wrapper.vm.$nextTick()
         
-        const bookmark = wrapper.findComponent({ name:"ArticleBookmark" })
+        const bookmark = wrapper.findComponent({ name:"PostBookmark" })
         expect(bookmark.exists()).toBe(true)
     })
     test('articletags should be present if all post data is ok', async () => {
@@ -125,7 +125,7 @@ describe('', () => {
 
         await wrapper.vm.$nextTick()
         
-        const bookmark = wrapper.findComponent({ name:"ArticleTags" })
+        const bookmark = wrapper.findComponent({ name:"TagsList" })
         expect(bookmark.exists()).toBe(true)
     })
 

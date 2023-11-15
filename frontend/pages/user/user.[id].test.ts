@@ -4,10 +4,10 @@ import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { useGeneralStore } from '~/store/generalStore';
 import BaseIconMoreOptions from '~/components/base/BaseIconMoreOptions.vue';
 import BaseTag from '~/components/base/BaseTag.vue';
-import ArticleCard from '~/components/modules/Blogg/ArticleCard.vue';
+import FeedPostPreviewCard from '~/components/modules/Blogg/FeedPostPreviewCard.vue'
 import BaseIconSaveArticleSaved from '~/components/base/BaseIconSaveArticleSaved.vue';
 import BaseIconSaveArticleUnSaved from '~/components/base/BaseIconSaveArticleUnSaved.vue';
-import TheUserSidebar from '~/components/modules/UserProfile/TheUserSidebar.vue';
+import UserSidebar from '~/components/modules/UserProfile/UserSidebar.vue';
 import BaseButtonFollow from '~/components/base/BaseButtonFollow.vue';
 
 describe('', () => {
@@ -60,9 +60,9 @@ describe('', () => {
                     BaseTag,
                     BaseIconSaveArticleSaved,
                     BaseIconSaveArticleUnSaved,
-                    ArticleCard,
+                    FeedPostPreviewCard,
                     BaseIconMoreOptions,
-                    TheUserSidebar,
+                    UserSidebar,
                     BaseButtonFollow
                 },
                 mocks: {
@@ -73,8 +73,8 @@ describe('', () => {
             },
             plugins: [pinia],
             stubs: {
-                "ArticleCard": true,
-                "TheUserSidebar": true,
+                "FeedPostPreviewCard": true,
+                "UserSidebar": true,
                 "BaseButtonFollow": true,
                 "BaseTag": true,
                 "BaseIconSaveArticleSaved": true,
@@ -151,8 +151,8 @@ describe('', () => {
 
             ; console.log(wrapper.html())
 
-        const articleCard = wrapper.findComponent({ name:"ArticleCard" });
-        const usersidebar = wrapper.findComponent({ name:"TheUserSidebar" });
+        const articleCard = wrapper.findComponent({ name:"FeedPostPreviewCard" });
+        const usersidebar = wrapper.findComponent({ name:"UserSidebar" });
 
         expect(articleCard.exists()).toBe(true);
         expect(usersidebar.exists()).toBe(true);

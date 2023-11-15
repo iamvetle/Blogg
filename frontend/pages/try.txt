@@ -19,7 +19,7 @@
           :key="index"
           class="article"
         >
-          <ArticleCard
+          <FeedPostPreviewCard
             :post-prop="post" 
           />
           <hr class="mb-16">
@@ -51,7 +51,7 @@
           </h3>
 
           <div class="saved-article">
-            <ArticleSavedCard />
+            <PostSavedCard />
           </div>
           <p class="-mt-2 text-xs text-primary hover:text-primaryFixed">
             Se alle

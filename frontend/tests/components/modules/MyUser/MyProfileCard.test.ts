@@ -1,4 +1,4 @@
-import LoggedInUserProfileCard from '~/components/modules/MyUser/LoggedInUserProfileCard.vue';
+import LoggedInUserProfileCard from '~/components/modules/MyProfile/LoggedInUserProfileCard.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 
 describe('testing LoggedInUserProfileCard.vue', () => {

@@ -2,7 +2,7 @@ import { createTestingPinia } from "@pinia/testing"
 import { VueWrapper, mount } from '@vue/test-utils';
 import index from "~/pages/index.vue";
 import { useGeneralStore } from '~/store/generalStore';
-import FeedListArticles from '~/components/modules/Blogg/FeedListArticles.vue';
+import FeedPostsList from '~/components/modules/Blogg/FeedPostsList.vue';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePostStore } from '~/store/postStore';
 import { useSearchStore } from '~/store/searchStore';
@@ -74,14 +74,14 @@ describe('index page testing', () => {
             global: {
                 plugins: [pinia],
                 stubs: {
-                    "FeedListArticles": true,
-                    'FeedListArticlesSidebar': true,
+                    "FeedPostsList": true,
+                    'FeedPostsListSidebar': true,
                     "FilterBox": true
                 },
                 mocks: {
                 },
                 components: {
-                    FeedListArticles,
+                    FeedPostsList,
                     BaseButton
                 },
 
@@ -95,9 +95,9 @@ describe('index page testing', () => {
         }
     })
 
-    test('Should render FeedListArticles when there are posts and logged in user profile information', async () => {
+    test('Should render FeedPostsList when there are posts and logged in user profile information', async () => {
 
-        const listarticles = wrapper.findComponent({ name: 'FeedListArticles' })
+        const listarticles = wrapper.findComponent({ name: 'FeedPostsList' })
 
         expect(listarticles.exists()).toBe(true)
 
@@ -107,12 +107,12 @@ describe('index page testing', () => {
 
         expect(listarticles.exists()).toBe(false)
     });
-    test('Should NOT render FeedListArticles when the loggedinuser is not authenticated', async () => {
+    test('Should NOT render FeedPostsList when the loggedinuser is not authenticated', async () => {
 
         generalStore.isAuthenticated = false
 
         await wrapper.vm.$nextTick()
-        const listarticles = wrapper.findComponent({ name: 'FeedListArticles' })
+        const listarticles = wrapper.findComponent({ name: 'FeedPostsList' })
 
 
         expect(listarticles.exists()).toBe(false)
@@ -156,7 +156,7 @@ describe('index page testing', () => {
     });
     test('Should render the sidebar if the logged in user profile information are there/is true (and feed posts)', () => {
 
-        const sidebar = wrapper.findComponent({ name: "FeedListArticlesSidebar" })
+        const sidebar = wrapper.findComponent({ name: "FeedPostsListSidebar" })
 
         expect(sidebar.exists()).toBe(true)
     })
@@ -166,7 +166,7 @@ describe('index page testing', () => {
 
         await wrapper.vm.$nextTick()
 
-        const sidebar = wrapper.findComponent({ name: "FeedListArticlesSidebar" })
+        const sidebar = wrapper.findComponent({ name: "FeedPostsListSidebar" })
 
         expect(sidebar.exists()).toBe(false)
     })

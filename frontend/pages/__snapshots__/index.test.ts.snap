@@ -8,13 +8,13 @@ exports[`index page testing > Should match snapshot 1`] = `
       <feedtopchoice followingselected=\\"false\\"></feedtopchoice>
       <!--v-if-->
       <!--v-if-->
-      <feed-list-articles-stub class=\\"w-full mt-12\\"></feed-list-articles-stub>
+      <feed-posts-list-stub class=\\"w-full mt-12\\"></feed-posts-list-stub>
     </div>
     <div class=\\"col-span-4 mx-auto w-full\\">
       <div id=\\"dropdown-filter\\" class=\\"mb-4 bg-primary rounded-lg text-onPrimary\\">
         <feeddropdownfilter></feeddropdownfilter>
       </div><!-- This lists the (saved)articles in thes sidebar -->
-      <feed-list-articles-sidebar-stub class=\\"w-full\\"></feed-list-articles-sidebar-stub>
+      <feed-posts-list-sidebar-stub class=\\"w-full\\"></feed-posts-list-sidebar-stub>
     </div>
   </div>
 </div>"

@@ -40,7 +40,7 @@
 
 						<div class="article" v-for="post in normalUserPosts.results" :key="post.id">
 
-							<article-card :hide-profile-image="true">
+							<feed-post-preview-card :hide-profile-image="true">
 
 								<template #author v-if="post.author">
 									<span>
@@ -104,7 +104,7 @@
 									<img :src="post_image" alt="Bilde til artikkel" class="w-full h-auto">
 								</template>
 
-							</article-card>
+							</feed-post-preview-card>
 
 
 							<hr class="mb-16">
@@ -120,7 +120,7 @@
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 					<div>
 						<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
-						<the-user-sidebar :username="normalUserProfile.username"
+						<user-sidebar :username="normalUserProfile.username"
 							:profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
 
 							<template #amount-of-followers>
@@ -144,7 +144,7 @@
 								/>
 							</template>
 
-						</the-user-sidebar>
+						</user-sidebar>
 					</div>
 				</div>
 			</div>
@@ -156,7 +156,7 @@
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import BaseButtonFollow from '~/components/base/BaseButtonFollow.vue';
+
 
 /**
  * User Page

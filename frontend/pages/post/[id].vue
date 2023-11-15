@@ -21,7 +21,7 @@
 			</div>
 
 			<span v-if="!checkIfLoggedInUser(post.author.username)">
-				<ArticleBookmark :post="post.id" />
+				<PostBookmark :post="post.id" />
 			</span>
 
 			<hr>
@@ -34,7 +34,7 @@
 				<hr>
 
 				<div id="all_tags" v-if="post.tags">
-					<ArticleTags :tags="post.tags" />
+					<TagsList :tags="post.tags" />
 				</div>
 
 				<!-- Obviously don't want both long term
@@ -57,7 +57,7 @@
 			<div data-test="comments">
 				<h2>Comments written:</h2>
 				<div>
-					<SingleArticleListComments :comments="all_comments" />
+					<SinglePostCommentsList :comments="all_comments" />
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Testing the component "ArticleSavedCard" > Should match snapshot 1`] = `
+exports[`Testing the component "PostSavedCard" > Should match snapshot 1`] = `
 VueWrapper {
   "__app": {
     "_component": {
@@ -1239,8 +1239,8 @@ VueWrapper {
           "suspense": null,
           "suspenseId": 0,
           "type": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyUser/ArticleSavedCard.vue",
-            "__name": "ArticleSavedCard",
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/PostSavedCard.vue",
+            "__name": "PostSavedCard",
             "components": {},
             "render": [Function],
             "setup": [Function],
@@ -1326,8 +1326,8 @@ VueWrapper {
         "targetAnchor": null,
         "transition": null,
         "type": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyUser/ArticleSavedCard.vue",
-          "__name": "ArticleSavedCard",
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/PostSavedCard.vue",
+          "__name": "PostSavedCard",
           "components": {},
           "render": [Function],
           "setup": [Function],

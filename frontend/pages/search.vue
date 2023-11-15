@@ -10,7 +10,7 @@
         </span>
       </h2>
       <div v-if="postStore.posts">
-        <ArticleCard
+        <FeedPostPreviewCard
           v-for="post, index in postStore.posts.results"
           :key="index"
           :post-detail="post"

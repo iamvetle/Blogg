@@ -18,7 +18,7 @@
 				<p class="text-lg"
 					v-if="(postStore.posts?.results?.length === 0) && (selected) && (num_of_following > 0)">No
 					posts are published.</p>
-				<FeedListArticles v-if="postStore.posts.results" class="w-full mt-12" />
+				<FeedPostsList v-if="postStore.posts.results" class="w-full mt-12" />
 			</div>
 			<div class="col-span-4 mx-auto w-full">
 				<div id="dropdown-filter" v-if="postStore.allTags && !selected"
@@ -26,7 +26,7 @@
 					<FeedDropdownFilter/>
 				</div>
 				<!-- This lists the (saved)articles in thes sidebar -->
-				<FeedListArticlesSidebar class="w-full" v-if="loggedInUserStore.loggedInUserProfile" />
+				<FeedPostsListSidebar class="w-full" v-if="loggedInUserStore.loggedInUserProfile" />
 			</div>
 		</div>
 	</div>

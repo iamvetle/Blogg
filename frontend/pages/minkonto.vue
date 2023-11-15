@@ -42,7 +42,7 @@
 								<hr class="prose">
 								<div id="saved_articles">
 									<h2>List of saved articles:</h2>
-									<ArticleSavedCardList/>
+									<PostSavedCardList/>
 								</div>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 						</div>
 
 						<div id="all-posts">
-							<MyProfileListArticles />
+							<MyProfilePostsList />
 						</div>
 					</div>
 				</div>
