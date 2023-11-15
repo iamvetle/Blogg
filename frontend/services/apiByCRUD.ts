@@ -89,7 +89,7 @@ export const postMethod = async (url:string, formData:object, headers?:object): 
         // console.log(toRaw(response)) // print to self
 
         if(response.status !== null) {
-            // console.log(`Request to ${url} returned ${response.status}`) // print to self
+            console.log(`Request to ${url} returned ${response.status}`) // print to self
         }
 
         if(response.data === null) {

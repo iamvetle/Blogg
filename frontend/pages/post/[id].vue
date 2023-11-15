@@ -54,12 +54,14 @@
 
 			<hr>
 
-			<div data-test="comments">
+			<div data-test="comments" id="post_comments">
 				<h2>Comments written:</h2>
 				<div>
 					<SinglePostCommentsList :comments="all_comments" />
 				</div>
-				<CommentAdd/>
+				<SinglePostCommentAdd
+				:post-id="post.id"				
+				/>
 			</div>
 		</div>
 	</div>

@@ -1,39 +1,33 @@
 <template>
-    <!-- Main container for the textarea element -->
+    <!-- Textarea component with external binding -->
     <div>
-        <!-- Textarea element bound with inputValue and handling input event -->
-        <textarea :value="inputValue" v-bind="$attrs" @input="inputChange"></textarea>
+        <!-- Textarea element with value bound to the modelValue prop and input event handling -->
+        <textarea :value="modelValue" @input="handleInput" v-bind="$attrs"></textarea>
     </div>
 </template>
-    
+  
 <script setup lang="ts">
-import { defineEmits, ref, defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
-// Defines the custom events that this component can emit.
-const emit = defineEmits(["emitInput"]);
+// Receives 'modelValue' prop for v-model binding. This prop represents the current value of the textarea.
+defineProps({
+    modelValue: String
+});
 
-// Reactive reference for the value of the textarea.
-const inputValue = ref("");
+// Emits 'update:modelValue' event which is essential for the v-model binding in the parent component.
+const emit = defineEmits(['update:modelValue']);
 
 /**
- * Handles the input event of the textarea.
- * 
+ * Handles the input event from the textarea.
+ * Emits an 'update:modelValue' event with the new value, allowing the parent component to update its data.
  * @param {Event} event - The input event object.
  */
-const inputChange = (event: Event) => {
-    // Update inputValue with the current textarea value
-    inputValue.value = (event.target as HTMLTextAreaElement).value;
-    // Emit the updated value to the parent component
-    emit("emitInput", inputValue.value);
+const handleInput = (event: any) => {
+    emit('update:modelValue', event.target.value);
 };
-
-// Define the props that this component accepts.
-defineProps<{
-    placeholder?: string; // Optional placeholder for the textarea
-}>();
 </script>
-    
+  
 <style scoped>
-/* Scoped CSS styles for this component */
+/* Scoped CSS for the textarea component */
 </style>
   

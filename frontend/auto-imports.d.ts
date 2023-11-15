@@ -62,6 +62,7 @@ declare global {
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
+  const postCommentOnPost: typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']
   const postCreateNewPost: typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']
   const postForm: typeof import('./composables/crud/postForm')['postForm']
   const provide: typeof import('vue')['provide']
@@ -149,6 +150,7 @@ declare module 'vue' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly postCommentOnPost: UnwrapRef<typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']>
     readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
@@ -229,6 +231,7 @@ declare module '@vue/runtime-core' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly postCommentOnPost: UnwrapRef<typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']>
     readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>

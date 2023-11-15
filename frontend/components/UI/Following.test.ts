@@ -4,12 +4,10 @@ import Following from './Following.vue'
 describe('following testing', () => {
     const wrapper = mount(Following, {
         props: {
-            following: {
-                username:"testusername"
-            }
+            username:"testusername" 
         }
     })
-
+    
     test('exists', () => {
         expect(wrapper.exists()).toBe(true)
     })

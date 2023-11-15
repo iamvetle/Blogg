@@ -1,10 +1,10 @@
-import CommentAdd from './CommentAdd.vue';
+import SinglePostCommentAdd from './SinglePostCommentAdd.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
 // Components
 
-import BaseTextareaInput from '../base/BaseTextareaInput.vue';
+import BaseTextareaInput from '~/components/base/BaseTextareaInput.vue';
 
 
 // Stores
@@ -23,7 +23,7 @@ let pinia: any = createTestingPinia();
 // let paginationStore; 
 
 const factory = () => {
-    return shallowMount(CommentAdd, {
+    return shallowMount(SinglePostCommentAdd, {
         global: {
             plugins: [pinia],
             components: {
@@ -37,7 +37,9 @@ const factory = () => {
         attrs: {
             placeholder: "testholder"
         },
-        props: {},
+        props: {
+            postId:2
+        },
         slots: {}
     })
 };
@@ -82,39 +84,25 @@ describe('', () => {
         wrapper = factory()
         expect(wrapper.vm.tryAddComment).toBeDefined()
     })
-    test('There should be an emit that sends the input "upwards and that gets triggered by a button when the text that is supposed to be sent has some value', async () => {
-        wrapper = factory()
-
-        await wrapper.vm.$nextTick()
-
-        const button = wrapper.get("[data-test='submit_comment_button']")
-        wrapper.vm.textInput = "sometext"
-
-        await wrapper.vm.$nextTick()
-        
-        await button.trigger("click")
-        await wrapper.vm.$nextTick()
-
-        expect(wrapper.emitted("emitComment")).toBeTruthy()
-    })
-    test('The emit should NOT emit when the text is empty', async () => {
-        wrapper = factory()
-
-        const button = wrapper.get("[data-test='submit_comment_button']")
-        await button.trigger("click")
-
-        expect(wrapper.emitted("emitComment")).not.toBeTruthy()
-    })
+    
     test('The submit button should have submit text', () => {
         wrapper = factory()
 
         const button = wrapper.get("[data-test='submit_comment_button']")
 
         expect(button.text()).toEqual("Submit")
-    }),
-        test('If the comment was added/emitted correctly, the text in the textarea component should be gone ', () => {
-            wrapper = factory()
-        })
+    })
+    test('Should have a prop that contains the post id', () => {
+        wrapper = factory()
+
+        
+        expect(wrapper.props("postId")).toBe(2)
+        expect(typeof wrapper.props("postId")).toBe("number")
+
+
+      
+    })
+
 });
 
 // toBe() for direct objcet comparision
