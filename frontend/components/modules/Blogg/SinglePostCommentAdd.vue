@@ -46,7 +46,11 @@ const tryAddComment = async () => {
 
         /** Makes a call to fetch all comments of the post again */
         const response_comment = await getSinglePostComments(allPostCommentsURL)
-        
+
+        /**
+         * ! need to fetch comments again - implement a logic for that
+         */
+
         if (response_comment == null) {
             console.error("Something went wrong trying to fetch the comments of the post")
         }
