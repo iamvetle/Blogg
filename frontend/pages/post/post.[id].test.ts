@@ -10,21 +10,21 @@ import TagsList from '~/components/UI/TagsList.vue';
 
 
 const standardPost = {
-    id:5,
+    id: 5,
     title: "testTitle",
-    content:"testContent",
+    content: "testContent",
     author: {
-        username:"testUsername",
-        first_name:"testFirstName",
-        last_name:"testLastName"
+        username: "testUsername",
+        first_name: "testFirstName",
+        last_name: "testLastName"
     },
-    num_of_comments:6,
-    tags:[
+    num_of_comments: 6,
+    tags: [
         {
-            name:"candy",
+            name: "candy",
         },
         {
-            name:"fridge"
+            name: "fridge"
         }
     ]
 }
@@ -48,7 +48,7 @@ const factory = () => {
             },
             mocks: {},
             stubs: {
-                TagsList:true
+                TagsList: true
             },
         },
         props: {},
@@ -104,29 +104,38 @@ describe('', () => {
 
         console.log(wrapper.html())
 
-        const listComments = wrapper.findComponent({ name:"SinglePostCommentsList" })
+        const listComments = wrapper.findComponent({ name: "SinglePostCommentsList" })
         expect(listComments.exists()).toBe(true)
     })
 
     test('PostBookmark should be present if all post data is ok', async () => {
         wrapper = factory()
-        
+
         wrapper.vm.post = standardPost
 
         await wrapper.vm.$nextTick()
-        
-        const bookmark = wrapper.findComponent({ name:"PostBookmark" })
+
+        const bookmark = wrapper.findComponent({ name: "PostBookmark" })
         expect(bookmark.exists()).toBe(true)
     })
     test('articletags should be present if all post data is ok', async () => {
         wrapper = factory()
-        
+
         wrapper.vm.post = standardPost
 
         await wrapper.vm.$nextTick()
-        
-        const bookmark = wrapper.findComponent({ name:"TagsList" })
+
+        const bookmark = wrapper.findComponent({ name: "TagsList" })
         expect(bookmark.exists()).toBe(true)
+    })
+    test('CommentAdd should be present', async () => {
+        wrapper = factory()
+
+        wrapper.vm.post = standardPost
+
+        await wrapper.vm.$nextTick()
+
+        expect(wrapper.findComponent({ name: "CommentAdd" }))
     })
 
 })

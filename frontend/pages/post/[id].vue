@@ -59,6 +59,7 @@
 				<div>
 					<SinglePostCommentsList :comments="all_comments" />
 				</div>
+				<CommentAdd/>
 			</div>
 		</div>
 	</div>
