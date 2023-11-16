@@ -1,10 +1,11 @@
 import SinglePostCommentAdd from './SinglePostCommentAdd.vue';
-import { VueWrapper, shallowMount } from '@vue/test-utils';
+import { VueWrapper, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
 // Components
 
 import BaseTextareaInput from '~/components/base/BaseTextareaInput.vue';
+import BaseButton from '~/components/base/BaseButton.vue';
 
 
 // Stores
@@ -23,11 +24,12 @@ let pinia: any = createTestingPinia();
 // let paginationStore; 
 
 const factory = () => {
-    return shallowMount(SinglePostCommentAdd, {
+    return mount(SinglePostCommentAdd, {
         global: {
             plugins: [pinia],
             components: {
-                BaseTextareaInput
+                BaseTextareaInput,
+                BaseButton
             },
             mocks: {},
             stubs: {
@@ -53,13 +55,11 @@ describe('', () => {
         // paginationStore = usePaginationStore(pinia); 
 
     });
-
     afterEach(() => {
         if (wrapper) {
             wrapper.unmount();
         }
     });
-
     test('Should exist', () => {
         wrapper = factory()
         expect(wrapper.exists()).toBe(true)
@@ -70,7 +70,7 @@ describe('', () => {
     })
     test('The should be a button', () => {
         wrapper = factory()
-        expect(wrapper.find("button[data-test='submit_comment_button']").exists()).toBe(true)
+        expect(wrapper.find("[data-test='submit_comment_button']").exists()).toBe(true)
     })
     test('There should be an area where for creating the text input for the comment', () => {
         wrapper = factory()
@@ -84,7 +84,6 @@ describe('', () => {
         wrapper = factory()
         expect(wrapper.vm.tryAddComment).toBeDefined()
     })
-    
     test('The submit button should have submit text', () => {
         wrapper = factory()
 
@@ -94,13 +93,10 @@ describe('', () => {
     })
     test('Should have a prop that contains the post id', () => {
         wrapper = factory()
-
         
         expect(wrapper.props("postId")).toBe(2)
         expect(typeof wrapper.props("postId")).toBe("number")
 
-
-      
     })
 
 });

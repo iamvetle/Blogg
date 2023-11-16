@@ -2,7 +2,7 @@
     <!-- Container for the comment submission functionality -->
     <div>
         <!-- Button to trigger comment submission -->
-        <button @click="tryAddComment" data-test="submit_comment_button">Submit</button>
+        <button @click="tryAddComment" class="bg-primary text-onPrimary p-1 rounded-md mb-2" data-test="submit_comment_button">Submit</button>
         <!-- Textarea input for entering comments -->
         <div data-test="input_comment_text">
             <BaseTextareaInput v-model="textInput" />

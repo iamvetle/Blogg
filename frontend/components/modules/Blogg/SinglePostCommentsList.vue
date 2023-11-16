@@ -1,9 +1,14 @@
 <template>
-    <div v-for="(comment, index) of comments" :key="index">
-        <SinglePostCommentSingle
-        :comment="comment"
-        class="p-4 border mt-2 border-2"
-        />
+    <div v-if="comments?.length">
+        <div v-for="(comment, index) of comments" :key="index">
+            <SinglePostCommentSingle
+            :comment="comment"
+            class="p-4 border mt-2 border-2"
+            />
+        </div>
+    </div>
+    <div v-else>
+        <p>No comments.</p>
     </div>
 </template>
 

@@ -23,16 +23,16 @@ const factory = () => {
             stubs: {},
         },
         props: {
-            comments:[
+            comments: [
                 {
-                    content:"somecontent1",
-                    date_published:"01-01-2001",
-                    author:"testusername"
+                    content: "somecontent1",
+                    date_published: "01-01-2001",
+                    author: "testusername"
                 },
                 {
-                    content:"somecontent2",
-                    date_published:"03-12-2012",
-                    author:"testbobusername"
+                    content: "somecontent2",
+                    date_published: "03-12-2012",
+                    author: "testbobusername"
                 }
             ]
         },
@@ -56,7 +56,7 @@ describe('', () => {
         }
     });
 
-    test('Should exist, all the comments', () => {
+    test('Should exist, the listcomments component', () => {
         wrapper = factory()
 
         expect(wrapper.exists()).toBe(true)
@@ -67,6 +67,7 @@ describe('', () => {
         const singlecomment = wrapper.findComponent({ name: "SinglePostCommentSingle" })
 
         expect(singlecomment.exists()).toBe(true)
+        expect(wrapper.text()).not.toContain("No comments.")
     })
 
     test("Should have list of comments props passed down", () => {
@@ -74,10 +75,9 @@ describe('', () => {
         expect(wrapper.props("comments")).toBeTruthy()
     })
     test("The number of singlecomment instances should be equal to the number of comments", () => {
-        
         wrapper = factory()
 
-        const all_comment_components = wrapper.findAllComponents({ name:"SinglePostCommentSingle" })
+        const all_comment_components = wrapper.findAllComponents({ name: "SinglePostCommentSingle" })
 
         // using, 2, because wrapper props here has length 2  
         expect(all_comment_components).toHaveLength(2)
@@ -85,5 +85,12 @@ describe('', () => {
     test("The comments text should be displayed", () => {
         expect(wrapper.html()).toContain("somecontent1")
         expect(wrapper.html()).toContain("somecontent2")
+    })
+    test('Should not find any singlepost comment', async () => {
+        wrapper = factory()
+
+        await wrapper.setProps({ comments:null })
+
+        expect(wrapper.text()).toContain("No comments.")
     })
 });

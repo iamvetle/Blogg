@@ -137,5 +137,16 @@ describe('', () => {
 
         expect(wrapper.findComponent({ name: "CommentAdd" }))
     })
+    test('Should mention (display) the number of comments', async () => {
+        wrapper = factory()
+        
+        wrapper.vm.post = standardPost
+
+        await wrapper.vm.$nextTick()
+
+        const comment_div = wrapper.find("[data-test='comments']")
+
+        expect(comment_div.text()).toContain(6)
+    })
 
 })

@@ -55,10 +55,13 @@
 			<hr>
 
 			<div data-test="comments" id="post_comments">
-				<h2>Comments written:</h2>
+				<h2>Comments written: ({{ post.num_of_comments }})</h2>
 				<div>
 					<SinglePostCommentsList :comments="all_comments" />
 				</div>
+
+				<hr>
+
 				<SinglePostCommentAdd
 				:post-id="post.id"				
 				/>
