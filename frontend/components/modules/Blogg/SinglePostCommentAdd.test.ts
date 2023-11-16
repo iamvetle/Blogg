@@ -7,21 +7,8 @@ import { createTestingPinia } from '@pinia/testing';
 import BaseTextareaInput from '~/components/base/BaseTextareaInput.vue';
 import BaseButton from '~/components/base/BaseButton.vue';
 
-
-// Stores
-
-import { useGeneralStore } from '~/store/generalStore';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
-
 let wrapper: any;
 let pinia: any = createTestingPinia();
-
-// let generalStore; 
-// let postStore; 
-// let loggedInUserStore; 
-// let paginationStore; 
 
 const factory = () => {
     return mount(SinglePostCommentAdd, {
@@ -49,10 +36,6 @@ const factory = () => {
 describe('', () => {
 
     beforeEach(() => {
-        // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
-        // paginationStore = usePaginationStore(pinia); 
 
     });
     afterEach(() => {

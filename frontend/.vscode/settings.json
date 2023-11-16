@@ -28,7 +28,12 @@
     "store\\TIPS.md": true,
     "composables\\testing guide.text": true,
     "pages\\search.vue": true,
-    "pages\\search.test.ts": true
+    "pages\\search.test.ts": true,
+    "package.json": true,
+    "vue-shims.d.ts": true,
+    "yarn-error.log": true,
+    "tests\\components\\.nuxt": true,
+    "components\\.nuxt": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
