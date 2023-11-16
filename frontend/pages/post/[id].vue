@@ -1,75 +1,70 @@
 <template>
-	<div class="max-w-3xl py-[100px] mx-auto">
-		<div v-if="post" class="px-[60px] py-[30px] mx-auto">
-			<div class="pb-12">
-				<span id="post-title" class="prose">
-					<h1 class="">
-						{{ post.title }}
-					</h1>
+	<div v-if="post" class="max-w-2xl py-[100px] mx-auto prose">
+		<div>
+			<span class="flex items-center justify-between">
+				<span class="flex items-center not-prose">
+					<BaseImage :src="placeholder_profile_picture" alt="" class="mr-2 h-8" />
+					<NuxtLink :to="`/user/${post.author.username}`">
+						<p class="font-bold inline">
+							- {{ post.author.first_name }} {{ post.author.last_name }}
+						</p>
+					</NuxtLink>
 				</span>
-			</div>
-			<div>
-				<span class="mb-4 flex items-center justify-between">
-					<span class="flex items-center"	>
-						<img :src="placeholder_profile_picture" alt="" class="mr-2 h-8">
-						<NuxtLink :to="`/user/${post.author.username}`" class="not-prose">
-							<p class="font-bold inline">
-								- {{ post.author.first_name }} {{ post.author.last_name }}
-							</p>
-						</NuxtLink>
-					</span>
-					<span class="text-xs float-right">Published {{ post.date_published }}</span>
-				</span>
-			</div>
-
-			<span v-if="!checkIfLoggedInUser(post.author.username)">
-				<PostBookmark :post="post.id" />
+				<span class="text-xs float-right">Published {{ post.date_published }}</span>
 			</span>
+			<!-- <div v-if="post.num_of_comments !== null" class="flex space-x-1" id="tags">
+				<p>{{ post.num_of_comments }} comments</p>
+			</div> -->
+		</div>
 
-			<hr>
+		<hr> 
 
-			<div>
+		<div data-test="post-title" id="title">
+			<PostTitle :title="post.title" />
+		</div>
 
-				<div v-if="post.num_of_comments !== null" class="mb-2 flex space-x-1" id="tags">
-					<span>{{ post.num_of_comments }} comments</span>
-				</div>
-				<hr>
+		<span v-if="!checkIfLoggedInUser(post.author.username)">
+			<PostBookmark :post="post.id" />
+		</span>
 
-				<div id="all_tags" v-if="post.tags">
-					<TagsList :tags="post.tags" />
-				</div>
 
-				<!-- Obviously don't want both long term
+		<div>
+
+
+
+
+			<div id="all_tags" v-if="post.tags">
+				<TagsList :tags="post.tags" />
+			</div>
+
+			<!-- Obviously don't want both long term
 				<div v-if="post.categories" class="mb-2 flex space-x-1" id="categories">
 					<span class="flex" v-for="(category, index) in post.categories">
 						<BaseTag :text="category" :key="index" />
 					</span>
 				</div> -->
 
-			</div>
+		</div>
 
-			<div class="prose" id="main-content">
-				<div class="mb-4" v-html="post.content"></div>
-			</div>
+		<div id="main-content">
+			<PostContentHTML :html="post.content" />
+		</div>
 
-			<button class="border-2 bg-light-blue-400 rounded-lg py-1 px-2" @click="navigateTo('/')">
-				Back
-			</button>
+		<div class="mb-4">
+			<BaseButton text="Back" class="border-2 bg-light-blue-400" @click="navigateTo('/')" />
+		</div>
+
+		<hr>
+
+		<div data-test="comments" id="post_comments">
+			<h2>Comments written: ({{ post.num_of_comments }})</h2>
+			<div>
+				<SinglePostCommentsList :comments="all_comments" />
+			</div>
 
 			<hr>
 
-			<div data-test="comments" id="post_comments" class="prose">
-				<h2>Comments written: ({{ post.num_of_comments }})</h2>
-				<div>
-					<SinglePostCommentsList :comments="all_comments" />
-				</div>
-
-				<hr>
-
-				<SinglePostCommentAdd
-				:post-id="post.id"				
-				/>
-			</div>
+			<SinglePostCommentAdd :post-id="post.id" />
 		</div>
 	</div>
 </template>

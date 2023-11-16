@@ -11,20 +11,64 @@ VueWrapper {
     "_container": <div
       data-v-app=""
     >
-      <div
-        class="max-w-3xl py-[100px] mx-auto"
-      >
-        <!--v-if-->
-      </div>
+      <!--v-if-->
     </div>,
     "_context": {
       "app": [Circular],
       "components": {
+        "BaseButton": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
+          "__name": "BaseButton",
+          "props": {
+            "text": {
+              "required": true,
+              "type": [Function],
+            },
+          },
+          "render": [Function],
+          "setup": [Function],
+        },
+        "BaseImage": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+          "__name": "BaseImage",
+          "props": {
+            "src": {
+              "required": true,
+              "type": [Function],
+            },
+          },
+          "render": [Function],
+          "setup": [Function],
+        },
         "PostBookmark": {
           "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
           "__name": "PostBookmark",
           "props": {
             "post": {
+              "required": true,
+              "type": [Function],
+            },
+          },
+          "render": [Function],
+          "setup": [Function],
+        },
+        "PostContentHTML": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
+          "__name": "PostContentHTML",
+          "props": {
+            "html": {
+              "required": true,
+              "type": [Function],
+            },
+          },
+          "render": [Function],
+          "setup": [Function],
+        },
+        "PostTitle": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
+          "__name": "PostTitle",
+          "props": {
+            "title": {
               "required": true,
               "type": [Function],
             },
@@ -514,11 +558,59 @@ VueWrapper {
       "appContext": {
         "app": [Circular],
         "components": {
+          "BaseButton": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
+            "__name": "BaseButton",
+            "props": {
+              "text": {
+                "required": true,
+                "type": [Function],
+              },
+            },
+            "render": [Function],
+            "setup": [Function],
+          },
+          "BaseImage": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+            "__name": "BaseImage",
+            "props": {
+              "src": {
+                "required": true,
+                "type": [Function],
+              },
+            },
+            "render": [Function],
+            "setup": [Function],
+          },
           "PostBookmark": {
             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
             "__name": "PostBookmark",
             "props": {
               "post": {
+                "required": true,
+                "type": [Function],
+              },
+            },
+            "render": [Function],
+            "setup": [Function],
+          },
+          "PostContentHTML": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
+            "__name": "PostContentHTML",
+            "props": {
+              "html": {
+                "required": true,
+                "type": [Function],
+              },
+            },
+            "render": [Function],
+            "setup": [Function],
+          },
+          "PostTitle": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
+            "__name": "PostTitle",
+            "props": {
+              "title": {
                 "required": true,
                 "type": [Function],
               },
@@ -1129,11 +1221,59 @@ VueWrapper {
           "appContext": {
             "app": [Circular],
             "components": {
+              "BaseButton": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
+                "__name": "BaseButton",
+                "props": {
+                  "text": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "BaseImage": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+                "__name": "BaseImage",
+                "props": {
+                  "src": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
               "PostBookmark": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
                 "__name": "PostBookmark",
                 "props": {
                   "post": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "PostContentHTML": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
+                "__name": "PostContentHTML",
+                "props": {
+                  "html": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "PostTitle": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
+                "__name": "PostTitle",
+                "props": {
+                  "title": {
                     "required": true,
                     "type": [Function],
                   },
@@ -1627,11 +1767,59 @@ VueWrapper {
           "bum": null,
           "c": null,
           "components": {
+            "BaseButton": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
+              "__name": "BaseButton",
+              "props": {
+                "text": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "BaseImage": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+              "__name": "BaseImage",
+              "props": {
+                "src": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
             "PostBookmark": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
               "__name": "PostBookmark",
               "props": {
                 "post": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "PostContentHTML": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
+              "__name": "PostContentHTML",
+              "props": {
+                "html": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "PostTitle": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
+              "__name": "PostTitle",
+              "props": {
+                "title": {
                   "required": true,
                   "type": [Function],
                 },
@@ -3585,83 +3773,19 @@ VueWrapper {
             "__v_skip": true,
             "anchor": null,
             "appContext": null,
-            "children": [
-              {
-                "__v_isVNode": true,
-                "__v_skip": true,
-                "anchor": null,
-                "appContext": null,
-                "children": "v-if",
-                "component": null,
-                "ctx": [Circular],
-                "dirs": null,
-                "dynamicChildren": [],
-                "dynamicProps": null,
-                "el": <!--v-if-->,
-                "key": null,
-                "patchFlag": 0,
-                "props": null,
-                "ref": null,
-                "scopeId": null,
-                "shapeFlag": 8,
-                "slotScopeIds": null,
-                "ssContent": null,
-                "ssFallback": null,
-                "staticCount": 0,
-                "suspense": null,
-                "target": null,
-                "targetAnchor": null,
-                "transition": null,
-                "type": Symbol(v-cmt),
-              },
-            ],
+            "children": "v-if",
             "component": null,
             "ctx": [Circular],
             "dirs": null,
-            "dynamicChildren": [
-              {
-                "__v_isVNode": true,
-                "__v_skip": true,
-                "anchor": null,
-                "appContext": null,
-                "children": "v-if",
-                "component": null,
-                "ctx": [Circular],
-                "dirs": null,
-                "dynamicChildren": [],
-                "dynamicProps": null,
-                "el": <!--v-if-->,
-                "key": null,
-                "patchFlag": 0,
-                "props": null,
-                "ref": null,
-                "scopeId": null,
-                "shapeFlag": 8,
-                "slotScopeIds": null,
-                "ssContent": null,
-                "ssFallback": null,
-                "staticCount": 0,
-                "suspense": null,
-                "target": null,
-                "targetAnchor": null,
-                "transition": null,
-                "type": Symbol(v-cmt),
-              },
-            ],
+            "dynamicChildren": [],
             "dynamicProps": null,
-            "el": <div
-              class="max-w-3xl py-[100px] mx-auto"
-            >
-              <!--v-if-->
-            </div>,
+            "el": <!--v-if-->,
             "key": null,
             "patchFlag": 0,
-            "props": {
-              "class": "max-w-3xl py-[100px] mx-auto",
-            },
+            "props": null,
             "ref": null,
             "scopeId": null,
-            "shapeFlag": 17,
+            "shapeFlag": 8,
             "slotScopeIds": null,
             "ssContent": null,
             "ssFallback": null,
@@ -3670,7 +3794,7 @@ VueWrapper {
             "target": null,
             "targetAnchor": null,
             "transition": null,
-            "type": "div",
+            "type": Symbol(v-cmt),
           },
           "suspense": null,
           "suspenseId": 0,
@@ -3678,11 +3802,59 @@ VueWrapper {
             "__file": "C:/Users/metle/Desktop/Blogg/frontend/pages/post/[id].vue",
             "__name": "[id]",
             "components": {
+              "BaseButton": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
+                "__name": "BaseButton",
+                "props": {
+                  "text": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "BaseImage": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+                "__name": "BaseImage",
+                "props": {
+                  "src": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
               "PostBookmark": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
                 "__name": "PostBookmark",
                 "props": {
                   "post": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "PostContentHTML": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
+                "__name": "PostContentHTML",
+                "props": {
+                  "html": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+              "PostTitle": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
+                "__name": "PostTitle",
+                "props": {
+                  "title": {
                     "required": true,
                     "type": [Function],
                   },
@@ -3732,11 +3904,7 @@ VueWrapper {
         "dirs": null,
         "dynamicChildren": null,
         "dynamicProps": null,
-        "el": <div
-          class="max-w-3xl py-[100px] mx-auto"
-        >
-          <!--v-if-->
-        </div>,
+        "el": <!--v-if-->,
         "key": null,
         "patchFlag": 0,
         "props": {
@@ -3762,11 +3930,59 @@ VueWrapper {
           "__file": "C:/Users/metle/Desktop/Blogg/frontend/pages/post/[id].vue",
           "__name": "[id]",
           "components": {
+            "BaseButton": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
+              "__name": "BaseButton",
+              "props": {
+                "text": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "BaseImage": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+              "__name": "BaseImage",
+              "props": {
+                "src": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
             "PostBookmark": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
               "__name": "PostBookmark",
               "props": {
                 "post": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "PostContentHTML": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
+              "__name": "PostContentHTML",
+              "props": {
+                "html": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "PostTitle": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
+              "__name": "PostTitle",
+              "props": {
+                "title": {
                   "required": true,
                   "type": [Function],
                 },
@@ -3824,11 +4040,59 @@ VueWrapper {
         "appContext": {
           "app": [Circular],
           "components": {
+            "BaseButton": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
+              "__name": "BaseButton",
+              "props": {
+                "text": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "BaseImage": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+              "__name": "BaseImage",
+              "props": {
+                "src": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
             "PostBookmark": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
               "__name": "PostBookmark",
               "props": {
                 "post": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "PostContentHTML": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
+              "__name": "PostContentHTML",
+              "props": {
+                "html": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+            "PostTitle": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
+              "__name": "PostTitle",
+              "props": {
+                "title": {
                   "required": true,
                   "type": [Function],
                 },
@@ -4364,11 +4628,7 @@ VueWrapper {
         "dirs": null,
         "dynamicChildren": null,
         "dynamicProps": null,
-        "el": <div
-          class="max-w-3xl py-[100px] mx-auto"
-        >
-          <!--v-if-->
-        </div>,
+        "el": <!--v-if-->,
         "key": null,
         "patchFlag": 0,
         "props": null,
@@ -4651,189 +4911,12 @@ VueWrapper {
     "version": "3.3.7",
   },
   "__setProps": [Function],
-  "cleanUpCallbacks": [
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-    [Function],
-  ],
+  "cleanUpCallbacks": [],
   "componentVM": {},
   "isDisabled": [Function],
   "rootVM": {
     "VTU_COMPONENT": {},
   },
-  "wrapperElement": <div
-    class="max-w-3xl py-[100px] mx-auto"
-  >
-    <!--v-if-->
-  </div>,
+  "wrapperElement": <!--v-if-->,
 }
 `;

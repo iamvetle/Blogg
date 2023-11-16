@@ -7,6 +7,10 @@ import { usePostStore } from '~/store/postStore';
 import SinglePostCommentsList from '~/components/modules/Blogg/SinglePostCommentsList.vue';
 import PostBookmark from '~/components/UI/PostBookmark.vue';
 import TagsList from '~/components/UI/TagsList.vue';
+import PostTitle from '~/components/UI/PostTitle.vue';
+import BaseImage from '~/components/base/BaseImage.vue';
+import PostContentHTML from '~/components/UI/PostContentHTML.vue';
+import BaseButton from '~/components/base/BaseButton.vue';
 
 
 const standardPost = {
@@ -44,7 +48,11 @@ const factory = () => {
             components: {
                 SinglePostCommentsList,
                 PostBookmark,
-                TagsList
+                TagsList,
+                PostTitle,
+                BaseImage,
+                PostContentHTML,
+                BaseButton
             },
             mocks: {},
             stubs: {
@@ -139,7 +147,7 @@ describe('', () => {
     })
     test('Should mention (display) the number of comments', async () => {
         wrapper = factory()
-        
+
         wrapper.vm.post = standardPost
 
         await wrapper.vm.$nextTick()
@@ -148,5 +156,40 @@ describe('', () => {
 
         expect(comment_div.text()).toContain(6)
     })
+    test('Should have a title prop', async () => {
+        wrapper = factory()
+        wrapper.vm.post = standardPost
+        await wrapper.vm.$nextTick()
+        expect(wrapper.findComponent({ name: "PostTitle" }).exists()).toBe(true)
+    })
+    test('Should render the title from the post', async () => {
+        wrapper = factory()
+        wrapper.vm.post = standardPost
+        await wrapper.vm.$nextTick()
+        
+        const postTitleDiv = wrapper.find("[data-test='post-title']")
+        expect(postTitleDiv.exists()).toBe(true)
+    
+        expect(postTitleDiv.html()).toContain(standardPost.title)
+    })
+    test('Should have the image component', async () => {
+        wrapper = factory()
+        wrapper.vm.post = standardPost
+        await wrapper.vm.$nextTick()
+        expect(wrapper.findComponent({ name:"BaseImage"}).exists()).toBe(true)
+    })
+    test('Should have the component that renders the html input from prop', async () => {
+        wrapper = factory()
+        wrapper.vm.post = standardPost
+        await wrapper.vm.$nextTick()
+        expect(wrapper.findComponent({ name:"PostContentHTML" }).exists()).toBe(true)
+    })
+    test('Should render the basebutton, back button, on page', async () => {
+        wrapper = factory()
+        wrapper.vm.post = standardPost
+        await wrapper.vm.$nextTick()
+        expect(wrapper.findComponent({ name:"BaseButton"}).exists()).toBe(true)
+    })
+
 
 })
