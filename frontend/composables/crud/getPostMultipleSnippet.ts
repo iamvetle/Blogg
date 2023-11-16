@@ -40,6 +40,9 @@ export const getPostMultipleSnippet = async (url: string): Promise<SnippetPostMu
 		*/
 		await fixPagination(response.data)
 
+		/**
+		 * TODO take the assigning to posstore down to page level
+		 */
 		postStore.posts = response.data
 
 		/**

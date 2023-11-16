@@ -2,7 +2,7 @@
     <!-- Textarea component with external binding -->
     <div>
         <!-- Textarea element with value bound to the modelValue prop and input event handling -->
-        <textarea :value="modelValue" @input="handleInput" v-bind="$attrs"></textarea>
+        <textarea cols="40" class="rounded-md" :value="modelValue" @input="handleInput" v-bind="$attrs"></textarea>
     </div>
 </template>
   

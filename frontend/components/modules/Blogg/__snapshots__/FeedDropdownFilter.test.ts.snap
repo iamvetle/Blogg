@@ -124,6 +124,7 @@ VueWrapper {
                   },
                   "state": [
                     "posts",
+                    "allComments",
                     "followingPosts",
                     "allCategories",
                     "allTags",
@@ -135,6 +136,7 @@ VueWrapper {
                 "_hotUpdate": [Function],
                 "_p": [Circular],
                 "allCategories": null,
+                "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/feed/",
                 "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -247,6 +249,13 @@ VueWrapper {
                     "_value": null,
                     "dep": undefined,
                   },
+                  "allComments": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": null,
+                    "_value": null,
+                    "dep": undefined,
+                  },
                   "allTags": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -333,6 +342,7 @@ VueWrapper {
                 },
                 "Store for containing posts and related to posts": {
                   "allCategories": null,
+                  "allComments": null,
                   "allTags": null,
                   "baseFetchURL": "http://localhost:8888/api/feed/",
                   "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -463,6 +473,7 @@ VueWrapper {
                 },
                 "state": [
                   "posts",
+                  "allComments",
                   "followingPosts",
                   "allCategories",
                   "allTags",
@@ -474,6 +485,7 @@ VueWrapper {
               "_hotUpdate": [Function],
               "_p": [Circular],
               "allCategories": null,
+              "allComments": null,
               "allTags": null,
               "baseFetchURL": "http://localhost:8888/api/feed/",
               "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -586,6 +598,13 @@ VueWrapper {
                   "_value": null,
                   "dep": undefined,
                 },
+                "allComments": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": null,
+                  "_value": null,
+                  "dep": undefined,
+                },
                 "allTags": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -672,6 +691,7 @@ VueWrapper {
               },
               "Store for containing posts and related to posts": {
                 "allCategories": null,
+                "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/feed/",
                 "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -797,6 +817,7 @@ VueWrapper {
                 },
                 "state": [
                   "posts",
+                  "allComments",
                   "followingPosts",
                   "allCategories",
                   "allTags",
@@ -808,6 +829,7 @@ VueWrapper {
               "_hotUpdate": [Function],
               "_p": [Circular],
               "allCategories": null,
+              "allComments": null,
               "allTags": null,
               "baseFetchURL": "http://localhost:8888/api/feed/",
               "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -920,6 +942,13 @@ VueWrapper {
                   "_value": null,
                   "dep": undefined,
                 },
+                "allComments": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": null,
+                  "_value": null,
+                  "dep": undefined,
+                },
                 "allTags": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -1006,6 +1035,7 @@ VueWrapper {
               },
               "Store for containing posts and related to posts": {
                 "allCategories": null,
+                "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/feed/",
                 "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",

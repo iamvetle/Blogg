@@ -1,5 +1,5 @@
 import SinglePostCommentAdd from './SinglePostCommentAdd.vue';
-import { VueWrapper, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
 // Components

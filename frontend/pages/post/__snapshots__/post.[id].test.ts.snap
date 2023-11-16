@@ -114,6 +114,7 @@ VueWrapper {
                   },
                   "state": [
                     "posts",
+                    "allComments",
                     "followingPosts",
                     "allCategories",
                     "allTags",
@@ -125,6 +126,7 @@ VueWrapper {
                 "_hotUpdate": [Function],
                 "_p": [Circular],
                 "allCategories": null,
+                "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/feed/",
                 "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -172,6 +174,13 @@ VueWrapper {
               "_rawValue": {
                 "Store for containing posts and related to posts": {
                   "allCategories": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": null,
+                    "_value": null,
+                    "dep": undefined,
+                  },
+                  "allComments": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
                     "_rawValue": null,
@@ -248,6 +257,7 @@ VueWrapper {
               "_value": {
                 "Store for containing posts and related to posts": {
                   "allCategories": null,
+                  "allComments": null,
                   "allTags": null,
                   "baseFetchURL": "http://localhost:8888/api/feed/",
                   "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -334,6 +344,7 @@ VueWrapper {
                 },
                 "state": [
                   "posts",
+                  "allComments",
                   "followingPosts",
                   "allCategories",
                   "allTags",
@@ -345,6 +356,7 @@ VueWrapper {
               "_hotUpdate": [Function],
               "_p": [Circular],
               "allCategories": null,
+              "allComments": null,
               "allTags": null,
               "baseFetchURL": "http://localhost:8888/api/feed/",
               "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -392,6 +404,13 @@ VueWrapper {
             "_rawValue": {
               "Store for containing posts and related to posts": {
                 "allCategories": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": null,
+                  "_value": null,
+                  "dep": undefined,
+                },
+                "allComments": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
                   "_rawValue": null,
@@ -468,6 +487,7 @@ VueWrapper {
             "_value": {
               "Store for containing posts and related to posts": {
                 "allCategories": null,
+                "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/feed/",
                 "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -588,6 +608,7 @@ VueWrapper {
                     },
                     "state": [
                       "posts",
+                      "allComments",
                       "followingPosts",
                       "allCategories",
                       "allTags",
@@ -599,6 +620,7 @@ VueWrapper {
                   "_hotUpdate": [Function],
                   "_p": [Circular],
                   "allCategories": null,
+                  "allComments": null,
                   "allTags": null,
                   "baseFetchURL": "http://localhost:8888/api/feed/",
                   "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -646,6 +668,13 @@ VueWrapper {
                 "_rawValue": {
                   "Store for containing posts and related to posts": {
                     "allCategories": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": null,
+                      "_value": null,
+                      "dep": undefined,
+                    },
+                    "allComments": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
                       "_rawValue": null,
@@ -722,6 +751,7 @@ VueWrapper {
                 "_value": {
                   "Store for containing posts and related to posts": {
                     "allCategories": null,
+                    "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/feed/",
                     "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -808,6 +838,7 @@ VueWrapper {
                   },
                   "state": [
                     "posts",
+                    "allComments",
                     "followingPosts",
                     "allCategories",
                     "allTags",
@@ -819,6 +850,7 @@ VueWrapper {
                 "_hotUpdate": [Function],
                 "_p": [Circular],
                 "allCategories": null,
+                "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/feed/",
                 "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -866,6 +898,13 @@ VueWrapper {
               "_rawValue": {
                 "Store for containing posts and related to posts": {
                   "allCategories": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": null,
+                    "_value": null,
+                    "dep": undefined,
+                  },
+                  "allComments": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
                     "_rawValue": null,
@@ -942,6 +981,7 @@ VueWrapper {
               "_value": {
                 "Store for containing posts and related to posts": {
                   "allCategories": null,
+                  "allComments": null,
                   "allTags": null,
                   "baseFetchURL": "http://localhost:8888/api/feed/",
                   "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -1183,6 +1223,7 @@ VueWrapper {
                         },
                         "state": [
                           "posts",
+                          "allComments",
                           "followingPosts",
                           "allCategories",
                           "allTags",
@@ -1194,6 +1235,7 @@ VueWrapper {
                       "_hotUpdate": [Function],
                       "_p": [Circular],
                       "allCategories": null,
+                      "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/feed/",
                       "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -1241,6 +1283,13 @@ VueWrapper {
                     "_rawValue": {
                       "Store for containing posts and related to posts": {
                         "allCategories": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
                           "_rawValue": null,
@@ -1317,6 +1366,7 @@ VueWrapper {
                     "_value": {
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
+                        "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/feed/",
                         "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -1403,6 +1453,7 @@ VueWrapper {
                       },
                       "state": [
                         "posts",
+                        "allComments",
                         "followingPosts",
                         "allCategories",
                         "allTags",
@@ -1414,6 +1465,7 @@ VueWrapper {
                     "_hotUpdate": [Function],
                     "_p": [Circular],
                     "allCategories": null,
+                    "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/feed/",
                     "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -1461,6 +1513,13 @@ VueWrapper {
                   "_rawValue": {
                     "Store for containing posts and related to posts": {
                       "allCategories": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
                         "_rawValue": null,
@@ -1537,6 +1596,7 @@ VueWrapper {
                   "_value": {
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
+                      "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/feed/",
                       "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -1629,6 +1689,7 @@ VueWrapper {
                   },
                   "state": [
                     "posts",
+                    "allComments",
                     "followingPosts",
                     "allCategories",
                     "allTags",
@@ -1718,6 +1779,13 @@ VueWrapper {
                           "_value": null,
                           "dep": undefined,
                         },
+                        "allComments": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
                         "allTags": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -1788,6 +1856,7 @@ VueWrapper {
                     "_value": {
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
+                        "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/feed/",
                         "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -1806,6 +1875,7 @@ VueWrapper {
                   "use": [Function],
                 },
                 "allCategories": null,
+                "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/feed/",
                 "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -1891,6 +1961,7 @@ VueWrapper {
                         },
                         "state": [
                           "posts",
+                          "allComments",
                           "followingPosts",
                           "allCategories",
                           "allTags",
@@ -1902,6 +1973,7 @@ VueWrapper {
                       "_hotUpdate": [Function],
                       "_p": [Circular],
                       "allCategories": null,
+                      "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/feed/",
                       "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -1920,6 +1992,13 @@ VueWrapper {
                     "_rawValue": {
                       "Store for containing posts and related to posts": {
                         "allCategories": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
                           "_rawValue": null,
@@ -1996,6 +2075,7 @@ VueWrapper {
                     "_value": {
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
+                        "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/feed/",
                         "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -2022,12 +2102,21 @@ VueWrapper {
           "da": null,
           "data": {},
           "devtoolsRawSetupState": {
-            "all_comments": RefImpl {
+            "all_comments": ComputedRefImpl {
+              "__v_isReadonly": true,
               "__v_isRef": true,
-              "__v_isShallow": false,
-              "_rawValue": null,
-              "_value": null,
+              "_cacheable": true,
+              "_dirty": true,
+              "_setter": [Function],
               "dep": undefined,
+              "effect": ReactiveEffect {
+                "active": true,
+                "computed": [Circular],
+                "deps": [],
+                "fn": [Function],
+                "parent": undefined,
+                "scheduler": [Function],
+              },
             },
             "loggedInUserStore": {
               "$dispose": [Function],
@@ -2107,6 +2196,7 @@ VueWrapper {
                       },
                       "state": [
                         "posts",
+                        "allComments",
                         "followingPosts",
                         "allCategories",
                         "allTags",
@@ -2118,6 +2208,7 @@ VueWrapper {
                     "_hotUpdate": [Function],
                     "_p": [Circular],
                     "allCategories": null,
+                    "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/feed/",
                     "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -2136,6 +2227,13 @@ VueWrapper {
                   "_rawValue": {
                     "Store for containing posts and related to posts": {
                       "allCategories": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
                         "_rawValue": null,
@@ -2212,6 +2310,7 @@ VueWrapper {
                   "_value": {
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
+                      "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/feed/",
                       "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -2253,6 +2352,220 @@ VueWrapper {
                   "scheduler": [Function],
                 },
               },
+            },
+            "postStore": {
+              "$dispose": [Function],
+              "$id": "Store for containing posts and related to posts",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_hmrPayload": {
+                "actions": {},
+                "getters": {},
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "posts",
+                  "allComments",
+                  "followingPosts",
+                  "allCategories",
+                  "allTags",
+                  "loggedInUserPosts",
+                  "baseFetchURL",
+                  "baseLoggedInUserPostsURL",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": {
+                "_a": [Circular],
+                "_e": EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": true,
+                  "effects": [],
+                  "parent": undefined,
+                  "scopes": [
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [],
+                      "index": 0,
+                      "parent": [Circular],
+                    },
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [],
+                      "index": 1,
+                      "parent": [Circular],
+                    },
+                  ],
+                },
+                "_p": [
+                  [Function],
+                  [Function],
+                  [Function],
+                ],
+                "_s": Map {
+                  "Store for containing posts and related to posts" => [Circular],
+                  "Store for storing information about the logged in user" => {
+                    "$dispose": [Function],
+                    "$id": "Store for storing information about the logged in user",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_hmrPayload": {
+                      "actions": {},
+                      "getters": {},
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "loggedInUserProfile",
+                        "idArrayOfSavedPosts",
+                        "idArrayOfLoggedInUserFollowingUsers",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "idArrayOfLoggedInUserFollowingUsers": [],
+                    "idArrayOfSavedPosts": [],
+                    "loggedInUserProfile": null,
+                  },
+                },
+                "_testing": true,
+                "app": [Circular],
+                "install": [Function],
+                "state": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {
+                    "Store for containing posts and related to posts": {
+                      "allCategories": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "allComments": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "allTags": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "baseFetchURL": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "http://localhost:8888/api/feed/",
+                        "_value": "http://localhost:8888/api/feed/",
+                        "dep": undefined,
+                      },
+                      "baseLoggedInUserPostsURL": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "http://localhost:8888/api/min-side/posts/",
+                        "_value": "http://localhost:8888/api/min-side/posts/",
+                        "dep": undefined,
+                      },
+                      "followingPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "loggedInUserPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "posts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                    },
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "idArrayOfSavedPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "loggedInUserProfile": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                    },
+                  },
+                  "_value": {
+                    "Store for containing posts and related to posts": {
+                      "allCategories": null,
+                      "allComments": null,
+                      "allTags": null,
+                      "baseFetchURL": "http://localhost:8888/api/feed/",
+                      "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
+                      "followingPosts": null,
+                      "loggedInUserPosts": null,
+                      "posts": null,
+                    },
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": null,
+                    },
+                  },
+                  "dep": undefined,
+                },
+                "use": [Function],
+              },
+              "allCategories": null,
+              "allComments": null,
+              "allTags": null,
+              "baseFetchURL": "http://localhost:8888/api/feed/",
+              "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
+              "followingPosts": null,
+              "loggedInUserPosts": null,
+              "posts": null,
             },
             "route": {
               "params": {
@@ -2320,6 +2633,7 @@ VueWrapper {
                   },
                   "state": [
                     "posts",
+                    "allComments",
                     "followingPosts",
                     "allCategories",
                     "allTags",
@@ -2409,6 +2723,13 @@ VueWrapper {
                           "_value": null,
                           "dep": undefined,
                         },
+                        "allComments": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
                         "allTags": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -2479,6 +2800,7 @@ VueWrapper {
                     "_value": {
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
+                        "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/feed/",
                         "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -2497,6 +2819,7 @@ VueWrapper {
                   "use": [Function],
                 },
                 "allCategories": null,
+                "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/feed/",
                 "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -2582,6 +2905,7 @@ VueWrapper {
                         },
                         "state": [
                           "posts",
+                          "allComments",
                           "followingPosts",
                           "allCategories",
                           "allTags",
@@ -2593,6 +2917,7 @@ VueWrapper {
                       "_hotUpdate": [Function],
                       "_p": [Circular],
                       "allCategories": null,
+                      "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/feed/",
                       "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -2611,6 +2936,13 @@ VueWrapper {
                     "_rawValue": {
                       "Store for containing posts and related to posts": {
                         "allCategories": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
                           "_rawValue": null,
@@ -2687,6 +3019,7 @@ VueWrapper {
                     "_value": {
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
+                        "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/feed/",
                         "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -2721,6 +3054,22 @@ VueWrapper {
             "cleanups": [],
             "detached": true,
             "effects": [
+              ReactiveEffect {
+                "active": true,
+                "computed": ComputedRefImpl {
+                  "__v_isReadonly": true,
+                  "__v_isRef": true,
+                  "_cacheable": true,
+                  "_dirty": true,
+                  "_setter": [Function],
+                  "dep": undefined,
+                  "effect": [Circular],
+                },
+                "deps": [],
+                "fn": [Function],
+                "parent": undefined,
+                "scheduler": [Function],
+              },
               ReactiveEffect {
                 "active": true,
                 "allowRecurse": true,
@@ -2824,6 +3173,7 @@ VueWrapper {
                       },
                       "state": [
                         "posts",
+                        "allComments",
                         "followingPosts",
                         "allCategories",
                         "allTags",
@@ -2835,6 +3185,7 @@ VueWrapper {
                     "_hotUpdate": [Function],
                     "_p": [Circular],
                     "allCategories": null,
+                    "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/feed/",
                     "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -2858,6 +3209,36 @@ VueWrapper {
                         "_rawValue": null,
                         "_value": null,
                         "dep": undefined,
+                      },
+                      "allComments": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": null,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
                       },
                       "allTags": RefImpl {
                         "__v_isRef": true,
@@ -2929,6 +3310,7 @@ VueWrapper {
                   "_value": {
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
+                      "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/feed/",
                       "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -2952,6 +3334,243 @@ VueWrapper {
             },
             "placeholder_profile_picture": "/assets/placeholder-profile-picture.png",
             "post": null,
+            "postStore": {
+              "$dispose": [Function],
+              "$id": "Store for containing posts and related to posts",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_hmrPayload": {
+                "actions": {},
+                "getters": {},
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "posts",
+                  "allComments",
+                  "followingPosts",
+                  "allCategories",
+                  "allTags",
+                  "loggedInUserPosts",
+                  "baseFetchURL",
+                  "baseLoggedInUserPostsURL",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": {
+                "_a": [Circular],
+                "_e": EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": true,
+                  "effects": [],
+                  "parent": undefined,
+                  "scopes": [
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [],
+                      "index": 0,
+                      "parent": [Circular],
+                    },
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [],
+                      "index": 1,
+                      "parent": [Circular],
+                    },
+                  ],
+                },
+                "_p": [
+                  [Function],
+                  [Function],
+                  [Function],
+                ],
+                "_s": Map {
+                  "Store for containing posts and related to posts" => [Circular],
+                  "Store for storing information about the logged in user" => {
+                    "$dispose": [Function],
+                    "$id": "Store for storing information about the logged in user",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_hmrPayload": {
+                      "actions": {},
+                      "getters": {},
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "loggedInUserProfile",
+                        "idArrayOfSavedPosts",
+                        "idArrayOfLoggedInUserFollowingUsers",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "idArrayOfLoggedInUserFollowingUsers": [],
+                    "idArrayOfSavedPosts": [],
+                    "loggedInUserProfile": null,
+                  },
+                },
+                "_testing": true,
+                "app": [Circular],
+                "install": [Function],
+                "state": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {
+                    "Store for containing posts and related to posts": {
+                      "allCategories": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "allComments": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": null,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "allTags": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "baseFetchURL": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "http://localhost:8888/api/feed/",
+                        "_value": "http://localhost:8888/api/feed/",
+                        "dep": undefined,
+                      },
+                      "baseLoggedInUserPostsURL": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "http://localhost:8888/api/min-side/posts/",
+                        "_value": "http://localhost:8888/api/min-side/posts/",
+                        "dep": undefined,
+                      },
+                      "followingPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "loggedInUserPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                      "posts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                    },
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "idArrayOfSavedPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "loggedInUserProfile": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": undefined,
+                      },
+                    },
+                  },
+                  "_value": {
+                    "Store for containing posts and related to posts": {
+                      "allCategories": null,
+                      "allComments": null,
+                      "allTags": null,
+                      "baseFetchURL": "http://localhost:8888/api/feed/",
+                      "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
+                      "followingPosts": null,
+                      "loggedInUserPosts": null,
+                      "posts": null,
+                    },
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": null,
+                    },
+                  },
+                  "dep": undefined,
+                },
+                "use": [Function],
+              },
+              "allCategories": null,
+              "allComments": null,
+              "allTags": null,
+              "baseFetchURL": "http://localhost:8888/api/feed/",
+              "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
+              "followingPosts": null,
+              "loggedInUserPosts": null,
+              "posts": null,
+            },
             "route": {
               "params": {
                 "id": 1,
@@ -3299,6 +3918,7 @@ VueWrapper {
                       },
                       "state": [
                         "posts",
+                        "allComments",
                         "followingPosts",
                         "allCategories",
                         "allTags",
@@ -3310,6 +3930,7 @@ VueWrapper {
                     "_hotUpdate": [Function],
                     "_p": [Circular],
                     "allCategories": null,
+                    "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/feed/",
                     "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -3362,6 +3983,36 @@ VueWrapper {
                         "_rawValue": null,
                         "_value": null,
                         "dep": undefined,
+                      },
+                      "allComments": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": null,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
                       },
                       "allTags": RefImpl {
                         "__v_isRef": true,
@@ -3433,6 +4084,7 @@ VueWrapper {
                   "_value": {
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
+                      "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/feed/",
                       "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -3519,6 +4171,7 @@ VueWrapper {
                     },
                     "state": [
                       "posts",
+                      "allComments",
                       "followingPosts",
                       "allCategories",
                       "allTags",
@@ -3530,6 +4183,7 @@ VueWrapper {
                   "_hotUpdate": [Function],
                   "_p": [Circular],
                   "allCategories": null,
+                  "allComments": null,
                   "allTags": null,
                   "baseFetchURL": "http://localhost:8888/api/feed/",
                   "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -3582,6 +4236,36 @@ VueWrapper {
                       "_rawValue": null,
                       "_value": null,
                       "dep": undefined,
+                    },
+                    "allComments": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": null,
+                      "_value": null,
+                      "dep": Set {
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": null,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                            [Circular],
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
                     },
                     "allTags": RefImpl {
                       "__v_isRef": true,
@@ -3653,6 +4337,7 @@ VueWrapper {
                 "_value": {
                   "Store for containing posts and related to posts": {
                     "allCategories": null,
+                    "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/feed/",
                     "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -3766,6 +4451,7 @@ VueWrapper {
                 },
                 "state": [
                   "posts",
+                  "allComments",
                   "followingPosts",
                   "allCategories",
                   "allTags",
@@ -3777,6 +4463,7 @@ VueWrapper {
               "_hotUpdate": [Function],
               "_p": [Circular],
               "allCategories": null,
+              "allComments": null,
               "allTags": null,
               "baseFetchURL": "http://localhost:8888/api/feed/",
               "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
@@ -3829,6 +4516,36 @@ VueWrapper {
                   "_rawValue": null,
                   "_value": null,
                   "dep": undefined,
+                },
+                "allComments": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": null,
+                  "_value": null,
+                  "dep": Set {
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": null,
+                        "dep": undefined,
+                        "effect": [Circular],
+                      },
+                      "deps": [
+                        Set {
+                          [Circular],
+                        },
+                        [Circular],
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
                 },
                 "allTags": RefImpl {
                   "__v_isRef": true,
@@ -3900,6 +4617,7 @@ VueWrapper {
             "_value": {
               "Store for containing posts and related to posts": {
                 "allCategories": null,
+                "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/feed/",
                 "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",

@@ -1,8 +1,12 @@
 import { getMethod } from "~/services/apiByCRUD";
+import { usePostStore } from '~/store/postStore';
 
 /**
  * This function fetches data in GET based to the specified URL.
  * The URL can take query parameters and be customized. 
+ * 
+ * It takes (if successfull) the response data and puts it in a store variable
+ * that holds all of the comments
  * 
  * @param - The url to use in the GET request 
  * 
@@ -12,6 +16,8 @@ import { getMethod } from "~/services/apiByCRUD";
 export const getSinglePostComments = async (url: string): Promise<Comment[] | null> => {
 
 	try {
+		const postStore = usePostStore()
+
 		const token = localStorage.getItem("token");
 		const headers = {
 			"Content-Type": "application/json",
@@ -31,6 +37,13 @@ export const getSinglePostComments = async (url: string): Promise<Comment[] | nu
 
 		console.log("OK: Comments fetched", response?.status, response?.data); // print to self
 		/** returns all the comments in (response) */
+		
+
+		/**
+		 * TODO maybe switch this down to the page level instead
+		 */
+		postStore.allComments = response.data
+		
 		return response.data
 
 	} catch (error) {

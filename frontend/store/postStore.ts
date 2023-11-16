@@ -33,5 +33,10 @@ export const usePostStore = defineStore("Store for containing posts and related 
      */
     const allCategories = ref<CategoryType[] | null>(null)
 
-    return { posts, followingPosts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
+    /**
+     * Contains all of the comments of a post
+     */
+    const allComments = ref<CommentType[] | null>(null)
+
+    return { posts, allComments, followingPosts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
 });

@@ -1,9 +1,9 @@
 <template>
     <!-- Container for the comment submission functionality -->
     <div>
-        <!-- Button to trigger comment submission -->
-        <button @click="tryAddComment" class="bg-primary text-onPrimary p-1 rounded-md mb-2" data-test="submit_comment_button">Submit</button>
-        <!-- Textarea input for entering comments -->
+        <!-- Button component to trigger comment submission -->
+        <BaseButton text="Submit" @click="tryAddComment" class="bg-primary text-onPrimary p-1 rounded-md mb-2" data-test="submit_comment_button"/>
+        <!-- Textarea input component for entering comments (to post) -->
         <div data-test="input_comment_text">
             <BaseTextareaInput v-model="textInput" />
         </div>
@@ -26,7 +26,6 @@ const baseCommentURL = `http://localhost:8888/api/post/${props.postId}/add-comme
 
 // API endpoint for fetching all comments
 const allPostCommentsURL = `http://localhost:8888/api/post/${props.postId}/comments/`;
-
 
 const textInput = ref(""); // Reactive state for the text input.
 

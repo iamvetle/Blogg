@@ -1,12 +1,16 @@
 <template>
-	<div class=" max-w-3xl py-[100px] mx-auto">
-		<div v-if="post" class="w-full px-[60px] py-[30px] prose">
-			<h1 class="">
-				{{ post.title }}
-			</h1>
+	<div class="max-w-3xl py-[100px] mx-auto">
+		<div v-if="post" class="px-[60px] py-[30px] mx-auto">
+			<div class="pb-12">
+				<span id="post-title" class="prose">
+					<h1 class="">
+						{{ post.title }}
+					</h1>
+				</span>
+			</div>
 			<div>
 				<span class="mb-4 flex items-center justify-between">
-					<span class="flex items-center">
+					<span class="flex items-center"	>
 						<img :src="placeholder_profile_picture" alt="" class="mr-2 h-8">
 						<NuxtLink :to="`/user/${post.author.username}`" class="not-prose">
 							<p class="font-bold inline">
@@ -44,7 +48,9 @@
 
 			</div>
 
-			<div class="mb-4" v-html="post.content"></div>
+			<div class="prose" id="main-content">
+				<div class="mb-4" v-html="post.content"></div>
+			</div>
 
 			<button class="border-2 bg-light-blue-400 rounded-lg py-1 px-2" @click="navigateTo('/')">
 				Back
@@ -52,7 +58,7 @@
 
 			<hr>
 
-			<div data-test="comments" id="post_comments">
+			<div data-test="comments" id="post_comments" class="prose">
 				<h2>Comments written: ({{ post.num_of_comments }})</h2>
 				<div>
 					<SinglePostCommentsList :comments="all_comments" />
@@ -83,12 +89,16 @@
 // import noimage from '~/assets/noimage.jpg'
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import { usePostStore } from '~/store/postStore';
 
 const post = ref<PostSingleType | null>(null);
-const all_comments = ref<CommentType[] | null>(null);
+
+/** Computed value of all of the "actual" comments in the poststore */
 const route = useRoute()
 const loggedInUserStore = useLoggedInUserStore()
+const postStore = usePostStore()
 
+const all_comments = computed(() => postStore.allComments)
 
 onMounted(async () => {
 	const postURL = `http://localhost:8888/api/post/${route.params.id}/`;
@@ -98,7 +108,7 @@ onMounted(async () => {
 	post.value = await getSinglePost(postURL);
 
 	const commentsURL = `http://localhost:8888/api/post/${route.params.id}/comments/`
-	all_comments.value = await getSinglePostComments(commentsURL)
+	await getSinglePostComments(commentsURL)
 });
 
 onMounted(async () => {
