@@ -12,8 +12,6 @@ const classAttr = "testClass"
 // let loggedInUserStore; 
 // let paginationStore; 
 
-const contentHTML = "<div><span><p>lots of html content</p></span></div>"
-
 const factory = () => {
     return shallowMount(PostContentHTML, {
         global: {
@@ -61,5 +59,10 @@ describe('', () => {
         const divHTML = wrapper.find("[data-test='html-content']")
         expect(divHTML.attributes("class")).toBe(classAttr)
     })
+    test('Should match snapshot', () => {
+        wrapper = factory()
+  
+        expect(wrapper).toMatchSnapshot()
+      })
 
 });

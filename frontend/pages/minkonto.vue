@@ -7,59 +7,57 @@
 						<div id="wrapper" class="bg-primary rounded-lg p-6">
 							<div class="px-5 py-5 bg-onPrimary rounded-xl">
 								<div class="flex flex-col items-center">
-									<BaseImage id="profile_picture"
-										:src="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : placeholder"
-										class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" alt="Profilbilde" />
-									<!-- </img> -->
-									<h1 class="text-xl text-plain font-bold">
-										{{ loggedInUserStore.loggedInUserProfile.first_name }} {{
-											loggedInUserStore.loggedInUserProfile.last_name }}
-									</h1>
-									<p>
-										{{ loggedInUserStore.loggedInUserProfile.username }}
-									</p>
-									<div class="mt-6 flex flex-wrap gap-4 justify-center">
 
-										<span v-if="loggedInUserStore.loggedInUserProfile.num_of_following">{{
-											loggedInUserStore.loggedInUserProfile.num_of_following }} following</span>
-
-										<span v-if="loggedInUserStore.loggedInUserProfile.num_of_followers === 1"
-											class="bg-onPrimary border-onPrimaryContainer border-2 text-onPrimaryContainer py-2 px-4 rounded">
-											{{ loggedInUserStore.loggedInUserProfile.num_of_followers }} follower
-										</span>
-										<span v-else>
-											{{ loggedInUserStore.loggedInUserProfile.num_of_followers }} followers
-										</span>
+									<div id="profile_picture">
+										<MyProfilePicture class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" />
 									</div>
+
+									<div data-test="logged-in-user-name">
+										<MyProfileName class="text-xl text-plain font-bold" />
+									</div>
+
+									<div id="username">
+										<MyProfileUsername />
+									</div>
+
+									<div class="mt-6 flex flex-wrap gap-4 justify-center">
+										<MyProfileNumOfFollowers />
+									</div>
+
 								</div>
-								
+
 								<hr class="my-6 border-t border-2 roundend-sm border-primary">
 
 								<div id="profile-information">
 									<MyProfileInformation />
 								</div>
-								<!-- Just kinda testing this-->
-								<hr class="prose">
+
+								<hr>
+
 								<div id="saved_articles">
-									<h2>List of saved articles:</h2>
-									<PostSavedCardList/>
+									<div class="prose">
+										<h3>List of saved posts:</h3>
+									</div>
+									<PostSavedCardList />
 								</div>
+
 							</div>
 						</div>
 						<div>
-							<div id="following" v-if="loggedInUserStore.loggedInUserProfile.num_of_following != 0"
-								class="items-center pt-2 ms-6">
-								<h3 class="text-lg py-3">
-									You are following:
-								</h3>
-								<div>
-									<Following v-for="(f, index) in loggedInUserStore.idArrayOfLoggedInUserFollowingUsers"
-									:key="index" :username="f" />
+							<div id="following">
+								<div class="mt-4">
+									<span class="prose">
+										<h3>You are following:</h3>
+									</span>
 								</div>
+
+								<MyProfileFollowing class="items-center pt-2 ms-6" />
+
 							</div>
 						</div>
 					</div>
 					<div class="col-span-4 sm:col-span-7 xl:col-span-9">
+
 						<div id="bio">
 							<MyProfileBio />
 						</div>
@@ -67,6 +65,7 @@
 						<div id="all-posts">
 							<MyProfilePostsList />
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -75,7 +74,6 @@
 </template>
 
 <script setup lang="ts">
-import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
 import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
@@ -85,16 +83,13 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 
 definePageMeta({
-	layout:'default'
+	layout: 'default'
 })
 
 // Declaring stores
 
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
-
-/** If the user doesnt have its own picture, this picture is used instead */
-const placeholder = ref(placeholder_profile_picture)
 
 /**
  * Fetches:

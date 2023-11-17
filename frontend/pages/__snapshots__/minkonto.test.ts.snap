@@ -17,7 +17,16 @@ VueWrapper {
       "app": [Circular],
       "components": {
         "BaseImage": {
-          "name": "BaseImage",
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+          "__name": "BaseImage",
+          "props": {
+            "src": {
+              "required": true,
+              "type": [Function],
+            },
+          },
+          "render": [Function],
+          "setup": [Function],
         },
         "Follower": {
           "name": "Follower",
@@ -28,11 +37,29 @@ VueWrapper {
         "MyProfileBio": {
           "name": "MyProfileBio",
         },
+        "MyProfileFollowing": {
+          "name": "MyProfileFollowing",
+        },
         "MyProfileInformation": {
           "name": "MyProfileInformation",
         },
+        "MyProfileName": {
+          "name": "MyProfileName",
+        },
+        "MyProfileNumOfFollowers": {
+          "name": "MyProfileNumOfFollowers",
+        },
+        "MyProfilePicture": {
+          "name": "MyProfilePicture",
+        },
         "MyProfilePostsList": {
           "name": "MyProfilePostsList",
+        },
+        "MyProfileUsername": {
+          "name": "MyProfileUsername",
+        },
+        "PostSavedCardList": {
+          "name": "PostSavedCardList",
         },
         "nuxt-link": {
           "name": "nuxt-link",
@@ -534,7 +561,16 @@ VueWrapper {
         "app": [Circular],
         "components": {
           "BaseImage": {
-            "name": "BaseImage",
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+            "__name": "BaseImage",
+            "props": {
+              "src": {
+                "required": true,
+                "type": [Function],
+              },
+            },
+            "render": [Function],
+            "setup": [Function],
           },
           "Follower": {
             "name": "Follower",
@@ -545,11 +581,29 @@ VueWrapper {
           "MyProfileBio": {
             "name": "MyProfileBio",
           },
+          "MyProfileFollowing": {
+            "name": "MyProfileFollowing",
+          },
           "MyProfileInformation": {
             "name": "MyProfileInformation",
           },
+          "MyProfileName": {
+            "name": "MyProfileName",
+          },
+          "MyProfileNumOfFollowers": {
+            "name": "MyProfileNumOfFollowers",
+          },
+          "MyProfilePicture": {
+            "name": "MyProfilePicture",
+          },
           "MyProfilePostsList": {
             "name": "MyProfilePostsList",
+          },
+          "MyProfileUsername": {
+            "name": "MyProfileUsername",
+          },
+          "PostSavedCardList": {
+            "name": "PostSavedCardList",
           },
           "nuxt-link": {
             "name": "nuxt-link",
@@ -1170,7 +1224,16 @@ VueWrapper {
             "app": [Circular],
             "components": {
               "BaseImage": {
-                "name": "BaseImage",
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+                "__name": "BaseImage",
+                "props": {
+                  "src": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
               },
               "Follower": {
                 "name": "Follower",
@@ -1181,11 +1244,29 @@ VueWrapper {
               "MyProfileBio": {
                 "name": "MyProfileBio",
               },
+              "MyProfileFollowing": {
+                "name": "MyProfileFollowing",
+              },
               "MyProfileInformation": {
                 "name": "MyProfileInformation",
               },
+              "MyProfileName": {
+                "name": "MyProfileName",
+              },
+              "MyProfileNumOfFollowers": {
+                "name": "MyProfileNumOfFollowers",
+              },
+              "MyProfilePicture": {
+                "name": "MyProfilePicture",
+              },
               "MyProfilePostsList": {
                 "name": "MyProfilePostsList",
+              },
+              "MyProfileUsername": {
+                "name": "MyProfileUsername",
+              },
+              "PostSavedCardList": {
+                "name": "PostSavedCardList",
               },
               "nuxt-link": {
                 "name": "nuxt-link",
@@ -1720,15 +1801,51 @@ VueWrapper {
               "render": [Function],
               "setup": [Function],
             },
+            "MyProfileFollowing": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileFollowing.vue",
+              "__name": "MyProfileFollowing",
+              "props": {
+                "forEachClass": {
+                  "required": false,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
             "MyProfileInformation": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileInformation.vue",
               "__name": "MyProfileInformation",
               "render": [Function],
               "setup": [Function],
             },
+            "MyProfileName": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileName.vue",
+              "__name": "MyProfileName",
+              "render": [Function],
+              "setup": [Function],
+            },
+            "MyProfileNumOfFollowers": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileNumOfFollowers.vue",
+              "__name": "MyProfileNumOfFollowers",
+              "render": [Function],
+              "setup": [Function],
+            },
+            "MyProfilePicture": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
+              "__name": "MyProfilePicture",
+              "render": [Function],
+              "setup": [Function],
+            },
             "MyProfilePostsList": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePostsList.vue",
               "__name": "MyProfilePostsList",
+              "render": [Function],
+              "setup": [Function],
+            },
+            "MyProfileUsername": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileUsername.vue",
+              "__name": "MyProfileUsername",
               "render": [Function],
               "setup": [Function],
             },
@@ -2429,13 +2546,6 @@ VueWrapper {
               "idArrayOfLoggedInUserFollowingUsers": [],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
-            },
-            "placeholder": RefImpl {
-              "__v_isRef": true,
-              "__v_isShallow": false,
-              "_rawValue": "/assets/placeholder-profile-picture.png",
-              "_value": "/assets/placeholder-profile-picture.png",
-              "dep": undefined,
             },
             "postStore": {
               "$dispose": [Function],
@@ -3441,7 +3551,6 @@ VueWrapper {
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
             },
-            "placeholder": "/assets/placeholder-profile-picture.png",
             "postStore": {
               "$dispose": [Function],
               "$id": "Store for containing posts and related to posts",
@@ -3740,9 +3849,39 @@ VueWrapper {
                 "render": [Function],
                 "setup": [Function],
               },
+              "MyProfileFollowing": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileFollowing.vue",
+                "__name": "MyProfileFollowing",
+                "props": {
+                  "forEachClass": {
+                    "required": false,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
               "MyProfileInformation": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileInformation.vue",
                 "__name": "MyProfileInformation",
+                "render": [Function],
+                "setup": [Function],
+              },
+              "MyProfileName": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileName.vue",
+                "__name": "MyProfileName",
+                "render": [Function],
+                "setup": [Function],
+              },
+              "MyProfileNumOfFollowers": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileNumOfFollowers.vue",
+                "__name": "MyProfileNumOfFollowers",
+                "render": [Function],
+                "setup": [Function],
+              },
+              "MyProfilePicture": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
+                "__name": "MyProfilePicture",
                 "render": [Function],
                 "setup": [Function],
               },
@@ -3752,12 +3891,18 @@ VueWrapper {
                 "render": [Function],
                 "setup": [Function],
               },
+              "MyProfileUsername": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileUsername.vue",
+                "__name": "MyProfileUsername",
+                "render": [Function],
+                "setup": [Function],
+              },
             },
             "render": [Function],
             "setup": [Function],
           },
           "u": null,
-          "uid": 29,
+          "uid": 60,
           "um": null,
           "update": [Function],
           "vnode": [Circular],
@@ -3823,15 +3968,51 @@ VueWrapper {
               "render": [Function],
               "setup": [Function],
             },
+            "MyProfileFollowing": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileFollowing.vue",
+              "__name": "MyProfileFollowing",
+              "props": {
+                "forEachClass": {
+                  "required": false,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
             "MyProfileInformation": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileInformation.vue",
               "__name": "MyProfileInformation",
               "render": [Function],
               "setup": [Function],
             },
+            "MyProfileName": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileName.vue",
+              "__name": "MyProfileName",
+              "render": [Function],
+              "setup": [Function],
+            },
+            "MyProfileNumOfFollowers": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileNumOfFollowers.vue",
+              "__name": "MyProfileNumOfFollowers",
+              "render": [Function],
+              "setup": [Function],
+            },
+            "MyProfilePicture": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
+              "__name": "MyProfilePicture",
+              "render": [Function],
+              "setup": [Function],
+            },
             "MyProfilePostsList": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePostsList.vue",
               "__name": "MyProfilePostsList",
+              "render": [Function],
+              "setup": [Function],
+            },
+            "MyProfileUsername": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileUsername.vue",
+              "__name": "MyProfileUsername",
               "render": [Function],
               "setup": [Function],
             },
@@ -3848,7 +4029,7 @@ VueWrapper {
         "setup": [Function],
       },
       "u": null,
-      "uid": 28,
+      "uid": 59,
       "um": null,
       "update": [Function],
       "vnode": {
@@ -3859,7 +4040,16 @@ VueWrapper {
           "app": [Circular],
           "components": {
             "BaseImage": {
-              "name": "BaseImage",
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+              "__name": "BaseImage",
+              "props": {
+                "src": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
             },
             "Follower": {
               "name": "Follower",
@@ -3870,11 +4060,29 @@ VueWrapper {
             "MyProfileBio": {
               "name": "MyProfileBio",
             },
+            "MyProfileFollowing": {
+              "name": "MyProfileFollowing",
+            },
             "MyProfileInformation": {
               "name": "MyProfileInformation",
             },
+            "MyProfileName": {
+              "name": "MyProfileName",
+            },
+            "MyProfileNumOfFollowers": {
+              "name": "MyProfileNumOfFollowers",
+            },
+            "MyProfilePicture": {
+              "name": "MyProfilePicture",
+            },
             "MyProfilePostsList": {
               "name": "MyProfilePostsList",
+            },
+            "MyProfileUsername": {
+              "name": "MyProfileUsername",
+            },
+            "PostSavedCardList": {
+              "name": "PostSavedCardList",
             },
             "nuxt-link": {
               "name": "nuxt-link",
@@ -4399,7 +4607,7 @@ VueWrapper {
       "withProxy": null,
     },
     "_props": null,
-    "_uid": 6,
+    "_uid": 7,
     "component": [Function],
     "config": {
       "compilerOptions": {},

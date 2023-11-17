@@ -1,5 +1,5 @@
 import idVue from './[id].vue'
-import { VueWrapper, flushPromises, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { usePostStore } from '~/store/postStore';
 
