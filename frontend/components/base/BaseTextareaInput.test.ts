@@ -21,4 +21,47 @@ describe('BaseTextareaInput', () => {
         expect(wrapper.emitted('update:modelValue')).toBeTruthy();
         expect(wrapper.emitted('update:modelValue')[0]).toEqual(['Test Comment']);
     });
+    test('Should have a minlength prop - that has a default value of three', () => {
+        wrapper = mount(BaseTextareaInput, {
+            props: {
+                modelValue: '',
+            },
+        });
+
+        const textarea = wrapper.find("textarea")
+
+        expect(textarea.attributes("minlength")).toBe("3")    })
+    test('Should be able to change the minlength prop value', () => {
+        wrapper = mount(BaseTextareaInput, {
+            props: {
+                modelValue: '',
+                minlength:10
+            },
+        });
+
+        const textarea = wrapper.find("textarea")
+
+        expect(textarea.attributes("minlength")).toBe("10")    })
+    test('Should have a maxlength prop - that has a default value of 500', () => {
+        wrapper = mount(BaseTextareaInput, {
+            props: {
+                modelValue: '',
+            },
+        });
+
+        const textarea = wrapper.find("textarea")
+
+        expect(textarea.attributes("maxlength")).toBe("500")    })
+    test('Should be able to change the maxlength prop value', () => {
+        wrapper = mount(BaseTextareaInput, {
+            props: {
+                modelValue: '',
+                maxlength:15
+            },
+        });
+
+        const textarea = wrapper.find("textarea")
+
+        expect(textarea.attributes("maxlength")).toBe("15")
+    })
 });

@@ -9,8 +9,8 @@
 			</div>
 		</main>
 	<div>
-		<FeedPagination v-if="postStore.posts" />
-		<TheFooter />
+		<LazyFeedPagination v-if="postStore.posts" />
+		<LazyTheFooter/>
 	</div>
 	</div>
 </template>

@@ -42,5 +42,5 @@ export default defineNuxtConfig({
   pinia: {
     autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],
   },
-  ssr: false, // client only (single site application) all api fetch on client
+  // ssr: false, // client only (single site application) all api fetch on client
 });

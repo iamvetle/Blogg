@@ -41,16 +41,16 @@
 				@click="buttonCancelClick" text="Cancel" />
 			<BaseButton id="publish"
 				class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
-				@click="buttonTryPublishClick" text="Publish"/>
+				@click="buttonTryPublishClick" text="Publish" />
 
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-//@ts-nocheck
+
 import { useEditor, EditorContent } from '@tiptap/vue-3'
-import { BubbleMenu } from '@tiptap/vue-3';
+// import { BubbleMenu } from '@tiptap/vue-3';
 import Document from '@tiptap/extension-document' // required
 import BulletList from '@tiptap/extension-bullet-list'
 import CodeBlock from '@tiptap/extension-code-block'
@@ -72,36 +72,13 @@ import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
 import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
-// import Placeholder from '@tiptap/extension-placeholder'
-// import Youtube from '@tiptap/extension-youtube'
-// import Subscript from '@tiptap/extension-subscript'
-// import Superscript from '@tiptap/extension-superscript'
-// import CharacterCount from '@tiptap/extension-character-count'
-
-// import Table from '@tiptap/extension-table'
-// import TableCell from '@tiptap/extension-table-cell'
-// import TableHeader from '@tiptap/extension-table-header'
-// import TableRow from '@tiptap/extension-table-row'
-
-// import TaskItem from '@tiptap/extension-task-item'
-// import TaskList from '@tiptap/extension-task-list'
-
-// import Highlight from '@tiptap/extension-highlight'
-
-// Images (svgs)
-import underline_icon from '~/assets/icons/underline.svg'
-import code_snip_icon from '~/assets/icons/code-view.svg'
-import double_quotes_icon from '~/assets/icons/double-quotes-r.svg'
-import italic_icon from '~/assets/icons/italic.svg'
-import bold_icon from '~/assets/icons/bold.svg'
 
 import { useGeneralStore } from '~/store/generalStore';
-import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 
 const generalStore = useGeneralStore()
 const emit = defineEmits(['newPostMaterial'])
 
-const errorHappened = ref(null)
+// const errorHappened = ref(null)
 
 /**
  * This variable dictates whether the Modal is shown or not.
@@ -110,15 +87,14 @@ const errorHappened = ref(null)
  * False: Modal is hidden.
 */
 const showModal = ref(false)
-
-const html = ref(null)
+const html = ref<string | null | undefined>(null);
 
 /** This two are just so that I can share them between the button 
  * click function and the modal publish function*/
-const title = ref(null)
-const body = ref(null)
+const title = ref<string | null | undefined>(null);
+const body = ref<string | null | undefined>(null);
 
-const editor = useEditor({
+const editor:any = useEditor({ //@ts-ignore
 	"type": "doc",
 	content: '',
 	extensions: [
@@ -170,7 +146,7 @@ const editor = useEditor({
 		// nested: true,
 		// }),
 		Italic,
-		Link.configure({
+		Link.configure({ //@ts-ignore
 			validate: href => /^https?:\/\//.test(href),
 		}),
 		Bold,
@@ -191,146 +167,79 @@ const editor = useEditor({
 })
 
 
-const placeholder_text = "placeholder text"
-
-
-
 /**
  * Tracks the "emptyness" of the editor
  */
-const isEditorEmpty = computed(() => !editor.value?.content?.trim());
+// const isEditorEmpty = computed(() => !editor.value?.content?.trim());
 
 /**
  * On update it takes and updates the HTML value?
  */
 onMounted(() => {
-	editor.value.on("update", () => {
-		html.value = editor.value.getHTML()
-	})
-})
+	editor.value?.on("update", () => {
+		html.value = editor.value?.getHTML();
+	});
+});
 
 // BUTTON ACTIONS
 
 /**
- * Button action
- * 
- * Is called when the 'new post' button is clicked.
- * 
- * It is called before showing the modal
- * 
- * It checks if the text is valid (has content and such), and
- * then opens the Modal to give options to the web client.
+ * Tries to publish the post. First, extracts the title and content and then
+ * shows a modal for confirmation.
  */
 const buttonTryPublishClick = async () => {
+	html.value = editor.value?.getHTML();
+	const answer = extractTitleAndContent(html.value as string);
 
-	/** 
-	 * Retrieves the text that has been written in the 
-	 * text editor, as HTML.
-	 */
-	html.value = editor.value.getHTML()
+	title.value = answer?.title;
+	body.value = answer?.body;
 
-	/**
-	 * @function extractTitleAndContent
-	 * 
-	 * The function takes the whole HTML text that whas been written 
-	 * and extracts a title out of it.
-	 * 
-	 * A 'body' and a 'title' data is then returned
-	 * 
-	 * @param html.value - The raw HTML text body that the function is going
-	 * to process.
-	 * 
-	 * @return - Object with two strings, or object with null
-	 */
-	// I just didn't know what to name it as
-	const answer = extractTitleAndContent(html.value)
-
-	title.value = answer?.title
-	body.value = answer?.body
-
-	/** If the title or body is null an alert is given, and the process is stopped */
-	if ((title.value == null) || (body.value == null)) {
-
-		console.log(`Somethign went wrong. body: ${body}. title: ${title} `) // print to self
-		alert("Something went wrong. See console log")
-
-		/** @todo - make this do someting */
-		errorHappened.value = true // LOOK ERE":: Can I maybe use provide and inject between pages and layout for h-sceeen at such?
-
-		// Exited, stopped
-		return null
-
-		/** 
-		 * If the return object has actual values 
-		 * The Modal is shown.
-		 * 
-		 * Basically says: The post can be published now.
-		 */
-	} else {
-		showModal.value = true
-
-		/** This calls the store function that controls the background */
-		generalStore.turnBackgroundForModel("blur-sm")
-
-
-		// tele port for mobile conditional rendering? disable teleport por? still hav to telefport to "app" vueuse use breakpoints - breakpoints tailwind??
+	if (!title.value || !body.value) {
+		alert("Invalid post content");
+		return;
 	}
-}
+	showModal.value = true;
+	generalStore.turnBackgroundForModel("blur-sm");
+};
 
 /**
- * Button action
- * 
- * Clears and empties the entire content. Then redirects the user "back",
- * probebly to the feed page.
- * 
- * Is called when the 'cancel' button is clicked.
+ * Cancels the post creation and navigates to the feed(home) page.
  */
 const buttonCancelClick = () => {
-	const router = useRouter()
-	editor.value.commands.clearContent
-	const place = "/"
-	html.value = ""
-
-	return navigateTo(place)
-}
+	const router = useRouter();
+	// Clears the input
+	editor.value?.commands.clearContent();
+	router.push('/');
+};
 
 // MODAL EMITS/EVENTS 2/2
 
 /** The modal can return TWO things */
 
 // 1/2
+
 /** 
  * Button action
  * 
- * This tells the parent container that the post made wants to
- * be published. It emits an event with the content data
+ * Emits the new post data and clears the editor content.
  * 
- * It is only called by the modal
+ * * Only called by modal
  */
 const publishPost = () => {
-	showModal.value = false
-	generalStore.turnBackgroundForModel(null)
-
-	const htmlData = {
-		"title": title.value,
-		"content": body.value,
-	}
-
-	emit('newPostMaterial', htmlData)
-	html.value = ""
-
-	editor.value.chain().focus().clearContent().run()
-}
+	showModal.value = false;
+	generalStore.turnBackgroundForModel(null);
+	emit('newPostMaterial', { title: title.value, content: body.value });
+	editor.value?.chain().focus().clearContent().run();
+};
 
 // 2/2
 /**
- * It is called by the modal and it stops the process of making the post.
+ * Cancels publishing and resets the modal state.
  */
 const cancelPublishing = () => {
-	showModal.value = false
-	generalStore.turnBackgroundForModel(null)
-	return null
-}
+	showModal.value = false;
+	generalStore.turnBackgroundForModel(null);
+};
 
 
 /** METHODS FOR THE EDITOR */
@@ -373,7 +282,7 @@ function addImage() {
 	}
 }
 
-const toggleHeading = (level) => {
+const toggleHeading = (level:number) => {
 	editor.value.chain().focus().toggleHeading({ level }).run();
 };
 
@@ -381,26 +290,26 @@ const horizontalRule = () => {
 	editor.value.chain().focus().setHorizontalRule().run()
 };
 
-const toggleUnderline = () => {
-	editor.value.chain().focus().toggleUnderline().run()
-}
+// const toggleUnderline = () => {
+// 	editor.value.chain().focus().toggleUnderline().run()
+// }
 
-const toggleCode = () => {
-	editor.value.chain().focus().toggleCode().run()
-}
+// const toggleCode = () => {
+// 	editor.value.chain().focus().toggleCode().run()
+// }
 
-const toggleBlockquote = () => {
-	editor.value.chain().focus().toggleBlockquote().run()
+// const toggleBlockquote = () => {
+// 	editor.value.chain().focus().toggleBlockquote().run()
 
-}
+// }
 
-const toggleBold = () => {
-	editor.value.chain().focus().toggleBold().run()
-}
+// const toggleBold = () => {
+// 	editor.value.chain().focus().toggleBold().run()
+// }
 
-const toggleItalic = () => {
-	editor.value.chain().focus().toggleItalic().run()
-}
+// const toggleItalic = () => {
+// 	editor.value.chain().focus().toggleItalic().run()
+// }
 
 
 /**
@@ -420,13 +329,13 @@ onMounted(() => {
  * This saves the content into sessionstorage
  */
 onUnmounted(() => {
-		/** 
-	 * Retrieves the text that has been written in the 
-	 * text editor, as HTML.
-	 */
-	 const htmlPost = editor.value.getHTML()	 
+	/** 
+ * Retrieves the text that has been written in the 
+ * text editor, as HTML.
+ */
+	const htmlPost = editor.value?.getHTML()
 
-	 sessionStorage.setItem("htmlPost", htmlPost)
+	sessionStorage.setItem("htmlPost", htmlPost)
 
 })
 

@@ -2,7 +2,7 @@
     <!-- Textarea component with external binding -->
     <div>
         <!-- Textarea element with value bound to the modelValue prop and input event handling -->
-        <textarea cols="40" class="rounded-md" :value="modelValue" @input="handleInput" v-bind="$attrs"></textarea>
+        <textarea :minlength="minlength" :maxlength="maxlength" cols="40" class="rounded-md" :value="modelValue" @input="handleInput" v-bind="$attrs"></textarea>
     </div>
 </template>
   
@@ -10,8 +10,13 @@
 import { defineProps, defineEmits } from 'vue';
 
 // Receives 'modelValue' prop for v-model binding. This prop represents the current value of the textarea.
-defineProps({
-    modelValue: String
+withDefaults(defineProps<{
+    modelValue: string;
+    minlength?:number;
+    maxlength?:number;
+}>(), {
+    minlength:3,
+    maxlength:500
 });
 
 // Emits 'update:modelValue' event which is essential for the v-model binding in the parent component.

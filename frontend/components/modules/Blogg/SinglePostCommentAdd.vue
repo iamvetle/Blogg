@@ -1,66 +1,55 @@
 <template>
-    <!-- Container for the comment submission functionality -->
-    <div>
-        <!-- Button component to trigger comment submission -->
-        <BaseButton text="Submit" @click="tryAddComment" class="bg-primary text-onPrimary p-1 rounded-md mb-2" data-test="submit_comment_button"/>
-        <!-- Textarea input component for entering comments (to post) -->
-        <div data-test="input_comment_text">
-            <BaseTextareaInput v-model="textInput" />
+    <form @submit.prevent="tryAddComment" data-test="comment-add-form">
+        <div>
+            <BaseButton text="Submit" class="bg-primary text-onPrimary p-1 rounded-md mb-2"
+                data-test="submit_comment_button" />
+            <div data-test="input_comment_text">
+                <BaseTextareaInput v-model="textInput" />
+            </div>
         </div>
-    </div>
+    </form>
 </template>
 
 <script setup lang="ts">
-import { defineEmits, defineProps, ref } from 'vue';
-
-// Emit function for custom events.
-const emit = defineEmits(["emitComment"]);
-
-// Props received from the parent or calling component.
-const props = defineProps<{
-    postId: number // ID of the post to which the comment is being added
-}>();
-
-// API endpoint for posting comments.
-const baseCommentURL = `http://localhost:8888/api/post/${props.postId}/add-comment/`;
-
-// API endpoint for fetching all comments
-const allPostCommentsURL = `http://localhost:8888/api/post/${props.postId}/comments/`;
-
-const textInput = ref(""); // Reactive state for the text input.
 
 /**
- * Tries to add a comment to a post.
- * Submits the comment if textInput is not empty, then clears the input.
- * Logs an error if the response from the API is null.
+ * @component CommentForm
+ * @description Allows users to add comments to a specific post.
+ * 
+ * @prop {number} postId - The ID of the post to which the comment is being added.
+ *
+ * @emits {Event} submit - Emits an event when the comment is successfully submitted.
+ */
+const props = defineProps({
+    postId: Number,
+});
+
+const baseCommentURL = `http://localhost:8888/api/post/${props.postId}/add-comment/`;
+const allPostCommentsURL = `http://localhost:8888/api/post/${props.postId}/comments/`;
+const textInput = ref("");
+
+/**
+ * @method tryAddComment
+ * @description Submits a new comment to the post. Clears the input after submission and refetches comments.
+ * @async
+ * @returns
  */
 const tryAddComment = async () => {
-    if (textInput.value.trim() !== "") {
-        const postBody = {
-            post: props.postId,
-            content: textInput.value
-        };
+    if (textInput.value.trim()) {
+        const postBody = { post: props.postId, content: textInput.value };
         const response = await postCommentOnPost(baseCommentURL, postBody);
-        textInput.value = ""; // Clear the input field after submission.
+        textInput.value = "";
 
-        /** Makes a call to fetch all comments of the post again */
-        const response_comment = await getSinglePostComments(allPostCommentsURL)
-
-        /**
-         * ! need to fetch comments again - implement a logic for that
-         */
-
-        if (response_comment == null) {
-            console.error("Something went wrong trying to fetch the comments of the post")
+        const responseComment = await getSinglePostComments(allPostCommentsURL);
+        if (!responseComment) {
+            console.error("Error fetching post comments");
         }
 
-
-        if (response == null) {
-            console.error("Something went wrong, response was null");
+        if (!response) {
+            console.error("Error submitting comment");
         }
     }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

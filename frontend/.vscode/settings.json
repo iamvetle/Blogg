@@ -20,7 +20,6 @@
     "auto-imports.d.ts": true,
     "components.d.ts": true,
     "tsconfig.json": true,
-    "nuxt.config.ts": true,
     "Topics.json": true,
     "server": true,
     "coverage": true,
