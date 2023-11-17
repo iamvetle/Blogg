@@ -1,0 +1,3892 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the myprofilepicture component > Should match snapshot 1`] = `
+VueWrapper {
+  "__app": {
+    "_component": {
+      "name": "VTU_ROOT",
+      "render": [Function],
+      "setup": [Function],
+    },
+    "_container": <div
+      data-v-app=""
+    >
+      <div>
+        <base-image-stub
+          alt="Profilbilde"
+          src="~/src/picture.jpeg"
+        />
+      </div>
+    </div>,
+    "_context": {
+      "app": [Circular],
+      "components": {
+        "BaseImage": {
+          "name": "BaseImage",
+        },
+        "transition": {
+          "name": "transition",
+        },
+        "transition-group": {
+          "name": "transition-group",
+        },
+      },
+      "config": {
+        "compilerOptions": {},
+        "errorHandler": undefined,
+        "globalProperties": {
+          "$pinia": {
+            "_a": [Circular],
+            "_e": EffectScope {
+              "_active": true,
+              "cleanups": [],
+              "detached": true,
+              "effects": [],
+              "parent": undefined,
+              "scopes": [
+                EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": false,
+                  "effects": [],
+                  "index": 0,
+                  "parent": [Circular],
+                },
+              ],
+            },
+            "_p": [
+              [Function],
+              [Function],
+              [Function],
+            ],
+            "_s": Map {
+              "Store for storing information about the logged in user" => {
+                "$dispose": [Function],
+                "$id": "Store for storing information about the logged in user",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_hmrPayload": {
+                  "actions": {},
+                  "getters": {},
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "loggedInUserProfile",
+                    "idArrayOfSavedPosts",
+                    "idArrayOfLoggedInUserFollowingUsers",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": [Circular],
+                "idArrayOfLoggedInUserFollowingUsers": [],
+                "idArrayOfSavedPosts": [],
+                "loggedInUserProfile": {
+                  "profile_picture": "~/src/picture.jpeg",
+                },
+              },
+            },
+            "_testing": true,
+            "app": [Circular],
+            "install": [Function],
+            "state": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": {
+                "Store for storing information about the logged in user": {
+                  "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": [],
+                    "_value": [],
+                    "dep": undefined,
+                  },
+                  "idArrayOfSavedPosts": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": [],
+                    "_value": [],
+                    "dep": undefined,
+                  },
+                  "loggedInUserProfile": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {
+                      "profile_picture": "~/src/picture.jpeg",
+                    },
+                    "_value": {
+                      "profile_picture": "~/src/picture.jpeg",
+                    },
+                    "dep": Set {
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": "~/src/picture.jpeg",
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "allowRecurse": true,
+                              "deps": [
+                                [Circular],
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "onTrack": undefined,
+                              "onTrigger": undefined,
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                          [Circular],
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
+                },
+              },
+              "_value": {
+                "Store for storing information about the logged in user": {
+                  "idArrayOfLoggedInUserFollowingUsers": [],
+                  "idArrayOfSavedPosts": [],
+                  "loggedInUserProfile": {
+                    "profile_picture": "~/src/picture.jpeg",
+                  },
+                },
+              },
+              "dep": undefined,
+            },
+            "use": [Function],
+          },
+        },
+        "isNativeTag": [Function],
+        "optionMergeStrategies": {},
+        "performance": false,
+        "warnHandler": undefined,
+      },
+      "directives": {},
+      "emitsCache": WeakMap {},
+      "mixins": [
+        {
+          "beforeCreate": [Function],
+        },
+      ],
+      "optionsCache": WeakMap {},
+      "propsCache": WeakMap {},
+      "provides": {
+        Symbol(pinia): {
+          "_a": [Circular],
+          "_e": EffectScope {
+            "_active": true,
+            "cleanups": [],
+            "detached": true,
+            "effects": [],
+            "parent": undefined,
+            "scopes": [
+              EffectScope {
+                "_active": true,
+                "cleanups": [],
+                "detached": false,
+                "effects": [],
+                "index": 0,
+                "parent": [Circular],
+              },
+            ],
+          },
+          "_p": [
+            [Function],
+            [Function],
+            [Function],
+          ],
+          "_s": Map {
+            "Store for storing information about the logged in user" => {
+              "$dispose": [Function],
+              "$id": "Store for storing information about the logged in user",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_hmrPayload": {
+                "actions": {},
+                "getters": {},
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "loggedInUserProfile",
+                  "idArrayOfSavedPosts",
+                  "idArrayOfLoggedInUserFollowingUsers",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": [Circular],
+              "idArrayOfLoggedInUserFollowingUsers": [],
+              "idArrayOfSavedPosts": [],
+              "loggedInUserProfile": {
+                "profile_picture": "~/src/picture.jpeg",
+              },
+            },
+          },
+          "_testing": true,
+          "app": [Circular],
+          "install": [Function],
+          "state": RefImpl {
+            "__v_isRef": true,
+            "__v_isShallow": false,
+            "_rawValue": {
+              "Store for storing information about the logged in user": {
+                "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": [],
+                  "_value": [],
+                  "dep": undefined,
+                },
+                "idArrayOfSavedPosts": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": [],
+                  "_value": [],
+                  "dep": undefined,
+                },
+                "loggedInUserProfile": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {
+                    "profile_picture": "~/src/picture.jpeg",
+                  },
+                  "_value": {
+                    "profile_picture": "~/src/picture.jpeg",
+                  },
+                  "dep": Set {
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": "~/src/picture.jpeg",
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "allowRecurse": true,
+                            "deps": [
+                              [Circular],
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                        "effect": [Circular],
+                      },
+                      "deps": [
+                        Set {
+                          [Circular],
+                        },
+                        [Circular],
+                        Set {
+                          [Circular],
+                        },
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
+              },
+            },
+            "_value": {
+              "Store for storing information about the logged in user": {
+                "idArrayOfLoggedInUserFollowingUsers": [],
+                "idArrayOfSavedPosts": [],
+                "loggedInUserProfile": {
+                  "profile_picture": "~/src/picture.jpeg",
+                },
+              },
+            },
+            "dep": undefined,
+          },
+          "use": [Function],
+        },
+      },
+      "reload": [Function],
+    },
+    "_instance": {
+      "a": null,
+      "accessCache": {},
+      "appContext": {
+        "app": [Circular],
+        "components": {
+          "BaseImage": {
+            "name": "BaseImage",
+          },
+          "transition": {
+            "name": "transition",
+          },
+          "transition-group": {
+            "name": "transition-group",
+          },
+        },
+        "config": {
+          "compilerOptions": {},
+          "errorHandler": undefined,
+          "globalProperties": {
+            "$pinia": {
+              "_a": [Circular],
+              "_e": EffectScope {
+                "_active": true,
+                "cleanups": [],
+                "detached": true,
+                "effects": [],
+                "parent": undefined,
+                "scopes": [
+                  EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": false,
+                    "effects": [],
+                    "index": 0,
+                    "parent": [Circular],
+                  },
+                ],
+              },
+              "_p": [
+                [Function],
+                [Function],
+                [Function],
+              ],
+              "_s": Map {
+                "Store for storing information about the logged in user" => {
+                  "$dispose": [Function],
+                  "$id": "Store for storing information about the logged in user",
+                  "$onAction": [Function],
+                  "$patch": [MockFunction $patch],
+                  "$reset": [MockFunction spy],
+                  "$subscribe": [Function],
+                  "_customProperties": Set {},
+                  "_hmrPayload": {
+                    "actions": {},
+                    "getters": {},
+                    "hotState": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": {},
+                      "_value": {},
+                      "dep": undefined,
+                    },
+                    "state": [
+                      "loggedInUserProfile",
+                      "idArrayOfSavedPosts",
+                      "idArrayOfLoggedInUserFollowingUsers",
+                    ],
+                  },
+                  "_hotUpdate": [Function],
+                  "_p": [Circular],
+                  "idArrayOfLoggedInUserFollowingUsers": [],
+                  "idArrayOfSavedPosts": [],
+                  "loggedInUserProfile": {
+                    "profile_picture": "~/src/picture.jpeg",
+                  },
+                },
+              },
+              "_testing": true,
+              "app": [Circular],
+              "install": [Function],
+              "state": RefImpl {
+                "__v_isRef": true,
+                "__v_isShallow": false,
+                "_rawValue": {
+                  "Store for storing information about the logged in user": {
+                    "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": [],
+                      "_value": [],
+                      "dep": undefined,
+                    },
+                    "idArrayOfSavedPosts": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": [],
+                      "_value": [],
+                      "dep": undefined,
+                    },
+                    "loggedInUserProfile": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": {
+                        "profile_picture": "~/src/picture.jpeg",
+                      },
+                      "_value": {
+                        "profile_picture": "~/src/picture.jpeg",
+                      },
+                      "dep": Set {
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": "~/src/picture.jpeg",
+                            "dep": Set {
+                              ReactiveEffect {
+                                "active": true,
+                                "allowRecurse": true,
+                                "deps": [
+                                  [Circular],
+                                  Set {
+                                    [Circular],
+                                  },
+                                ],
+                                "fn": [Function],
+                                "onTrack": undefined,
+                                "onTrigger": undefined,
+                                "parent": undefined,
+                                "scheduler": [Function],
+                              },
+                            },
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                            [Circular],
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
+                  },
+                },
+                "_value": {
+                  "Store for storing information about the logged in user": {
+                    "idArrayOfLoggedInUserFollowingUsers": [],
+                    "idArrayOfSavedPosts": [],
+                    "loggedInUserProfile": {
+                      "profile_picture": "~/src/picture.jpeg",
+                    },
+                  },
+                },
+                "dep": undefined,
+              },
+              "use": [Function],
+            },
+          },
+          "isNativeTag": [Function],
+          "optionMergeStrategies": {},
+          "performance": false,
+          "warnHandler": undefined,
+        },
+        "directives": {},
+        "emitsCache": WeakMap {},
+        "mixins": [
+          {
+            "beforeCreate": [Function],
+          },
+        ],
+        "optionsCache": WeakMap {},
+        "propsCache": WeakMap {},
+        "provides": {
+          Symbol(pinia): {
+            "_a": [Circular],
+            "_e": EffectScope {
+              "_active": true,
+              "cleanups": [],
+              "detached": true,
+              "effects": [],
+              "parent": undefined,
+              "scopes": [
+                EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": false,
+                  "effects": [],
+                  "index": 0,
+                  "parent": [Circular],
+                },
+              ],
+            },
+            "_p": [
+              [Function],
+              [Function],
+              [Function],
+            ],
+            "_s": Map {
+              "Store for storing information about the logged in user" => {
+                "$dispose": [Function],
+                "$id": "Store for storing information about the logged in user",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_hmrPayload": {
+                  "actions": {},
+                  "getters": {},
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "loggedInUserProfile",
+                    "idArrayOfSavedPosts",
+                    "idArrayOfLoggedInUserFollowingUsers",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": [Circular],
+                "idArrayOfLoggedInUserFollowingUsers": [],
+                "idArrayOfSavedPosts": [],
+                "loggedInUserProfile": {
+                  "profile_picture": "~/src/picture.jpeg",
+                },
+              },
+            },
+            "_testing": true,
+            "app": [Circular],
+            "install": [Function],
+            "state": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": {
+                "Store for storing information about the logged in user": {
+                  "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": [],
+                    "_value": [],
+                    "dep": undefined,
+                  },
+                  "idArrayOfSavedPosts": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": [],
+                    "_value": [],
+                    "dep": undefined,
+                  },
+                  "loggedInUserProfile": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {
+                      "profile_picture": "~/src/picture.jpeg",
+                    },
+                    "_value": {
+                      "profile_picture": "~/src/picture.jpeg",
+                    },
+                    "dep": Set {
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": "~/src/picture.jpeg",
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "allowRecurse": true,
+                              "deps": [
+                                [Circular],
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "onTrack": undefined,
+                              "onTrigger": undefined,
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                          [Circular],
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
+                },
+              },
+              "_value": {
+                "Store for storing information about the logged in user": {
+                  "idArrayOfLoggedInUserFollowingUsers": [],
+                  "idArrayOfSavedPosts": [],
+                  "loggedInUserProfile": {
+                    "profile_picture": "~/src/picture.jpeg",
+                  },
+                },
+              },
+              "dep": undefined,
+            },
+            "use": [Function],
+          },
+        },
+        "reload": [Function],
+      },
+      "asyncDep": null,
+      "asyncResolved": false,
+      "attrs": {},
+      "attrsProxy": null,
+      "bc": null,
+      "bm": null,
+      "bu": null,
+      "bum": null,
+      "c": null,
+      "components": null,
+      "ctx": {
+        "VTU_COMPONENT": {},
+      },
+      "da": null,
+      "data": {},
+      "devtoolsRawSetupState": {
+        "VTU_COMPONENT": RefImpl {
+          "__v_isRef": true,
+          "__v_isShallow": false,
+          "_rawValue": {},
+          "_value": {},
+          "dep": undefined,
+        },
+      },
+      "directives": null,
+      "ec": null,
+      "effect": ReactiveEffect {
+        "active": true,
+        "allowRecurse": true,
+        "deps": [
+          Set {
+            [Circular],
+          },
+          Set {
+            [Circular],
+          },
+          Set {
+            [Circular],
+          },
+        ],
+        "fn": [Function],
+        "onTrack": undefined,
+        "onTrigger": undefined,
+        "parent": undefined,
+        "scheduler": [Function],
+      },
+      "emit": [Function],
+      "emitsOptions": null,
+      "emitted": null,
+      "exposeProxy": null,
+      "exposed": null,
+      "inheritAttrs": undefined,
+      "isDeactivated": false,
+      "isMounted": true,
+      "isUnmounted": false,
+      "m": null,
+      "next": null,
+      "parent": null,
+      "props": {},
+      "propsDefaults": {},
+      "propsOptions": [
+        {},
+        [],
+      ],
+      "provides": {},
+      "proxy": {
+        "VTU_COMPONENT": {},
+      },
+      "refs": {
+        "VTU_COMPONENT": {},
+      },
+      "render": [Function],
+      "renderCache": [],
+      "root": [Circular],
+      "rtc": null,
+      "rtg": null,
+      "scope": EffectScope {
+        "_active": true,
+        "cleanups": [],
+        "detached": true,
+        "effects": [
+          ReactiveEffect {
+            "active": true,
+            "allowRecurse": true,
+            "deps": [
+              Set {
+                [Circular],
+              },
+              Set {
+                [Circular],
+              },
+              Set {
+                [Circular],
+              },
+            ],
+            "fn": [Function],
+            "onTrack": undefined,
+            "onTrigger": undefined,
+            "parent": undefined,
+            "scheduler": [Function],
+          },
+        ],
+        "parent": undefined,
+      },
+      "setupContext": null,
+      "setupState": {
+        "VTU_COMPONENT": {},
+      },
+      "slots": {},
+      "slotsProxy": null,
+      "sp": null,
+      "subTree": {
+        "__v_isVNode": true,
+        "__v_skip": true,
+        "anchor": null,
+        "appContext": null,
+        "children": {
+          "_ctx": [Circular],
+        },
+        "component": {
+          "a": null,
+          "accessCache": {},
+          "appContext": {
+            "app": [Circular],
+            "components": {
+              "BaseImage": {
+                "name": "BaseImage",
+              },
+              "transition": {
+                "name": "transition",
+              },
+              "transition-group": {
+                "name": "transition-group",
+              },
+            },
+            "config": {
+              "compilerOptions": {},
+              "errorHandler": undefined,
+              "globalProperties": {
+                "$pinia": {
+                  "_a": [Circular],
+                  "_e": EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": true,
+                    "effects": [],
+                    "parent": undefined,
+                    "scopes": [
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [],
+                        "index": 0,
+                        "parent": [Circular],
+                      },
+                    ],
+                  },
+                  "_p": [
+                    [Function],
+                    [Function],
+                    [Function],
+                  ],
+                  "_s": Map {
+                    "Store for storing information about the logged in user" => {
+                      "$dispose": [Function],
+                      "$id": "Store for storing information about the logged in user",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_hmrPayload": {
+                        "actions": {},
+                        "getters": {},
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "loggedInUserProfile",
+                          "idArrayOfSavedPosts",
+                          "idArrayOfLoggedInUserFollowingUsers",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": {
+                        "profile_picture": "~/src/picture.jpeg",
+                      },
+                    },
+                  },
+                  "_testing": true,
+                  "app": [Circular],
+                  "install": [Function],
+                  "state": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "idArrayOfSavedPosts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "loggedInUserProfile": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {
+                            "profile_picture": "~/src/picture.jpeg",
+                          },
+                          "_value": {
+                            "profile_picture": "~/src/picture.jpeg",
+                          },
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": "~/src/picture.jpeg",
+                                "dep": Set {
+                                  ReactiveEffect {
+                                    "active": true,
+                                    "allowRecurse": true,
+                                    "deps": [
+                                      [Circular],
+                                      Set {
+                                        [Circular],
+                                      },
+                                    ],
+                                    "fn": [Function],
+                                    "onTrack": undefined,
+                                    "onTrigger": undefined,
+                                    "parent": undefined,
+                                    "scheduler": [Function],
+                                  },
+                                },
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                                [Circular],
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                      },
+                    },
+                    "_value": {
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": [],
+                        "idArrayOfSavedPosts": [],
+                        "loggedInUserProfile": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                      },
+                    },
+                    "dep": undefined,
+                  },
+                  "use": [Function],
+                },
+              },
+              "isNativeTag": [Function],
+              "optionMergeStrategies": {},
+              "performance": false,
+              "warnHandler": undefined,
+            },
+            "directives": {},
+            "emitsCache": WeakMap {},
+            "mixins": [
+              {
+                "beforeCreate": [Function],
+              },
+            ],
+            "optionsCache": WeakMap {},
+            "propsCache": WeakMap {},
+            "provides": {
+              Symbol(pinia): {
+                "_a": [Circular],
+                "_e": EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": true,
+                  "effects": [],
+                  "parent": undefined,
+                  "scopes": [
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [],
+                      "index": 0,
+                      "parent": [Circular],
+                    },
+                  ],
+                },
+                "_p": [
+                  [Function],
+                  [Function],
+                  [Function],
+                ],
+                "_s": Map {
+                  "Store for storing information about the logged in user" => {
+                    "$dispose": [Function],
+                    "$id": "Store for storing information about the logged in user",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_hmrPayload": {
+                      "actions": {},
+                      "getters": {},
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "loggedInUserProfile",
+                        "idArrayOfSavedPosts",
+                        "idArrayOfLoggedInUserFollowingUsers",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "idArrayOfLoggedInUserFollowingUsers": [],
+                    "idArrayOfSavedPosts": [],
+                    "loggedInUserProfile": {
+                      "profile_picture": "~/src/picture.jpeg",
+                    },
+                  },
+                },
+                "_testing": true,
+                "app": [Circular],
+                "install": [Function],
+                "state": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "idArrayOfSavedPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "loggedInUserProfile": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                        "_value": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": "~/src/picture.jpeg",
+                              "dep": Set {
+                                ReactiveEffect {
+                                  "active": true,
+                                  "allowRecurse": true,
+                                  "deps": [
+                                    [Circular],
+                                    Set {
+                                      [Circular],
+                                    },
+                                  ],
+                                  "fn": [Function],
+                                  "onTrack": undefined,
+                                  "onTrigger": undefined,
+                                  "parent": undefined,
+                                  "scheduler": [Function],
+                                },
+                              },
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                              [Circular],
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                    },
+                  },
+                  "_value": {
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": {
+                        "profile_picture": "~/src/picture.jpeg",
+                      },
+                    },
+                  },
+                  "dep": undefined,
+                },
+                "use": [Function],
+              },
+            },
+            "reload": [Function],
+          },
+          "asyncDep": null,
+          "asyncResolved": false,
+          "attrs": {},
+          "attrsProxy": null,
+          "bc": null,
+          "bm": null,
+          "bu": null,
+          "bum": null,
+          "c": null,
+          "components": {
+            "BaseImage": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+              "__name": "BaseImage",
+              "props": {
+                "src": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+          },
+          "ctx": {
+            "_pStores": {
+              "Store for storing information about the logged in user": {
+                "$dispose": [Function],
+                "$id": "Store for storing information about the logged in user",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_hmrPayload": {
+                  "actions": {},
+                  "getters": {},
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "loggedInUserProfile",
+                    "idArrayOfSavedPosts",
+                    "idArrayOfLoggedInUserFollowingUsers",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": {
+                  "_a": [Circular],
+                  "_e": EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": true,
+                    "effects": [],
+                    "parent": undefined,
+                    "scopes": [
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [],
+                        "index": 0,
+                        "parent": [Circular],
+                      },
+                    ],
+                  },
+                  "_p": [
+                    [Function],
+                    [Function],
+                    [Function],
+                  ],
+                  "_s": Map {
+                    "Store for storing information about the logged in user" => [Circular],
+                  },
+                  "_testing": true,
+                  "app": [Circular],
+                  "install": [Function],
+                  "state": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "idArrayOfSavedPosts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "loggedInUserProfile": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {
+                            "profile_picture": "~/src/picture.jpeg",
+                          },
+                          "_value": {
+                            "profile_picture": "~/src/picture.jpeg",
+                          },
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": "~/src/picture.jpeg",
+                                "dep": Set {
+                                  ReactiveEffect {
+                                    "active": true,
+                                    "allowRecurse": true,
+                                    "deps": [
+                                      [Circular],
+                                      Set {
+                                        [Circular],
+                                      },
+                                    ],
+                                    "fn": [Function],
+                                    "onTrack": undefined,
+                                    "onTrigger": undefined,
+                                    "parent": undefined,
+                                    "scheduler": [Function],
+                                  },
+                                },
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                                [Circular],
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                      },
+                    },
+                    "_value": {
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": [],
+                        "idArrayOfSavedPosts": [],
+                        "loggedInUserProfile": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                      },
+                    },
+                    "dep": undefined,
+                  },
+                  "use": [Function],
+                },
+                "idArrayOfLoggedInUserFollowingUsers": [],
+                "idArrayOfSavedPosts": [],
+                "loggedInUserProfile": {
+                  "profile_picture": "~/src/picture.jpeg",
+                },
+              },
+            },
+          },
+          "da": null,
+          "data": {},
+          "devtoolsRawSetupState": {
+            "loggedInUserStore": {
+              "$dispose": [Function],
+              "$id": "Store for storing information about the logged in user",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_hmrPayload": {
+                "actions": {},
+                "getters": {},
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "loggedInUserProfile",
+                  "idArrayOfSavedPosts",
+                  "idArrayOfLoggedInUserFollowingUsers",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": {
+                "_a": [Circular],
+                "_e": EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": true,
+                  "effects": [],
+                  "parent": undefined,
+                  "scopes": [
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [],
+                      "index": 0,
+                      "parent": [Circular],
+                    },
+                  ],
+                },
+                "_p": [
+                  [Function],
+                  [Function],
+                  [Function],
+                ],
+                "_s": Map {
+                  "Store for storing information about the logged in user" => [Circular],
+                },
+                "_testing": true,
+                "app": [Circular],
+                "install": [Function],
+                "state": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "idArrayOfSavedPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "loggedInUserProfile": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                        "_value": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": "~/src/picture.jpeg",
+                              "dep": Set {
+                                ReactiveEffect {
+                                  "active": true,
+                                  "allowRecurse": true,
+                                  "deps": [
+                                    [Circular],
+                                    Set {
+                                      [Circular],
+                                    },
+                                  ],
+                                  "fn": [Function],
+                                  "onTrack": undefined,
+                                  "onTrigger": undefined,
+                                  "parent": undefined,
+                                  "scheduler": [Function],
+                                },
+                              },
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                              [Circular],
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                    },
+                  },
+                  "_value": {
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": {
+                        "profile_picture": "~/src/picture.jpeg",
+                      },
+                    },
+                  },
+                  "dep": undefined,
+                },
+                "use": [Function],
+              },
+              "idArrayOfLoggedInUserFollowingUsers": [],
+              "idArrayOfSavedPosts": [],
+              "loggedInUserProfile": {
+                "profile_picture": "~/src/picture.jpeg",
+              },
+            },
+            "placeholder": "/assets/placeholder-profile-picture.png",
+            "profile_picture": ComputedRefImpl {
+              "__v_isReadonly": true,
+              "__v_isRef": true,
+              "_cacheable": true,
+              "_dirty": false,
+              "_setter": [Function],
+              "_value": "~/src/picture.jpeg",
+              "dep": Set {
+                ReactiveEffect {
+                  "active": true,
+                  "allowRecurse": true,
+                  "deps": [
+                    [Circular],
+                    Set {
+                      [Circular],
+                    },
+                  ],
+                  "fn": [Function],
+                  "onTrack": undefined,
+                  "onTrigger": undefined,
+                  "parent": undefined,
+                  "scheduler": [Function],
+                },
+              },
+              "effect": ReactiveEffect {
+                "active": true,
+                "computed": [Circular],
+                "deps": [
+                  Set {
+                    [Circular],
+                  },
+                  Set {
+                    [Circular],
+                  },
+                  Set {
+                    [Circular],
+                  },
+                ],
+                "fn": [Function],
+                "parent": undefined,
+                "scheduler": [Function],
+              },
+            },
+          },
+          "directives": null,
+          "ec": null,
+          "effect": ReactiveEffect {
+            "active": true,
+            "allowRecurse": true,
+            "deps": [
+              Set {
+                [Circular],
+              },
+              Set {
+                [Circular],
+              },
+            ],
+            "fn": [Function],
+            "onTrack": undefined,
+            "onTrigger": undefined,
+            "parent": undefined,
+            "scheduler": [Function],
+          },
+          "emit": [Function],
+          "emitsOptions": null,
+          "emitted": null,
+          "exposeProxy": {},
+          "exposed": {},
+          "inheritAttrs": undefined,
+          "isDeactivated": false,
+          "isMounted": true,
+          "isUnmounted": false,
+          "m": null,
+          "next": null,
+          "parent": [Circular],
+          "props": {},
+          "propsDefaults": {},
+          "propsOptions": [
+            {},
+            [],
+          ],
+          "provides": {},
+          "proxy": {
+            "_pStores": {
+              "Store for storing information about the logged in user": {
+                "$dispose": [Function],
+                "$id": "Store for storing information about the logged in user",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_hmrPayload": {
+                  "actions": {},
+                  "getters": {},
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "loggedInUserProfile",
+                    "idArrayOfSavedPosts",
+                    "idArrayOfLoggedInUserFollowingUsers",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": {
+                  "_a": [Circular],
+                  "_e": EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": true,
+                    "effects": [],
+                    "parent": undefined,
+                    "scopes": [
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [],
+                        "index": 0,
+                        "parent": [Circular],
+                      },
+                    ],
+                  },
+                  "_p": [
+                    [Function],
+                    [Function],
+                    [Function],
+                  ],
+                  "_s": Map {
+                    "Store for storing information about the logged in user" => [Circular],
+                  },
+                  "_testing": true,
+                  "app": [Circular],
+                  "install": [Function],
+                  "state": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "idArrayOfSavedPosts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "loggedInUserProfile": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {
+                            "profile_picture": "~/src/picture.jpeg",
+                          },
+                          "_value": {
+                            "profile_picture": "~/src/picture.jpeg",
+                          },
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": "~/src/picture.jpeg",
+                                "dep": Set {
+                                  ReactiveEffect {
+                                    "active": true,
+                                    "allowRecurse": true,
+                                    "deps": [
+                                      [Circular],
+                                      Set {
+                                        [Circular],
+                                      },
+                                    ],
+                                    "fn": [Function],
+                                    "onTrack": undefined,
+                                    "onTrigger": undefined,
+                                    "parent": undefined,
+                                    "scheduler": [Function],
+                                  },
+                                },
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                                [Circular],
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                      },
+                    },
+                    "_value": {
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": [],
+                        "idArrayOfSavedPosts": [],
+                        "loggedInUserProfile": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                      },
+                    },
+                    "dep": undefined,
+                  },
+                  "use": [Function],
+                },
+                "idArrayOfLoggedInUserFollowingUsers": [],
+                "idArrayOfSavedPosts": [],
+                "loggedInUserProfile": {
+                  "profile_picture": "~/src/picture.jpeg",
+                },
+              },
+            },
+          },
+          "refs": {},
+          "render": [Function],
+          "renderCache": [],
+          "root": [Circular],
+          "rtc": null,
+          "rtg": null,
+          "scope": EffectScope {
+            "_active": true,
+            "cleanups": [],
+            "detached": true,
+            "effects": [
+              ReactiveEffect {
+                "active": true,
+                "computed": ComputedRefImpl {
+                  "__v_isReadonly": true,
+                  "__v_isRef": true,
+                  "_cacheable": true,
+                  "_dirty": false,
+                  "_setter": [Function],
+                  "_value": "~/src/picture.jpeg",
+                  "dep": Set {
+                    ReactiveEffect {
+                      "active": true,
+                      "allowRecurse": true,
+                      "deps": [
+                        [Circular],
+                        Set {
+                          [Circular],
+                        },
+                      ],
+                      "fn": [Function],
+                      "onTrack": undefined,
+                      "onTrigger": undefined,
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                  "effect": [Circular],
+                },
+                "deps": [
+                  Set {
+                    [Circular],
+                  },
+                  Set {
+                    [Circular],
+                  },
+                  Set {
+                    [Circular],
+                  },
+                ],
+                "fn": [Function],
+                "parent": undefined,
+                "scheduler": [Function],
+              },
+              ReactiveEffect {
+                "active": true,
+                "allowRecurse": true,
+                "deps": [
+                  Set {
+                    [Circular],
+                  },
+                  Set {
+                    [Circular],
+                  },
+                ],
+                "fn": [Function],
+                "onTrack": undefined,
+                "onTrigger": undefined,
+                "parent": undefined,
+                "scheduler": [Function],
+              },
+            ],
+            "parent": undefined,
+          },
+          "setupContext": {
+            "attrs": {},
+            "emit": [Function],
+            "expose": [Function],
+            "slots": {},
+          },
+          "setupState": {
+            "loggedInUserStore": {
+              "$dispose": [Function],
+              "$id": "Store for storing information about the logged in user",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_hmrPayload": {
+                "actions": {},
+                "getters": {},
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "loggedInUserProfile",
+                  "idArrayOfSavedPosts",
+                  "idArrayOfLoggedInUserFollowingUsers",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": {
+                "_a": [Circular],
+                "_e": EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": true,
+                  "effects": [],
+                  "parent": undefined,
+                  "scopes": [
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [],
+                      "index": 0,
+                      "parent": [Circular],
+                    },
+                  ],
+                },
+                "_p": [
+                  [Function],
+                  [Function],
+                  [Function],
+                ],
+                "_s": Map {
+                  "Store for storing information about the logged in user" => [Circular],
+                },
+                "_testing": true,
+                "app": [Circular],
+                "install": [Function],
+                "state": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "idArrayOfSavedPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "loggedInUserProfile": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                        "_value": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": "~/src/picture.jpeg",
+                              "dep": Set {
+                                ReactiveEffect {
+                                  "active": true,
+                                  "allowRecurse": true,
+                                  "deps": [
+                                    [Circular],
+                                    Set {
+                                      [Circular],
+                                    },
+                                  ],
+                                  "fn": [Function],
+                                  "onTrack": undefined,
+                                  "onTrigger": undefined,
+                                  "parent": undefined,
+                                  "scheduler": [Function],
+                                },
+                              },
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                              [Circular],
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                    },
+                  },
+                  "_value": {
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": {
+                        "profile_picture": "~/src/picture.jpeg",
+                      },
+                    },
+                  },
+                  "dep": undefined,
+                },
+                "use": [Function],
+              },
+              "idArrayOfLoggedInUserFollowingUsers": [],
+              "idArrayOfSavedPosts": [],
+              "loggedInUserProfile": {
+                "profile_picture": "~/src/picture.jpeg",
+              },
+            },
+            "placeholder": "/assets/placeholder-profile-picture.png",
+            "profile_picture": "~/src/picture.jpeg",
+          },
+          "slots": {},
+          "slotsProxy": {},
+          "sp": null,
+          "subTree": {
+            "__v_isVNode": true,
+            "__v_skip": true,
+            "anchor": null,
+            "appContext": null,
+            "children": [
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": {
+                  "a": null,
+                  "accessCache": {},
+                  "appContext": {
+                    "app": [Circular],
+                    "components": {
+                      "BaseImage": {
+                        "name": "BaseImage",
+                      },
+                      "transition": {
+                        "name": "transition",
+                      },
+                      "transition-group": {
+                        "name": "transition-group",
+                      },
+                    },
+                    "config": {
+                      "compilerOptions": {},
+                      "errorHandler": undefined,
+                      "globalProperties": {
+                        "$pinia": {
+                          "_a": [Circular],
+                          "_e": EffectScope {
+                            "_active": true,
+                            "cleanups": [],
+                            "detached": true,
+                            "effects": [],
+                            "parent": undefined,
+                            "scopes": [
+                              EffectScope {
+                                "_active": true,
+                                "cleanups": [],
+                                "detached": false,
+                                "effects": [],
+                                "index": 0,
+                                "parent": [Circular],
+                              },
+                            ],
+                          },
+                          "_p": [
+                            [Function],
+                            [Function],
+                            [Function],
+                          ],
+                          "_s": Map {
+                            "Store for storing information about the logged in user" => {
+                              "$dispose": [Function],
+                              "$id": "Store for storing information about the logged in user",
+                              "$onAction": [Function],
+                              "$patch": [MockFunction $patch],
+                              "$reset": [MockFunction spy],
+                              "$subscribe": [Function],
+                              "_customProperties": Set {},
+                              "_hmrPayload": {
+                                "actions": {},
+                                "getters": {},
+                                "hotState": RefImpl {
+                                  "__v_isRef": true,
+                                  "__v_isShallow": false,
+                                  "_rawValue": {},
+                                  "_value": {},
+                                  "dep": undefined,
+                                },
+                                "state": [
+                                  "loggedInUserProfile",
+                                  "idArrayOfSavedPosts",
+                                  "idArrayOfLoggedInUserFollowingUsers",
+                                ],
+                              },
+                              "_hotUpdate": [Function],
+                              "_p": [Circular],
+                              "idArrayOfLoggedInUserFollowingUsers": [],
+                              "idArrayOfSavedPosts": [],
+                              "loggedInUserProfile": {
+                                "profile_picture": "~/src/picture.jpeg",
+                              },
+                            },
+                          },
+                          "_testing": true,
+                          "app": [Circular],
+                          "install": [Function],
+                          "state": RefImpl {
+                            "__v_isRef": true,
+                            "__v_isShallow": false,
+                            "_rawValue": {
+                              "Store for storing information about the logged in user": {
+                                "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                                  "__v_isRef": true,
+                                  "__v_isShallow": false,
+                                  "_rawValue": [],
+                                  "_value": [],
+                                  "dep": undefined,
+                                },
+                                "idArrayOfSavedPosts": RefImpl {
+                                  "__v_isRef": true,
+                                  "__v_isShallow": false,
+                                  "_rawValue": [],
+                                  "_value": [],
+                                  "dep": undefined,
+                                },
+                                "loggedInUserProfile": RefImpl {
+                                  "__v_isRef": true,
+                                  "__v_isShallow": false,
+                                  "_rawValue": {
+                                    "profile_picture": "~/src/picture.jpeg",
+                                  },
+                                  "_value": {
+                                    "profile_picture": "~/src/picture.jpeg",
+                                  },
+                                  "dep": Set {
+                                    ReactiveEffect {
+                                      "active": true,
+                                      "computed": ComputedRefImpl {
+                                        "__v_isReadonly": true,
+                                        "__v_isRef": true,
+                                        "_cacheable": true,
+                                        "_dirty": false,
+                                        "_setter": [Function],
+                                        "_value": "~/src/picture.jpeg",
+                                        "dep": Set {
+                                          ReactiveEffect {
+                                            "active": true,
+                                            "allowRecurse": true,
+                                            "deps": [
+                                              [Circular],
+                                              Set {
+                                                [Circular],
+                                              },
+                                            ],
+                                            "fn": [Function],
+                                            "onTrack": undefined,
+                                            "onTrigger": undefined,
+                                            "parent": undefined,
+                                            "scheduler": [Function],
+                                          },
+                                        },
+                                        "effect": [Circular],
+                                      },
+                                      "deps": [
+                                        Set {
+                                          [Circular],
+                                        },
+                                        [Circular],
+                                        Set {
+                                          [Circular],
+                                        },
+                                      ],
+                                      "fn": [Function],
+                                      "parent": undefined,
+                                      "scheduler": [Function],
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                            "_value": {
+                              "Store for storing information about the logged in user": {
+                                "idArrayOfLoggedInUserFollowingUsers": [],
+                                "idArrayOfSavedPosts": [],
+                                "loggedInUserProfile": {
+                                  "profile_picture": "~/src/picture.jpeg",
+                                },
+                              },
+                            },
+                            "dep": undefined,
+                          },
+                          "use": [Function],
+                        },
+                      },
+                      "isNativeTag": [Function],
+                      "optionMergeStrategies": {},
+                      "performance": false,
+                      "warnHandler": undefined,
+                    },
+                    "directives": {},
+                    "emitsCache": WeakMap {},
+                    "mixins": [
+                      {
+                        "beforeCreate": [Function],
+                      },
+                    ],
+                    "optionsCache": WeakMap {},
+                    "propsCache": WeakMap {},
+                    "provides": {
+                      Symbol(pinia): {
+                        "_a": [Circular],
+                        "_e": EffectScope {
+                          "_active": true,
+                          "cleanups": [],
+                          "detached": true,
+                          "effects": [],
+                          "parent": undefined,
+                          "scopes": [
+                            EffectScope {
+                              "_active": true,
+                              "cleanups": [],
+                              "detached": false,
+                              "effects": [],
+                              "index": 0,
+                              "parent": [Circular],
+                            },
+                          ],
+                        },
+                        "_p": [
+                          [Function],
+                          [Function],
+                          [Function],
+                        ],
+                        "_s": Map {
+                          "Store for storing information about the logged in user" => {
+                            "$dispose": [Function],
+                            "$id": "Store for storing information about the logged in user",
+                            "$onAction": [Function],
+                            "$patch": [MockFunction $patch],
+                            "$reset": [MockFunction spy],
+                            "$subscribe": [Function],
+                            "_customProperties": Set {},
+                            "_hmrPayload": {
+                              "actions": {},
+                              "getters": {},
+                              "hotState": RefImpl {
+                                "__v_isRef": true,
+                                "__v_isShallow": false,
+                                "_rawValue": {},
+                                "_value": {},
+                                "dep": undefined,
+                              },
+                              "state": [
+                                "loggedInUserProfile",
+                                "idArrayOfSavedPosts",
+                                "idArrayOfLoggedInUserFollowingUsers",
+                              ],
+                            },
+                            "_hotUpdate": [Function],
+                            "_p": [Circular],
+                            "idArrayOfLoggedInUserFollowingUsers": [],
+                            "idArrayOfSavedPosts": [],
+                            "loggedInUserProfile": {
+                              "profile_picture": "~/src/picture.jpeg",
+                            },
+                          },
+                        },
+                        "_testing": true,
+                        "app": [Circular],
+                        "install": [Function],
+                        "state": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {
+                            "Store for storing information about the logged in user": {
+                              "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                                "__v_isRef": true,
+                                "__v_isShallow": false,
+                                "_rawValue": [],
+                                "_value": [],
+                                "dep": undefined,
+                              },
+                              "idArrayOfSavedPosts": RefImpl {
+                                "__v_isRef": true,
+                                "__v_isShallow": false,
+                                "_rawValue": [],
+                                "_value": [],
+                                "dep": undefined,
+                              },
+                              "loggedInUserProfile": RefImpl {
+                                "__v_isRef": true,
+                                "__v_isShallow": false,
+                                "_rawValue": {
+                                  "profile_picture": "~/src/picture.jpeg",
+                                },
+                                "_value": {
+                                  "profile_picture": "~/src/picture.jpeg",
+                                },
+                                "dep": Set {
+                                  ReactiveEffect {
+                                    "active": true,
+                                    "computed": ComputedRefImpl {
+                                      "__v_isReadonly": true,
+                                      "__v_isRef": true,
+                                      "_cacheable": true,
+                                      "_dirty": false,
+                                      "_setter": [Function],
+                                      "_value": "~/src/picture.jpeg",
+                                      "dep": Set {
+                                        ReactiveEffect {
+                                          "active": true,
+                                          "allowRecurse": true,
+                                          "deps": [
+                                            [Circular],
+                                            Set {
+                                              [Circular],
+                                            },
+                                          ],
+                                          "fn": [Function],
+                                          "onTrack": undefined,
+                                          "onTrigger": undefined,
+                                          "parent": undefined,
+                                          "scheduler": [Function],
+                                        },
+                                      },
+                                      "effect": [Circular],
+                                    },
+                                    "deps": [
+                                      Set {
+                                        [Circular],
+                                      },
+                                      [Circular],
+                                      Set {
+                                        [Circular],
+                                      },
+                                    ],
+                                    "fn": [Function],
+                                    "parent": undefined,
+                                    "scheduler": [Function],
+                                  },
+                                },
+                              },
+                            },
+                          },
+                          "_value": {
+                            "Store for storing information about the logged in user": {
+                              "idArrayOfLoggedInUserFollowingUsers": [],
+                              "idArrayOfSavedPosts": [],
+                              "loggedInUserProfile": {
+                                "profile_picture": "~/src/picture.jpeg",
+                              },
+                            },
+                          },
+                          "dep": undefined,
+                        },
+                        "use": [Function],
+                      },
+                    },
+                    "reload": [Function],
+                  },
+                  "asyncDep": null,
+                  "asyncResolved": false,
+                  "attrs": {
+                    "alt": "Profilbilde",
+                  },
+                  "attrsProxy": null,
+                  "bc": null,
+                  "bm": null,
+                  "bu": null,
+                  "bum": null,
+                  "c": null,
+                  "components": null,
+                  "ctx": {
+                    "src": "~/src/picture.jpeg",
+                  },
+                  "da": null,
+                  "data": {},
+                  "directives": null,
+                  "ec": null,
+                  "effect": ReactiveEffect {
+                    "active": true,
+                    "allowRecurse": true,
+                    "deps": [
+                      Set {
+                        [Circular],
+                      },
+                      Set {
+                        [Circular],
+                      },
+                    ],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  "emit": [Function],
+                  "emitsOptions": null,
+                  "emitted": null,
+                  "exposeProxy": null,
+                  "exposed": null,
+                  "inheritAttrs": undefined,
+                  "isDeactivated": false,
+                  "isMounted": true,
+                  "isUnmounted": false,
+                  "m": null,
+                  "next": null,
+                  "parent": [Circular],
+                  "props": {
+                    "src": "~/src/picture.jpeg",
+                  },
+                  "propsDefaults": {},
+                  "propsOptions": [
+                    {
+                      "src": {
+                        "0": false,
+                        "1": true,
+                        "required": true,
+                        "type": [Function],
+                      },
+                    },
+                    [],
+                  ],
+                  "provides": {},
+                  "proxy": {
+                    "src": "~/src/picture.jpeg",
+                  },
+                  "refs": {},
+                  "render": [Function],
+                  "renderCache": [],
+                  "root": [Circular],
+                  "rtc": null,
+                  "rtg": null,
+                  "scope": EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": true,
+                    "effects": [
+                      ReactiveEffect {
+                        "active": true,
+                        "allowRecurse": true,
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    ],
+                    "parent": undefined,
+                  },
+                  "setupContext": {
+                    "attrs": {
+                      "alt": "Profilbilde",
+                    },
+                    "emit": [Function],
+                    "expose": [Function],
+                    "slots": {},
+                  },
+                  "setupState": {},
+                  "slots": {},
+                  "slotsProxy": {},
+                  "sp": null,
+                  "subTree": {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "ce": undefined,
+                    "children": null,
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <base-image-stub
+                      alt="Profilbilde"
+                      src="~/src/picture.jpeg"
+                    />,
+                    "key": null,
+                    "patchFlag": 16,
+                    "props": {
+                      "alt": "Profilbilde",
+                      "src": "~/src/picture.jpeg",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 1,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "base-image-stub",
+                  },
+                  "suspense": null,
+                  "suspenseId": 0,
+                  "type": {
+                    "model": undefined,
+                    "name": "BaseImage",
+                    "props": {
+                      "src": {
+                        "required": true,
+                        "type": [Function],
+                      },
+                    },
+                    "setup": [Function],
+                  },
+                  "u": null,
+                  "uid": 17,
+                  "um": null,
+                  "update": [Function],
+                  "vnode": [Circular],
+                  "withProxy": null,
+                },
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "src",
+                ],
+                "el": <base-image-stub
+                  alt="Profilbilde"
+                  src="~/src/picture.jpeg"
+                />,
+                "key": null,
+                "patchFlag": 16,
+                "props": {
+                  "alt": "Profilbilde",
+                  "src": "~/src/picture.jpeg",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 4,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": {
+                  "model": undefined,
+                  "name": "BaseImage",
+                  "props": {
+                    "src": {
+                      "required": true,
+                      "type": [Function],
+                    },
+                  },
+                  "setup": [Function],
+                },
+              },
+            ],
+            "component": null,
+            "ctx": [Circular],
+            "dirs": null,
+            "dynamicChildren": [
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": {
+                  "a": null,
+                  "accessCache": {
+                    "@@__IMMUTABLE_ITERABLE__@@": 0,
+                    "@@__IMMUTABLE_RECORD__@@": 0,
+                    "_isMockFunction": 0,
+                    "constructor": 0,
+                    "src": 3,
+                    "toJSON": 0,
+                    Symbol(Symbol.toStringTag): 0,
+                  },
+                  "appContext": {
+                    "app": [Circular],
+                    "components": {
+                      "BaseImage": {
+                        "name": "BaseImage",
+                      },
+                      "transition": {
+                        "name": "transition",
+                      },
+                      "transition-group": {
+                        "name": "transition-group",
+                      },
+                    },
+                    "config": {
+                      "compilerOptions": {},
+                      "errorHandler": undefined,
+                      "globalProperties": {
+                        "$pinia": {
+                          "_a": [Circular],
+                          "_e": EffectScope {
+                            "_active": true,
+                            "cleanups": [],
+                            "detached": true,
+                            "effects": [],
+                            "parent": undefined,
+                            "scopes": [
+                              EffectScope {
+                                "_active": true,
+                                "cleanups": [],
+                                "detached": false,
+                                "effects": [],
+                                "index": 0,
+                                "parent": [Circular],
+                              },
+                            ],
+                          },
+                          "_p": [
+                            [Function],
+                            [Function],
+                            [Function],
+                          ],
+                          "_s": Map {
+                            "Store for storing information about the logged in user" => {
+                              "$dispose": [Function],
+                              "$id": "Store for storing information about the logged in user",
+                              "$onAction": [Function],
+                              "$patch": [MockFunction $patch],
+                              "$reset": [MockFunction spy],
+                              "$subscribe": [Function],
+                              "_customProperties": Set {},
+                              "_hmrPayload": {
+                                "actions": {},
+                                "getters": {},
+                                "hotState": RefImpl {
+                                  "__v_isRef": true,
+                                  "__v_isShallow": false,
+                                  "_rawValue": {},
+                                  "_value": {},
+                                  "dep": undefined,
+                                },
+                                "state": [
+                                  "loggedInUserProfile",
+                                  "idArrayOfSavedPosts",
+                                  "idArrayOfLoggedInUserFollowingUsers",
+                                ],
+                              },
+                              "_hotUpdate": [Function],
+                              "_p": [Circular],
+                              "idArrayOfLoggedInUserFollowingUsers": [],
+                              "idArrayOfSavedPosts": [],
+                              "loggedInUserProfile": {
+                                "profile_picture": "~/src/picture.jpeg",
+                              },
+                            },
+                          },
+                          "_testing": true,
+                          "app": [Circular],
+                          "install": [Function],
+                          "state": RefImpl {
+                            "__v_isRef": true,
+                            "__v_isShallow": false,
+                            "_rawValue": {
+                              "Store for storing information about the logged in user": {
+                                "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                                  "__v_isRef": true,
+                                  "__v_isShallow": false,
+                                  "_rawValue": [],
+                                  "_value": [],
+                                  "dep": undefined,
+                                },
+                                "idArrayOfSavedPosts": RefImpl {
+                                  "__v_isRef": true,
+                                  "__v_isShallow": false,
+                                  "_rawValue": [],
+                                  "_value": [],
+                                  "dep": undefined,
+                                },
+                                "loggedInUserProfile": RefImpl {
+                                  "__v_isRef": true,
+                                  "__v_isShallow": false,
+                                  "_rawValue": {
+                                    "profile_picture": "~/src/picture.jpeg",
+                                  },
+                                  "_value": {
+                                    "profile_picture": "~/src/picture.jpeg",
+                                  },
+                                  "dep": Set {
+                                    ReactiveEffect {
+                                      "active": true,
+                                      "computed": ComputedRefImpl {
+                                        "__v_isReadonly": true,
+                                        "__v_isRef": true,
+                                        "_cacheable": true,
+                                        "_dirty": false,
+                                        "_setter": [Function],
+                                        "_value": "~/src/picture.jpeg",
+                                        "dep": Set {
+                                          ReactiveEffect {
+                                            "active": true,
+                                            "allowRecurse": true,
+                                            "deps": [
+                                              [Circular],
+                                              Set {
+                                                [Circular],
+                                              },
+                                            ],
+                                            "fn": [Function],
+                                            "onTrack": undefined,
+                                            "onTrigger": undefined,
+                                            "parent": undefined,
+                                            "scheduler": [Function],
+                                          },
+                                        },
+                                        "effect": [Circular],
+                                      },
+                                      "deps": [
+                                        Set {
+                                          [Circular],
+                                        },
+                                        [Circular],
+                                        Set {
+                                          [Circular],
+                                        },
+                                      ],
+                                      "fn": [Function],
+                                      "parent": undefined,
+                                      "scheduler": [Function],
+                                    },
+                                  },
+                                },
+                              },
+                            },
+                            "_value": {
+                              "Store for storing information about the logged in user": {
+                                "idArrayOfLoggedInUserFollowingUsers": [],
+                                "idArrayOfSavedPosts": [],
+                                "loggedInUserProfile": {
+                                  "profile_picture": "~/src/picture.jpeg",
+                                },
+                              },
+                            },
+                            "dep": undefined,
+                          },
+                          "use": [Function],
+                        },
+                      },
+                      "isNativeTag": [Function],
+                      "optionMergeStrategies": {},
+                      "performance": false,
+                      "warnHandler": undefined,
+                    },
+                    "directives": {},
+                    "emitsCache": WeakMap {},
+                    "mixins": [
+                      {
+                        "beforeCreate": [Function],
+                      },
+                    ],
+                    "optionsCache": WeakMap {},
+                    "propsCache": WeakMap {},
+                    "provides": {
+                      Symbol(pinia): {
+                        "_a": [Circular],
+                        "_e": EffectScope {
+                          "_active": true,
+                          "cleanups": [],
+                          "detached": true,
+                          "effects": [],
+                          "parent": undefined,
+                          "scopes": [
+                            EffectScope {
+                              "_active": true,
+                              "cleanups": [],
+                              "detached": false,
+                              "effects": [],
+                              "index": 0,
+                              "parent": [Circular],
+                            },
+                          ],
+                        },
+                        "_p": [
+                          [Function],
+                          [Function],
+                          [Function],
+                        ],
+                        "_s": Map {
+                          "Store for storing information about the logged in user" => {
+                            "$dispose": [Function],
+                            "$id": "Store for storing information about the logged in user",
+                            "$onAction": [Function],
+                            "$patch": [MockFunction $patch],
+                            "$reset": [MockFunction spy],
+                            "$subscribe": [Function],
+                            "_customProperties": Set {},
+                            "_hmrPayload": {
+                              "actions": {},
+                              "getters": {},
+                              "hotState": RefImpl {
+                                "__v_isRef": true,
+                                "__v_isShallow": false,
+                                "_rawValue": {},
+                                "_value": {},
+                                "dep": undefined,
+                              },
+                              "state": [
+                                "loggedInUserProfile",
+                                "idArrayOfSavedPosts",
+                                "idArrayOfLoggedInUserFollowingUsers",
+                              ],
+                            },
+                            "_hotUpdate": [Function],
+                            "_p": [Circular],
+                            "idArrayOfLoggedInUserFollowingUsers": [],
+                            "idArrayOfSavedPosts": [],
+                            "loggedInUserProfile": {
+                              "profile_picture": "~/src/picture.jpeg",
+                            },
+                          },
+                        },
+                        "_testing": true,
+                        "app": [Circular],
+                        "install": [Function],
+                        "state": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {
+                            "Store for storing information about the logged in user": {
+                              "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                                "__v_isRef": true,
+                                "__v_isShallow": false,
+                                "_rawValue": [],
+                                "_value": [],
+                                "dep": undefined,
+                              },
+                              "idArrayOfSavedPosts": RefImpl {
+                                "__v_isRef": true,
+                                "__v_isShallow": false,
+                                "_rawValue": [],
+                                "_value": [],
+                                "dep": undefined,
+                              },
+                              "loggedInUserProfile": RefImpl {
+                                "__v_isRef": true,
+                                "__v_isShallow": false,
+                                "_rawValue": {
+                                  "profile_picture": "~/src/picture.jpeg",
+                                },
+                                "_value": {
+                                  "profile_picture": "~/src/picture.jpeg",
+                                },
+                                "dep": Set {
+                                  ReactiveEffect {
+                                    "active": true,
+                                    "computed": ComputedRefImpl {
+                                      "__v_isReadonly": true,
+                                      "__v_isRef": true,
+                                      "_cacheable": true,
+                                      "_dirty": false,
+                                      "_setter": [Function],
+                                      "_value": "~/src/picture.jpeg",
+                                      "dep": Set {
+                                        ReactiveEffect {
+                                          "active": true,
+                                          "allowRecurse": true,
+                                          "deps": [
+                                            [Circular],
+                                            Set {
+                                              [Circular],
+                                            },
+                                          ],
+                                          "fn": [Function],
+                                          "onTrack": undefined,
+                                          "onTrigger": undefined,
+                                          "parent": undefined,
+                                          "scheduler": [Function],
+                                        },
+                                      },
+                                      "effect": [Circular],
+                                    },
+                                    "deps": [
+                                      Set {
+                                        [Circular],
+                                      },
+                                      [Circular],
+                                      Set {
+                                        [Circular],
+                                      },
+                                    ],
+                                    "fn": [Function],
+                                    "parent": undefined,
+                                    "scheduler": [Function],
+                                  },
+                                },
+                              },
+                            },
+                          },
+                          "_value": {
+                            "Store for storing information about the logged in user": {
+                              "idArrayOfLoggedInUserFollowingUsers": [],
+                              "idArrayOfSavedPosts": [],
+                              "loggedInUserProfile": {
+                                "profile_picture": "~/src/picture.jpeg",
+                              },
+                            },
+                          },
+                          "dep": undefined,
+                        },
+                        "use": [Function],
+                      },
+                    },
+                    "reload": [Function],
+                  },
+                  "asyncDep": null,
+                  "asyncResolved": false,
+                  "attrs": {
+                    "alt": "Profilbilde",
+                  },
+                  "attrsProxy": {
+                    "alt": "Profilbilde",
+                  },
+                  "bc": null,
+                  "bm": null,
+                  "bu": null,
+                  "bum": null,
+                  "c": null,
+                  "components": null,
+                  "ctx": {
+                    "src": "~/src/picture.jpeg",
+                  },
+                  "da": null,
+                  "data": {},
+                  "directives": null,
+                  "ec": null,
+                  "effect": ReactiveEffect {
+                    "active": true,
+                    "allowRecurse": true,
+                    "deps": [
+                      Set {
+                        [Circular],
+                      },
+                      Set {
+                        [Circular],
+                      },
+                    ],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  "emit": [Function],
+                  "emitsOptions": null,
+                  "emitted": null,
+                  "exposeProxy": null,
+                  "exposed": null,
+                  "inheritAttrs": undefined,
+                  "isDeactivated": false,
+                  "isMounted": true,
+                  "isUnmounted": false,
+                  "m": null,
+                  "next": null,
+                  "parent": [Circular],
+                  "props": {
+                    "src": "~/src/picture.jpeg",
+                  },
+                  "propsDefaults": {},
+                  "propsOptions": [
+                    {
+                      "src": {
+                        "0": false,
+                        "1": true,
+                        "required": true,
+                        "type": [Function],
+                      },
+                    },
+                    [],
+                  ],
+                  "provides": {},
+                  "proxy": {
+                    "src": "~/src/picture.jpeg",
+                  },
+                  "refs": {},
+                  "render": [Function],
+                  "renderCache": [],
+                  "root": [Circular],
+                  "rtc": null,
+                  "rtg": null,
+                  "scope": EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": true,
+                    "effects": [
+                      ReactiveEffect {
+                        "active": true,
+                        "allowRecurse": true,
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    ],
+                    "parent": undefined,
+                  },
+                  "setupContext": {
+                    "attrs": {
+                      "alt": "Profilbilde",
+                    },
+                    "emit": [Function],
+                    "expose": [Function],
+                    "slots": {},
+                  },
+                  "setupState": {},
+                  "slots": {},
+                  "slotsProxy": {},
+                  "sp": null,
+                  "subTree": {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "ce": undefined,
+                    "children": null,
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <base-image-stub
+                      alt="Profilbilde"
+                      src="~/src/picture.jpeg"
+                    />,
+                    "key": null,
+                    "patchFlag": 16,
+                    "props": {
+                      "alt": "Profilbilde",
+                      "src": "~/src/picture.jpeg",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 1,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "base-image-stub",
+                  },
+                  "suspense": null,
+                  "suspenseId": 0,
+                  "type": {
+                    "model": undefined,
+                    "name": "BaseImage",
+                    "props": {
+                      "src": {
+                        "required": true,
+                        "type": [Function],
+                      },
+                    },
+                    "setup": [Function],
+                  },
+                  "u": null,
+                  "uid": 17,
+                  "um": null,
+                  "update": [Function],
+                  "vnode": [Circular],
+                  "withProxy": null,
+                },
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": [
+                  "src",
+                ],
+                "el": <base-image-stub
+                  alt="Profilbilde"
+                  src="~/src/picture.jpeg"
+                />,
+                "key": null,
+                "patchFlag": 16,
+                "props": {
+                  "alt": "Profilbilde",
+                  "src": "~/src/picture.jpeg",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 4,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": {
+                  "model": undefined,
+                  "name": "BaseImage",
+                  "props": {
+                    "src": {
+                      "required": true,
+                      "type": [Function],
+                    },
+                  },
+                  "setup": [Function],
+                },
+              },
+            ],
+            "dynamicProps": null,
+            "el": <div>
+              <base-image-stub
+                alt="Profilbilde"
+                src="~/src/picture.jpeg"
+              />
+            </div>,
+            "key": null,
+            "patchFlag": 0,
+            "props": null,
+            "ref": null,
+            "scopeId": null,
+            "shapeFlag": 17,
+            "slotScopeIds": null,
+            "ssContent": null,
+            "ssFallback": null,
+            "staticCount": 0,
+            "suspense": null,
+            "target": null,
+            "targetAnchor": null,
+            "transition": null,
+            "type": "div",
+          },
+          "suspense": null,
+          "suspenseId": 0,
+          "type": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
+            "__name": "MyProfilePicture",
+            "components": {
+              "BaseImage": {
+                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+                "__name": "BaseImage",
+                "props": {
+                  "src": {
+                    "required": true,
+                    "type": [Function],
+                  },
+                },
+                "render": [Function],
+                "setup": [Function],
+              },
+            },
+            "render": [Function],
+            "setup": [Function],
+          },
+          "u": null,
+          "uid": 16,
+          "um": null,
+          "update": [Function],
+          "vnode": [Circular],
+          "withProxy": null,
+        },
+        "ctx": [Circular],
+        "dirs": null,
+        "dynamicChildren": null,
+        "dynamicProps": null,
+        "el": <div>
+          <base-image-stub
+            alt="Profilbilde"
+            src="~/src/picture.jpeg"
+          />
+        </div>,
+        "key": null,
+        "patchFlag": 0,
+        "props": {
+          "ref": "VTU_COMPONENT",
+        },
+        "ref": {
+          "f": false,
+          "i": [Circular],
+          "k": undefined,
+          "r": "VTU_COMPONENT",
+        },
+        "scopeId": null,
+        "shapeFlag": 36,
+        "slotScopeIds": null,
+        "ssContent": null,
+        "ssFallback": null,
+        "staticCount": 0,
+        "suspense": null,
+        "target": null,
+        "targetAnchor": null,
+        "transition": null,
+        "type": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
+          "__name": "MyProfilePicture",
+          "components": {
+            "BaseImage": {
+              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
+              "__name": "BaseImage",
+              "props": {
+                "src": {
+                  "required": true,
+                  "type": [Function],
+                },
+              },
+              "render": [Function],
+              "setup": [Function],
+            },
+          },
+          "render": [Function],
+          "setup": [Function],
+        },
+      },
+      "suspense": null,
+      "suspenseId": 0,
+      "type": {
+        "name": "VTU_ROOT",
+        "render": [Function],
+        "setup": [Function],
+      },
+      "u": null,
+      "uid": 15,
+      "um": null,
+      "update": [Function],
+      "vnode": {
+        "__v_isVNode": true,
+        "__v_skip": true,
+        "anchor": null,
+        "appContext": {
+          "app": [Circular],
+          "components": {
+            "BaseImage": {
+              "name": "BaseImage",
+            },
+            "transition": {
+              "name": "transition",
+            },
+            "transition-group": {
+              "name": "transition-group",
+            },
+          },
+          "config": {
+            "compilerOptions": {},
+            "errorHandler": undefined,
+            "globalProperties": {
+              "$pinia": {
+                "_a": [Circular],
+                "_e": EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": true,
+                  "effects": [],
+                  "parent": undefined,
+                  "scopes": [
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [],
+                      "index": 0,
+                      "parent": [Circular],
+                    },
+                  ],
+                },
+                "_p": [
+                  [Function],
+                  [Function],
+                  [Function],
+                ],
+                "_s": Map {
+                  "Store for storing information about the logged in user" => {
+                    "$dispose": [Function],
+                    "$id": "Store for storing information about the logged in user",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_hmrPayload": {
+                      "actions": {},
+                      "getters": {},
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "loggedInUserProfile",
+                        "idArrayOfSavedPosts",
+                        "idArrayOfLoggedInUserFollowingUsers",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "idArrayOfLoggedInUserFollowingUsers": [],
+                    "idArrayOfSavedPosts": [],
+                    "loggedInUserProfile": {
+                      "profile_picture": "~/src/picture.jpeg",
+                    },
+                  },
+                },
+                "_testing": true,
+                "app": [Circular],
+                "install": [Function],
+                "state": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "idArrayOfSavedPosts": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": [],
+                        "_value": [],
+                        "dep": undefined,
+                      },
+                      "loggedInUserProfile": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                        "_value": {
+                          "profile_picture": "~/src/picture.jpeg",
+                        },
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": "~/src/picture.jpeg",
+                              "dep": Set {
+                                ReactiveEffect {
+                                  "active": true,
+                                  "allowRecurse": true,
+                                  "deps": [
+                                    [Circular],
+                                    Set {
+                                      [Circular],
+                                    },
+                                  ],
+                                  "fn": [Function],
+                                  "onTrack": undefined,
+                                  "onTrigger": undefined,
+                                  "parent": undefined,
+                                  "scheduler": [Function],
+                                },
+                              },
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                              [Circular],
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                    },
+                  },
+                  "_value": {
+                    "Store for storing information about the logged in user": {
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": {
+                        "profile_picture": "~/src/picture.jpeg",
+                      },
+                    },
+                  },
+                  "dep": undefined,
+                },
+                "use": [Function],
+              },
+            },
+            "isNativeTag": [Function],
+            "optionMergeStrategies": {},
+            "performance": false,
+            "warnHandler": undefined,
+          },
+          "directives": {},
+          "emitsCache": WeakMap {},
+          "mixins": [
+            {
+              "beforeCreate": [Function],
+            },
+          ],
+          "optionsCache": WeakMap {},
+          "propsCache": WeakMap {},
+          "provides": {
+            Symbol(pinia): {
+              "_a": [Circular],
+              "_e": EffectScope {
+                "_active": true,
+                "cleanups": [],
+                "detached": true,
+                "effects": [],
+                "parent": undefined,
+                "scopes": [
+                  EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": false,
+                    "effects": [],
+                    "index": 0,
+                    "parent": [Circular],
+                  },
+                ],
+              },
+              "_p": [
+                [Function],
+                [Function],
+                [Function],
+              ],
+              "_s": Map {
+                "Store for storing information about the logged in user" => {
+                  "$dispose": [Function],
+                  "$id": "Store for storing information about the logged in user",
+                  "$onAction": [Function],
+                  "$patch": [MockFunction $patch],
+                  "$reset": [MockFunction spy],
+                  "$subscribe": [Function],
+                  "_customProperties": Set {},
+                  "_hmrPayload": {
+                    "actions": {},
+                    "getters": {},
+                    "hotState": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": {},
+                      "_value": {},
+                      "dep": undefined,
+                    },
+                    "state": [
+                      "loggedInUserProfile",
+                      "idArrayOfSavedPosts",
+                      "idArrayOfLoggedInUserFollowingUsers",
+                    ],
+                  },
+                  "_hotUpdate": [Function],
+                  "_p": [Circular],
+                  "idArrayOfLoggedInUserFollowingUsers": [],
+                  "idArrayOfSavedPosts": [],
+                  "loggedInUserProfile": {
+                    "profile_picture": "~/src/picture.jpeg",
+                  },
+                },
+              },
+              "_testing": true,
+              "app": [Circular],
+              "install": [Function],
+              "state": RefImpl {
+                "__v_isRef": true,
+                "__v_isShallow": false,
+                "_rawValue": {
+                  "Store for storing information about the logged in user": {
+                    "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": [],
+                      "_value": [],
+                      "dep": undefined,
+                    },
+                    "idArrayOfSavedPosts": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": [],
+                      "_value": [],
+                      "dep": undefined,
+                    },
+                    "loggedInUserProfile": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": {
+                        "profile_picture": "~/src/picture.jpeg",
+                      },
+                      "_value": {
+                        "profile_picture": "~/src/picture.jpeg",
+                      },
+                      "dep": Set {
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": "~/src/picture.jpeg",
+                            "dep": Set {
+                              ReactiveEffect {
+                                "active": true,
+                                "allowRecurse": true,
+                                "deps": [
+                                  [Circular],
+                                  Set {
+                                    [Circular],
+                                  },
+                                ],
+                                "fn": [Function],
+                                "onTrack": undefined,
+                                "onTrigger": undefined,
+                                "parent": undefined,
+                                "scheduler": [Function],
+                              },
+                            },
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                            [Circular],
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
+                  },
+                },
+                "_value": {
+                  "Store for storing information about the logged in user": {
+                    "idArrayOfLoggedInUserFollowingUsers": [],
+                    "idArrayOfSavedPosts": [],
+                    "loggedInUserProfile": {
+                      "profile_picture": "~/src/picture.jpeg",
+                    },
+                  },
+                },
+                "dep": undefined,
+              },
+              "use": [Function],
+            },
+          },
+          "reload": [Function],
+        },
+        "children": null,
+        "component": [Circular],
+        "ctx": null,
+        "dirs": null,
+        "dynamicChildren": null,
+        "dynamicProps": null,
+        "el": <div>
+          <base-image-stub
+            alt="Profilbilde"
+            src="~/src/picture.jpeg"
+          />
+        </div>,
+        "key": null,
+        "patchFlag": 0,
+        "props": null,
+        "ref": null,
+        "scopeId": null,
+        "shapeFlag": 4,
+        "slotScopeIds": null,
+        "ssContent": null,
+        "ssFallback": null,
+        "staticCount": 0,
+        "suspense": null,
+        "target": null,
+        "targetAnchor": null,
+        "transition": null,
+        "type": {
+          "name": "VTU_ROOT",
+          "render": [Function],
+          "setup": [Function],
+        },
+      },
+      "withProxy": null,
+    },
+    "_props": null,
+    "_uid": 5,
+    "component": [Function],
+    "config": {
+      "compilerOptions": {},
+      "errorHandler": undefined,
+      "globalProperties": {
+        "$pinia": {
+          "_a": [Circular],
+          "_e": EffectScope {
+            "_active": true,
+            "cleanups": [],
+            "detached": true,
+            "effects": [],
+            "parent": undefined,
+            "scopes": [
+              EffectScope {
+                "_active": true,
+                "cleanups": [],
+                "detached": false,
+                "effects": [],
+                "index": 0,
+                "parent": [Circular],
+              },
+            ],
+          },
+          "_p": [
+            [Function],
+            [Function],
+            [Function],
+          ],
+          "_s": Map {
+            "Store for storing information about the logged in user" => {
+              "$dispose": [Function],
+              "$id": "Store for storing information about the logged in user",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_hmrPayload": {
+                "actions": {},
+                "getters": {},
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "loggedInUserProfile",
+                  "idArrayOfSavedPosts",
+                  "idArrayOfLoggedInUserFollowingUsers",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": [Circular],
+              "idArrayOfLoggedInUserFollowingUsers": [],
+              "idArrayOfSavedPosts": [],
+              "loggedInUserProfile": {
+                "profile_picture": "~/src/picture.jpeg",
+              },
+            },
+          },
+          "_testing": true,
+          "app": [Circular],
+          "install": [Function],
+          "state": RefImpl {
+            "__v_isRef": true,
+            "__v_isShallow": false,
+            "_rawValue": {
+              "Store for storing information about the logged in user": {
+                "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": [],
+                  "_value": [],
+                  "dep": undefined,
+                },
+                "idArrayOfSavedPosts": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": [],
+                  "_value": [],
+                  "dep": undefined,
+                },
+                "loggedInUserProfile": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {
+                    "profile_picture": "~/src/picture.jpeg",
+                  },
+                  "_value": {
+                    "profile_picture": "~/src/picture.jpeg",
+                  },
+                  "dep": Set {
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": "~/src/picture.jpeg",
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "allowRecurse": true,
+                            "deps": [
+                              [Circular],
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                        "effect": [Circular],
+                      },
+                      "deps": [
+                        Set {
+                          [Circular],
+                        },
+                        [Circular],
+                        Set {
+                          [Circular],
+                        },
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
+              },
+            },
+            "_value": {
+              "Store for storing information about the logged in user": {
+                "idArrayOfLoggedInUserFollowingUsers": [],
+                "idArrayOfSavedPosts": [],
+                "loggedInUserProfile": {
+                  "profile_picture": "~/src/picture.jpeg",
+                },
+              },
+            },
+            "dep": undefined,
+          },
+          "use": [Function],
+        },
+      },
+      "isNativeTag": [Function],
+      "optionMergeStrategies": {},
+      "performance": false,
+      "warnHandler": undefined,
+    },
+    "directive": [Function],
+    "mixin": [Function],
+    "mount": [Function],
+    "provide": [Function],
+    "runWithContext": [Function],
+    "unmount": [Function],
+    "use": [Function],
+    "version": "3.3.7",
+  },
+  "__setProps": [Function],
+  "cleanUpCallbacks": [
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+  ],
+  "componentVM": {},
+  "isDisabled": [Function],
+  "rootVM": {
+    "VTU_COMPONENT": {},
+  },
+  "wrapperElement": <div>
+    <base-image-stub
+      alt="Profilbilde"
+      src="~/src/picture.jpeg"
+    />
+  </div>,
+}
+`;
