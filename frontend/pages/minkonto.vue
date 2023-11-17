@@ -20,8 +20,12 @@
 										<MyProfileUsername />
 									</div>
 
-									<div class="mt-6 flex flex-wrap gap-4 justify-center">
+									<div class="mt-6 border-primary border rounded-md p-1 flex flex-wrap gap-4 justify-center">
 										<MyProfileNumOfFollowers />
+									</div>
+
+									<div class="mt-6 border-primary border rounded-md p-1 flex flex-wrap gap-4 justify-center">
+										<MyProfileNumOfFollowing/>
 									</div>
 
 								</div>
@@ -76,10 +80,6 @@
 <script setup lang="ts">
 import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-
-/**
- * TODO Wish to have a "saved post" list on this page
- */
 
 
 definePageMeta({

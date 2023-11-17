@@ -8,22 +8,20 @@
 					Søkeresultater for '{{ searchStore.searchPart }}'
 				</h2>
 
-				<FeedTopChoice
-				:followingSelected="selected"
-				/>
-				<p class="text-lg"
-					v-if="(num_of_following === 0) && (selected) && (postStore.posts.results.length == 0)">You are
+				<FeedTopChoice :followingSelected="selected" />
+				<p class="text-lg" v-if="(num_of_following === 0) && (selected) && (postStore.posts.results.length == 0)">
+					You are
 					not
 					following anyone.</p>
-				<p class="text-lg"
-					v-if="(postStore.posts?.results?.length === 0) && (selected) && (num_of_following > 0)">No
+				<p class="text-lg" v-if="(postStore.posts?.results?.length === 0) && (selected) && (num_of_following > 0)">
+					No
 					posts are published.</p>
 				<FeedPostsList v-if="postStore.posts.results" class="w-full mt-12" />
 			</div>
 			<div class="col-span-4 mx-auto w-full">
 				<div id="dropdown-filter" v-if="postStore.allTags && !selected"
 					class="mb-4 bg-primary rounded-lg text-onPrimary">
-					<FeedDropdownFilter/>
+					<FeedDropdownFilter />
 				</div>
 				<!-- This lists the (saved)articles in thes sidebar -->
 				<FeedPostsListSidebar class="w-full" v-if="loggedInUserStore.loggedInUserProfile" />
@@ -116,7 +114,7 @@ const num_of_following = computed(() =>
  * This is important because if that does not happen, the checkboxes status might be restarted, but not the state of them,
  * and ends them up not being syncronous.
  */
-onBeforeUnmount(() => {
+onUnmounted(() => {
 	console.log("Index is unmounted")
 
 	/** So there are no filters present when the page gets refreshed */

@@ -13,7 +13,7 @@ defineProps<{
 
 const loggedInUserStore = useLoggedInUserStore()
 
-const arrayOfUsersThatMyUserIsFollowing = computed(() => loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length != 1 ? loggedInUserStore.idArrayOfLoggedInUserFollowingUsers : "0" )
+const arrayOfUsersThatMyUserIsFollowing = computed(() => loggedInUserStore.idArrayOfLoggedInUserFollowingUsers)
 
 </script>
 
