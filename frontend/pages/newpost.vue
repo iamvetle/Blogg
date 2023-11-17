@@ -7,7 +7,9 @@
 
 			<!-- icons -->
 			<div class="icons flex text-gray-500 m-2">
+
 			</div>
+			
 			<!-- buttons -->
 			<div class="buttons flex">
 				<div v-if="postState">

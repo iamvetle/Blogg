@@ -78,6 +78,11 @@ import { useGeneralStore } from '~/store/generalStore';
 const generalStore = useGeneralStore()
 const emit = defineEmits(['newPostMaterial'])
 
+const props = defineProps<{
+	initialPost?: string;
+}>();
+
+
 // const errorHappened = ref(null)
 
 /**
@@ -94,7 +99,7 @@ const html = ref<string | null | undefined>(null);
 const title = ref<string | null | undefined>(null);
 const body = ref<string | null | undefined>(null);
 
-const editor:any = useEditor({ //@ts-ignore
+const editor: any = useEditor({ //@ts-ignore
 	"type": "doc",
 	content: '',
 	extensions: [
@@ -166,6 +171,14 @@ const editor:any = useEditor({ //@ts-ignore
 	autofocus: true
 })
 
+const unwatch = watch(() => props.initialPost, (newPost) => {
+  if (newPost) {
+    editor.value.commands.setContent(newPost);
+    unwatch(); // Unwatch after the first trigger
+  }
+}, {
+  immediate: false // This will ensure the watcher doesn't trigger on initial setup
+});
 
 /**
  * Tracks the "emptyness" of the editor
@@ -282,7 +295,7 @@ function addImage() {
 	}
 }
 
-const toggleHeading = (level:number) => {
+const toggleHeading = (level: number) => {
 	editor.value.chain().focus().toggleHeading({ level }).run();
 };
 
@@ -317,10 +330,15 @@ const horizontalRule = () => {
  */
 onMounted(() => {
 	if (editor) {
-		const htmlPost = sessionStorage.getItem("htmlPost")
+		const route = useRoute()
 
-		if (htmlPost) {
-			editor.value.chain().focus().insertContent(htmlPost).run()
+		// If the route is /edit/ it wont retrieve cached halway done post
+		if (route.path.includes("edit") === false) {
+			const htmlPost = sessionStorage.getItem("htmlPost")
+
+			if (htmlPost) {
+				editor.value.chain().focus().insertContent(htmlPost).run()
+			}
 		}
 	}
 })

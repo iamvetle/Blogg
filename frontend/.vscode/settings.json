@@ -32,7 +32,8 @@
     "vue-shims.d.ts": true,
     "yarn-error.log": true,
     "tests\\components\\.nuxt": true,
-    "components\\.nuxt": true
+    "components\\.nuxt": true,
+    "pages\\__snapshots__": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
