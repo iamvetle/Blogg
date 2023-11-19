@@ -9,11 +9,17 @@ import BaseIconSaveArticleSaved from '~/components/base/BaseIconSaveArticleSaved
 import BaseIconSaveArticleUnSaved from '~/components/base/BaseIconSaveArticleUnSaved.vue';
 import UserSidebar from '~/components/modules/UserProfile/UserSidebar.vue';
 import BaseButtonFollow from '~/components/base/BaseButtonFollow.vue';
+import UserFullName from '~/components/modules/UserProfile/UserFullName.vue';
+import UserNav from '~/components/modules/UserProfile/UserNav.vue';
+import BaseImage from '~/components/base/BaseImage.vue';
+import UserPostsList from '~/components/modules/UserProfile/UserPostsList.vue';
 
-describe('', () => {
-    let wrapper: VueWrapper;
-    let store;
-    let pinia;
+let wrapper: any;
+let store;
+let pinia;
+
+describe('Testing the user id page', () => {
+
 
     beforeEach(() => {
         pinia = createTestingPinia()
@@ -47,7 +53,7 @@ describe('', () => {
             return null
         })
 
-        
+
         vi.stubGlobal('check_if_following_user', () => {
             return true
         })
@@ -63,7 +69,11 @@ describe('', () => {
                     FeedPostPreviewCard,
                     BaseIconMoreOptions,
                     UserSidebar,
-                    BaseButtonFollow
+                    BaseButtonFollow,
+                    UserFullName,
+                    UserNav,
+                    BaseImage,
+                    UserPostsList
                 },
                 mocks: {
                     $route: {
@@ -80,9 +90,30 @@ describe('', () => {
                 "BaseIconSaveArticleSaved": true,
                 "BaseIconSaveArticleUnSaved": true,
                 "BaseIconMoreOptions": true,
+                "UserFullName": true,
                 toPlainText: true,
+                "UserNav": true,
+                "BaseImage":true,
+                "UserPostsList":true
+
             }
         });
+
+        wrapper.vm.normalUserPosts = {
+            results: [
+                {
+                    title: "title_test",
+                    content_snippet: "snuppet"
+                }
+            ]
+        }
+        wrapper.vm.normalUserProfile = {
+            username: "testuser",
+            first_name: "test_first_name",
+            last_name: "test_last_name",
+            num_of_followers: 7
+        }
+
 
     });
 
@@ -95,67 +126,17 @@ describe('', () => {
     test('exists', () => {
         expect(wrapper.findComponent(IdVue).exists()).toBe(true)
     })
-
-    test('Should render first and last name', async () => {
-        
-        
-        ;await wrapper.vm.$nextTick()
-
-
-        const mockNormalUserPosts = ref({
-            results: [
-                {
-                    title: "title_test",
-                    content_snippet: "snuppet"
-                }
-            ]
-        });
-
-        const mockNormalUserProfile = ref({
-            username: "testuser",
-            first_name: "test_first_name",
-            last_name: "test_last_name",
-            num_of_followers: 7
-        });
-
-            (wrapper.vm as any).normalUserPosts = mockNormalUserPosts.value;
-            (wrapper.vm as any).normalUserProfile = mockNormalUserProfile.value;
-
+    test('The usernav component should be rendered', async () => {
         await wrapper.vm.$nextTick()
-
-            ; //console.log(wrapper.html()) // print to self
-        expect(wrapper.text()).toContain('test_first_name')
-        expect(wrapper.text()).toContain('test_last_name')
+        expect(wrapper.findComponent({ name: "UserNav" }).exists()).toBe(true)
     })
-    test('Should render all the components', async () => {
-        const mockNormalUserPosts = {
-            results: [
-                {
-                    title: "title_test",
-                    content_snippet: "snuppet"
-                }
-            ]
-        }
-
-        const mockNormalUserProfile = {
-            username: "testuser",
-            first_name: "test_first_name",
-            last_name: "test_last_name",
-            num_of_followers: 7
-        }
-
-            ; (wrapper.vm as any).normalUserPosts = mockNormalUserPosts
-            ; (wrapper.vm as any).normalUserProfile = mockNormalUserProfile
-
+    test('The baseiimage component should be rendered', async () => {
         await wrapper.vm.$nextTick()
-
-            ; console.log(wrapper.html())
-
-        const articleCard = wrapper.findComponent({ name:"FeedPostPreviewCard" });
-        const usersidebar = wrapper.findComponent({ name:"UserSidebar" });
-
-        expect(articleCard.exists()).toBe(true);
-        expect(usersidebar.exists()).toBe(true);
+        expect(wrapper.findComponent({ name: "BaseImage" }).exists()).toBe(true)
+    })
+    test('The userpostslist component for listing posts should be rendered', async () => {
+        await wrapper.vm.$nextTick()
+        expect(wrapper.findComponent({ name: "UserPostsList" }).exists()).toBe(true)
     })
 
 
