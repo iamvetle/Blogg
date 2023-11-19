@@ -98,7 +98,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -131,6 +133,7 @@ VueWrapper {
                 "followingPosts": null,
                 "loggedInUserPosts": null,
                 "posts": null,
+                "resetStore": [MockFunction spy],
               },
               "Store for storing information about the logged in user" => {
                 "$dispose": [Function],
@@ -173,7 +176,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -201,6 +206,7 @@ VueWrapper {
                 "next_page": "",
                 "number_of_posts": 0,
                 "previous_page": "",
+                "resetStore": [MockFunction spy],
               },
             },
             "_testing": true,
@@ -552,7 +558,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -585,6 +593,7 @@ VueWrapper {
               "followingPosts": null,
               "loggedInUserPosts": null,
               "posts": null,
+              "resetStore": [MockFunction spy],
             },
             "Store for storing information about the logged in user" => {
               "$dispose": [Function],
@@ -627,7 +636,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -655,6 +666,7 @@ VueWrapper {
               "next_page": "",
               "number_of_posts": 0,
               "previous_page": "",
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,
@@ -1016,7 +1028,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -1049,6 +1063,7 @@ VueWrapper {
                   "followingPosts": null,
                   "loggedInUserPosts": null,
                   "posts": null,
+                  "resetStore": [MockFunction spy],
                 },
                 "Store for storing information about the logged in user" => {
                   "$dispose": [Function],
@@ -1091,7 +1106,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -1119,6 +1136,7 @@ VueWrapper {
                   "next_page": "",
                   "number_of_posts": 0,
                   "previous_page": "",
+                  "resetStore": [MockFunction spy],
                 },
               },
               "_testing": true,
@@ -1470,7 +1488,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -1503,6 +1523,7 @@ VueWrapper {
                 "followingPosts": null,
                 "loggedInUserPosts": null,
                 "posts": null,
+                "resetStore": [MockFunction spy],
               },
               "Store for storing information about the logged in user" => {
                 "$dispose": [Function],
@@ -1545,7 +1566,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -1573,6 +1596,7 @@ VueWrapper {
                 "next_page": "",
                 "number_of_posts": 0,
                 "previous_page": "",
+                "resetStore": [MockFunction spy],
               },
             },
             "_testing": true,
@@ -2055,7 +2079,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -2088,6 +2114,7 @@ VueWrapper {
                       "followingPosts": null,
                       "loggedInUserPosts": null,
                       "posts": null,
+                      "resetStore": [MockFunction spy],
                     },
                     "Store for storing information about the logged in user" => {
                       "$dispose": [Function],
@@ -2130,7 +2157,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -2158,6 +2187,7 @@ VueWrapper {
                       "next_page": "",
                       "number_of_posts": 0,
                       "previous_page": "",
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -2509,7 +2539,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -2542,6 +2574,7 @@ VueWrapper {
                     "followingPosts": null,
                     "loggedInUserPosts": null,
                     "posts": null,
+                    "resetStore": [MockFunction spy],
                   },
                   "Store for storing information about the logged in user" => {
                     "$dispose": [Function],
@@ -2584,7 +2617,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -2612,6 +2647,7 @@ VueWrapper {
                     "next_page": "",
                     "number_of_posts": 0,
                     "previous_page": "",
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -2934,7 +2970,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -3004,7 +3042,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -3037,6 +3077,7 @@ VueWrapper {
                       "followingPosts": null,
                       "loggedInUserPosts": null,
                       "posts": null,
+                      "resetStore": [MockFunction spy],
                     },
                     "Store for storing information about the logged in user" => {
                       "$dispose": [Function],
@@ -3362,6 +3403,7 @@ VueWrapper {
                 "next_page": "",
                 "number_of_posts": 0,
                 "previous_page": "",
+                "resetStore": [MockFunction spy],
               },
               "Store for containing posts and related to posts": {
                 "$dispose": [Function],
@@ -3372,7 +3414,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -3476,7 +3520,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -3504,6 +3550,7 @@ VueWrapper {
                       "next_page": "",
                       "number_of_posts": 0,
                       "previous_page": "",
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -3800,6 +3847,7 @@ VueWrapper {
                 "followingPosts": null,
                 "loggedInUserPosts": null,
                 "posts": null,
+                "resetStore": [MockFunction spy],
               },
               "Store for storing information about the logged in user": {
                 "$dispose": [Function],
@@ -3876,7 +3924,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -3909,6 +3959,7 @@ VueWrapper {
                       "followingPosts": null,
                       "loggedInUserPosts": null,
                       "posts": null,
+                      "resetStore": [MockFunction spy],
                     },
                     "Store for storing information about the logged in user" => [Circular],
                     "Pagination Store" => {
@@ -3920,7 +3971,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -3948,6 +4001,7 @@ VueWrapper {
                       "next_page": "",
                       "number_of_posts": 0,
                       "previous_page": "",
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -4319,7 +4373,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -4352,6 +4408,7 @@ VueWrapper {
                     "followingPosts": null,
                     "loggedInUserPosts": null,
                     "posts": null,
+                    "resetStore": [MockFunction spy],
                   },
                   "Store for storing information about the logged in user" => [Circular],
                   "Pagination Store" => {
@@ -4363,7 +4420,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -4391,6 +4450,7 @@ VueWrapper {
                     "next_page": "",
                     "number_of_posts": 0,
                     "previous_page": "",
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -4691,7 +4751,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -4761,7 +4823,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -4794,6 +4858,7 @@ VueWrapper {
                     "followingPosts": null,
                     "loggedInUserPosts": null,
                     "posts": null,
+                    "resetStore": [MockFunction spy],
                   },
                   "Store for storing information about the logged in user" => {
                     "$dispose": [Function],
@@ -5119,6 +5184,7 @@ VueWrapper {
               "next_page": "",
               "number_of_posts": 0,
               "previous_page": "",
+              "resetStore": [MockFunction spy],
             },
             "postStore": {
               "$dispose": [Function],
@@ -5129,7 +5195,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -5233,7 +5301,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -5261,6 +5331,7 @@ VueWrapper {
                     "next_page": "",
                     "number_of_posts": 0,
                     "previous_page": "",
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -5557,6 +5628,7 @@ VueWrapper {
               "followingPosts": null,
               "loggedInUserPosts": null,
               "posts": null,
+              "resetStore": [MockFunction spy],
             },
             "selected": ComputedRefImpl {
               "__v_isReadonly": true,
@@ -5666,7 +5738,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -5736,7 +5810,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -5769,6 +5845,7 @@ VueWrapper {
                       "followingPosts": null,
                       "loggedInUserPosts": null,
                       "posts": null,
+                      "resetStore": [MockFunction spy],
                     },
                     "Store for storing information about the logged in user" => {
                       "$dispose": [Function],
@@ -6094,6 +6171,7 @@ VueWrapper {
                 "next_page": "",
                 "number_of_posts": 0,
                 "previous_page": "",
+                "resetStore": [MockFunction spy],
               },
               "Store for containing posts and related to posts": {
                 "$dispose": [Function],
@@ -6104,7 +6182,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -6208,7 +6288,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -6236,6 +6318,7 @@ VueWrapper {
                       "next_page": "",
                       "number_of_posts": 0,
                       "previous_page": "",
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -6532,6 +6615,7 @@ VueWrapper {
                 "followingPosts": null,
                 "loggedInUserPosts": null,
                 "posts": null,
+                "resetStore": [MockFunction spy],
               },
               "Store for storing information about the logged in user": {
                 "$dispose": [Function],
@@ -6608,7 +6692,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -6641,6 +6727,7 @@ VueWrapper {
                       "followingPosts": null,
                       "loggedInUserPosts": null,
                       "posts": null,
+                      "resetStore": [MockFunction spy],
                     },
                     "Store for storing information about the logged in user" => [Circular],
                     "Pagination Store" => {
@@ -6652,7 +6739,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -6680,6 +6769,7 @@ VueWrapper {
                       "next_page": "",
                       "number_of_posts": 0,
                       "previous_page": "",
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -7144,7 +7234,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -7177,6 +7269,7 @@ VueWrapper {
                     "followingPosts": null,
                     "loggedInUserPosts": null,
                     "posts": null,
+                    "resetStore": [MockFunction spy],
                   },
                   "Store for storing information about the logged in user" => [Circular],
                   "Pagination Store" => {
@@ -7188,7 +7281,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -7216,6 +7311,7 @@ VueWrapper {
                     "next_page": "",
                     "number_of_posts": 0,
                     "previous_page": "",
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -7516,7 +7612,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -7586,7 +7684,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -7619,6 +7719,7 @@ VueWrapper {
                     "followingPosts": null,
                     "loggedInUserPosts": null,
                     "posts": null,
+                    "resetStore": [MockFunction spy],
                   },
                   "Store for storing information about the logged in user" => {
                     "$dispose": [Function],
@@ -7944,6 +8045,7 @@ VueWrapper {
               "next_page": "",
               "number_of_posts": 0,
               "previous_page": "",
+              "resetStore": [MockFunction spy],
             },
             "postStore": {
               "$dispose": [Function],
@@ -7954,7 +8056,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -8058,7 +8162,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -8086,6 +8192,7 @@ VueWrapper {
                     "next_page": "",
                     "number_of_posts": 0,
                     "previous_page": "",
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -8382,6 +8489,7 @@ VueWrapper {
               "followingPosts": null,
               "loggedInUserPosts": null,
               "posts": null,
+              "resetStore": [MockFunction spy],
             },
             "selected": false,
           },
@@ -8479,7 +8587,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -8512,6 +8622,7 @@ VueWrapper {
                                   "followingPosts": null,
                                   "loggedInUserPosts": null,
                                   "posts": null,
+                                  "resetStore": [MockFunction spy],
                                 },
                                 "Store for storing information about the logged in user" => {
                                   "$dispose": [Function],
@@ -8554,7 +8665,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -8582,6 +8695,7 @@ VueWrapper {
                                   "next_page": "",
                                   "number_of_posts": 0,
                                   "previous_page": "",
+                                  "resetStore": [MockFunction spy],
                                 },
                               },
                               "_testing": true,
@@ -8933,7 +9047,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -8966,6 +9082,7 @@ VueWrapper {
                                 "followingPosts": null,
                                 "loggedInUserPosts": null,
                                 "posts": null,
+                                "resetStore": [MockFunction spy],
                               },
                               "Store for storing information about the logged in user" => {
                                 "$dispose": [Function],
@@ -9008,7 +9125,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -9036,6 +9155,7 @@ VueWrapper {
                                 "next_page": "",
                                 "number_of_posts": 0,
                                 "previous_page": "",
+                                "resetStore": [MockFunction spy],
                               },
                             },
                             "_testing": true,
@@ -9571,7 +9691,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -9604,6 +9726,7 @@ VueWrapper {
                                   "followingPosts": null,
                                   "loggedInUserPosts": null,
                                   "posts": null,
+                                  "resetStore": [MockFunction spy],
                                 },
                                 "Store for storing information about the logged in user" => {
                                   "$dispose": [Function],
@@ -9646,7 +9769,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -9674,6 +9799,7 @@ VueWrapper {
                                   "next_page": "",
                                   "number_of_posts": 0,
                                   "previous_page": "",
+                                  "resetStore": [MockFunction spy],
                                 },
                               },
                               "_testing": true,
@@ -10025,7 +10151,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -10058,6 +10186,7 @@ VueWrapper {
                                 "followingPosts": null,
                                 "loggedInUserPosts": null,
                                 "posts": null,
+                                "resetStore": [MockFunction spy],
                               },
                               "Store for storing information about the logged in user" => {
                                 "$dispose": [Function],
@@ -10100,7 +10229,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -10128,6 +10259,7 @@ VueWrapper {
                                 "next_page": "",
                                 "number_of_posts": 0,
                                 "previous_page": "",
+                                "resetStore": [MockFunction spy],
                               },
                             },
                             "_testing": true,
@@ -10713,7 +10845,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -10746,6 +10880,7 @@ VueWrapper {
                                   "followingPosts": null,
                                   "loggedInUserPosts": null,
                                   "posts": null,
+                                  "resetStore": [MockFunction spy],
                                 },
                                 "Store for storing information about the logged in user" => {
                                   "$dispose": [Function],
@@ -10788,7 +10923,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -10816,6 +10953,7 @@ VueWrapper {
                                   "next_page": "",
                                   "number_of_posts": 0,
                                   "previous_page": "",
+                                  "resetStore": [MockFunction spy],
                                 },
                               },
                               "_testing": true,
@@ -11167,7 +11305,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -11200,6 +11340,7 @@ VueWrapper {
                                 "followingPosts": null,
                                 "loggedInUserPosts": null,
                                 "posts": null,
+                                "resetStore": [MockFunction spy],
                               },
                               "Store for storing information about the logged in user" => {
                                 "$dispose": [Function],
@@ -11242,7 +11383,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -11270,6 +11413,7 @@ VueWrapper {
                                 "next_page": "",
                                 "number_of_posts": 0,
                                 "previous_page": "",
+                                "resetStore": [MockFunction spy],
                               },
                             },
                             "_testing": true,
@@ -11856,7 +12000,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -11889,6 +12035,7 @@ VueWrapper {
                                   "followingPosts": null,
                                   "loggedInUserPosts": null,
                                   "posts": null,
+                                  "resetStore": [MockFunction spy],
                                 },
                                 "Store for storing information about the logged in user" => {
                                   "$dispose": [Function],
@@ -11931,7 +12078,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -11959,6 +12108,7 @@ VueWrapper {
                                   "next_page": "",
                                   "number_of_posts": 0,
                                   "previous_page": "",
+                                  "resetStore": [MockFunction spy],
                                 },
                               },
                               "_testing": true,
@@ -12310,7 +12460,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -12343,6 +12495,7 @@ VueWrapper {
                                 "followingPosts": null,
                                 "loggedInUserPosts": null,
                                 "posts": null,
+                                "resetStore": [MockFunction spy],
                               },
                               "Store for storing information about the logged in user" => {
                                 "$dispose": [Function],
@@ -12385,7 +12538,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -12413,6 +12568,7 @@ VueWrapper {
                                 "next_page": "",
                                 "number_of_posts": 0,
                                 "previous_page": "",
+                                "resetStore": [MockFunction spy],
                               },
                             },
                             "_testing": true,
@@ -12948,7 +13104,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -12981,6 +13139,7 @@ VueWrapper {
                                   "followingPosts": null,
                                   "loggedInUserPosts": null,
                                   "posts": null,
+                                  "resetStore": [MockFunction spy],
                                 },
                                 "Store for storing information about the logged in user" => {
                                   "$dispose": [Function],
@@ -13023,7 +13182,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -13051,6 +13212,7 @@ VueWrapper {
                                   "next_page": "",
                                   "number_of_posts": 0,
                                   "previous_page": "",
+                                  "resetStore": [MockFunction spy],
                                 },
                               },
                               "_testing": true,
@@ -13402,7 +13564,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -13435,6 +13599,7 @@ VueWrapper {
                                 "followingPosts": null,
                                 "loggedInUserPosts": null,
                                 "posts": null,
+                                "resetStore": [MockFunction spy],
                               },
                               "Store for storing information about the logged in user" => {
                                 "$dispose": [Function],
@@ -13477,7 +13642,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -13505,6 +13672,7 @@ VueWrapper {
                                 "next_page": "",
                                 "number_of_posts": 0,
                                 "previous_page": "",
+                                "resetStore": [MockFunction spy],
                               },
                             },
                             "_testing": true,
@@ -14063,7 +14231,9 @@ VueWrapper {
                               "$subscribe": [Function],
                               "_customProperties": Set {},
                               "_hmrPayload": {
-                                "actions": {},
+                                "actions": {
+                                  "resetStore": [Function],
+                                },
                                 "getters": {},
                                 "hotState": RefImpl {
                                   "__v_isRef": true,
@@ -14096,6 +14266,7 @@ VueWrapper {
                               "followingPosts": null,
                               "loggedInUserPosts": null,
                               "posts": null,
+                              "resetStore": [MockFunction spy],
                             },
                             "Store for storing information about the logged in user" => {
                               "$dispose": [Function],
@@ -14138,7 +14309,9 @@ VueWrapper {
                               "$subscribe": [Function],
                               "_customProperties": Set {},
                               "_hmrPayload": {
-                                "actions": {},
+                                "actions": {
+                                  "resetStore": [Function],
+                                },
                                 "getters": {},
                                 "hotState": RefImpl {
                                   "__v_isRef": true,
@@ -14166,6 +14339,7 @@ VueWrapper {
                               "next_page": "",
                               "number_of_posts": 0,
                               "previous_page": "",
+                              "resetStore": [MockFunction spy],
                             },
                           },
                           "_testing": true,
@@ -14517,7 +14691,9 @@ VueWrapper {
                             "$subscribe": [Function],
                             "_customProperties": Set {},
                             "_hmrPayload": {
-                              "actions": {},
+                              "actions": {
+                                "resetStore": [Function],
+                              },
                               "getters": {},
                               "hotState": RefImpl {
                                 "__v_isRef": true,
@@ -14550,6 +14726,7 @@ VueWrapper {
                             "followingPosts": null,
                             "loggedInUserPosts": null,
                             "posts": null,
+                            "resetStore": [MockFunction spy],
                           },
                           "Store for storing information about the logged in user" => {
                             "$dispose": [Function],
@@ -14592,7 +14769,9 @@ VueWrapper {
                             "$subscribe": [Function],
                             "_customProperties": Set {},
                             "_hmrPayload": {
-                              "actions": {},
+                              "actions": {
+                                "resetStore": [Function],
+                              },
                               "getters": {},
                               "hotState": RefImpl {
                                 "__v_isRef": true,
@@ -14620,6 +14799,7 @@ VueWrapper {
                             "next_page": "",
                             "number_of_posts": 0,
                             "previous_page": "",
+                            "resetStore": [MockFunction spy],
                           },
                         },
                         "_testing": true,
@@ -15260,7 +15440,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -15293,6 +15475,7 @@ VueWrapper {
                     "followingPosts": null,
                     "loggedInUserPosts": null,
                     "posts": null,
+                    "resetStore": [MockFunction spy],
                   },
                   "Store for storing information about the logged in user" => {
                     "$dispose": [Function],
@@ -15335,7 +15518,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -15363,6 +15548,7 @@ VueWrapper {
                     "next_page": "",
                     "number_of_posts": 0,
                     "previous_page": "",
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -15714,7 +15900,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -15747,6 +15935,7 @@ VueWrapper {
                   "followingPosts": null,
                   "loggedInUserPosts": null,
                   "posts": null,
+                  "resetStore": [MockFunction spy],
                 },
                 "Store for storing information about the logged in user" => {
                   "$dispose": [Function],
@@ -15789,7 +15978,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -15817,6 +16008,7 @@ VueWrapper {
                   "next_page": "",
                   "number_of_posts": 0,
                   "previous_page": "",
+                  "resetStore": [MockFunction spy],
                 },
               },
               "_testing": true,
@@ -16191,7 +16383,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -16224,6 +16418,7 @@ VueWrapper {
               "followingPosts": null,
               "loggedInUserPosts": null,
               "posts": null,
+              "resetStore": [MockFunction spy],
             },
             "Store for storing information about the logged in user" => {
               "$dispose": [Function],
@@ -16266,7 +16461,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -16294,6 +16491,7 @@ VueWrapper {
               "next_page": "",
               "number_of_posts": 0,
               "previous_page": "",
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,

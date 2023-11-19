@@ -2,18 +2,7 @@
 		<div v-if="ready"
 			class="mt-8 max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28">
 			<div data-test="everything" class="col-span-6 mx-auto w-full">
-
-				<div id="top-search">
-					<FeedTopSearch/>
-				</div>
-
-				<div id="top-choice">
-					<FeedTopChoice/>
-				</div>
-				<!-- I need to do this v-if statement because of when I am using following i dont what this here I think (strictly speaking not necesarry to use v-if) -->
-				<div id="posts-list" v-if="postStore.posts.results" >
-					<FeedPostsList class="w-full mt-12" />
-				</div>
+				<FeedMain/>
 			</div>
 			<div id="feed-sidebar" class="col-span-4 mx-auto w-full">
 				<FeedSidebar/>
@@ -21,7 +10,7 @@
 		</div>
 		<!-- fallback -->
 		<div v-else>
-			<p>hello</p>
+			<p>Not finished loading</p>
 		</div>
 </template>
 
@@ -85,6 +74,8 @@ onMounted(async () => {
 
 	/**
 	 * Fetches all posts in snippets (not full content length)
+	 * 
+	 * * not strictly necesarry as it is already reset when the index get's unmounted (but what about when the index wasnt mounted in the first palce do? - dont know)
 	   */
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
 
@@ -102,10 +93,6 @@ onMounted(async () => {
  * or else they are redirected to the /wait page
  */
 
-/**
- * This changes the layout the pages uses dynamically, based on wait.vue or not.
- */
-
 
 /**
  * Makes sure that the variables tracking the information for which checkboxes are checked are emptied when a refresh happens,
@@ -115,16 +102,15 @@ onMounted(async () => {
  * and ends them up not being syncronous.
  */
 onUnmounted(() => {
-	console.log("Index is unmounted")
 
-	/** So there are no filters present when the page gets refreshed */
-	searchStore.$reset
+	/** This makes sure that all the filters and the search is removed*/
+	searchStore.resetStore()
 
 	/** So that all posts are "removed" and forces a refetch */
-	postStore.$reset
+	postStore.resetStore()
 
 	/** So that the navigation bar / paginator at the button restarts, and starts at one  */
-	paginationStore.$reset
+	paginationStore.resetStore()
 
 })
 

@@ -92,13 +92,11 @@ VueWrapper {
                   "state": [
                     "searchPart",
                     "categoryFilterPart",
-                    "authorFilterPart",
                     "tagFilterPart",
                   ],
                 },
                 "_hotUpdate": [Function],
                 "_p": [Circular],
-                "authorFilterPart": null,
                 "categoryFilterPart": null,
                 "resetStore": [MockFunction spy],
                 "searchPart": null,
@@ -113,7 +111,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -143,6 +143,7 @@ VueWrapper {
                 "followingPosts": null,
                 "loggedInUserPosts": null,
                 "posts": null,
+                "resetStore": [MockFunction spy],
               },
               "Pagination Store" => {
                 "$dispose": [Function],
@@ -153,7 +154,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -181,6 +184,7 @@ VueWrapper {
                 "next_page": "",
                 "number_of_posts": 0,
                 "previous_page": "",
+                "resetStore": [MockFunction spy],
               },
             },
             "_testing": true,
@@ -300,13 +304,6 @@ VueWrapper {
                   },
                 },
                 "search": {
-                  "authorFilterPart": RefImpl {
-                    "__v_isRef": true,
-                    "__v_isShallow": false,
-                    "_rawValue": null,
-                    "_value": null,
-                    "dep": undefined,
-                  },
                   "categoryFilterPart": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -351,7 +348,6 @@ VueWrapper {
                   "posts": null,
                 },
                 "search": {
-                  "authorFilterPart": null,
                   "categoryFilterPart": null,
                   "searchPart": null,
                   "tagFilterPart": null,
@@ -441,13 +437,11 @@ VueWrapper {
                 "state": [
                   "searchPart",
                   "categoryFilterPart",
-                  "authorFilterPart",
                   "tagFilterPart",
                 ],
               },
               "_hotUpdate": [Function],
               "_p": [Circular],
-              "authorFilterPart": null,
               "categoryFilterPart": null,
               "resetStore": [MockFunction spy],
               "searchPart": null,
@@ -462,7 +456,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -492,6 +488,7 @@ VueWrapper {
               "followingPosts": null,
               "loggedInUserPosts": null,
               "posts": null,
+              "resetStore": [MockFunction spy],
             },
             "Pagination Store" => {
               "$dispose": [Function],
@@ -502,7 +499,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -530,6 +529,7 @@ VueWrapper {
               "next_page": "",
               "number_of_posts": 0,
               "previous_page": "",
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,
@@ -649,13 +649,6 @@ VueWrapper {
                 },
               },
               "search": {
-                "authorFilterPart": RefImpl {
-                  "__v_isRef": true,
-                  "__v_isShallow": false,
-                  "_rawValue": null,
-                  "_value": null,
-                  "dep": undefined,
-                },
                 "categoryFilterPart": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -700,7 +693,6 @@ VueWrapper {
                 "posts": null,
               },
               "search": {
-                "authorFilterPart": null,
                 "categoryFilterPart": null,
                 "searchPart": null,
                 "tagFilterPart": null,
@@ -785,13 +777,11 @@ VueWrapper {
                 "state": [
                   "searchPart",
                   "categoryFilterPart",
-                  "authorFilterPart",
                   "tagFilterPart",
                 ],
               },
               "_hotUpdate": [Function],
               "_p": [Circular],
-              "authorFilterPart": null,
               "categoryFilterPart": null,
               "resetStore": [MockFunction spy],
               "searchPart": null,
@@ -806,7 +796,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -836,6 +828,7 @@ VueWrapper {
               "followingPosts": null,
               "loggedInUserPosts": null,
               "posts": null,
+              "resetStore": [MockFunction spy],
             },
             "Pagination Store" => {
               "$dispose": [Function],
@@ -846,7 +839,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -874,6 +869,7 @@ VueWrapper {
               "next_page": "",
               "number_of_posts": 0,
               "previous_page": "",
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,
@@ -993,13 +989,6 @@ VueWrapper {
                 },
               },
               "search": {
-                "authorFilterPart": RefImpl {
-                  "__v_isRef": true,
-                  "__v_isShallow": false,
-                  "_rawValue": null,
-                  "_value": null,
-                  "dep": undefined,
-                },
                 "categoryFilterPart": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -1044,7 +1033,6 @@ VueWrapper {
                 "posts": null,
               },
               "search": {
-                "authorFilterPart": null,
                 "categoryFilterPart": null,
                 "searchPart": null,
                 "tagFilterPart": null,
