@@ -20,7 +20,7 @@
 			"prefix": "vueSetupTest",
 			"body": [
 				"import $1",
-				"import { VueWrapper, shallowMount } from '@vue/test-utils';",
+				"import { shallowMount } from '@vue/test-utils';",
 				"import { createTestingPinia } from '@pinia/testing';",
 				"",
 				"import { useGeneralStore } from '~/store/generalStore';",
@@ -28,7 +28,7 @@
 				"import { useLoggedInUserStore } from '~/store/loggedInUserStore';",
 				"import { usePaginationStore } from '~/store/paginationStore';",
 				"",
-				"let wrapper: VueWrapper;",
+				"let wrapper: any;",
 				"let pinia: any = createTestingPinia();",
 				"",
 				"// let generalStore; $2",

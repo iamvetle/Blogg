@@ -1,5 +1,5 @@
 <template>
-    <div v-bind="$attrs">
+    <div>
         <Following :class="forEachClass" v-for="(username, index) in arrayOfUsersThatMyUserIsFollowing" :key="index" :username="username" />
     </div>
 </template>

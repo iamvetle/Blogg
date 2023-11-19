@@ -2,13 +2,14 @@ import FeedTopChoice from '~/components/modules/Blogg/FeedTopChoice.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import BaseButton from '~/components/base/BaseButton.vue';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
 
 // let generalStore; 
 // let postStore; 
-// let loggedInUserStore; 
+let loggedInUserStore;
 // let paginationStore; 
 
 const factory = () => {
@@ -21,9 +22,6 @@ const factory = () => {
             mocks: {},
             stubs: {},
         },
-        props: {
-            followingSelected: true
-        },
         slots: {}
     })
 };
@@ -33,8 +31,10 @@ describe('', () => {
     beforeEach(() => {
         // generalStore = useGeneralStore(pinia); 
         // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
+        loggedInUserStore = useLoggedInUserStore(pinia);
         // paginationStore = usePaginationStore(pinia); 
+
+        loggedInUserStore.loggedInUserProfile = { num_of_following: 8 }
 
     });
 

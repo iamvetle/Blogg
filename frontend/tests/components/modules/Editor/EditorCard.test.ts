@@ -1,4 +1,4 @@
-import { VueWrapper, flushPromises, mount } from '@vue/test-utils'
+import { flushPromises, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import EditorCard from '~/components/modules/Editor/EditorCard.vue'
 import EditorBubbleMenu from '~/components/modules/Editor/EditorBubbleMenu.vue'
@@ -7,19 +7,28 @@ import Modal from '~/components/utils/Modal.vue'
 
 const mockingCancel = vi.fn()
 const mockingPublish = vi.fn()
+const mockRoute = vi.fn()
+const includes = vi.fn()
 
 describe('EditorCard testing', () => {
     let wrapper: any
     let pinia
 
     beforeEach(() => {
+
+        vi.stubGlobal("useRoute", () => {
+            return  {
+                path:"/something/"
+            }        
+        })
+
         pinia = createTestingPinia()
         wrapper = mount(EditorCard, {
             global: {
                 plugins: [pinia],
                 mocks: {
                     buttonCancelClick: mockingCancel,
-                    buttonTryPublishClick: mockingPublish
+                    buttonTryPublishClick: mockingPublish,
                 },
                 components: {
                     EditorBubbleMenu,
@@ -30,13 +39,14 @@ describe('EditorCard testing', () => {
                     EditorFloatingMenu: true,
                     EditorContent: true,
                     EditorCardTopMenu: true,
-                    Modal:true
+                    Modal: true,
                 }
             }
         })
     })
 
     test('exists', () => {
+
         expect(wrapper.exists()).toBe(true)
     })
     test('Should have "publish" text', () => {
@@ -121,7 +131,7 @@ describe('EditorCard testing', () => {
 
         const cancel_publish_buttons = editor_container.find("[data-test='cancel_publish_buttons']")
         expect(cancel_publish_buttons.exists()).toBe(false)
-    
+
     })
 
 })

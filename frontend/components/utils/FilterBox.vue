@@ -1,61 +1,72 @@
 <template>
-    <div v-for="(option, index) in props.listOfOptions" :class="props.class" class="w-full">
-        <span>
-            <BaseCheckboxOption v-model="selected[option]" @update:model-value="updateList" :key="index" :label="option" v-bind="$attrs"/>
-        </span>
-    </div>
+  <div v-for="(option, index) in props.listOfOptions" :class="props.class" class="w-full">
+    <span>
+      <InputCheckbox v-model="selected[option]" @update:model-value="updateList" :key="index" :label="option"
+        v-bind="$attrs" />
+    </span>
+  </div>
 </template>
 
 <script setup lang="ts">
 /**
- * Filter box
+ * FilterBox Component
  * 
- * @var props.listOfoptions - An array with strings should be passed as a prop to this component. 
+ * This component renders a list of options as checkboxes. It allows the user to select multiple options from a given list.
+ * Each option is rendered using the InputCheckbox component. The component emits an 'output' event with the selected items.
  * 
- * Each item in the array will be displayed as a checkbox option.
+ * @component
+ * @example <caption>Basic usage:</caption>
+ * <FilterBox :listOfOptions="['Option 1', 'Option 2', 'Option 3']" />
  * 
- * @updateList - The event will return an array back with only the selected items, the boxes
- * that is checked.
- * 
- * I have to use it like this " ... v-model="selected[option]" @update:model-value="updateList" />"
- * so that I don't emit TWICE and then fetch twice
- * 
+ * @example <caption>With custom class:</caption>
+ * <FilterBox :listOfOptions="['Option 1', 'Option 2']" class="custom-class" />
  */
 
-/**
- * Stores the list of selected items
- * 
- * in a { "item": true/false } state
- */
-const selected = ref<any>({})
-const emit = defineEmits(['output'])
+const selected = ref<any>({});
+
+const emit = defineEmits(['output']);
 
 /**
- * Returns a computed propety array containing only the items that are selected
- * @returns A list of the checked checkboxes
+ * Computed property that returns an array of selected items.
+ * @returns {Array} An array containing the keys of the checked checkboxes.
  */
 const selectedItems = computed(() => {
-    let only_true_list = []
-
-    for (let [key, value] of Object.entries(selected.value)) {
-        if (value === true) {
-            only_true_list.push(key)
-        }
+  const onlyTrueList = [];
+  for (const [key, value] of Object.entries(selected.value)) {
+    if (value === true) {
+      onlyTrueList.push(key);
     }
-    return only_true_list
-})
-
-const updateList = () => {
-    emit('output', selectedItems)
-}
+  }
+  return onlyTrueList;
+});
 
 /**
- * The prop contains an array of all of the options that can be selected from
+ * Updates the list of selected items and emits them.
  */
+const updateList = () => {
+  emit('output', selectedItems.value);
+};
+
 const props = defineProps<{
-    listOfOptions: any,
-    class?:string,
-    inputClass?:string,
+  /**
+   * Array of options to be displayed as checkboxes.
+   * @type {Array<string>}
+   */
+  listOfOptions: string[],
+
+  /**
+   * Optional CSS class for the wrapper element.
+   * @type {string}
+   * @default undefined
+   */
+  class?: string,
+
+  /**
+   * Optional CSS class for the input elements.
+   * @type {string}
+   * @default undefined
+   */
+  inputClass?: string,
 }>();
 
 onMounted(() => {

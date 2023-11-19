@@ -8,8 +8,10 @@ import { usePostStore } from '~/store/postStore';
 import { useSearchStore } from '~/store/searchStore';
 import { usePaginationStore } from '~/store/paginationStore';
 import BaseButton from '~/components/base/BaseButton.vue'
+import FeedTopChoice from '~/components/modules/Blogg/FeedTopChoice.vue';
+import FeedTopSearch from "~/components/modules/Blogg/FeedTopSearch.vue";
 
-let wrapper: VueWrapper
+let wrapper: any;
 let generalStore: any
 let postStore: any;
 let loggedInUserStore: any;
@@ -38,10 +40,10 @@ describe('index page testing', () => {
         loggedInUserStore.loggedInUserProfile = {
             following: [
                 {
-                    username:"michael98"
+                    username: "michael98"
                 },
                 {
-                    username:"stephen5"
+                    username: "stephen5"
                 }
             ]
         }
@@ -53,16 +55,16 @@ describe('index page testing', () => {
         postStore.posts = {
             results: [
                 {
-                    title:"testtitle1",
-                    content:"testcontent1"
+                    title: "testtitle1",
+                    content: "testcontent1"
                 },
                 {
-                    title:"testtitle2",
-                    content:"testcontent2"
+                    title: "testtitle2",
+                    content: "testcontent2"
                 },
                 {
-                    title:"testtitle3",
-                    content:"testcontent3"
+                    title: "testtitle3",
+                    content: "testcontent3"
                 }
             ]
         }
@@ -76,13 +78,17 @@ describe('index page testing', () => {
                 stubs: {
                     "FeedPostsList": true,
                     'FeedPostsListSidebar': true,
-                    "FilterBox": true
+                    "FilterBox": true,
+                    "FeedTopSearch": true,
+                    "FeedSidebar": true
                 },
                 mocks: {
                 },
                 components: {
                     FeedPostsList,
-                    BaseButton
+                    BaseButton,
+                    FeedTopChoice,
+                    FeedTopSearch
                 },
 
             },
@@ -126,6 +132,17 @@ describe('index page testing', () => {
         expect(element.exists()).toBe(true)
 
     });
+    test('Should NOT display stuff/anything when "ready" is false', async () => {
+
+        wrapper.vm.ready = false
+
+        await wrapper.vm.$nextTick()
+
+        const element = wrapper.find("[data-test='everything']")
+
+        expect(element.exists()).toBe(false)
+
+    });
     test('Should not display anything when posts is false', async () => {
         postStore.posts = false
 
@@ -136,14 +153,6 @@ describe('index page testing', () => {
         expect(element.exists()).toBe(false)
 
     });
-    test('Should render the dropdown filter when there are tags (and posts and profile info)', async () => {
-
-        const filter = wrapper.find("#dropdown-filter")
-
-        expect(filter.exists()).toBe(true)
-
-    });
-
     test('Should not render the dropdown filter if there are not tags', async () => {
         postStore.allTags = null
 
@@ -154,12 +163,6 @@ describe('index page testing', () => {
         expect(filter.exists()).toBe(false)
 
     });
-    test('Should render the sidebar if the logged in user profile information are there/is true (and feed posts)', () => {
-
-        const sidebar = wrapper.findComponent({ name: "FeedPostsListSidebar" })
-
-        expect(sidebar.exists()).toBe(true)
-    })
 
     test('Should NOT render the sidebar if the logged in user profile information are there/is true (and feed posts)', async () => {
         loggedInUserStore.loggedInUserProfile = false
@@ -175,16 +178,6 @@ describe('index page testing', () => {
 
         expect(sidebar.exists()).toBe(false)
     })
-    test('Search result text should not be present when no search has been made', async () => {
-        expect(wrapper.html()).not.toContain("Søkeresultater for")
-    })
-    test('Search result text SHOULD be present when a search has been made', async () => {
-        searchStore.searchPart = true
-
-        await wrapper.vm.$nextTick()
-
-        expect(wrapper.html()).toContain("Søkeresultater for")
-    })
     test("If the following list posts are selected, then the filter dropdown should not be shown", async () => {
 
         paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
@@ -195,71 +188,31 @@ describe('index page testing', () => {
 
         expect(dropdown_filter.exists()).toBe(false)
     });
-    test('The dropdown filter SHOULD exist if normal feed posts are shown', () => {
-        const dropdown_filter = wrapper.find("#dropdown-filter")
 
-        expect(dropdown_filter.exists()).toBe(true)
-    });
-    test('Should NOT (when the logged in user is following atlest one) show text saying that the logged-in user is not following anyone if that is the case when the following button is on', async () => {
-        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-        loggedInUserStore.loggedInUserProfile.num_of_following = 0
-
+    test('Should render the feed top choice', async () => {
         await wrapper.vm.$nextTick()
 
-        const if_no_following_message = "You are not following anyone"
 
-        expect(wrapper.text()).not.toContain(if_no_following_message)
-    });
+        const topchoice = wrapper.findComponent({ name: "FeedTopChoice" })
 
-    test('SHOULD show text saying that the logged-in user is not following anyone if that is the case when the following button is on', async () => {
-        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-        postStore.posts.results = []
-        loggedInUserStore.loggedInUserProfile.num_of_following = 0
+        expect(topchoice.exists()).toBe(true)
+    })
+    test('Should render search top for feed', () => {
+        const topSearch = wrapper.findComponent({ name: "FeedTopSearch" })
+        expect(topSearch.exists()).toBe(true)
 
-        await wrapper.vm.$nextTick()
+    })
+    test('Should render the sidebar component', () => {
+        const sidebar = wrapper.findComponent({ name: "FeedSidebar" })
 
-        const if_no_following_message = "You are not following anyone."
-
-        expect(wrapper.text()).toContain(if_no_following_message)
-    });
-    test('If the users the user is following doesnt have any posts that should be notified on the screen', async () => {
-        
-        // already set to users who have made no posts
-        
-        postStore.posts.results = []
-        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-
-        await wrapper.vm.$nextTick()
-
-        const if_no_following_message = "You are not following anyone."
-
-
-        expect(wrapper.text()).toContain("No posts are published.")
-        expect(wrapper.text()).not.toContain(if_no_following_message)
-    });
-    test('If the logged in user is following no one, only the "You are not following anyone" text should be rendered', async () => {
-        
-        // already set to users who have made no posts
-        
-        postStore.posts.results = []
-        paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-        loggedInUserStore.loggedInUserProfile.num_of_following = 0
-
-        await wrapper.vm.$nextTick()
-
-        const if_no_following_message = "You are not following anyone."
-
-
-        expect(wrapper.text()).not.toContain("No posts are published.")
-        expect(wrapper.text()).toContain(if_no_following_message)
-    }),
-    test("If normal feed is displayed, no 'special text' should be displayed", () => {
-        expect(wrapper.html()).not.toContain("No posts are published.")
-        expect(wrapper.html()).not.toContain("You are not following anyone.")
+        expect(sidebar.exists()).toBe(true)
     })
 
+
+
+
     test('Should match snapshot', () => {
-      expect(wrapper.html()).toMatchSnapshot()
+        expect(wrapper.html()).toMatchSnapshot()
     })
 
 

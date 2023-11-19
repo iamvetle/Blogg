@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <h1 v-bind="$attrs">
-            {{ first_name }} {{ last_name }}
-        </h1>
-    </div>
+    <h1>
+        {{ first_name }} {{ last_name }}
+    </h1>
 </template>
 
 <script setup lang="ts">

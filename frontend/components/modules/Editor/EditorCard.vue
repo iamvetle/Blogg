@@ -93,6 +93,7 @@ const props = defineProps<{
 */
 const showModal = ref(false)
 const html = ref<string | null | undefined>(null);
+const route = useRoute()
 
 /** This two are just so that I can share them between the button 
  * click function and the modal publish function*/
@@ -330,9 +331,9 @@ const horizontalRule = () => {
  */
 onMounted(() => {
 	if (editor) {
-		const route = useRoute()
 
 		// If the route is /edit/ it wont retrieve cached halway done post
+
 		if (route.path.includes("edit") === false) {
 			const htmlPost = sessionStorage.getItem("htmlPost")
 

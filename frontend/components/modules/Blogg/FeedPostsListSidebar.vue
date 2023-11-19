@@ -47,14 +47,6 @@
 			<div id="saved_articles">
 				<PostSavedCardList/>
 			</div>
-
-			<p v-if="loggedInUserStore.loggedInUserProfile.num_of_saved_posts != 0" class="-mt-2 text-xs text-primary hover:text-primaryFixed">
-				<!-- Se alle ({{ loggedInUserStore.loggedInUserProfile.num_of_saved_posts }}) -->
-			</p>
-			<p v-else>
-				Du har ingen lagrede innlegg
-			</p>
-
 		</div>
 
 		<hr class="mb-8">

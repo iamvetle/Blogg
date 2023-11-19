@@ -1,33 +1,28 @@
 <template>
-	<div v-if="generalStore.isAuthenticated" class="mt-8">
-		<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
-			class="max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28">
+		<div v-if="ready"
+			class="mt-8 max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28">
 			<div data-test="everything" class="col-span-6 mx-auto w-full">
 
-				<h2 class="mb-10 text-4xl" v-if="searchStore.searchPart">
-					Søkeresultater for '{{ searchStore.searchPart }}'
-				</h2>
-
-				<FeedTopChoice :followingSelected="selected" />
-				<p class="text-lg" v-if="(num_of_following === 0) && (selected) && (postStore.posts.results.length == 0)">
-					You are
-					not
-					following anyone.</p>
-				<p class="text-lg" v-if="(postStore.posts?.results?.length === 0) && (selected) && (num_of_following > 0)">
-					No
-					posts are published.</p>
-				<FeedPostsList v-if="postStore.posts.results" class="w-full mt-12" />
-			</div>
-			<div class="col-span-4 mx-auto w-full">
-				<div id="dropdown-filter" v-if="postStore.allTags && !selected"
-					class="mb-4 bg-primary rounded-lg text-onPrimary">
-					<FeedDropdownFilter />
+				<div id="top-search">
+					<FeedTopSearch/>
 				</div>
-				<!-- This lists the (saved)articles in thes sidebar -->
-				<FeedPostsListSidebar class="w-full" v-if="loggedInUserStore.loggedInUserProfile" />
+
+				<div id="top-choice">
+					<FeedTopChoice/>
+				</div>
+				<!-- I need to do this v-if statement because of when I am using following i dont what this here I think (strictly speaking not necesarry to use v-if) -->
+				<div id="posts-list" v-if="postStore.posts.results" >
+					<FeedPostsList class="w-full mt-12" />
+				</div>
+			</div>
+			<div id="feed-sidebar" class="col-span-4 mx-auto w-full">
+				<FeedSidebar/>
 			</div>
 		</div>
-	</div>
+		<!-- fallback -->
+		<div v-else>
+			<p>hello</p>
+		</div>
 </template>
 
 <script setup lang="ts">
@@ -49,17 +44,26 @@ definePageMeta({
 	layout: "feed-layout"
 })
 
-// Declerations
-
-/** 
- * FEED or FOLLOWING button selected display 
+/**
+ * if all of these are true, then the page can be rendered:
  * 
- * When the buttons are clicked this changes (also by navbar search)
+ * - the user is authenticated
+ * - there data about the logged in user (logged in user data is fetched)
+ * - There are data about posts (post(s) data is fetched)
  * 
- * If the active url is the following url, this turns true, otherwise, it is false
+ * returns true if all of those "requirements are met", false otherwise
+ * 
+ * ? maybe i should have this in a store instead ?
  */
-const selected = computed(() => (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/"))
+const ready = computed(() => {
+	if ((postStore.posts) && (loggedInUserStore.loggedInUserProfile) && (generalStore.isAuthenticated)) {
+		return true
+	} else {
+		return false
+	}
+})
 
+// Declerations
 
 /**
  * NEW: I removed the IF statements that was meant to check whether it was already information/posts there already,
@@ -101,10 +105,6 @@ onMounted(async () => {
 /**
  * This changes the layout the pages uses dynamically, based on wait.vue or not.
  */
-
-const num_of_following = computed(() =>
-	loggedInUserStore.loggedInUserProfile.num_of_following
-);
 
 
 /**
