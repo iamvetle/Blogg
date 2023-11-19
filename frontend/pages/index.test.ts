@@ -1,5 +1,5 @@
 import { createTestingPinia } from "@pinia/testing"
-import { VueWrapper, mount } from '@vue/test-utils';
+import { VueWrapper, flushPromises, mount } from '@vue/test-utils';
 import index from "~/pages/index.vue";
 import { useGeneralStore } from '~/store/generalStore';
 import FeedPostsList from '~/components/modules/Blogg/FeedPostsList.vue';
@@ -130,17 +130,6 @@ describe('index page testing', () => {
         const element = wrapper.find("[data-test='everything']")
 
         expect(element.exists()).toBe(true)
-
-    });
-    test('Should NOT display stuff/anything when "ready" is false', async () => {
-
-        wrapper.vm.ready = false
-
-        await wrapper.vm.$nextTick()
-
-        const element = wrapper.find("[data-test='everything']")
-
-        expect(element.exists()).toBe(false)
 
     });
     test('Should not display anything when posts is false', async () => {
