@@ -30,7 +30,7 @@ const factory = () => {
     })
 };
 
-describe('', () => {
+describe('Testing the Postcontenthtml component', () => {
 
     beforeEach(() => {
     });
@@ -61,8 +61,8 @@ describe('', () => {
     })
     test('Should match snapshot', () => {
         wrapper = factory()
-  
+
         expect(wrapper).toMatchSnapshot()
-      })
+    })
 
 });
