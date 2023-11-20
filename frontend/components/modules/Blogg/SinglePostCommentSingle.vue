@@ -20,39 +20,39 @@ import { useGeneralStore } from '~/store/generalStore';
 const generalStore = useGeneralStore()
 
 /**
- * The component goes together with the SinglePostCommentsList
- * component.
+ * CommentItem component.
  * 
- * Purpose: render one comment (passed through with prop)
+ * This component displays a single comment, including its content, author, 
+ * and publication date. It also provides a delete button if the logged-in user
+ * is the author of the comment.
+ * 
+ * @component
+ * @example
+ * <CommentItem :comment="{ id: 1, content: 'Sample comment', author: 'user123', date_published: '2022-01-01' }"/>
  */
-
 const props = defineProps<{
+    /**
+     * The comment object to display.
+     * @type {CommentType}
+     */
     comment: CommentType
 }>();
 
-
 /**
- * If the prop (which is the username of the author of the post) is
- * the same as the state registered username of the logged in user (you)
- * a "custom" author word is set
+ * Computed property to determine if the logged-in user is the author of the comment.
  */
 const theAuthorIsLoggedInUser = computed(() => {
     const logged_in_user_username = generalStore.username
     const author_of_post = props.comment.author
 
-    if (logged_in_user_username === author_of_post) {
-        return true
-    } else {
-        return false
-    }
+    return logged_in_user_username === author_of_post
 })
 
-
 /**
- * This can only be called if the button is present - which will only true
- * if the logged in user is the author of the comment
- * 
- * The function calls a composable that sends a DELETE to the comment endpoint
+ * Deletes the comment.
+ * This function is only called if the delete button is present,
+ * which only occurs if the logged-in user is the author of the comment.
+ * It sends a DELETE request to the comment endpoint.
  */
 const deleteComment = async () => {
 
