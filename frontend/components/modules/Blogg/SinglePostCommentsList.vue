@@ -3,7 +3,7 @@
         <div v-for="(comment, index) of comments" :key="index">
             <SinglePostCommentSingle
             :comment="comment"
-            class="p-4 border mt-2 border-2"
+            class="p-4 border-2 mt-2 rounded-md"
             />
         </div>
     </div>

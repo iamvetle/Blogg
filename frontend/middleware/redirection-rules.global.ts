@@ -49,15 +49,17 @@ export default defineNuxtRouteMiddleware((to, from) => {
     /**
      * If there WAS a token in localStorage
      */
-    if (token != null) {
-      (generalStore.isAuthenticated = true)
-      generalStore.username = username
+    if (token) {
+      generalStore.isAuthenticated = true
+      if (username) {
+        generalStore.username = username
+      }
       
     /**
      * If there was NOT a token in localStorage
      */
     } else {
-      (generalStore.isAuthenticated = false);
+      generalStore.isAuthenticated = false;
       generalStore.username = null
     }
   }

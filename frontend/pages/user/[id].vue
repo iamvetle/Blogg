@@ -26,7 +26,7 @@
 
 				<!-- Start: All posts -->
 				<div id="main" class="pt-[50px]" v-if="normalUserPosts.results">
-					<UserPostsList :user_posts="normalUserPosts.results"/>
+					<UserPostsList :user_posts="normalUserPosts.results" />
 				</div>
 				<!-- End -->
 
@@ -36,30 +36,28 @@
 
 			<!-- 4/12 Sidebar -->
 			<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
-				<div>
-					<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
-					<user-sidebar :username="normalUserProfile.username"
-						:profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
+				<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
+				<user-sidebar :username="normalUserProfile.username"
+					:profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
 
-						<template #amount-of-followers>
-							<div class="font-light text-sm leading-7">
-								<p v-if="followers === 1">
-									{{ followers }} follower
-								</p>
-								<p v-else>
-									{{ followers }} followers
-								</p>
-							</div>
-						</template>
+					<template #amount-of-followers>
+						<div class="font-light text-sm leading-7">
+							<p v-if="followers === 1">
+								{{ followers }} follower
+							</p>
+							<p v-else>
+								{{ followers }} followers
+							</p>
+						</div>
+					</template>
 
-						<!-- Button to follow -->
-						<template #follow-button>
-							<BaseButtonFollow :username="normalUserProfile.username" @followers-pluss="followers++"
-								@followers-minus="followers--" />
-						</template>
+					<!-- Button to follow -->
+					<template #follow-button>
+						<BaseButtonFollow :username="normalUserProfile.username" @followers-pluss="followers++"
+							@followers-minus="followers--" />
+					</template>
 
-					</user-sidebar>
-				</div>
+				</user-sidebar>
 			</div>
 		</div>
 	</div>

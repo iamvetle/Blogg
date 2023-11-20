@@ -11,6 +11,7 @@ import PostTitle from '~/components/UI/PostTitle.vue';
 import BaseImage from '~/components/base/BaseImage.vue';
 import PostContentHTML from '~/components/UI/PostContentHTML.vue';
 import BaseButton from '~/components/base/BaseButton.vue';
+import SinglePostComments from '~/components/modules/Blogg/SinglePostComments.vue';
 
 
 const standardPost = {
@@ -52,11 +53,13 @@ const factory = () => {
                 PostTitle,
                 BaseImage,
                 PostContentHTML,
-                BaseButton
+                BaseButton,
+                SinglePostComments
             },
             mocks: {},
             stubs: {
-                TagsList: true
+                TagsList: true,
+                SinglePostComments:true
             },
         },
         props: {},
@@ -103,19 +106,6 @@ describe('', () => {
         expect(wrapper).toMatchSnapshot()
     })
 
-    test('SinglePostCommentsList component should be presetn if all post data is ok', async () => {
-        wrapper = factory()
-
-        wrapper.vm.post = standardPost
-
-        await wrapper.vm.$nextTick()
-
-        console.log(wrapper.html())
-
-        const listComments = wrapper.findComponent({ name: "SinglePostCommentsList" })
-        expect(listComments.exists()).toBe(true)
-    })
-
     test('PostBookmark should be present if all post data is ok', async () => {
         wrapper = factory()
 
@@ -136,26 +126,6 @@ describe('', () => {
         const bookmark = wrapper.findComponent({ name: "TagsList" })
         expect(bookmark.exists()).toBe(true)
     })
-    test('CommentAdd should be present', async () => {
-        wrapper = factory()
-
-        wrapper.vm.post = standardPost
-
-        await wrapper.vm.$nextTick()
-
-        expect(wrapper.findComponent({ name: "CommentAdd" }))
-    })
-    test('Should mention (display) the number of comments', async () => {
-        wrapper = factory()
-
-        wrapper.vm.post = standardPost
-
-        await wrapper.vm.$nextTick()
-
-        const comment_div = wrapper.find("[data-test='comments']")
-
-        expect(comment_div.text()).toContain(6)
-    })
     test('Should have a title prop', async () => {
         wrapper = factory()
         wrapper.vm.post = standardPost
@@ -166,29 +136,36 @@ describe('', () => {
         wrapper = factory()
         wrapper.vm.post = standardPost
         await wrapper.vm.$nextTick()
-        
+
         const postTitleDiv = wrapper.find("[data-test='post-title']")
         expect(postTitleDiv.exists()).toBe(true)
-    
+
         expect(postTitleDiv.html()).toContain(standardPost.title)
     })
     test('Should have the image component', async () => {
         wrapper = factory()
         wrapper.vm.post = standardPost
         await wrapper.vm.$nextTick()
-        expect(wrapper.findComponent({ name:"BaseImage"}).exists()).toBe(true)
+        expect(wrapper.findComponent({ name: "BaseImage" }).exists()).toBe(true)
     })
     test('Should have the component that renders the html input from prop', async () => {
         wrapper = factory()
         wrapper.vm.post = standardPost
         await wrapper.vm.$nextTick()
-        expect(wrapper.findComponent({ name:"PostContentHTML" }).exists()).toBe(true)
+        expect(wrapper.findComponent({ name: "PostContentHTML" }).exists()).toBe(true)
     })
     test('Should render the basebutton, back button, on page', async () => {
         wrapper = factory()
         wrapper.vm.post = standardPost
         await wrapper.vm.$nextTick()
-        expect(wrapper.findComponent({ name:"BaseButton"}).exists()).toBe(true)
+        expect(wrapper.findComponent({ name: "BaseButton" }).exists()).toBe(true)
+    })
+    test('Should render the comments component', async () => {
+        wrapper = factory()
+        wrapper.vm.post = standardPost
+        await wrapper.vm.$nextTick()
+        expect(wrapper.findComponent({ name: "SinglePostComments" }).exists()).toBe(true)
+
     })
 
 

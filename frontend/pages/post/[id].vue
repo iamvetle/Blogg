@@ -57,14 +57,7 @@
 		<hr>
 
 		<div data-test="comments" id="post_comments">
-			<h2>Comments written: ({{ post.num_of_comments }})</h2>
-			<div>
-				<SinglePostCommentsList :comments="all_comments" />
-			</div>
-
-			<hr>
-
-			<SinglePostCommentAdd :post-id="post.id" />
+			<SinglePostComments :post="post"/>
 		</div>
 	</div>
 </template>
@@ -84,16 +77,12 @@
 // import noimage from '~/assets/noimage.jpg'
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePostStore } from '~/store/postStore';
 
 const post = ref<PostSingleType | null>(null);
 
 /** Computed value of all of the "actual" comments in the poststore */
 const route = useRoute()
 const loggedInUserStore = useLoggedInUserStore()
-const postStore = usePostStore()
-
-const all_comments = computed(() => postStore.allComments)
 
 onMounted(async () => {
 	const postURL = `http://localhost:8888/api/post/${route.params.id}/`;
