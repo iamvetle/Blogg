@@ -153,7 +153,7 @@ describe('', () => {
         wrapper.vm.post = standardPost
         await wrapper.vm.$nextTick()
         expect(wrapper.findComponent({ name: "PostContentHTML" }).exists()).toBe(true)
-    })
+    })  
     test('Should render the basebutton, back button, on page', async () => {
         wrapper = factory()
         wrapper.vm.post = standardPost

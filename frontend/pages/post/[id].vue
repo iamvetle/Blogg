@@ -12,9 +12,6 @@
 				</span>
 				<span class="text-xs float-right">Published {{ post.date_published }}</span>
 			</span>
-			<!-- <div v-if="post.num_of_comments !== null" class="flex space-x-1" id="tags">
-				<p>{{ post.num_of_comments }} comments</p>
-			</div> -->
 		</div>
 
 		<hr> 
@@ -29,21 +26,9 @@
 
 
 		<div>
-
-
-
-
 			<div id="all_tags" v-if="post.tags">
 				<TagsList :tags="post.tags" />
 			</div>
-
-			<!-- Obviously don't want both long term
-				<div v-if="post.categories" class="mb-2 flex space-x-1" id="categories">
-					<span class="flex" v-for="(category, index) in post.categories">
-						<BaseTag :text="category" :key="index" />
-					</span>
-				</div> -->
-
 		</div>
 
 		<div id="main-content">
