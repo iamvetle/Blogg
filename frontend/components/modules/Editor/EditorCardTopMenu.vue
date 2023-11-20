@@ -1,5 +1,6 @@
 <template>
     <div id="top-menu-container" v-if="editor" class="flex space-x-10 w-full">
+        
         <div id="top-three" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold"
@@ -14,6 +15,7 @@
                     alt="Underline" :is-active="editor.isActive('underline')" />
             </span>
         </div>
+
         <div id="heading_options" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton data-test="heading1_option" :is-active="editor.isActive('heading', { level: 1 })"
@@ -39,9 +41,9 @@
                     alt="Ordered list" :is-active="editor.isActive('orderedList')" />
             </span>
         </div>
-        <div v-show="false" id="add_options" class="flex space-x-2">
+        <div v-show="true" id="add_options" class="flex space-x-2">
             <span class="option-holder">
-                <EditorButton @click="add_image_handle" data-test="image_option" :icon="image_add_icon" alt="Add image" />
+                <EditorButton @click="$emit('addImage')" data-test="image_option" :icon="image_add_icon" alt="Add image" />
             </span>
 
             <span class="option-holder">
@@ -96,10 +98,6 @@ import { Editor } from '@tiptap/core';
 defineProps<{
     editor: Editor | undefined
 }>();
-
-const add_image_handle = () => {
-    return null
-}
 
 const add_url_link_handle = () => {
     return null
