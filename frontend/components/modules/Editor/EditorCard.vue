@@ -20,14 +20,10 @@
 				<!-- <EditorBubbleMenu
 				:editor="editor"
 				/> -->
-				<EditorCardTopMenu :editor="editor" 
-				@addImage=""
-				/>
+				<EditorCardTopMenu :editor="editor"/>
 			</div>
-			<button @click="editor.chain().focus().addImage().run()">delete</button>
 
 			<hr class="not-prose mb-8">
-
 
 			<div data-test="direct-editor" class="w-full">
 				<editor-content :editor="editor" />
@@ -75,10 +71,6 @@ import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
 import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
-import axios from 'axios'
-import UploadImage from 'tiptap-extension-upload-image';
-
-import 'tiptap-extension-upload-image/dist/upload-image.min.css';
 
 import { useGeneralStore } from '~/store/generalStore';
 
@@ -101,22 +93,6 @@ const props = defineProps<{
 const showModal = ref(false)
 const html = ref<string | null | undefined>(null);
 const route = useRoute()
-
-
-const uploadFn = (file) => {
-    var formData = new FormData();
-    formData.append("image", file);
-    return axios.post('/tools/guidelines/media', formData)
-    .then((response) => {
-        return URL.createObjectURL(file)
-    })
-    .catch((e) => {
-        //Optionaly you can send only throw
-        return URL.createObjectURL(file)
-    })
-}
-
-
 
 /** This two are just so that I can share them between the button 
  * click function and the modal publish function*/
@@ -182,11 +158,6 @@ const editor: any = useEditor({ //@ts-ignore
 		Underline,
 		Code,
 		// Youtube,
-		UploadImage.configure({
-			uploadFn:uploadFn
-		})
-
-
 	],
 
 	editorProps: {

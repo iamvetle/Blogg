@@ -33,7 +33,6 @@ const generalStore = useGeneralStore()
 const props = defineProps<{
     /**
      * The comment object to display.
-     * @type {CommentType}
      */
     comment: CommentType
 }>();

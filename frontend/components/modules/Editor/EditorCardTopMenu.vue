@@ -1,6 +1,6 @@
 <template>
     <div id="top-menu-container" v-if="editor" class="flex space-x-10 w-full">
-        
+
         <div id="top-three" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold"
@@ -41,7 +41,9 @@
                     alt="Ordered list" :is-active="editor.isActive('orderedList')" />
             </span>
         </div>
-        <div v-show="true" id="add_options" class="flex space-x-2">
+
+        <!-- Add image and Add URL - sat to false -->
+        <div v-show="false" id="add_options" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton @click="$emit('addImage')" data-test="image_option" :icon="image_add_icon" alt="Add image" />
             </span>
@@ -51,6 +53,8 @@
                     alt="Add hyperlink" :is-active="editor.isActive('link')" />
             </span>
         </div>
+
+
         <div id="codeQuote_options" class="flex space-x-2">
             <span class="option-holder">
                 <EditorButton data-test="blockquote_option" :is-active="editor.isActive('blockquote')"

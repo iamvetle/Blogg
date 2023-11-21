@@ -456,18 +456,6 @@ describe('Testing the EditorCard top menu', () => {
         expect(add_image_handle).toBeDefined()
         expect(typeof add_image_handle).toBe("function")
     })
-    test('The image option button should trigger the function when clicked', async () => {
-        wrapper = factory()
-
-        const image_add = (wrapper as any).getComponent("[data-test='image_option']");
-
-        await image_add.trigger("click")
-
-        await flushPromises()
-
-        expect(mockAddImageFunction).toHaveBeenCalledOnce()
-
-    })
     test('The image option should NOT have the "isActive" prop with the correct value', () => {
         wrapper = factory()
 
