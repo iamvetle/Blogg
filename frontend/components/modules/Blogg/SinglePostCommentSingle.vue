@@ -2,14 +2,17 @@
     <div>
         <div>
             <p><strong>Content: </strong>'{{ comment.content }}'</p>
-            
-            <span v-if="theAuthorIsLoggedInUser" class="text-sm block mt-2"><strong>Author: </strong>{{ comment.author }}(You)</span>
+
+            <!-- Only displays "you" if you are the owner of that comment-->
+            <span v-if="checkIfLoggedInUser(comment.author)" class="text-sm block mt-2"><strong>Author: </strong>{{ comment.author
+            }}(You)</span>
             <span v-else class="text-sm block mt-2"><strong>Author: </strong>{{ comment.author }}</span>
-            
+
             <span class="text-xs block-mt-4"><strong>Date published: </strong>{{ comment.date_published }}</span>
         </div>
-        <div v-if="theAuthorIsLoggedInUser" id="fire" >
-            <BaseButton @click="deleteComment"  data-test="delete-comment-button" class="bg-primary text-onPrimary py-1 rounded-md" text="Delete"/>
+        <div v-if="theAuthorIsLoggedInUser" id="fire">
+            <BaseButton @click="deleteComment" data-test="delete-comment-button"
+                class="bg-primary text-onPrimary py-1 rounded-md" text="Delete" />
         </div>
     </div>
 </template>
@@ -31,13 +34,26 @@ const props = defineProps<{
     /**
      * The comment object to display.
      */
-    comment: CommentType
+    comment: CommentType;
+    /**
+     * The username of the author of the post
+     */
+    postAuthor: string;
 }>();
 
 /**
  * Computed property to determine if the logged-in user is the author of the comment.
  */
-const theAuthorIsLoggedInUser = ref(checkIfLoggedInUser(props.comment.author))
+const theAuthorIsLoggedInUser = computed(() => {
+    if (checkIfLoggedInUser(props.comment.author) || checkIfLoggedInUser(props.postAuthor)) {
+        return true
+    } else {
+        return false
+    }
+}
+
+
+)
 
 /**
  * Deletes the comment.
@@ -50,7 +66,7 @@ const deleteComment = async () => {
     const baseCommentURL = `http://localhost:8888/api/post/${props.comment.post}/remove-comment/${props.comment.id}/`
 
     const response = await deleteSinglePostSingleComment(baseCommentURL)
-    
+
     if (response) {
         const basePostURL = `http://localhost:8888/api/post/${props.comment.post}/comments/`
         await getSinglePostComments(basePostURL)

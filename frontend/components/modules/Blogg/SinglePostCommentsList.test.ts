@@ -12,6 +12,8 @@ let pinia: any = createTestingPinia();
 // let loggedInUserStore; 
 // let paginationStore; 
 
+let postAuthorProp = "testusername"
+
 const factory = () => {
     return mount(SinglePostCommentsList, {
         global: {
@@ -34,7 +36,8 @@ const factory = () => {
                     date_published: "03-12-2012",
                     author: "testbobusername"
                 }
-            ]
+            ],
+            postAuthor: postAuthorProp
         },
         slots: {}
     })
@@ -89,8 +92,14 @@ describe('', () => {
     test('Should not find any singlepost comment', async () => {
         wrapper = factory()
 
-        await wrapper.setProps({ comments:null })
+        await wrapper.setProps({ comments: null })
 
         expect(wrapper.text()).toContain("No comments.")
+    })
+    test('Should have a "post author" prop', () => {
+        wrapper = factory()
+
+        expect(wrapper.props("postAuthor")).toBeTruthy()
+        expect(wrapper.props("postAuthor")).toBe(postAuthorProp)
     })
 });

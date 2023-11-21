@@ -3,6 +3,7 @@
         <div v-for="(comment, index) of comments" :key="index">
             <SinglePostCommentSingle
             :comment="comment"
+            :post-author="postAuthor"
             class="p-4 border-2 mt-2 rounded-md"
             />
         </div>
@@ -19,7 +20,8 @@
  */
 
 defineProps<{
-    comments:CommentType[] | null
+    comments:CommentType[] | null;
+    postAuthor:string;
 }>()
 
 </script>

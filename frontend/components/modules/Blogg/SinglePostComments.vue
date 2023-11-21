@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <h2>Comments written: ({{ post.num_of_comments }})</h2>
+    <div v-if="postStore.allComments">
+        <h2>Comments written: ({{ num_of_comments }})</h2>
         <div>
-            <SinglePostCommentsList :comments="postStore.allComments" />
+            <SinglePostCommentsList :comments="postStore.allComments" :post-author="post.author.username"/>
         </div>
 
         <hr>
@@ -21,6 +21,14 @@ import { usePostStore } from '~/store/postStore';
  */
 
 const postStore = usePostStore()
+
+/**
+ * Counts the number of comments - I do it this way for me to keep the reactivity
+ */
+const num_of_comments = computed(() => {
+    return postStore.allComments?.length ?? 0
+
+})
 
 defineProps<{
     post:PostSingleType

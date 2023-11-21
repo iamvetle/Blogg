@@ -301,5 +301,5 @@ class PostDeleteCommentView(DestroyAPIView):
         if (comment.author == self.request.user) | (post_owner == self.request.user):
             return comment
         else:
-            raise PermissionDenied("You cannot delete comments made by other people")
+            raise PermissionDenied("You cannot delete comments made by other people (unless you are the owner of the post - which it seems like you are not)")
         
