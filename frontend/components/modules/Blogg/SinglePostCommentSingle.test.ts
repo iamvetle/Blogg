@@ -3,10 +3,8 @@ import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
 import { useGeneralStore } from '~/store/generalStore';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
 import BaseButton from '~/components/base/BaseButton.vue';
+import { checkIfLoggedInUser } from '~/composables/checkIfLoggedInUser';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();
@@ -20,6 +18,16 @@ const mockDeleteComment = vi.fn()
 
 let commentOneAuthor = "testusername"
 
+const mock = vi.spyOn(global, "checkifLoggedInUser")
+
+const fun = () => {
+    return true
+}
+
+vi.mock('~/composables/checkIfLoggedInUser', () => ({
+    checkIfLoggedInUser: vi.fn().mockReturnValue(fun)
+}));
+
 const factory = () => {
     return shallowMount(SinglePostCommentSingle, {
         global: {
@@ -28,7 +36,7 @@ const factory = () => {
                 BaseButton
             },
             mocks: {
-                deleteComment:mockDeleteComment
+                deleteComment: mockDeleteComment
             },
             stubs: {
 
@@ -128,7 +136,7 @@ describe('testing the single comment in a list of comments in single post', () =
 
         const buttonElement = wrapper.find("[data-test='delete-comment-button']")
 
-    
+
         await buttonElement.trigger("click")
 
         expect(mockDeleteComment).toHaveBeenCalledOnce()

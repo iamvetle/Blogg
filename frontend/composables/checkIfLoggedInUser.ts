@@ -14,10 +14,10 @@ export const checkIfLoggedInUser = (username:string): boolean | null => {
          */
         if(logged_in_user_username) {
             if (logged_in_user_username === username) {
-                console.log("IS THE SAME")
+                // console.log("IS THE SAME")
                 return true
             } else {
-                console.log("IS not THE SAME")
+                // console.log("IS not THE SAME")
                 return false
             }
         } else {

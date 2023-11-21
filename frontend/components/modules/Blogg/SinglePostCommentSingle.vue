@@ -8,16 +8,13 @@
             
             <span class="text-xs block-mt-4"><strong>Date published: </strong>{{ comment.date_published }}</span>
         </div>
-        <div v-if="theAuthorIsLoggedInUser">
-            <BaseButton @click="deleteComment" data-test="delete-comment-button" class="bg-primary text-onPrimary py-1 rounded-md" text="Delete"/>
+        <div v-if="theAuthorIsLoggedInUser" id="fire" >
+            <BaseButton @click="deleteComment"  data-test="delete-comment-button" class="bg-primary text-onPrimary py-1 rounded-md" text="Delete"/>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '~/store/generalStore';
-
-const generalStore = useGeneralStore()
 
 /**
  * CommentItem component.
@@ -40,12 +37,7 @@ const props = defineProps<{
 /**
  * Computed property to determine if the logged-in user is the author of the comment.
  */
-const theAuthorIsLoggedInUser = computed(() => {
-    const logged_in_user_username = generalStore.username
-    const author_of_post = props.comment.author
-
-    return logged_in_user_username === author_of_post
-})
+const theAuthorIsLoggedInUser = ref(checkIfLoggedInUser(props.comment.author))
 
 /**
  * Deletes the comment.

@@ -55,7 +55,7 @@ describe('Testing the Postcontenthtml component', () => {
         expect(wrapper.html()).toContain(titleProp)
     })
     test('Attributes ($attrs) should be on the h1 element', () => {
-        wrapper = factory()
+            wrapper = factory()
         const divHTML = wrapper.find("[data-test='html-content']")
         expect(divHTML.attributes("class")).toBe(classAttr)
     })
