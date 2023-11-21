@@ -12,6 +12,15 @@
 										<MyProfilePicture class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" />
 									</div>
 
+									<div class="bg-blue-50 w-56" data-test="upload_image">
+										<label class="" for="image_file" data-test="label_for_image_input">
+											<input class=""
+												data-test="image_input" type="file" name="image_file"
+												accept="image/png" />
+												<button data-test="button_submit_image_input">Upload</button>
+											</label>
+									</div>
+
 									<div data-test="logged-in-user-name">
 										<MyProfileName class="text-xl text-plain font-bold" />
 									</div>
@@ -20,12 +29,14 @@
 										<MyProfileUsername />
 									</div>
 
-									<div class="mt-6 border-primary border rounded-md p-1 flex flex-wrap gap-4 justify-center">
+									<div
+										class="mt-6 border-primary border rounded-md p-1 flex flex-wrap gap-4 justify-center">
 										<MyProfileNumOfFollowers />
 									</div>
 
-									<div class="mt-6 border-primary border rounded-md p-1 flex flex-wrap gap-4 justify-center">
-										<MyProfileNumOfFollowing/>
+									<div
+										class="mt-6 border-primary border rounded-md p-1 flex flex-wrap gap-4 justify-center">
+										<MyProfileNumOfFollowing />
 									</div>
 
 								</div>
