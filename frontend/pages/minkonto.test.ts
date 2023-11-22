@@ -207,4 +207,13 @@ describe('Testing the page minkonto', () => {
         expect(label_for_input.attributes("for")).toBe(inputImageName)
         expect(label_for_input.find("button[data-test='button_submit_image_input']").exists()).toBe(true)  
     })
+    test('Should have the correct id on the input element', async () => {
+        postStore.loggedInUserPosts = standardLoggedInUserPosts
+        loggedInUserStore.loggedInUserProfile = standardLoggedInProfile
+
+        await wrapper.vm.$nextTick()
+
+        const input_id = wrapper.find("#profile_picture_upload")
+        expect(input_id.exists()).toBe(true)
+    })
 })

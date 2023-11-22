@@ -58,7 +58,7 @@
 					Du følger
 				</h3>
 				<div id="following">
-					<Following v-for="(following, index) in loggedInUserStore.loggedInUserProfile.following" :username="following.username"
+					<Following v-for="(following, index) in loggedInUserStore.loggedInUserProfile.following" :following="following.username"
 						:key="index" />
 				</div>
 				<!-- <span class="text-xs text-primary hover:text-primaryFixed">

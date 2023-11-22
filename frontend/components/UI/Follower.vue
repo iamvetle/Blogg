@@ -5,7 +5,7 @@
         :src="user_profile_picture"
         class="flex w-5 h-5"
       >
-      <p v-if="follower"> {{ follower.username }} </p>
+      <NuxtLink :to="`/user/${follower}`"><p v-if="follower">{{ follower }}</p></NuxtLink>
     </span>
   </div>
 </template>
@@ -13,12 +13,9 @@
 <script setup lang="ts">
 import user_profile_picture from '~/assets/account-circle-line.svg'
 
-defineProps({
-  follower: {
-    type: Object,
-    default: null
-  }
-})
+defineProps<{
+  follower: FollowerType
+}>();
 
 </script>
 

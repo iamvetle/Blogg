@@ -1,64 +1,54 @@
 <template>
-	<div v-if="ready" class="w-9/12 mx-auto border-v pb-[60px]">
-
-		<!-- 12/12 Grid -->
-		<div class="w-full px-[80px] grid grid-cols-12 gap-[80px]">
-
-			<!-- 8/12 Main content-->
-			<div class="inline-block col-start-1 col-end-9 border-v border-blue-500">
-				<!-- Profile Image -->
-				<BaseImage id="header" :src="placeholder_header_image"
-					class="h-[150px] w-full object-cover border-v border-slate-500" />
-
-				<div id="top" class="px-2 pt-[50px]">
-
-					<div class="prose">
-						<UserFullName :first_name="normalUserProfile.first_name" :last_name="normalUserProfile.last_name" />
-					</div>
-
-					<div id="nav" class="pt-[30px]">
-						<UserNav />
-					</div>
-
-					<hr class="mt-2">
-
-				</div>
-
-				<!-- Start: All posts -->
-				<div id="main" class="pt-[50px]" v-if="normalUserPosts.results">
-					<UserPostsList :user_posts="normalUserPosts.results" />
-				</div>
-				<!-- End -->
-
-
-			</div>
-
-
-			<!-- 4/12 Sidebar -->
-			<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
-				<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
-				<user-sidebar :username="normalUserProfile.username"
-					:profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
-
-					<template #amount-of-followers>
-						<div class="font-light text-sm leading-7">
-							<p v-if="followers === 1">
-								{{ followers }} follower
-							</p>
-							<p v-else>
-								{{ followers }} followers
-							</p>
+	<div>
+		<div v-if="ready" class="w-9/12 mx-auto border-v pb-[60px]">
+			<!-- 12/12 Grid -->
+			<div class="w-full px-[80px] grid grid-cols-12 gap-[80px]">
+				<!-- 8/12 Main content-->
+				<div class="inline-block col-start-1 col-end-9 border-v border-blue-500">
+					<!-- Profile Image -->
+					<BaseImage id="header" :src="placeholder_header_image"
+						class="h-[150px] w-full object-cover border-v border-slate-500" />
+					<div id="top" class="px-2 pt-[50px]">
+						<div class="prose">
+							<UserFullName :first_name="normalUserProfile.first_name" :last_name="normalUserProfile.last_name" />
 						</div>
-					</template>
-
-					<!-- Button to follow -->
-					<template #follow-button>
-						<BaseButtonFollow :username="normalUserProfile.username" @followers-pluss="followers++"
-							@followers-minus="followers--" />
-					</template>
-
-				</user-sidebar>
+						<div id="nav" class="pt-[30px]">
+							<UserNav />
+						</div>
+						<hr class="mt-2">
+					</div>
+					<!-- Start: All posts -->
+					<div id="main" class="pt-[50px]" v-if="normalUserPosts.results">
+						<UserPostsList :user_posts="normalUserPosts.results" />
+					</div>
+					<!-- End -->
+				</div>
+				<!-- 4/12 Sidebar -->
+				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
+					<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
+					<user-sidebar :username="normalUserProfile.username"
+						:profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
+						<template #amount-of-followers>
+							<div class="font-light text-sm leading-7">
+								<p v-if="followers === 1">
+									{{ followers }} follower
+								</p>
+								<p v-else>
+									{{ followers }} followers
+								</p>
+							</div>
+						</template>
+						<!-- Button to follow -->
+						<template #follow-button>
+							<BaseButtonFollow :username="normalUserProfile.username" @followers-pluss="followers++"
+								@followers-minus="followers--" />
+						</template>
+					</user-sidebar>
+				</div>
 			</div>
+		</div>
+		<div v-else>
+			<p>loading</p>		
 		</div>
 	</div>
 </template>

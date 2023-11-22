@@ -1,7 +1,7 @@
 <template>
     <div class="bg-onPrimary mb-6 px-5 py-5 border rounded-lg border-primary">
         <div class="flex justify-between">
-            <span class="font-bold">{{ post.title }}</span>
+            <span class="font-bold cursor-pointer" @click="redirectToPostPage(post.id)">{{ post.title }}</span>
             <span class="flex">
                 <span class="mr-2">posted: </span>
                 <span class="">{{ post.date_published }}</span>
@@ -21,10 +21,7 @@
                 data-test="read">
                 Les mer
             </span>
-            <button class="rounded-lg p-1 text-sm text-bold text-white bg-red-500 hover:bg-red-300" data-test="del"
-                @click="deletePostRequest(post.id)">
-                Slett
-            </button>
+            <BaseButton text="Slett" class="rounded-lg p-1 text-sm text-bold text-white bg-red-500 hover:bg-red-300" data-test="del" @click="deletePostRequest(post.id)"/>
         </div>
     </div>
 </template>

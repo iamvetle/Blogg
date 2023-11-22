@@ -1,15 +1,15 @@
 <template>
     <div>
-        <Following :class="forEachClass" v-for="(username, index) in arrayOfUsersThatMyUserIsFollowing" :key="index" :username="username" />
+        <Following v-bind="$attrs" v-for="(username, index) in arrayOfUsersThatMyUserIsFollowing" :key="index" :following="username" />
     </div>
 </template>
 
 <script setup lang="ts">
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
-defineProps<{
-    forEachClass?:string
-}>();
+defineOptions({
+    inheritAttrs:false
+})
 
 const loggedInUserStore = useLoggedInUserStore()
 
