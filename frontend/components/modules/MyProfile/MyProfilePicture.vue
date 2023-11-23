@@ -8,7 +8,9 @@
             />
         </div>
         <div v-if="profile_picture == null" id="upload_profile_picture">
-            <UploadImage/>
+            <UploadImage
+            @file-change="handleFileChange"
+            />
         </div>
     </div>
 </template>
@@ -24,8 +26,12 @@ defineOptions({
 
 const loggedInUserStore = useLoggedInUserStore()
 
-/** If the user doesnt have its own picture, this picture is used instead */
-const placeholder = placeholder_profile_picture
+/** 
+ * If the user doesnt have its own picture, this picture is used instead 
+ * 
+ * When an image upload happens 
+ */
+const placeholder = ref(placeholder_profile_picture)
 
 /** 
  * If the user doesnt have a profile picture a placeholder is put there instead
@@ -41,6 +47,17 @@ const profile_picture = computed (() => loggedInUserStore.loggedInUserProfile.pr
  * * There is no need to pass a src down to THIS component. This is a "MyProfile" component, so it
  * * takes it's source directly from the loggedinuser store
  */
+
+/**
+ * This function places an image in the image reactive variable so it is displayed as the profile picture temporarely
+ * 
+ * @param image - The selected image
+ */
+const handleFileChange = (image:any) => {
+    if (placeholder) {
+        placeholder.value = image
+    }            
+}
 
 </script>
 

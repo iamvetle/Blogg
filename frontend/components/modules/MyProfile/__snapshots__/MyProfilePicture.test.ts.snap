@@ -709,6 +709,7 @@ VueWrapper {
       "components": null,
       "ctx": {
         "VTU_COMPONENT": {},
+        "handleFileChange": [MockFunction spy],
       },
       "da": null,
       "data": {},
@@ -764,6 +765,7 @@ VueWrapper {
       "provides": {},
       "proxy": {
         "VTU_COMPONENT": {},
+        "handleFileChange": [MockFunction spy],
       },
       "refs": {
         "VTU_COMPONENT": {},
@@ -1179,15 +1181,17 @@ VueWrapper {
             "UploadImage": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/form/UploadImage.vue",
               "__name": "UploadImage",
+              "emits": [
+                "fileChange",
+              ],
               "props": {
-                "imageClass": {
-                  "default": "border border-primary p-1",
-                  "required": true,
-                  "type": [Function],
-                },
                 "inputClass": {
                   "default": "bg-blue-50 w-56",
                   "required": true,
+                  "type": [Function],
+                },
+                "label": {
+                  "required": false,
                   "type": [Function],
                 },
               },
@@ -1350,6 +1354,7 @@ VueWrapper {
           "da": null,
           "data": {},
           "devtoolsRawSetupState": {
+            "handleFileChange": [MockFunction spy],
             "loggedInUserStore": {
               "$dispose": [Function],
               "$id": "Store for storing information about the logged in user",
@@ -1498,7 +1503,13 @@ VueWrapper {
                 "profile_picture": "~/src/picture.jpeg",
               },
             },
-            "placeholder": "/assets/placeholder-profile-picture.png",
+            "placeholder": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": "/assets/placeholder-profile-picture.png",
+              "_value": "/assets/placeholder-profile-picture.png",
+              "dep": undefined,
+            },
             "profile_picture": ComputedRefImpl {
               "__v_isReadonly": true,
               "__v_isRef": true,
@@ -1814,6 +1825,7 @@ VueWrapper {
             "slots": {},
           },
           "setupState": {
+            "handleFileChange": [MockFunction spy],
             "loggedInUserStore": {
               "$dispose": [Function],
               "$id": "Store for storing information about the logged in user",
@@ -2337,6 +2349,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
+                        "handleFileChange": [MockFunction spy],
                         "src": "~/src/picture.jpeg",
                       },
                       "da": null,
@@ -2389,6 +2402,7 @@ VueWrapper {
                       ],
                       "provides": {},
                       "proxy": {
+                        "handleFileChange": [MockFunction spy],
                         "src": "~/src/picture.jpeg",
                       },
                       "refs": {},
@@ -2608,6 +2622,7 @@ VueWrapper {
                     "@@__IMMUTABLE_RECORD__@@": 0,
                     "_isMockFunction": 0,
                     "constructor": 0,
+                    "handleFileChange": 4,
                     "src": 3,
                     "toJSON": 0,
                     Symbol(Symbol.toStringTag): 0,
@@ -2962,6 +2977,7 @@ VueWrapper {
                   "c": null,
                   "components": null,
                   "ctx": {
+                    "handleFileChange": [MockFunction spy],
                     "src": "~/src/picture.jpeg",
                   },
                   "da": null,
@@ -3014,6 +3030,7 @@ VueWrapper {
                   ],
                   "provides": {},
                   "proxy": {
+                    "handleFileChange": [MockFunction spy],
                     "src": "~/src/picture.jpeg",
                   },
                   "refs": {},
@@ -3232,15 +3249,17 @@ VueWrapper {
               "UploadImage": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/form/UploadImage.vue",
                 "__name": "UploadImage",
+                "emits": [
+                  "fileChange",
+                ],
                 "props": {
-                  "imageClass": {
-                    "default": "border border-primary p-1",
-                    "required": true,
-                    "type": [Function],
-                  },
                   "inputClass": {
                     "default": "bg-blue-50 w-56",
                     "required": true,
+                    "type": [Function],
+                  },
+                  "label": {
+                    "required": false,
                     "type": [Function],
                   },
                 },
@@ -3315,15 +3334,17 @@ VueWrapper {
             "UploadImage": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/form/UploadImage.vue",
               "__name": "UploadImage",
+              "emits": [
+                "fileChange",
+              ],
               "props": {
-                "imageClass": {
-                  "default": "border border-primary p-1",
-                  "required": true,
-                  "type": [Function],
-                },
                 "inputClass": {
                   "default": "bg-blue-50 w-56",
                   "required": true,
+                  "type": [Function],
+                },
+                "label": {
+                  "required": false,
                   "type": [Function],
                 },
               },
@@ -4075,6 +4096,7 @@ VueWrapper {
   "isDisabled": [Function],
   "rootVM": {
     "VTU_COMPONENT": {},
+    "handleFileChange": [MockFunction spy],
   },
   "wrapperElement": <div>
     <div

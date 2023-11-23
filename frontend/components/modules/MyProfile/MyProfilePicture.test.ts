@@ -11,7 +11,11 @@ import UploadImage from '~/components/form/UploadImage.vue';
 let wrapper: any;
 let pinia: any = createTestingPinia();
 
-let loggedInUserStore:any;
+let loggedInUserStore: any;
+
+
+let mockHandleFileChange = vi.fn()
+
 const mockProfile_picture = "~/src/picture.jpeg"
 
 const factory = () => {
@@ -22,10 +26,12 @@ const factory = () => {
                 BaseImage,
                 UploadImage
             },
-            mocks: {},
+            mocks: {
+                handleFileChange: mockHandleFileChange
+            },
             stubs: {
                 BaseImage: true,
-                UploadImage:true
+                UploadImage: true
             },
         },
         slots: {}
@@ -73,10 +79,10 @@ describe('Testing the myprofilepicture component', () => {
     test('baseimage should get the placeholder image if the logged in user store does not have a truthy profile picture', async () => {
         wrapper = factory();
 
-        ;loggedInUserStore.loggedInUserProfile = {
-            profile_picture:null
+        ; loggedInUserStore.loggedInUserProfile = {
+            profile_picture: null
         }
-        
+
         await wrapper.vm.$nextTick()
 
         const baseImage = wrapper.findComponent({ name: "BaseImage" })
@@ -85,34 +91,54 @@ describe('Testing the myprofilepicture component', () => {
         expect(baseImage.attributes("src")).toBe(wrapper.vm.placeholder)
     })
     test('Should match snapshot', () => {
-      wrapper = factory()
+        wrapper = factory()
 
-      expect(wrapper).toMatchSnapshot()
+        expect(wrapper).toMatchSnapshot()
     })
     test('Should have the uploadimage component', async () => {
         wrapper = factory()
 
-        ;loggedInUserStore.loggedInUserProfile = {
-            profile_picture:null
+        loggedInUserStore.loggedInUserProfile = {
+            profile_picture: null
         }
 
         await wrapper.vm.$nextTick()
-        
-        expect(wrapper.findComponent({ name:"UploadImage" }).exists()).toBe(true)
-      
+
+        expect(wrapper.findComponent({ name: "UploadImage" }).exists()).toBe(true)
+
     })
     test('Should have the uploadimage component', async () => {
         wrapper = factory()
 
-        ;loggedInUserStore.loggedInUserProfile = {
-            profile_picture:"something"
-        }
+            loggedInUserStore.loggedInUserProfile = {
+                profile_picture: "something"
+            }
 
         await wrapper.vm.$nextTick()
 
 
-        expect(wrapper.findComponent({ name:"UploadImage" }).exists()).toBe(false)
-      
+        expect(wrapper.findComponent({ name: "UploadImage" }).exists()).toBe(false)
+
+    })
+    test('Should have a (exist) a function to handle file change from uploadimage', () => {
+        wrapper = factory()
+
+        expect(wrapper.vm.handleFileChange).toBeDefined()
+        expect(typeof wrapper.vm.handleFileChange).toBe("function")
+    })
+    test('Should call the handleFileChange function when the uploadImage component has selected an image', async () => {
+        wrapper = factory()
+        loggedInUserStore.loggedInUserProfile = {
+            profile_picture: null
+        }
+
+        await wrapper.vm.$nextTick()
+
+        const uploadImage = wrapper.getComponent({ name: "UploadImage" })
+
+        await uploadImage.trigger("file-change")
+
+        expect(mockHandleFileChange).toHaveBeenCalledOnce()
     })
 
 

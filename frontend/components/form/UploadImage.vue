@@ -1,28 +1,25 @@
 <template>
-	<div>
-		<div class="bg-blue-50 w-56" data-test="upload_image">
-			<InputFile @file-change="handleFile" accept="image/png, image/jpeg" label="Upload File" />
-		</div>
-		<div>
-			<BaseImage id="preview" :src="fileContent" class="file-preview"/>
-		</div>
+	<div class="bg-blue-50 w-56" data-test="upload_image">
+		<InputFile @file-change="handleFile" :class="inputClass" accept="image/png, image/jpeg" label="Upload File (label)" />
 	</div>
 </template>
 
 <script setup lang="ts">
 
+const emit = defineEmits(["fileChange"])
+
 /**
  * TODO create an emit here that emits the image selected upwards to the parent component
  * * I do not think that should be to difficult
+ * 
+ * The input accepts PNG and JPG files
  */
 
 withDefaults(defineProps<{
 	inputClass: string;
-	imageClass: string;
+	label?:string;
 }>(), {
 	inputClass: "bg-blue-50 w-56",
-	imageClass: "border border-primary p-1"
-
 });
 
 
@@ -34,9 +31,11 @@ const fileContent = ref('');
  * TODO: ! FORSTÅ DET - klare å implementere profile picture upload properly
  */
 
-function handleFile(event:any) {
+const handleFile = (event: any) => {
 	selectedFile.value = event.target.files[0];
 }
+
+
 
 // Watcher to react to file selection changes
 watch(selectedFile, (newFile) => {
@@ -46,15 +45,17 @@ watch(selectedFile, (newFile) => {
 	}
 
 	const reader = new FileReader();
-	reader.onload = (e:any) => {
+	reader.onload = (e: any) => {
 		fileContent.value = e.target.result;
+		emit("fileChange", fileContent.value)
+
 	};
 
 	// Read the file based on its type
 	//@ts-ignore 
 	if (newFile.type.match('image.*')) {
 		reader.readAsDataURL(newFile);
-	//@ts-ignore
+		//@ts-ignore
 	} else if (newFile.type.match('text.*')) {
 		reader.readAsText(newFile);
 	} else {

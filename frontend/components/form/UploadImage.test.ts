@@ -7,7 +7,7 @@ import BaseImage from '~/components/base/BaseImage.vue';
 let wrapper: any;
 
 let inputClassProp = "bg-red-500 text-lg"
-let imageClassProp = "~/src/assets/image.jpeg"
+let labelProp = "some label text"
 
 const mockHandleFile = vi.fn()
 
@@ -23,12 +23,12 @@ const factory = () => {
             },
             stubs: {
                 InputFile: true,
-                BaseImage:true
+                BaseImage: true
             },
         },
         props: {
             inputClass: inputClassProp,
-            imageClass: imageClassProp
+            label:labelProp
         },
         slots: {
         }
@@ -54,10 +54,6 @@ describe('Testing the uploadimage component', () => {
         wrapper = factory()
         expect(wrapper.props("inputClass")).toBeTruthy()
     })
-    test('Should have an imageClass prop', () => {
-        wrapper = factory()
-        expect(wrapper.props("imageClass")).toBeTruthy()
-    })
     test('Should have the inputfile element', () => {
         wrapper = factory()
         expect(wrapper.findComponent({ name: "InputFile" }).exists()).toBe(true)
@@ -69,14 +65,35 @@ describe('Testing the uploadimage component', () => {
         const handleFileFunction = wrapper.vm.handleFile
 
         expect(typeof handleFileFunction).toBe("function")
-      
+
     })
-    test('Should have the BaseImage component', () => {
+    test('Should have an emit, "fileChange"', async () => {
         wrapper = factory()
 
-        const baseImage = wrapper.findComponent({ name:"BaseImage" })
-        expect(baseImage.exists()).toBe(true)
+        wrapper.vm.$emit("fileChange")
+
+        await wrapper.vm.$nextTick()
+
+        expect(wrapper.emitted("fileChange")).toBeTruthy()
+    })
+
+    test('Should not have an image element (this is not where the uplaod should be rendered)', () => {
+        wrapper = factory()
+
+        expect(wrapper.find("img").exists()).toBe(false)
+        expect(wrapper.findComponent({ name: "BaseImage" }).exists()).toBe(false)
+    })
+    test('Should match snapshot', () => {
+        wrapper = factory()
+
+        expect(wrapper).toMatchSnapshot()
+
+    })
+    test('Should have a "label" prop', () => {
+        wrapper = factory()
+
+        expect(wrapper.props("label")).toBeTruthy()
       
     })
-});
 
+})
