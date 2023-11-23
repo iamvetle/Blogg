@@ -8,18 +8,9 @@
 							<div class="px-5 py-5 bg-onPrimary rounded-xl">
 								<div class="flex flex-col items-center">
 
-									<div id="profile_picture">
+									<div id="profile_picture_upload">
 										<MyProfilePicture class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" />
 									</div>
-
-									<!-- <div class="bg-blue-50 w-56" data-test="upload_image">
-										<label class="" for="image_file" data-test="label_for_image_input">
-											<input id="profile_picture_upload" class="" data-test="image_input" type="file" name="image_file"
-												accept="image/png" @change="handleFileChange"/>
-											<button data-test="button_submit_image_input">Upload</button>
-										</label>
-									</div>
-									<img v-if="fileContent" :src="fileContent" class="file-preview"> -->
 
 
 									<div data-test="logged-in-user-name">

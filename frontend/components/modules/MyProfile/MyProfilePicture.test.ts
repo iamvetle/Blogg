@@ -6,6 +6,8 @@ import BaseImage from '~/components/base/BaseImage.vue';
 
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
+import UploadImage from '~/components/form/UploadImage.vue';
+
 let wrapper: any;
 let pinia: any = createTestingPinia();
 
@@ -17,11 +19,13 @@ const factory = () => {
         global: {
             plugins: [pinia],
             components: {
-                BaseImage
+                BaseImage,
+                UploadImage
             },
             mocks: {},
             stubs: {
-                BaseImage: true
+                BaseImage: true,
+                UploadImage:true
             },
         },
         slots: {}
@@ -84,6 +88,31 @@ describe('Testing the myprofilepicture component', () => {
       wrapper = factory()
 
       expect(wrapper).toMatchSnapshot()
+    })
+    test('Should have the uploadimage component', async () => {
+        wrapper = factory()
+
+        ;loggedInUserStore.loggedInUserProfile = {
+            profile_picture:null
+        }
+
+        await wrapper.vm.$nextTick()
+        
+        expect(wrapper.findComponent({ name:"UploadImage" }).exists()).toBe(true)
+      
+    })
+    test('Should have the uploadimage component', async () => {
+        wrapper = factory()
+
+        ;loggedInUserStore.loggedInUserProfile = {
+            profile_picture:"something"
+        }
+
+        await wrapper.vm.$nextTick()
+
+
+        expect(wrapper.findComponent({ name:"UploadImage" }).exists()).toBe(false)
+      
     })
 
 });

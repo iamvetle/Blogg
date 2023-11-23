@@ -14,16 +14,13 @@ VueWrapper {
       <div>
         
         <following-stub
-          class=""
-          username="michael"
+          following="michael"
         />
         <following-stub
-          class=""
-          username="james"
+          following="james"
         />
         <following-stub
-          class=""
-          username="bob"
+          following="bob"
         />
         
       </div>
@@ -35,9 +32,9 @@ VueWrapper {
           "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
           "__name": "Following",
           "props": {
-            "username": {
+            "following": {
               "required": true,
-              "type": [Function],
+              "type": null,
             },
           },
           "render": [Function],
@@ -421,9 +418,9 @@ VueWrapper {
             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
             "__name": "Following",
             "props": {
-              "username": {
+              "following": {
                 "required": true,
-                "type": [Function],
+                "type": null,
               },
             },
             "render": [Function],
@@ -926,9 +923,9 @@ VueWrapper {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
                 "__name": "Following",
                 "props": {
-                  "username": {
+                  "following": {
                     "required": true,
-                    "type": [Function],
+                    "type": null,
                   },
                 },
                 "render": [Function],
@@ -1316,9 +1313,9 @@ VueWrapper {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
               "__name": "Following",
               "props": {
-                "username": {
+                "following": {
                   "required": true,
-                  "type": [Function],
+                  "type": null,
                 },
               },
               "render": [Function],
@@ -1497,7 +1494,6 @@ VueWrapper {
                 "loggedInUserProfile": null,
               },
             },
-            "forEachClass": undefined,
           },
           "da": null,
           "data": {},
@@ -1764,26 +1760,17 @@ VueWrapper {
           "emitted": null,
           "exposeProxy": {},
           "exposed": {},
-          "inheritAttrs": undefined,
+          "inheritAttrs": false,
           "isDeactivated": false,
           "isMounted": true,
           "isUnmounted": false,
           "m": null,
           "next": null,
           "parent": [Circular],
-          "props": {
-            "forEachClass": undefined,
-          },
+          "props": {},
           "propsDefaults": {},
           "propsOptions": [
-            {
-              "forEachClass": {
-                "0": false,
-                "1": true,
-                "required": false,
-                "type": [Function],
-              },
-            },
+            {},
             [],
           ],
           "provides": {},
@@ -1959,7 +1946,6 @@ VueWrapper {
                 "loggedInUserProfile": null,
               },
             },
-            "forEachClass": undefined,
           },
           "refs": {},
           "render": [Function],
@@ -2273,9 +2259,9 @@ VueWrapper {
                             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
                             "__name": "Following",
                             "props": {
-                              "username": {
+                              "following": {
                                 "required": true,
-                                "type": [Function],
+                                "type": null,
                               },
                             },
                             "render": [Function],
@@ -2651,9 +2637,7 @@ VueWrapper {
                       },
                       "asyncDep": null,
                       "asyncResolved": false,
-                      "attrs": {
-                        "class": "",
-                      },
+                      "attrs": {},
                       "attrsProxy": null,
                       "bc": null,
                       "bm": null,
@@ -2662,7 +2646,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
-                        "username": "michael",
+                        "following": "michael",
                       },
                       "da": null,
                       "data": {},
@@ -2698,23 +2682,23 @@ VueWrapper {
                       "next": null,
                       "parent": [Circular],
                       "props": {
-                        "username": "michael",
+                        "following": "michael",
                       },
                       "propsDefaults": {},
                       "propsOptions": [
                         {
-                          "username": {
+                          "following": {
                             "0": false,
                             "1": true,
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         [],
                       ],
                       "provides": {},
                       "proxy": {
-                        "username": "michael",
+                        "following": "michael",
                       },
                       "refs": {},
                       "render": [Function],
@@ -2748,9 +2732,7 @@ VueWrapper {
                         "parent": undefined,
                       },
                       "setupContext": {
-                        "attrs": {
-                          "class": "",
-                        },
+                        "attrs": {},
                         "emit": [Function],
                         "expose": [Function],
                         "slots": {},
@@ -2764,7 +2746,6 @@ VueWrapper {
                         "__v_skip": true,
                         "anchor": null,
                         "appContext": null,
-                        "ce": undefined,
                         "children": null,
                         "component": null,
                         "ctx": [Circular],
@@ -2772,14 +2753,12 @@ VueWrapper {
                         "dynamicChildren": null,
                         "dynamicProps": null,
                         "el": <following-stub
-                          class=""
-                          username="michael"
+                          following="michael"
                         />,
                         "key": null,
-                        "patchFlag": 16,
+                        "patchFlag": 0,
                         "props": {
-                          "class": "",
-                          "username": "michael",
+                          "following": "michael",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -2800,9 +2779,9 @@ VueWrapper {
                         "model": undefined,
                         "name": "Following",
                         "props": {
-                          "username": {
+                          "following": {
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         "setup": [Function],
@@ -2818,19 +2797,16 @@ VueWrapper {
                     "dirs": null,
                     "dynamicChildren": [],
                     "dynamicProps": [
-                      "class",
-                      "username",
+                      "following",
                     ],
                     "el": <following-stub
-                      class=""
-                      username="michael"
+                      following="michael"
                     />,
                     "key": 0,
-                    "patchFlag": 8,
+                    "patchFlag": 16,
                     "props": {
-                      "class": "",
+                      "following": "michael",
                       "key": 0,
-                      "username": "michael",
                     },
                     "ref": null,
                     "scopeId": null,
@@ -2847,9 +2823,9 @@ VueWrapper {
                       "model": undefined,
                       "name": "Following",
                       "props": {
-                        "username": {
+                        "following": {
                           "required": true,
-                          "type": [Function],
+                          "type": null,
                         },
                       },
                       "setup": [Function],
@@ -2871,9 +2847,9 @@ VueWrapper {
                             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
                             "__name": "Following",
                             "props": {
-                              "username": {
+                              "following": {
                                 "required": true,
-                                "type": [Function],
+                                "type": null,
                               },
                             },
                             "render": [Function],
@@ -3249,9 +3225,7 @@ VueWrapper {
                       },
                       "asyncDep": null,
                       "asyncResolved": false,
-                      "attrs": {
-                        "class": "",
-                      },
+                      "attrs": {},
                       "attrsProxy": null,
                       "bc": null,
                       "bm": null,
@@ -3260,7 +3234,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
-                        "username": "james",
+                        "following": "james",
                       },
                       "da": null,
                       "data": {},
@@ -3296,23 +3270,23 @@ VueWrapper {
                       "next": null,
                       "parent": [Circular],
                       "props": {
-                        "username": "james",
+                        "following": "james",
                       },
                       "propsDefaults": {},
                       "propsOptions": [
                         {
-                          "username": {
+                          "following": {
                             "0": false,
                             "1": true,
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         [],
                       ],
                       "provides": {},
                       "proxy": {
-                        "username": "james",
+                        "following": "james",
                       },
                       "refs": {},
                       "render": [Function],
@@ -3346,9 +3320,7 @@ VueWrapper {
                         "parent": undefined,
                       },
                       "setupContext": {
-                        "attrs": {
-                          "class": "",
-                        },
+                        "attrs": {},
                         "emit": [Function],
                         "expose": [Function],
                         "slots": {},
@@ -3362,7 +3334,6 @@ VueWrapper {
                         "__v_skip": true,
                         "anchor": null,
                         "appContext": null,
-                        "ce": undefined,
                         "children": null,
                         "component": null,
                         "ctx": [Circular],
@@ -3370,14 +3341,12 @@ VueWrapper {
                         "dynamicChildren": null,
                         "dynamicProps": null,
                         "el": <following-stub
-                          class=""
-                          username="james"
+                          following="james"
                         />,
                         "key": null,
-                        "patchFlag": 16,
+                        "patchFlag": 0,
                         "props": {
-                          "class": "",
-                          "username": "james",
+                          "following": "james",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -3398,9 +3367,9 @@ VueWrapper {
                         "model": undefined,
                         "name": "Following",
                         "props": {
-                          "username": {
+                          "following": {
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         "setup": [Function],
@@ -3416,19 +3385,16 @@ VueWrapper {
                     "dirs": null,
                     "dynamicChildren": [],
                     "dynamicProps": [
-                      "class",
-                      "username",
+                      "following",
                     ],
                     "el": <following-stub
-                      class=""
-                      username="james"
+                      following="james"
                     />,
                     "key": 1,
-                    "patchFlag": 8,
+                    "patchFlag": 16,
                     "props": {
-                      "class": "",
+                      "following": "james",
                       "key": 1,
-                      "username": "james",
                     },
                     "ref": null,
                     "scopeId": null,
@@ -3445,9 +3411,9 @@ VueWrapper {
                       "model": undefined,
                       "name": "Following",
                       "props": {
-                        "username": {
+                        "following": {
                           "required": true,
-                          "type": [Function],
+                          "type": null,
                         },
                       },
                       "setup": [Function],
@@ -3469,9 +3435,9 @@ VueWrapper {
                             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
                             "__name": "Following",
                             "props": {
-                              "username": {
+                              "following": {
                                 "required": true,
-                                "type": [Function],
+                                "type": null,
                               },
                             },
                             "render": [Function],
@@ -3847,9 +3813,7 @@ VueWrapper {
                       },
                       "asyncDep": null,
                       "asyncResolved": false,
-                      "attrs": {
-                        "class": "",
-                      },
+                      "attrs": {},
                       "attrsProxy": null,
                       "bc": null,
                       "bm": null,
@@ -3858,7 +3822,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
-                        "username": "bob",
+                        "following": "bob",
                       },
                       "da": null,
                       "data": {},
@@ -3894,23 +3858,23 @@ VueWrapper {
                       "next": null,
                       "parent": [Circular],
                       "props": {
-                        "username": "bob",
+                        "following": "bob",
                       },
                       "propsDefaults": {},
                       "propsOptions": [
                         {
-                          "username": {
+                          "following": {
                             "0": false,
                             "1": true,
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         [],
                       ],
                       "provides": {},
                       "proxy": {
-                        "username": "bob",
+                        "following": "bob",
                       },
                       "refs": {},
                       "render": [Function],
@@ -3944,9 +3908,7 @@ VueWrapper {
                         "parent": undefined,
                       },
                       "setupContext": {
-                        "attrs": {
-                          "class": "",
-                        },
+                        "attrs": {},
                         "emit": [Function],
                         "expose": [Function],
                         "slots": {},
@@ -3960,7 +3922,6 @@ VueWrapper {
                         "__v_skip": true,
                         "anchor": null,
                         "appContext": null,
-                        "ce": undefined,
                         "children": null,
                         "component": null,
                         "ctx": [Circular],
@@ -3968,14 +3929,12 @@ VueWrapper {
                         "dynamicChildren": null,
                         "dynamicProps": null,
                         "el": <following-stub
-                          class=""
-                          username="bob"
+                          following="bob"
                         />,
                         "key": null,
-                        "patchFlag": 16,
+                        "patchFlag": 0,
                         "props": {
-                          "class": "",
-                          "username": "bob",
+                          "following": "bob",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -3996,9 +3955,9 @@ VueWrapper {
                         "model": undefined,
                         "name": "Following",
                         "props": {
-                          "username": {
+                          "following": {
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         "setup": [Function],
@@ -4014,19 +3973,16 @@ VueWrapper {
                     "dirs": null,
                     "dynamicChildren": [],
                     "dynamicProps": [
-                      "class",
-                      "username",
+                      "following",
                     ],
                     "el": <following-stub
-                      class=""
-                      username="bob"
+                      following="bob"
                     />,
                     "key": 2,
-                    "patchFlag": 8,
+                    "patchFlag": 16,
                     "props": {
-                      "class": "",
+                      "following": "bob",
                       "key": 2,
-                      "username": "bob",
                     },
                     "ref": null,
                     "scopeId": null,
@@ -4043,9 +3999,9 @@ VueWrapper {
                       "model": undefined,
                       "name": "Following",
                       "props": {
-                        "username": {
+                        "following": {
                           "required": true,
-                          "type": [Function],
+                          "type": null,
                         },
                       },
                       "setup": [Function],
@@ -4098,8 +4054,8 @@ VueWrapper {
                         "@@__IMMUTABLE_RECORD__@@": 0,
                         "_isMockFunction": 0,
                         "constructor": 0,
+                        "following": 3,
                         "toJSON": 0,
-                        "username": 3,
                         Symbol(Symbol.toStringTag): 0,
                       },
                       "appContext": {
@@ -4109,9 +4065,9 @@ VueWrapper {
                             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
                             "__name": "Following",
                             "props": {
-                              "username": {
+                              "following": {
                                 "required": true,
-                                "type": [Function],
+                                "type": null,
                               },
                             },
                             "render": [Function],
@@ -4487,12 +4443,8 @@ VueWrapper {
                       },
                       "asyncDep": null,
                       "asyncResolved": false,
-                      "attrs": {
-                        "class": "",
-                      },
-                      "attrsProxy": {
-                        "class": "",
-                      },
+                      "attrs": {},
+                      "attrsProxy": {},
                       "bc": null,
                       "bm": null,
                       "bu": null,
@@ -4500,7 +4452,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
-                        "username": "michael",
+                        "following": "michael",
                       },
                       "da": null,
                       "data": {},
@@ -4536,23 +4488,23 @@ VueWrapper {
                       "next": null,
                       "parent": [Circular],
                       "props": {
-                        "username": "michael",
+                        "following": "michael",
                       },
                       "propsDefaults": {},
                       "propsOptions": [
                         {
-                          "username": {
+                          "following": {
                             "0": false,
                             "1": true,
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         [],
                       ],
                       "provides": {},
                       "proxy": {
-                        "username": "michael",
+                        "following": "michael",
                       },
                       "refs": {},
                       "render": [Function],
@@ -4586,9 +4538,7 @@ VueWrapper {
                         "parent": undefined,
                       },
                       "setupContext": {
-                        "attrs": {
-                          "class": "",
-                        },
+                        "attrs": {},
                         "emit": [Function],
                         "expose": [Function],
                         "slots": {},
@@ -4602,7 +4552,6 @@ VueWrapper {
                         "__v_skip": true,
                         "anchor": null,
                         "appContext": null,
-                        "ce": undefined,
                         "children": null,
                         "component": null,
                         "ctx": [Circular],
@@ -4610,14 +4559,12 @@ VueWrapper {
                         "dynamicChildren": null,
                         "dynamicProps": null,
                         "el": <following-stub
-                          class=""
-                          username="michael"
+                          following="michael"
                         />,
                         "key": null,
-                        "patchFlag": 16,
+                        "patchFlag": 0,
                         "props": {
-                          "class": "",
-                          "username": "michael",
+                          "following": "michael",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -4638,9 +4585,9 @@ VueWrapper {
                         "model": undefined,
                         "name": "Following",
                         "props": {
-                          "username": {
+                          "following": {
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         "setup": [Function],
@@ -4656,19 +4603,16 @@ VueWrapper {
                     "dirs": null,
                     "dynamicChildren": [],
                     "dynamicProps": [
-                      "class",
-                      "username",
+                      "following",
                     ],
                     "el": <following-stub
-                      class=""
-                      username="michael"
+                      following="michael"
                     />,
                     "key": 0,
-                    "patchFlag": 8,
+                    "patchFlag": 16,
                     "props": {
-                      "class": "",
+                      "following": "michael",
                       "key": 0,
-                      "username": "michael",
                     },
                     "ref": null,
                     "scopeId": null,
@@ -4685,9 +4629,9 @@ VueWrapper {
                       "model": undefined,
                       "name": "Following",
                       "props": {
-                        "username": {
+                        "following": {
                           "required": true,
-                          "type": [Function],
+                          "type": null,
                         },
                       },
                       "setup": [Function],
@@ -4706,8 +4650,8 @@ VueWrapper {
                         "@@__IMMUTABLE_RECORD__@@": 0,
                         "_isMockFunction": 0,
                         "constructor": 0,
+                        "following": 3,
                         "toJSON": 0,
-                        "username": 3,
                         Symbol(Symbol.toStringTag): 0,
                       },
                       "appContext": {
@@ -4717,9 +4661,9 @@ VueWrapper {
                             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
                             "__name": "Following",
                             "props": {
-                              "username": {
+                              "following": {
                                 "required": true,
-                                "type": [Function],
+                                "type": null,
                               },
                             },
                             "render": [Function],
@@ -5095,12 +5039,8 @@ VueWrapper {
                       },
                       "asyncDep": null,
                       "asyncResolved": false,
-                      "attrs": {
-                        "class": "",
-                      },
-                      "attrsProxy": {
-                        "class": "",
-                      },
+                      "attrs": {},
+                      "attrsProxy": {},
                       "bc": null,
                       "bm": null,
                       "bu": null,
@@ -5108,7 +5048,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
-                        "username": "james",
+                        "following": "james",
                       },
                       "da": null,
                       "data": {},
@@ -5144,23 +5084,23 @@ VueWrapper {
                       "next": null,
                       "parent": [Circular],
                       "props": {
-                        "username": "james",
+                        "following": "james",
                       },
                       "propsDefaults": {},
                       "propsOptions": [
                         {
-                          "username": {
+                          "following": {
                             "0": false,
                             "1": true,
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         [],
                       ],
                       "provides": {},
                       "proxy": {
-                        "username": "james",
+                        "following": "james",
                       },
                       "refs": {},
                       "render": [Function],
@@ -5194,9 +5134,7 @@ VueWrapper {
                         "parent": undefined,
                       },
                       "setupContext": {
-                        "attrs": {
-                          "class": "",
-                        },
+                        "attrs": {},
                         "emit": [Function],
                         "expose": [Function],
                         "slots": {},
@@ -5210,7 +5148,6 @@ VueWrapper {
                         "__v_skip": true,
                         "anchor": null,
                         "appContext": null,
-                        "ce": undefined,
                         "children": null,
                         "component": null,
                         "ctx": [Circular],
@@ -5218,14 +5155,12 @@ VueWrapper {
                         "dynamicChildren": null,
                         "dynamicProps": null,
                         "el": <following-stub
-                          class=""
-                          username="james"
+                          following="james"
                         />,
                         "key": null,
-                        "patchFlag": 16,
+                        "patchFlag": 0,
                         "props": {
-                          "class": "",
-                          "username": "james",
+                          "following": "james",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -5246,9 +5181,9 @@ VueWrapper {
                         "model": undefined,
                         "name": "Following",
                         "props": {
-                          "username": {
+                          "following": {
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         "setup": [Function],
@@ -5264,19 +5199,16 @@ VueWrapper {
                     "dirs": null,
                     "dynamicChildren": [],
                     "dynamicProps": [
-                      "class",
-                      "username",
+                      "following",
                     ],
                     "el": <following-stub
-                      class=""
-                      username="james"
+                      following="james"
                     />,
                     "key": 1,
-                    "patchFlag": 8,
+                    "patchFlag": 16,
                     "props": {
-                      "class": "",
+                      "following": "james",
                       "key": 1,
-                      "username": "james",
                     },
                     "ref": null,
                     "scopeId": null,
@@ -5293,9 +5225,9 @@ VueWrapper {
                       "model": undefined,
                       "name": "Following",
                       "props": {
-                        "username": {
+                        "following": {
                           "required": true,
-                          "type": [Function],
+                          "type": null,
                         },
                       },
                       "setup": [Function],
@@ -5314,8 +5246,8 @@ VueWrapper {
                         "@@__IMMUTABLE_RECORD__@@": 0,
                         "_isMockFunction": 0,
                         "constructor": 0,
+                        "following": 3,
                         "toJSON": 0,
-                        "username": 3,
                         Symbol(Symbol.toStringTag): 0,
                       },
                       "appContext": {
@@ -5325,9 +5257,9 @@ VueWrapper {
                             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
                             "__name": "Following",
                             "props": {
-                              "username": {
+                              "following": {
                                 "required": true,
-                                "type": [Function],
+                                "type": null,
                               },
                             },
                             "render": [Function],
@@ -5703,12 +5635,8 @@ VueWrapper {
                       },
                       "asyncDep": null,
                       "asyncResolved": false,
-                      "attrs": {
-                        "class": "",
-                      },
-                      "attrsProxy": {
-                        "class": "",
-                      },
+                      "attrs": {},
+                      "attrsProxy": {},
                       "bc": null,
                       "bm": null,
                       "bu": null,
@@ -5716,7 +5644,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
-                        "username": "bob",
+                        "following": "bob",
                       },
                       "da": null,
                       "data": {},
@@ -5752,23 +5680,23 @@ VueWrapper {
                       "next": null,
                       "parent": [Circular],
                       "props": {
-                        "username": "bob",
+                        "following": "bob",
                       },
                       "propsDefaults": {},
                       "propsOptions": [
                         {
-                          "username": {
+                          "following": {
                             "0": false,
                             "1": true,
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         [],
                       ],
                       "provides": {},
                       "proxy": {
-                        "username": "bob",
+                        "following": "bob",
                       },
                       "refs": {},
                       "render": [Function],
@@ -5802,9 +5730,7 @@ VueWrapper {
                         "parent": undefined,
                       },
                       "setupContext": {
-                        "attrs": {
-                          "class": "",
-                        },
+                        "attrs": {},
                         "emit": [Function],
                         "expose": [Function],
                         "slots": {},
@@ -5818,7 +5744,6 @@ VueWrapper {
                         "__v_skip": true,
                         "anchor": null,
                         "appContext": null,
-                        "ce": undefined,
                         "children": null,
                         "component": null,
                         "ctx": [Circular],
@@ -5826,14 +5751,12 @@ VueWrapper {
                         "dynamicChildren": null,
                         "dynamicProps": null,
                         "el": <following-stub
-                          class=""
-                          username="bob"
+                          following="bob"
                         />,
                         "key": null,
-                        "patchFlag": 16,
+                        "patchFlag": 0,
                         "props": {
-                          "class": "",
-                          "username": "bob",
+                          "following": "bob",
                         },
                         "ref": null,
                         "scopeId": null,
@@ -5854,9 +5777,9 @@ VueWrapper {
                         "model": undefined,
                         "name": "Following",
                         "props": {
-                          "username": {
+                          "following": {
                             "required": true,
-                            "type": [Function],
+                            "type": null,
                           },
                         },
                         "setup": [Function],
@@ -5872,19 +5795,16 @@ VueWrapper {
                     "dirs": null,
                     "dynamicChildren": [],
                     "dynamicProps": [
-                      "class",
-                      "username",
+                      "following",
                     ],
                     "el": <following-stub
-                      class=""
-                      username="bob"
+                      following="bob"
                     />,
                     "key": 2,
-                    "patchFlag": 8,
+                    "patchFlag": 16,
                     "props": {
-                      "class": "",
+                      "following": "bob",
                       "key": 2,
-                      "username": "bob",
                     },
                     "ref": null,
                     "scopeId": null,
@@ -5901,9 +5821,9 @@ VueWrapper {
                       "model": undefined,
                       "name": "Following",
                       "props": {
-                        "username": {
+                        "following": {
                           "required": true,
-                          "type": [Function],
+                          "type": null,
                         },
                       },
                       "setup": [Function],
@@ -5937,16 +5857,13 @@ VueWrapper {
             "el": <div>
               
               <following-stub
-                class=""
-                username="michael"
+                following="michael"
               />
               <following-stub
-                class=""
-                username="james"
+                following="james"
               />
               <following-stub
-                class=""
-                username="bob"
+                following="bob"
               />
               
             </div>,
@@ -5976,21 +5893,16 @@ VueWrapper {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
                 "__name": "Following",
                 "props": {
-                  "username": {
+                  "following": {
                     "required": true,
-                    "type": [Function],
+                    "type": null,
                   },
                 },
                 "render": [Function],
                 "setup": [Function],
               },
             },
-            "props": {
-              "forEachClass": {
-                "required": false,
-                "type": [Function],
-              },
-            },
+            "inheritAttrs": false,
             "render": [Function],
             "setup": [Function],
           },
@@ -6008,16 +5920,13 @@ VueWrapper {
         "el": <div>
           
           <following-stub
-            class=""
-            username="michael"
+            following="michael"
           />
           <following-stub
-            class=""
-            username="james"
+            following="james"
           />
           <following-stub
-            class=""
-            username="bob"
+            following="bob"
           />
           
         </div>,
@@ -6050,21 +5959,16 @@ VueWrapper {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
               "__name": "Following",
               "props": {
-                "username": {
+                "following": {
                   "required": true,
-                  "type": [Function],
+                  "type": null,
                 },
               },
               "render": [Function],
               "setup": [Function],
             },
           },
-          "props": {
-            "forEachClass": {
-              "required": false,
-              "type": [Function],
-            },
-          },
+          "inheritAttrs": false,
           "render": [Function],
           "setup": [Function],
         },
@@ -6091,9 +5995,9 @@ VueWrapper {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
               "__name": "Following",
               "props": {
-                "username": {
+                "following": {
                   "required": true,
-                  "type": [Function],
+                  "type": null,
                 },
               },
               "render": [Function],
@@ -6476,16 +6380,13 @@ VueWrapper {
         "el": <div>
           
           <following-stub
-            class=""
-            username="michael"
+            following="michael"
           />
           <following-stub
-            class=""
-            username="james"
+            following="james"
           />
           <following-stub
-            class=""
-            username="bob"
+            following="bob"
           />
           
         </div>,
@@ -6885,16 +6786,13 @@ VueWrapper {
   "wrapperElement": <div>
     
     <following-stub
-      class=""
-      username="michael"
+      following="michael"
     />
     <following-stub
-      class=""
-      username="james"
+      following="james"
     />
     <following-stub
-      class=""
-      username="bob"
+      following="bob"
     />
     
   </div>,

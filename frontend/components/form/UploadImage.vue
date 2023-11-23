@@ -1,0 +1,68 @@
+<template>
+	<div>
+		<div class="bg-blue-50 w-56" data-test="upload_image">
+			<InputFile @file-change="handleFile" accept="image/png" label="Upload File" />
+		</div>
+		<div>
+			<img :src="fileContent" class="file-preview">
+		</div>
+	</div>
+</template>
+
+<script setup lang="ts">
+
+/**
+ * TODO create an emit here that emits the image selected upwards to the parent component
+ * * I do not think that should be to difficult
+ */
+
+withDefaults(defineProps<{
+	inputClass: string;
+	imageClass: string;
+}>(), {
+	inputClass: "bg-blue-50 w-56",
+	imageClass: "border border-primary p-1"
+
+});
+
+
+const selectedFile = ref(null);
+const fileContent = ref('');
+
+/**
+ * ? Forstår lite av hva som står under - må 
+ * TODO: ! FORSTÅ DET - klare å implementere profile picture upload properly
+ */
+
+function handleFile(event:any) {
+	selectedFile.value = event.target.files[0];
+}
+
+// Watcher to react to file selection changes
+watch(selectedFile, (newFile) => {
+	if (!newFile) {
+		fileContent.value = '';
+		return;
+	}
+
+	const reader = new FileReader();
+	reader.onload = (e:any) => {
+		fileContent.value = e.target.result;
+	};
+
+	// Read the file based on its type
+	//@ts-ignore 
+	if (newFile.type.match('image.*')) {
+		reader.readAsDataURL(newFile);
+	//@ts-ignore
+	} else if (newFile.type.match('text.*')) {
+		reader.readAsText(newFile);
+	} else {
+		fileContent.value = '<p>Preview not available for this file type</p>';
+	}
+});
+
+
+</script>
+
+<style scoped></style>

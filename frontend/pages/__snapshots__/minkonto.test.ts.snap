@@ -1805,9 +1805,9 @@ VueWrapper {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
               "__name": "Following",
               "props": {
-                "username": {
+                "following": {
                   "required": true,
-                  "type": [Function],
+                  "type": null,
                 },
               },
               "render": [Function],
@@ -1822,12 +1822,7 @@ VueWrapper {
             "MyProfileFollowing": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileFollowing.vue",
               "__name": "MyProfileFollowing",
-              "props": {
-                "forEachClass": {
-                  "required": false,
-                  "type": [Function],
-                },
-              },
+              "inheritAttrs": false,
               "render": [Function],
               "setup": [Function],
             },
@@ -1852,6 +1847,7 @@ VueWrapper {
             "MyProfilePicture": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
               "__name": "MyProfilePicture",
+              "inheritAttrs": false,
               "render": [Function],
               "setup": [Function],
             },
@@ -3877,9 +3873,9 @@ VueWrapper {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
                 "__name": "Following",
                 "props": {
-                  "username": {
+                  "following": {
                     "required": true,
-                    "type": [Function],
+                    "type": null,
                   },
                 },
                 "render": [Function],
@@ -3894,12 +3890,7 @@ VueWrapper {
               "MyProfileFollowing": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileFollowing.vue",
                 "__name": "MyProfileFollowing",
-                "props": {
-                  "forEachClass": {
-                    "required": false,
-                    "type": [Function],
-                  },
-                },
+                "inheritAttrs": false,
                 "render": [Function],
                 "setup": [Function],
               },
@@ -3924,6 +3915,7 @@ VueWrapper {
               "MyProfilePicture": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
                 "__name": "MyProfilePicture",
+                "inheritAttrs": false,
                 "render": [Function],
                 "setup": [Function],
               },
@@ -3996,9 +3988,9 @@ VueWrapper {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/Following.vue",
               "__name": "Following",
               "props": {
-                "username": {
+                "following": {
                   "required": true,
-                  "type": [Function],
+                  "type": null,
                 },
               },
               "render": [Function],
@@ -4013,12 +4005,7 @@ VueWrapper {
             "MyProfileFollowing": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileFollowing.vue",
               "__name": "MyProfileFollowing",
-              "props": {
-                "forEachClass": {
-                  "required": false,
-                  "type": [Function],
-                },
-              },
+              "inheritAttrs": false,
               "render": [Function],
               "setup": [Function],
             },
@@ -4043,6 +4030,7 @@ VueWrapper {
             "MyProfilePicture": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
               "__name": "MyProfilePicture",
+              "inheritAttrs": false,
               "render": [Function],
               "setup": [Function],
             },

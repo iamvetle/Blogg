@@ -58,8 +58,8 @@ describe('Testing the MyProfileFollowing component (since myprofile - doesnt tak
         expect(followingComponent.length).toBe(3)
     })
     test('Should match snapshot', () => {
-      wrapper = factory()
-      expect(wrapper).toMatchSnapshot()
+        wrapper = factory()
+        expect(wrapper).toMatchSnapshot()
     })
 
 

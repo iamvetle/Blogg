@@ -168,52 +168,5 @@ describe('Testing the page minkonto', () => {
     test('Should match snapshot', () => {
         expect(wrapper).toMatchSnapshot()
     })
-    // temporary
-    test('Should have an input for uploading profile picture', async () => {
-        postStore.loggedInUserPosts = standardLoggedInUserPosts
-        loggedInUserStore.loggedInUserProfile = standardLoggedInProfile
 
-        await wrapper.vm.$nextTick()
-
-        const upload_image = wrapper.find("div[data-test='upload_image']")
-        expect(upload_image.exists()).toBe(true)
-
-        const input_image = upload_image.find("input")
-        expect(input_image.exists()).toBe(true)
-
-        // is a "file" type
-        expect(input_image.attributes("type")).toBe("file")
-
-        // Can accept the correct picture extension(s)
-        expect(input_image.attributes("accept")).toBe("image/png")
-
-        // Has the correct "name"
-        expect(input_image.attributes("name")).toBe(inputImageName)
-    })
-    test('Has a label element that sorounds the input element', async () => {
-        postStore.loggedInUserPosts = standardLoggedInUserPosts
-        loggedInUserStore.loggedInUserProfile = standardLoggedInProfile
-
-        await wrapper.vm.$nextTick()
-
-        // finding the correct label element
-        const label_for_input = wrapper.find("[data-test='label_for_image_input']")
-        expect(label_for_input.exists()).toBe(true)
-
-        // has the correct input element
-        expect(label_for_input.find("input[data-test='image_input']").exists()).toBe(true)
-
-        // the "for" is the same as the "name" attribute the input element has
-        expect(label_for_input.attributes("for")).toBe(inputImageName)
-        expect(label_for_input.find("button[data-test='button_submit_image_input']").exists()).toBe(true)  
-    })
-    test('Should have the correct id on the input element', async () => {
-        postStore.loggedInUserPosts = standardLoggedInUserPosts
-        loggedInUserStore.loggedInUserProfile = standardLoggedInProfile
-
-        await wrapper.vm.$nextTick()
-
-        const input_id = wrapper.find("#profile_picture_upload")
-        expect(input_id.exists()).toBe(true)
-    })
 })

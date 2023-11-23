@@ -7,6 +7,7 @@ import { createTestingPinia } from '@pinia/testing';
 // import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 // import { usePaginationStore } from '~/store/paginationStore';
 import BaseTag from '~/components/base/BaseTag.vue';
+import BaseButton from '~/components/base/BaseButton.vue';
 
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
@@ -24,7 +25,8 @@ const factory = () => {
         global: {
             plugins: [pinia],
             components: {
-                BaseTag
+                BaseTag,
+                BaseButton
             },
             mocks: {
                 redirectToPostPage: mockRedirectToPostPage,
@@ -164,14 +166,6 @@ describe('', () => {
         const del_button = wrapper.find("[data-test='del']")
 
         expect(del_button.exists()).toBe(true)
-    })
-    test("There should be a button called delete(slett)", () => {
-        wrapper = factory()
-
-        const del_button = wrapper.find("[data-test='del']")
-
-        expect(del_button.element.tagName).toBe("BUTTON")
-        expect(del_button.text()).toBe("Slett")
     })
     test('Should be a function meant for (trying) to delete posts', () => {
         wrapper = factory()
