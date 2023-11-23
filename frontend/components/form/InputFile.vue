@@ -20,7 +20,7 @@ defineProps<{
 }>();
 
 const handleFileChange = (event:any) => {
-    const file = event.target.files;
+    const file = event;
     emit("fileChange", file)
 }
 

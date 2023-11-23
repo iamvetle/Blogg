@@ -2,6 +2,8 @@ import UploadImage from './UploadImage.vue';
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 
+import BaseImage from '~/components/base/BaseImage.vue';
+
 let wrapper: any;
 
 let inputClassProp = "bg-red-500 text-lg"
@@ -13,12 +15,15 @@ const factory = () => {
     return shallowMount(UploadImage, {
         global: {
             plugins: [],
-            components: {},
+            components: {
+                BaseImage
+            },
             mocks: {
                 handleFile: mockHandleFile
             },
             stubs: {
-                InputFile: true
+                InputFile: true,
+                BaseImage:true
             },
         },
         props: {
@@ -64,6 +69,13 @@ describe('Testing the uploadimage component', () => {
         const handleFileFunction = wrapper.vm.handleFile
 
         expect(typeof handleFileFunction).toBe("function")
+      
+    })
+    test('Should have the BaseImage component', () => {
+        wrapper = factory()
+
+        const baseImage = wrapper.findComponent({ name:"BaseImage" })
+        expect(baseImage.exists()).toBe(true)
       
     })
 });

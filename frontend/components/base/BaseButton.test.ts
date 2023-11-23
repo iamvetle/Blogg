@@ -5,11 +5,6 @@ import { createTestingPinia } from '@pinia/testing';
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
 
-// let generalStore; 
-// let postStore; 
-// let loggedInUserStore; 
-// let paginationStore; 
-
 const mockTestProp = "propmocktest"
 const atr1 = "bg-primary font-bold text-white"
 const atr2 = "testbutton"
@@ -23,16 +18,16 @@ const factory = () => {
             stubs: {},
         },
         props: {
-            text:mockTestProp
+            text: mockTestProp
         },
         attrs: {
-            class:atr1,
-            id:atr2
+            class: atr1,
+            id: atr2
         }
     })
 };
 
-describe('', () => {
+describe('Testing the basebutton', () => {
 
     beforeEach(() => {
 
@@ -47,10 +42,10 @@ describe('', () => {
     test('Should exist', () => {
         wrapper = factory()
 
-        expect(wrapper.exists()).toBe(true)              
+        expect(wrapper.exists()).toBe(true)
     })
     test('Should render the text prop', () => {
-      expect(wrapper.text()).toContain(mockTestProp)
+        expect(wrapper.text()).toContain(mockTestProp)
     })
     test('The button should render the text prop', () => {
         const button = wrapper.get("button[data-test='button']")

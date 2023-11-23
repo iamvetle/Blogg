@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<div class="bg-blue-50 w-56" data-test="upload_image">
-			<InputFile @file-change="handleFile" accept="image/png" label="Upload File" />
+			<InputFile @file-change="handleFile" accept="image/png, image/jpeg" label="Upload File" />
 		</div>
 		<div>
-			<img :src="fileContent" class="file-preview">
+			<BaseImage id="preview" :src="fileContent" class="file-preview"/>
 		</div>
 	</div>
 </template>
