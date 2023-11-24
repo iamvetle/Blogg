@@ -55,10 +55,9 @@
 									<span class="prose">
 										<h3>You are following:</h3>
 									</span>
+									<MyProfileFollowing v-if="loggedInUserStore.loggedInUserProfile.num_of_following" class="items-center pt-2 ms-6" />
+									<span v-else>Nobody.</span>
 								</div>
-
-								<MyProfileFollowing class="items-center pt-2 ms-6" />
-
 							</div>
 						</div>
 					</div>
@@ -105,41 +104,6 @@ onMounted(async () => {
 	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
 	await getLoggedInUserProfile(loggedInUserURL)
 })
-
-// const selectedFile = ref(null);
-// const fileContent = ref('');
-
-/**
- * ? Forstår lite av hva som står under - må 
- * TODO: ! FORSTÅ DET - klare å implementere profile picture upload properly
- */
-
-// Function to handle file input changes
-// function handleFileChange(event) {
-//   selectedFile.value = event.target.files[0];
-// }
-
-// // Watcher to react to file selection changes
-// watch(selectedFile, (newFile) => {
-//   if (!newFile) {
-//     fileContent.value = '';
-//     return;
-//   }
-
-//   const reader = new FileReader();
-//   reader.onload = (e) => {
-//     fileContent.value = e.target.result;
-//   };
-
-//   // Read the file based on its type
-//   if (newFile.type.match('image.*')) {
-//     reader.readAsDataURL(newFile);
-//   } else if (newFile.type.match('text.*')) {
-//     reader.readAsText(newFile);
-//   } else {
-//     fileContent.value = '<p>Preview not available for this file type</p>';
-//   }
-// });
 </script>
 
 <style scoped></style>

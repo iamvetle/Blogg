@@ -4,7 +4,7 @@ import Following from './Following.vue'
 describe('following testing', () => {
     const wrapper = mount(Following, {
         props: {
-            username:"testusername" 
+            following:"testusername" 
         }
     })
     

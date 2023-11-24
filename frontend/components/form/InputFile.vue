@@ -22,7 +22,7 @@ defineOptions({
  * Have to have a provide earlier
  */
 
-const label = inject("label", "Upload Image")
+const label = inject("label", null)
 
 
 defineProps<{

@@ -1,6 +1,6 @@
 <template>
 	<div data-test="upload_image" class="flex justify-center">
-		<InputFile class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary" hidden @file-change="handleFile" accept="image/*" />
+		<InputFile class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary" hidden @file-change="handleFile" accept="image/*" />
 	</div>
 </template>
 

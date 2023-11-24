@@ -1505,8 +1505,8 @@ VueWrapper {
             "label": RefImpl {
               "__v_isRef": true,
               "__v_isShallow": false,
-              "_rawValue": "Upload image",
-              "_value": "Upload image",
+              "_rawValue": "Change image",
+              "_value": "Change image",
               "dep": undefined,
             },
             "loggedInUserStore": {
@@ -1887,9 +1887,7 @@ VueWrapper {
           "isDeactivated": false,
           "isMounted": true,
           "isUnmounted": false,
-          "m": [
-            [Function],
-          ],
+          "m": null,
           "next": null,
           "parent": [Circular],
           "props": {},
@@ -1902,8 +1900,8 @@ VueWrapper {
             "label": RefImpl {
               "__v_isRef": true,
               "__v_isShallow": false,
-              "_rawValue": "Upload image",
-              "_value": "Upload image",
+              "_rawValue": "Change image",
+              "_value": "Change image",
               "dep": undefined,
             },
           },
@@ -2211,7 +2209,7 @@ VueWrapper {
             "cancelUpload": [MockFunction spy],
             "handleFileChange": [MockFunction spy],
             "handlePostNewProfileImage": [MockFunction spy],
-            "label": "Upload image",
+            "label": "Change image",
             "loggedInUserStore": {
               "$dispose": [Function],
               "$id": "Store for storing information about the logged in user",
@@ -2882,8 +2880,8 @@ VueWrapper {
                         "label": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
-                          "_rawValue": "Upload image",
-                          "_value": "Upload image",
+                          "_rawValue": "Change image",
+                          "_value": "Change image",
                           "dep": undefined,
                         },
                       },
@@ -3518,8 +3516,8 @@ VueWrapper {
                         "label": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
-                          "_rawValue": "Upload image",
-                          "_value": "Upload image",
+                          "_rawValue": "Change image",
+                          "_value": "Change image",
                           "dep": undefined,
                         },
                       },
@@ -4205,8 +4203,8 @@ VueWrapper {
                     "label": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
-                      "_rawValue": "Upload image",
-                      "_value": "Upload image",
+                      "_rawValue": "Change image",
+                      "_value": "Change image",
                       "dep": undefined,
                     },
                   },
@@ -4812,8 +4810,8 @@ VueWrapper {
                     "label": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
-                      "_rawValue": "Upload image",
-                      "_value": "Upload image",
+                      "_rawValue": "Change image",
+                      "_value": "Change image",
                       "dep": undefined,
                     },
                   },
