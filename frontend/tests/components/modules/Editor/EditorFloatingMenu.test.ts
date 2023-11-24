@@ -68,5 +68,9 @@ describe('Testing the EditorFloatingMenu component', () => {
 
         expect(addImageDivWrapper.find("[data-test='add_image_file_input']").exists()).toBe(true)
     })
+    test('Should match snapshot', () => {
+        wrapper = factory()
+        expect(wrapper).toMatchSnapshot()
+    })
 
 });

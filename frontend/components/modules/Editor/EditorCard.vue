@@ -13,9 +13,7 @@
 			</div>
 
 			<div class="w-full not-prose mb-6">
-				<EditorFloatingMenu :editor="editor" @addImage="addImage" @setLink="setLink"
-					@toggleHeading1="toggleHeading(1)" @toggleHeading2="toggleHeading(2)"
-					@setHorizontalRule="horizontalRule" />
+				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange"/>
 
 				<!-- <EditorBubbleMenu
 				:editor="editor"
@@ -223,6 +221,14 @@ const buttonCancelClick = () => {
 	router.push('/');
 };
 
+
+/* This collects all of the urls that are temp made so that they can later be revoked later - to not keep unecesarry much memory **/
+const listOfTempURL = ref<string[]>([])
+
+const formData = new FormData()
+
+const images = ref<object[]>([])
+
 // MODAL EMITS/EVENTS 2/2
 
 /** The modal can return TWO things */
@@ -234,12 +240,25 @@ const buttonCancelClick = () => {
  * 
  * Emits the new post data and clears the editor content.
  * 
+ * ! Problemet mitt er at jeg ikke vet hvordan jeg skal legge til IMAGE(S) sammen med TITLE og BODY/CONTENT
+ * ! OG
+ * ! Hvordan jeg skal kommunisere mellom editor floating menu og editor card
+ * * akk nå tror jeg at editorfloating bare sender en emit sammen med event(eller ikek?) opp til denne componentetn
+ * 
  * * Only called by modal
  */
 const publishPost = () => {
 	showModal.value = false;
 	generalStore.turnBackgroundForModel(null);
-	emit('newPostMaterial', { title: title.value, content: body.value });
+
+
+	formData.append("title", title.value || "")
+	formData.append("content", body.value || "")
+
+
+	emit('newPostMaterial', formData );
+
+
 	editor.value?.chain().focus().clearContent().run();
 };
 
@@ -255,51 +274,28 @@ const cancelPublishing = () => {
 
 /** METHODS FOR THE EDITOR */
 
-const setLink = () => {
-	const previousUrl = editor.value.getAttributes('link').href
-	const url = window.prompt('URL', previousUrl)
 
-	// cancelled
-	if (url === null) {
-		return
-	}
 
-	// empty
-	if (url === '') {
-		editor.value
-			.chain()
-			.focus()
-			.extendMarkRange('link')
-			.unsetLink()
-			.run()
+const handleAddImageChange = (event: any) => {
+	if (event) {
+		const file = event.target.files[0];
 
-		return
-	}
+		const file_temp_url = URL.createObjectURL(file);
 
-	// update link
-	editor.value
-		.chain()
-		.focus()
-		.extendMarkRange('link')
-		.setLink({ href: url })
-		.run()
-}
+		const imageAndID = {
+			id:file_temp_url,
+			image:file
+		}
 
-const addImage = () => {
-	const url = window.prompt('URL')
+		images.value.push(imageAndID)
 
-	if (url) {
-		editor.value.chain().focus().setImage({ src: url }).run()
+		if (file_temp_url) {
+			editor.value.chain().focus().setImage({ src: file_temp_url }).run()
+			listOfTempURL.value.push(file_temp_url)
+		}
 	}
 }
 
-const toggleHeading = (level: number) => {
-	editor.value.chain().focus().toggleHeading({ level }).run();
-};
-
-const horizontalRule = () => {
-	editor.value.chain().focus().setHorizontalRule().run()
-};
 
 /**
  * Fils the content if there is a post content inside of sessionstorage
