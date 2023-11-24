@@ -19,7 +19,7 @@ VueWrapper {
       >
         <input-file-stub
           accept="image/*"
-          class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
+          class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
           hidden=""
         />
       </div>
@@ -471,7 +471,7 @@ VueWrapper {
                   "asyncResolved": false,
                   "attrs": {
                     "accept": "image/*",
-                    "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
+                    "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
                     "onFileChange": [MockFunction spy],
                   },
@@ -556,7 +556,7 @@ VueWrapper {
                   "setupContext": {
                     "attrs": {
                       "accept": "image/*",
-                      "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
+                      "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
                       "onFileChange": [MockFunction spy],
                     },
@@ -582,14 +582,14 @@ VueWrapper {
                     "dynamicProps": null,
                     "el": <input-file-stub
                       accept="image/*"
-                      class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
+                      class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                       hidden=""
                     />,
                     "key": null,
                     "patchFlag": 16,
                     "props": {
                       "accept": "image/*",
-                      "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
+                      "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
                       "onFileChange": [MockFunction spy],
                     },
@@ -627,14 +627,14 @@ VueWrapper {
                 "dynamicProps": null,
                 "el": <input-file-stub
                   accept="image/*"
-                  class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
+                  class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                   hidden=""
                 />,
                 "key": null,
                 "patchFlag": 0,
                 "props": {
                   "accept": "image/*",
-                  "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
+                  "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                   "hidden": "",
                   "onFileChange": [MockFunction spy],
                 },
@@ -719,13 +719,13 @@ VueWrapper {
                   "asyncResolved": false,
                   "attrs": {
                     "accept": "image/*",
-                    "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
+                    "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
                     "onFileChange": [MockFunction spy],
                   },
                   "attrsProxy": {
                     "accept": "image/*",
-                    "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
+                    "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
                     "onFileChange": [MockFunction spy],
                   },
@@ -809,7 +809,7 @@ VueWrapper {
                   "setupContext": {
                     "attrs": {
                       "accept": "image/*",
-                      "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
+                      "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
                       "onFileChange": [MockFunction spy],
                     },
@@ -835,14 +835,14 @@ VueWrapper {
                     "dynamicProps": null,
                     "el": <input-file-stub
                       accept="image/*"
-                      class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
+                      class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                       hidden=""
                     />,
                     "key": null,
                     "patchFlag": 16,
                     "props": {
                       "accept": "image/*",
-                      "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
+                      "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
                       "onFileChange": [MockFunction spy],
                     },
@@ -880,14 +880,14 @@ VueWrapper {
                 "dynamicProps": null,
                 "el": <input-file-stub
                   accept="image/*"
-                  class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
+                  class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                   hidden=""
                 />,
                 "key": null,
                 "patchFlag": 0,
                 "props": {
                   "accept": "image/*",
-                  "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
+                  "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                   "hidden": "",
                   "onFileChange": [MockFunction spy],
                 },
@@ -919,7 +919,7 @@ VueWrapper {
             >
               <input-file-stub
                 accept="image/*"
-                class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
+                class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                 hidden=""
               />
             </div>,
@@ -988,7 +988,7 @@ VueWrapper {
         >
           <input-file-stub
             accept="image/*"
-            class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
+            class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
             hidden=""
           />
         </div>,
@@ -1105,7 +1105,7 @@ VueWrapper {
         >
           <input-file-stub
             accept="image/*"
-            class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
+            class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
             hidden=""
           />
         </div>,
@@ -1341,7 +1341,7 @@ VueWrapper {
   >
     <input-file-stub
       accept="image/*"
-      class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
+      class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
       hidden=""
     />
   </div>,

@@ -13,6 +13,9 @@ const factory = () => {
             components: {},
             mocks: {},
             stubs: {},
+            provide: {
+                label:"something"
+            }
         },
         props: {
             inputClass: inputClassProp,

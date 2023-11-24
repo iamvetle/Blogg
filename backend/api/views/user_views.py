@@ -160,3 +160,15 @@ class LoggedInUserAddOrChangeProfilePicture(APIView):
                 return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response({'error': 'No profile picture provided'}, status=status.HTTP_400_BAD_REQUEST)
+        
+    def delete(self, request, format=None):
+        user = request.user  # Assuming you're dealing with an authenticated user
+
+        if user.profile_picture:
+            # Assuming 'profile_picture' is the field name in your user model
+            user.profile_picture.delete()  # This deletes the file from the storage
+            user.profile_picture = None   # This removes the association in the database
+            user.save()
+            return Response({'detail': 'Profile picture deleted successfully'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'No profile picture to delete'}, status=status.HTTP_400_BAD_REQUEST)

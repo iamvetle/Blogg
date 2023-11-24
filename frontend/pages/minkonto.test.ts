@@ -33,6 +33,17 @@ const standardLoggedInProfile = {
     profile_picture: "~/path/to/something/image.png",
 };
 
+const alternativeLoggedInProfile = {
+    id: 3,
+    username: "test32",
+    first_name: "Test",
+    last_name: "Testanson",
+    num_of_followers: 0,
+    num_of_following: 0,
+    bio: "This is a bio of a testuser",
+    profile_picture: "",
+};
+
 const standardLoggedInUserPosts = {
     id: 17,
     title: "This is a title that is made by bob",
@@ -164,9 +175,28 @@ describe('Testing the page minkonto', () => {
 
         expect(wrapper.findComponent({ name: "MyProfileFollowing" }).exists()).toBe(true)
 
+        // should not render the "you are not following anybody text"
+        const following = wrapper.find("#following")
+
+        expect(following.text()).not.toContain("Nobody.")
+
+
     })
     test('Should match snapshot', () => {
         expect(wrapper).toMatchSnapshot()
+    })
+    test('Should render "nobody" text if the logged in user is not following anybody', async () => {
+        postStore.loggedInUserPosts = standardLoggedInUserPosts
+        loggedInUserStore.loggedInUserProfile = alternativeLoggedInProfile
+        
+        await wrapper.vm.$nextTick()
+
+        const myprofilepicture = wrapper.findComponent({ name: "MyProfileFollowing" })
+        expect(myprofilepicture.exists()).toBe(false)
+
+        const following = wrapper.find("#following")
+
+        expect(following.text()).toContain("Nobody.")
     })
 
 })

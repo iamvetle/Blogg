@@ -32,12 +32,12 @@ const factory = () => {
             mocks: {
                 handleFileChange: mockHandleFileChange,
                 handlePostNewProfileImage: mockHandlePostNewProfileImage,
-                cancelUpload:mockCancelUpload
+                cancelUpload: mockCancelUpload
             },
             stubs: {
                 BaseImage: true,
                 UploadImage: true,
-                BaseButton:true
+                BaseButton: true
             },
         },
         slots: {}
@@ -142,7 +142,7 @@ describe('Testing the myprofilepicture component', () => {
         wrapper = factory()
 
         // No uploaded image
-        let button = wrapper.findComponent({ name:"BaseButton" })
+        let button = wrapper.find("[data-test='send_selected_image']")
 
         // the button should then not be shown
         expect(button.exists()).toBe(false)
@@ -159,7 +159,7 @@ describe('Testing the myprofilepicture component', () => {
 
         await wrapper.vm.$nextTick()
 
-        button = wrapper.findComponent({ name:"BaseButton" })
+        button = wrapper.find("[data-test='send_selected_image']")
 
         // should find the button
         expect(button.exists()).toBe(true)
@@ -174,7 +174,7 @@ describe('Testing the myprofilepicture component', () => {
 
         expect(button.exists()).toBe(true)
 
-        
+
     })
     test('When the submit uploaded picture button is clicked it calls a function', async () => {
         wrapper = factory()
@@ -184,7 +184,7 @@ describe('Testing the myprofilepicture component', () => {
 
         await wrapper.vm.$nextTick()
         // No uploaded image
-        const button = wrapper.get("[data-test='send_selected_image']")        
+        const button = wrapper.get("[data-test='send_selected_image']")
         expect(wrapper.vm.handlePostNewProfileImage).toBeDefined()
 
         await button.trigger("click")
@@ -196,13 +196,13 @@ describe('Testing the myprofilepicture component', () => {
         wrapper = factory()
 
         expect(wrapper.find("[data-test='cancel_image_upload_button']").exists()).toBe(false)
-        
+
         wrapper.vm.uploadedImage_display = "newpicture.jpg"
 
         await wrapper.vm.$nextTick()
 
         const cancel_upload_button = wrapper.get("[data-test='cancel_image_upload_button']")
-        
+
         // should exist
         expect(cancel_upload_button.exists()).toBe(true)
 
@@ -224,7 +224,30 @@ describe('Testing the myprofilepicture component', () => {
         // function should ahve been called
         expect(mockCancelUpload).toHaveBeenCalledOnce()
     })
+    test('Should have a remove basebutton profile picture file', async () => {
+        wrapper = factory()
+        // wrapper.vm.uploadedImage_display = "newpicture.jpg"
+
+        await wrapper.vm.$nextTick()
+
+        console.log(wrapper.html())
+
+        expect(wrapper.find('[data-test="delete_profile_image_button"]').exists()).toBe(true)
     
+        wrapper.vm.uploadedImage_display = "newpicture.jpg"
+
+        await wrapper.vm.$nextTick()
+
+        console.log(wrapper.html())
+
+        expect(wrapper.find('[data-test="delete_profile_image_button"]').exists()).toBe(false)
+    })
+    test('There should be a remove profile picture function', () => {
+      wrapper = factory()
+
+      expect(wrapper.vm.removeProfileImage).toBeDefined()
+    })
+
 
 
 });

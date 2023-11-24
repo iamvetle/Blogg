@@ -1,7 +1,15 @@
 <template>
     <div class="flex justify-center flex-col">
-        <div id="upload_profile_picture" class="flex mb-2 justify-center">
-            <UploadImage @file-change="handleFileChange" />
+        <div class="flex justify-center space-x-4 mb-2 items-center ">
+            <div id="upload_profile_picture">
+                <UploadImage @file-change="handleFileChange" />
+            </div>
+            <div v-if="loggedInUserStore.loggedInUserProfile.profile_picture || uploadedImage_display"  class="hover:bg-errorContainer hover:text-onErrorContainer text-xs rounded-md p-1 bg-error text-onError">
+                <BaseButton v-if="loggedInUserStore.loggedInUserProfile.profile_picture && !uploadedImage_display"
+                    @click="removeProfileImage" text="Remove" data-test="delete_profile_image_button" />
+                <BaseButton @click="cancelUpload" v-if="uploadedImage_display" text="Cancel"
+                    data-test="cancel_image_upload_button" />
+            </div>
         </div>
         <span v-if="uploadedImage_display" class="text-center font-bold mb-2">Preview</span>
         <div id="profile_picture" class="flex justify-center">
@@ -12,9 +20,6 @@
             <BaseButton @click="handlePostNewProfileImage" text="Submit"
                 class="hover:bg-tertiaryFixedDim hover:text-onTertiaryFixed text-xs rounded-md mt-1 p-1 bg-tertiary text-onTertiary"
                 data-test="send_selected_image" />
-            <BaseButton @click="cancelUpload"
-                class="hover:bg-errorContainer hover:text-onErrorContainer text-xs rounded-md mt-1 p-1 bg-error text-onError"
-                text="Cancel" data-test="cancel_image_upload_button" />
         </div>
     </div>
 </template>
@@ -22,6 +27,7 @@
 <script setup lang="ts">
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
+import BaseButton from '~/components/base/BaseButton.vue';
 
 
 // The initial text for the input file (which is using this)
@@ -77,7 +83,7 @@ const handleFileChange = (image: any) => {
     }
 }
 
-const cancelUpload = () => {
+const clearUpload = () => {
 
     if (uploadedImage_display.value) {
         URL.revokeObjectURL(uploadedImage_display.value)
@@ -85,8 +91,12 @@ const cancelUpload = () => {
     }
     if (uploadedImage_file.value) {
         uploadedImage_file.value = null
-
     }
+}
+
+const cancelUpload = async () => {
+    clearUpload()
+    await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
 }
 
 const handlePostNewProfileImage = async () => {
@@ -97,9 +107,8 @@ const handlePostNewProfileImage = async () => {
         formData.append('profile_picture', uploadedImage_file.value); // 'imageFile' is the file to be uploaded
 
         const response = await postProfilePicture(profilePictureEditURL, formData)
-        if (response) {
-            await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
-            alert("successfully managed to edit profile picture of logged in user")
+        if (!response) {
+            console.error("Something went wrong trying to post a new profile picture for logged in user") // print to self
         }
     } else {
         console.error("can't handle an empty image upload") // print to self
@@ -107,17 +116,30 @@ const handlePostNewProfileImage = async () => {
 
     // it just has all of the funcitonalities I want right now - thats why I am also referancing it here
     /**
-     * * It "restarts" / clears the file upload and image display
+     * * It "restarts" / clears the file upload and image display + fetches new for the loggedinuserprofile
      */
-    cancelUpload()
+    await cancelUpload()
+}
+
+// should put confirmation on this
+const removeProfileImage = async () => {
+    const profilePictureEditURL = "http://localhost:8888/api/min-side/profile_picture/edit/"
+
+    // only procedd if there is no uploaded picture and if the logged in user has a profile picture
+    if (!uploadedImage_file.value && loggedInUserStore.loggedInUserProfile.profile_picture) {
+        const response = await deleteSinglePostSingleComment(profilePictureEditURL)
+        if (response) {
+            await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
+            alert("successfully managed to edit profile picture of logged in user")
+        }
+    } else {
+        console.error("something when wrong") // print to self
+    }
+    await cancelUpload()
 }
 
 onUnmounted(() => {
-    if (uploadedImage_display.value) {
-        URL.revokeObjectURL(uploadedImage_display.value)
-        uploadedImage_display.value = null
-        uploadedImage_file.value = null
-    }
+    clearUpload()
 })
 
 </script>
