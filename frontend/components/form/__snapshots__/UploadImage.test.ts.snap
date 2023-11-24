@@ -12,13 +12,16 @@ VueWrapper {
       data-v-app=""
     >
       <div
-        class="bg-blue-50 w-56"
+        class="flex justify-center"
         data-test="upload_image"
+        inputclass="bg-red-500 text-lg"
+        label="some label text"
       >
         <input-file-stub
           accept="image/png, image/jpeg"
-          class="bg-red-500 text-lg"
-          label="Upload File (label)"
+          class="p-1 rounded-md bg-secondary text-onSecondary"
+          hidden=""
+          label="Upload image"
         />
       </div>
     </div>,
@@ -274,7 +277,10 @@ VueWrapper {
           },
           "asyncDep": null,
           "asyncResolved": false,
-          "attrs": {},
+          "attrs": {
+            "inputClass": "bg-red-500 text-lg",
+            "label": "some label text",
+          },
           "attrsProxy": null,
           "bc": null,
           "bm": null,
@@ -295,10 +301,7 @@ VueWrapper {
               "setup": [Function],
             },
           },
-          "ctx": {
-            "inputClass": "bg-red-500 text-lg",
-            "label": "some label text",
-          },
+          "ctx": {},
           "da": null,
           "data": {},
           "devtoolsRawSetupState": {
@@ -311,6 +314,26 @@ VueWrapper {
               "dep": undefined,
             },
             "handleFile": [MockFunction spy],
+            "label": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": "Upload image",
+              "_value": "Upload image",
+              "dep": Set {
+                ReactiveEffect {
+                  "active": true,
+                  "allowRecurse": true,
+                  "deps": [
+                    [Circular],
+                  ],
+                  "fn": [Function],
+                  "onTrack": undefined,
+                  "onTrigger": undefined,
+                  "parent": undefined,
+                  "scheduler": [Function],
+                },
+              },
+            },
             "selectedFile": RefImpl {
               "__v_isRef": true,
               "__v_isShallow": false,
@@ -361,36 +384,14 @@ VueWrapper {
           "m": null,
           "next": null,
           "parent": [Circular],
-          "props": {
-            "inputClass": "bg-red-500 text-lg",
-            "label": "some label text",
-          },
+          "props": {},
           "propsDefaults": {},
           "propsOptions": [
-            {
-              "inputClass": {
-                "0": false,
-                "1": true,
-                "default": "bg-blue-50 w-56",
-                "required": true,
-                "type": [Function],
-              },
-              "label": {
-                "0": false,
-                "1": true,
-                "required": false,
-                "type": [Function],
-              },
-            },
-            [
-              "inputClass",
-            ],
+            {},
+            [],
           ],
           "provides": {},
-          "proxy": {
-            "inputClass": "bg-red-500 text-lg",
-            "label": "some label text",
-          },
+          "proxy": {},
           "refs": {},
           "render": [Function],
           "renderCache": [],
@@ -433,7 +434,10 @@ VueWrapper {
             "parent": undefined,
           },
           "setupContext": {
-            "attrs": {},
+            "attrs": {
+              "inputClass": "bg-red-500 text-lg",
+              "label": "some label text",
+            },
             "emit": [Function],
             "expose": [Function],
             "slots": {},
@@ -442,6 +446,7 @@ VueWrapper {
             "emit": [Function],
             "fileContent": "",
             "handleFile": [MockFunction spy],
+            "label": "Upload image",
             "selectedFile": null,
           },
           "slots": {},
@@ -452,6 +457,7 @@ VueWrapper {
             "__v_skip": true,
             "anchor": null,
             "appContext": null,
+            "ce": undefined,
             "children": [
               {
                 "__v_isVNode": true,
@@ -503,8 +509,9 @@ VueWrapper {
                   "asyncResolved": false,
                   "attrs": {
                     "accept": "image/png, image/jpeg",
-                    "class": "bg-red-500 text-lg",
-                    "label": "Upload File (label)",
+                    "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                    "hidden": "",
+                    "label": "Upload image",
                     "onFileChange": [MockFunction spy],
                   },
                   "attrsProxy": null,
@@ -588,8 +595,9 @@ VueWrapper {
                   "setupContext": {
                     "attrs": {
                       "accept": "image/png, image/jpeg",
-                      "class": "bg-red-500 text-lg",
-                      "label": "Upload File (label)",
+                      "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                      "hidden": "",
+                      "label": "Upload image",
                       "onFileChange": [MockFunction spy],
                     },
                     "emit": [Function],
@@ -614,15 +622,17 @@ VueWrapper {
                     "dynamicProps": null,
                     "el": <input-file-stub
                       accept="image/png, image/jpeg"
-                      class="bg-red-500 text-lg"
-                      label="Upload File (label)"
+                      class="p-1 rounded-md bg-secondary text-onSecondary"
+                      hidden=""
+                      label="Upload image"
                     />,
                     "key": null,
                     "patchFlag": 16,
                     "props": {
                       "accept": "image/png, image/jpeg",
-                      "class": "bg-red-500 text-lg",
-                      "label": "Upload File (label)",
+                      "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                      "hidden": "",
+                      "label": "Upload image",
                       "onFileChange": [MockFunction spy],
                     },
                     "ref": null,
@@ -647,7 +657,7 @@ VueWrapper {
                     "setup": [Function],
                   },
                   "u": null,
-                  "uid": 20,
+                  "uid": 17,
                   "um": null,
                   "update": [Function],
                   "vnode": [Circular],
@@ -657,19 +667,21 @@ VueWrapper {
                 "dirs": null,
                 "dynamicChildren": null,
                 "dynamicProps": [
-                  "class",
+                  "label",
                 ],
                 "el": <input-file-stub
                   accept="image/png, image/jpeg"
-                  class="bg-red-500 text-lg"
-                  label="Upload File (label)"
+                  class="p-1 rounded-md bg-secondary text-onSecondary"
+                  hidden=""
+                  label="Upload image"
                 />,
                 "key": null,
                 "patchFlag": 8,
                 "props": {
                   "accept": "image/png, image/jpeg",
-                  "class": "bg-red-500 text-lg",
-                  "label": "Upload File (label)",
+                  "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                  "hidden": "",
+                  "label": "Upload image",
                   "onFileChange": [MockFunction spy],
                 },
                 "ref": null,
@@ -753,14 +765,16 @@ VueWrapper {
                   "asyncResolved": false,
                   "attrs": {
                     "accept": "image/png, image/jpeg",
-                    "class": "bg-red-500 text-lg",
-                    "label": "Upload File (label)",
+                    "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                    "hidden": "",
+                    "label": "Upload image",
                     "onFileChange": [MockFunction spy],
                   },
                   "attrsProxy": {
                     "accept": "image/png, image/jpeg",
-                    "class": "bg-red-500 text-lg",
-                    "label": "Upload File (label)",
+                    "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                    "hidden": "",
+                    "label": "Upload image",
                     "onFileChange": [MockFunction spy],
                   },
                   "bc": null,
@@ -843,8 +857,9 @@ VueWrapper {
                   "setupContext": {
                     "attrs": {
                       "accept": "image/png, image/jpeg",
-                      "class": "bg-red-500 text-lg",
-                      "label": "Upload File (label)",
+                      "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                      "hidden": "",
+                      "label": "Upload image",
                       "onFileChange": [MockFunction spy],
                     },
                     "emit": [Function],
@@ -869,15 +884,17 @@ VueWrapper {
                     "dynamicProps": null,
                     "el": <input-file-stub
                       accept="image/png, image/jpeg"
-                      class="bg-red-500 text-lg"
-                      label="Upload File (label)"
+                      class="p-1 rounded-md bg-secondary text-onSecondary"
+                      hidden=""
+                      label="Upload image"
                     />,
                     "key": null,
                     "patchFlag": 16,
                     "props": {
                       "accept": "image/png, image/jpeg",
-                      "class": "bg-red-500 text-lg",
-                      "label": "Upload File (label)",
+                      "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                      "hidden": "",
+                      "label": "Upload image",
                       "onFileChange": [MockFunction spy],
                     },
                     "ref": null,
@@ -902,7 +919,7 @@ VueWrapper {
                     "setup": [Function],
                   },
                   "u": null,
-                  "uid": 20,
+                  "uid": 17,
                   "um": null,
                   "update": [Function],
                   "vnode": [Circular],
@@ -912,19 +929,21 @@ VueWrapper {
                 "dirs": null,
                 "dynamicChildren": null,
                 "dynamicProps": [
-                  "class",
+                  "label",
                 ],
                 "el": <input-file-stub
                   accept="image/png, image/jpeg"
-                  class="bg-red-500 text-lg"
-                  label="Upload File (label)"
+                  class="p-1 rounded-md bg-secondary text-onSecondary"
+                  hidden=""
+                  label="Upload image"
                 />,
                 "key": null,
                 "patchFlag": 8,
                 "props": {
                   "accept": "image/png, image/jpeg",
-                  "class": "bg-red-500 text-lg",
-                  "label": "Upload File (label)",
+                  "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                  "hidden": "",
+                  "label": "Upload image",
                   "onFileChange": [MockFunction spy],
                 },
                 "ref": null,
@@ -948,20 +967,25 @@ VueWrapper {
             ],
             "dynamicProps": null,
             "el": <div
-              class="bg-blue-50 w-56"
+              class="flex justify-center"
               data-test="upload_image"
+              inputclass="bg-red-500 text-lg"
+              label="some label text"
             >
               <input-file-stub
                 accept="image/png, image/jpeg"
-                class="bg-red-500 text-lg"
-                label="Upload File (label)"
+                class="p-1 rounded-md bg-secondary text-onSecondary"
+                hidden=""
+                label="Upload image"
               />
             </div>,
             "key": null,
-            "patchFlag": 0,
+            "patchFlag": 16,
             "props": {
-              "class": "bg-blue-50 w-56",
+              "class": "flex justify-center",
               "data-test": "upload_image",
+              "inputClass": "bg-red-500 text-lg",
+              "label": "some label text",
             },
             "ref": null,
             "scopeId": null,
@@ -998,22 +1022,11 @@ VueWrapper {
             "emits": [
               "fileChange",
             ],
-            "props": {
-              "inputClass": {
-                "default": "bg-blue-50 w-56",
-                "required": true,
-                "type": [Function],
-              },
-              "label": {
-                "required": false,
-                "type": [Function],
-              },
-            },
             "render": [Function],
             "setup": [Function],
           },
           "u": null,
-          "uid": 19,
+          "uid": 16,
           "um": null,
           "update": [Function],
           "vnode": [Circular],
@@ -1024,13 +1037,16 @@ VueWrapper {
         "dynamicChildren": null,
         "dynamicProps": null,
         "el": <div
-          class="bg-blue-50 w-56"
+          class="flex justify-center"
           data-test="upload_image"
+          inputclass="bg-red-500 text-lg"
+          label="some label text"
         >
           <input-file-stub
             accept="image/png, image/jpeg"
-            class="bg-red-500 text-lg"
-            label="Upload File (label)"
+            class="p-1 rounded-md bg-secondary text-onSecondary"
+            hidden=""
+            label="Upload image"
           />
         </div>,
         "key": null,
@@ -1076,17 +1092,6 @@ VueWrapper {
           "emits": [
             "fileChange",
           ],
-          "props": {
-            "inputClass": {
-              "default": "bg-blue-50 w-56",
-              "required": true,
-              "type": [Function],
-            },
-            "label": {
-              "required": false,
-              "type": [Function],
-            },
-          },
           "render": [Function],
           "setup": [Function],
         },
@@ -1099,7 +1104,7 @@ VueWrapper {
         "setup": [Function],
       },
       "u": null,
-      "uid": 18,
+      "uid": 15,
       "um": null,
       "update": [Function],
       "vnode": {
@@ -1150,13 +1155,16 @@ VueWrapper {
         "dynamicChildren": null,
         "dynamicProps": null,
         "el": <div
-          class="bg-blue-50 w-56"
+          class="flex justify-center"
           data-test="upload_image"
+          inputclass="bg-red-500 text-lg"
+          label="some label text"
         >
           <input-file-stub
             accept="image/png, image/jpeg"
-            class="bg-red-500 text-lg"
-            label="Upload File (label)"
+            class="p-1 rounded-md bg-secondary text-onSecondary"
+            hidden=""
+            label="Upload image"
           />
         </div>,
         "key": null,
@@ -1182,7 +1190,7 @@ VueWrapper {
       "withProxy": null,
     },
     "_props": null,
-    "_uid": 6,
+    "_uid": 5,
     "component": [Function],
     "config": {
       "compilerOptions": {},
@@ -1384,13 +1392,16 @@ VueWrapper {
     "handleFile": [MockFunction spy],
   },
   "wrapperElement": <div
-    class="bg-blue-50 w-56"
+    class="flex justify-center"
     data-test="upload_image"
+    inputclass="bg-red-500 text-lg"
+    label="some label text"
   >
     <input-file-stub
       accept="image/png, image/jpeg"
-      class="bg-red-500 text-lg"
-      label="Upload File (label)"
+      class="p-1 rounded-md bg-secondary text-onSecondary"
+      hidden=""
+      label="Upload image"
     />
   </div>,
 }

@@ -5,7 +5,7 @@ import { createTestingPinia } from '@pinia/testing';
 let wrapper: any;
 
 let inputClassProp = "inputclass something"
-let labelClassProp = "labelclass something"
+let classProp = "labelclass something"
 let labelProp = "labellabelsomething"
 
 const factory = () => {
@@ -17,7 +17,7 @@ const factory = () => {
         },
         props: {
             inputClass: inputClassProp,
-            labelClass: labelClassProp,
+            class: classProp,
             label: labelProp
         }
     })
@@ -50,10 +50,10 @@ describe('Testing the input file component', () => {
 
         expect(wrapper.props("inputClass")).toBeTruthy()
     })
-    test('Should have the labelClass prop', () => {
+    test('Should have the class prop', () => {
         wrapper = factory()
 
-        expect(wrapper.props("labelClass")).toBeTruthy()
+        expect(wrapper.props("class")).toBeTruthy()
     })
 
     test("Should render the input element", () => {
@@ -99,7 +99,7 @@ describe('Testing the input file component', () => {
 
         const input = wrapper.find("input[data-test='input-file-element']")
 
-        const inputName = input.attributes("name")
+        const inputName = input.attributes("id")
 
         expect(inputName).toBeTruthy()
 

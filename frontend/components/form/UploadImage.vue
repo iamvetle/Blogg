@@ -1,6 +1,6 @@
 <template>
-	<div class="bg-blue-50 w-56" data-test="upload_image">
-		<InputFile @file-change="handleFile" :class="inputClass" accept="image/png, image/jpeg" label="Upload File (label)" />
+	<div data-test="upload_image" class="flex justify-center">
+		<InputFile class="p-1 rounded-md bg-secondary text-onSecondary" :label="label" hidden @file-change="handleFile" accept="image/png, image/jpeg" />
 	</div>
 </template>
 
@@ -9,19 +9,12 @@
 const emit = defineEmits(["fileChange"])
 
 /**
- * TODO create an emit here that emits the image selected upwards to the parent component
- * * I do not think that should be to difficult
+ * TODO make it so that the label adheres to whether an image has been uploaded or not
  * 
  * The input accepts PNG and JPG files
  */
 
-withDefaults(defineProps<{
-	inputClass: string;
-	label?:string;
-}>(), {
-	inputClass: "bg-blue-50 w-56",
-});
-
+const label = ref("Upload image")
 
 const selectedFile = ref(null);
 const fileContent = ref('');
@@ -35,18 +28,18 @@ const handleFile = (event: any) => {
 	selectedFile.value = event.target.files[0];
 }
 
-
-
 // Watcher to react to file selection changes
 watch(selectedFile, (newFile) => {
 	if (!newFile) {
 		fileContent.value = '';
+		label.value = "Upload image"
 		return;
 	}
 
 	const reader = new FileReader();
 	reader.onload = (e: any) => {
 		fileContent.value = e.target.result;
+		label.value = "Change image"
 		emit("fileChange", fileContent.value)
 
 	};

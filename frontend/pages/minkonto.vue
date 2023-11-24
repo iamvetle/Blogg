@@ -9,7 +9,7 @@
 								<div class="flex flex-col items-center">
 
 									<div id="profile_picture_upload">
-										<MyProfilePicture class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" />
+										<MyProfilePicture />
 									</div>
 
 

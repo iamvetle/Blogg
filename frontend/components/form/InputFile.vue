@@ -1,7 +1,7 @@
 <template>
-    <label class="labelClass" for="upload_file">
-        <input type="file" name="upload_file" data-test="input-file-element" @change="handleFileChange" v-bind="$attrs" class="inputClass">
-        <span v-if="label">{{ label }}</span>
+    <label v-if="label" :class="class" for="uploadFile">
+        <input type="file" id="uploadFile" data-test="input-file-element" @change="handleFileChange" v-bind="$attrs" :class="inputClass">
+        <span>{{ label }}</span>
     </label>
 </template>
 
@@ -12,11 +12,16 @@ const emit = defineEmits(["fileChange"])
 defineOptions({
     inheritAttrs:false
 })
+/**
+ * * Has to have a label prop to display
+ * 
+ * So that i can decide placeholder and such from the parent component
+ */
 
 defineProps<{
     inputClass?:string
-    labelClass?:string
-    label?:string
+    class?:string
+    label:string
 }>();
 
 const handleFileChange = (event:any) => {

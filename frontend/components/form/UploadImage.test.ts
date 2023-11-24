@@ -50,10 +50,6 @@ describe('Testing the uploadimage component', () => {
         wrapper = factory()
         expect(wrapper.exists()).toBe(true)
     })
-    test('Should have an inputClass prop', () => {
-        wrapper = factory()
-        expect(wrapper.props("inputClass")).toBeTruthy()
-    })
     test('Should have the inputfile element', () => {
         wrapper = factory()
         expect(wrapper.findComponent({ name: "InputFile" }).exists()).toBe(true)
@@ -88,12 +84,6 @@ describe('Testing the uploadimage component', () => {
 
         expect(wrapper).toMatchSnapshot()
 
-    })
-    test('Should have a "label" prop', () => {
-        wrapper = factory()
-
-        expect(wrapper.props("label")).toBeTruthy()
-      
     })
 
 })
