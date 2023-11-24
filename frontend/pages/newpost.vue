@@ -25,7 +25,7 @@ import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 import { postCreateNewPost } from '../composables/crud/postCreateNewPost';
 
 definePageMeta({
-	layout: "creating",
+	layout: "creating"
 })
 
 const baseURL = "http://localhost:8888/api/newpost/"

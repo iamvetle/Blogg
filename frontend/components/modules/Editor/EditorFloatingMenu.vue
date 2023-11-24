@@ -2,11 +2,16 @@
 	<div>
 		<floating-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
 			class="not-prose flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md">
-			<EditorButton @button-click="$emit('addImage')" :icon="add_image_icon" alt="add_image" />
+			
+			<div data-test="add_image_button_sum">
+				<EditorButton @click="handleAddImageClick" :icon="add_image_icon" alt="add_image" data-test="add_image"/>
+				<input type="file" hidden ref="addImageRef" data-test="add_image_file_input"/>
+			</div>
+
 			<EditorButton :is-active="editor.isActive('link')" @button-click="$emit('setLink')" :icon="link_icon" alt="link" />
-			<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @button-click="$emit('toggleHeading1')"
+			<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @click="toggleHeading(1)"
 				:icon="heading_1_icon" alt="heading 1" />
-			<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @button-click="$emit('toggleHeading2')"
+			<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @click="toggleHeading(2)"
 				:icon="heading_2_icon" alt="heading 2" />
 			<EditorButton @button-click="$emit('setHorizontalRule')" :icon="seperator_icon" alt="seperator" />
 		</floating-menu>
@@ -30,13 +35,23 @@ import heading_2_icon from '~/assets/icons/h2.svg'
 import { FloatingMenu } from '@tiptap/vue-3'
 import { Editor } from '@tiptap/core';
 
+const addImageRef = ref<any>(null)
+
 // const emit = defineEmits()
 
-defineProps<{
+const props = defineProps<{
   editor: Editor | undefined
 }>();
 
+const handleAddImageClick = () => {
+	addImageRef.value.click()
+}
+
 const emit = defineEmits()
+
+const toggleHeading = (level:any) => {
+	(props.editor as Editor).chain().focus().toggleHeading({ level }).run();
+};
 
 // husk at hermer etter medium
 

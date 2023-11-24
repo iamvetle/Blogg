@@ -25,10 +25,9 @@ const factory = () => {
                 InputFile: true,
                 BaseImage: true
             },
-        },
-        props: {
-            inputClass: inputClassProp,
-            label:labelProp
+            provide: {
+                label:"something"
+            }
         },
         slots: {
         }

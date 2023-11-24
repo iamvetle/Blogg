@@ -14,13 +14,12 @@ VueWrapper {
       <div
         class="flex justify-center"
         data-test="upload_image"
-        inputclass="bg-red-500 text-lg"
-        label="some label text"
       >
         <input-file-stub
           accept="image/*"
           class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
           hidden=""
+          label="something"
         />
       </div>
     </div>,
@@ -58,7 +57,9 @@ VueWrapper {
       ],
       "optionsCache": WeakMap {},
       "propsCache": WeakMap {},
-      "provides": {},
+      "provides": {
+        "label": "something",
+      },
       "reload": [Function],
     },
     "_instance": {
@@ -98,7 +99,9 @@ VueWrapper {
         ],
         "optionsCache": WeakMap {},
         "propsCache": WeakMap {},
-        "provides": {},
+        "provides": {
+          "label": "something",
+        },
         "reload": [Function],
       },
       "asyncDep": null,
@@ -132,12 +135,6 @@ VueWrapper {
         "active": true,
         "allowRecurse": true,
         "deps": [
-          Set {
-            [Circular],
-          },
-          Set {
-            [Circular],
-          },
           Set {
             [Circular],
           },
@@ -194,12 +191,6 @@ VueWrapper {
             "active": true,
             "allowRecurse": true,
             "deps": [
-              Set {
-                [Circular],
-              },
-              Set {
-                [Circular],
-              },
               Set {
                 [Circular],
               },
@@ -271,15 +262,14 @@ VueWrapper {
             ],
             "optionsCache": WeakMap {},
             "propsCache": WeakMap {},
-            "provides": {},
+            "provides": {
+              "label": "something",
+            },
             "reload": [Function],
           },
           "asyncDep": null,
           "asyncResolved": false,
-          "attrs": {
-            "inputClass": "bg-red-500 text-lg",
-            "label": "some label text",
-          },
+          "attrs": {},
           "attrsProxy": null,
           "bc": null,
           "bm": null,
@@ -306,6 +296,7 @@ VueWrapper {
           "devtoolsRawSetupState": {
             "emit": [Function],
             "handleFile": [MockFunction spy],
+            "label": "something",
             "selectedFile": RefImpl {
               "__v_isRef": true,
               "__v_isShallow": false,
@@ -398,10 +389,7 @@ VueWrapper {
             "parent": undefined,
           },
           "setupContext": {
-            "attrs": {
-              "inputClass": "bg-red-500 text-lg",
-              "label": "some label text",
-            },
+            "attrs": {},
             "emit": [Function],
             "expose": [Function],
             "slots": {},
@@ -409,6 +397,7 @@ VueWrapper {
           "setupState": {
             "emit": [Function],
             "handleFile": [MockFunction spy],
+            "label": "something",
             "selectedFile": null,
           },
           "slots": {},
@@ -419,7 +408,6 @@ VueWrapper {
             "__v_skip": true,
             "anchor": null,
             "appContext": null,
-            "ce": undefined,
             "children": [
               {
                 "__v_isVNode": true,
@@ -464,7 +452,9 @@ VueWrapper {
                     ],
                     "optionsCache": WeakMap {},
                     "propsCache": WeakMap {},
-                    "provides": {},
+                    "provides": {
+                      "label": "something",
+                    },
                     "reload": [Function],
                   },
                   "asyncDep": null,
@@ -473,6 +463,7 @@ VueWrapper {
                     "accept": "image/*",
                     "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
+                    "label": "something",
                     "onFileChange": [MockFunction spy],
                   },
                   "attrsProxy": null,
@@ -558,6 +549,7 @@ VueWrapper {
                       "accept": "image/*",
                       "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
+                      "label": "something",
                       "onFileChange": [MockFunction spy],
                     },
                     "emit": [Function],
@@ -584,6 +576,7 @@ VueWrapper {
                       accept="image/*"
                       class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                       hidden=""
+                      label="something"
                     />,
                     "key": null,
                     "patchFlag": 16,
@@ -591,6 +584,7 @@ VueWrapper {
                       "accept": "image/*",
                       "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
+                      "label": "something",
                       "onFileChange": [MockFunction spy],
                     },
                     "ref": null,
@@ -624,18 +618,22 @@ VueWrapper {
                 "ctx": [Circular],
                 "dirs": null,
                 "dynamicChildren": null,
-                "dynamicProps": null,
+                "dynamicProps": [
+                  "label",
+                ],
                 "el": <input-file-stub
                   accept="image/*"
                   class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                   hidden=""
+                  label="something"
                 />,
                 "key": null,
-                "patchFlag": 0,
+                "patchFlag": 8,
                 "props": {
                   "accept": "image/*",
                   "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                   "hidden": "",
+                  "label": "something",
                   "onFileChange": [MockFunction spy],
                 },
                 "ref": null,
@@ -712,7 +710,9 @@ VueWrapper {
                     ],
                     "optionsCache": WeakMap {},
                     "propsCache": WeakMap {},
-                    "provides": {},
+                    "provides": {
+                      "label": "something",
+                    },
                     "reload": [Function],
                   },
                   "asyncDep": null,
@@ -721,12 +721,14 @@ VueWrapper {
                     "accept": "image/*",
                     "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
+                    "label": "something",
                     "onFileChange": [MockFunction spy],
                   },
                   "attrsProxy": {
                     "accept": "image/*",
                     "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
+                    "label": "something",
                     "onFileChange": [MockFunction spy],
                   },
                   "bc": null,
@@ -811,6 +813,7 @@ VueWrapper {
                       "accept": "image/*",
                       "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
+                      "label": "something",
                       "onFileChange": [MockFunction spy],
                     },
                     "emit": [Function],
@@ -837,6 +840,7 @@ VueWrapper {
                       accept="image/*"
                       class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                       hidden=""
+                      label="something"
                     />,
                     "key": null,
                     "patchFlag": 16,
@@ -844,6 +848,7 @@ VueWrapper {
                       "accept": "image/*",
                       "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
+                      "label": "something",
                       "onFileChange": [MockFunction spy],
                     },
                     "ref": null,
@@ -877,18 +882,22 @@ VueWrapper {
                 "ctx": [Circular],
                 "dirs": null,
                 "dynamicChildren": null,
-                "dynamicProps": null,
+                "dynamicProps": [
+                  "label",
+                ],
                 "el": <input-file-stub
                   accept="image/*"
                   class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                   hidden=""
+                  label="something"
                 />,
                 "key": null,
-                "patchFlag": 0,
+                "patchFlag": 8,
                 "props": {
                   "accept": "image/*",
                   "class": "text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                   "hidden": "",
+                  "label": "something",
                   "onFileChange": [MockFunction spy],
                 },
                 "ref": null,
@@ -914,22 +923,20 @@ VueWrapper {
             "el": <div
               class="flex justify-center"
               data-test="upload_image"
-              inputclass="bg-red-500 text-lg"
-              label="some label text"
             >
               <input-file-stub
                 accept="image/*"
                 class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                 hidden=""
+                label="something"
               />
             </div>,
-            "key": null,
-            "patchFlag": 16,
+            "key": 0,
+            "patchFlag": 0,
             "props": {
               "class": "flex justify-center",
               "data-test": "upload_image",
-              "inputClass": "bg-red-500 text-lg",
-              "label": "some label text",
+              "key": 0,
             },
             "ref": null,
             "scopeId": null,
@@ -983,20 +990,17 @@ VueWrapper {
         "el": <div
           class="flex justify-center"
           data-test="upload_image"
-          inputclass="bg-red-500 text-lg"
-          label="some label text"
         >
           <input-file-stub
             accept="image/*"
             class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
             hidden=""
+            label="something"
           />
         </div>,
         "key": null,
         "patchFlag": 0,
         "props": {
-          "inputClass": "bg-red-500 text-lg",
-          "label": "some label text",
           "ref": "VTU_COMPONENT",
         },
         "ref": {
@@ -1088,7 +1092,9 @@ VueWrapper {
           ],
           "optionsCache": WeakMap {},
           "propsCache": WeakMap {},
-          "provides": {},
+          "provides": {
+            "label": "something",
+          },
           "reload": [Function],
         },
         "children": null,
@@ -1100,13 +1106,12 @@ VueWrapper {
         "el": <div
           class="flex justify-center"
           data-test="upload_image"
-          inputclass="bg-red-500 text-lg"
-          label="some label text"
         >
           <input-file-stub
             accept="image/*"
             class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
             hidden=""
+            label="something"
           />
         </div>,
         "key": null,
@@ -1336,13 +1341,12 @@ VueWrapper {
   "wrapperElement": <div
     class="flex justify-center"
     data-test="upload_image"
-    inputclass="bg-red-500 text-lg"
-    label="some label text"
   >
     <input-file-stub
       accept="image/*"
       class="text-xs hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
       hidden=""
+      label="something"
     />
   </div>,
 }

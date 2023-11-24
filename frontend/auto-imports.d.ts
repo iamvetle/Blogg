@@ -18,6 +18,7 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const deleteLoggedInUserPost: typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']
+  const deleteLoggedInUserProfilePicture: typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']
   const deleteMethod: typeof import('./composables/apiByCRUD')['deleteMethod']
   const deleteSinglePostSingleComment: typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']
   const effectScope: typeof import('vue')['effectScope']
@@ -113,6 +114,7 @@ declare module 'vue' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly deleteLoggedInUserPost: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']>
+    readonly deleteLoggedInUserProfilePicture: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']>
     readonly deleteSinglePostSingleComment: UnwrapRef<typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
@@ -196,6 +198,7 @@ declare module '@vue/runtime-core' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly deleteLoggedInUserPost: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']>
+    readonly deleteLoggedInUserProfilePicture: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']>
     readonly deleteSinglePostSingleComment: UnwrapRef<typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>

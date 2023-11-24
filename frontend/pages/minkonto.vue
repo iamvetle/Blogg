@@ -104,6 +104,7 @@ onMounted(async () => {
 	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
 	await getLoggedInUserProfile(loggedInUserURL)
 })
+
 </script>
 
 <style scoped></style>

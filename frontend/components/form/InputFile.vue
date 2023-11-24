@@ -1,6 +1,6 @@
 <template>
-    <label v-if="label" :class="class" for="uploadFile">
-        <input type="file" id="uploadFile" data-test="input-file-element" @change="handleFileChange" v-bind="$attrs" :class="inputClass">
+    <label :class="class" for="uploadFile">
+        <input type="file" id="uploadFile" hidden data-test="input-file-element" @change="handleFileChange" v-bind="$attrs" :class="inputClass">
         <span>{{ label }}</span>
     </label>
 </template>
@@ -22,12 +22,10 @@ defineOptions({
  * Have to have a provide earlier
  */
 
-const label = inject("label", null)
-
-
 defineProps<{
     inputClass?:string
-    class?:string
+    class?:string;
+    label?:string;
 }>();
 
 const handleFileChange = (event:any) => {

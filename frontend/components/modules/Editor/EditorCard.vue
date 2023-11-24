@@ -285,7 +285,7 @@ const setLink = () => {
 		.run()
 }
 
-function addImage() {
+const addImage = () => {
 	const url = window.prompt('URL')
 
 	if (url) {
@@ -300,28 +300,6 @@ const toggleHeading = (level: number) => {
 const horizontalRule = () => {
 	editor.value.chain().focus().setHorizontalRule().run()
 };
-
-// const toggleUnderline = () => {
-// 	editor.value.chain().focus().toggleUnderline().run()
-// }
-
-// const toggleCode = () => {
-// 	editor.value.chain().focus().toggleCode().run()
-// }
-
-// const toggleBlockquote = () => {
-// 	editor.value.chain().focus().toggleBlockquote().run()
-
-// }
-
-// const toggleBold = () => {
-// 	editor.value.chain().focus().toggleBold().run()
-// }
-
-// const toggleItalic = () => {
-// 	editor.value.chain().focus().toggleItalic().run()
-// }
-
 
 /**
  * Fils the content if there is a post content inside of sessionstorage
