@@ -11,14 +11,17 @@ VueWrapper {
     "_container": <div
       data-v-app=""
     >
-      <div>
+      <div
+        class="flex justify-center flex-col"
+      >
+        <!--v-if-->
         <div
           class="flex justify-center"
           id="profile_picture"
         >
           <base-image-stub
             alt="Profilbilde"
-            class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+            class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
             src="~/src/picture.jpeg"
           />
         </div>
@@ -158,11 +161,11 @@ VueWrapper {
                               "active": true,
                               "allowRecurse": true,
                               "deps": [
-                                [Circular],
                                 Set {
                                   [Circular],
                                   [Circular],
                                 },
+                                [Circular],
                               ],
                               "fn": [Function],
                               "onTrack": undefined,
@@ -175,15 +178,14 @@ VueWrapper {
                         },
                         "deps": [
                           Set {
-                            [Circular],
                             ReactiveEffect {
                               "active": true,
                               "allowRecurse": true,
                               "deps": [
+                                [Circular],
                                 Set {
                                   [Circular],
                                 },
-                                [Circular],
                               ],
                               "fn": [Function],
                               "onTrack": undefined,
@@ -191,6 +193,7 @@ VueWrapper {
                               "parent": undefined,
                               "scheduler": [Function],
                             },
+                            [Circular],
                           },
                           Set {
                             [Circular],
@@ -341,11 +344,11 @@ VueWrapper {
                             "active": true,
                             "allowRecurse": true,
                             "deps": [
-                              [Circular],
                               Set {
                                 [Circular],
                                 [Circular],
                               },
+                              [Circular],
                             ],
                             "fn": [Function],
                             "onTrack": undefined,
@@ -358,15 +361,14 @@ VueWrapper {
                       },
                       "deps": [
                         Set {
-                          [Circular],
                           ReactiveEffect {
                             "active": true,
                             "allowRecurse": true,
                             "deps": [
+                              [Circular],
                               Set {
                                 [Circular],
                               },
-                              [Circular],
                             ],
                             "fn": [Function],
                             "onTrack": undefined,
@@ -374,6 +376,7 @@ VueWrapper {
                             "parent": undefined,
                             "scheduler": [Function],
                           },
+                          [Circular],
                         },
                         Set {
                           [Circular],
@@ -537,11 +540,11 @@ VueWrapper {
                                 "active": true,
                                 "allowRecurse": true,
                                 "deps": [
-                                  [Circular],
                                   Set {
                                     [Circular],
                                     [Circular],
                                   },
+                                  [Circular],
                                 ],
                                 "fn": [Function],
                                 "onTrack": undefined,
@@ -554,15 +557,14 @@ VueWrapper {
                           },
                           "deps": [
                             Set {
-                              [Circular],
                               ReactiveEffect {
                                 "active": true,
                                 "allowRecurse": true,
                                 "deps": [
+                                  [Circular],
                                   Set {
                                     [Circular],
                                   },
-                                  [Circular],
                                 ],
                                 "fn": [Function],
                                 "onTrack": undefined,
@@ -570,6 +572,7 @@ VueWrapper {
                                 "parent": undefined,
                                 "scheduler": [Function],
                               },
+                              [Circular],
                             },
                             Set {
                               [Circular],
@@ -720,11 +723,11 @@ VueWrapper {
                               "active": true,
                               "allowRecurse": true,
                               "deps": [
-                                [Circular],
                                 Set {
                                   [Circular],
                                   [Circular],
                                 },
+                                [Circular],
                               ],
                               "fn": [Function],
                               "onTrack": undefined,
@@ -737,15 +740,14 @@ VueWrapper {
                         },
                         "deps": [
                           Set {
-                            [Circular],
                             ReactiveEffect {
                               "active": true,
                               "allowRecurse": true,
                               "deps": [
+                                [Circular],
                                 Set {
                                   [Circular],
                                 },
-                                [Circular],
                               ],
                               "fn": [Function],
                               "onTrack": undefined,
@@ -753,6 +755,7 @@ VueWrapper {
                               "parent": undefined,
                               "scheduler": [Function],
                             },
+                            [Circular],
                           },
                           Set {
                             [Circular],
@@ -798,6 +801,7 @@ VueWrapper {
       "components": null,
       "ctx": {
         "VTU_COMPONENT": {},
+        "cancelUpload": [MockFunction spy],
         "handleFileChange": [MockFunction spy],
         "handlePostNewProfileImage": [MockFunction spy],
       },
@@ -855,6 +859,7 @@ VueWrapper {
       "provides": {},
       "proxy": {
         "VTU_COMPONENT": {},
+        "cancelUpload": [MockFunction spy],
         "handleFileChange": [MockFunction spy],
         "handlePostNewProfileImage": [MockFunction spy],
       },
@@ -1039,11 +1044,11 @@ VueWrapper {
                                     "active": true,
                                     "allowRecurse": true,
                                     "deps": [
-                                      [Circular],
                                       Set {
                                         [Circular],
                                         [Circular],
                                       },
+                                      [Circular],
                                     ],
                                     "fn": [Function],
                                     "onTrack": undefined,
@@ -1056,15 +1061,14 @@ VueWrapper {
                               },
                               "deps": [
                                 Set {
-                                  [Circular],
                                   ReactiveEffect {
                                     "active": true,
                                     "allowRecurse": true,
                                     "deps": [
+                                      [Circular],
                                       Set {
                                         [Circular],
                                       },
-                                      [Circular],
                                     ],
                                     "fn": [Function],
                                     "onTrack": undefined,
@@ -1072,6 +1076,7 @@ VueWrapper {
                                     "parent": undefined,
                                     "scheduler": [Function],
                                   },
+                                  [Circular],
                                 },
                                 Set {
                                   [Circular],
@@ -1222,11 +1227,11 @@ VueWrapper {
                                   "active": true,
                                   "allowRecurse": true,
                                   "deps": [
-                                    [Circular],
                                     Set {
                                       [Circular],
                                       [Circular],
                                     },
+                                    [Circular],
                                   ],
                                   "fn": [Function],
                                   "onTrack": undefined,
@@ -1239,15 +1244,14 @@ VueWrapper {
                             },
                             "deps": [
                               Set {
-                                [Circular],
                                 ReactiveEffect {
                                   "active": true,
                                   "allowRecurse": true,
                                   "deps": [
+                                    [Circular],
                                     Set {
                                       [Circular],
                                     },
-                                    [Circular],
                                   ],
                                   "fn": [Function],
                                   "onTrack": undefined,
@@ -1255,6 +1259,7 @@ VueWrapper {
                                   "parent": undefined,
                                   "scheduler": [Function],
                                 },
+                                [Circular],
                               },
                               Set {
                                 [Circular],
@@ -1420,11 +1425,11 @@ VueWrapper {
                                     "active": true,
                                     "allowRecurse": true,
                                     "deps": [
-                                      [Circular],
                                       Set {
                                         [Circular],
                                         [Circular],
                                       },
+                                      [Circular],
                                     ],
                                     "fn": [Function],
                                     "onTrack": undefined,
@@ -1437,15 +1442,14 @@ VueWrapper {
                               },
                               "deps": [
                                 Set {
-                                  [Circular],
                                   ReactiveEffect {
                                     "active": true,
                                     "allowRecurse": true,
                                     "deps": [
+                                      [Circular],
                                       Set {
                                         [Circular],
                                       },
-                                      [Circular],
                                     ],
                                     "fn": [Function],
                                     "onTrack": undefined,
@@ -1453,6 +1457,7 @@ VueWrapper {
                                     "parent": undefined,
                                     "scheduler": [Function],
                                   },
+                                  [Circular],
                                 },
                                 Set {
                                   [Circular],
@@ -1494,8 +1499,16 @@ VueWrapper {
           "da": null,
           "data": {},
           "devtoolsRawSetupState": {
+            "cancelUpload": [MockFunction spy],
             "handleFileChange": [MockFunction spy],
             "handlePostNewProfileImage": [MockFunction spy],
+            "label": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": "Upload image",
+              "_value": "Upload image",
+              "dep": undefined,
+            },
             "loggedInUserStore": {
               "$dispose": [Function],
               "$id": "Store for storing information about the logged in user",
@@ -1594,11 +1607,11 @@ VueWrapper {
                                   "active": true,
                                   "allowRecurse": true,
                                   "deps": [
-                                    [Circular],
                                     Set {
                                       [Circular],
                                       [Circular],
                                     },
+                                    [Circular],
                                   ],
                                   "fn": [Function],
                                   "onTrack": undefined,
@@ -1611,15 +1624,14 @@ VueWrapper {
                             },
                             "deps": [
                               Set {
-                                [Circular],
                                 ReactiveEffect {
                                   "active": true,
                                   "allowRecurse": true,
                                   "deps": [
+                                    [Circular],
                                     Set {
                                       [Circular],
                                     },
-                                    [Circular],
                                   ],
                                   "fn": [Function],
                                   "onTrack": undefined,
@@ -1627,6 +1639,7 @@ VueWrapper {
                                   "parent": undefined,
                                   "scheduler": [Function],
                                 },
+                                [Circular],
                               },
                               Set {
                                 [Circular],
@@ -1675,8 +1688,8 @@ VueWrapper {
                   "active": true,
                   "allowRecurse": true,
                   "deps": [
-                    [Circular],
                     Set {
+                      [Circular],
                       ReactiveEffect {
                         "active": true,
                         "computed": [Circular],
@@ -1696,8 +1709,8 @@ VueWrapper {
                         "parent": undefined,
                         "scheduler": [Function],
                       },
-                      [Circular],
                     },
+                    [Circular],
                   ],
                   "fn": [Function],
                   "onTrack": undefined,
@@ -1711,15 +1724,14 @@ VueWrapper {
                 "computed": [Circular],
                 "deps": [
                   Set {
-                    [Circular],
                     ReactiveEffect {
                       "active": true,
                       "allowRecurse": true,
                       "deps": [
+                        [Circular],
                         Set {
                           [Circular],
                         },
-                        [Circular],
                       ],
                       "fn": [Function],
                       "onTrack": undefined,
@@ -1727,6 +1739,7 @@ VueWrapper {
                       "parent": undefined,
                       "scheduler": [Function],
                     },
+                    [Circular],
                   },
                   Set {
                     [Circular],
@@ -1749,6 +1762,21 @@ VueWrapper {
               "_rawValue": null,
               "_value": null,
               "dep": Set {
+                ReactiveEffect {
+                  "active": true,
+                  "allowRecurse": true,
+                  "deps": [
+                    [Circular],
+                    Set {
+                      [Circular],
+                    },
+                  ],
+                  "fn": [Function],
+                  "onTrack": undefined,
+                  "onTrigger": undefined,
+                  "parent": undefined,
+                  "scheduler": [Function],
+                },
                 ReactiveEffect {
                   "active": true,
                   "computed": ComputedRefImpl {
@@ -1791,21 +1819,6 @@ VueWrapper {
                   "parent": undefined,
                   "scheduler": [Function],
                 },
-                ReactiveEffect {
-                  "active": true,
-                  "allowRecurse": true,
-                  "deps": [
-                    Set {
-                      [Circular],
-                    },
-                    [Circular],
-                  ],
-                  "fn": [Function],
-                  "onTrack": undefined,
-                  "onTrigger": undefined,
-                  "parent": undefined,
-                  "scheduler": [Function],
-                },
               },
             },
             "uploadedImage_file": RefImpl {
@@ -1824,8 +1837,6 @@ VueWrapper {
             "deps": [
               Set {
                 [Circular],
-              },
-              Set {
                 ReactiveEffect {
                   "active": true,
                   "computed": ComputedRefImpl {
@@ -1856,6 +1867,8 @@ VueWrapper {
                   "parent": undefined,
                   "scheduler": [Function],
                 },
+              },
+              Set {
                 [Circular],
               },
             ],
@@ -1885,7 +1898,15 @@ VueWrapper {
             {},
             [],
           ],
-          "provides": {},
+          "provides": {
+            "label": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": "Upload image",
+              "_value": "Upload image",
+              "dep": undefined,
+            },
+          },
           "proxy": {
             "_pStores": {
               "Store for storing information about the logged in user": {
@@ -1986,11 +2007,11 @@ VueWrapper {
                                     "active": true,
                                     "allowRecurse": true,
                                     "deps": [
-                                      [Circular],
                                       Set {
                                         [Circular],
                                         [Circular],
                                       },
+                                      [Circular],
                                     ],
                                     "fn": [Function],
                                     "onTrack": undefined,
@@ -2003,15 +2024,14 @@ VueWrapper {
                               },
                               "deps": [
                                 Set {
-                                  [Circular],
                                   ReactiveEffect {
                                     "active": true,
                                     "allowRecurse": true,
                                     "deps": [
+                                      [Circular],
                                       Set {
                                         [Circular],
                                       },
-                                      [Circular],
                                     ],
                                     "fn": [Function],
                                     "onTrack": undefined,
@@ -2019,6 +2039,7 @@ VueWrapper {
                                     "parent": undefined,
                                     "scheduler": [Function],
                                   },
+                                  [Circular],
                                 },
                                 Set {
                                   [Circular],
@@ -2082,11 +2103,11 @@ VueWrapper {
                       "active": true,
                       "allowRecurse": true,
                       "deps": [
-                        [Circular],
                         Set {
                           [Circular],
                           [Circular],
                         },
+                        [Circular],
                       ],
                       "fn": [Function],
                       "onTrack": undefined,
@@ -2099,15 +2120,14 @@ VueWrapper {
                 },
                 "deps": [
                   Set {
-                    [Circular],
                     ReactiveEffect {
                       "active": true,
                       "allowRecurse": true,
                       "deps": [
+                        [Circular],
                         Set {
                           [Circular],
                         },
-                        [Circular],
                       ],
                       "fn": [Function],
                       "onTrack": undefined,
@@ -2115,6 +2135,7 @@ VueWrapper {
                       "parent": undefined,
                       "scheduler": [Function],
                     },
+                    [Circular],
                   },
                   Set {
                     [Circular],
@@ -2136,8 +2157,6 @@ VueWrapper {
                 "deps": [
                   Set {
                     [Circular],
-                  },
-                  Set {
                     ReactiveEffect {
                       "active": true,
                       "computed": ComputedRefImpl {
@@ -2168,6 +2187,8 @@ VueWrapper {
                       "parent": undefined,
                       "scheduler": [Function],
                     },
+                  },
+                  Set {
                     [Circular],
                   },
                 ],
@@ -2187,8 +2208,10 @@ VueWrapper {
             "slots": {},
           },
           "setupState": {
+            "cancelUpload": [MockFunction spy],
             "handleFileChange": [MockFunction spy],
             "handlePostNewProfileImage": [MockFunction spy],
+            "label": "Upload image",
             "loggedInUserStore": {
               "$dispose": [Function],
               "$id": "Store for storing information about the logged in user",
@@ -2287,11 +2310,11 @@ VueWrapper {
                                   "active": true,
                                   "allowRecurse": true,
                                   "deps": [
-                                    [Circular],
                                     Set {
                                       [Circular],
                                       [Circular],
                                     },
+                                    [Circular],
                                   ],
                                   "fn": [Function],
                                   "onTrack": undefined,
@@ -2304,15 +2327,14 @@ VueWrapper {
                             },
                             "deps": [
                               Set {
-                                [Circular],
                                 ReactiveEffect {
                                   "active": true,
                                   "allowRecurse": true,
                                   "deps": [
+                                    [Circular],
                                     Set {
                                       [Circular],
                                     },
-                                    [Circular],
                                   ],
                                   "fn": [Function],
                                   "onTrack": undefined,
@@ -2320,6 +2342,7 @@ VueWrapper {
                                   "parent": undefined,
                                   "scheduler": [Function],
                                 },
+                                [Circular],
                               },
                               Set {
                                 [Circular],
@@ -2369,6 +2392,34 @@ VueWrapper {
             "anchor": null,
             "appContext": null,
             "children": [
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": "v-if",
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": [],
+                "dynamicProps": null,
+                "el": <!--v-if-->,
+                "key": null,
+                "patchFlag": 0,
+                "props": null,
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 8,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": Symbol(v-cmt),
+              },
               {
                 "__v_isVNode": true,
                 "__v_skip": true,
@@ -2511,11 +2562,11 @@ VueWrapper {
                                                 "active": true,
                                                 "allowRecurse": true,
                                                 "deps": [
-                                                  [Circular],
                                                   Set {
                                                     [Circular],
                                                     [Circular],
                                                   },
+                                                  [Circular],
                                                 ],
                                                 "fn": [Function],
                                                 "onTrack": undefined,
@@ -2528,15 +2579,14 @@ VueWrapper {
                                           },
                                           "deps": [
                                             Set {
-                                              [Circular],
                                               ReactiveEffect {
                                                 "active": true,
                                                 "allowRecurse": true,
                                                 "deps": [
+                                                  [Circular],
                                                   Set {
                                                     [Circular],
                                                   },
-                                                  [Circular],
                                                 ],
                                                 "fn": [Function],
                                                 "onTrack": undefined,
@@ -2544,6 +2594,7 @@ VueWrapper {
                                                 "parent": undefined,
                                                 "scheduler": [Function],
                                               },
+                                              [Circular],
                                             },
                                             Set {
                                               [Circular],
@@ -2694,11 +2745,11 @@ VueWrapper {
                                               "active": true,
                                               "allowRecurse": true,
                                               "deps": [
-                                                [Circular],
                                                 Set {
                                                   [Circular],
                                                   [Circular],
                                                 },
+                                                [Circular],
                                               ],
                                               "fn": [Function],
                                               "onTrack": undefined,
@@ -2711,15 +2762,14 @@ VueWrapper {
                                         },
                                         "deps": [
                                           Set {
-                                            [Circular],
                                             ReactiveEffect {
                                               "active": true,
                                               "allowRecurse": true,
                                               "deps": [
+                                                [Circular],
                                                 Set {
                                                   [Circular],
                                                 },
-                                                [Circular],
                                               ],
                                               "fn": [Function],
                                               "onTrack": undefined,
@@ -2727,6 +2777,7 @@ VueWrapper {
                                               "parent": undefined,
                                               "scheduler": [Function],
                                             },
+                                            [Circular],
                                           },
                                           Set {
                                             [Circular],
@@ -2764,7 +2815,7 @@ VueWrapper {
                       "asyncResolved": false,
                       "attrs": {
                         "alt": "Profilbilde",
-                        "class": "w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0",
+                        "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                       },
                       "attrsProxy": null,
                       "bc": null,
@@ -2774,6 +2825,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
+                        "cancelUpload": [MockFunction spy],
                         "handleFileChange": [MockFunction spy],
                         "handlePostNewProfileImage": [MockFunction spy],
                         "src": "~/src/picture.jpeg",
@@ -2826,8 +2878,17 @@ VueWrapper {
                         },
                         [],
                       ],
-                      "provides": {},
+                      "provides": {
+                        "label": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "Upload image",
+                          "_value": "Upload image",
+                          "dep": undefined,
+                        },
+                      },
                       "proxy": {
+                        "cancelUpload": [MockFunction spy],
                         "handleFileChange": [MockFunction spy],
                         "handlePostNewProfileImage": [MockFunction spy],
                         "src": "~/src/picture.jpeg",
@@ -2866,7 +2927,7 @@ VueWrapper {
                       "setupContext": {
                         "attrs": {
                           "alt": "Profilbilde",
-                          "class": "w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0",
+                          "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                         },
                         "emit": [Function],
                         "expose": [Function],
@@ -2890,14 +2951,14 @@ VueWrapper {
                         "dynamicProps": null,
                         "el": <base-image-stub
                           alt="Profilbilde"
-                          class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+                          class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
                           src="~/src/picture.jpeg"
                         />,
                         "key": null,
                         "patchFlag": 16,
                         "props": {
                           "alt": "Profilbilde",
-                          "class": "w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0",
+                          "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                           "src": "~/src/picture.jpeg",
                         },
                         "ref": null,
@@ -2927,7 +2988,7 @@ VueWrapper {
                         "setup": [Function],
                       },
                       "u": null,
-                      "uid": 31,
+                      "uid": 32,
                       "um": null,
                       "update": [Function],
                       "vnode": [Circular],
@@ -2941,14 +3002,14 @@ VueWrapper {
                     ],
                     "el": <base-image-stub
                       alt="Profilbilde"
-                      class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+                      class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
                       src="~/src/picture.jpeg"
                     />,
                     "key": null,
                     "patchFlag": 8,
                     "props": {
                       "alt": "Profilbilde",
-                      "class": "w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0",
+                      "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                       "src": "~/src/picture.jpeg",
                     },
                     "ref": null,
@@ -2986,7 +3047,7 @@ VueWrapper {
                 >
                   <base-image-stub
                     alt="Profilbilde"
-                    class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+                    class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
                     src="~/src/picture.jpeg"
                   />
                 </div>,
@@ -3151,11 +3212,11 @@ VueWrapper {
                                                 "active": true,
                                                 "allowRecurse": true,
                                                 "deps": [
-                                                  [Circular],
                                                   Set {
                                                     [Circular],
                                                     [Circular],
                                                   },
+                                                  [Circular],
                                                 ],
                                                 "fn": [Function],
                                                 "onTrack": undefined,
@@ -3168,15 +3229,14 @@ VueWrapper {
                                           },
                                           "deps": [
                                             Set {
-                                              [Circular],
                                               ReactiveEffect {
                                                 "active": true,
                                                 "allowRecurse": true,
                                                 "deps": [
+                                                  [Circular],
                                                   Set {
                                                     [Circular],
                                                   },
-                                                  [Circular],
                                                 ],
                                                 "fn": [Function],
                                                 "onTrack": undefined,
@@ -3184,6 +3244,7 @@ VueWrapper {
                                                 "parent": undefined,
                                                 "scheduler": [Function],
                                               },
+                                              [Circular],
                                             },
                                             Set {
                                               [Circular],
@@ -3334,11 +3395,11 @@ VueWrapper {
                                               "active": true,
                                               "allowRecurse": true,
                                               "deps": [
-                                                [Circular],
                                                 Set {
                                                   [Circular],
                                                   [Circular],
                                                 },
+                                                [Circular],
                                               ],
                                               "fn": [Function],
                                               "onTrack": undefined,
@@ -3351,15 +3412,14 @@ VueWrapper {
                                         },
                                         "deps": [
                                           Set {
-                                            [Circular],
                                             ReactiveEffect {
                                               "active": true,
                                               "allowRecurse": true,
                                               "deps": [
+                                                [Circular],
                                                 Set {
                                                   [Circular],
                                                 },
-                                                [Circular],
                                               ],
                                               "fn": [Function],
                                               "onTrack": undefined,
@@ -3367,6 +3427,7 @@ VueWrapper {
                                               "parent": undefined,
                                               "scheduler": [Function],
                                             },
+                                            [Circular],
                                           },
                                           Set {
                                             [Circular],
@@ -3413,6 +3474,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
+                        "cancelUpload": [MockFunction spy],
                         "handleFileChange": [MockFunction spy],
                         "handlePostNewProfileImage": [MockFunction spy],
                       },
@@ -3452,8 +3514,17 @@ VueWrapper {
                         {},
                         [],
                       ],
-                      "provides": {},
+                      "provides": {
+                        "label": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "Upload image",
+                          "_value": "Upload image",
+                          "dep": undefined,
+                        },
+                      },
                       "proxy": {
+                        "cancelUpload": [MockFunction spy],
                         "handleFileChange": [MockFunction spy],
                         "handlePostNewProfileImage": [MockFunction spy],
                       },
@@ -3537,7 +3608,7 @@ VueWrapper {
                         "setup": [Function],
                       },
                       "u": null,
-                      "uid": 32,
+                      "uid": 33,
                       "um": null,
                       "update": [Function],
                       "vnode": [Circular],
@@ -3641,6 +3712,34 @@ VueWrapper {
                 "__v_skip": true,
                 "anchor": null,
                 "appContext": null,
+                "children": "v-if",
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": [],
+                "dynamicProps": null,
+                "el": <!--v-if-->,
+                "key": null,
+                "patchFlag": 0,
+                "props": null,
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 8,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": Symbol(v-cmt),
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
                 "children": null,
                 "component": {
                   "a": null,
@@ -3648,6 +3747,7 @@ VueWrapper {
                     "@@__IMMUTABLE_ITERABLE__@@": 0,
                     "@@__IMMUTABLE_RECORD__@@": 0,
                     "_isMockFunction": 0,
+                    "cancelUpload": 4,
                     "constructor": 0,
                     "handleFileChange": 4,
                     "handlePostNewProfileImage": 4,
@@ -3782,11 +3882,11 @@ VueWrapper {
                                             "active": true,
                                             "allowRecurse": true,
                                             "deps": [
-                                              [Circular],
                                               Set {
                                                 [Circular],
                                                 [Circular],
                                               },
+                                              [Circular],
                                             ],
                                             "fn": [Function],
                                             "onTrack": undefined,
@@ -3799,15 +3899,14 @@ VueWrapper {
                                       },
                                       "deps": [
                                         Set {
-                                          [Circular],
                                           ReactiveEffect {
                                             "active": true,
                                             "allowRecurse": true,
                                             "deps": [
+                                              [Circular],
                                               Set {
                                                 [Circular],
                                               },
-                                              [Circular],
                                             ],
                                             "fn": [Function],
                                             "onTrack": undefined,
@@ -3815,6 +3914,7 @@ VueWrapper {
                                             "parent": undefined,
                                             "scheduler": [Function],
                                           },
+                                          [Circular],
                                         },
                                         Set {
                                           [Circular],
@@ -3965,11 +4065,11 @@ VueWrapper {
                                           "active": true,
                                           "allowRecurse": true,
                                           "deps": [
-                                            [Circular],
                                             Set {
                                               [Circular],
                                               [Circular],
                                             },
+                                            [Circular],
                                           ],
                                           "fn": [Function],
                                           "onTrack": undefined,
@@ -3982,15 +4082,14 @@ VueWrapper {
                                     },
                                     "deps": [
                                       Set {
-                                        [Circular],
                                         ReactiveEffect {
                                           "active": true,
                                           "allowRecurse": true,
                                           "deps": [
+                                            [Circular],
                                             Set {
                                               [Circular],
                                             },
-                                            [Circular],
                                           ],
                                           "fn": [Function],
                                           "onTrack": undefined,
@@ -3998,6 +4097,7 @@ VueWrapper {
                                           "parent": undefined,
                                           "scheduler": [Function],
                                         },
+                                        [Circular],
                                       },
                                       Set {
                                         [Circular],
@@ -4035,11 +4135,11 @@ VueWrapper {
                   "asyncResolved": false,
                   "attrs": {
                     "alt": "Profilbilde",
-                    "class": "w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0",
+                    "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                   },
                   "attrsProxy": {
                     "alt": "Profilbilde",
-                    "class": "w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0",
+                    "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                   },
                   "bc": null,
                   "bm": null,
@@ -4048,6 +4148,7 @@ VueWrapper {
                   "c": null,
                   "components": null,
                   "ctx": {
+                    "cancelUpload": [MockFunction spy],
                     "handleFileChange": [MockFunction spy],
                     "handlePostNewProfileImage": [MockFunction spy],
                     "src": "~/src/picture.jpeg",
@@ -4100,8 +4201,17 @@ VueWrapper {
                     },
                     [],
                   ],
-                  "provides": {},
+                  "provides": {
+                    "label": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": "Upload image",
+                      "_value": "Upload image",
+                      "dep": undefined,
+                    },
+                  },
                   "proxy": {
+                    "cancelUpload": [MockFunction spy],
                     "handleFileChange": [MockFunction spy],
                     "handlePostNewProfileImage": [MockFunction spy],
                     "src": "~/src/picture.jpeg",
@@ -4140,7 +4250,7 @@ VueWrapper {
                   "setupContext": {
                     "attrs": {
                       "alt": "Profilbilde",
-                      "class": "w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0",
+                      "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                     },
                     "emit": [Function],
                     "expose": [Function],
@@ -4164,14 +4274,14 @@ VueWrapper {
                     "dynamicProps": null,
                     "el": <base-image-stub
                       alt="Profilbilde"
-                      class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+                      class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
                       src="~/src/picture.jpeg"
                     />,
                     "key": null,
                     "patchFlag": 16,
                     "props": {
                       "alt": "Profilbilde",
-                      "class": "w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0",
+                      "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                       "src": "~/src/picture.jpeg",
                     },
                     "ref": null,
@@ -4201,7 +4311,7 @@ VueWrapper {
                     "setup": [Function],
                   },
                   "u": null,
-                  "uid": 31,
+                  "uid": 32,
                   "um": null,
                   "update": [Function],
                   "vnode": [Circular],
@@ -4215,14 +4325,14 @@ VueWrapper {
                 ],
                 "el": <base-image-stub
                   alt="Profilbilde"
-                  class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+                  class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
                   src="~/src/picture.jpeg"
                 />,
                 "key": null,
                 "patchFlag": 8,
                 "props": {
                   "alt": "Profilbilde",
-                  "class": "w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0",
+                  "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                   "src": "~/src/picture.jpeg",
                 },
                 "ref": null,
@@ -4260,6 +4370,7 @@ VueWrapper {
                     "@@__IMMUTABLE_ITERABLE__@@": 0,
                     "@@__IMMUTABLE_RECORD__@@": 0,
                     "_isMockFunction": 0,
+                    "cancelUpload": 4,
                     "constructor": 0,
                     "handleFileChange": 4,
                     "handlePostNewProfileImage": 4,
@@ -4393,11 +4504,11 @@ VueWrapper {
                                             "active": true,
                                             "allowRecurse": true,
                                             "deps": [
-                                              [Circular],
                                               Set {
                                                 [Circular],
                                                 [Circular],
                                               },
+                                              [Circular],
                                             ],
                                             "fn": [Function],
                                             "onTrack": undefined,
@@ -4410,15 +4521,14 @@ VueWrapper {
                                       },
                                       "deps": [
                                         Set {
-                                          [Circular],
                                           ReactiveEffect {
                                             "active": true,
                                             "allowRecurse": true,
                                             "deps": [
+                                              [Circular],
                                               Set {
                                                 [Circular],
                                               },
-                                              [Circular],
                                             ],
                                             "fn": [Function],
                                             "onTrack": undefined,
@@ -4426,6 +4536,7 @@ VueWrapper {
                                             "parent": undefined,
                                             "scheduler": [Function],
                                           },
+                                          [Circular],
                                         },
                                         Set {
                                           [Circular],
@@ -4576,11 +4687,11 @@ VueWrapper {
                                           "active": true,
                                           "allowRecurse": true,
                                           "deps": [
-                                            [Circular],
                                             Set {
                                               [Circular],
                                               [Circular],
                                             },
+                                            [Circular],
                                           ],
                                           "fn": [Function],
                                           "onTrack": undefined,
@@ -4593,15 +4704,14 @@ VueWrapper {
                                     },
                                     "deps": [
                                       Set {
-                                        [Circular],
                                         ReactiveEffect {
                                           "active": true,
                                           "allowRecurse": true,
                                           "deps": [
+                                            [Circular],
                                             Set {
                                               [Circular],
                                             },
-                                            [Circular],
                                           ],
                                           "fn": [Function],
                                           "onTrack": undefined,
@@ -4609,6 +4719,7 @@ VueWrapper {
                                           "parent": undefined,
                                           "scheduler": [Function],
                                         },
+                                        [Circular],
                                       },
                                       Set {
                                         [Circular],
@@ -4657,6 +4768,7 @@ VueWrapper {
                   "c": null,
                   "components": null,
                   "ctx": {
+                    "cancelUpload": [MockFunction spy],
                     "handleFileChange": [MockFunction spy],
                     "handlePostNewProfileImage": [MockFunction spy],
                   },
@@ -4696,8 +4808,17 @@ VueWrapper {
                     {},
                     [],
                   ],
-                  "provides": {},
+                  "provides": {
+                    "label": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": "Upload image",
+                      "_value": "Upload image",
+                      "dep": undefined,
+                    },
+                  },
                   "proxy": {
+                    "cancelUpload": [MockFunction spy],
                     "handleFileChange": [MockFunction spy],
                     "handlePostNewProfileImage": [MockFunction spy],
                   },
@@ -4781,7 +4902,7 @@ VueWrapper {
                     "setup": [Function],
                   },
                   "u": null,
-                  "uid": 32,
+                  "uid": 33,
                   "um": null,
                   "update": [Function],
                   "vnode": [Circular],
@@ -4845,14 +4966,17 @@ VueWrapper {
               },
             ],
             "dynamicProps": null,
-            "el": <div>
+            "el": <div
+              class="flex justify-center flex-col"
+            >
+              <!--v-if-->
               <div
                 class="flex justify-center"
                 id="profile_picture"
               >
                 <base-image-stub
                   alt="Profilbilde"
-                  class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+                  class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
                   src="~/src/picture.jpeg"
                 />
               </div>
@@ -4866,7 +4990,9 @@ VueWrapper {
             </div>,
             "key": null,
             "patchFlag": 0,
-            "props": null,
+            "props": {
+              "class": "flex justify-center flex-col",
+            },
             "ref": null,
             "scopeId": null,
             "shapeFlag": 17,
@@ -4912,7 +5038,7 @@ VueWrapper {
             "setup": [Function],
           },
           "u": null,
-          "uid": 30,
+          "uid": 31,
           "um": [
             [Function],
           ],
@@ -4924,14 +5050,17 @@ VueWrapper {
         "dirs": null,
         "dynamicChildren": null,
         "dynamicProps": null,
-        "el": <div>
+        "el": <div
+          class="flex justify-center flex-col"
+        >
+          <!--v-if-->
           <div
             class="flex justify-center"
             id="profile_picture"
           >
             <base-image-stub
               alt="Profilbilde"
-              class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+              class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
               src="~/src/picture.jpeg"
             />
           </div>
@@ -5002,7 +5131,7 @@ VueWrapper {
         "setup": [Function],
       },
       "u": null,
-      "uid": 29,
+      "uid": 30,
       "um": null,
       "update": [Function],
       "vnode": {
@@ -5136,11 +5265,11 @@ VueWrapper {
                                   "active": true,
                                   "allowRecurse": true,
                                   "deps": [
-                                    [Circular],
                                     Set {
                                       [Circular],
                                       [Circular],
                                     },
+                                    [Circular],
                                   ],
                                   "fn": [Function],
                                   "onTrack": undefined,
@@ -5153,15 +5282,14 @@ VueWrapper {
                             },
                             "deps": [
                               Set {
-                                [Circular],
                                 ReactiveEffect {
                                   "active": true,
                                   "allowRecurse": true,
                                   "deps": [
+                                    [Circular],
                                     Set {
                                       [Circular],
                                     },
-                                    [Circular],
                                   ],
                                   "fn": [Function],
                                   "onTrack": undefined,
@@ -5169,6 +5297,7 @@ VueWrapper {
                                   "parent": undefined,
                                   "scheduler": [Function],
                                 },
+                                [Circular],
                               },
                               Set {
                                 [Circular],
@@ -5319,11 +5448,11 @@ VueWrapper {
                                 "active": true,
                                 "allowRecurse": true,
                                 "deps": [
-                                  [Circular],
                                   Set {
                                     [Circular],
                                     [Circular],
                                   },
+                                  [Circular],
                                 ],
                                 "fn": [Function],
                                 "onTrack": undefined,
@@ -5336,15 +5465,14 @@ VueWrapper {
                           },
                           "deps": [
                             Set {
-                              [Circular],
                               ReactiveEffect {
                                 "active": true,
                                 "allowRecurse": true,
                                 "deps": [
+                                  [Circular],
                                   Set {
                                     [Circular],
                                   },
-                                  [Circular],
                                 ],
                                 "fn": [Function],
                                 "onTrack": undefined,
@@ -5352,6 +5480,7 @@ VueWrapper {
                                 "parent": undefined,
                                 "scheduler": [Function],
                               },
+                              [Circular],
                             },
                             Set {
                               [Circular],
@@ -5391,14 +5520,17 @@ VueWrapper {
         "dirs": null,
         "dynamicChildren": null,
         "dynamicProps": null,
-        "el": <div>
+        "el": <div
+          class="flex justify-center flex-col"
+        >
+          <!--v-if-->
           <div
             class="flex justify-center"
             id="profile_picture"
           >
             <base-image-stub
               alt="Profilbilde"
-              class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+              class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
               src="~/src/picture.jpeg"
             />
           </div>
@@ -5543,11 +5675,11 @@ VueWrapper {
                             "active": true,
                             "allowRecurse": true,
                             "deps": [
-                              [Circular],
                               Set {
                                 [Circular],
                                 [Circular],
                               },
+                              [Circular],
                             ],
                             "fn": [Function],
                             "onTrack": undefined,
@@ -5560,15 +5692,14 @@ VueWrapper {
                       },
                       "deps": [
                         Set {
-                          [Circular],
                           ReactiveEffect {
                             "active": true,
                             "allowRecurse": true,
                             "deps": [
+                              [Circular],
                               Set {
                                 [Circular],
                               },
-                              [Circular],
                             ],
                             "fn": [Function],
                             "onTrack": undefined,
@@ -5576,6 +5707,7 @@ VueWrapper {
                             "parent": undefined,
                             "scheduler": [Function],
                           },
+                          [Circular],
                         },
                         Set {
                           [Circular],
@@ -5800,17 +5932,21 @@ VueWrapper {
   "isDisabled": [Function],
   "rootVM": {
     "VTU_COMPONENT": {},
+    "cancelUpload": [MockFunction spy],
     "handleFileChange": [MockFunction spy],
     "handlePostNewProfileImage": [MockFunction spy],
   },
-  "wrapperElement": <div>
+  "wrapperElement": <div
+    class="flex justify-center flex-col"
+  >
+    <!--v-if-->
     <div
       class="flex justify-center"
       id="profile_picture"
     >
       <base-image-stub
         alt="Profilbilde"
-        class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0"
+        class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0"
         src="~/src/picture.jpeg"
       />
     </div>

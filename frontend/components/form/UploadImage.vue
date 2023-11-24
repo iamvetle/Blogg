@@ -1,6 +1,6 @@
 <template>
 	<div data-test="upload_image" class="flex justify-center">
-		<InputFile class="p-1 rounded-md bg-secondary text-onSecondary" :label="label" hidden @file-change="handleFile" accept="image/*" />
+		<InputFile class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary" hidden @file-change="handleFile" accept="image/*" />
 	</div>
 </template>
 
@@ -13,16 +13,12 @@ const emit = defineEmits(["fileChange"])
  * ? Should I have something else/more?
  */
 
-const label = ref("Upload image")
-
 const selectedFile = ref<any>(null);
 
-/**
- * TODO: ! FORSTÅ DET - klare å implementere profile picture upload properly
- */
-
 const handleFile = (event: any) => {
-	selectedFile.value = event.target.files[0];
+	if (event) {
+		selectedFile.value = event.target.files[0];
+	} 
 }
 
 // Watcher to react to file selection changes

@@ -6,7 +6,6 @@ let wrapper: any;
 
 let inputClassProp = "inputclass something"
 let classProp = "labelclass something"
-let labelProp = "labellabelsomething"
 
 const factory = () => {
     return shallowMount(InputFile, {
@@ -18,7 +17,6 @@ const factory = () => {
         props: {
             inputClass: inputClassProp,
             class: classProp,
-            label: labelProp
         }
     })
 };
@@ -39,11 +37,6 @@ describe('Testing the input file component', () => {
         wrapper = factory()
 
         expect(wrapper.exists()).toBe(true)
-    })
-    test('Should render the label prop', () => {
-        wrapper = factory()
-
-        expect(wrapper.html()).toContain(labelProp)
     })
     test('Should have the inputClass prop', () => {
         wrapper = factory()

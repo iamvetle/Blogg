@@ -19,9 +19,8 @@ VueWrapper {
       >
         <input-file-stub
           accept="image/*"
-          class="p-1 rounded-md bg-secondary text-onSecondary"
+          class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
           hidden=""
-          label="Upload image"
         />
       </div>
     </div>,
@@ -307,26 +306,6 @@ VueWrapper {
           "devtoolsRawSetupState": {
             "emit": [Function],
             "handleFile": [MockFunction spy],
-            "label": RefImpl {
-              "__v_isRef": true,
-              "__v_isShallow": false,
-              "_rawValue": "Upload image",
-              "_value": "Upload image",
-              "dep": Set {
-                ReactiveEffect {
-                  "active": true,
-                  "allowRecurse": true,
-                  "deps": [
-                    [Circular],
-                  ],
-                  "fn": [Function],
-                  "onTrack": undefined,
-                  "onTrigger": undefined,
-                  "parent": undefined,
-                  "scheduler": [Function],
-                },
-              },
-            },
             "selectedFile": RefImpl {
               "__v_isRef": true,
               "__v_isShallow": false,
@@ -352,11 +331,7 @@ VueWrapper {
           "effect": ReactiveEffect {
             "active": true,
             "allowRecurse": true,
-            "deps": [
-              Set {
-                [Circular],
-              },
-            ],
+            "deps": [],
             "fn": [Function],
             "onTrack": undefined,
             "onTrigger": undefined,
@@ -412,11 +387,7 @@ VueWrapper {
               ReactiveEffect {
                 "active": true,
                 "allowRecurse": true,
-                "deps": [
-                  Set {
-                    [Circular],
-                  },
-                ],
+                "deps": [],
                 "fn": [Function],
                 "onTrack": undefined,
                 "onTrigger": undefined,
@@ -438,7 +409,6 @@ VueWrapper {
           "setupState": {
             "emit": [Function],
             "handleFile": [MockFunction spy],
-            "label": "Upload image",
             "selectedFile": null,
           },
           "slots": {},
@@ -501,9 +471,8 @@ VueWrapper {
                   "asyncResolved": false,
                   "attrs": {
                     "accept": "image/*",
-                    "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                    "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
-                    "label": "Upload image",
                     "onFileChange": [MockFunction spy],
                   },
                   "attrsProxy": null,
@@ -587,9 +556,8 @@ VueWrapper {
                   "setupContext": {
                     "attrs": {
                       "accept": "image/*",
-                      "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                      "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
-                      "label": "Upload image",
                       "onFileChange": [MockFunction spy],
                     },
                     "emit": [Function],
@@ -614,17 +582,15 @@ VueWrapper {
                     "dynamicProps": null,
                     "el": <input-file-stub
                       accept="image/*"
-                      class="p-1 rounded-md bg-secondary text-onSecondary"
+                      class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                       hidden=""
-                      label="Upload image"
                     />,
                     "key": null,
                     "patchFlag": 16,
                     "props": {
                       "accept": "image/*",
-                      "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                      "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
-                      "label": "Upload image",
                       "onFileChange": [MockFunction spy],
                     },
                     "ref": null,
@@ -658,22 +624,18 @@ VueWrapper {
                 "ctx": [Circular],
                 "dirs": null,
                 "dynamicChildren": null,
-                "dynamicProps": [
-                  "label",
-                ],
+                "dynamicProps": null,
                 "el": <input-file-stub
                   accept="image/*"
-                  class="p-1 rounded-md bg-secondary text-onSecondary"
+                  class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                   hidden=""
-                  label="Upload image"
                 />,
                 "key": null,
-                "patchFlag": 8,
+                "patchFlag": 0,
                 "props": {
                   "accept": "image/*",
-                  "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                  "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                   "hidden": "",
-                  "label": "Upload image",
                   "onFileChange": [MockFunction spy],
                 },
                 "ref": null,
@@ -757,16 +719,14 @@ VueWrapper {
                   "asyncResolved": false,
                   "attrs": {
                     "accept": "image/*",
-                    "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                    "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
-                    "label": "Upload image",
                     "onFileChange": [MockFunction spy],
                   },
                   "attrsProxy": {
                     "accept": "image/*",
-                    "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                    "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
-                    "label": "Upload image",
                     "onFileChange": [MockFunction spy],
                   },
                   "bc": null,
@@ -849,9 +809,8 @@ VueWrapper {
                   "setupContext": {
                     "attrs": {
                       "accept": "image/*",
-                      "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                      "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
-                      "label": "Upload image",
                       "onFileChange": [MockFunction spy],
                     },
                     "emit": [Function],
@@ -876,17 +835,15 @@ VueWrapper {
                     "dynamicProps": null,
                     "el": <input-file-stub
                       accept="image/*"
-                      class="p-1 rounded-md bg-secondary text-onSecondary"
+                      class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                       hidden=""
-                      label="Upload image"
                     />,
                     "key": null,
                     "patchFlag": 16,
                     "props": {
                       "accept": "image/*",
-                      "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                      "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
-                      "label": "Upload image",
                       "onFileChange": [MockFunction spy],
                     },
                     "ref": null,
@@ -920,22 +877,18 @@ VueWrapper {
                 "ctx": [Circular],
                 "dirs": null,
                 "dynamicChildren": null,
-                "dynamicProps": [
-                  "label",
-                ],
+                "dynamicProps": null,
                 "el": <input-file-stub
                   accept="image/*"
-                  class="p-1 rounded-md bg-secondary text-onSecondary"
+                  class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                   hidden=""
-                  label="Upload image"
                 />,
                 "key": null,
-                "patchFlag": 8,
+                "patchFlag": 0,
                 "props": {
                   "accept": "image/*",
-                  "class": "p-1 rounded-md bg-secondary text-onSecondary",
+                  "class": "hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary",
                   "hidden": "",
-                  "label": "Upload image",
                   "onFileChange": [MockFunction spy],
                 },
                 "ref": null,
@@ -966,9 +919,8 @@ VueWrapper {
             >
               <input-file-stub
                 accept="image/*"
-                class="p-1 rounded-md bg-secondary text-onSecondary"
+                class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
                 hidden=""
-                label="Upload image"
               />
             </div>,
             "key": null,
@@ -1036,9 +988,8 @@ VueWrapper {
         >
           <input-file-stub
             accept="image/*"
-            class="p-1 rounded-md bg-secondary text-onSecondary"
+            class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
             hidden=""
-            label="Upload image"
           />
         </div>,
         "key": null,
@@ -1154,9 +1105,8 @@ VueWrapper {
         >
           <input-file-stub
             accept="image/*"
-            class="p-1 rounded-md bg-secondary text-onSecondary"
+            class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
             hidden=""
-            label="Upload image"
           />
         </div>,
         "key": null,
@@ -1391,9 +1341,8 @@ VueWrapper {
   >
     <input-file-stub
       accept="image/*"
-      class="p-1 rounded-md bg-secondary text-onSecondary"
+      class="hover:bg-secondaryFixedDim hover:text-onSecondaryFixedVariant p-1 rounded-md bg-secondary text-onSecondary"
       hidden=""
-      label="Upload image"
     />
   </div>,
 }

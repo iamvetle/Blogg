@@ -1,12 +1,16 @@
 <template>
-    <div>
+    <div class="flex justify-center flex-col">
+        <span v-if="uploadedImage_display" class="text-center font-bold mb-2">Preview</span>
         <div id="profile_picture" class="flex justify-center">
-            <BaseImage class="w-32 h-32 bg-onPrimary rounded-full mb-4 shrink-0" :src="profile_picture" alt="Profilbilde" />
+            <BaseImage class="w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0" :src="profile_picture" alt="Profilbilde" />
         </div>
         <div id="upload_profile_picture" class="flex flex-col justify-center">
             <UploadImage @file-change="handleFileChange" />
-            <BaseButton @click="handlePostNewProfileImage" v-if="uploadedImage_display" text="Submit"
-                class="text-xs rounded-md mt-1 p-1 bg-tertiary text-onTertiary" data-test="send_selected_image" />
+            <div class="flex space-x-2 justify-center" v-if="uploadedImage_display" data-test="upload_action_buttons" >
+                <BaseButton @click="handlePostNewProfileImage" text="Submit"
+                    class="hover:bg-tertiaryFixedDim hover:text-onTertiaryFixed text-xs rounded-md mt-1 p-1 bg-tertiary text-onTertiary" data-test="send_selected_image" />
+                <BaseButton @click="cancelUpload" class="hover:bg-errorContainer hover:text-onErrorContainer text-xs rounded-md mt-1 p-1 bg-error text-onError" text="Cancel" data-test="cancel_image_upload_button"/>
+            </div>
         </div>
     </div>
 </template>
@@ -19,7 +23,7 @@ import placeholder_profile_picture from '~/assets/placeholder-profile-picture.pn
 const uploadedImage_file = ref<any>(null)
 
 /** The image that get's displayed and possibly selected as profile picture */
-const uploadedImage_display = ref<string| null>(null)
+const uploadedImage_display = ref<string | null>(null)
 
 /** The image that will actually be displayed */
 const profile_picture = computed(() => {
@@ -60,8 +64,26 @@ const handleFileChange = (image: any) => {
         uploadedImage_file.value = image
 
         uploadedImage_display.value = URL.createObjectURL(image)
+        label.value = "Change Image"
 
     }
+}
+
+// The initial text for the input file (which is using this)
+const label = ref("Upload image")
+provide("label", label)
+
+const cancelUpload = () => {
+
+    if (uploadedImage_display.value) {
+        URL.revokeObjectURL(uploadedImage_display.value)
+        uploadedImage_display.value = null
+        uploadedImage_file.value = null
+
+        label.value = "Upload Image"
+    }
+
+
 }
 
 const handlePostNewProfileImage = async () => {
@@ -85,6 +107,8 @@ const handlePostNewProfileImage = async () => {
 onUnmounted(() => {
     if (uploadedImage_display.value) {
         URL.revokeObjectURL(uploadedImage_display.value)
+        uploadedImage_display.value = null
+        uploadedImage_file.value = null
     }
 })
 

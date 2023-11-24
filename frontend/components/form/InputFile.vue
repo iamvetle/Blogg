@@ -18,10 +18,16 @@ defineOptions({
  * So that i can decide placeholder and such from the parent component
  */
 
+/**
+ * Have to have a provide earlier
+ */
+
+const label = inject("label", "Upload Image")
+
+
 defineProps<{
     inputClass?:string
     class?:string
-    label:string
 }>();
 
 const handleFileChange = (event:any) => {
