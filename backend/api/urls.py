@@ -26,6 +26,7 @@ from api.views.user_views import (
     LoggedInUserAllFollowers,
     LoggedInUserAllFollowing,
     UnfollowUserView,
+    LoggedInUserAddOrChangeProfilePicture
 )
 from api.views.tag_views import AllTagsView
 from api.views.category_views import AllCategoriesView
@@ -48,14 +49,18 @@ urlpatterns = [
     
     # Paths related to the logged-in user
     path("min-side/", LoggedInUserProfileView.as_view(), name="min_side"),
-    path("min-side/posts/", PostAllLoggedInUserView.as_view(), name="my_posts"),
+    path("min-side/profile_picture/edit/", LoggedInUserAddOrChangeProfilePicture.as_view(), name="edit_logged_in_user_profile_picture"),
+
     
+    path("min-side/posts/", PostAllLoggedInUserView.as_view(), name="my_posts"),
+        
     path("min-side/posts/<int:pk>/edit/", PostEditSingleView.as_view(), name="edit_my_post"), # GET, DELETE, PATCH (update) weird if I don't have this?
     # NOT ACTIVE path("min-side/posts/<int:pk>/add-image/", PostEditSingleView.as_view(), name="add-image-to-post"), # POST add image
     # NOT ACTIVE path("min-side/posts/<int:pk>/remove-image/<int:image_id>/", PostEditSingleView.as_view(), name="remove-image-from-post"), # DELETE Image
     
     path("min-side/followers/", LoggedInUserAllFollowers.as_view(), name="my_followers"),
     path("min-side/following/", LoggedInUserAllFollowing.as_view(), name="my_following"),
+    
     
     # Posts and related actions
     path("newpost/", PostCreateView.as_view(), name="new_post"),

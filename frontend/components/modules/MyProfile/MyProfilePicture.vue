@@ -5,7 +5,8 @@
         </div>
         <div id="upload_profile_picture" class="flex flex-col justify-center">
             <UploadImage @file-change="handleFileChange" />
-            <BaseButton @click="handlePostNewProfileImage" v-if="uploaded_image" text="Submit" class="text-xs rounded-md mt-1 p-1 bg-tertiary text-onTertiary" data-test="send_selected_image"/>
+            <BaseButton @click="handlePostNewProfileImage" v-if="uploadedImage_display" text="Submit"
+                class="text-xs rounded-md mt-1 p-1 bg-tertiary text-onTertiary" data-test="send_selected_image" />
         </div>
     </div>
 </template>
@@ -14,8 +15,11 @@
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
 
+/** Here the object file is */
+const uploadedImage_file = ref<any>(null)
+
 /** The image that get's displayed and possibly selected as profile picture */
-const uploaded_image = ref<string | null>(null)
+const uploadedImage_display = ref<string| null>(null)
 
 /** The image that will actually be displayed */
 const profile_picture = computed(() => {
@@ -26,8 +30,8 @@ const profile_picture = computed(() => {
      * * OTHERWISE
      * A temporary place-in picture is shown if none of the above
      */
-    if (uploaded_image.value) {
-        return uploaded_image.value
+    if (uploadedImage_display.value) {
+        return uploadedImage_display.value
     } else if (loggedInUserStore.loggedInUserProfile.profile_picture) {
         return loggedInUserStore.loggedInUserProfile.profile_picture
     } else {
@@ -46,11 +50,6 @@ const loggedInUserStore = useLoggedInUserStore()
 onMounted(() => {
 })
 
-
-/** 
- * If the user doesnt have a profile picture a placeholder is put there instead
- */
-
 /**
  * This function places an image in the image reactive variable so it is displayed as the profile picture temporarely
  * 
@@ -58,13 +57,36 @@ onMounted(() => {
  */
 const handleFileChange = (image: any) => {
     if (image) {
-        uploaded_image.value = image
+        uploadedImage_file.value = image
+
+        uploadedImage_display.value = URL.createObjectURL(image)
+
     }
 }
 
-const handlePostNewProfileImage = (image:any) => {
+const handlePostNewProfileImage = async () => {
+    const profilePictureEditURL = "http://localhost:8888/api/min-side/profile_picture/edit/"
+
+    if (uploadedImage_file.value) {
+        const formData = new FormData();
+        formData.append('profile_picture', uploadedImage_file.value); // 'imageFile' is the file to be uploaded
+
+        const response = await postProfilePicture(profilePictureEditURL, formData)
+        if (response) {
+            await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
+            alert("successfully managed to edit profile picture of logged in user")
+        }
+    } else {
+        console.error("can't handle an empty image upload") // print to self
+    }
 
 }
+
+onUnmounted(() => {
+    if (uploadedImage_display.value) {
+        URL.revokeObjectURL(uploadedImage_display.value)
+    }
+})
 
 </script>
 

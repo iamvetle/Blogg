@@ -1743,7 +1743,7 @@ VueWrapper {
                 "scheduler": [Function],
               },
             },
-            "uploaded_image": RefImpl {
+            "uploadedImage_display": RefImpl {
               "__v_isRef": true,
               "__v_isShallow": false,
               "_rawValue": null,
@@ -1807,6 +1807,13 @@ VueWrapper {
                   "scheduler": [Function],
                 },
               },
+            },
+            "uploadedImage_file": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": null,
+              "_value": null,
+              "dep": undefined,
             },
           },
           "directives": null,
@@ -2350,7 +2357,8 @@ VueWrapper {
               },
             },
             "profile_picture": "~/src/picture.jpeg",
-            "uploaded_image": null,
+            "uploadedImage_display": null,
+            "uploadedImage_file": null,
           },
           "slots": {},
           "slotsProxy": {},
@@ -4905,7 +4913,9 @@ VueWrapper {
           },
           "u": null,
           "uid": 30,
-          "um": null,
+          "um": [
+            [Function],
+          ],
           "update": [Function],
           "vnode": [Circular],
           "withProxy": null,

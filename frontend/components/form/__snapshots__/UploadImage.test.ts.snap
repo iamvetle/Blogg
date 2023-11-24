@@ -18,7 +18,7 @@ VueWrapper {
         label="some label text"
       >
         <input-file-stub
-          accept="image/png, image/jpeg"
+          accept="image/*"
           class="p-1 rounded-md bg-secondary text-onSecondary"
           hidden=""
           label="Upload image"
@@ -306,13 +306,6 @@ VueWrapper {
           "data": {},
           "devtoolsRawSetupState": {
             "emit": [Function],
-            "fileContent": RefImpl {
-              "__v_isRef": true,
-              "__v_isShallow": false,
-              "_rawValue": "",
-              "_value": "",
-              "dep": undefined,
-            },
             "handleFile": [MockFunction spy],
             "label": RefImpl {
               "__v_isRef": true,
@@ -444,7 +437,6 @@ VueWrapper {
           },
           "setupState": {
             "emit": [Function],
-            "fileContent": "",
             "handleFile": [MockFunction spy],
             "label": "Upload image",
             "selectedFile": null,
@@ -508,7 +500,7 @@ VueWrapper {
                   "asyncDep": null,
                   "asyncResolved": false,
                   "attrs": {
-                    "accept": "image/png, image/jpeg",
+                    "accept": "image/*",
                     "class": "p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
                     "label": "Upload image",
@@ -594,7 +586,7 @@ VueWrapper {
                   },
                   "setupContext": {
                     "attrs": {
-                      "accept": "image/png, image/jpeg",
+                      "accept": "image/*",
                       "class": "p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
                       "label": "Upload image",
@@ -621,7 +613,7 @@ VueWrapper {
                     "dynamicChildren": null,
                     "dynamicProps": null,
                     "el": <input-file-stub
-                      accept="image/png, image/jpeg"
+                      accept="image/*"
                       class="p-1 rounded-md bg-secondary text-onSecondary"
                       hidden=""
                       label="Upload image"
@@ -629,7 +621,7 @@ VueWrapper {
                     "key": null,
                     "patchFlag": 16,
                     "props": {
-                      "accept": "image/png, image/jpeg",
+                      "accept": "image/*",
                       "class": "p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
                       "label": "Upload image",
@@ -670,7 +662,7 @@ VueWrapper {
                   "label",
                 ],
                 "el": <input-file-stub
-                  accept="image/png, image/jpeg"
+                  accept="image/*"
                   class="p-1 rounded-md bg-secondary text-onSecondary"
                   hidden=""
                   label="Upload image"
@@ -678,7 +670,7 @@ VueWrapper {
                 "key": null,
                 "patchFlag": 8,
                 "props": {
-                  "accept": "image/png, image/jpeg",
+                  "accept": "image/*",
                   "class": "p-1 rounded-md bg-secondary text-onSecondary",
                   "hidden": "",
                   "label": "Upload image",
@@ -764,14 +756,14 @@ VueWrapper {
                   "asyncDep": null,
                   "asyncResolved": false,
                   "attrs": {
-                    "accept": "image/png, image/jpeg",
+                    "accept": "image/*",
                     "class": "p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
                     "label": "Upload image",
                     "onFileChange": [MockFunction spy],
                   },
                   "attrsProxy": {
-                    "accept": "image/png, image/jpeg",
+                    "accept": "image/*",
                     "class": "p-1 rounded-md bg-secondary text-onSecondary",
                     "hidden": "",
                     "label": "Upload image",
@@ -856,7 +848,7 @@ VueWrapper {
                   },
                   "setupContext": {
                     "attrs": {
-                      "accept": "image/png, image/jpeg",
+                      "accept": "image/*",
                       "class": "p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
                       "label": "Upload image",
@@ -883,7 +875,7 @@ VueWrapper {
                     "dynamicChildren": null,
                     "dynamicProps": null,
                     "el": <input-file-stub
-                      accept="image/png, image/jpeg"
+                      accept="image/*"
                       class="p-1 rounded-md bg-secondary text-onSecondary"
                       hidden=""
                       label="Upload image"
@@ -891,7 +883,7 @@ VueWrapper {
                     "key": null,
                     "patchFlag": 16,
                     "props": {
-                      "accept": "image/png, image/jpeg",
+                      "accept": "image/*",
                       "class": "p-1 rounded-md bg-secondary text-onSecondary",
                       "hidden": "",
                       "label": "Upload image",
@@ -932,7 +924,7 @@ VueWrapper {
                   "label",
                 ],
                 "el": <input-file-stub
-                  accept="image/png, image/jpeg"
+                  accept="image/*"
                   class="p-1 rounded-md bg-secondary text-onSecondary"
                   hidden=""
                   label="Upload image"
@@ -940,7 +932,7 @@ VueWrapper {
                 "key": null,
                 "patchFlag": 8,
                 "props": {
-                  "accept": "image/png, image/jpeg",
+                  "accept": "image/*",
                   "class": "p-1 rounded-md bg-secondary text-onSecondary",
                   "hidden": "",
                   "label": "Upload image",
@@ -973,7 +965,7 @@ VueWrapper {
               label="some label text"
             >
               <input-file-stub
-                accept="image/png, image/jpeg"
+                accept="image/*"
                 class="p-1 rounded-md bg-secondary text-onSecondary"
                 hidden=""
                 label="Upload image"
@@ -1043,7 +1035,7 @@ VueWrapper {
           label="some label text"
         >
           <input-file-stub
-            accept="image/png, image/jpeg"
+            accept="image/*"
             class="p-1 rounded-md bg-secondary text-onSecondary"
             hidden=""
             label="Upload image"
@@ -1161,7 +1153,7 @@ VueWrapper {
           label="some label text"
         >
           <input-file-stub
-            accept="image/png, image/jpeg"
+            accept="image/*"
             class="p-1 rounded-md bg-secondary text-onSecondary"
             hidden=""
             label="Upload image"
@@ -1398,7 +1390,7 @@ VueWrapper {
     label="some label text"
   >
     <input-file-stub
-      accept="image/png, image/jpeg"
+      accept="image/*"
       class="p-1 rounded-md bg-secondary text-onSecondary"
       hidden=""
       label="Upload image"

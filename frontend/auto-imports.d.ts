@@ -66,6 +66,7 @@ declare global {
   const postCommentOnPost: typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']
   const postCreateNewPost: typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']
   const postForm: typeof import('./composables/crud/postForm')['postForm']
+  const postProfilePicture: typeof import('./composables/crud/postProfilePicture')['postProfilePicture']
   const provide: typeof import('vue')['provide']
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
@@ -155,6 +156,7 @@ declare module 'vue' {
     readonly postCommentOnPost: UnwrapRef<typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']>
     readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
+    readonly postProfilePicture: UnwrapRef<typeof import('./composables/crud/postProfilePicture')['postProfilePicture']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
@@ -237,6 +239,7 @@ declare module '@vue/runtime-core' {
     readonly postCommentOnPost: UnwrapRef<typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']>
     readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
+    readonly postProfilePicture: UnwrapRef<typeof import('./composables/crud/postProfilePicture')['postProfilePicture']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>

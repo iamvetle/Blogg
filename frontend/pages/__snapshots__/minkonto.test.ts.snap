@@ -1847,7 +1847,6 @@ VueWrapper {
             "MyProfilePicture": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
               "__name": "MyProfilePicture",
-              "inheritAttrs": false,
               "render": [Function],
               "setup": [Function],
             },
@@ -3915,7 +3914,6 @@ VueWrapper {
               "MyProfilePicture": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
                 "__name": "MyProfilePicture",
-                "inheritAttrs": false,
                 "render": [Function],
                 "setup": [Function],
               },
@@ -4030,7 +4028,6 @@ VueWrapper {
             "MyProfilePicture": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfilePicture.vue",
               "__name": "MyProfilePicture",
-              "inheritAttrs": false,
               "render": [Function],
               "setup": [Function],
             },

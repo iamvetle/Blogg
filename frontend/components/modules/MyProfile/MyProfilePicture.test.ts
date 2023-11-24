@@ -102,7 +102,7 @@ describe('Testing the myprofilepicture component', () => {
         wrapper = factory();
 
         const uploadedImage = "uploadedimageValue"
-        wrapper.vm.uploaded_image = uploadedImage
+        wrapper.vm.uploadedImage_display = uploadedImage
 
         await wrapper.vm.$nextTick()
 
@@ -149,7 +149,7 @@ describe('Testing the myprofilepicture component', () => {
         expect(button.exists()).toBe(false)
 
         // Is uploaded image
-        wrapper.vm.uploaded_image = "newpicture.jpg"
+        wrapper.vm.uploadedImage_display = "newpicture.jpg"
 
         await wrapper.vm.$nextTick()
 
@@ -167,7 +167,7 @@ describe('Testing the myprofilepicture component', () => {
         wrapper = factory()
         expect(wrapper.vm.handlePostNewProfileImage).toBeDefined()
 
-        wrapper.vm.uploaded_image = "newpicture.jpg"
+        wrapper.vm.uploadedImage_display = "newpicture.jpg"
 
         await wrapper.vm.$nextTick()
         // No uploaded image
