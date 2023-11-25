@@ -1,71 +1,73 @@
 <template>
-    <div class="article" v-for="post in user_posts" :key="post.id">
-        <feed-post-preview-card :hide-profile-image="true">
+    <div v-for="post in user_posts" >
+        <div class="article" :key="post.id">
+            <feed-post-preview-card :hide-profile-image="true">
 
-            <template #author v-if="post.author">
-                <span>
-                    <Name class="font-bold" :first_name="post.author.first_name"
-                        :last_name="post.author.last_name" />
-                </span>
-            </template>
+                <template #author v-if="post.author">
+                    <span>
+                        <Name class="font-bold" :first_name="post.author.first_name" :last_name="post.author.last_name" />
+                    </span>
+                </template>
 
-            <template #date_published v-if="post.date_published">
-                <span>
-                    <p class="font-light" v-text="post.date_published"></p>
-                </span>
-            </template>
+                <template #date_published v-if="post.date_published">
+                    <span>
+                        <p class="font-light" v-text="post.date_published"></p>
+                    </span>
+                </template>
 
-            <template #title v-if="post.title">
-                <span @click="redirect_to_post_page(post.id)" class="cursor-pointer">
-                    <h3 class="text-[28px] mb-2" v-text="post.title">
-                    </h3>
-                </span>
-            </template>
+                <template #title v-if="post.title">
+                    <span @click="redirect_to_post_page(post.id)" class="cursor-pointer">
+                        <h3 class="text-[28px] mb-2" v-text="post.title">
+                        </h3>
+                    </span>
+                </template>
 
-            <template #content v-if="post.content_snippet">
-                <p class="mb-2" v-text="toPlainText(post.content_snippet)">
-                </p>
-            </template>
-
-
-            <template #lesmer v-if="post.id">
-                <span class="cursor-pointer text-primary hover:text-primaryFixed" @click="redirect_to_post_page(post.id)">
-                    Les mer
-                </span>
-            </template>
-
-            <template #tags v-if="post.tags">
-                <span class="me-1" v-for="tag in post.tags">
-                    <BaseTag :key="post.id" :text="tag.name" />
-                </span>
-            </template>
-
-            <template #amount-of-comments v-if="post.num_of_comments !== null">
-                <span>{{ post.num_of_comments }} comments</span>
-            </template>
+                <template #content v-if="post.content_snippet">
+                    <p class="mb-2" v-text="toPlainText(post.content_snippet)">
+                    </p>
+                </template>
 
 
-            <!-- Save/unsave article icon -->
-            <template #save-article-icon v-if="post.id">
-                <BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post.id)" @click="unsave(post.id)" />
-                <BaseIconSaveArticleUnSaved v-else @mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'"
-                    @click="save(post.id)" :fill-color="color" />
-            </template>
+                <template #lesmer v-if="post.id">
+                    <span class="cursor-pointer text-primary hover:text-primaryFixed"
+                        @click="redirect_to_post_page(post.id)">
+                        Les mer
+                    </span>
+                </template>
 
-            <!-- More options Icon -->
-            <template #more-options-icon v-if="post.id">
-                <BaseIconMoreOptions widthProp="24" heightProp="24" :colorProp="color" @mouseover="color = 'fill-primary'"
-                    @mouseleave="color = 'fill-black'" />
-            </template>
+                <template #tags v-if="post.tags">
+                    <span class="me-1" v-for="tag in post.tags">
+                        <BaseTag :key="tag.name" :text="tag.name" />
+                    </span>
+                </template>
 
-            <!-- Article Image -->
-            <template #article_image v-if="post.id">
-                <img :src="post_image" alt="Bilde til artikkel" class="w-full h-auto">
-            </template>
+                <template #amount-of-comments v-if="post.num_of_comments !== null">
+                    <span>{{ post.num_of_comments }} comments</span>
+                </template>
 
-        </feed-post-preview-card>
 
-        <hr class="mb-16">
+                <!-- Save/unsave article icon -->
+                <template #save-article-icon v-if="post.id">
+                    <BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post.id)" @click="unsave(post.id)" />
+                    <BaseIconSaveArticleUnSaved v-else @mouseover="color = 'fill-primary'"
+                        @mouseleave="color = 'fill-black'" @click="save(post.id)" :fill-color="color" />
+                </template>
+
+                <!-- More options Icon -->
+                <template #more-options-icon v-if="post.id">
+                    <BaseIconMoreOptions widthProp="24" heightProp="24" :colorProp="color"
+                        @mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'" />
+                </template>
+
+                <!-- Article Image -->
+                <template #article_image v-if="post.id">
+                    <img :src="post_image" alt="Bilde til artikkel" class="w-full h-auto">
+                </template>
+
+            </feed-post-preview-card>
+
+            <hr class="mb-16">
+        </div>
     </div>
 </template>
 

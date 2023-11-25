@@ -1,7 +1,7 @@
 <template>
     <div v-if="tags" class="mb-2 flex space-x-1" id="tags">
-        <span class="flex" v-for="(tag, index) in tags">
-            <BaseTag :text="tag" :key="index" />
+        <span class="flex" v-for="tag in tags">
+            <BaseTag :text="tag" :key="tag.name" />
         </span>
     </div>
 </template>

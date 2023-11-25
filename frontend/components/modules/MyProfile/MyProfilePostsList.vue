@@ -3,7 +3,9 @@
         <h2 class="text-xl text-onPrimary font-bold mt-8 mb-6">
             All posts by {{ loggedInUserStore.loggedInUserProfile.first_name }}
         </h2>
-        <MyProfilePostPreviewCard v-for="post in postStore.loggedInUserPosts.results" :key="post.id" :post="post" />
+        <span v-for="post in postStore.loggedInUserPosts.results">
+            <MyProfilePostPreviewCard :key="post.id" :post="post" />
+        </span>
     </div>
 </template>
 

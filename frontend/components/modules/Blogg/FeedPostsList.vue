@@ -2,9 +2,9 @@
 	<div v-if="postStore.posts" id="site-wrapper" class="bg-background text-onBackground">
 		<div v-if="postStore.posts.results" id="content">
 
-			<div class="article" v-for="post in postStore.posts.results" :key="post.id">
+			<div class="article" v-for="post in postStore.posts.results">
 
-				<feed-post-preview-card>
+				<feed-post-preview-card :key="post.id">
 
 					<template #author v-if="post.author">
 						<span @click="redirect_to_author_page(post.author.username)" class="cursor-pointer break-words">

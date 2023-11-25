@@ -3,7 +3,8 @@
 
 		<div data-test="myprofile" class="w-full">
 
-			<logged-in-user-profile-card class="w-full" :profile-picture-prop="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : profile_picture">
+			<logged-in-user-profile-card class="w-full"
+				:profile-picture-prop="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : profile_picture">
 
 				<template #username v-if="loggedInUserStore.loggedInUserProfile.username">
 					{{ loggedInUserStore.loggedInUserProfile.username }}
@@ -45,7 +46,7 @@
 			</h3>
 
 			<div id="saved_articles">
-				<PostSavedCardList/>
+				<PostSavedCardList />
 			</div>
 		</div>
 
@@ -58,8 +59,9 @@
 					Du følger
 				</h3>
 				<div id="following">
-					<Following v-for="(following, index) in loggedInUserStore.loggedInUserProfile.following" :following="following.username"
-						:key="index" />
+					<span v-for="following in loggedInUserStore.loggedInUserProfile.following">
+						<Following :following="following.username" :key="following.username" />
+					</span>
 				</div>
 				<!-- <span class="text-xs text-primary hover:text-primaryFixed">
 					Se alle ({{ loggedInUserStore.loggedInUserProfile.num_of_following}})

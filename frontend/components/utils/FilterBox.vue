@@ -1,7 +1,7 @@
 <template>
-  <div v-for="(option, index) in props.listOfOptions" :class="props.class" class="w-full">
+  <div v-for="option in props.listOfOptions" :class="props.class" class="w-full">
     <span>
-      <InputCheckbox v-model="selected[option]" @update:model-value="updateList" :key="index" :label="option"
+      <InputCheckbox v-model="selected[option]" @update:model-value="updateList" :key="option" :label="option"
         v-bind="$attrs" />
     </span>
   </div>
@@ -21,6 +21,16 @@
  * @example <caption>With custom class:</caption>
  * <FilterBox :listOfOptions="['Option 1', 'Option 2']" class="custom-class" />
  */
+
+
+ /**
+  * ! am I using this component? if i am: change and fix the innherting and $attrs problem
+  */
+
+// defineOptions({
+//   inheritAttrs:false
+// })
+
 
 const selected = ref<any>({});
 

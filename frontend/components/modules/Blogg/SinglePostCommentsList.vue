@@ -1,7 +1,8 @@
 <template>
     <div v-if="comments?.length">
-        <div v-for="(comment, index) of comments" :key="index">
+        <div v-for="comment of comments">
             <SinglePostCommentSingle
+            :key="comment.id"
             :comment="comment"
             :post-author="postAuthor"
             class="p-4 border-2 mt-2 rounded-md"

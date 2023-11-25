@@ -12,8 +12,8 @@
             </p>
         </div>
         <div class="flex">
-            <span v-for="tag in post.tags" :key="tag.name" class="mr-2">
-                <BaseTag :text="tag.name" />
+            <span v-for="tag in post.tags" class="mr-2">
+                <BaseTag :key="tag.name" :text="tag.name" />
             </span>
         </div>
         <div class="flex justify-between items-center">

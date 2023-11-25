@@ -13,8 +13,8 @@
       <p class="text-black">{{ checkBoxSingleInput }}</p>
     
       <!-- Use 'of' if it is an object, and 'in' if it is an array-->
-      <div id="multiple_checkboxes" v-for="(tag, index) in example_list">
-        <InputCheckbox v-model="selected_object[tag]" :key="index" :label="tag"/>
+      <div id="multiple_checkboxes" v-for="tag in example_list">
+        <InputCheckbox v-model="selected_object[tag]" :key="tag" :label="tag"/>
       </div>
       <p class="text-black">{{ selectedList }}</p>
 
