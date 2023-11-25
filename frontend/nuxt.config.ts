@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export default defineNuxtConfig({
   devtools: {
     enabled: true,
@@ -21,6 +23,7 @@ export default defineNuxtConfig({
   ],
   imports: {
     dirs:['./typescript', './store', './composables/crud']
+
   },
   modules: [
     "@nuxtjs/tailwindcss",
