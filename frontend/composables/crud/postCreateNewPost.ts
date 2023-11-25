@@ -10,7 +10,6 @@ export const postCreateNewPost = async (url: string, formData: object): Promise<
   }
 
   const headers = {
-    "Content-Type": "application/json",
     Authorization: `Token ${token}`,
   };
 

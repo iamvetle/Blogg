@@ -5,7 +5,7 @@
 
 			<div data-test="add_image_button_sum">
 				<EditorButton @click="handleAddImageClick" :icon="add_image_icon" alt="add_image" data-test="add_image" />
-				<input @change="$emit('addImage')" type="file" hidden ref="addImageRef"
+				<input @change="handleFileChange" type="file" hidden ref="addImageRef"
 					data-test="add_image_file_input" />
 			</div>
 
@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 
-const emit = defineEmits()
+const emit = defineEmits(["addImage"])
 /**
  * This component is part of the text editor. It is the floating menu.
  */
@@ -50,6 +50,10 @@ const handleAddImageClick = () => {
 	addImageRef.value.click()
 }
 
+const handleFileChange = (event:any) => {
+    const file = event;
+    emit("addImage", file)
+}
 
 
 const toggleHeading = (level: any) => {

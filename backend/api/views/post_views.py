@@ -19,7 +19,7 @@ from rest_framework.generics import (
     GenericAPIView,
     RetrieveUpdateDestroyAPIView,
     CreateAPIView,
-    DestroyAPIView
+    DestroyAPIView,
 )
 
 
@@ -111,7 +111,8 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     queryset = Post.objects.all().order_by("-date_published")
 
     http_method_names = ["get"]
-    
+
+
 class PostMultipleSnippetOnlyMyFollowingView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
@@ -120,7 +121,7 @@ class PostMultipleSnippetOnlyMyFollowingView(ListAPIView):
     # filter_backends = [
     #    filters.DjangoFilterBackend,
     #    SearchFilter,
-    #]
+    # ]
     # filterset_class = CustomPostFilter
 
     # search_fields = ["title", "content", "author__username"]
@@ -129,16 +130,16 @@ class PostMultipleSnippetOnlyMyFollowingView(ListAPIView):
     queryset = Post.objects.all().order_by("-date_published")
 
     http_method_names = ["get"]
-    
+
     def get_queryset(self):
         queryset_posts_all = super().get_queryset()
-        
+
         queryset_following_all = self.request.user.following.all()
-        
+
         filtered_queryset = queryset_posts_all.filter(author__in=queryset_following_all)
-        
+
         return filtered_queryset
-    
+
 
 class PostReadSingleView(RetrieveAPIView):
     """Retrieves a single post to read"""
@@ -251,55 +252,58 @@ class PostCommentsView(ListAPIView):
 
         filtered_queryset = queryset.filter(post=post_id)
 
-        return filtered_queryset  
-    
+        return filtered_queryset
+
+
 class PostAddCommentView(CreateAPIView):
     """Adds a comment to a specified post"""
-    
+
     permission_classes = [IsAuthenticated]
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
-    
+
     http_method_names = ["post"]
-    
+
     def perform_create(self, serializer):
         # Retrieves the <int:post_id> from the url
         id = self.kwargs["post_id"]
-        
+
         # Retrieves the content data from the request
         content = self.request.data["content"]
-        
+
         # Based on 'id' the associated post is retrieved
         post = get_object_or_404(Post, pk=id)
-        
+
         # Finally a new object is created and saved
         serializer.save(post=post, content=content, author=self.request.user)
-        
+
+
 class PostDeleteCommentView(DestroyAPIView):
     """Deletes a comment from a specified post"""
-    
+
     queryset = Comment.objects.all()
     permission_classes = [IsAuthenticated]
     serializer_class = CommentSerializer
-    
+
     lookup_field = "id"
     lookup_url_kwarg = "comment_id"
-    
+
     http_method_names = ["delete"]
-    
-    # This method makes sure that the object, or comment that was retrieved 
-    # has the author who owns the comment 
+
+    # This method makes sure that the object, or comment that was retrieved
+    # has the author who owns the comment
     def get_object(self):
         # The comment that is going to be deleted
         comment = super().get_object()
         post_owner = comment.post.author
         print(post_owner)
-        
+
         # Only if the author is the same as the web client will the object be returned
         # OR
         # The owner of the post that has the comment
         if (comment.author == self.request.user) | (post_owner == self.request.user):
             return comment
         else:
-            raise PermissionDenied("You cannot delete comments made by other people (unless you are the owner of the post - which it seems like you are not)")
-        
+            raise PermissionDenied(
+                "You cannot delete comments made by other people (unless you are the owner of the post - which it seems like you are not)"
+            )

@@ -92,6 +92,9 @@ const showModal = ref(false)
 const html = ref<string | null | undefined>(null);
 const route = useRoute()
 
+const imageFileMap = ref<any>({}); // Object to store the mapping of unique ID and file
+
+
 /** This two are just so that I can share them between the button 
  * click function and the modal publish function*/
 const title = ref<string | null | undefined>(null);
@@ -190,6 +193,8 @@ onMounted(() => {
 	});
 });
 
+const formData = ref(new FormData())
+
 // BUTTON ACTIONS
 
 /**
@@ -221,13 +226,42 @@ const buttonCancelClick = () => {
 	router.push('/');
 };
 
+function removeImageFromMap(uniqueId:any) {
+    // Check if the image with the given ID exists in the map
+    if (imageFileMap.value.hasOwnProperty(uniqueId)) {
+        delete imageFileMap.value[uniqueId]; // Remove the image from the map
+        console.log(`Image with ID ${uniqueId} has been removed from the map.`);
+    } else {
+        console.log(`No image found with ID ${uniqueId}.`);
+    }
+}
 
-/* This collects all of the urls that are temp made so that they can later be revoked later - to not keep unecesarry much memory **/
-const listOfTempURL = ref<string[]>([])
+const validateAndCleanImageMap = (htmlContent:any) => {
+    let parser = new DOMParser();
+    let doc = parser.parseFromString(htmlContent, 'text/html');
+    let imagesInContent = doc.querySelectorAll('img');
 
-const formData = new FormData()
+    // Create a set of all image IDs present in the HTML content
+    let imageIdsInContent = new Set();
+    imagesInContent.forEach(img => {
+        let imageId = img.getAttribute('alt'); // Assuming 'alt' is used for storing the image ID
+        if (imageId) {
+            imageIdsInContent.add(imageId);
+        }
+    });
 
-const images = ref<object[]>([])
+    // Iterate over the keys in imageFileMap
+    Object.keys(imageFileMap.value).forEach(imageId => {
+        // Check if the image ID is not present in the HTML content
+        if (!imageIdsInContent.has(imageId)) {
+            // Remove the image from imageFileMap as it's not in the editor
+            removeImageFromMap(imageId);
+            console.log(`Image with ID ${imageId} has been removed from imageFileMap.`);
+        }
+    });
+}
+
+
 
 // MODAL EMITS/EVENTS 2/2
 
@@ -248,18 +282,34 @@ const images = ref<object[]>([])
  * * Only called by modal
  */
 const publishPost = () => {
+	console.log("publish post was called")
+
+
 	showModal.value = false;
 	generalStore.turnBackgroundForModel(null);
 
+	formData.value.append("title", title.value || "");
+	formData.value.append("content", body.value || "");
 
-	formData.append("title", title.value || "")
-	formData.append("content", body.value || "")
+	validateAndCleanImageMap(body.value)
+
+	console.log("validateimagesincontent is supposed to have been alled now")
 
 
-	emit('newPostMaterial', formData );
+	// Append each file with its unique ID
+	for (let id in imageFileMap.value) {
+        let file = imageFileMap.value[id];
+        formData.value.append(`image_${id}`, file, `image_${id}_${file.name}`);
+    }
+
+	emit('newPostMaterial', formData.value);
 
 
 	editor.value?.chain().focus().clearContent().run();
+	imageFileMap.value = {}
+
+	// removes everything anbd starts new
+	formData.value = new FormData()
 };
 
 // 2/2
@@ -274,16 +324,23 @@ const cancelPublishing = () => {
 
 /** METHODS FOR THE EDITOR */
 
-
-
 const handleAddImageChange = (event: any) => {
+	console.log("start of handle add Image change")
 	if (event) {
 		const file = event.target.files[0];
+        const uniqueId = generateUniqueId(); // Function to generate a unique ID.
+        const fileTempUrl = URL.createObjectURL(file);
+		console.log("middle of handleaddimagechange")
 
-		const file_temp_url = URL.createObjectURL(file);
 
-		if (file_temp_url) {
-			editor.value.chain().focus().setImage({ src: file_temp_url }).run()
+		if (fileTempUrl) {
+            // Store the file with its unique ID in the map
+            imageFileMap.value[uniqueId] = file;
+			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change")
+			console.log(uniqueId, fileTempUrl)
+
+
+			editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).run()
 		}
 	}
 }
