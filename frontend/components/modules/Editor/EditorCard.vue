@@ -282,16 +282,8 @@ const handleAddImageChange = (event: any) => {
 
 		const file_temp_url = URL.createObjectURL(file);
 
-		const imageAndID = {
-			id:file_temp_url,
-			image:file
-		}
-
-		images.value.push(imageAndID)
-
 		if (file_temp_url) {
 			editor.value.chain().focus().setImage({ src: file_temp_url }).run()
-			listOfTempURL.value.push(file_temp_url)
 		}
 	}
 }
