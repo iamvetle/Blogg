@@ -46,6 +46,10 @@ from bs4 import BeautifulSoup
 
 from django.core.exceptions import ValidationError
 
+from PIL import Image
+from django.core.files.base import ContentFile
+from io import BytesIO
+
 CustomUser = get_user_model()
 
 class PostAllLoggedInUserView(ListAPIView):  # /api/min-side/posts/
@@ -252,18 +256,28 @@ class PostCreateView(APIView):
 
             image_map = {}
             for key, image_file in request.FILES.items():
-                # Extract the unique identifier from the file name
-                image_id = key.split("_")[1]
-                image = PostImage.objects.create(post=post, image=image_file)
-                image_map[image_id] = image.image.url
+                # Open the uploaded image using Pillow
+                image = Image.open(image_file)
+
+                # Compress and convert the image to WebP
+                output = BytesIO()
+                image.save(output, format='WEBP', quality=80)
+                output.seek(0)
+
+                # Create a new Django file-like object for the WebP image
+                webp_file = ContentFile(output.read(), name=image_file.name.split('.')[0] + '.webp')
+
+                # Create the PostImage instance with the converted WebP image
+                image_instance = PostImage.objects.create(post=post, image=webp_file)
+                image_map[key.split("_")[1]] = image_instance.image.url
 
             soup = BeautifulSoup(content, 'html.parser')
             for img in soup.find_all('img'):
                 alt_text = img.get('alt')
                 if alt_text in image_map:
                     relativeImageSource = image_map[alt_text]
-                    actuallFullImageSource = f"http://localhost:8888{relativeImageSource}"                    
-                    img['src'] = actuallFullImageSource
+                    actualFullImageSource = f"http://localhost:8888{relativeImageSource}"                    
+                    img['src'] = actualFullImageSource
 
             post.content = str(soup)
             post.save()
@@ -275,7 +289,6 @@ class PostCreateView(APIView):
         except Exception as e:
             # Log the exception for debugging
             return Response({'error': 'An unexpected error occurred.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 class PostCommentsView(ListAPIView):
     """Returns all of the comments associated with a post"""
