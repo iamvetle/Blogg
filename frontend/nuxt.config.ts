@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export default defineNuxtConfig({
   devtools: {
     enabled: true,
@@ -22,7 +20,7 @@ export default defineNuxtConfig({
     },
   ],
   imports: {
-    dirs:['./typescript', './store', './composables/crud']
+    dirs:['./typescript', './store', './composables/crud', './composables/editor']
 
   },
   modules: [

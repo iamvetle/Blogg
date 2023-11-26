@@ -15,9 +15,6 @@
 			<div class="w-full not-prose mb-6">
 				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange" />
 
-				<!-- <EditorBubbleMenu
-				:editor="editor"
-				/> -->
 				<EditorCardTopMenu :editor="editor" />
 			</div>
 
@@ -47,7 +44,6 @@
 <script setup lang="ts">
 
 import { useEditor, EditorContent } from '@tiptap/vue-3'
-// import { BubbleMenu } from '@tiptap/vue-3';
 import Document from '@tiptap/extension-document' // required
 import BulletList from '@tiptap/extension-bullet-list'
 import CodeBlock from '@tiptap/extension-code-block'
@@ -56,7 +52,6 @@ import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import ListItem from '@tiptap/extension-list-item'
 import OrderedList from '@tiptap/extension-ordered-list'
 import Code from '@tiptap/extension-code'
-// import Strike from '@tiptap/extension-strike'
 import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
 import Heading from '@tiptap/extension-heading'
@@ -78,9 +73,6 @@ const emit = defineEmits(['newPostMaterial'])
 const props = defineProps<{
 	initialPost?: string;
 }>();
-
-
-// const errorHappened = ref(null)
 
 /**
  * This variable dictates whether the Modal is shown or not.
@@ -108,13 +100,6 @@ const editor: any = useEditor({ //@ts-ignore
 			levels: [1, 2, 3]
 		}),
 		Blockquote,
-		// Subscript,
-		// Placeholder.configure({
-		// 	placeholder: '123',
-		// 	showOnlyWhenEditable: false,
-		// 	includeChildren: true,	
-		// 	showOnlyCurrent: false
-		// }),
 		BulletList,
 		Image.configure({
 			allowBase64: true,
@@ -129,28 +114,12 @@ const editor: any = useEditor({ //@ts-ignore
 		HorizontalRule,
 		ListItem,
 		OrderedList,
-		// Superscript,
-		// Subscript,
-		// Strike,
 		Gapcursor,
-		// Table.configure({
-		// 	resizable: true,
-		// }),
-		// TableRow,
-		// TableHeader,
-		// TableCell,
 		History,
-		// Youtube.configure({
-		// nocookie: true,
-		// }),
 		Dropcursor,
 		Document,
 		Paragraph,
 		Text, // required
-		// TaskList,
-		// TaskItem.configure({
-		// nested: true,
-		// }),
 		Italic,
 		Link.configure({ //@ts-ignore
 			validate: href => /^https?:\/\//.test(href),
@@ -158,6 +127,7 @@ const editor: any = useEditor({ //@ts-ignore
 		Bold,
 		Underline,
 		Code,
+		// Placeholder later on
 		// Youtube,
 	],
 
@@ -255,42 +225,6 @@ const buttonCancelClick = () => {
 	router.push('/');
 };
 
-function removeImageFromMap(uniqueId: any) {
-	// Check if the image with the given ID exists in the map
-	if (imageFileMap.value.hasOwnProperty(uniqueId)) {
-		delete imageFileMap.value[uniqueId]; // Remove the image from the map
-		console.log(`Image with ID ${uniqueId} has been removed from the map.`);
-	} else {
-		console.log(`No image found with ID ${uniqueId}.`);
-	}
-}
-
-const validateAndCleanImageMap = (htmlContent: any) => {
-	let parser = new DOMParser();
-	let doc = parser.parseFromString(htmlContent, 'text/html');
-	let imagesInContent = doc.querySelectorAll('img');
-
-	// Create a set of all image IDs present in the HTML content
-	let imageIdsInContent = new Set();
-	imagesInContent.forEach(img => {
-		let imageId = img.getAttribute('alt'); // Assuming 'alt' is used for storing the image ID
-		if (imageId) {
-			imageIdsInContent.add(imageId);
-		}
-	});
-
-	// Iterate over the keys in imageFileMap
-	Object.keys(imageFileMap.value).forEach(imageId => {
-		// Check if the image ID is not present in the HTML content
-		if (!imageIdsInContent.has(imageId)) {
-			// Remove the image from imageFileMap as it's not in the editor
-			removeImageFromMap(imageId);
-			console.log(`Image with ID ${imageId} has been removed from imageFileMap.`);
-		}
-	});
-}
-
-
 
 // MODAL EMITS/EVENTS 2/2
 
@@ -320,7 +254,7 @@ const publishPost = () => {
 	formData.value.append("title", title.value || "");
 	formData.value.append("content", body.value || "");
 
-	validateAndCleanImageMap(body.value)
+	imageFileMap.value = validateAndCleanImageMap(body.value, imageFileMap.value)
 
 	console.log("validateimagesincontent is supposed to have been alled now")
 
