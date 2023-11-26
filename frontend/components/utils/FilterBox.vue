@@ -2,7 +2,7 @@
   <div v-for="option in props.listOfOptions" :class="props.class" class="w-full">
     <span>
       <InputCheckbox v-model="selected[option]" @update:model-value="updateList" :key="option" :label="option"
-        v-bind="$attrs" />
+        />
     </span>
   </div>
 </template>

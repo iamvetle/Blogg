@@ -4,14 +4,8 @@
 			<div id="direct-editor">
 				<EditorCard @newPostMaterial="publish" />
 			</div>
-
-			<!-- icons -->
-			<div class="icons flex text-gray-500 m-2">
-
-			</div>
 			
-			<!-- buttons -->
-			<div class="buttons flex">
+			<div class="flex">
 				<div v-if="postState">
 					<p>Nytt innlegg lagt til!</p>
 				</div>
