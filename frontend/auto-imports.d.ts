@@ -25,6 +25,7 @@ declare global {
   const extractTitleAndContent: typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']
   const fetchPost: typeof import('./composables/deprecatedFetchPost')['fetchPost']
   const fixPagination: typeof import('./composables/fixPagination')['fixPagination']
+  const generateUniqueId: typeof import('./composables/generateUniqueId')['generateUniqueId']
   const getAllTags: typeof import('./composables/crud/getAllTags')['getAllTags']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
@@ -119,6 +120,7 @@ declare module 'vue' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
+    readonly generateUniqueId: UnwrapRef<typeof import('./composables/generateUniqueId')['generateUniqueId']>
     readonly getAllTags: UnwrapRef<typeof import('./composables/crud/getAllTags')['getAllTags']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
@@ -203,6 +205,7 @@ declare module '@vue/runtime-core' {
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
+    readonly generateUniqueId: UnwrapRef<typeof import('./composables/generateUniqueId')['generateUniqueId']>
     readonly getAllTags: UnwrapRef<typeof import('./composables/crud/getAllTags')['getAllTags']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>

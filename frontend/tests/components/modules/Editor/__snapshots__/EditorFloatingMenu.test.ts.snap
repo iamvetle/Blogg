@@ -653,6 +653,7 @@ VueWrapper {
             "add_image_icon": "/assets/icons/image-add-line.svg",
             "emit": [Function],
             "handleAddImageClick": [Function],
+            "handleFileChange": [Function],
             "heading_1_icon": "/assets/icons/h1.svg",
             "heading_2_icon": "/assets/icons/h2.svg",
             "horizontalRule": [Function],
@@ -914,7 +915,9 @@ VueWrapper {
             "scheduler": [Function],
           },
           "emit": [Function],
-          "emitsOptions": null,
+          "emitsOptions": {
+            "addImage": null,
+          },
           "emitted": null,
           "exposeProxy": {},
           "exposed": {},
@@ -1385,7 +1388,6 @@ VueWrapper {
           "renderCache": [
             [Function],
             [Function],
-            [Function],
           ],
           "root": [Circular],
           "rtc": null,
@@ -1467,6 +1469,7 @@ VueWrapper {
             "add_image_icon": "/assets/icons/image-add-line.svg",
             "emit": [Function],
             "handleAddImageClick": [Function],
+            "handleFileChange": [Function],
             "heading_1_icon": "/assets/icons/h1.svg",
             "heading_2_icon": "/assets/icons/h2.svg",
             "horizontalRule": [Function],
@@ -7513,6 +7516,9 @@ VueWrapper {
                 "setup": [Function],
               },
             },
+            "emits": [
+              "addImage",
+            ],
             "props": {
               "editor": {
                 "required": true,
@@ -7836,6 +7842,9 @@ VueWrapper {
               "setup": [Function],
             },
           },
+          "emits": [
+            "addImage",
+          ],
           "props": {
             "editor": {
               "required": true,
