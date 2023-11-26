@@ -15,7 +15,7 @@
 			<div class="w-full not-prose mb-6">
 				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange" />
 
-				<EditorCardTopMenu :editor="editor" />
+				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange" />
 			</div>
 
 			<hr class="not-prose mb-8">
