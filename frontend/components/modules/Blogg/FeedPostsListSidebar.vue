@@ -33,7 +33,6 @@
 						Innlegg lagret: 0
 					</span>
 				</template>
-
 			</logged-in-user-profile-card>
 		</div>
 
@@ -56,16 +55,14 @@
 
 			<div v-if="loggedInUserStore.loggedInUserProfile.num_of_following != 0">
 				<h3 class="text-[28px] mb-9">
-					Du følger
+					Du følger ({{ loggedInUserStore.loggedInUserProfile.num_of_following }})
 				</h3>
 				<div id="following">
 					<span v-for="following in loggedInUserStore.loggedInUserProfile.following">
 						<Following :following="following.username" :key="following.username" />
 					</span>
 				</div>
-				<!-- <span class="text-xs text-primary hover:text-primaryFixed">
-					Se alle ({{ loggedInUserStore.loggedInUserProfile.num_of_following}})
-				</span> -->
+
 			</div>
 
 			<div v-if="loggedInUserStore.loggedInUserProfile.num_of_following == 0">
