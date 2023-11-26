@@ -6,5 +6,10 @@ django-extensions==3.2.3
 django-filter==23.3
 Pillow==10.1.0
 
+# * I installed bs4 and all of these where said to be installed
+beautifulsoup4==4.12.2  # ? is this correct
+bs4==0.0.1 # ? is this correct
+soupsieve==2.5 # ? is this correct
+
 
 django-debug-toolbar==4.2.0

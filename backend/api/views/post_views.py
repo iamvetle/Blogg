@@ -22,14 +22,14 @@ from rest_framework.generics import (
     DestroyAPIView,
 )
 
-
+from rest_framework import parsers
 # Django Filter
 from django_filters import rest_framework as filters
 from api.services.pagination_services import CustomLimitOffsetPagination
 from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 # Local application imports
-from api.models import Post, SavedPost, Comment
+from api.models import Post, SavedPost, Comment, PostImage, PostVideo
 from api.serializers.post_serializers import (
     PostSerializer,
     PostSaveStyleSerializer,
@@ -41,10 +41,12 @@ from api.filters import CustomPostFilter
 from api.services.post_services import CreatePostService, PostSnippetService
 from api.services.search_services import SearchService
 
+
+from bs4 import BeautifulSoup
+
+from django.core.exceptions import ValidationError
+
 CustomUser = get_user_model()
-
-# queryset = Post.objects.all().order_by("-date_published")
-
 
 class PostAllLoggedInUserView(ListAPIView):  # /api/min-side/posts/
     """Retrieves all posts (in snippets) created by the logged in user"""
@@ -221,19 +223,58 @@ class PostSaveView(APIView):
                 )
 
 
+# class PostCreateView(APIView):
+#     """Creates a new post"""
+
+#     permission_classes = [IsAuthenticated]
+
+#     def post(self, request):
+#         serializer = PostSerializer(data=request.data, context={"request": request})
+#         if serializer.is_valid():
+#             serializer.save()
+
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         else:
+#             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
 class PostCreateView(APIView):
-    """Creates a new post"""
+    parser_classes = [parsers.MultiPartParser, parsers.FormParser]
 
-    permission_classes = [IsAuthenticated]
+    def post(self, request, *args, **kwargs):
+        try:
+            title = request.data.get('title')
+            content = request.data.get('content')
+            if not title or not content:
+                return Response({'error': 'Title and content are required.'}, status=status.HTTP_400_BAD_REQUEST)
 
-    def post(self, request):
-        serializer = PostSerializer(data=request.data, context={"request": request})
-        if serializer.is_valid():
-            serializer.save()
+            post = Post.objects.create(title=title, content=content, author=request.user)
 
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            image_map = {}
+            for key, image_file in request.FILES.items():
+                # Extract the unique identifier from the file name
+                image_id = key.split("_")[1]
+                image = PostImage.objects.create(post=post, image=image_file)
+                image_map[image_id] = image.image.url
+
+            soup = BeautifulSoup(content, 'html.parser')
+            for img in soup.find_all('img'):
+                alt_text = img.get('alt')
+                if alt_text in image_map:
+                    relativeImageSource = image_map[alt_text]
+                    actuallFullImageSource = f"http://localhost:8888{relativeImageSource}"                    
+                    img['src'] = actuallFullImageSource
+
+            post.content = str(soup)
+            post.save()
+
+            return Response({'status': 'Post created successfully'}, status=status.HTTP_201_CREATED)
+
+        except ValidationError as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            # Log the exception for debugging
+            return Response({'error': 'An unexpected error occurred.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class PostCommentsView(ListAPIView):
