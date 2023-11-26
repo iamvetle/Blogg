@@ -29,28 +29,27 @@ const emit = defineEmits(['update:modelValue']);
 const props = withDefaults(defineProps<{
     /**
      * The model value for the checkbox, typically bound using v-model.
-     * @type {any}
      */
     modelValue: any,
 
     /**
      * Optional label text to display next to the checkbox.
-     * @type {string}
-     * @default undefined
      */
     label?: string,
 
     /**
      * Optional CSS class for the label wrapper element.
-     * @type {string}
-     * @default "flex items-center space-x-2"
      */
     wrappClass?: string
 }>(), {
     wrappClass: "flex items-center space-x-2"
 });
 
-const localChecked = ref(props.modelValue);
+/**
+ * ! I know it is better to do it this way but I do not understand why especcialy why I have to have check if it is "null" first
+ * TODO to find that out ^
+ */
+const localChecked = ref(props.modelValue ? JSON.parse(JSON.stringify(props.modelValue)) : null)
 
 /**
  * Handles change event of the checkbox, emitting the updated value.
