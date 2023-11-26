@@ -13,12 +13,12 @@
 			</div>
 
 			<div class="w-full not-prose mb-6">
-				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange"/>
+				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange" />
 
 				<!-- <EditorBubbleMenu
 				:editor="editor"
 				/> -->
-				<EditorCardTopMenu :editor="editor"/>
+				<EditorCardTopMenu :editor="editor" />
 			</div>
 
 			<hr class="not-prose mb-8">
@@ -179,6 +179,33 @@ const unwatch = watch(() => props.initialPost, (newPost) => {
 	immediate: false // This will ensure the watcher doesn't trigger on initial setup
 });
 
+
+const handleImagePaste = async (event: any) => {
+	const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+
+	for (const item of items) {
+		if (item.type.indexOf("image") === 0) {
+			const blob = item.getAsFile();
+			const file = new File([blob], "pasted-image.png", { type: blob.type });
+
+			const uniqueId = generateUniqueId(); // Function to generate a unique ID.
+			const fileTempUrl = URL.createObjectURL(file);
+
+			if (fileTempUrl) {
+				// Store the file with its unique ID in the map
+				imageFileMap.value[uniqueId] = file;
+				console.log("handlePasteImage?")
+				console.log(uniqueId, fileTempUrl)
+
+				editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).run()
+			}
+			event.preventDefault();
+		}
+	}
+}
+
+
+
 /**
  * Tracks the "emptyness" of the editor
  */
@@ -191,6 +218,8 @@ onMounted(() => {
 	editor.value?.on("update", () => {
 		html.value = editor.value?.getHTML();
 	});
+
+	editor.value.view.dom.addEventListener('paste', handleImagePaste);
 });
 
 const formData = ref(new FormData())
@@ -226,39 +255,39 @@ const buttonCancelClick = () => {
 	router.push('/');
 };
 
-function removeImageFromMap(uniqueId:any) {
-    // Check if the image with the given ID exists in the map
-    if (imageFileMap.value.hasOwnProperty(uniqueId)) {
-        delete imageFileMap.value[uniqueId]; // Remove the image from the map
-        console.log(`Image with ID ${uniqueId} has been removed from the map.`);
-    } else {
-        console.log(`No image found with ID ${uniqueId}.`);
-    }
+function removeImageFromMap(uniqueId: any) {
+	// Check if the image with the given ID exists in the map
+	if (imageFileMap.value.hasOwnProperty(uniqueId)) {
+		delete imageFileMap.value[uniqueId]; // Remove the image from the map
+		console.log(`Image with ID ${uniqueId} has been removed from the map.`);
+	} else {
+		console.log(`No image found with ID ${uniqueId}.`);
+	}
 }
 
-const validateAndCleanImageMap = (htmlContent:any) => {
-    let parser = new DOMParser();
-    let doc = parser.parseFromString(htmlContent, 'text/html');
-    let imagesInContent = doc.querySelectorAll('img');
+const validateAndCleanImageMap = (htmlContent: any) => {
+	let parser = new DOMParser();
+	let doc = parser.parseFromString(htmlContent, 'text/html');
+	let imagesInContent = doc.querySelectorAll('img');
 
-    // Create a set of all image IDs present in the HTML content
-    let imageIdsInContent = new Set();
-    imagesInContent.forEach(img => {
-        let imageId = img.getAttribute('alt'); // Assuming 'alt' is used for storing the image ID
-        if (imageId) {
-            imageIdsInContent.add(imageId);
-        }
-    });
+	// Create a set of all image IDs present in the HTML content
+	let imageIdsInContent = new Set();
+	imagesInContent.forEach(img => {
+		let imageId = img.getAttribute('alt'); // Assuming 'alt' is used for storing the image ID
+		if (imageId) {
+			imageIdsInContent.add(imageId);
+		}
+	});
 
-    // Iterate over the keys in imageFileMap
-    Object.keys(imageFileMap.value).forEach(imageId => {
-        // Check if the image ID is not present in the HTML content
-        if (!imageIdsInContent.has(imageId)) {
-            // Remove the image from imageFileMap as it's not in the editor
-            removeImageFromMap(imageId);
-            console.log(`Image with ID ${imageId} has been removed from imageFileMap.`);
-        }
-    });
+	// Iterate over the keys in imageFileMap
+	Object.keys(imageFileMap.value).forEach(imageId => {
+		// Check if the image ID is not present in the HTML content
+		if (!imageIdsInContent.has(imageId)) {
+			// Remove the image from imageFileMap as it's not in the editor
+			removeImageFromMap(imageId);
+			console.log(`Image with ID ${imageId} has been removed from imageFileMap.`);
+		}
+	});
 }
 
 
@@ -298,9 +327,9 @@ const publishPost = () => {
 
 	// Append each file with its unique ID
 	for (let id in imageFileMap.value) {
-        let file = imageFileMap.value[id];
-        formData.value.append(`image_${id}`, file, `image_${id}_${file.name}`);
-    }
+		let file = imageFileMap.value[id];
+		formData.value.append(`image_${id}`, file, `image_${id}_${file.name}`);
+	}
 
 	emit('newPostMaterial', formData.value);
 
@@ -328,14 +357,14 @@ const handleAddImageChange = (event: any) => {
 	console.log("start of handle add Image change")
 	if (event) {
 		const file = event.target.files[0];
-        const uniqueId = generateUniqueId(); // Function to generate a unique ID.
-        const fileTempUrl = URL.createObjectURL(file);
+		const uniqueId = generateUniqueId(); // Function to generate a unique ID.
+		const fileTempUrl = URL.createObjectURL(file);
 		console.log("middle of handleaddimagechange")
 
 
 		if (fileTempUrl) {
-            // Store the file with its unique ID in the map
-            imageFileMap.value[uniqueId] = file;
+			// Store the file with its unique ID in the map
+			imageFileMap.value[uniqueId] = file;
 			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change")
 			console.log(uniqueId, fileTempUrl)
 
