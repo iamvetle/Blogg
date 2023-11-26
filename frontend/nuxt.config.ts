@@ -1,4 +1,4 @@
-import axios from 'axios';
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   devtools: {
@@ -12,6 +12,9 @@ export default defineNuxtConfig({
     vue: {
       script: {
         defineModel: true,
+      },
+      template: {
+        transformAssetUrls,
       },
     },
   },
@@ -31,6 +34,12 @@ export default defineNuxtConfig({
     "@formkit/nuxt",
     "@pinia/nuxt",
     "nuxt-vitest",
+    (_options, nuxt) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) => {
+        // @ts-expect-error
+        config.plugins.push(vuetify({ autoImport: true }))
+      })
+    },
   ],
   tailwindcss: {
     cssPath: "~/assets/css/tailwind.css",
