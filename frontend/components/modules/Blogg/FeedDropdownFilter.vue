@@ -53,7 +53,7 @@ const tagOptions = computed(() => {
  * The 'component' together with 'KeepAlive' caches the component state 
  * so that what is 'checked' with checkboxes doesnt dissapear when the tab is toggled
  */
-const dropdown = shallowRef<any>(false)
+const dropdown = ref<any>(false)
 const f = resolveComponent('FilterBox')
 const changeDropdown = () => {
     if (dropdown.value == f) {
