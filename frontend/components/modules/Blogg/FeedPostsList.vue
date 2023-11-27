@@ -6,6 +6,10 @@
 
 				<feed-post-preview-card :key="post.id">
 
+					<template #profile_picture>
+						<img v-show="true" :src="account_picture" alt="Bruker profilbilde" class=" w-6 h-auto me-2">
+					</template>
+
 					<template #author v-if="post.author">
 						<span @click="redirect_to_author_page(post.author.username)" class="cursor-pointer break-words">
 							<p class="font-bold" v-text="author_full_name(post.author)">
@@ -80,6 +84,7 @@
 <script setup lang="ts">
 import { usePostStore } from '~/store/postStore'
 
+import account_picture from '~/assets/account-pin-circle-line.svg'
 const post_image = ref('https://picsum.photos/500/300')
 
 const postStore = usePostStore()

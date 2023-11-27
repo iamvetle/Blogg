@@ -1,5 +1,5 @@
 <template>
-		<div v-if="ready"
+		<div
 			class="mt-8 max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28">
 			<div data-test="everything" class="col-span-6 mx-auto w-full">
 				<FeedMain/>
@@ -9,9 +9,6 @@
 			</div>
 		</div>
 		<!-- fallback -->
-		<div v-else>
-			<p>Not finished loading</p>
-		</div>
 </template>
 
 <script setup lang="ts">
