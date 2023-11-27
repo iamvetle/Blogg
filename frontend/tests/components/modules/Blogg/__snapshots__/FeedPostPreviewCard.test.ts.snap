@@ -24,11 +24,8 @@ VueWrapper {
             <span
               class="user-picture flex items-center"
             >
-              <img
-                alt="Bruker profilbilde"
-                class="w-6 h-auto me-2"
-                src="/assets/account-pin-circle-line.svg"
-              />
+              
+              
             </span>
             <span
               class="flex items-center justify-between w-full"
@@ -113,7 +110,6 @@ VueWrapper {
                 id="article-options"
               >
                 
-                More.
                 
               </span>
             </span>
@@ -367,26 +363,16 @@ VueWrapper {
           "bum": null,
           "c": null,
           "components": {},
-          "ctx": {
-            "hideProfileImage": false,
-          },
+          "ctx": {},
           "da": null,
           "data": {},
-          "devtoolsRawSetupState": {
-            "account_picture": "/assets/account-pin-circle-line.svg",
-            "props": {
-              "hideProfileImage": false,
-            },
-          },
+          "devtoolsRawSetupState": {},
           "directives": null,
           "ec": null,
           "effect": ReactiveEffect {
             "active": true,
             "allowRecurse": true,
             "deps": [
-              Set {
-                [Circular],
-              },
               Set {
                 [Circular],
               },
@@ -409,28 +395,14 @@ VueWrapper {
           "m": null,
           "next": null,
           "parent": [Circular],
-          "props": {
-            "hideProfileImage": false,
-          },
+          "props": {},
           "propsDefaults": {},
           "propsOptions": [
-            {
-              "hideProfileImage": {
-                "0": true,
-                "1": true,
-                "default": false,
-                "required": false,
-                "type": [Function],
-              },
-            },
-            [
-              "hideProfileImage",
-            ],
+            {},
+            [],
           ],
           "provides": {},
-          "proxy": {
-            "hideProfileImage": false,
-          },
+          "proxy": {},
           "refs": {},
           "render": [Function],
           "renderCache": [],
@@ -446,9 +418,6 @@ VueWrapper {
                 "active": true,
                 "allowRecurse": true,
                 "deps": [
-                  Set {
-                    [Circular],
-                  },
                   Set {
                     [Circular],
                   },
@@ -476,12 +445,7 @@ VueWrapper {
               "title": [Function],
             },
           },
-          "setupState": {
-            "account_picture": "/assets/account-pin-circle-line.svg",
-            "props": {
-              "hideProfileImage": false,
-            },
-          },
+          "setupState": {},
           "slots": {
             "amount-of-comments": [Function],
             "article_image": [Function],
@@ -528,46 +492,23 @@ VueWrapper {
                           {
                             "__v_isVNode": true,
                             "__v_skip": true,
-                            "anchor": null,
+                            "anchor": ,
                             "appContext": null,
-                            "children": null,
+                            "children": [],
                             "component": null,
                             "ctx": [Circular],
-                            "dirs": [
-                              {
-                                "arg": undefined,
-                                "dir": {
-                                  "beforeMount": [Function],
-                                  "beforeUnmount": [Function],
-                                  "getSSRProps": [Function],
-                                  "mounted": [Function],
-                                  "updated": [Function],
-                                },
-                                "instance": {},
-                                "modifiers": {},
-                                "oldValue": undefined,
-                                "value": true,
-                              },
-                            ],
+                            "dirs": null,
                             "dynamicChildren": null,
-                            "dynamicProps": [
-                              "src",
-                            ],
-                            "el": <img
-                              alt="Bruker profilbilde"
-                              class="w-6 h-auto me-2"
-                              src="/assets/account-pin-circle-line.svg"
-                            />,
-                            "key": null,
-                            "patchFlag": 8,
+                            "dynamicProps": null,
+                            "el": ,
+                            "key": "_profile_picture",
+                            "patchFlag": -2,
                             "props": {
-                              "alt": "Bruker profilbilde",
-                              "class": "w-6 h-auto me-2",
-                              "src": "/assets/account-pin-circle-line.svg",
+                              "key": "_profile_picture",
                             },
                             "ref": null,
                             "scopeId": null,
-                            "shapeFlag": 1,
+                            "shapeFlag": 16,
                             "slotScopeIds": null,
                             "ssContent": null,
                             "ssFallback": null,
@@ -576,7 +517,7 @@ VueWrapper {
                             "target": null,
                             "targetAnchor": null,
                             "transition": null,
-                            "type": "img",
+                            "type": Symbol(v-fgt),
                           },
                         ],
                         "component": null,
@@ -587,11 +528,8 @@ VueWrapper {
                         "el": <span
                           class="user-picture flex items-center"
                         >
-                          <img
-                            alt="Bruker profilbilde"
-                            class="w-6 h-auto me-2"
-                            src="/assets/account-pin-circle-line.svg"
-                          />
+                          
+                          
                         </span>,
                         "key": null,
                         "patchFlag": 0,
@@ -845,11 +783,8 @@ VueWrapper {
                       <span
                         class="user-picture flex items-center"
                       >
-                        <img
-                          alt="Bruker profilbilde"
-                          class="w-6 h-auto me-2"
-                          src="/assets/account-pin-circle-line.svg"
-                        />
+                        
+                        
                       </span>
                       <span
                         class="flex items-center justify-between w-full"
@@ -1434,36 +1369,7 @@ VueWrapper {
                                 "__v_skip": true,
                                 "anchor": ,
                                 "appContext": null,
-                                "children": [
-                                  {
-                                    "__v_isVNode": true,
-                                    "__v_skip": true,
-                                    "anchor": null,
-                                    "appContext": null,
-                                    "children": "More.",
-                                    "component": null,
-                                    "ctx": [Circular],
-                                    "dirs": null,
-                                    "dynamicChildren": null,
-                                    "dynamicProps": null,
-                                    "el": More.,
-                                    "key": null,
-                                    "patchFlag": 0,
-                                    "props": null,
-                                    "ref": null,
-                                    "scopeId": null,
-                                    "shapeFlag": 8,
-                                    "slotScopeIds": null,
-                                    "ssContent": null,
-                                    "ssFallback": null,
-                                    "staticCount": 0,
-                                    "suspense": null,
-                                    "target": null,
-                                    "targetAnchor": null,
-                                    "transition": null,
-                                    "type": Symbol(v-txt),
-                                  },
-                                ],
+                                "children": [],
                                 "component": null,
                                 "ctx": [Circular],
                                 "dirs": null,
@@ -1499,7 +1405,6 @@ VueWrapper {
                               id="article-options"
                             >
                               
-                              More.
                               
                             </span>,
                             "key": null,
@@ -1552,7 +1457,6 @@ VueWrapper {
                             id="article-options"
                           >
                             
-                            More.
                             
                           </span>
                         </span>,
@@ -1623,7 +1527,6 @@ VueWrapper {
                           id="article-options"
                         >
                           
-                          More.
                           
                         </span>
                       </span>
@@ -1662,11 +1565,8 @@ VueWrapper {
                     <span
                       class="user-picture flex items-center"
                     >
-                      <img
-                        alt="Bruker profilbilde"
-                        class="w-6 h-auto me-2"
-                        src="/assets/account-pin-circle-line.svg"
-                      />
+                      
+                      
                     </span>
                     <span
                       class="flex items-center justify-between w-full"
@@ -1751,7 +1651,6 @@ VueWrapper {
                         id="article-options"
                       >
                         
-                        More.
                         
                       </span>
                     </span>
@@ -1891,46 +1790,23 @@ VueWrapper {
               {
                 "__v_isVNode": true,
                 "__v_skip": true,
-                "anchor": null,
+                "anchor": ,
                 "appContext": null,
-                "children": null,
+                "children": [],
                 "component": null,
                 "ctx": [Circular],
-                "dirs": [
-                  {
-                    "arg": undefined,
-                    "dir": {
-                      "beforeMount": [Function],
-                      "beforeUnmount": [Function],
-                      "getSSRProps": [Function],
-                      "mounted": [Function],
-                      "updated": [Function],
-                    },
-                    "instance": {},
-                    "modifiers": {},
-                    "oldValue": undefined,
-                    "value": true,
-                  },
-                ],
+                "dirs": null,
                 "dynamicChildren": null,
-                "dynamicProps": [
-                  "src",
-                ],
-                "el": <img
-                  alt="Bruker profilbilde"
-                  class="w-6 h-auto me-2"
-                  src="/assets/account-pin-circle-line.svg"
-                />,
-                "key": null,
-                "patchFlag": 8,
+                "dynamicProps": null,
+                "el": ,
+                "key": "_profile_picture",
+                "patchFlag": -2,
                 "props": {
-                  "alt": "Bruker profilbilde",
-                  "class": "w-6 h-auto me-2",
-                  "src": "/assets/account-pin-circle-line.svg",
+                  "key": "_profile_picture",
                 },
                 "ref": null,
                 "scopeId": null,
-                "shapeFlag": 1,
+                "shapeFlag": 16,
                 "slotScopeIds": null,
                 "ssContent": null,
                 "ssFallback": null,
@@ -1939,7 +1815,7 @@ VueWrapper {
                 "target": null,
                 "targetAnchor": null,
                 "transition": null,
-                "type": "img",
+                "type": Symbol(v-fgt),
               },
               {
                 "__v_isVNode": true,
@@ -2388,36 +2264,7 @@ VueWrapper {
                 "__v_skip": true,
                 "anchor": ,
                 "appContext": null,
-                "children": [
-                  {
-                    "__v_isVNode": true,
-                    "__v_skip": true,
-                    "anchor": null,
-                    "appContext": null,
-                    "children": "More.",
-                    "component": null,
-                    "ctx": [Circular],
-                    "dirs": null,
-                    "dynamicChildren": null,
-                    "dynamicProps": null,
-                    "el": More.,
-                    "key": null,
-                    "patchFlag": 0,
-                    "props": null,
-                    "ref": null,
-                    "scopeId": null,
-                    "shapeFlag": 8,
-                    "slotScopeIds": null,
-                    "ssContent": null,
-                    "ssFallback": null,
-                    "staticCount": 0,
-                    "suspense": null,
-                    "target": null,
-                    "targetAnchor": null,
-                    "transition": null,
-                    "type": Symbol(v-txt),
-                  },
-                ],
+                "children": [],
                 "component": null,
                 "ctx": [Circular],
                 "dirs": null,
@@ -2522,11 +2369,8 @@ VueWrapper {
                   <span
                     class="user-picture flex items-center"
                   >
-                    <img
-                      alt="Bruker profilbilde"
-                      class="w-6 h-auto me-2"
-                      src="/assets/account-pin-circle-line.svg"
-                    />
+                    
+                    
                   </span>
                   <span
                     class="flex items-center justify-between w-full"
@@ -2611,7 +2455,6 @@ VueWrapper {
                       id="article-options"
                     >
                       
-                      More.
                       
                     </span>
                   </span>
@@ -2653,13 +2496,6 @@ VueWrapper {
             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/FeedPostPreviewCard.vue",
             "__name": "FeedPostPreviewCard",
             "components": {},
-            "props": {
-              "hideProfileImage": {
-                "default": false,
-                "required": false,
-                "type": [Function],
-              },
-            },
             "render": [Function],
             "setup": [Function],
           },
@@ -2687,11 +2523,8 @@ VueWrapper {
               <span
                 class="user-picture flex items-center"
               >
-                <img
-                  alt="Bruker profilbilde"
-                  class="w-6 h-auto me-2"
-                  src="/assets/account-pin-circle-line.svg"
-                />
+                
+                
               </span>
               <span
                 class="flex items-center justify-between w-full"
@@ -2776,7 +2609,6 @@ VueWrapper {
                   id="article-options"
                 >
                   
-                  More.
                   
                 </span>
               </span>
@@ -2819,13 +2651,6 @@ VueWrapper {
           "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/FeedPostPreviewCard.vue",
           "__name": "FeedPostPreviewCard",
           "components": {},
-          "props": {
-            "hideProfileImage": {
-              "default": false,
-              "required": false,
-              "type": [Function],
-            },
-          },
           "render": [Function],
           "setup": [Function],
         },
@@ -2895,11 +2720,8 @@ VueWrapper {
               <span
                 class="user-picture flex items-center"
               >
-                <img
-                  alt="Bruker profilbilde"
-                  class="w-6 h-auto me-2"
-                  src="/assets/account-pin-circle-line.svg"
-                />
+                
+                
               </span>
               <span
                 class="flex items-center justify-between w-full"
@@ -2984,7 +2806,6 @@ VueWrapper {
                   id="article-options"
                 >
                   
-                  More.
                   
                 </span>
               </span>
@@ -3238,11 +3059,8 @@ VueWrapper {
         <span
           class="user-picture flex items-center"
         >
-          <img
-            alt="Bruker profilbilde"
-            class="w-6 h-auto me-2"
-            src="/assets/account-pin-circle-line.svg"
-          />
+          
+          
         </span>
         <span
           class="flex items-center justify-between w-full"
@@ -3327,7 +3145,6 @@ VueWrapper {
             id="article-options"
           >
             
-            More.
             
           </span>
         </span>

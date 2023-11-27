@@ -16,7 +16,6 @@ describe('testing LoggedInUserProfileCard.vue', () => {
         "amount-of-followers":"243",
       },
       props: {
-        profilePictureProp: "~/src/something.jpg"
       }
     });
   });
@@ -26,13 +25,7 @@ describe('testing LoggedInUserProfileCard.vue', () => {
       wrapper.unmount();
     }
   });
-
-  test("props are being passed correctly", () => {
-    const ell = wrapper.get("[data-test='imgprop']")
-
-    expect(ell.attributes("src")).toBe("~/src/something.jpg")
-
-    expect(wrapper.text()).toMatchSnapshot()
-
+  test('Should exist', () => {
+    expect(wrapper.exists()).toBe(true)
   })
 });

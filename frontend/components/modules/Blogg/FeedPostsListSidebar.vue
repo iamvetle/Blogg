@@ -3,10 +3,13 @@
 
 		<div data-test="myprofile" class="w-full">
 
-			<logged-in-user-profile-card class="w-full"
-				:profile-picture-prop="loggedInUserStore.loggedInUserProfile.profile_picture ? loggedInUserStore.loggedInUserProfile.profile_picture : profile_picture">
+			<logged-in-user-profile-card class="w-full">
 
-				<template #username v-if="loggedInUserStore.loggedInUserProfile.username">
+				<template #profile_picture v-if="loggedInUserStore.loggedInUserProfile">
+					<img data-test="imgprop" :src="profilePicture" class="w-20 h-auto text-onPrimaryContainer mr-4">
+				</template>
+
+				<template	 #username v-if="loggedInUserStore.loggedInUserProfile.username">
 					{{ loggedInUserStore.loggedInUserProfile.username }}
 				</template>
 
@@ -93,6 +96,15 @@ const full_name = computed(() => {
 	} else {
 		return name
 	}
+})
+
+const profilePicture = computed(() => {
+	if (loggedInUserStore.loggedInUserProfile.profile_picture) {
+		return loggedInUserStore.loggedInUserProfile.profile_picture
+	} else {
+		return profile_picture
+	}
+
 })
 
 </script>

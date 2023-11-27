@@ -67,7 +67,7 @@ const factory = () => {
     })
 };
 
-describe('', () => {
+describe('Testing the single post component', () => {
 
     vi.stubGlobal('definePageMeta', () => {
         return null

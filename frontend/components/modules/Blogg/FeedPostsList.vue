@@ -16,7 +16,7 @@
 							</p>
 						</span>
 					</template>
-
+								
 					<template #date_published v-if="post.date_published">
 						<span>
 							<p class="font-light" v-text="post.date_published"></p>
@@ -36,7 +36,6 @@
 							</p>
 						</div>
 					</template>
-
 
 					<template #lesmer v-if="post.id">
 						<span class="cursor-pointer text text-primary hover:text-primaryFixed"

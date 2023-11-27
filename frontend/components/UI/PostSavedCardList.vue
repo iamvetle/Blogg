@@ -30,7 +30,7 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const loggedInUserStore = useLoggedInUserStore()
 
-const all_saved_posts = computed(() => loggedInUserStore.loggedInUserProfile.saved_posts)
+const all_saved_posts = computed(() => loggedInUserStore.loggedInUserProfile?.saved_posts ?? [])
 
 
 const redirect_to_post_page = (postId: any) => {

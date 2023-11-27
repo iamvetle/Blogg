@@ -3,9 +3,12 @@
         <FeedDropdownFilter />
     </div>
     <!-- This lists the (saved)articles in thes sidebar -->
-        <div id="feed-post-list-sidebar">
-            <FeedPostsListSidebar class="w-full" v-if="loggedInUserStore.loggedInUserProfile" />
-        </div>
+    <div v-if="loggedInUserStore.loggedInUserProfile" id="feed-post-list-sidebar">
+        <FeedPostsListSidebar class="w-full"/>
+    </div>
+    <div v-else>
+        <SkeletonFeedPostsListSidebar/>
+    </div>
 </template>
 
 <script setup lang="ts">

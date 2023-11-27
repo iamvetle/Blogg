@@ -20,7 +20,7 @@ const factory = () => {
                 "FeedPostsList": true,
                 "FeedTopSearch": true,
                 "FeedTopChoice": true,
-                SkeletonFeedPostsList:true
+                SkeletonFeedPostsList:true,
             },
             mocks: {
             },
@@ -89,9 +89,7 @@ describe('main feed part of the index page testing', () => {
 
         wrapper = factory()
 
-        postStore.posts = {
-            results: null
-        }
+        postStore.posts = null
 
         await wrapper.vm.$nextTick()
         
@@ -107,13 +105,10 @@ describe('main feed part of the index page testing', () => {
         const topChoice = wrapper.findComponent({ name: "FeedTopChoice" })
         expect(topChoice.exists()).toBe(false)
 
+        // The skeletons
+
         const skeletonFeedPostsList = wrapper.findComponent({ name:"SkeletonFeedPostsList" })
         expect(skeletonFeedPostsList.exists()).toBe(true)
-
-
-
-
-
     })
 
 })
