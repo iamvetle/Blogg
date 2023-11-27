@@ -59,7 +59,6 @@ const factory = () => {
             plugins: [pinia],
             components: { EditorButton },
             mocks: {
-                add_image_handle: mockAddImageFunction,
                 add_url_link_handle: mockAddUrlLinkFunction,
                 toggleBold: mockToggleBold,
                 toggleItalic: mockToggleItalic,
@@ -70,7 +69,7 @@ const factory = () => {
                 setRedo: mockSetRedo,
                 toggleBlockquote: mockToggleBlockquote,
                 toggleCodeBlock: mockToggleCodeBlock,
-                toggleHeading:mockToggleHeading
+                toggleHeading: mockToggleHeading
             },
             stubs: {
                 EditorButton: true
@@ -86,8 +85,6 @@ const factory = () => {
 describe('Testing the EditorCard top menu', () => {
 
     beforeEach(() => {
-
-
     });
 
     afterEach(() => {
@@ -170,54 +167,54 @@ describe('Testing the EditorCard top menu', () => {
         expect(topMenuContainer.classes()).toContain("flex")
     })
 
-        /** ITALIC OPTION TESTS */
+    /** ITALIC OPTION TESTS */
 
-        test('Should have a "italic" option component button', () => {
-            wrapper = factory()
-    
-            const italic = (wrapper as any).findComponent("[data-test='italic_option']");
-    
-            expect(italic.exists()).toBe(true)
-        })
-        test('The italic option should an "icon" prop with a "italic" icon value', () => {
-            wrapper = factory()
-    
-            const italic = (wrapper as any).findComponent("[data-test='italic_option']");
-    
-            expect(italic.exists()).toBe(true)
-    
-            expect(italic.props("icon")).toBeTruthy()
-            expect(italic.props("icon")).toBe(italic_icon)
-        });
-        test('The italic option should have "alt" be correct', () => {
-            wrapper = factory()
-    
-            const italic = (wrapper as any).findComponent("[data-test='italic_option']");
-    
-            expect(italic.attributes("alt")).toBe("Italic")
-    
-        });
-        test('If the italic option has a class, it should be string type', () => {
-            wrapper = factory()
-    
-            const italic = wrapper.findComponent("[data-test='italic_option']");
-    
-            if (italic) {
-    
-                expect(italic.attributes("class")).toBeTypeOf("string")
-    
-            } else {
-                expect(italic).toBeFalsy()
-            }
-    
-        })
-        test('The italic option should have the "isActive" prop with the correct value', () => {
-            wrapper = factory()
-    
-            const italic = (wrapper as any).findComponent("[data-test='italic_option']");
-    
-            expect(italic.props("isActive")).toBe(mockEditor.isActive('italic'))
-        })
+    test('Should have a "italic" option component button', () => {
+        wrapper = factory()
+
+        const italic = (wrapper as any).findComponent("[data-test='italic_option']");
+
+        expect(italic.exists()).toBe(true)
+    })
+    test('The italic option should an "icon" prop with a "italic" icon value', () => {
+        wrapper = factory()
+
+        const italic = (wrapper as any).findComponent("[data-test='italic_option']");
+
+        expect(italic.exists()).toBe(true)
+
+        expect(italic.props("icon")).toBeTruthy()
+        expect(italic.props("icon")).toBe(italic_icon)
+    });
+    test('The italic option should have "alt" be correct', () => {
+        wrapper = factory()
+
+        const italic = (wrapper as any).findComponent("[data-test='italic_option']");
+
+        expect(italic.attributes("alt")).toBe("Italic")
+
+    });
+    test('If the italic option has a class, it should be string type', () => {
+        wrapper = factory()
+
+        const italic = wrapper.findComponent("[data-test='italic_option']");
+
+        if (italic) {
+
+            expect(italic.attributes("class")).toBeTypeOf("string")
+
+        } else {
+            expect(italic).toBeFalsy()
+        }
+
+    })
+    test('The italic option should have the "isActive" prop with the correct value', () => {
+        wrapper = factory()
+
+        const italic = (wrapper as any).findComponent("[data-test='italic_option']");
+
+        expect(italic.props("isActive")).toBe(mockEditor.isActive('italic'))
+    })
 
     /** ---  */
 
@@ -448,14 +445,6 @@ describe('Testing the EditorCard top menu', () => {
         }
 
     })
-    test('There should be an add_image type of function', () => {
-        wrapper = factory()
-
-        const add_image_handle = wrapper.vm.add_image_handle
-
-        expect(add_image_handle).toBeDefined()
-        expect(typeof add_image_handle).toBe("function")
-    })
     test('The image option should NOT have the "isActive" prop with the correct value', () => {
         wrapper = factory()
 
@@ -464,6 +453,42 @@ describe('Testing the EditorCard top menu', () => {
         expect(image.exists()).toBe(true)
 
         expect(image.props("isActive")).not.toBeTruthy()
+    })
+    test('Inside of a span element there should be the button and the input type file ', () => {
+        wrapper = factory()
+
+        const addImageTeam = (wrapper as any).find("span[data-test='add_image_team']")
+        expect(addImageTeam.exists()).toBe(true)
+
+        expect(addImageTeam.findComponent({ name: "EditorButton" }).exists()).toBe(true)
+        expect(addImageTeam.find("input[data-test='top_input_image']").exists()).toBe(true)
+    })
+    test('When the editor button associated to the add image inpput is clicked the input should be "clicked" through ref attribute on element', async () => {
+        wrapper = factory()
+
+        const addImageTeam = (wrapper as any).find("span[data-test='add_image_team']")
+        expect(addImageTeam.exists()).toBe(true)
+
+        const addImageButtonForInput = addImageTeam.getComponent({ name: "EditorButton" })
+        const addImageInput = addImageTeam.find("input")
+
+        const clickSpy = vi.spyOn(addImageInput.element, "click")
+
+        // Clicks on the button
+        await addImageButtonForInput.trigger("click")
+
+        // Checks whether input was called/click on
+        expect(clickSpy).toHaveBeenCalledOnce();
+
+        // Tests the input "change"
+        await addImageInput.trigger("change")
+
+        await wrapper.vm.$nextTick()
+        
+        expect(wrapper.emitted("addImage")).toBeTruthy()
+
+        // Clean up the spy
+        clickSpy.mockRestore();
     })
 
     /** URL OPTIONS */
@@ -962,30 +987,30 @@ describe('Testing the EditorCard top menu', () => {
         expect(heading3.props("isActive")).toBe(mockEditor.isActive('heading', { level: 3 }))
     })
 
-        /** --- */
+    /** --- */
 
-        test('There should be a wrapper around the add heading 1, 2 and 3 options', () => {
-            wrapper = factory()
-    
-            const addOptions = wrapper.get("#heading_options")
-    
-            expect(addOptions.classes()).toContain("flex")
-            expect(addOptions.exists()).toBe(true)
-            expect(addOptions.element.tagName).toBe("DIV")
-    
-            const all_components_in_div = addOptions.findAllComponents({ name: "EditorButton" })
-    
-            expect(all_components_in_div).toHaveLength(3)
-    
-            const heading1 = addOptions.findComponent("[data-test='heading1_option']")
-            expect(heading1.exists()).toBe(true)
-    
-            const heading2 = addOptions.findComponent("[data-test='heading2_option']")
-            expect(heading2.exists()).toBe(true)
+    test('There should be a wrapper around the add heading 1, 2 and 3 options', () => {
+        wrapper = factory()
 
-            const heading3 = addOptions.findComponent("[data-test='heading3_option']")
-            expect(heading3.exists()).toBe(true)
-        })
+        const addOptions = wrapper.get("#heading_options")
+
+        expect(addOptions.classes()).toContain("flex")
+        expect(addOptions.exists()).toBe(true)
+        expect(addOptions.element.tagName).toBe("DIV")
+
+        const all_components_in_div = addOptions.findAllComponents({ name: "EditorButton" })
+
+        expect(all_components_in_div).toHaveLength(3)
+
+        const heading1 = addOptions.findComponent("[data-test='heading1_option']")
+        expect(heading1.exists()).toBe(true)
+
+        const heading2 = addOptions.findComponent("[data-test='heading2_option']")
+        expect(heading2.exists()).toBe(true)
+
+        const heading3 = addOptions.findComponent("[data-test='heading3_option']")
+        expect(heading3.exists()).toBe(true)
+    })
 });
 
 /** SNAPSHOT */

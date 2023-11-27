@@ -43,10 +43,17 @@
         </div>
 
         <!-- Add image and Add URL - sat to false -->
-        <div v-show="false" id="add_options" class="flex space-x-2">
-            <span class="option-holder">
+        <div v-show="true" id="add_options" class="flex space-x-2">
+
+            <span class="option-holder" data-test="add_image_team">
+				<EditorButton @click="handleAddImageClick" :icon="image_add_icon" alt="Add image" data-test="image_option" />
+				<input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="top_input_image"/>
+			</span>
+
+
+            <!-- <span class="option-holder">
                 <EditorButton @click="$emit('addImage')" data-test="image_option" :icon="image_add_icon" alt="Add image" />
-            </span>
+            </span> -->
 
             <span class="option-holder">
                 <EditorButton @click="add_url_link_handle" data-test="url_link_option" :icon="url_link_add_icon"
@@ -98,10 +105,13 @@ import heading3_icon from '~/assets/icons/h3.svg'
 
 
 import { Editor } from '@tiptap/core';
+import { defineEmits } from 'vue';
 
 defineProps<{
     editor: Editor | undefined
 }>();
+
+const emit = defineEmits(["addImage"])
 
 const add_url_link_handle = () => {
     return null
@@ -159,6 +169,21 @@ const toggleCodeBlock = (editor: any) => {
 // 	editor.value.chain().focus().toggleBold().run()
 // }
 
+const addImageRef = ref<any>(null)
+
+/**
+ * Through this I can "click" on an input (file) element
+ * 
+ * This sends a "click" to the hidden input element
+ */
+ const handleAddImageClick = () => {
+	addImageRef.value.click()
+}
+
+const handleFileChange = (event:any) => {
+    const file = event;
+    emit("addImage", file)
+}
 
 
 </script>

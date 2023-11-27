@@ -13,12 +13,9 @@
 			</div>
 
 			<div class="w-full not-prose mb-6">
-				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange"/>
+				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange" />
 
-				<!-- <EditorBubbleMenu
-				:editor="editor"
-				/> -->
-				<EditorCardTopMenu :editor="editor"/>
+				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange" />
 			</div>
 
 			<hr class="not-prose mb-8">
@@ -47,7 +44,6 @@
 <script setup lang="ts">
 
 import { useEditor, EditorContent } from '@tiptap/vue-3'
-// import { BubbleMenu } from '@tiptap/vue-3';
 import Document from '@tiptap/extension-document' // required
 import BulletList from '@tiptap/extension-bullet-list'
 import CodeBlock from '@tiptap/extension-code-block'
@@ -56,7 +52,6 @@ import HorizontalRule from '@tiptap/extension-horizontal-rule'
 import ListItem from '@tiptap/extension-list-item'
 import OrderedList from '@tiptap/extension-ordered-list'
 import Code from '@tiptap/extension-code'
-// import Strike from '@tiptap/extension-strike'
 import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
 import Heading from '@tiptap/extension-heading'
@@ -79,9 +74,6 @@ const props = defineProps<{
 	initialPost?: string;
 }>();
 
-
-// const errorHappened = ref(null)
-
 /**
  * This variable dictates whether the Modal is shown or not.
  * 
@@ -89,14 +81,17 @@ const props = defineProps<{
  * False: Modal is hidden.
 */
 const showModal = ref(false)
+
+/** This just stores all of the writte html as a string and gets regularly updated */
 const html = ref<string | null | undefined>(null);
 const route = useRoute()
 
 const imageFileMap = ref<any>({}); // Object to store the mapping of unique ID and file
 
-
-/** This two are just so that I can share them between the button 
- * click function and the modal publish function*/
+/** 
+ * This two are just so that I can share them between 
+ * the button click function and the modal publish function
+ */
 const title = ref<string | null | undefined>(null);
 const body = ref<string | null | undefined>(null);
 
@@ -108,13 +103,6 @@ const editor: any = useEditor({ //@ts-ignore
 			levels: [1, 2, 3]
 		}),
 		Blockquote,
-		// Subscript,
-		// Placeholder.configure({
-		// 	placeholder: '123',
-		// 	showOnlyWhenEditable: false,
-		// 	includeChildren: true,	
-		// 	showOnlyCurrent: false
-		// }),
 		BulletList,
 		Image.configure({
 			allowBase64: true,
@@ -129,28 +117,12 @@ const editor: any = useEditor({ //@ts-ignore
 		HorizontalRule,
 		ListItem,
 		OrderedList,
-		// Superscript,
-		// Subscript,
-		// Strike,
 		Gapcursor,
-		// Table.configure({
-		// 	resizable: true,
-		// }),
-		// TableRow,
-		// TableHeader,
-		// TableCell,
 		History,
-		// Youtube.configure({
-		// nocookie: true,
-		// }),
 		Dropcursor,
 		Document,
 		Paragraph,
 		Text, // required
-		// TaskList,
-		// TaskItem.configure({
-		// nested: true,
-		// }),
 		Italic,
 		Link.configure({ //@ts-ignore
 			validate: href => /^https?:\/\//.test(href),
@@ -158,6 +130,7 @@ const editor: any = useEditor({ //@ts-ignore
 		Bold,
 		Underline,
 		Code,
+		// Placeholder later on
 		// Youtube,
 	],
 
@@ -170,14 +143,47 @@ const editor: any = useEditor({ //@ts-ignore
 	autofocus: true
 })
 
+/**
+ * The watcher works as a "one-time" event. It fires once
+ */
 const unwatch = watch(() => props.initialPost, (newPost) => {
 	if (newPost) {
 		editor.value.commands.setContent(newPost);
 		unwatch(); // Unwatch after the first trigger
 	}
 }, {
-	immediate: false // This will ensure the watcher doesn't trigger on initial setup
+	immediate: false // ? This will ensure the watcher doesn't trigger on initial setup
 });
+
+
+/**
+ * Retrieves the file that was just pasted (before it turns into base64 string)
+ * and then calls a fun
+ * 
+ * @param event - The file that was pasted
+ */
+const handleImagePaste = async (event: any) => {
+	const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+
+	for (const item of items) {
+		if (item.type.indexOf("image") === 0) {
+			const blob = item.getAsFile();
+			const file = new File([blob], "pasted-image.png", { type: blob.type });
+
+			const uniqueId = generateUniqueId(); // Function to generate a unique ID.
+			const fileTempUrl = URL.createObjectURL(file);
+
+			if (fileTempUrl) {
+				// Store the file with its unique ID in the image map
+				imageFileMap.value[uniqueId] = file;
+				editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).run()
+			}
+			event.preventDefault();
+		}
+	}
+}
+
+
 
 /**
  * Tracks the "emptyness" of the editor
@@ -188,18 +194,24 @@ const unwatch = watch(() => props.initialPost, (newPost) => {
  * On update it takes and updates the HTML value?
  */
 onMounted(() => {
+	/**
+	 * ? Not sure how this works. Each time the component updates the html updates?
+	 */
 	editor.value?.on("update", () => {
 		html.value = editor.value?.getHTML();
 	});
 });
+
+onMounted(() => {
+	editor.value.view.dom.addEventListener('paste', handleImagePaste);
+})
 
 const formData = ref(new FormData())
 
 // BUTTON ACTIONS
 
 /**
- * Tries to publish the post. First, extracts the title and content and then
- * shows a modal for confirmation.
+ * Activates the next steps to publish the post -> calls the comfirmation modal
  */
 const buttonTryPublishClick = async () => {
 	html.value = editor.value?.getHTML();
@@ -226,64 +238,13 @@ const buttonCancelClick = () => {
 	router.push('/');
 };
 
-function removeImageFromMap(uniqueId:any) {
-    // Check if the image with the given ID exists in the map
-    if (imageFileMap.value.hasOwnProperty(uniqueId)) {
-        delete imageFileMap.value[uniqueId]; // Remove the image from the map
-        console.log(`Image with ID ${uniqueId} has been removed from the map.`);
-    } else {
-        console.log(`No image found with ID ${uniqueId}.`);
-    }
-}
-
-const validateAndCleanImageMap = (htmlContent:any) => {
-    let parser = new DOMParser();
-    let doc = parser.parseFromString(htmlContent, 'text/html');
-    let imagesInContent = doc.querySelectorAll('img');
-
-    // Create a set of all image IDs present in the HTML content
-    let imageIdsInContent = new Set();
-    imagesInContent.forEach(img => {
-        let imageId = img.getAttribute('alt'); // Assuming 'alt' is used for storing the image ID
-        if (imageId) {
-            imageIdsInContent.add(imageId);
-        }
-    });
-
-    // Iterate over the keys in imageFileMap
-    Object.keys(imageFileMap.value).forEach(imageId => {
-        // Check if the image ID is not present in the HTML content
-        if (!imageIdsInContent.has(imageId)) {
-            // Remove the image from imageFileMap as it's not in the editor
-            removeImageFromMap(imageId);
-            console.log(`Image with ID ${imageId} has been removed from imageFileMap.`);
-        }
-    });
-}
-
-
-
-// MODAL EMITS/EVENTS 2/2
-
-/** The modal can return TWO things */
-
-// 1/2
-
 /** 
- * Button action
- * 
- * Emits the new post data and clears the editor content.
- * 
- * ! Problemet mitt er at jeg ikke vet hvordan jeg skal legge til IMAGE(S) sammen med TITLE og BODY/CONTENT
- * ! OG
- * ! Hvordan jeg skal kommunisere mellom editor floating menu og editor card
- * * akk nå tror jeg at editorfloating bare sender en emit sammen med event(eller ikek?) opp til denne componentetn
+ * Emits an event to parent saying post should be published 
  * 
  * * Only called by modal
  */
 const publishPost = () => {
 	console.log("publish post was called")
-
 
 	showModal.value = false;
 	generalStore.turnBackgroundForModel(null);
@@ -291,51 +252,52 @@ const publishPost = () => {
 	formData.value.append("title", title.value || "");
 	formData.value.append("content", body.value || "");
 
-	validateAndCleanImageMap(body.value)
-
-	console.log("validateimagesincontent is supposed to have been alled now")
-
+	imageFileMap.value = validateAndCleanImageMap(body.value, imageFileMap.value)
 
 	// Append each file with its unique ID
 	for (let id in imageFileMap.value) {
-        let file = imageFileMap.value[id];
-        formData.value.append(`image_${id}`, file, `image_${id}_${file.name}`);
-    }
+		let file = imageFileMap.value[id];
+		formData.value.append(`image_${id}`, file, `image_${id}_${file.name}`);
+	}
 
+	// Tells the parents component that the post can be published
 	emit('newPostMaterial', formData.value);
 
-
 	editor.value?.chain().focus().clearContent().run();
+
+	// Removes all currently stored images and their ids
 	imageFileMap.value = {}
 
-	// removes everything anbd starts new
+	// Creates a new formData object
 	formData.value = new FormData()
 };
 
-// 2/2
 /**
- * Cancels publishing and resets the modal state.
+ * Cancels publishing
+ * * Called by the modal
  */
 const cancelPublishing = () => {
 	showModal.value = false;
 	generalStore.turnBackgroundForModel(null);
 };
 
-
-/** METHODS FOR THE EDITOR */
-
+/**
+ * Handles the process when an image is added through file input
+ * 
+ * @param event - The image file
+ */
 const handleAddImageChange = (event: any) => {
 	console.log("start of handle add Image change")
 	if (event) {
 		const file = event.target.files[0];
-        const uniqueId = generateUniqueId(); // Function to generate a unique ID.
-        const fileTempUrl = URL.createObjectURL(file);
+		const uniqueId = generateUniqueId(); // Function to generate a unique ID.
+		const fileTempUrl = URL.createObjectURL(file);
 		console.log("middle of handleaddimagechange")
 
 
 		if (fileTempUrl) {
-            // Store the file with its unique ID in the map
-            imageFileMap.value[uniqueId] = file;
+			// Store the file with its unique ID in the map
+			imageFileMap.value[uniqueId] = file;
 			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change")
 			console.log(uniqueId, fileTempUrl)
 
@@ -348,6 +310,7 @@ const handleAddImageChange = (event: any) => {
 
 /**
  * Fils the content if there is a post content inside of sessionstorage
+ * ? what is this
  */
 onMounted(() => {
 	if (editor) {
@@ -365,17 +328,12 @@ onMounted(() => {
 })
 
 /**
- * This saves the content into sessionstorage
+ * Saves the content of the post to sessionStorage
  */
 onUnmounted(() => {
-	/** 
- * Retrieves the text that has been written in the 
- * text editor, as HTML.
- */
 	const htmlPost = editor.value?.getHTML()
 
 	sessionStorage.setItem("htmlPost", htmlPost)
-
 })
 
 

@@ -37,6 +37,7 @@ const factory = () => {
 describe('Testing the uploadimage component', () => {
 
     beforeEach(() => {
+        
     });
 
     afterEach(() => {

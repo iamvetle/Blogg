@@ -46,6 +46,11 @@ const props = defineProps<{
 	editor: Editor | undefined
 }>();
 
+/**
+ * Through this I can "click" on an input (file) element
+ * 
+ * This sends a "click" to the hidden input element
+ */
 const handleAddImageClick = () => {
 	addImageRef.value.click()
 }
