@@ -23,7 +23,6 @@ const factory = () => {
 
 describe('Testing the skeleton of the feedpostslist', () => {
     beforeEach(() => {
-
     });
 
     afterEach(() => {
