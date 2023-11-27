@@ -13,17 +13,17 @@
 
 <script setup lang="ts">
 import { usePostStore } from '~/store/postStore'
-import { useGeneralStore } from '~/store/generalStore';
+// import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+// import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePaginationStore } from '~/store/paginationStore';
 
 // Importing all stores
 
 const postStore = usePostStore()
-const generalStore = useGeneralStore()
+// const generalStore = useGeneralStore()
 const searchStore = useSearchStore()
-const loggedInUserStore = useLoggedInUserStore()
+// const loggedInUserStore = useLoggedInUserStore()
 const paginationStore = usePaginationStore()
 
 definePageMeta({
@@ -41,13 +41,13 @@ definePageMeta({
  * 
  * ? maybe i should have this in a store instead ?
  */
-const ready = computed(() => {
-	if ((postStore.posts) && (loggedInUserStore.loggedInUserProfile) && (generalStore.isAuthenticated)) {
-		return true
-	} else {
-		return false
-	}
-})
+// const ready = computed(() => {
+// 	if ((postStore.posts) && (loggedInUserStore.loggedInUserProfile) && (generalStore.isAuthenticated)) {
+// 		return true
+// 	} else {
+// 		return false
+// 	}
+// })
 
 // Declerations
 
