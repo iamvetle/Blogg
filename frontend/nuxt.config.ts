@@ -1,4 +1,3 @@
-
 export default defineNuxtConfig({
   devtools: {
     enabled: true,
@@ -7,6 +6,7 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
+
   vite: {
     vue: {
       script: {
@@ -16,13 +16,15 @@ export default defineNuxtConfig({
   },
   components: [
     {
-    path: '~/components',
-    pathPrefix: false,
+      path: '~/components',
+      pathPrefix: false,
     },
   ],
   imports: {
-    dirs:['./typescript', './store', './composables/crud']
+    dirs: ['./typescript', './store', './composables/crud', './composables/editor']
+
   },
+
   modules: [
     "@nuxtjs/tailwindcss",
     //"@nuxtjs/eslint-module",

@@ -42,9 +42,6 @@ export interface AllFollowersType { // With pagination
 	current_page: number | null;
 	results: FollowerType[]
 }
-export interface FollowerType {
-	username: string;
-}
 
 /**
  * url: /api/min-side/following/
@@ -57,5 +54,9 @@ export interface AllFollowingType { // With pagination
 	results: FollowingType[]
 }
 export interface FollowingType {
+	username: string;
+}
+
+export interface FollowerType {
 	username: string;
 }

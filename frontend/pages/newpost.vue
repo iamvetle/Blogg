@@ -1,15 +1,12 @@
 <template>
 	<div id="postFormWrapper" class="mt-2 mb-16">
-		<div class="max-w-3xl py-4 mx-auto prose">
-			<div id="direct-editor" :class="editorContainerClass">
+		<div class="max-w-4xl py-4 mx-auto prose">
+
+			<div id="direct-editor">
 				<EditorCard @newPostMaterial="publish" />
 			</div>
-
-			<!-- icons -->
-			<div class="icons flex text-gray-500 m-2">
-			</div>
-			<!-- buttons -->
-			<div class="buttons flex">
+			
+			<div class="flex">
 				<div v-if="postState">
 					<p>Nytt innlegg lagt til!</p>
 				</div>
@@ -23,27 +20,29 @@ import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 import { postCreateNewPost } from '../composables/crud/postCreateNewPost';
 
 definePageMeta({
-	layout: "default"
+	layout: "creating"
 })
 
 const baseURL = "http://localhost:8888/api/newpost/"
 
+/** If this is true a success message is rendered */
 const postState = ref<false | true | null>(null);
 
-
 /** 
- * This controls the outer-styling that the text editor has and can be
- * changed dynamically.
+ * * Final publishing step 
  */
-const editorContainerClass = ref("w-full px-[60px] py-[30px] bg-white flex flex-col text-gray-800 border border-gray-300 shadow-lg")
+const publish = async (postContent:object) => {
+	const responseData = await postCreateNewPost(baseURL, postContent)
 
-const publish = async (data:object) => {
-	const response = await postCreateNewPost(baseURL, data)
+	if (responseData) {
+		postState.value = true
 
-	if (response) {
-		postState.value = response.data
+		setTimeout(() => {
+			navigateTo("/minkonto");
+		}, 1000);
 	} else {
-		console.log("Failed to publish the post")
+		// console.log("Failed to publish the post") // print to self
+		return null
 	}
 }
 

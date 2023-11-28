@@ -1,0 +1,190 @@
+{
+	// Place your frontend workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+		"Vue Test Utils with factory function": {
+			"prefix": "vueSetupTest",
+			"body": [
+				"import $1",
+				"import { shallowMount } from '@vue/test-utils';",
+				"import { describe, expect, test, beforeEach, afterEach } from 'vitest';",
+				"",
+				"let wrapper: any;",
+				"",
+				"const factory = () => {",
+				"    return shallowMount($6, {",
+				"        global: {",
+				"            plugins: [],",
+				"            components: {$7},",
+				"            mocks: {},",
+				"            stubs: {},",
+				"        },",
+				"        props: {$8},",
+				"        slots: {}",
+				"    })",
+				"};",
+				"",
+				"describe('$9', () => {",
+				"",
+				"",
+				"    // vi.stubGlobal('useRoute', () => {",
+				"    //     return {",
+				"    //         params: {",
+				"    //             id: 1",
+				"    //         }",
+				"    //     }",
+				"    // });",
+				"",
+				"    beforeEach(() => {",
+				"        // generalStore = useGeneralStore(pinia); $10",
+				"        // postStore = usePostStore(pinia); $11",
+				"        // loggedInUserStore = useLoggedInUserStore(pinia); $12",
+				"        // paginationStore = usePaginationStore(pinia); $13",
+				"",
+				"    });",
+				"",
+				"    afterEach(() => {",
+				"        if (wrapper) {",
+				"            wrapper.unmount();",
+				"        }",
+				"    });",
+				"$0",
+				"});"
+			],
+			"description": "Vue Test Utils snippet with a factory function for setup"
+		},
+	"Vue Mount Component": {
+		"prefix": "vueMount",
+		"body": [
+		"const wrapper = shallowMount($1, {",
+		"  global: {",
+		"    plugins: [$2],",
+		"    components: {$3},",
+		"    mocks: {},",
+		"    stubs: {}",
+		"  },",
+		"	props:{$4}",
+		"})",
+		"$0"
+		],
+		"description": "Snippet for mounting a Vue component with Vue Test Utils"
+	},
+
+	"Vue Test Block": {
+		"prefix": "vueTest",
+		"body": [
+		"test('$1', () => {",
+		"  $0",
+		"})"
+		],
+		"description": "Snippet for a simple Vue test block"
+	},
+	"Vue Async Test Block": {
+		"prefix": "vueAsyncTest",
+		"body": [
+		"test('$1', async () => {",
+		"	$0",
+		"})"
+		],
+		"description": "Snippet for a simple async Vue test block"
+	},
+	"Vue Expect": {
+		"prefix": "vueExpect",
+		"body": [
+		"expect($1).$2",
+		"",
+		"$0"
+		],
+		"description": "Snippet for writing an expect statement in Vue tests"
+	},
+
+	"Log wrapper html": {
+		"prefix": "vueLogHTML",
+		"body": [
+			"console.log(wrapper.html())",
+			"",
+			"$0"
+		],
+		"description": "Snippet for setting up a logging setup for the wrapper html in Vue Tests"
+	},
+
+	"Wrapper nextTick()": {
+		"prefix": "vueTick",
+		"body": [
+			"await wrapper.vm.$$nextTick()",
+			"",
+			"$0"
+		],
+		"description": "Snippet for setting for waiting on DOM change"
+	},
+		"Post Store Detailed Initialization": {
+			"prefix": "vueInitPostSnippets",
+			"body": [
+				"postStore.posts = {",
+				"    \"count\": 31,",
+				"    \"next\": \"http://localhost:8888/api/feed/?page=3\",",
+				"    \"previous\": \"http://localhost:8888/api/feed/\",",
+				"    \"current_page\": 2,",
+				"    \"results\": [",
+				"        {",
+				"            \"id\": 17,",
+				"            \"title\": \"This is a title that is made by bob\",",
+				"            \"author\": {",
+				"                \"username\": \"bob\",",
+				"                \"first_name\": \"Bob\",",
+				"                \"last_name\": \"Smith\",",
+				"            },",
+				"            \"content_snippet\": \"Lorem ipsum...\",",
+				"            \"date_published\": \"08-12-2021\",",
+				"            \"num_of_comments\": 526,",
+				"            \"images\": [",
+				"                {",
+				"                    \"image\": \"~/src/something/image.jpeg\"",
+				"                },",
+				"                {",
+				"                    \"image\": \"~/src/fruit/life.png\"",
+				"                }",
+				"            ]",
+				"        },",
+				"        {",
+				"            \"id\": 19,",
+				"            \"title\": \"This is a title James\",",
+				"            \"author\": {",
+				"                \"username\": \"jammy\",",
+				"                \"first_name\": \"James\",",
+				"                \"last_name\": \"Brown\",",
+				"            },",
+				"            \"content_snippet\": \"Test content content yes\",",
+				"            \"date_published\": \"18-10-2022\",",
+				"            \"num_of_comments\": 98,",
+				"            \"images\": [",
+				"                {",
+				"                    \"image\": \"~/src/africa/elefant.jpeg\"",
+				"                },",
+				"                {",
+				"                    \"image\": \"~/src/vegetables/pingpong.png\"",
+				"                }",
+				"            ]",
+				"        }",
+				"    ]",
+				"}"
+			],
+			"description": "Initialize postStore with detailed sample data including images"
+		}
+	
+}
+

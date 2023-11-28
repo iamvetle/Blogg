@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="site-wrapper"
-    class="flex flex-col"
-  >
+  <div id="site-wrapper" class="flex flex-col">
     <div>
       <h2 class="text-2xl inline">
         Search results for: <span class="inline pl-2">
@@ -10,11 +7,9 @@
         </span>
       </h2>
       <div v-if="postStore.posts">
-        <ArticleCard
-          v-for="post, index in postStore.posts.results"
-          :key="index"
-          :post-detail="post"
-        />
+        <div v-for="post in postStore.posts.results">
+          <FeedPostPreviewCard :key="post.id" :post-detail="post" />
+        </div>
       </div>
     </div>
     <p v-if="no_posts_found">
@@ -37,11 +32,9 @@ const postStore = usePostStore()
 const no_posts_found = ref(false)
 
 definePageMeta({
-    layout:"default"
+  layout: "default"
 })
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

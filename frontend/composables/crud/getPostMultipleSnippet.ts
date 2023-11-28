@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { usePostStore } from '~/store/postStore'
+import { getMethod } from '~/services/apiByCRUD';
 
 /**
  * This function fetches data in GET based to the specified URL.
@@ -8,57 +8,49 @@ import { usePostStore } from '~/store/postStore'
  * @returns The response from the API endpoint
  */
 
-export const getPostMultipleSnippet = async (url:string) => {
+export const getPostMultipleSnippet = async (url: string): Promise<SnippetPostMultipleType | null> => {
 
-	try {
-		const postStore = usePostStore()
+	const postStore = usePostStore()
 
-		const token = localStorage.getItem("token");
-		const headers = {
-			"Content-Type": "application/json",
-			"Authorization": `Token ${token}`,
-		};
-		
-		console.log({ token }) // print to self
-		console.log(headers) // print to self
+	/**
+	 * Fetches the token from local storage, or just returns null.
+	 */
+	const token = retrieveToken();
 
-		/** It uses the last set URL */
-		const response = await axios.get(url, { headers });
+	if (token === null) {
+		console.log("There was not token")
+		return null
+	}
+	const headers = {
+		"Content-Type": "application/json",
+		Authorization: `Token ${token}`
+	}
 
-		console.log(toRaw(response)) // print to self
+	/** It uses the last set URL */
+	const response = await getMethod(url, headers);
 
-		if (response.data != null) {
-			console.log("OK: Followers fetched", response.status, response.data); // print to self
-			
-			/** This makes the FeedPagination component adhere to the current posts. 
-			 * This makes sure that the pagination component 'next button', for instance, is
-			 * in sync with the next expected posts.
-			*/
-			await fixPagination(response.data)
+	//console.log(toRaw(response)) // print to self
 
-			postStore.posts = response.data
+	if (response) {
+		// console.log("OK: Followers fetched", response.status, response.data); // print to self
 
-			/**
-			 * Has the option to return the response **directly** as well.
-			 * This can be usefull to check if the response was 200 OK, for instance.
-			 */
-			return response
-		} 
+		/** This makes the FeedPagination component adhere to the current posts. 
+		 * This makes sure that the pagination component 'next button', for instance, is
+		 * in sync with the next expected posts.
+		*/
+		await fixPagination(response.data)
 
-		/** If a response was given, but the content has essentially empty */
-		if (response.data == null) {
-			console.log("OBS! Fetching succedded, but response(data) was:", response.status, response.data) // print to self
-			
-			postStore.posts = null
-			/**
-			 * I *hope* it is not bad that I correct the status code, in case it returns 200OK or is just empty.
-			 */
-			response.status = 400 // 404 status code means 'bad request'
-			
-			return response
-		}
-	} catch (error) {
-		console.error("ERROR: An error occured while trying to fetch followers: ", error); // print to self
-		return null;
+		/**
+		 * TODO take the assigning to posstore down to page level
+		 */
+		postStore.posts = response.data
+
+		/**
+		 * Has the option to return the response **directly** as well.
+		 * This can be usefull to check if the response was 200 OK, for instance.
+		 */
+		return response.data
+	} else {
+		return null
 	}
 }

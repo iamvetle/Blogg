@@ -101,7 +101,7 @@ const click_next_page = async () => {
 		paginationStore.activeFetchURL = paginationStore.next_page
 
 
-		await getPostMultipleSnippet()
+		await getPostMultipleSnippet(paginationStore.activeFetchURL)
 	} else {
 		console.log("cannot go any further")
 	}
@@ -116,7 +116,7 @@ const click_previous_page = async () => {
 	if (paginationStore.previous_page != null) {
 		paginationStore.activeFetchURL = paginationStore.previous_page
 
-		await getPostMultipleSnippet()
+		await getPostMultipleSnippet(paginationStore.activeFetchURL)
 	} else {
 		console.log("cannot go any more back")
 	}

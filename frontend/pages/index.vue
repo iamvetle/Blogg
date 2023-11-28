@@ -1,83 +1,55 @@
 <template>
-	<div id="site-wrapper" v-if="generalStore.isAuthenticated" class="mt-8">
-		<div v-if="(postStore.posts) && (loggedInUserStore.loggedInUserProfile)"
-			class="max-w-[1100px] w-full h-fit mx-auto px-6 grid grid-cols-10 gap-28">
+		<div
+			class="mt-8 max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28">
 			<div data-test="everything" class="col-span-6 mx-auto w-full">
-
-				<h2 class="mb-10 text-4xl" v-if="searchStore.searchPart">
-					Søkeresultater for '{{ searchStore.searchPart }}'
-				</h2>
-
-				<span class="flex jestify-center space-x-8 justify-center">
-					<button class="p-2 rounded-lg" data-test="feed-posts-option" @click="feedPostSetting"
-						:class="followingSelected ? 'bg-onPrimary text-primary border-primary border shadow-md ' : 'bg-primary text-onPrimary border'">Feed</button>
-					<button class="p-2 rounded-lg" data-test="following-posts-option" @click="followingPostSetting"
-						:class="followingSelected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'">Following</button>
-				</span>
-
-				<p class="text-lg"
-					v-if="(num_of_following === 0) && (followingSelected) && (postStore.posts.results.length == 0)">You are not
-					following anyone.</p>
-				<p class="text-lg"
-					v-if="(postStore.posts?.results?.length === 0) && (followingSelected) && (num_of_following > 0)">No
-					posts are published.</p>
-				<ListArticles v-if="postStore.posts.results" class="w-full mt-12" />
+				<FeedMain/>
 			</div>
-			<div class="col-span-4 mx-auto w-full">
-				<div id="dropdown-filter" v-if="postStore.allTags && !followingSelected"
-					class="mb-4 bg-primary rounded-lg text-onPrimary">
-					<span class="mb-2 w-full flex items-center text-center justify-center">
-						<button data-test="dropdown-button"
-							class="text-lg hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
-							@click="changeDropdown">
-							Filter posts
-						</button>
-					</span>
-					<div>
-						<!-- The filter dropdown compontent-->
-						<KeepAlive>
-							<component :is="dropdown" data-test="filter-component" :list-of-options="tagOptions"
-								class="w-full mb-2 px-2 py-1" @output="action" />
-						</KeepAlive>
-					</div>
-				</div>
-				<!-- This lists the (saved)articles in thes sidebar -->
-				<ListArticlesSidebar class="w-full" v-if="loggedInUserStore.loggedInUserProfile" />
+			<div id="feed-sidebar" class="col-span-4 mx-auto w-full">
+				<FeedSidebar/>
 			</div>
 		</div>
-	</div>
+		<!-- fallback -->
 </template>
 
 <script setup lang="ts">
 import { usePostStore } from '~/store/postStore'
-import { useGeneralStore } from '~/store/generalStore';
+// import { useGeneralStore } from '~/store/generalStore';
 import { useSearchStore } from '~/store/searchStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+// import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import { usePaginationStore } from '~/store/paginationStore';
 
 // Importing all stores
 
 const postStore = usePostStore()
-const generalStore = useGeneralStore()
+// const generalStore = useGeneralStore()
 const searchStore = useSearchStore()
-const loggedInUserStore = useLoggedInUserStore()
+// const loggedInUserStore = useLoggedInUserStore()
 const paginationStore = usePaginationStore()
 
 definePageMeta({
 	layout: "feed-layout"
 })
 
-// Declerations
-
-/** 
- * FEED or FOLLOWING button selected display 
+/**
+ * if all of these are true, then the page can be rendered:
  * 
- * When the buttons are clicked this changes (also by navbar search)
+ * - the user is authenticated
+ * - there data about the logged in user (logged in user data is fetched)
+ * - There are data about posts (post(s) data is fetched)
  * 
- * If the active url is the following url, this turns true, otherwise, it is false
+ * returns true if all of those "requirements are met", false otherwise
+ * 
+ * ? maybe i should have this in a store instead ?
  */
-const followingSelected = computed(() => (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/"))
+// const ready = computed(() => {
+// 	if ((postStore.posts) && (loggedInUserStore.loggedInUserProfile) && (generalStore.isAuthenticated)) {
+// 		return true
+// 	} else {
+// 		return false
+// 	}
+// })
 
+// Declerations
 
 /**
  * NEW: I removed the IF statements that was meant to check whether it was already information/posts there already,
@@ -88,9 +60,6 @@ const followingSelected = computed(() => (paginationStore.activeFetchURL === "ht
  * All of the data that is needed from the api endpoint is fetched here.
  */
 onMounted(async () => {
-	if (checkLocalInfo() == null) {
-		return null
-	}
 
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
 	const loggedInUserProfileURL = "http://localhost:8888/api/min-side/"
@@ -102,6 +71,8 @@ onMounted(async () => {
 
 	/**
 	 * Fetches all posts in snippets (not full content length)
+	 * 
+	 * * not strictly necesarry as it is already reset when the index get's unmounted (but what about when the index wasnt mounted in the first palce do? - dont know)
 	   */
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
 
@@ -119,97 +90,6 @@ onMounted(async () => {
  * or else they are redirected to the /wait page
  */
 
-/**
- * This changes the layout the pages uses dynamically, based on wait.vue or not.
- */
-
-const num_of_following = computed(() =>
-	loggedInUserStore.loggedInUserProfile.num_of_following
-);
-
-/**
- * For the dynamic component! 
- * 
- * Toggles between showing the filterbox component and not.
- * 
- * The 'component' together with 'KeepAlive' caches the component state 
- * so that what is 'checked' with checkboxes doesnt dissapear when the tab is toggled
- */
-const dropdown = shallowRef<any>(false)
-const f = resolveComponent('FilterBox')
-const changeDropdown = () => {
-	if (dropdown.value == f) {
-		dropdown.value = false
-	} else {
-		dropdown.value = f
-	}
-}
-
-/**
- * This is called when the 'feed button' is clicked.
- * 
- * It changes the api endpoint url from where posts are fetched to 
- * the main feed one. It then fetches all posts.
- * 
- * It has its base here - the url.
- */
-const feedPostSetting = async () => {
-	searchStore.resetStore()
-
-	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
-	await getPostMultipleSnippet(paginationStore.activeFetchURL)
-}
-
-/**
- * This is called when the 'feed button' is clicked.
- * 
- * It changes the api endpoint url from where posts are fetched to 
- * the main feed one. It then fetches all posts.
- */
-const followingPostSetting = async () => {
-
-	searchStore.resetStore()
-
-	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-
-	await getPostMultipleSnippet(paginationStore.activeFetchURL)
-}
-
-
-/**
- * Formats the ugly array-object for keeping the tags, and creates an 
- * array with only the name of the tags in a prettier format, which it returns.
- * 
- * It strictly doesnt *need* to be computed
- */
-const tagOptions = computed(() => {
-	let temp = []
-
-	if (postStore.allTags != null) {
-		for (let i of postStore.allTags) {
-			temp.push(i.name)
-		}
-	}
-	return temp
-
-})
-
-/**
- * This function is called whenever the tagFilter FilterBox is updated. This
- * in turn calls the ConstructUrl computed property, by changing one of the values inside.
- * 
- * @param items The chosen items from filterbox.
- */
-const action = async (items: any) => {
-	searchStore.tagFilterPart = items
-
-	/** 
-	 * ? Inside of the function instead?
-	 */
-	paginationStore.activeFetchURL = constructURL("http://localhost:8888/api/feed/")
-
-	await getPostMultipleSnippet(paginationStore.activeFetchURL)
-}
 
 /**
  * Makes sure that the variables tracking the information for which checkboxes are checked are emptied when a refresh happens,
@@ -218,20 +98,19 @@ const action = async (items: any) => {
  * This is important because if that does not happen, the checkboxes status might be restarted, but not the state of them,
  * and ends them up not being syncronous.
  */
-onBeforeUnmount(() => {
-	console.log("Index is unmounted")
+onUnmounted(() => {
 
-	/** So there are no filters present when the page gets refreshed */
-	searchStore.$reset
+	/** This makes sure that all the filters and the search is removed*/
+	searchStore.resetStore()
 
 	/** So that all posts are "removed" and forces a refetch */
-	postStore.$reset
+	postStore.resetStore()
 
 	/** So that the navigation bar / paginator at the button restarts, and starts at one  */
-	paginationStore.$reset
+	paginationStore.resetStore()
 
 })
 
 </script>
 
-<style></style>
+<style scoped></style>

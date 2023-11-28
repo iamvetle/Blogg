@@ -14,15 +14,20 @@ export const usePostStore = defineStore("Store for containing posts and related 
     const followingPosts = ref<SnippetPostMultipleType | null>(null)
 
     /**
-     * The API url endpoint for fetching logged-in user posts
+     * All of the posts by the logged in user
      */
     const loggedInUserPosts = ref<LoggedInUserMultiplePostType | null>(null)
+
+/**
+ * The url that the baseFetchURL initially was before it started getting modified
+ */
+    const initialBaseFetchURL = "http://localhost:8888/api/feed/"
 
     /**
      * The URL that api fetches regarding search generally go to
      */
-    const baseFetchURL = ref<string>("http://localhost:8888/api/feed/") // post_snippets_url
-    const baseLoggedInUserPostsURL = ref<string>("http://localhost:8888/api/min-side/posts/") // personal_post_snippets_url
+    const baseFetchURL = ref<string>(initialBaseFetchURL) // post_snippets_url
+    const baseLoggedInUserPostsURL = ref<string>("http://localhost:8888/api/min-side/posts/") // personal_post_snippets_url ? why is this with ref - think i should remove later
 
     /** 
      * Has all (paginated) tags 
@@ -33,5 +38,22 @@ export const usePostStore = defineStore("Store for containing posts and related 
      */
     const allCategories = ref<CategoryType[] | null>(null)
 
-    return { posts, followingPosts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
+    /**
+     * Contains all of the comments of a post
+     * ? should I have this here though?
+     */
+    const allComments = ref<CommentType[] | null>(null)
+
+    const resetStore = () => {
+        posts.value = null
+        followingPosts.value = null
+        loggedInUserPosts.value = null
+        allTags.value = null
+        allCategories.value = null
+        allComments.value = null
+        // sets it back to the initial value
+        baseLoggedInUserPostsURL.value = initialBaseFetchURL
+    }
+
+    return { posts, resetStore, allComments, followingPosts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
 });

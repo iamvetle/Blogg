@@ -1,15 +1,17 @@
 # Standard libraries
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 
 # Third-party libraries
 
 ## Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, CreateAPIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 # Local application imports
@@ -27,7 +29,6 @@ from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 CustomUser = get_user_model()
 
-
 class LoggedInUserProfileView(RetrieveAPIView):
     """Returns profile information about the LOGGED-IN user"""
 
@@ -40,7 +41,6 @@ class LoggedInUserProfileView(RetrieveAPIView):
         # my_user = CustomUser.objects.get(username=self.request.user)
         my_user = get_object_or_404(CustomUser, username=self.request.user)
         return my_user
-
 
 class NormalUserProfileView(RetrieveAPIView):
     """Returns information about a SPECIFIC user"""
@@ -111,7 +111,7 @@ class LoggedInUserAllFollowers(ListAPIView):
     """Returns a list of users following the logged-in user"""
 
     permission_classes = [IsAuthenticated]
-    pagination_class = GenericPagination
+    pagination_class = None
 
     serializer_class = FollowerSerializer
 
@@ -128,10 +128,47 @@ class LoggedInUserAllFollowing(ListAPIView):
     permission_classes = [IsAuthenticated]
 
     serializer_class = FollowerSerializer
-    pagination_class = GenericPagination
+    pagination_class = None
 
     def get_queryset(self):
         logged_in_user = self.request.user
         user_is_following = logged_in_user.following.all()
 
         return user_is_following
+    
+class LoggedInUserAddOrChangeProfilePicture(APIView):
+    """Adds a profile picture to a user or changes a new one"""
+    
+    permission_classes = [IsAuthenticated]
+
+    parser_classes = [MultiPartParser, FormParser]
+
+    def post(self, request, format=None):
+        user = request.user  # Assuming you're dealing with an authenticated user
+        
+
+        # Access the uploaded file directly from request.FILES
+        profile_picture = request.FILES.get('profile_picture', None)
+        if profile_picture:
+            # Directly update the user's profile picture
+            try:
+                user.profile_picture = profile_picture
+                user.save()
+                return Response({'detail': 'Profile picture updated successfully'}, status=status.HTTP_200_OK)
+            except ValidationError as e:
+                # Handle any validation errors
+                return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({'error': 'No profile picture provided'}, status=status.HTTP_400_BAD_REQUEST)
+        
+    def delete(self, request, format=None):
+        user = request.user  # Assuming you're dealing with an authenticated user
+
+        if user.profile_picture:
+            # Assuming 'profile_picture' is the field name in your user model
+            user.profile_picture.delete()  # This deletes the file from the storage
+            user.profile_picture = None   # This removes the association in the database
+            user.save()
+            return Response({'detail': 'Profile picture deleted successfully'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'No profile picture to delete'}, status=status.HTTP_400_BAD_REQUEST)

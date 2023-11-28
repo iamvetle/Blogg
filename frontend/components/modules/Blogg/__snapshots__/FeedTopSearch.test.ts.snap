@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the search top of the feed index > Should match snapshot 1`] = `
+"<div>
+  <h2 class=\\"mb-10 text-4xl\\" data-test=\\"search-results\\"> Søkeresultater for 'tester om fisker finnes' </h2>
+</div>"
+`;

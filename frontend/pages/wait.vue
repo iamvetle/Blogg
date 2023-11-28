@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="relative min-h-screen flex bg-surface">
       <div
         class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-plain">
@@ -24,13 +23,12 @@
           <div class="max-w-md w-full space-y-8">
             <div
               class="w-full shadow-md rounded-lg md:mt-0 sm:max-w-md xl:p-0">
-              <LoginCard :redirect="true"/>
+              <LoginCard/>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script setup lang="ts">
