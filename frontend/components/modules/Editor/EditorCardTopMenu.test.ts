@@ -1,6 +1,7 @@
 import EditorCardTopMenu from './EditorCardTopMenu.vue';
 import { VueWrapper, flushPromises, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
+import BaseButton from '~/components/base/BaseButton.vue';
 
 import EditorButton from './EditorButton.vue';
 
@@ -57,7 +58,7 @@ const factory = () => {
     return shallowMount(EditorCardTopMenu, {
         global: {
             plugins: [pinia],
-            components: { EditorButton },
+            components: { EditorButton, BaseButton },
             mocks: {
                 add_url_link_handle: mockAddUrlLinkFunction,
                 toggleBold: mockToggleBold,
@@ -69,10 +70,11 @@ const factory = () => {
                 setRedo: mockSetRedo,
                 toggleBlockquote: mockToggleBlockquote,
                 toggleCodeBlock: mockToggleCodeBlock,
-                toggleHeading: mockToggleHeading
+                toggleHeading: mockToggleHeading,
             },
             stubs: {
-                EditorButton: true
+                EditorButton: true,
+                BaseButton: true
             },
         },
         props: { //@ts-ignore
@@ -484,7 +486,7 @@ describe('Testing the EditorCard top menu', () => {
         await addImageInput.trigger("change")
 
         await wrapper.vm.$nextTick()
-        
+
         expect(wrapper.emitted("addImage")).toBeTruthy()
 
         // Clean up the spy
@@ -515,7 +517,7 @@ describe('Testing the EditorCard top menu', () => {
 
         const url_link_add = (wrapper as any).findComponent("[data-test='url_link_option']");
 
-        expect(url_link_add.attributes("alt")).toBe("Add hyperlink")
+        expect(url_link_add.attributes("alt")).toBe("Add link")
 
     });
     test('If the url_link_add option has a class, it should be string type', () => {
@@ -1011,6 +1013,79 @@ describe('Testing the EditorCard top menu', () => {
         const heading3 = addOptions.findComponent("[data-test='heading3_option']")
         expect(heading3.exists()).toBe(true)
     })
+
+    test('There should be a two buttons for trying to publish the post and canceling', () => {
+        wrapper = factory()
+
+        const tryButton = wrapper.find("[data-test='try_publish_button_option']")
+        expect(tryButton.exists()).toBe(true)
+
+        const doCancel = wrapper.find("[data-test='do_cancel_button_option']")
+        expect(doCancel.exists()).toBe(true)
+
+    })
+    test('The try button should emit a button when clicked', async () => {
+        wrapper = factory()
+
+        const tryButton = wrapper.find("[data-test='try_publish_button_option']")
+
+        await tryButton.trigger("click")
+        
+
+        expect(wrapper.emitted("tryPublishPost")).toBeTruthy()
+
+    })
+
+    test('The cancel button should emit a button when clicked', async () => {
+        wrapper = factory()
+
+        const cancelButton = wrapper.find("[data-test='do_cancel_button_option']")
+
+        await cancelButton.trigger("click")
+        
+
+        expect(wrapper.emitted("cancelEditingPost")).toBeTruthy()
+    })
+
+test('Should be a wrapper around the buttons', () => {
+  wrapper = factory()
+
+  expect(wrapper.findAllComponents({ name:"BaseButton" })).toHaveLength(2)
+
+  const buttonWrapper = wrapper.find("#cancel_publish_options_buttons")
+
+  const cancelButton = buttonWrapper.find("[data-test='do_cancel_button_option']")
+  const tryButton = buttonWrapper.find("[data-test='try_publish_button_option']")
+
+
+  expect(cancelButton.exists()).toBe(true)
+  expect(tryButton.exists()).toBe(true)
+
+})
+test('Should match snapshot', () => {
+  wrapper = factory()
+
+  expect(wrapper).toMatchSnapshot()
+})
+    
+
+    // const doCancel =
+    // expect(addOptions.classes()).toContain("flex")
+    // expect(addOptions.exists()).toBe(true)
+    // expect(addOptions.element.tagName).toBe("DIV")
+
+    // const all_components_in_div = addOptions.findAllComponents({ name: "EditorButton" })
+
+    // expect(all_components_in_div).toHaveLength(3)
+
+    // const heading1 = addOptions.findComponent("[data-test='heading1_option']")
+    // expect(heading1.exists()).toBe(true)
+
+    // const heading2 = addOptions.findComponent("[data-test='heading2_option']")
+    // expect(heading2.exists()).toBe(true)
+
+    // const heading3 = addOptions.findComponent("[data-test='heading3_option']")
+    // expect(heading3.exists()).toBe(true)
 });
 
 /** SNAPSHOT */

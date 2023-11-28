@@ -1,48 +1,42 @@
 <template>
 	<div class="p-2" v-if="editor">
 		<div id="editor-container"
-			class="w-full px-[60px] pt-[35px] pb-[30px] bg-white flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12"
+			class="w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12"
 			@click="editor.commands.focus()">
 
 			<div v-if="showModal">
 				<teleport to="#modal">
-					<div class="w-full h-screen blur-sm">
+					<div class="w-full absolute blur-sm">
 						<Modal @confirm-published="publishPost" @cancel-published="cancelPublishing" />
 					</div>
 				</teleport>
 			</div>
 
 			<div class="w-full not-prose mb-6">
-				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange" 
+				<EditorFloatingMenu :editor="editor" 
 				
+				class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
+
+				@add-image="handleAddImageChange" 
 				@cancel-making-post="buttonCancelClick"
 				@try-publish-post="buttonTryPublishClick"
 				
 				/>
-
-				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange" />
+				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange" 
+				@try-publish-post="buttonTryPublishClick" @cancel-editing-post="buttonCancelClick"
+				/>
 			</div>
 
 			<hr class="not-prose mb-8">
 
-			<div data-test="direct-editor" class="w-full">
-				<editor-content :editor="editor" />
+			<div data-test="direct-editor" class="mt-4 max-w-2xl w-full mx-auto">
+					<editor-content :editor="editor" />
 			</div>
 
 		</div>
 
 		<hr class="mb-4">
 
-		<div data-test="cancel_publish_buttons" class="buttons flex">
-
-			<BaseButton id="cancel"
-				class="btn border border-secondary-low p-1 px-4 font-semibold cursor-pointer text-gray-500 hover:text-gray-400 hover:border-secondary-base ml-auto"
-				@click="buttonCancelClick" text="Cancel" />
-			<BaseButton id="publish"
-				class="btn border border-indigo-base p-1 px-4 font-semibold cursor-pointer text-plain ml-2 bg-secondary-base hover:bg-secondary-low"
-				@click="buttonTryPublishClick" text="Publish" />
-
-		</div>
 	</div>
 </template>
 
@@ -230,7 +224,6 @@ const buttonTryPublishClick = async () => {
 		return;
 	}
 	showModal.value = true;
-	generalStore.turnBackgroundForModel("blur-sm");
 };
 
 /**
@@ -252,7 +245,6 @@ const publishPost = () => {
 	console.log("publish post was called")
 
 	showModal.value = false;
-	generalStore.turnBackgroundForModel(null);
 
 	formData.value.append("title", title.value || "");
 	formData.value.append("content", body.value || "");
@@ -283,7 +275,6 @@ const publishPost = () => {
  */
 const cancelPublishing = () => {
 	showModal.value = false;
-	generalStore.turnBackgroundForModel(null);
 };
 
 /**

@@ -1,23 +1,21 @@
 <template>
-	<div>
-		<floating-menu v-if="editor" :editor="editor" :tippy-options="{ duration: 100 }"
-			class="not-prose flex-col items-center md:flex-row relative md:-left-[225px] -left-[80px] flex md:space-x-3 rounded-md border max-md:space-y-3 p-1 bg-plain shadow-md">
+	<floating-menu :editor="editor" :tippy-options="{ duration: 100 }"
+		class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
+		v-if="editor">
 
-			<div data-test="add_image_button_sum">
-				<EditorButton @click="handleAddImageClick" :icon="add_image_icon" alt="add_image" data-test="add_image" />
-				<input @change="handleFileChange" type="file" hidden ref="addImageRef"
-					data-test="add_image_file_input" />
-			</div>
+		<div data-test="add_image_button_sum">
+			<EditorButton @click="handleAddImageClick" :icon="add_image_icon" alt="add_image" data-test="add_image" />
+			<input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="add_image_file_input" />
+		</div>
 
-			<EditorButton :is-active="editor.isActive('link')" @click="setLink" :icon="link_icon" alt="link" />
-			<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @click="toggleHeading(1)"
-				:icon="heading_1_icon" alt="heading 1" />
-			<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @click="toggleHeading(2)"
-				:icon="heading_2_icon" alt="heading 2" />
-			<EditorButton @click="horizontalRule" :icon="seperator_icon" alt="seperator" />
+		<EditorButton :is-active="editor.isActive('link')" @click="setLink" :icon="link_icon" alt="link" />
+		<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @click="toggleHeading(1)" :icon="heading_1_icon"
+			alt="heading 1" />
+		<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @click="toggleHeading(2)" :icon="heading_2_icon"
+			alt="heading 2" />
+		<EditorButton @click="horizontalRule" :icon="seperator_icon" alt="seperator" />
 
-		</floating-menu>
-	</div>
+	</floating-menu>
 </template>
 
 <script setup lang="ts">
@@ -56,9 +54,9 @@ const handleAddImageClick = () => {
 	addImageRef.value.click()
 }
 
-const handleFileChange = (event:any) => {
-    const file = event;
-    emit("addImage", file)
+const handleFileChange = (event: any) => {
+	const file = event;
+	emit("addImage", file)
 }
 
 

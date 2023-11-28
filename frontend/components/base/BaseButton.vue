@@ -4,11 +4,9 @@
 
 <script setup lang="ts">
 
-withDefaults(defineProps<{
+defineProps<{
     text: string
-}>(), {
-
-})
+}>()
 
 </script>
 

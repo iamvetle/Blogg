@@ -1,6 +1,6 @@
 <template >
     <!-- Background color -->
-    <div id="modal" :class="generalStore.backgroundForModal"></div>
+    <div id="modal" :class="generalStore.backgroundForModal">
 
     <div id="site-wrapper">
         <ClientOnly>
@@ -13,6 +13,7 @@
         </main>
         <TheFooter />
     </div>
+</div>
 </template>
 
 <script setup lang="ts">

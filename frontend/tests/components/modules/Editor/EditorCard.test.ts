@@ -49,36 +49,6 @@ describe('EditorCard testing', () => {
 
         expect(wrapper.exists()).toBe(true)
     })
-    test('Should have "publish" text', () => {
-        expect(wrapper.text()).toContain("Publish")
-    })
-    test('Should have a "Cancel" text', () => {
-        expect(wrapper.text()).toContain("Cancel")
-    })
-    test('Should have a "cancel" button', async () => {
-        const button = wrapper.get("#cancel")
-
-        expect(button.text()).toBe("Cancel")
-    })
-
-    test('Should have a "publish" button', async () => {
-        const button = wrapper.get("#publish")
-
-        expect(button.text()).toBe("Publish")
-    })
-    test('The cancel button should call a function when it is clicked', async () => {
-
-        await wrapper.get("#cancel").trigger("click")
-
-        expect(mockingCancel).toHaveBeenCalledOnce()
-    })
-    test('The publish button should call a function when it is clicked', async () => {
-        await wrapper.vm.$nextTick()
-
-        await wrapper.get("#publish").trigger("click")
-
-        expect(mockingPublish).toHaveBeenCalledOnce()
-    }),
         test('Should have a function called publishPost', () => {
             const pubFunction = (wrapper.vm as any).publishPost
 
@@ -100,19 +70,6 @@ describe('EditorCard testing', () => {
     //     expect(bubble.exists()).toBe(true)
     // })
 
-    test('Should have a wrapper around the two cancel and publish buttons, and the two buttons should have the correct text', () => {
-        const cancel_publish_buttons = wrapper.find("[data-test='cancel_publish_buttons']")
-
-        expect(cancel_publish_buttons.exists()).toBe(true)
-
-        const cancel_button = cancel_publish_buttons.get("#cancel")
-        expect(cancel_button.text()).toBe("Cancel")
-
-        const publish_button = cancel_publish_buttons.get("#publish")
-        expect(publish_button.text()).toBe("Publish")
-
-
-    })
     test('There should be an editor container that contains the editor content, the top bar, and the floating bar', () => {
         const editor_container = wrapper.find("#editor-container")
 

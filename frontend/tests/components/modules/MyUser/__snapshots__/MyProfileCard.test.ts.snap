@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`testing LoggedInUserProfileCard.vue > props are being passed correctly 1`] = `"testusernametest_fulltnavn243Antall lagrede innlegg"`;

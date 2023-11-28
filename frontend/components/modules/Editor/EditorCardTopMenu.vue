@@ -1,97 +1,91 @@
 <template>
-    <div id="top-menu-container" v-if="editor" class="flex space-x-10 w-full items-center">
+    <div id="top-menu-container" v-if="editor" class="flex w-full justify-between items-center flex-wrap">
 
-        <div id="top-three" class="flex space-x-2">
-            <span class="option-holder">
-                <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold"
-                    :is-active="editor.isActive('bold')" />
-            </span>
-            <span class="option-holder">
-                <EditorButton @click="toggleItalic(editor)" data-test="italic_option" :icon="italic_icon" alt="Italic"
-                    :is-active="editor.isActive('italic')" />
-            </span>
-            <span class="option-holder">
-                <EditorButton @click="toggleUnderline(editor)" data-test="underline_option" :icon="underline_icon"
-                    alt="Underline" :is-active="editor.isActive('underline')" />
-            </span>
-        </div>
-
-        <div id="heading_options" class="flex space-x-2">
-            <span class="option-holder">
-                <EditorButton data-test="heading1_option" :is-active="editor.isActive('heading', { level: 1 })"
-                    @click="toggleHeading(editor, 1)" :icon="heading1_icon" alt="Heading 1" />
-            </span>
-            <span class="option-holder">
-                <EditorButton data-test="heading2_option" :is-active="editor.isActive('heading', { level: 2 })"
-                    @click="toggleHeading(editor, 2)" :icon="heading2_icon" alt="Heading 2" />
-            </span>
-            <span class="option-holder">
-                <EditorButton data-test="heading3_option" :is-active="editor.isActive('heading', { level: 3 })"
-                    @click="toggleHeading(editor, 3)" :icon="heading3_icon" alt="Heading 3" />
-            </span>
-        </div>
-
-        <div id="list-options" class="flex space-x-2">
-            <span class="option-holder">
-                <EditorButton @click="toggleBulletList(editor)" data-test="bullet_list_option" :icon="bullet_list_icon"
-                    alt="Unordered list" :is-active="editor.isActive('bulletList')" />
-            </span>
-            <span class="option-holder">
-                <EditorButton @click="toggleOrderedList(editor)" data-test="number_list_option" :icon="number_list_icon"
-                    alt="Ordered list" :is-active="editor.isActive('orderedList')" />
-            </span>
-        </div>
-
-        <!-- Add image and Add URL - sat to false -->
-        <div v-show="true" id="add_options" class="flex space-x-2">
-
-            <span class="option-holder" data-test="add_image_team">
-                <EditorButton @click="handleAddImageClick" :icon="image_add_icon" alt="Add image"
-                    data-test="image_option" />
-                <input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="top_input_image" />
-            </span>
-
-
-            <!-- <span class="option-holder">
-                <EditorButton @click="$emit('addImage')" data-test="image_option" :icon="image_add_icon" alt="Add image" />
-            </span> -->
-
-            <span class="option-holder">
-                <EditorButton @click="add_url_link_handle" data-test="url_link_option" :icon="url_link_add_icon"
-                    alt="Add hyperlink" :is-active="editor.isActive('link')" />
-            </span>
-        </div>
-
-
-        <div id="codeQuote_options" class="flex space-x-2">
-            <span class="option-holder">
-                <EditorButton data-test="blockquote_option" :is-active="editor.isActive('blockquote')"
-                    @click="toggleBlockquote(editor)" :icon="blockquote_icon" alt="Blockquote" />
-            </span>
-            <span class="option-holder">
-                <EditorButton data-test="codeblock_option" :is-active="editor.isActive('codeBlock')"
-                    @click="toggleCodeBlock(editor)" :icon="codeblock_icon" alt="Codeblock" />
-            </span>
-        </div>
-        <div id="undo_redo_options" class="flex space-x-2">
-            <span class="option-holder">
-                <EditorButton @click="setUndo(editor)" data-test="undo_option" :icon="go_back_icon" alt="Undo" />
-            </span>
-            <span class="option-holder ">
-                <EditorButton @click="setRedo(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo" />
-            </span>
-            <div class="flex">
-                <span>
-                    <BaseButton id="cancel"
-                        class="py-1 px-2 text-sm cursor-pointer border-secondary bg-primary text-onSurfaceVariant hover:bg-onPrimaryContainer"
-                        @click="$emit('cancelMakingPost')" text="Cancel" />
+        <div class="flex space-x-10 items-center flex-wrap">
+            <div id="top-three" class="flex space-x-2 items-center py-2">
+                <span class="option-holder">
+                    <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold"
+                        :is-active="editor.isActive('bold')" />
                 </span>
-                <span>
-                    <BaseButton id="publish"
-                        class="ml-2 py-1 px-2 border-2 border-primary text-sm cursor-pointer bg-secondary"
-                        @click="$emit('tryPublishPost')" text="Publish" />
+                <span class="option-holder">
+                    <EditorButton @click="toggleItalic(editor)" data-test="italic_option" :icon="italic_icon" alt="Italic"
+                        :is-active="editor.isActive('italic')" />
+                </span>
+                <span class="option-holder">
+                    <EditorButton @click="toggleUnderline(editor)" data-test="underline_option" :icon="underline_icon"
+                        alt="Underline" :is-active="editor.isActive('underline')" />
                 </span>
             </div>
+            <div id="heading_options" class="flex space-x-2 items-center py-2">
+                <span class="option-holder">
+                    <EditorButton data-test="heading1_option" :is-active="editor.isActive('heading', { level: 1 })"
+                        @click="toggleHeading(editor, 1)" :icon="heading1_icon" alt="Heading 1" />
+                </span>
+                <span class="option-holder">
+                    <EditorButton data-test="heading2_option" :is-active="editor.isActive('heading', { level: 2 })"
+                        @click="toggleHeading(editor, 2)" :icon="heading2_icon" alt="Heading 2" />
+                </span>
+                <span class="option-holder">
+                    <EditorButton data-test="heading3_option" :is-active="editor.isActive('heading', { level: 3 })"
+                        @click="toggleHeading(editor, 3)" :icon="heading3_icon" alt="Heading 3" />
+                </span>
+            </div>
+            <div id="list-options" class="flex space-x-2 items-center py-2">
+                <span class="option-holder">
+                    <EditorButton @click="toggleBulletList(editor)" data-test="bullet_list_option" :icon="bullet_list_icon"
+                        alt="Unordered list" :is-active="editor.isActive('bulletList')" />
+                </span>
+                <span class="option-holder">
+                    <EditorButton @click="toggleOrderedList(editor)" data-test="number_list_option" :icon="number_list_icon"
+                        alt="Ordered list" :is-active="editor.isActive('orderedList')" />
+                </span>
+            </div>
+            <!-- Add image and Add URL - sat to false -->
+            <div id="add_options" class="flex space-x-2 items-center py-2">
+                <span class="option-holder" data-test="add_image_team">
+                    <EditorButton @click="handleAddImageClick" :icon="image_add_icon" alt="Add image"
+                        data-test="image_option" />
+                    <input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="top_input_image" />
+                </span>
+
+                <span class="option-holder">
+                    <!-- HIDDEN -->
+                    <EditorButton @click="add_url_link_handle" data-test="url_link_option" :icon="url_link_add_icon"
+                        alt="Add link" :is-active="editor.isActive('link')" class="hidden"/>
+                </span>
+            </div>
+            <div id="codeQuote_options" class="flex space-x-2 items-center py-2">
+                <span class="option-holder">
+                    <EditorButton data-test="blockquote_option" :is-active="editor.isActive('blockquote')"
+                        @click="toggleBlockquote(editor)" :icon="blockquote_icon" alt="Blockquote" />
+                </span>
+                <span class="option-holder">
+                    <EditorButton data-test="codeblock_option" :is-active="editor.isActive('codeBlock')"
+                        @click="toggleCodeBlock(editor)" :icon="codeblock_icon" alt="Codeblock" />
+                </span>
+            </div>
+
+            <div id="undo_redo_options" class="flex space-x-2 items-center float-right py-2">
+                <span class="option-holder">
+                    <EditorButton @click="setUndo(editor)" data-test="undo_option" :icon="go_back_icon" alt="Undo" />
+                </span>
+                <span class="option-holder ">
+                    <EditorButton @click="setRedo(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo" />
+                </span>
+            </div>
+        </div>
+
+        <div id="cancel_publish_options_buttons" class="flex items-center space-x-4 py-2">
+            <span class="button-option">
+                <BaseButton id="cancel" data-test="do_cancel_button_option"
+                    class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                    @click="$emit('cancelEditingPost')" text="Cancel" />
+            </span>
+            <span class="button-option">
+                <BaseButton id="publish" data-test="try_publish_button_option"
+                    class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                    @click="$emit('tryPublishPost')" text="Publish" />
+            </span>
         </div>
 
     </div>
@@ -99,7 +93,7 @@
 
 <script setup lang="ts">
 
-const emit = defineEmits(["tryPublishPost", "cancelMakingPost", "addImage"])
+const emit = defineEmits(["tryPublishPost", "cancelEditingPost", "addImage"])
 
 import underline_icon from '~/assets/icons/underline.svg'
 import italic_icon from '~/assets/icons/italic.svg'

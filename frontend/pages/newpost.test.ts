@@ -48,8 +48,7 @@ describe('newPost', () => {
         const editor = wrapper.findComponent({ name:"EditorCard" })
 
         expect(editor.exists()).toBe(true)
-
-
     })
+    
 
 });

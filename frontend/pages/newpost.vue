@@ -1,6 +1,7 @@
 <template>
 	<div id="postFormWrapper" class="mt-2 mb-16">
-		<div class="max-w-3xl py-4 mx-auto prose">
+		<div class="max-w-4xl py-4 mx-auto prose">
+
 			<div id="direct-editor">
 				<EditorCard @newPostMaterial="publish" />
 			</div>
