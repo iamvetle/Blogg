@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<{
     iconImgClass?:string,
     isActive?:string | boolean,
 }>(), {
-    class:"h-5 flex items-center",
+    class:"h-5 w-5 flex items-center",
 })
 
 </script>

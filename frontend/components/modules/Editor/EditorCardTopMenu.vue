@@ -1,5 +1,5 @@
 <template>
-    <div id="top-menu-container" v-if="editor" class="flex space-x-10 w-full">
+    <div id="top-menu-container" v-if="editor" class="flex space-x-10 w-full items-center">
 
         <div id="top-three" class="flex space-x-2">
             <span class="option-holder">
@@ -46,9 +46,10 @@
         <div v-show="true" id="add_options" class="flex space-x-2">
 
             <span class="option-holder" data-test="add_image_team">
-				<EditorButton @click="handleAddImageClick" :icon="image_add_icon" alt="Add image" data-test="image_option" />
-				<input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="top_input_image"/>
-			</span>
+                <EditorButton @click="handleAddImageClick" :icon="image_add_icon" alt="Add image"
+                    data-test="image_option" />
+                <input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="top_input_image" />
+            </span>
 
 
             <!-- <span class="option-holder">
@@ -79,12 +80,26 @@
             <span class="option-holder ">
                 <EditorButton @click="setRedo(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo" />
             </span>
+            <div class="flex">
+                <span>
+                    <BaseButton id="cancel"
+                        class="py-1 px-2 text-sm cursor-pointer border-secondary bg-primary text-onSurfaceVariant hover:bg-onPrimaryContainer"
+                        @click="$emit('cancelMakingPost')" text="Cancel" />
+                </span>
+                <span>
+                    <BaseButton id="publish"
+                        class="ml-2 py-1 px-2 border-2 border-primary text-sm cursor-pointer bg-secondary"
+                        @click="$emit('tryPublishPost')" text="Publish" />
+                </span>
+            </div>
         </div>
 
     </div>
 </template>
 
 <script setup lang="ts">
+
+const emit = defineEmits(["tryPublishPost", "cancelMakingPost", "addImage"])
 
 import underline_icon from '~/assets/icons/underline.svg'
 import italic_icon from '~/assets/icons/italic.svg'
@@ -110,8 +125,6 @@ import { defineEmits } from 'vue';
 defineProps<{
     editor: Editor | undefined
 }>();
-
-const emit = defineEmits(["addImage"])
 
 const add_url_link_handle = () => {
     return null
@@ -176,11 +189,11 @@ const addImageRef = ref<any>(null)
  * 
  * This sends a "click" to the hidden input element
  */
- const handleAddImageClick = () => {
-	addImageRef.value.click()
+const handleAddImageClick = () => {
+    addImageRef.value.click()
 }
 
-const handleFileChange = (event:any) => {
+const handleFileChange = (event: any) => {
     const file = event;
     emit("addImage", file)
 }

@@ -15,6 +15,7 @@
 			<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @click="toggleHeading(2)"
 				:icon="heading_2_icon" alt="heading 2" />
 			<EditorButton @click="horizontalRule" :icon="seperator_icon" alt="seperator" />
+
 		</floating-menu>
 	</div>
 </template>

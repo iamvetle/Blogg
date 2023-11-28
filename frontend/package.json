@@ -43,9 +43,7 @@
 		"nuxt": "^3.8.0",
 		"unplugin-auto-import": "^0.16.6",
 		"unplugin-vue-components": "^0.25.2",
-		"vite-plugin-vuetify": "^1.0.2",
 		"vitest": "^0.34.3",
-		"vuetify": "^3.4.3",
 		"wallaby-vue-compiler": "^1.0.6",
 		"webdriverio": "^8.16.6"
 	},

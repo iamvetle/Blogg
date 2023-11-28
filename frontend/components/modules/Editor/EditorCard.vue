@@ -13,7 +13,12 @@
 			</div>
 
 			<div class="w-full not-prose mb-6">
-				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange" />
+				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageChange" 
+				
+				@cancel-making-post="buttonCancelClick"
+				@try-publish-post="buttonTryPublishClick"
+				
+				/>
 
 				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange" />
 			</div>

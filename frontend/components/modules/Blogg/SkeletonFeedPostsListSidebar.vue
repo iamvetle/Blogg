@@ -6,9 +6,7 @@
             <logged-in-user-profile-card class="bg-white shadow-lg">
 
                 <template #profile_picture>
-                    <v-skeleton-loader type="list-item-avatar-two-line" class="w-full">
-
-                    </v-skeleton-loader>
+ 
                 </template>
 
                 <!-- <template #username >
@@ -23,8 +21,7 @@
                 </template> -->
 
                 <template #amount-of-followers>
-                    <v-skeleton-loader type="text, text" class="w-24">
-                    </v-skeleton-loader>
+
                 </template>
 
                 <!-- <template #amount-of-saved-posts>
@@ -37,9 +34,7 @@
         <hr class="mb-8">
 
         <div id="saved-posts" class="w-full mb-8">
-            <v-skeleton-loader type="heading" class="w-44">
 
-            </v-skeleton-loader>
 
             <div id="saved_articles">
                 <!--
@@ -47,9 +42,7 @@
                 
                 <PostSavedCardList />
                 -->
-                <v-skeleton-loader type="text" class="w-60">
 
-                </v-skeleton-loader>
             </div>
         </div>
 
@@ -58,8 +51,7 @@
         <div id="following-card" class="mx-auto w-full">
 
             <div>
-                <v-skeleton-loader type="heading" class="w-64">
-                </v-skeleton-loader>
+
                 <div v-for="i of count">
                     <span :key="i">
                         <SkeletonFollowing />
