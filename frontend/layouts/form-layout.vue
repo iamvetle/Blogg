@@ -1,27 +1,30 @@
 <template>
-	<div id="site-wrapper" class="bg-surface flex flex-col min-h-screen">
-		<div v-if="store.apiDownError === false" class="flex-1 flex flex-col">
-			<ClientOnly>
-				<TheNavbar />
-			</ClientOnly>
-			<div class="flex-1">
+	<!-- Background color -->
+	<div id="site-wrapper" class="bg-surface">
+		<ClientOnly>
+			<TheNavbar />
+		</ClientOnly>
+		<main>
+			<div>
 				<slot />
 			</div>
-		</div>
-		<div v-else class="flex-1">
-			<ErrorAPIDown />
-		</div>
-		<div class="mt-auto">
-			<LazyTheFooter />
-		</div>
+		</main>
+		<TheFooter />
 	</div>
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '~/store/generalStore';
-
-const store = useGeneralStore()
 
 </script>
 
-<style scoped></style>
+<style scoped>
+#site-wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
+}
+</style>

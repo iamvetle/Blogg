@@ -1,34 +1,32 @@
 <template>
     <div>
-        <Dialog :open="isOpen" @close="setClose">
-            <div class="fixed w-full h-full flex items-center justify-center inset-0">
+        <Dialog :open="isOpen" @close="cancel">
+            <div class="fixed flex items-center justify-center inset-0">
 
-                <div class="rounded-xl w-[500px] h-[250px] bg-primary text-onPrimary p-8">
+                <div class="rounded-xl bg-surfaceContainerHigh py-12 px-6">
                     <DialogPanel>
                         <div>
-                            <DialogTitle class="text-center text-2xl">Are you ready to publish the post?</DialogTitle>
+                            <DialogTitle class="text-center text-2xl text-onSurface">Do you want to publish the post?</DialogTitle>
                             <p>
                             </p>
-                            <div class="mt-16">
-                                <span id="choices" class="flex justify-center space-x-24">
+                            <div class="mt-4">
+                                <span id="choices" class="flex justify-end space-x-6">
 
                                     <span>
-                                        <button id="confirm" class="rounded-lg p-4 bg-onPrimary text-primary
-                                        hover:p-5
+                                        <button id="confirm" class="p-1 text-primary
                                         
                                         "
-                                            @click="confirm">
-                                            Confirm
+                                            @click="cancel">
+                                            No
                                         </button>
                                     </span>
 
                                     <span class="">
-                                        <button id="cancel" class="rounded-lg p-4 bg-onPrimary text-primary
-                                        hover:p-5   
+                                        <button id="cancel" class="p-1 text-primary
                                         " 
-                                        @click="cancel"
+                                        @click="confirm"
                                         >
-                                            Cancel
+                                            Yes
                                         </button>
                                     </span>
 
@@ -52,6 +50,8 @@ import {
     // DialogDescription,
 } from '@headlessui/vue'
 
+import { useGeneralStore } from '~/store/generalStore';
+
 /**
  * Is shown immidietly when the component is mounted.
  * 
@@ -62,23 +62,26 @@ import {
 
 const emit = defineEmits(["confirmPublished", "cancelPublished"])
 
-const isOpen = ref<boolean>(true)
+const store = useGeneralStore()
 
-const setClose = () => {
-    isOpen.value = false
-}
+const isOpen = ref<boolean>(true)
 
 const confirm = () => {
     isOpen.value = false
+    store.turnBackgroundForModel("")
 
     emit("confirmPublished")
 }
 
+onMounted(() => {
+    store.turnBackgroundForModel("bg-scrim ")
+})
+
 const cancel = () => {
     isOpen.value = false
+    store.turnBackgroundForModel("")
 
     emit("cancelPublished")
-
 }
 
 </script>

@@ -1,20 +1,11 @@
 <template>
-  <div class="min-h-screen">
-    <Modal/>
+  <div>
+    <v-skeleton-loader boilerplate type="article"></v-skeleton-loader>
+
+
   </div>
 </template>
-
 <script setup>
-
-const sesamy = ref(false)
-
-onMounted(() => {
-  sesamy.value = getMethod()
-})
-
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Should match snapshot 1`] = `
+"<div><span class=\\"flex space-x-8 justify-center\\"><base-button-stub text=\\"Feed\\" class=\\"p-2 rounded-lg bg-primary text-onPrimary border\\" data-test=\\"feed-posts-option\\"></base-button-stub><base-button-stub text=\\"Following\\" class=\\"p-2 rounded-lg bg-onPrimary text-primary border-primary border shadow-md\\" data-test=\\"following-posts-option\\"></base-button-stub></span>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;

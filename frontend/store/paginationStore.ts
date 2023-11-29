@@ -26,5 +26,20 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
 
     const current_page_number = ref<number>(0); // current_page
     
-    return { activeFetchURL, next_page, previous_page, last_page_link, all_pages_count, number_of_posts, current_page_number }
+    /**
+     * resets everything
+     */
+    const resetStore = () => {
+        activeFetchURL.value = postStore.baseFetchURL
+        next_page.value = ""
+        previous_page.value = ""
+        last_page_link.value = ""
+    
+        all_pages_count.value = 0
+        number_of_posts.value = 0
+    
+        current_page_number.value = 0 
+    }
+
+    return { activeFetchURL, resetStore, next_page, previous_page, last_page_link, all_pages_count, number_of_posts, current_page_number }
 })

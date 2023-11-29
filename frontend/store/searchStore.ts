@@ -19,8 +19,8 @@ export const useSearchStore = defineStore("search", () => {
      */
     const categoryFilterPart = ref<any>(null);
 
-    // not in use
-    const authorFilterPart = ref<any>(null);
+    // // not in use
+    // const authorFilterPart = ref<any>(null);
 
     /** Resets or puts all of the const here to it's initial values */
 
@@ -30,5 +30,5 @@ export const useSearchStore = defineStore("search", () => {
         categoryFilterPart.value = null        
     }
 
-    return { searchPart, resetStore, categoryFilterPart, authorFilterPart, tagFilterPart }
+    return { searchPart, resetStore, categoryFilterPart, tagFilterPart }
 })

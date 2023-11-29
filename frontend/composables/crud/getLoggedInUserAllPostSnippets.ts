@@ -1,4 +1,4 @@
-import { getMethod } from '../apiByCRUD';
+import { getMethod } from '~/services/apiByCRUD';
 import { usePostStore } from '~/store/postStore'
 
 /**
@@ -8,38 +8,41 @@ import { usePostStore } from '~/store/postStore'
  *  
  * @returns - The request response (.data, .status) or null
  */
-export const getLoggedInUserAllPostSnippets = async (api_endpoint_url:string) => {
+export const getLoggedInUserAllPostSnippets = async (api_endpoint_url: string): Promise<SnippetPostMultipleType | null> => {
 
   const postStore = usePostStore()
 
   /**
    * Fetches the token from local storage, or just returns null.
    */
-  const token = getToken()
+  const token = retrieveToken();
 
-  if (token) {
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token}`,
-    };
+  if (token === null) {
+    console.log("There was not token")
+    return null
+  }
 
-    const response = await getMethod(api_endpoint_url, headers)
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Token ${token}`,
+  };
 
-    if (response) {
+  const response = await getMethod(api_endpoint_url, headers)
 
-      postStore.loggedInUserPosts = response.data;
+  if (response) {
 
-      postStore.posts = response.data
+    postStore.loggedInUserPosts = response.data;
 
-      /**
-			 * Has the option to return the response **directly** as well.
-			 * This can be usefull to check if the response was 200 OK, for instance.
-			 */
-      return response
+    postStore.posts = response.data
 
-    } else {
+    /**
+     * Has the option to return the response **directly** as well.
+     * This can be usefull to check if the response was 200 OK, for instance.
+     */
+    return response.data
 
-      return null
-    }
+  } else {
+
+    return null
   }
 }

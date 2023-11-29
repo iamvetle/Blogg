@@ -1,27 +1,38 @@
-import axios from 'axios';
+import { postMethod } from '~/services/apiByCRUD';
 
-export const getSaveOrUnsavePost = async (postId:any) => {
-		try {
-			const token = localStorage.getItem("token");
-	
-			const response = await axios.post(`http://localhost:8888/api/post/${postId}/save/`, {}, {
-				headers: {
-					"Authorization": `Token ${token}`,
-				},
-			});
-			console.log(response.data); // print to self
-			// if (response.data?.message) {
-			// 	alert(response.data.message)
-			// }
-			
-			/** Calls the composable that fetches profile information about the logged in user, so that the saved posts can be updated */
-			await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
-			
-			return response
-		} catch (e) {
-			console.log("FAILED: did not manage to save post for reading later") // print to self - not working at all, no idea why
-			// is it only with get requests?
-			return null;
-		}
+export const getSaveOrUnsavePost = async (postId: number): Promise<object | null> => {
+
+	/**
+	 * Fetches the token from local storage, or just returns null.
+	 */
+	const token = retrieveToken();
+
+	if (token === null) {
+		console.log("There was not token")
+		return null
+	}
+
+	const headers = {
+		"Content-Type": "application/json",
+		Authorization: `Token ${token}`,
 	};
 
+	const postURL = `http://localhost:8888/api/post/${postId}/save/`
+
+	const response = await postMethod(postURL, {}, headers);
+
+	if (response) {
+
+		/** 
+		 * Calls the composable that fetches profile information about the logged in user, so that the saved posts can be updated 
+		 * * I think this refreshses everything - unsure
+		 * ? Should I rather have this at the earlier level? 
+		 */
+		await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
+
+		return response.data
+	} else {
+		return null
+	}
+
+}
