@@ -64,9 +64,6 @@ import History from '@tiptap/extension-history'
 import Underline from '@tiptap/extension-underline'
 import Image from '@tiptap/extension-image'
 
-import { useGeneralStore } from '~/store/generalStore';
-
-const generalStore = useGeneralStore()
 const emit = defineEmits(['newPostMaterial'])
 
 const props = defineProps<{

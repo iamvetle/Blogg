@@ -62,15 +62,23 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=30, unique=True, blank=False)  # Required
-    email = models.EmailField(unique=True, max_length=100, blank=False)  # Required
+    email = models.EmailField(unique=True, max_length=320, blank=False)  # Required
     phone_number = models.CharField(max_length=20, blank=True, default="")
     
     first_name = models.CharField(max_length=50, blank=False)  # Required
     last_name = models.CharField(max_length=50, blank=False)  # Required
     
-    gender = models.CharField(max_length=10, blank=True, default="")
+    CHOICES = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other')
+    )
+     
+    gender = models.CharField(max_length=10, blank=True, default="", choices=CHOICES)    
+    
     date_of_birth = models.DateField(null=True, blank=True)    
         
+    # NOT recommended to use "null" together with TextField or CharField, better to use 'default=""'
     address = models.TextField(max_length=500, blank=True, default="")
     city = models.CharField(max_length=30, blank=True, default="")
     state = models.CharField(max_length=30, blank=True, default="")
@@ -87,15 +95,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     
     is_staff = models.BooleanField(default=False)
     
+    # Includes "following"
     followers = models.ManyToManyField(
         "self", related_name="following", symmetrical=False, blank=True, default=0
     )
-    
 
     objects = CustomUserManager()
 
     USERNAME_FIELD = "username"
 
+    # I have so few here so that I can easily create a user from the terminal if I so wanted to
     REQUIRED_FIELDS = [
         "first_name",
         "last_name",
@@ -107,10 +116,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-
-    def short_name(self):
-        return self.first_name
-
+    
+    def birth(self):
+        return f"{self.date_of_birth}"
+    
+    def phone(self):
+        return f"{self.phone_number}"
+    
+    
     """
     followers: A ManyToManyField with 'self' allows users to follow each other.
 
@@ -141,7 +154,7 @@ class Post(models.Model):
     )
 
     categories = models.ManyToManyField(Category, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag, related_name="posts", blank=True)
 
     def __str__(self):
         return self.title

@@ -25,7 +25,6 @@ from rest_framework.generics import (
 from rest_framework import parsers
 # Django Filter
 from django_filters import rest_framework as filters
-from api.services.pagination_services import CustomLimitOffsetPagination
 from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 # Local application imports
@@ -38,9 +37,6 @@ from api.serializers.post_serializers import (
 )
 from api.serializers.user_serializers import NormalUserSerializer
 from api.filters import CustomPostFilter
-from api.services.post_services import CreatePostService, PostSnippetService
-from api.services.search_services import SearchService
-
 
 from bs4 import BeautifulSoup
 
@@ -81,7 +77,7 @@ class PostAllSavedLoggedInUserView(ListAPIView):  # /api/saved/
 
 
 class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
-    """Returns All of the posts made by the specified user"""
+    """Returns All of the posts (snippets) made by the specified user"""
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
@@ -121,17 +117,8 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
 
 class PostMultipleSnippetOnlyMyFollowingView(ListAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = PostShortenSerializer
-    # TODO Find out if I want to have the option to filter with this class
-    # It paginates automatically - se settings.py
-    # filter_backends = [
-    #    filters.DjangoFilterBackend,
-    #    SearchFilter,
-    # ]
-    # filterset_class = CustomPostFilter
-
-    # search_fields = ["title", "content", "author__username"]
-
+    serializer_class = PostShortenSerializer    
+    
     # Makes sure that the *newest* posts are listed first by the frontend
     queryset = Post.objects.all().order_by("-date_published")
 
@@ -225,22 +212,6 @@ class PostSaveView(APIView):
                     {"message": "Post saved", "post": serializer.data},
                     status=status.HTTP_201_CREATED,
                 )
-
-
-# class PostCreateView(APIView):
-#     """Creates a new post"""
-
-#     permission_classes = [IsAuthenticated]
-
-#     def post(self, request):
-#         serializer = PostSerializer(data=request.data, context={"request": request})
-#         if serializer.is_valid():
-#             serializer.save()
-
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         else:
-#             return Response(status=status.HTTP_400_BAD_REQUEST)
-
 
 class PostCreateView(APIView):
     parser_classes = [parsers.MultiPartParser, parsers.FormParser]

@@ -10,10 +10,8 @@ export const removeImageFromMap = (uniqueId: any, imageFileMap:any) => {
     if (uniqueId && imageFileMap) {
         if (imageFileMap.hasOwnProperty(uniqueId)) {
             delete imageFileMap[uniqueId]; // Remove the image from the map
-            console.log(`Image with ID ${uniqueId} has been removed from the map.`);
             return imageFileMap
         } else {
-            console.log(`No image found with ID ${uniqueId}.`);
             return imageFileMap
         }
     }

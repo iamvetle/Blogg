@@ -1062,30 +1062,6 @@ test('Should be a wrapper around the buttons', () => {
   expect(tryButton.exists()).toBe(true)
 
 })
-test('Should match snapshot', () => {
-  wrapper = factory()
-
-  expect(wrapper).toMatchSnapshot()
-})
-    
-
-    // const doCancel =
-    // expect(addOptions.classes()).toContain("flex")
-    // expect(addOptions.exists()).toBe(true)
-    // expect(addOptions.element.tagName).toBe("DIV")
-
-    // const all_components_in_div = addOptions.findAllComponents({ name: "EditorButton" })
-
-    // expect(all_components_in_div).toHaveLength(3)
-
-    // const heading1 = addOptions.findComponent("[data-test='heading1_option']")
-    // expect(heading1.exists()).toBe(true)
-
-    // const heading2 = addOptions.findComponent("[data-test='heading2_option']")
-    // expect(heading2.exists()).toBe(true)
-
-    // const heading3 = addOptions.findComponent("[data-test='heading3_option']")
-    // expect(heading3.exists()).toBe(true)
 });
 
 /** SNAPSHOT */

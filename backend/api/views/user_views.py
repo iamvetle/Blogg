@@ -13,10 +13,16 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework.parsers import MultiPartParser, FormParser
 
+# Pillow (?)
+
+from PIL import Image
+from django.core.files.base import ContentFile
+from io import BytesIO
+import uuid
+
 
 # Local application imports
 from django.shortcuts import get_object_or_404
-from api.services.user_services import UserProfileService
 from api.serializers.user_serializers import (
     LoggedInUserSerializer,
     NormalUserSerializer,
@@ -137,7 +143,7 @@ class LoggedInUserAllFollowing(ListAPIView):
         return user_is_following
     
 class LoggedInUserAddOrChangeProfilePicture(APIView):
-    """Adds a profile picture to a user or changes a new one"""
+    """Adds a profile picture to a user or changes a new one. Saves it with a UUID id in webp format"""
     
     permission_classes = [IsAuthenticated]
 
@@ -145,15 +151,27 @@ class LoggedInUserAddOrChangeProfilePicture(APIView):
 
     def post(self, request, format=None):
         user = request.user  # Assuming you're dealing with an authenticated user
-        
 
-        # Access the uploaded file directly from request.FILES
         profile_picture = request.FILES.get('profile_picture', None)
         if profile_picture:
-            # Directly update the user's profile picture
             try:
-                user.profile_picture = profile_picture
+                # Open the uploaded image using Pillow
+                image = Image.open(profile_picture)
+
+                # Compress and convert the image to WebP
+                output = BytesIO()
+                image.save(output, format='WEBP', quality=80)
+                output.seek(0)
+
+                # Generate a unique file name using UUID
+                unique_filename = f"{uuid.uuid4()}.webp"
+
+                # Create a new Django file-like object for the WebP image
+                webp_file = ContentFile(output.read(), name=unique_filename)
+
+                user.profile_picture = webp_file
                 user.save()
+
                 return Response({'detail': 'Profile picture updated successfully'}, status=status.HTTP_200_OK)
             except ValidationError as e:
                 # Handle any validation errors

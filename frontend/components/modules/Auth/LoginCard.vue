@@ -5,20 +5,21 @@
 		</h1>
 		<div id="form" class="space-y-4 md:space-y-6">
 			<FormKit id="login_form" type="form" submit-label="Sign in" @submit="submitForm" :actions="false">
-				<div>
-					<FormKit type="text" name="username" label="Brukernavn" placeholder="jane43" validation="required"
-						label-class="prose text-onSurface"
-						input-class="prose border border-gray-300 sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-						message-class="prose text-onSurface text-sm text-red-500" />
+
+
+				<!-- Username -->
+				<div data-test="form_username">
+					<FormKit type="text" name="username" label="Brukernavn" validation="required"
+						:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
 				</div>
 
-				<div class="mt-2">
+				<!-- Password and password confirmation-->
+				<div class="mt-2" data-test="form_password">
 					<FormKit type="password" name="password" label="Password" validation="required"
-						placeholder="************" label-class="prose text-onSurface"
-						input-class="prose border border-gray-300 sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-						message-class="prose text-sm text-red-500  text-onSurface" />
+						:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
 				</div>
-				<div id="button" class="mt-4 shadow-sm">
+
+				<div data-test="form_button_submit" id="submit_button" class="mt-4 shadow-sm">
 					<FormKit type="submit" label="Bekreft"
 						input-class="w-full text-onPrimary bg-primary focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center" />
 				</div>
@@ -42,12 +43,24 @@
 
 <script setup lang="ts">
 //@ts-nocheck
+
+/**
+ * TODO Fullføre denne så den sender postdataen
+ * TODO også fikse name og value slik at den kan bli godt ordentlig av django
+ */
 import { reset } from '@formkit/core'
+const address = ref(null)
+const all = ref<any>(null)
 
 const loginerror = ref(false);
 const loginsucess = ref(false);
 
+const baseLabelClass = "prose text-onSurface"
+const baseInputClass = "prose border border-gray-300 sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+const baseMessageClass = "prose text-onSurface text-sm text-red-500"
+
 const baseURL = "http://localhost:8888/api/login/";
+const genders = ["Male", "Female", "Annet"]
 
 withDefaults(defineProps<{
 	redirect?: boolean
