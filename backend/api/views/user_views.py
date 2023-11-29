@@ -143,7 +143,7 @@ class LoggedInUserAllFollowing(ListAPIView):
         return user_is_following
     
 class LoggedInUserAddOrChangeProfilePicture(APIView):
-    """Adds a profile picture to a user or changes a new one"""
+    """Adds a profile picture to a user or changes a new one. Saves it with a UUID id in webp format"""
     
     permission_classes = [IsAuthenticated]
 

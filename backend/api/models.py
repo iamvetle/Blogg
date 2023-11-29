@@ -154,7 +154,7 @@ class Post(models.Model):
     )
 
     categories = models.ManyToManyField(Category, blank=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag, related_name="posts", blank=True)
 
     def __str__(self):
         return self.title

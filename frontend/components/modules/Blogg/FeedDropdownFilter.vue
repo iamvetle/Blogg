@@ -8,10 +8,10 @@
                 Filter posts
             </button>
         </span>
-        <div v-show="dropdown" class="px-2 py-2">
+        <div v-show="dropdown" class="px-2 py-2" data-test="filter-component" >
             <!-- The filter dropdown compontent-->
             <KeepAlive>
-                <component :is="dropdown" data-test="filter-component" :list-of-options="tagOptions"
+                <component :is="dropdown" :list-of-options="tagOptions"
                     class="w-full mb-2 px-2 py-1" @output="action" />
             </KeepAlive>
         </div>
@@ -38,7 +38,7 @@ const tagOptions = computed(() => {
 
     if (postStore.allTags != null) {
         for (let i of postStore.allTags) {
-            temp.push(i.name)
+            temp.push(i)
         }
     }
     return temp

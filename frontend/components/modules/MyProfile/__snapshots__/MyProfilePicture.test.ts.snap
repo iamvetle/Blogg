@@ -2398,6 +2398,7 @@ VueWrapper {
             "BaseImage": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
               "__name": "BaseImage",
+              "inheritAttrs": false,
               "props": {
                 "src": {
                   "required": true,
@@ -13131,6 +13132,7 @@ VueWrapper {
               "BaseImage": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
                 "__name": "BaseImage",
+                "inheritAttrs": false,
                 "props": {
                   "src": {
                     "required": true,
@@ -13228,6 +13230,7 @@ VueWrapper {
             "BaseImage": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
               "__name": "BaseImage",
+              "inheritAttrs": false,
               "props": {
                 "src": {
                   "required": true,

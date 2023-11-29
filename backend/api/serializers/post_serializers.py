@@ -35,10 +35,19 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class TagSerializer(serializers.ModelSerializer):
+    post_count = serializers.SerializerMethodField()
+    
     class Meta:
         model = Tag
-        fields = ["name"]
+        fields = ["name", "post_count"]
+        
+        extra_kwargs = {
+            "post_count":{"write_only":True}
+        }
 
+    def get_post_count(self, obj):
+        """Returns the number of posts that have this exact tag"""
+        return obj.posts.count()
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

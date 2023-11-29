@@ -1,8 +1,8 @@
 <template>
-  <div v-for="option in props.listOfOptions" :class="props.class" class="w-full">
+  <div v-for="option in listOfOptions" :class="class" class="w-full">
     <span>
-      <InputCheckbox v-model="selected[option]" @update:model-value="updateList" :key="option" :label="option"
-        />
+      <InputCheckbox v-model="selected[option.name]" @update:model-value="updateList" :key="option"
+        :label="`${option.name} (${option.post_count})`" />
     </span>
   </div>
 </template>
@@ -23,14 +23,29 @@
  */
 
 
- /**
-  * * Yes this component is in use 
-  */
+/**
+ * * Yes this component is in use 
+ */
 
 // defineOptions({
 //   inheritAttrs:false
 // })
 
+/**
+ * Updates the list of selected items and emits them.
+ */
+const updateList = () => {
+  emit('output', selectedItems.value);
+};
+
+defineProps<{
+  /**
+   * Array of options to be displayed as checkboxes.
+   */
+  listOfOptions: TagType[],
+  class?: string,
+  inputClass?: string,
+}>();
 
 const selected = ref<any>({});
 
@@ -49,35 +64,6 @@ const selectedItems = computed(() => {
   }
   return onlyTrueList;
 });
-
-/**
- * Updates the list of selected items and emits them.
- */
-const updateList = () => {
-  emit('output', selectedItems.value);
-};
-
-const props = defineProps<{
-  /**
-   * Array of options to be displayed as checkboxes.
-   * @type {Array<string>}
-   */
-  listOfOptions: string[],
-
-  /**
-   * Optional CSS class for the wrapper element.
-   * @type {string}
-   * @default undefined
-   */
-  class?: string,
-
-  /**
-   * Optional CSS class for the input elements.
-   * @type {string}
-   * @default undefined
-   */
-  inputClass?: string,
-}>();
 
 onMounted(() => {
   console.log('FilterBox component is mounted.');

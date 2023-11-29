@@ -1077,6 +1077,7 @@ VueWrapper {
     </span>
     <div
       class="px-2 py-2"
+      data-test="filter-component"
       style="display: none;"
     >
       <!-- The filter dropdown compontent-->

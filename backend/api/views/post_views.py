@@ -213,22 +213,6 @@ class PostSaveView(APIView):
                     status=status.HTTP_201_CREATED,
                 )
 
-
-# class PostCreateView(APIView):
-#     """Creates a new post"""
-
-#     permission_classes = [IsAuthenticated]
-
-#     def post(self, request):
-#         serializer = PostSerializer(data=request.data, context={"request": request})
-#         if serializer.is_valid():
-#             serializer.save()
-
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         else:
-#             return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
 class PostCreateView(APIView):
     parser_classes = [parsers.MultiPartParser, parsers.FormParser]
 
