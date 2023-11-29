@@ -17,79 +17,7 @@
 				<div class="mt-2" data-test="form_password">
 					<FormKit type="password" name="password" label="Password" validation="required"
 						:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
-				</div>
-				<div data-test="form_email">
-					<FormKit type="email" validation="required|email" label="Email address" :label-class="baseLabelClass"
-						:input-class="baseInputClass" :message-class="baseMessageClass" validation-visibility="live" />
-				</div>
-
-				<div data-test="form_full_name">
-					<div class="mt-2" data-test="form_first_name">
-						<FormKit type="text" name="first_name" label="First name" validation="required"
-							:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
 					</div>
-					<div class="mt-2" data-test="form_last_name">
-						<FormKit type="text" name="last_name" label="Last name" validation="required"
-							:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
-					</div>
-				</div>
-				<!--
-						! The phone validation is not finished
-					-->
-				<div data-test="form_phone_number">
-					<FormKit type="tel" label="Phone number" validation="matches:/^[0-9]{3}[0-9]{2}[0-9]{3}$/"
-						:validation-messages="{
-							matches: 'Invalid format',
-						}" :label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
-				</div>
-
-
-				<div data-test="form_birth_date">
-					<FormKit type="date" label="Fødselsdato" validation="required|date_before:2010-01-01"
-						validation-visibility="lazy" :label-class="baseLabelClass" :input-class="baseInputClass"
-						:message-class="baseMessageClass" :validation-messages="{
-							required: 'Fødselsdato er nødvendig',
-						}" />
-				</div>
-				<div data-test="form_gender" >
-
-					<FormKit type="select" label="Choose gender?" name="Gender" :options="genders"
-						:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass"
-						validation="required" />
-				</div>
-
-				<div data-test="form_address_group">
-					<FormKit type="group" v-model="address">
-						<div  data-test="form_address" >
-							<FormKit type="text" label="Adresse" name="street" placeholder="Addresse"
-								:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
-						</div>
-
-						<div data-test="form_country">
-							<FormKit type="text" label="By" placeholder="By" name="city"
-								:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
-						</div>
-
-						<div class="double">
-							<!-- <FormKit data-test="form_county" type="select" label="Fylke" name="country" placeholder="Fylke" :options="Fylker"
-								validation="" /> -->
-							<div data-test="form_postal_code">
-								<FormKit type="text" name="postal_code" label="Postnummer" placeholder="Post addressen"
-									validation="number" :label-class="baseLabelClass" :input-class="baseInputClass"
-									:message-class="baseMessageClass" />
-							</div>
-						</div>
-					</FormKit>
-
-					<pre wrap>{{ address }}</pre>
-				</div>
-
-
-
-				<div data-test="form_button_submit" id="button" class="mt-4 shadow-sm">
-					<FormKit type="submit" label="Bekreft"
-						input-class="w-full text-onPrimary bg-primary focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center" />
-				</div>
 
 				<p v-show="loginerror" class="mt-5 text-red-700">
 					Invalid credentials
@@ -117,6 +45,7 @@
  */
 import { reset } from '@formkit/core'
 const address = ref(null)
+const all = ref<any>(null)
 
 const loginerror = ref(false);
 const loginsucess = ref(false);
