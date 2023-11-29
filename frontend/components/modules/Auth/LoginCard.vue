@@ -17,7 +17,12 @@
 				<div class="mt-2" data-test="form_password">
 					<FormKit type="password" name="password" label="Password" validation="required"
 						:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
-					</div>
+				</div>
+
+				<div data-test="form_button_submit" id="submit_button" class="mt-4 shadow-sm">
+					<FormKit type="submit" label="Bekreft"
+						input-class="w-full text-onPrimary bg-primary focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-sm px-5 py-2.5 text-center" />
+				</div>
 
 				<p v-show="loginerror" class="mt-5 text-red-700">
 					Invalid credentials

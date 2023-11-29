@@ -61,5 +61,15 @@ describe('Testin the Login card component', () => {
         expect(formkitField.exists()).toBe(true)
         expect(formkitField.attributes("type")).toBe("password")
     })
+    test('Should have a button submit ', () => {
+        wrapper = factory()
+
+        const field = wrapper.find("[data-test='form_button_submit']")
+        expect(field.exists()).toBe(true)
+
+        const formkitField = field.find("formkit")
+        expect(formkitField.exists()).toBe(true)
+        expect(formkitField.attributes("type")).toBe("submit")
+    })
 
 });

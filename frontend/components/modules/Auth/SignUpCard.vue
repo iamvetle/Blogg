@@ -35,7 +35,7 @@
 					</div>
 					<!-- Last name -->
 					<div class="mt-2" data-test="form_last_name">
-						<FormKit type="text" name="last_name" label="Last name" validation="required"
+						<FormKit  type="text" name="last_name" label="Last name" validation="required"
 							:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
 					</div>
 				</div>
@@ -43,14 +43,14 @@
 				<!-- Passord -->
 				<div class="double flex justify-between space-x-2 mt-2" data-test="form_password">
 					<!-- Skriv passord -->
-					<FormKit type="password" name="password" label="Password"
+					<FormKit type="password" name="password" label="Password" data-test="form_password_set"
 						validation="required|length:6|matches:/[^a-zA-Z]/" :validation-messages="{
 							matches: 'Inkluder minst ett symbol',
 						}" placeholder="************" :label-class="baseLabelClass" :input-class="baseInputClass"
 						:message-class="baseMessageClass" />
 
 					<!-- Bekreft Passord -->
-					<FormKit type="password" name="password_confirm" label="Bekreft passord" placeholder="************"
+					<FormKit type="password" name="password_confirm" data-test="form_password_confirm" label="Bekreft passord" placeholder="************"
 						validation="required|confirm" :label-class="baseLabelClass" :input-class="baseInputClass"
 						:message-class="baseMessageClass" />
 				</div>
@@ -61,7 +61,7 @@
 
 				<!-- Phone Number-->
 				<div data-test="form_phone_number">
-					<FormKit type="tel" label="Phone number" validation="matches:/^[0-9]{3}[0-9]{2}[0-9]{3}$/"
+					<FormKit type="tel" name="phone_number" label="Phone number" validation="matches:/^[0-9]{3}[0-9]{2}[0-9]{3}$/"
 						:validation-messages="{
 							matches: 'Invalid format',
 						}" :label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass" />
@@ -69,7 +69,7 @@
 
 				<!-- Birth Date-->
 				<div data-test="form_birth_date">
-					<FormKit type="date" label="Fødselsdato" validation="required|date_before:2010-01-01"
+					<FormKit type="date" name="date_of_birth" label="Fødselsdato" validation="required|date_before:2010-01-01"
 						validation-visibility="lazy" :label-class="baseLabelClass" :input-class="baseInputClass"
 						:message-class="baseMessageClass" :validation-messages="{
 							required: 'Fødselsdato er nødvendig',
@@ -78,20 +78,25 @@
 
 				<!-- Gender -->
 				<div data-test="form_gender">
-					<FormKit type="select" label="Choose gender?" name="Gender" :options="genders"
+					<FormKit type="select" label="Choose gender?" name="gender" :options="genders"
 						:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass"
 						validation="required" />
 				</div>
 
 				<!-- Addresse -->
 				<div data-test="form_address">
-					<FormKit type="text" label="Adresse" name="street" placeholder="Addresse" :label-class="baseLabelClass"
+					<FormKit type="text" label="Adresse" name="address" placeholder="Addresse" :label-class="baseLabelClass"
 						:input-class="baseInputClass" :message-class="baseMessageClass" />
 				</div>
 
 				<!-- Country -->
 				<div data-test="form_country">
-					<FormKit type="text" label="By" placeholder="By" name="city" :label-class="baseLabelClass"
+					<FormKit type="text" label="By" placeholder="Land" name="country" :label-class="baseLabelClass"
+						:input-class="baseInputClass" :message-class="baseMessageClass" />
+				</div>
+
+				<div data-test="form_city">
+					<FormKit type="text" name="city" label="By" placeholder="By" :label-class="baseLabelClass"
 						:input-class="baseInputClass" :message-class="baseMessageClass" />
 				</div>
 
@@ -113,7 +118,7 @@
 				</div>
 
 
-				<p class="text-sm font-light text-gray-500 dark:text-gray-400 mt-3">
+				<p class="text-sm font-light text-gray-500 dark:text-gray-400 mt-4">
 					Already have an account?
 					<nuxt-link to="/login/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">
 						Login here

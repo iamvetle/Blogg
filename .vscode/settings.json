@@ -61,6 +61,7 @@
   "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": true,
   "files.exclude": {
-    "frontend\\components\\utils": true
+    "frontend\\components\\utils": true,
+    "frontend": true
   }
 }

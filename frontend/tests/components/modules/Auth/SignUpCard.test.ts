@@ -42,7 +42,8 @@ describe('Testing the logincard component', () => {
 
         expect(wrapper.exists()).toBe(true)
     })
-    test('Should have a username field', () => {
+    // username
+    test('Should have an username field', () => {
         wrapper = factory()
 
         const field = wrapper.find("[data-test='form_username']")
@@ -51,19 +52,11 @@ describe('Testing the logincard component', () => {
         const formkitField = field.find("formkit")
         expect(formkitField.exists()).toBe(true)
         expect(formkitField.attributes("type")).toBe("text")
+        expect(formkitField.attributes("name")).toBe("username")
+
     })
-
-    test('Should have a password field', () => {
-        wrapper = factory()
-
-        const field = wrapper.find("[data-test='form_password']")
-        expect(field.exists()).toBe(true)
-
-        const formkitField = field.find("formkit")
-        expect(formkitField.exists()).toBe(true)
-        expect(formkitField.attributes("type")).toBe("password")
-    })
-    test('Should have a email field', () => {
+    // email
+    test('Should have an email field', () => {
         wrapper = factory()
 
         const field = wrapper.find("[data-test='form_email']")
@@ -72,7 +65,30 @@ describe('Testing the logincard component', () => {
         const formkitField = field.find("formkit")
         expect(formkitField.exists()).toBe(true)
         expect(formkitField.attributes("type")).toBe("email")
+        expect(formkitField.attributes("name")).toBe("email")
+
     })
+    // password
+    test('Should have wrapper around the password set and password confirm that has the correct typpes', () => {
+        wrapper = factory()
+
+        const field = wrapper.find("[data-test='form_password']")
+        expect(field.exists()).toBe(true)
+
+        const formKitFieldOne = field.find("[data-test='form_password_set']")
+
+        expect(formKitFieldOne.exists()).toBe(true)
+        expect(formKitFieldOne.attributes("type")).toBe("password")
+        expect(formKitFieldOne.attributes("name")).toBe("password")
+
+        const formKitFieldTwo = field.find("[data-test='form_password_confirm']")
+
+        expect(formKitFieldTwo.exists()).toBe(true)
+        expect(formKitFieldTwo.attributes("type")).toBe("password")
+        expect(formKitFieldTwo.attributes("name")).toBe("password_confirm")
+
+    })
+    // phone_number
     test('Should have a phone number field', () => {
         wrapper = factory()
 
@@ -82,7 +98,9 @@ describe('Testing the logincard component', () => {
         const formkitField = field.find("formkit")
         expect(formkitField.exists()).toBe(true)
         expect(formkitField.attributes("type")).toBe("tel")
+        expect(formkitField.attributes("name")).toBe("phone_number")
     })
+    // date_of_birth
     test('Should have a birth data number field', () => {
         wrapper = factory()
 
@@ -93,7 +111,10 @@ describe('Testing the logincard component', () => {
         expect(formkitField.exists()).toBe(true)
 
         expect(formkitField.attributes("type")).toBe("date")
+        expect(formkitField.attributes("name")).toBe("date_of_birth")
+
     })
+    // gender
     test('Should have a gender number field', () => {
         wrapper = factory()
 
@@ -103,7 +124,10 @@ describe('Testing the logincard component', () => {
         const formkitField = field.find("formkit")
         expect(formkitField.exists()).toBe(true)
         expect(formkitField.attributes("type")).toBe("select")
+        expect(formkitField.attributes("name")).toBe("gender")
+
     })
+    // first_name and last_name
     test('There should be an "name" wrapper', () => {
         wrapper = factory()
 
@@ -115,12 +139,15 @@ describe('Testing the logincard component', () => {
         expect(firstName.exists()).toBe(true)
 
         expect(firstName.attributes("type")).toBe("text")
+        expect(firstName.attributes("name")).toBe("first_name")
+
 
         const formKitFieldTwo = field.find("[data-test='form_last_name']")
         const lastName = formKitFieldTwo.find("formkit")
         expect(lastName.exists()).toBe(true)
 
         expect(lastName.attributes("type")).toBe("text")
+        expect(lastName.attributes("name")).toBe("last_name")
 
 
     })
@@ -134,7 +161,62 @@ describe('Testing the logincard component', () => {
         expect(kitButton.exists()).toBe(true)
 
         expect(kitButton.attributes("type")).toBe("submit")
-      
+    })
+    // address
+    test('Should have a address field', () => {
+        wrapper = factory()
+
+        const field = wrapper.find("[data-test='form_address']")
+        expect(field.exists()).toBe(true)
+
+        const formkitField = field.find("formkit")
+        expect(formkitField.exists()).toBe(true)
+        expect(formkitField.attributes("type")).toBe("text")
+        expect(formkitField.attributes("name")).toBe("address")
+
+    })
+    // country
+    test('Should have a country field', () => {
+        wrapper = factory()
+
+        const field = wrapper.find("[data-test='form_country']")
+        expect(field.exists()).toBe(true)
+
+        const formkitField = field.find("formkit")
+        expect(formkitField.exists()).toBe(true)
+        expect(formkitField.attributes("type")).toBe("text")
+        expect(formkitField.attributes("name")).toBe("country")
+    })
+    // postal_code
+    test('Should have a postal code field', () => {
+        wrapper = factory()
+
+        const field = wrapper.find("[data-test='form_postal_code']")
+        expect(field.exists()).toBe(true)
+
+        const formkitField = field.find("formkit")
+        expect(formkitField.exists()).toBe(true)
+        expect(formkitField.attributes("type")).toBe("text")
+        expect(formkitField.attributes("name")).toBe("postal_code")
+
+    })
+    // city
+    test('Should have a city field', () => {
+        wrapper = factory()
+
+        const field = wrapper.find("[data-test='form_city']")
+        expect(field.exists()).toBe(true)
+
+        const formkitField = field.find("formkit")
+        expect(formkitField.exists()).toBe(true)
+        expect(formkitField.attributes("type")).toBe("text")
+        expect(formkitField.attributes("name")).toBe("city")
+
+    })
+    test('Should match snapshot', () => {
+      wrapper = factory()
+
+      expect(wrapper.exists()).toBe(true)
     })
 
 });
