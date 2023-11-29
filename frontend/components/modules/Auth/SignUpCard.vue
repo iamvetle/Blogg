@@ -91,7 +91,7 @@
 
 				<!-- Country -->
 				<div data-test="form_country">
-					<FormKit type="text" label="By" placeholder="Land" name="country" :label-class="baseLabelClass"
+					<FormKit type="text" label="Land" placeholder="Land" name="country" :label-class="baseLabelClass"
 						:input-class="baseInputClass" :message-class="baseMessageClass" />
 				</div>
 
@@ -151,20 +151,18 @@ const baseURL = "http://localhost:8888/api/registrer/";
 
 const all = ref(null)
 
-// const submitForm = async (formData) => {
-// 	const responseData = await postForm(baseURL, formData);
-// 	if (responseData) {
-// 		submitted.value = true;
-// 		setTimeout(() => {
-// 			navigateTo("/login");
-// 		}, 1000);
-// 	}
-// 	else {
-// 		console.log("The signup failed for some reason") // print to self
-// 	}
-// };
-const submitForm = (formData: any) => {
+const submitForm = async (formData) => {
+	const responseData = await postForm(baseURL, formData);
+	if (responseData) {
+		submitted.value = true;
+		setTimeout(() => {
+			navigateTo("/login");
+		}, 1000);
+	}
+	else {
+		console.log("The signup failed for some reason") // print to self
+	}
 	all.value = formData
 	console.log(formData)
-} 
+};
 </script>
