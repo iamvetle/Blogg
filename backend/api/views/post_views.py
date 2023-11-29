@@ -38,9 +38,6 @@ from api.serializers.post_serializers import (
 )
 from api.serializers.user_serializers import NormalUserSerializer
 from api.filters import CustomPostFilter
-from api.services.post_services import CreatePostService, PostSnippetService
-from api.services.search_services import SearchService
-
 
 from bs4 import BeautifulSoup
 

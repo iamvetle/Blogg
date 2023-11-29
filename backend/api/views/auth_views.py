@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from django.contrib.auth import get_user_model
-from api.services.auth_services import LoginService, NewUserService
+from api.services.auth_services import LoginService
 from api.serializers.user_serializers import NormalUserSerializer
 
 CustomUser = get_user_model()
@@ -40,4 +40,3 @@ class RegisterUserView(APIView):  # Registrer
 
         else:
             return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
-

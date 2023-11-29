@@ -1,4 +1,0 @@
-# class SearchService():
-
-#     @staticmethod
-#     class
