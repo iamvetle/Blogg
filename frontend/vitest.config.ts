@@ -7,7 +7,7 @@ export default defineConfig({
         Vue(),
         AutoImport({
             imports: ['vue'],
-            dirs: ['./composables', './composables/crud'],
+            dirs: ['./composables', './composables/crud', './components'],
             vueTemplate: true,
         }),
     ],
