@@ -68,7 +68,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=50, blank=False)  # Required
     last_name = models.CharField(max_length=50, blank=False)  # Required
     
-    gender = models.CharField(max_length=10, blank=True, default="")
+    CHOICES = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other')
+    )
+     
+    gender = models.CharField(max_length=10, blank=True, default="", choices=CHOICES)    
+    
     date_of_birth = models.DateField(null=True, blank=True)    
         
     # NOT recommended to use "null" together with TextField or CharField, better to use 'default=""'

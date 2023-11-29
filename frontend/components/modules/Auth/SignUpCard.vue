@@ -79,7 +79,7 @@
 				<!-- Gender -->
 				<div data-test="form_gender">
 					<FormKit type="select" label="Choose gender?" name="gender" :options="genders"
-						:label-class="baseLabelClass" :input-class="baseInputClass" :message-class="baseMessageClass"
+						:label-class="baseLabelClass" placeholder="Velg kjønn" :input-class="baseInputClass" :message-class="baseMessageClass"
 						validation="required" />
 				</div>
 
@@ -108,9 +108,6 @@
 						validation="number" :label-class="baseLabelClass" :input-class="baseInputClass"
 						:message-class="baseMessageClass" />
 				</div>
-
-				<pre wrap>{{ all }}</pre>
-
 				<!-- Submit -->
 				<div data-test="form_button_submit" id="submit_button" class="mt-4 shadow-sm">
 					<FormKit type="submit" label="Bekreft"
