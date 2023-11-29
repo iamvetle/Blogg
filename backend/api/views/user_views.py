@@ -16,7 +16,6 @@ from rest_framework.parsers import MultiPartParser, FormParser
 
 # Local application imports
 from django.shortcuts import get_object_or_404
-from api.services.user_services import UserProfileService
 from api.serializers.user_serializers import (
     LoggedInUserSerializer,
     NormalUserSerializer,

@@ -27,7 +27,7 @@
 				<div id="sidebar" class="relative px-5 col-span-4 border-v border-red-500">
 					<!--/** If the user has a profile picture that one is displayed. If not, the temporary one is displayed. */-->
 					<user-sidebar :username="normalUserProfile.username"
-						:profile-picture="normalUserProfile.profile_picture ? normalUserProfile.profile_picture : ''">
+						:profile-picture="normalUserProfile.profile_picture">
 						<template #amount-of-followers>
 							<div class="font-light text-sm leading-7">
 								<p v-if="followers === 1">

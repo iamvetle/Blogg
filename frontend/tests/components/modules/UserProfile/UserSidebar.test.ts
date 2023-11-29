@@ -1,33 +1,44 @@
 import UserSidebar from '~/components/modules/UserProfile/UserSidebar.vue';
-import { VueWrapper, flushPromises, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
+import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 
-describe('testign theusersidebar', () => {
-    let wrapper: VueWrapper;
-    let store: any;
+import placeholder_user_profile_picture from '~/assets/placeholder-profile-picture.png'
 
-    vi.stubGlobal('hoverAction', () => {
-        return null
-    })
-    vi.stubGlobal('leaveAction', () => {
-        return null
-    })
+let wrapper: any;
 
-    beforeEach(async () => {
-        wrapper = shallowMount(UserSidebar, {
-            global: {
-                stubs: {}
+let profilePictureProp = "src/image.jpg"
+let usernameProp = "testUsername"
+
+let amountOfFollowersSlot = "28"
+let followButtonSlot = "<button>Testbutton</button>"
+let bioSlot = "some test bio for slot"
+
+const factory = (data?: any) => {
+    return shallowMount(UserSidebar, {
+        global: {
+            plugins: [],
+            components: {},
+            mocks: {},
+            stubs: {
+                BaseImage: true
             },
-            props: {
-                username: "testuser",
-                profilePicture: "~/path/to/profile_picture.jpg"
-            },
-            slots: {
-                "follow-button": "<p>This is the slot 'follow_button'</p>",
-                "amount-of-followers": "<h3>5</h3>"
-            }
-        });
+        },
+        props: data,
+        slots: {
+            "amount-of-followers": amountOfFollowersSlot,
+            "follow-button": followButtonSlot,
+            "bio":bioSlot
+        }
+    })
+};
 
-        await flushPromises()
+describe('Testing the user sidebar component', () => {
+
+    beforeEach(() => {
+        // generalStore = useGeneralStore(pinia); 
+        // postStore = usePostStore(pinia); 
+        // loggedInUserStore = useLoggedInUserStore(pinia); 
+        // paginationStore = usePaginationStore(pinia); 
 
     });
 
@@ -36,82 +47,46 @@ describe('testign theusersidebar', () => {
             wrapper.unmount();
         }
     });
-
-    test('component exists', () => {
-        expect(wrapper.exists()).toBe(true)
-    })
-
-    test('Should render the username', () => {
-        expect(wrapper.html()).toContain("testuser")
-    })
-
-    test('Should render the "follow_button" slot', () => {
-        expect(wrapper.html()).toContain("<p>This is the slot 'follow_button'</p>")
-    })
-
-    test('Should render the amount of followers slot', () => {
-        expect(wrapper.html()).toContain("<h3>5</h3>")
-    })
-
-    test('Should not render content when slot is not given/provided', async () => {
-        wrapper.unmount()
-
-        wrapper = shallowMount(UserSidebar)
-
-        await wrapper.vm.$nextTick()
-
-        expect(wrapper.html()).not.toContain("<p>This is the slot 'follow_button'</p>")
-        expect(wrapper.html()).not.toContain("<h3>5</h3>")
-
-    })
-
-    test("Should have a profile picture prop", () => {
-        // arrange?
-
-        // act?
-
-        // Assert
-        
-        expect(wrapper.props("profilePicture")).toBeTruthy() // Basically, checks if the component HAS a prop named that
-        expect(wrapper.props("profilePicture")).toEqual("~/path/to/profile_picture.jpg") // Asserts that the prop contains what we actually told the prop to contain
-    })
-
-    test('Should render the profile picture if there is a profile picture', () => {
-        
-        // Arrange
-        let image = wrapper.get('img[id="profile-picture"]');
-        // act?
-
-        // Assert
-        expect(image.attributes("src")).toBe("~/path/to/profile_picture.jpg")
-
-    })
-    test("Should render temporary profile image if no profile picture prop is provided", async () => {
-        await wrapper.unmount()
-
-        // Arrange
-        
-        /** Makes a new wrapper that this time doesnt have a profilePicture prop */
-        wrapper = shallowMount(UserSidebar, {
-            props: {
-                username: "test_username",
-            }
+    test('Should exist', async () => {
+        wrapper = factory({
+            username:usernameProp
         })
 
-        await wrapper.vm.$nextTick()
-        ;(wrapper.vm as any).placeholder = "placeholderImage"
+        expect(wrapper.exists()).toBe(true)
+    })
+    test('Should have the BaseImage component', () => {
+        wrapper = factory({
+            username: usernameProp
+        })
+        const baseImage = wrapper.findComponent({ name: "BaseImage" })
+        expect(baseImage.exists()).toBe(true)
+    })
+    test('The image should get the placeholder image when no prop is provided', () => {
+        wrapper = factory({
+            username: usernameProp
+        })
+        const baseImage = wrapper.findComponent({ name: "BaseImage" })
+        expect(baseImage.attributes("src")).toBe(placeholder_user_profile_picture)
+    })
+    test('The image should render (have the src of) the provided image prop', () => {
+        wrapper = factory({
+            username: usernameProp,
+            profilePicture: profilePictureProp,
+        })
+        const baseImage = wrapper.findComponent({ name: "BaseImage" })
+        expect(baseImage.attributes("src")).toBe(profilePictureProp)
+    })
+    test('Should render the input of the three slots', () => {
+        wrapper = factory({
+            username: usernameProp,
+            profilePicture: profilePictureProp,
+        })
+        expect(wrapper.html()).toContain(amountOfFollowersSlot)
+        expect(wrapper.html()).toContain(followButtonSlot)
+        expect(wrapper.html()).toContain(bioSlot)
 
-        await wrapper.vm.$nextTick()
-        
-        let image = wrapper.get("img(id='profile-picture')")
-
-        // act?
-
-        // Arrange
-
-        expect(image.attributes("src")).toBe("placeholderImage")
 
     })
 
-    // i can find the component and checkk the text directly inside because it is using slot ^
+
 });
