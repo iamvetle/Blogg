@@ -13,6 +13,12 @@ from rest_framework.permissions import IsAuthenticated
 
 from rest_framework.parsers import MultiPartParser, FormParser
 
+# Pillow (?)
+
+from PIL import Image
+from django.core.files.base import ContentFile
+from io import BytesIO
+
 
 # Local application imports
 from django.shortcuts import get_object_or_404
@@ -151,7 +157,20 @@ class LoggedInUserAddOrChangeProfilePicture(APIView):
         if profile_picture:
             # Directly update the user's profile picture
             try:
-                user.profile_picture = profile_picture
+                
+                # Open the uploaded image using Pillow
+                image = Image.open(profile_picture)
+
+                # Compress and convert the image to WebP
+                output = BytesIO()
+                image.save(output, format='WEBP', quality=80)
+                output.seek(0)
+
+                # Create a new Django file-like object for the WebP image
+                webp_file = ContentFile(output.read(), name=profile_picture.name.split('.')[0] + '.webp')
+
+                user.profile_picture = webp_file
+
                 user.save()
                 return Response({'detail': 'Profile picture updated successfully'}, status=status.HTTP_200_OK)
             except ValidationError as e:

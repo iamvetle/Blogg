@@ -77,7 +77,7 @@ class PostAllSavedLoggedInUserView(ListAPIView):  # /api/saved/
 
 
 class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
-    """Returns All of the posts made by the specified user"""
+    """Returns All of the posts (snippets) made by the specified user"""
 
     permission_classes = [IsAuthenticated]
     serializer_class = PostShortenSerializer
@@ -117,17 +117,8 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
 
 class PostMultipleSnippetOnlyMyFollowingView(ListAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = PostShortenSerializer
-    # TODO Find out if I want to have the option to filter with this class
-    # It paginates automatically - se settings.py
-    # filter_backends = [
-    #    filters.DjangoFilterBackend,
-    #    SearchFilter,
-    # ]
-    # filterset_class = CustomPostFilter
-
-    # search_fields = ["title", "content", "author__username"]
-
+    serializer_class = PostShortenSerializer    
+    
     # Makes sure that the *newest* posts are listed first by the frontend
     queryset = Post.objects.all().order_by("-date_published")
 

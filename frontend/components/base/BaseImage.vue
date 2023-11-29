@@ -7,7 +7,7 @@
 <script setup lang="ts">
 
 defineOptions({
-    inheritAttrs:false
+    inheritAttrs:false  
 })
 
 defineProps<{
