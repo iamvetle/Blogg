@@ -18,6 +18,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from PIL import Image
 from django.core.files.base import ContentFile
 from io import BytesIO
+import uuid
 
 
 # Local application imports
@@ -150,14 +151,10 @@ class LoggedInUserAddOrChangeProfilePicture(APIView):
 
     def post(self, request, format=None):
         user = request.user  # Assuming you're dealing with an authenticated user
-        
 
-        # Access the uploaded file directly from request.FILES
         profile_picture = request.FILES.get('profile_picture', None)
         if profile_picture:
-            # Directly update the user's profile picture
             try:
-                
                 # Open the uploaded image using Pillow
                 image = Image.open(profile_picture)
 
@@ -166,12 +163,15 @@ class LoggedInUserAddOrChangeProfilePicture(APIView):
                 image.save(output, format='WEBP', quality=80)
                 output.seek(0)
 
+                # Generate a unique file name using UUID
+                unique_filename = f"{uuid.uuid4()}.webp"
+
                 # Create a new Django file-like object for the WebP image
-                webp_file = ContentFile(output.read(), name=profile_picture.name.split('.')[0] + '.webp')
+                webp_file = ContentFile(output.read(), name=unique_filename)
 
                 user.profile_picture = webp_file
-
                 user.save()
+
                 return Response({'detail': 'Profile picture updated successfully'}, status=status.HTTP_200_OK)
             except ValidationError as e:
                 # Handle any validation errors
