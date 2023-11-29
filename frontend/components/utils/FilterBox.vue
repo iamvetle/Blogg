@@ -24,7 +24,7 @@
 
 
  /**
-  * ! am I using this component? if i am: change and fix the innherting and $attrs problem
+  * * Yes this component is in use 
   */
 
 // defineOptions({

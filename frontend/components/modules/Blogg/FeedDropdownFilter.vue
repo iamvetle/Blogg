@@ -3,7 +3,7 @@
         <span class="mb-2 w-full flex items-center text-center justify-center">
             <button data-test="dropdown-button"
                 class="w-full h-full text-lg hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
-                @click="changeDropdown"
+                @click="changeDropdown()"
                 >
                 Filter posts
             </button>
@@ -53,7 +53,7 @@ const tagOptions = computed(() => {
  * The 'component' together with 'KeepAlive' caches the component state 
  * so that what is 'checked' with checkboxes doesnt dissapear when the tab is toggled
  */
-const dropdown = ref<any>(false)
+const dropdown = shallowRef<any>(false)
 const f = resolveComponent('FilterBox')
 const changeDropdown = () => {
     if (dropdown.value == f) {
