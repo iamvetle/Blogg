@@ -50,21 +50,25 @@
 							</div>
 						</div>
 						<div>
-							<div id="following">
-								<div class="mt-4">
+							<div class="mt-4" id="following">
+								<div>
 									<span class="prose">
 										<h3>You are following:</h3>
 									</span>
-									<MyProfileFollowing v-if="loggedInUserStore.loggedInUserProfile.num_of_following" class="items-center pt-2 ms-6" />
+									<MyProfileFollowing v-if="loggedInUserStore.loggedInUserProfile.num_of_following"
+										class="items-center pt-2 ms-6" />
 									<span v-else>Nobody.</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-span-4 sm:col-span-7 xl:col-span-9">
 
-						<div id="bio">
-							<MyProfileBio />
+					<!-- Main 9/12  -->
+					<div class="col-span-4 sm:col-span-7 xl:col-span-9">
+						<div data-test="bio">
+							<MyProfileBio 
+							@bio-update=""
+							/>
 						</div>
 						<div id="all-posts">
 							<MyProfilePostsList />
@@ -104,6 +108,8 @@ onMounted(async () => {
 	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
 	await getLoggedInUserProfile(loggedInUserURL)
 })
+
+
 
 </script>
 

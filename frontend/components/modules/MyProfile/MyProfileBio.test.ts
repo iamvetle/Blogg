@@ -2,35 +2,31 @@ import MyProfileBio from './MyProfileBio.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import InputTextarea from '~/components/form/InputTextarea.vue';
+
+let wrapper: any;
+let loggedInUserStore: any;
+let abioText = "this is test bio"
 
 describe('testing the component containing the bio of the logged in user', () => {
-    let wrapper: VueWrapper;
-    let store: any;
-    vi.stubGlobal('definePageMeta', () => {
-        return null
-    });
-    vi.stubGlobal('useRoute', () => {
-        return {
-            params: {
-                id: 1
-            }
-        }
-    });
 
     beforeEach(() => {
         const pinia = createTestingPinia();
-        store = useLoggedInUserStore(pinia);
+        loggedInUserStore = useLoggedInUserStore(pinia);
 
-        store.loggedInUserProfile = {
-            bio: "this is test bio"
+        loggedInUserStore.loggedInUserProfile = {
+            bio: abioText
         }
 
         wrapper = shallowMount(MyProfileBio, {
             global: {
                 plugins: [pinia],
-                components: {},
+                components: {
+                    InputTextarea
+                },
                 mocks: {},
-                stubs: {}
+                stubs: {
+                }
             },
             props: {}
         });
@@ -45,9 +41,31 @@ describe('testing the component containing the bio of the logged in user', () =>
     test('Should exist', () => {
         expect(wrapper.exists()).toBe(true)
     })
-    test('Personal bio is displayed', async () => {
+    test('Should have the bio title..', () => {
+        expect(wrapper.text()).toContain("Bio")
+    })
+    test('Should have an emit event called "bioUpdate"', async () => {
+        
+        await wrapper.vm.emit("bioUpdate")
+
+        expect(wrapper.emitted("bioUpdate")).toBeTruthy()
+    })
+
+    test('Should emit with the correct thing', async () => {
+        
+        const emThing = "somethingNew"
+
+        wrapper.vm.bioText = emThing
         await wrapper.vm.$nextTick()
 
-        expect(wrapper.text()).toContain("this is test bio")
+
+
+        await wrapper.vm.emit("bioUpdate")
+
+        // because emit has 2 time earlier as well cuz of watcheffect
+        expect(wrapper.emitted("bioUpdate")[2]).toEqual([emThing])
+
+        // can just do this basically as well
+        expect(wrapper.emitted("bioUpdate")).toContainEqual([emThing])
     })
-});
+})

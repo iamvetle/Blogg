@@ -20,8 +20,6 @@ let loggedInUserStore: any;
 let pinia;
 let postStore: any;
 
-let inputImageName = "image_file"
-
 const standardLoggedInProfile = {
     id: 3,
     username: "test32",
@@ -90,6 +88,7 @@ describe('Testing the page minkonto', () => {
                     MyProfileUsername: true,
                     MyProfileName: true,
                     MyProfileNumOfFollowers: true,
+                    MyProfileNumOfFollowing:true,
                     MyProfileFollowing: true
                 },
                 components: {
@@ -188,7 +187,7 @@ describe('Testing the page minkonto', () => {
     test('Should render "nobody" text if the logged in user is not following anybody', async () => {
         postStore.loggedInUserPosts = standardLoggedInUserPosts
         loggedInUserStore.loggedInUserProfile = alternativeLoggedInProfile
-        
+
         await wrapper.vm.$nextTick()
 
         const myprofilepicture = wrapper.findComponent({ name: "MyProfileFollowing" })
@@ -197,6 +196,30 @@ describe('Testing the page minkonto', () => {
         const following = wrapper.find("#following")
 
         expect(following.text()).toContain("Nobody.")
+    })
+    test('Should not have "bio" id because that is inside of the myprofilecomponent...', async () => {
+        postStore.loggedInUserPosts = standardLoggedInUserPosts
+        loggedInUserStore.loggedInUserProfile = alternativeLoggedInProfile
+
+        await wrapper.vm.$nextTick()
+
+        const something = wrapper.find("#bio")
+
+        console.log(wrapper.html())
+        expect(something.exists()).toBe(false)
+    })
+    test('Should have data-test "bio" that was the associated component', async () => {
+        postStore.loggedInUserPosts = standardLoggedInUserPosts
+        loggedInUserStore.loggedInUserProfile = alternativeLoggedInProfile
+
+        await wrapper.vm.$nextTick()
+
+        const something = wrapper.find("[data-test='bio']")
+
+        console.log(wrapper.html())
+
+        expect(something.findComponent({ name:"MyProfileBio" }).exists()).toBe(true)
+        
     })
 
 })
