@@ -4,14 +4,10 @@
             <h2 class="text-xl font-bold mb-4">
                 Bio
             </h2>
-                <div data-test="submit_bio_input_change">
-                    <BaseButton
-                    text="Save change"
-                    type="submit"
-                    v-if="showSaveBioInputButton"
-                    />
-                </div>
-            
+            <div v-if="showSaveBioInputButton" data-test="submit_bio_input_change">
+                <BaseButton text="Save change" type="submit" @click="handleBioChange"/>
+            </div>
+
             <div data-test="bio_input_output" id="bio-text" class="break-words">
                 <InputTextarea maxlength="275" class="py-4 border-none resize-none rounded-lg w-full
                 
@@ -20,10 +16,7 @@
                 
                 focus:ring-primary
                 focus:ring-2
-                "
-                
-                v-model.trim="bioText" id="bio"
-                    placeholder="Write bio here"/>
+                " v-model.trim="bioText" id="bio" placeholder="Write bio here" />
             </div>
         </div>
     </div>
@@ -38,16 +31,12 @@ const emit = defineEmits(["bioUpdate"])
 const loggedInUserStore = useLoggedInUserStore()
 const bioText = ref<any>("")
 
-const showSaveBioInputButton = ref(true)
-
 /**
  * Places the initial bio value when component is loaded
  */
 onMounted(() => {
     bioText.value = loggedInUserStore.loggedInUserProfile.bio
 })
-
-
 
 /**
  * ! fiks det her. slik at jeg må trykke på knappen for å gjøre en permanent endrin
@@ -56,20 +45,26 @@ onMounted(() => {
 /**
  * Updates the bio value / emits and event when the value with v-model changes
  */
-watchEffect(() => {
-    emit('bioUpdate', bioText.value)
-    showSaveBioInputButton.value = false
 
+const showSaveBioInputButton = computed(() => {
+    /** There is not text input - the button is not shown */
+    if (bioText.value === "") {
+        return false
+    /** There is text input but it is the excact same as it initially was - the button is not shown*/
+    } else if (bioText.value === loggedInUserStore.loggedInUserProfile.bio) {
+        return false
+    /** Otherwise, the button is shown */
+    } else {
+        return true
+    }
 })
 
-watch(bioText.value, (newBioText, oldBioText) => {
-
-    if (bioText.value == "")
-
-    showSaveBioInputButton.value = true
-
-})
-
+/**
+ * emits a message to the parent component saying that the input wants to ?be? the bio text
+ */
+const handleBioChange = () => {
+    emit("bioUpdate", bioText.value)
+}
 
 
 
