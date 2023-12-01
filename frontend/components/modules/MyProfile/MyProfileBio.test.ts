@@ -76,4 +76,9 @@ describe('testing the component containing the bio of the logged in user', () =>
 
     //     expect(textAreaInputComponent.attributes("maxlength")).toBe(maxlengthTextarea)
     // })
+    test('Should have a "submit change button"', () => {
+        expect(wrapper.find("[data-test='submit_bio_input_change']").exists()).toBe(true)
+
+
+    })
 })
