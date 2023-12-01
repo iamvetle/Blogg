@@ -7,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist, ValidationError
 ## Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, CreateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, CreateAPIView, RetrieveUpdateAPIView
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
@@ -35,18 +35,18 @@ from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 CustomUser = get_user_model()
 
-class LoggedInUserProfileView(RetrieveAPIView):
-    """Returns profile information about the LOGGED-IN user"""
-
+class LoggedInUserProfileView(RetrieveUpdateAPIView):
+    """Returns and updates profile information about the LOGGED-IN user"""
     permission_classes = [IsAuthenticated]
     serializer_class = LoggedInUserSerializer
 
-    http_method_names = ["get"]
-
     def get_object(self):
-        # my_user = CustomUser.objects.get(username=self.request.user)
-        my_user = get_object_or_404(CustomUser, username=self.request.user)
-        return my_user
+        # Retrieve the CustomUser instance for the logged-in user
+        return get_object_or_404(CustomUser, username=self.request.user)
+
+    def partial_update(self, request, *args, **kwargs):
+        # Custom handling for partial update if needed
+        return super().partial_update(request, *args, **kwargs)
 
 class NormalUserProfileView(RetrieveAPIView):
     """Returns information about a SPECIFIC user"""

@@ -22,11 +22,6 @@ const factory = () => {
 describe('Testin the Login card component', () => {
 
     beforeEach(() => {
-        // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
-        // paginationStore = usePaginationStore(pinia); 
-
     });
 
     afterEach(() => {

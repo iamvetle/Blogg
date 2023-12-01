@@ -15,10 +15,12 @@ import MyProfileNumOfFollowers from '~/components/modules/MyProfile/MyProfileNum
 import MyProfilePicture from '~/components/modules/MyProfile/MyProfilePicture.vue';
 import MyProfileFollowing from '~/components/modules/MyProfile/MyProfileFollowing.vue';
 
-let wrapper: VueWrapper
+let wrapper: any
 let loggedInUserStore: any;
 let pinia;
 let postStore: any;
+
+const mockUpdateBio = vi.fn()
 
 const standardLoggedInProfile = {
     id: 3,
@@ -88,7 +90,7 @@ describe('Testing the page minkonto', () => {
                     MyProfileUsername: true,
                     MyProfileName: true,
                     MyProfileNumOfFollowers: true,
-                    MyProfileNumOfFollowing:true,
+                    MyProfileNumOfFollowing: true,
                     MyProfileFollowing: true
                 },
                 components: {
@@ -102,8 +104,11 @@ describe('Testing the page minkonto', () => {
                     MyProfileNumOfFollowers,
                     MyProfilePicture,
                     MyProfileFollowing
-                }
-            }
+                },
+                mocks: {
+                    updateBio:mockUpdateBio
+                },
+            },
         })
 
         await wrapper.vm.$nextTick()
@@ -218,8 +223,23 @@ describe('Testing the page minkonto', () => {
 
         console.log(wrapper.html())
 
-        expect(something.findComponent({ name:"MyProfileBio" }).exists()).toBe(true)
-        
+        expect(something.findComponent({ name: "MyProfileBio" }).exists()).toBe(true)
+
+    })
+    test('Should have a fetchBio function that gets called when the updatebio emit is called', async () => {
+        postStore.loggedInUserPosts = standardLoggedInUserPosts
+        loggedInUserStore.loggedInUserProfile = alternativeLoggedInProfile
+
+        await wrapper.vm.$nextTick()
+
+        const profileBio = wrapper.getComponent({ name:"MyProfileBio" })
+        profileBio.trigger("bio-update")
+
+        await wrapper.vm.$nextTick()
+
+        expect(mockUpdateBio).toHaveBeenCalledOnce()
+
+
     })
 
 })

@@ -5,7 +5,7 @@
                 Bio {{ bioText }}
             </h2>
             <div data-test="bio_input_output" id="bio-text" class="break-words">
-                <InputTextarea class="py-4 h-auto border-none resize-none rounded-lg w-full
+                <InputTextarea maxlength="275" class="py-4 border-none resize-none rounded-lg w-full
                 
                 hover:ring-primaryContainer
                 hover:ring-2
