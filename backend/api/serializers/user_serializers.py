@@ -138,14 +138,8 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             "num_of_saved_posts",
             "profile_picture",
         )
-        extra_kwargs = {
-            "first_name": {"required": True},
-            "last_name": {"required": True},
-            "email": {"required": True},
-            "username": {"required": True},
-            "profile_picture": {"required": False},
-            "date_joined": {"read_only": True},
-        }
+        
+        read_only_fields = ["date_joined"]
 
 
 class NormalUserSerializer(serializers.ModelSerializer):

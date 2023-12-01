@@ -66,6 +66,7 @@ declare global {
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
+  const patchLoggedInUserBio: typeof import('./composables/crud/patchLoggedInUserBio')['patchLoggedInUserBio']
   const postCommentOnPost: typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']
   const postCreateNewPost: typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']
   const postForm: typeof import('./composables/crud/postForm')['postForm']
@@ -162,6 +163,7 @@ declare module 'vue' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly patchLoggedInUserBio: UnwrapRef<typeof import('./composables/crud/patchLoggedInUserBio')['patchLoggedInUserBio']>
     readonly postCommentOnPost: UnwrapRef<typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']>
     readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
@@ -247,6 +249,7 @@ declare module '@vue/runtime-core' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly patchLoggedInUserBio: UnwrapRef<typeof import('./composables/crud/patchLoggedInUserBio')['patchLoggedInUserBio']>
     readonly postCommentOnPost: UnwrapRef<typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']>
     readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>

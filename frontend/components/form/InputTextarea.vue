@@ -1,20 +1,21 @@
 <template>
-    <div>
-        <textarea v-model="modelValue" v-bind="$attrs"></textarea>
-        <span v-if="label">{{ label }}</span>
-    </div>
+    <textarea v-bind="$attrs" :value="modelValue" @change="updateValue"></textarea>
 </template>
-
+  
 <script setup lang="ts">
 
-const modelValue = defineModel<any>()
-
 defineProps<{
-    label?:string
-}>()
+    modelValue: string
+}>();
 
+const emit = defineEmits(['update:modelValue']);
+
+const updateValue = (event: any) => {
+    emit('update:modelValue', event.target.value);
+};
 </script>
-
+  
 <style scoped>
-
+/* Add your styling here */
 </style>
+  

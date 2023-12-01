@@ -1,14 +1,16 @@
-import { postMethod } from "~/services/apiByCRUD";
+import { patchMethod } from "~/services/apiByCRUD";
 
-export const postProfilePicture = async (url: string, formData: object, headers?: object): Promise<object | null> => {
+export const patchLoggedInUserBio = async (url: string, formData: object): Promise<object | null> => {
     try {
         const token = retrieveToken();
+
         const headers = {
             "Authorization": `Token ${token}`,
         };
 
+
         /** The actual POST fetch */
-        const response = await postMethod(url, formData, headers)
+        const response = await patchMethod(url, formData, headers)
 
         /** Returns the data from the response */
         if (response) {
@@ -19,7 +21,7 @@ export const postProfilePicture = async (url: string, formData: object, headers?
         }
 
     } catch (error) {
-        console.error("ERROR: An error occurred while trying to edit/add profile picture to logged in user: ", error); // Logging for debugging
+        console.error("ERROR: An error occurred while trying to update/add bio to logged in user: ", error); // Logging for debugging
         return null;
     }
 
