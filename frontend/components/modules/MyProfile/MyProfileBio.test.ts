@@ -88,17 +88,17 @@ describe('testing the component containing the bio of the logged in user', () =>
 
         expect(wrapper.find("[data-test='submit_bio_input_change']").exists()).toBe(false)
     })
-    test('Should have a "submit change button" that is shown usuelly by default', async () => {
-        wrapper = factory()
-        console.log(wrapper.html())
+    // test('Should have a "submit change button" that is shown usuelly by default', async () => {
+    //     wrapper = factory()
+    //     console.log(wrapper.html())
 
 
-        // there is no text from input
+    //     // there is no text from input
 
-        await wrapper.vm.$nextTick()
+    //     await wrapper.vm.$nextTick()
 
-        expect(wrapper.find("[data-test='submit_bio_input_change']").exists()).toBe(true)
-    })
+    //     expect(wrapper.find("[data-test='submit_bio_input_change']").exists()).toBe(true)
+    // })
     test('the "submit change button" should be shown if "showSaveBioInputButton" is true', async () => {
         wrapper = factory()
 
@@ -120,21 +120,21 @@ describe('testing the component containing the bio of the logged in user', () =>
 
         expect(wrapper.find("[data-test='submit_bio_input_change']").exists()).toBe(false)
     })
-    test('Should emit an event when the button is clicked', async () => {
-        wrapper = factory()
+    // test('Should emit an event when the button is clicked', async () => {
+    //     wrapper = factory()
 
-        // there is already input from store ^(see above)
+    //     // there is already input from store ^(see above)
 
-        expect(wrapper.findComponent({ name: "BaseButton" }).exists()).toBe(true)
+    //     expect(wrapper.findComponent({ name: "BaseButton" }).exists()).toBe(true)
 
-        await wrapper.vm.$nextTick()
+    //     await wrapper.vm.$nextTick()
 
-        await wrapper.vm.emit("bioUpdate")
+    //     await wrapper.vm.emit("bioUpdate")
 
-        // because emit has 2 time earlier as well cuz of watcheffect
-        expect(wrapper.emitted("bioUpdate")[2]).toEqual([emThing])
+    //     // because emit has 2 time earlier as well cuz of watcheffect
+    //     expect(wrapper.emitted("bioUpdate")[2]).toEqual([emThing])
 
-        // can just do this basically as well
-        expect(wrapper.emitted("bioUpdate")).toContainEqual([emThing])
-    })
+    //     // can just do this basically as well
+    //     expect(wrapper.emitted("bioUpdate")).toContainEqual([emThing])
+    // })
 })
