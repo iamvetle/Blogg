@@ -28,6 +28,10 @@ customize *functions* and *custom admin classes*
 
 - ? What really is user stories?
 
+## Big advances
+
+- [ ] Make the whole URL reflect on all of the filters used - and the search done
+
 
 ## Big current problems
 
@@ -46,116 +50,77 @@ to find the ones that the web client is interrested in.
 
 There is also a user sidebar where the currently saved posts are, and some other general information about the user.
 
-**TODO**
+## TODO
 
 - [ ] Make the whole URL reflect on all of the filters used - and the search done
-  - [ ] Should maybe have an array in a store that saves all of the options taken
+  - [ ] ? Should maybe have an array in a store that saves all of the options taken
   - [ ] Should have a *watcher* that makes sure that all of the query parameters the url have is being stored
     - [ ] And somehow then reflect that in checkboxes? - dont know how
   - [ ] Should have a watcher that reflects the changes made by filters into the URL so it's a **two way** communication
 
+---
 
+### /[id] single post
 
-## The Backend
+**when web clients not logged in**
 
-### Search and filter functionality
-
-
-### models.py
-
-**CustomUser** ->
-- [ ]
+- [ ] Can still read posts
+- [ ] Can NOT make comment
+- [ ] Can NOT save post
 
 ---
 
-- [ ] Make it possible to save images in code editor to database here
+### /[id] user page
+
+**when web clients not logged in**
+
+- [ ] Can view all the posts the user has made
+- [ ] Can NOT follow user
+- [ ] Can NOT follow user
+- [ ] Can NOT save any of the posts
+
+- * * *
+
+- [ ] Implement **skeleton loader**
 
 ---
 
+### /minkonto
 
-
----
-
-### Serializers og views
-
-
+- [ ] Implement **skeleton loader**
 
 ---
 
-**Postman**
+### feed/index
 
+**when web clients not logged in**
 
-
----
-
-### admin.py - Admin Panel
-
-
----
-
-### General
-
+- [ ] Can still read the feed posts
+- [ ] But doesn't have a sidebar
+- [ ] Can't save posts
+- [ ] The navbar doesnt have icons such as "new post"
+- [ ] Implement **skeleton loader**
 
 ---
 
-## The Frontend
-
-
-
-
-> Try to use 'red (fail), green (barely work), refactor (work)' - TTD (and don't mock in components - just do direct manipulation (it is not best practise, but most benefiel here))
-
----
-
-### ListArticlesSidebar
-
-- **Vis korrekt, av og for brukeren**:
-
+### /newpost - text editor
 
 
 ---
 
-### [id] single post
+### /registrer - text editor
 
-
-
-
-### [id] user page
-
-
-
----
-
-### min-side
-
-
----
-
-### index
-
-
-
----
-
-
-
----
-
-
-
-### text editor
-
+- [x] Expand the registration form to include more information options
+- [ ] Implement **skeleton loader**
 
 ---
 
 ### API
 
-- [ ] Make a ***common method*** for POST, GET, DELETE, PATCH that the composables can use - this is so I can use a different api
+- [x] Make a ***common method*** for POST, GET, DELETE, PATCH that the composables can use - this is so I can use a different api
   fetch later if I would want to do that.
 - [x] Take all of the **API fetching on the page level**
-- [ ] use a method to access and save to local storage easoer
-- [ ] make get(crud) composables to use a common library that is of a composable, so if I want to change from 'axios' to something else, it'll be easy
-- [ ] Maybe move the api logic to the store?
+- [x] use a composable to access and save to local storage easoer
 
 - When i am retrieving tokens from **LocalStorage**, all of my fetching becomes on the client side.
   - The means *initial load* can be very slow
@@ -176,23 +141,18 @@ There is also a user sidebar where the currently saved posts are, and some other
 
 - [~] Ta code snippets som du bruker med **Vue Test Utils**, og i **Postman** og legg dem systematisk på Notion
 - [~ jobber med det] Documentere ordentlig alle sidene og composables
-- [ ] Expand the registration form to include more information options
 - [x] Fix the emit between new post and editorcard when it comes to border color and such
-- [ ] Rydde opp i alle composables
+- [x] Rydde opp i alle composables
 - [x] Dele opp stores
-- [ ] Find a workaround for **the problem that all of the fetching is happening from the client side**
-  - [ ] split the onMounted hooks for ones reqairing auth, and the ones not requiring it
-    - But all require it..
-    - Or maybe cachin in some hay?
+
 - [ ] Gi en error message som sier at "denne brukeren fins ikke" når noen prøver å access */user/enbrukersomikkefins*
 
 ---
 
 ### Composables
 
-- [ ] Slette ubrukte composables
-- [ ] Lage en "hybrid appraoch" til composables
-  - [ ] Sette sammen composables slik at det blir mer enklere
+- [x] Slette ubrukte composables
+- [x] Lage en "hybrid appraoch" til composables hvor jeg seperate axios fetching to a different file
 
 ### thoughts
 
@@ -200,17 +160,14 @@ There are features I generally want to implement, but not sure how.
 
 - there is no mobile support
 
-- Comments have no functionality right now
-
   - What kind of backend api-endpoints do I need for that? I need to be able to:
     - Retrieve all comments to a post.
       - Se på medium.com
 
 - Hva skjedde med _likes_?
 
-- I want to avoid layout shifts when fetching from api:
-  - I can do v-if="all of the api variables"
-  - Skeleton loaders
+- Should I switch do a different authentication system?
+  - TODO: Find out if I still have to do the fetching on the client side - with onMounted
 
 - Text editor for publishing posts
 - maybe relevant [simplemde](https://simplemde.com/)
@@ -218,11 +175,11 @@ There are features I generally want to implement, but not sure how.
 - i should try to follow the best practice for pinia and store
   - that might be to have all the logic, all of the functions inside the store and not do **store.functionOrVariable = something**
 
-Not so important right now:
+**Not so important right now:**
 
 - Make the loading, and **_lazyloading_** much better
 
-- [ ] Find out how I want implement "**text editor**"
+- [x] Find out how I want implement "**text editor**"
   - I have to fix/tweak the editor to be able to provide a smooth user experience when trying to make a post
   - ~~Should I continue with **TiptapEditor** or use something else like **simplemde**?~~
 - Should I remove the images that are listed on the feed/index
@@ -246,3 +203,52 @@ ide:
 ### In medium
 
 - **For you** | **Following** - | Cybersecurity | Society | Coding | Mental Health | Psychology | Equality | Web Development | Deep Learning | Mindfulness | Spirituality | Philosophy | Data Visualization | Math | Science | Self Improvment | Data Science | Programming
+
+
+---
+---
+
+# The Backend
+
+## Todo
+
+### Search and filter functionality
+
+---
+
+### models.py
+
+---
+
+- [x] Make it possible to save images in code editor to database here
+  - [x] Convert the img elements sources to have the correct local database sources
+  - [x] Compress and turn into webp format
+  - [x] Through copy pasting in text editor
+  - [x] And through file upload
+
+
+
+---
+
+### Serializers og views
+
+---
+
+### admin.py - Admin Panel
+
+---
+
+### General
+
+
+---
+
+## The Frontend
+
+
+
+
+> Try to use 'red (fail), green (barely work), refactor (work)' - TTD (and don't mock in components - just do direct manipulation (it is not best practise, but most benefiel here))
+
+---
+

@@ -2,7 +2,7 @@
     <div class="bg-primary rounded-lg p-6">
         <div class="px-5 py-7 bg-onPrimary border-primary border rounded-md">
             <h2 class="text-xl font-bold mb-4">
-                Bio {{ bioText }}
+                Bio
             </h2>
             <div data-test="bio_input_output" id="bio-text" class="break-words">
                 <InputTextarea maxlength="275" class="py-4 border-none resize-none rounded-lg w-full
