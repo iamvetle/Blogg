@@ -33,16 +33,23 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "nuxt-icon"
   ],
-  // ui: {
-  //   global: true,
-  //   icons: ['mdi', 'simple-icons'],
-  // },
+  ui: {
+    global: true,
+    icons: ['mdi', 'simple-icons'],
+  },
   tailwindcss: {
     cssPath: "~/assets/css/tailwind.css",
     configPath: "tailwind.config",
     exposeConfig: false,
     exposeLevel: 2,
     config: {
+      theme: {
+        extends: {
+          colors: {
+            hell:"#006781"
+          }
+        }
+      },
       content: [
         'docs/content/**/*.md'
       ],
