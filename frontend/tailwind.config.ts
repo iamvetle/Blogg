@@ -1,11 +1,10 @@
 import type { Config } from "tailwindcss";
 
 export default <Partial<Config>>{
-	mode:"jit",
 	theme: {
 		extend: {
 			colors: {
-				"primary": "#006781",
+				// "primary": "#006781",
 				"onPrimary": "#ffffff",
 				"primaryContainer": "#b9eaff",
 				"onPrimaryContainer": "#001f29",
@@ -56,9 +55,6 @@ export default <Partial<Config>>{
 				"surfaceBright": "#f8f9fb"
 			},
 
-		},
-		fontFamily: {
-			//@ts-ignore
 		},
 	},
 	plugins: [

@@ -26,20 +26,35 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "@nuxtjs/tailwindcss",
     //"@nuxtjs/eslint-module",
     "@formkit/nuxt",
     "@pinia/nuxt",
     "nuxt-vitest",
+    "@nuxt/ui",
+    "nuxt-icon"
   ],
+  // ui: {
+  //   global: true,
+  //   icons: ['mdi', 'simple-icons'],
+  // },
   tailwindcss: {
     cssPath: "~/assets/css/tailwind.css",
     configPath: "tailwind.config",
     exposeConfig: false,
     exposeLevel: 2,
-    config: {},
+    config: {
+      content: [
+        'docs/content/**/*.md'
+      ],
+      plugins: [
+        require("@tailwindcss/typography"),
+        require("flowbite/plugin"),
+        //require('@tailwindcss/forms'),
+      ],
+    },
     injectPosition: "first",
     viewer: true,
+  
   },
   pinia: {
     autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],
