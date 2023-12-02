@@ -332,6 +332,9 @@ onMounted(() => {
 			const titlePost = sessionStorage.getItem("titlePost")
 			titleEditor.value = titlePost ?? "" 
 
+			/**
+			 * * Is supposed to put focus on the title input, but not working correctly
+			 */
 			document.getElementById("editor-title-input")?.focus()
 
 			if (htmlPost) {
