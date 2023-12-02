@@ -4,6 +4,7 @@ export default <Partial<Config>>{
 	theme: {
 		extend: {
 			colors: {
+				// This is so I can put it in app.config.ts for "primary" necesarry for NuxtUI
 				customPrimary: {
 					50: '#f0f9ff',
 					100: '#e0f2fe',
