@@ -123,6 +123,10 @@ Implement these:
 
 ### /newpost - text editor
 
+- [ ] Use "input" for title instead of in texteditor
+
+- * *
+
 - [ ] Implement **skeleton loader**
 
 

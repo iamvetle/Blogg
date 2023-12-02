@@ -5,21 +5,19 @@
               Bio
           </h2>
           <div data-test="bio_input_output" id="bio-text" class="break-words">
-              <InputTextarea v-model="bioText"/>
+              <InputText v-model="bioText"
+              class="not-prose appearance-none ring-0 border-none resize-none w-full text-4xl leading-4 font-extrabold outline-none" />
+
+              />
           </div>
       </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
-const loggedInUserStore = useLoggedInUserStore()
 const bioText = ref("")
 
-onMounted(() => {
-  bioText.value = loggedInUserStore.loggedInUserProfile?.bio
-})
 
 /**
 * Has the bio part of the minkonto page

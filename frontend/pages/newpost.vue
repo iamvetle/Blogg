@@ -3,7 +3,9 @@
 		<div class="max-w-4xl py-4 mx-auto prose">
 
 			<div id="direct-editor">
-				<EditorCard @newPostMaterial="publish" />
+				<ClientOnly>
+					<EditorCard @newPostMaterial="publish" />
+				</ClientOnly>
 			</div>
 			
 			<div class="flex">

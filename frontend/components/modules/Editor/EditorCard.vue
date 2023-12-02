@@ -1,8 +1,7 @@
 <template>
 	<div class="p-2" v-if="editor">
 		<div id="editor-container"
-			class="w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12"
-			@click="editor.commands.focus()">
+			class="w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12">
 
 			<div v-if="showModal">
 				<teleport to="#modal">
@@ -13,24 +12,29 @@
 			</div>
 
 			<div class="w-full not-prose mb-6">
-				<EditorFloatingMenu :editor="editor" 
-				
-				class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
-
-				@add-image="handleAddImageChange" 
-				@cancel-making-post="buttonCancelClick"
-				@try-publish-post="buttonTryPublishClick"
-				
-				/>
-				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange" 
-				@try-publish-post="buttonTryPublishClick" @cancel-editing-post="buttonCancelClick"
-				/>
+				<EditorFloatingMenu :editor="editor"
+					class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
+					@add-image="handleAddImageChange" @cancel-making-post="buttonCancelClick"
+					@try-publish-post="buttonTryPublishClick" />
+				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange"
+					@try-publish-post="buttonTryPublishClick" @cancel-editing-post="buttonCancelClick" />
 			</div>
 
 			<hr class="not-prose mb-8">
 
-			<div data-test="direct-editor" class="mt-4 max-w-2xl w-full mx-auto">
+			<div data-test="editor_title_input" class="mt-2 max-w-2xl w-full mx-auto">
+				
+				
+				<InputText @keypress.enter="editor.commands.focus()"  id="editor-title-input" autofocus placeholder="Title" v-model.trim="titleEditor"
+					class="not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
+				
+				
+					<hr class="not-prose invisible">
+				
+				
+					<div @click="editor.commands.focus()" data-test="direct-editor" class="pt-3 w-full min-h-[500px] ">
 					<editor-content :editor="editor" />
+				</div>
 			</div>
 
 		</div>
@@ -41,6 +45,8 @@
 </template>
 
 <script setup lang="ts">
+
+//  class="flex flex-row justify-center items-center"
 
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import Document from '@tiptap/extension-document' // required
@@ -80,6 +86,10 @@ const showModal = ref(false)
 
 /** This just stores all of the writte html as a string and gets regularly updated */
 const html = ref<string | null | undefined>(null);
+
+/** This stores the title of the title input editor */
+const titleEditor = ref("")
+
 const route = useRoute()
 
 const imageFileMap = ref<any>({}); // Object to store the mapping of unique ID and file
@@ -136,7 +146,6 @@ const editor: any = useEditor({ //@ts-ignore
 			// class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',	
 		},
 	},
-	autofocus: true
 })
 
 /**
@@ -211,10 +220,16 @@ const formData = ref(new FormData())
  */
 const buttonTryPublishClick = async () => {
 	html.value = editor.value?.getHTML();
-	const answer = extractTitleAndContent(html.value as string);
 
-	title.value = answer?.title;
-	body.value = answer?.body;
+	// -> old ->
+	// const answer = extractTitleAndContent(html.value as string);
+
+	// title.value = answer?.title;
+	// body.value = answer?.body;
+	// <--
+
+	body.value = html.value
+	title.value = titleEditor.value
 
 	if (!title.value || !body.value) {
 		alert("Invalid post content");
@@ -228,8 +243,10 @@ const buttonTryPublishClick = async () => {
  */
 const buttonCancelClick = () => {
 	const router = useRouter();
+
 	// Clears the input
 	editor.value?.commands.clearContent();
+	titleEditor.value = ""
 	router.push('/');
 };
 
@@ -258,6 +275,7 @@ const publishPost = () => {
 	emit('newPostMaterial', formData.value);
 
 	editor.value?.chain().focus().clearContent().run();
+	titleEditor.value = ""
 
 	// Removes all currently stored images and their ids
 	imageFileMap.value = {}
@@ -301,21 +319,25 @@ const handleAddImageChange = (event: any) => {
 }
 
 
-/**
- * Fils the content if there is a post content inside of sessionstorage
- * ? what is this
- */
 onMounted(() => {
+	// console.log("EditorCard on mounted") // print to self
 	if (editor) {
+
 
 		// If the route is /edit/ it wont retrieve cached halway done post
 
 		if (route.path.includes("edit") === false) {
 			const htmlPost = sessionStorage.getItem("htmlPost")
+			
+			const titlePost = sessionStorage.getItem("titlePost")
+			titleEditor.value = titlePost ?? "" 
+
+			document.getElementById("editor-title-input")?.focus()
 
 			if (htmlPost) {
 				editor.value.chain().focus().insertContent(htmlPost).run()
 			}
+
 		}
 	}
 })
@@ -324,21 +346,23 @@ onMounted(() => {
  * Saves the content of the post to sessionStorage
  */
 onUnmounted(() => {
+	// console.log("EditorCard on onUnmounted") // print to self
+
 	const htmlPost = editor.value?.getHTML()
+	const titlePost = titleEditor.value
+
+	// Is not supposed to happen
+	if (editor.value.isDestroyed != true) {
+		editor.value.destroy()
+	}
 
 	sessionStorage.setItem("htmlPost", htmlPost)
+	sessionStorage.setItem("titlePost", titlePost)
+
 })
-
-
-
-
 
 </script>
 
 <style scoped>
-.editor-placeholder {
-	color: grey;
-	font-style: italic;
-	/* Additional styling as needed */
-}
+
 </style>

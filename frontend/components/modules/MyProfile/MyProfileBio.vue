@@ -1,7 +1,7 @@
 <template>
     <div class="bg-primary rounded-lg p-6">
         <div class="px-5 py-8 bg-onPrimary border-primary border rounded-md">
-            <h2 class="text-xl font-bold mb-4">
+            <h2 class="text-xl font-bold mb-4 prose">
                 My Bio
             </h2>
 

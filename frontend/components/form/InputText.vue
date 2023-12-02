@@ -1,20 +1,21 @@
 <template>
-    <span>
-        <input type="text" v-model="modelValue" v-bind="$attrs">
-        <span v-if="label">{{ label }}</span>
-    </span>
+    <input v-bind="$attrs" :value="modelValue" @change="updateValue"/>
 </template>
-
+  
 <script setup lang="ts">
 
-const modelValue = defineModel()
-
 defineProps<{
-    label?:string
+    modelValue: string
 }>();
 
+const emit = defineEmits(['update:modelValue']);
+
+const updateValue = (event: any) => {
+    emit('update:modelValue', event.target.value);
+};
 </script>
-
+  
 <style scoped>
-
+/* Add your styling here */
 </style>
+  

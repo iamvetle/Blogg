@@ -40,6 +40,7 @@ describe('EditorCard testing', () => {
                     EditorContent: true,
                     EditorCardTopMenu: true,
                     Modal: true,
+                    InputText:true
                 }
             }
         })
@@ -89,6 +90,14 @@ describe('EditorCard testing', () => {
         const cancel_publish_buttons = editor_container.find("[data-test='cancel_publish_buttons']")
         expect(cancel_publish_buttons.exists()).toBe(false)
 
+    })
+    test('Should have a wrapper around an input (meant for entering title)', () => {
+      const titleInputWrapper = wrapper.find("[data-test='editor_title_input']")
+
+      expect(titleInputWrapper.exists()).toBe(true)
+
+      const titleComp = titleInputWrapper.findComponent({ name:"InputText" })
+      expect(titleComp.exists()).toBe(true)
     })
 
 })
