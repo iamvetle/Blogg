@@ -1215,19 +1215,15 @@ describe("Testing if the options trigger the correct functions", () => {
 
         await option.trigger("click")
 
-        await flushPromises()
-
         expect(mockToggleHeading).toHaveBeenCalledOnce()
     })
-    test('There should be a PopupModal present', () => {
-        wrapper = factory()
-        
-        const popup = wrapper.findComponent({name:"PopupModal"})
+    test('Should have the "url add modal"', async () => {
+        wrapper = factory()      
 
-        console.log(wrapper.html())
-        
-        
+        wrapper.vm.showModal = true
 
-        expect(popup.exists()).toBe(true)
+        await wrapper.vm.$nextTick()
+        
+        expect(wrapper.find("[data-test='url_add_modal']").exists()).toBe(true)
     })
 })

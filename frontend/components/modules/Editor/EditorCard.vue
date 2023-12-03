@@ -6,11 +6,12 @@
 			<div v-if="showModal">
 				<teleport to="#modal">
 					<div class="w-full absolute blur-sm">
-						<PopupModal @confirm="publishPost" @abort="cancelPublishing" />
+						<EditorModalPublicationConfirmation @confirm="publishPost" @abort="cancelPublishing" />
 					</div>
 				</teleport>
 			</div>
 
+			<!-- Editor menus -->
 			<div class="w-full not-prose mb-6">
 				<EditorFloatingMenu :editor="editor"
 					class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
@@ -23,18 +24,19 @@
 			<hr class="not-prose mb-8">
 
 			<div data-test="editor_title_input" class="mt-2 max-w-2xl w-full mx-auto">
-				
-				
-				<InputText @keypress.enter="editor.commands.focus()"  id="editor-title-input" autofocus placeholder="Title" v-model.trim="titleEditor"
+
+				<!-- Title editor -->
+				<InputText @keypress.enter="editor.commands.focus()" id="editor-title-input" autofocus placeholder="Title"
+					v-model.trim="titleEditor"
 					class="not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
-				
-				
-					<hr class="not-prose invisible">
-				
-				
-					<div @click="editor.commands.focus()" data-test="direct-editor" class="pt-3 w-full min-h-[500px] ">
+
+				<hr class="not-prose invisible">
+
+				<!-- Editor -->
+				<div @click="editor.commands.focus()" data-test="direct-editor" class="pt-3 w-full min-h-[500px] ">
 					<editor-content :editor="editor" />
 				</div>
+
 			</div>
 
 		</div>
@@ -328,9 +330,9 @@ onMounted(() => {
 
 		if (route.path.includes("edit") === false) {
 			const htmlPost = sessionStorage.getItem("htmlPost")
-			
+
 			const titlePost = sessionStorage.getItem("titlePost")
-			titleEditor.value = titlePost ?? "" 
+			titleEditor.value = titlePost ?? ""
 
 			/**
 			 * * Is supposed to put focus on the title input, but not working correctly
@@ -366,6 +368,4 @@ onUnmounted(() => {
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

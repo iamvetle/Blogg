@@ -1,6 +1,12 @@
 <template>
     <div id="top-menu-container" v-if="editor" class="flex w-full justify-between items-center flex-wrap">
-		<!-- <PopupModal/> -->
+        <div data-test="url_add_modal" v-if="showModal">
+            <teleport to="#modal">
+                <div class="w-full absolute blur-sm">
+                    <EditorModalAddURLLink @confirm-adding-url="addURL" @abort="cancelAddingURL" />
+                </div>
+            </teleport>
+        </div>
         <div class="flex space-x-10 items-center flex-wrap">
             <div id="top-three" class="flex space-x-2 items-center py-2">
                 <span class="option-holder">
@@ -16,6 +22,7 @@
                         alt="Underline" :is-active="editor.isActive('underline')" />
                 </span>
             </div>
+
             <div id="heading_options" class="flex space-x-2 items-center py-2">
                 <span class="option-holder">
                     <EditorButton data-test="heading1_option" :is-active="editor.isActive('heading', { level: 1 })"
@@ -30,6 +37,7 @@
                         @click="toggleHeading(editor, 3)" :icon="heading3_icon" alt="Heading 3" />
                 </span>
             </div>
+
             <div id="list-options" class="flex space-x-2 items-center py-2">
                 <span class="option-holder">
                     <EditorButton @click="toggleBulletList(editor)" data-test="bullet_list_option" :icon="bullet_list_icon"
@@ -49,10 +57,11 @@
                 </span>
 
                 <span class="option-holder">
-                    <!-- HIDDEN -->
+                    <!-- Add URL Link-->
                     <EditorButton @click="add_url_link_handle" data-test="url_link_option" :icon="url_link_add_icon"
-                        alt="Add link" :is-active="editor.isActive('link')" class="hidden"/>
+                        alt="Add link" :is-active="editor.isActive('link')" />
                 </span>
+
             </div>
             <div id="codeQuote_options" class="flex space-x-2 items-center py-2">
                 <span class="option-holder">
@@ -116,17 +125,35 @@ import heading3_icon from '~/assets/icons/h3.svg'
 import { Editor } from '@tiptap/core';
 import { defineEmits } from 'vue';
 
-defineProps<{
+const showModal = ref(false)
+
+const props = defineProps<{
     editor: Editor | undefined
 }>();
 
-
 const add_url_link_handle = () => {
-    return null
+    showModal.value = true
+    (props.editor).
+}
+
+/**
+ * The add link modal calls this function after confirmation 
+ * 
+ * @param event - the link/string from the modal
+ */
+const addURL = (URL: string) => {
+
+    (props.editor as any).commands.setLink({ href: URL, target: '_blank' })
+    showModal.value = false
+}
+
+const cancelAddingURL = () => {
+    showModal.value = false
 }
 
 const toggleBold = (editor: any) => {
     editor.chain().focus().toggleBold().run()
+    editor.chain().focus().replace
 }
 
 const toggleItalic = (editor: any) => {

@@ -14,6 +14,7 @@ VueWrapper {
       <div
         class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
       >
+        <!-- Image -->
         <div
           data-test="add_image_button_sum"
         >
@@ -28,6 +29,7 @@ VueWrapper {
             type="file"
           />
         </div>
+        <!-- Link -->
         <editor-button-stub
           alt="link"
           icon="/assets/icons/link.svg"
@@ -2611,6 +2613,34 @@ VueWrapper {
                     "__v_skip": true,
                     "anchor": null,
                     "appContext": null,
+                    "children": " Image ",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <!-- Image -->,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 8,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-cmt),
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
                     "children": [
                       {
                         "__v_isVNode": true,
@@ -2947,6 +2977,34 @@ VueWrapper {
                     "targetAnchor": null,
                     "transition": null,
                     "type": "div",
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": " Link ",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <!-- Link -->,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 8,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-cmt),
                   },
                   {
                     "__v_isVNode": true,
@@ -3974,6 +4032,7 @@ VueWrapper {
                 "el": <div
                   class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
                 >
+                  <!-- Image -->
                   <div
                     data-test="add_image_button_sum"
                   >
@@ -3988,6 +4047,7 @@ VueWrapper {
                       type="file"
                     />
                   </div>
+                  <!-- Link -->
                   <editor-button-stub
                     alt="link"
                     icon="/assets/icons/link.svg"
@@ -4018,6 +4078,7 @@ VueWrapper {
                     "_rawValue": <div
                       class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
                     >
+                      <!-- Image -->
                       <div
                         data-test="add_image_button_sum"
                       >
@@ -4032,6 +4093,7 @@ VueWrapper {
                           type="file"
                         />
                       </div>
+                      <!-- Link -->
                       <editor-button-stub
                         alt="link"
                         icon="/assets/icons/link.svg"
@@ -4055,6 +4117,7 @@ VueWrapper {
                     "_value": <div
                       class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
                     >
+                      <!-- Image -->
                       <div
                         data-test="add_image_button_sum"
                       >
@@ -4069,6 +4132,7 @@ VueWrapper {
                           type="file"
                         />
                       </div>
+                      <!-- Link -->
                       <editor-button-stub
                         alt="link"
                         icon="/assets/icons/link.svg"
@@ -4102,6 +4166,7 @@ VueWrapper {
                     "_rawValue": <div
                       class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
                     >
+                      <!-- Image -->
                       <div
                         data-test="add_image_button_sum"
                       >
@@ -4116,6 +4181,7 @@ VueWrapper {
                           type="file"
                         />
                       </div>
+                      <!-- Link -->
                       <editor-button-stub
                         alt="link"
                         icon="/assets/icons/link.svg"
@@ -4139,6 +4205,7 @@ VueWrapper {
                     "_value": <div
                       class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
                     >
+                      <!-- Image -->
                       <div
                         data-test="add_image_button_sum"
                       >
@@ -4153,6 +4220,7 @@ VueWrapper {
                           type="file"
                         />
                       </div>
+                      <!-- Link -->
                       <editor-button-stub
                         alt="link"
                         icon="/assets/icons/link.svg"
@@ -4228,6 +4296,7 @@ VueWrapper {
             "el": <div
               class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
             >
+              <!-- Image -->
               <div
                 data-test="add_image_button_sum"
               >
@@ -4242,6 +4311,7 @@ VueWrapper {
                   type="file"
                 />
               </div>
+              <!-- Link -->
               <editor-button-stub
                 alt="link"
                 icon="/assets/icons/link.svg"
@@ -4576,6 +4646,7 @@ VueWrapper {
         "el": <div
           class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
         >
+          <!-- Image -->
           <div
             data-test="add_image_button_sum"
           >
@@ -4590,6 +4661,7 @@ VueWrapper {
               type="file"
             />
           </div>
+          <!-- Link -->
           <editor-button-stub
             alt="link"
             icon="/assets/icons/link.svg"
@@ -4970,6 +5042,7 @@ VueWrapper {
         "el": <div
           class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
         >
+          <!-- Image -->
           <div
             data-test="add_image_button_sum"
           >
@@ -4984,6 +5057,7 @@ VueWrapper {
               type="file"
             />
           </div>
+          <!-- Link -->
           <editor-button-stub
             alt="link"
             icon="/assets/icons/link.svg"
@@ -5230,6 +5304,7 @@ VueWrapper {
   "wrapperElement": <div
     class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
   >
+    <!-- Image -->
     <div
       data-test="add_image_button_sum"
     >
@@ -5244,6 +5319,7 @@ VueWrapper {
         type="file"
       />
     </div>
+    <!-- Link -->
     <editor-button-stub
       alt="link"
       icon="/assets/icons/link.svg"
