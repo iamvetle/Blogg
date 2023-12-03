@@ -1,6 +1,6 @@
 <template>
     <div id="top-menu-container" v-if="editor" class="flex w-full justify-between items-center flex-wrap">
-
+		<!-- <PopupModal/> -->
         <div class="flex space-x-10 items-center flex-wrap">
             <div id="top-three" class="flex space-x-2 items-center py-2">
                 <span class="option-holder">
@@ -119,6 +119,7 @@ import { defineEmits } from 'vue';
 defineProps<{
     editor: Editor | undefined
 }>();
+
 
 const add_url_link_handle = () => {
     return null

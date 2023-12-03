@@ -3,11 +3,13 @@
 		class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3"
 		v-if="editor">
 
+		<!-- Image -->
 		<div data-test="add_image_button_sum">
 			<EditorButton @click="handleAddImageClick" :icon="add_image_icon" alt="add_image" data-test="add_image" />
 			<input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="add_image_file_input" />
 		</div>
 
+		<!-- Link -->
 		<EditorButton :is-active="editor.isActive('link')" @click="setLink" :icon="link_icon" alt="link" />
 		<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @click="toggleHeading(1)" :icon="heading_1_icon"
 			alt="heading 1" />

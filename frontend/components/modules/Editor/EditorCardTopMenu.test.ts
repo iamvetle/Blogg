@@ -1,7 +1,8 @@
 import EditorCardTopMenu from './EditorCardTopMenu.vue';
-import { VueWrapper, flushPromises, shallowMount } from '@vue/test-utils';
+import { flushPromises, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import BaseButton from '~/components/base/BaseButton.vue';
+import PopupModal from '~/components/utils/PopupModal.vue'
 
 import EditorButton from './EditorButton.vue';
 
@@ -58,7 +59,7 @@ const factory = () => {
     return shallowMount(EditorCardTopMenu, {
         global: {
             plugins: [pinia],
-            components: { EditorButton, BaseButton },
+            components: { EditorButton, BaseButton, PopupModal },
             mocks: {
                 add_url_link_handle: mockAddUrlLinkFunction,
                 toggleBold: mockToggleBold,
@@ -74,7 +75,8 @@ const factory = () => {
             },
             stubs: {
                 EditorButton: true,
-                BaseButton: true
+                BaseButton: true,
+                PopupModal:true
             },
         },
         props: { //@ts-ignore
@@ -1216,5 +1218,16 @@ describe("Testing if the options trigger the correct functions", () => {
         await flushPromises()
 
         expect(mockToggleHeading).toHaveBeenCalledOnce()
+    })
+    test('There should be a PopupModal present', () => {
+        wrapper = factory()
+        
+        const popup = wrapper.findComponent({name:"PopupModal"})
+
+        console.log(wrapper.html())
+        
+        
+
+        expect(popup.exists()).toBe(true)
     })
 })

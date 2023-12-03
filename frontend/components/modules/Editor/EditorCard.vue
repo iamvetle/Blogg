@@ -6,7 +6,7 @@
 			<div v-if="showModal">
 				<teleport to="#modal">
 					<div class="w-full absolute blur-sm">
-						<Modal @confirm-published="publishPost" @cancel-published="cancelPublishing" />
+						<PopupModal @confirm="publishPost" @abort="cancelPublishing" />
 					</div>
 				</teleport>
 			</div>
