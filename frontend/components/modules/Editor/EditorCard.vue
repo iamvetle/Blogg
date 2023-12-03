@@ -46,7 +46,7 @@
 
 		</div>
 
-		<hr class="mb-4">
+		<hr class="mb-4 ">
 
 	</div>
 	<div>
@@ -82,6 +82,12 @@ import Image from '@tiptap/extension-image'
 
 const emit = defineEmits(['newPostMaterial'])
 
+/**
+ * ! I am curently customizing the
+ * * <a></a>
+ * ! element through the main css. That is just temporary - remove later
+ */
+
 const props = defineProps<{
 	initialPost?: string;
 }>();
@@ -100,7 +106,7 @@ const html = ref<string | null | undefined>(null);
 /** This stores the title of the title input editor */
 const titleEditor = ref("")
 
-const route = useRoute()
+// const route = useRoute()
 
 const imageFileMap = ref<any>({}); // Object to store the mapping of unique ID and file
 
@@ -151,8 +157,9 @@ const editor: any = useEditor({ //@ts-ignore
 	],
 
 	editorProps: {
+
 		attributes: {
-			class: 'focus:outline-none',
+			class: 'focus:outline-none not-prose',
 			// class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',	
 		},
 	},
@@ -332,48 +339,54 @@ const handleAddImageChange = (event: any) => {
 
 
 onMounted(() => {
-	// console.log("EditorCard on mounted") // print to self
+	// If the editor instance has started
 	if (editor) {
+		// gets the html from stored in sessionStorage (or empty string)
+		const htmlPost = sessionStorage.getItem("htmlPost") ?? ""
+		// inserts the html into the documented
+		editor.value.chain().focus().insertContent(htmlPost).run()
 
+		// gets the title string from the sessionStorage and inserts it into the input title.value (or empty string)
+		titleEditor.value = sessionStorage.getItem("titlePost") ?? ""
 
-		// If the route is /edit/ it wont retrieve cached halway done post
-
-		if (route.path.includes("edit") === false) {
-			const htmlPost = sessionStorage.getItem("htmlPost")
-
-			const titlePost = sessionStorage.getItem("titlePost")
-			titleEditor.value = titlePost ?? ""
-
-			/**
-			 * * Is supposed to put focus on the title input, but not working correctly
-			 */
+		// If not title input has been writen, put focus on the title input (else, skip)
+		if(titleEditor.value === "") {
+			// takes the focus away from the main editor
+			editor.value.commands().blur()
+			// places the focus on the title input instead 
 			document.getElementById("editor-title-input")?.focus()
-
-			if (htmlPost) {
-				editor.value.chain().focus().insertContent(htmlPost).run()
-			}
-
 		}
+
+		/**
+		 * * Not using(not implemented) yet
+		 */
+		// If the route is /edit/ it wont retrieve cached halway done post ?
+		// if (route.path.includes("edit") === false) {
+		// }
 	}
 })
 
 /**
- * Saves the content of the post to sessionStorage
+ * Saves to sessionStorage:
+ * - html content
+ * - title string
  */
 onUnmounted(() => {
-	// console.log("EditorCard on onUnmounted") // print to self
-
+	// gets the html from the post
 	const htmlPost = editor.value?.getHTML()
+
+	// gets the title from the input
 	const titlePost = titleEditor.value
 
-	// Is not supposed to happen
+	// Not supposed to happen
 	if (editor.value.isDestroyed != true) {
 		editor.value.destroy()
 	}
 
+	// Saves the html content in a session for storing
 	sessionStorage.setItem("htmlPost", htmlPost)
+	// Saves the title string in a session for storing
 	sessionStorage.setItem("titlePost", titlePost)
-
 })
 
 </script>

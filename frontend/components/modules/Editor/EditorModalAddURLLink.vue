@@ -1,21 +1,24 @@
 <template>
     <!-- <UButton label="Open" @click="isOpen = true" /> -->
     <UModal v-model="isOpen" prevent-close>
-        <UCard class="bg-primaryContainer">
-            <div data-test="inner_popup_modal" class="px-2 text-onPrimaryContainer">
+        <UCard class="bg-surfaceContainerLowest">
+            <div data-test="inner_popup_modal" class="px-2 text-onSurface">
 
                 <!-- Title -->
                 <div class="mb-8 flex space-x-1" data-test="modal_title">
                     <div class="flex items-center">
                         <img class="h-5" :src="urlIcon" alt="Link">
                     </div>
-                    <span class="text-center text-2xl text-onPrimaryContainer">Add url link</span>
+                    <span class="text-center text-2xl text-onSurface">Add url link</span>
                 </div>
 
                 <!-- Input -->
                 <div data-test="url_link_input" class="mt-2 mb-4">
                     <InputText v-model="input"
-                        class="rounded-md border  focus:border-onPrimaryContainer border-2 w-full p-1 border-onPrimaryContainer"/>
+                        class="focus:shadow-md rounded-md ring-onPrimaryFixedVariant ring-1 outline-none focus:ring-2 focus:ring-onPrimaryContainer border-none w-full p-1"
+                        
+                        
+                        />
                 </div>
 
                 <!-- Options -->    
@@ -23,14 +26,14 @@
                 <div data-test="options" class="flex justify-end space-x-6">
                     <span>
                         <button data-test="cancel_adding_urlLink"
-                            class="p-1 rounded-lg border border-primary text-primary hover:shadow-md" @click="doAbort">
+                            class="p-1 rounded-lg border-2 border-primary text-onSurface hover:shadow-md" @click="doAbort">
                             Cancel
                         </button>
                     </span>
 
                     <span>
                         <button data-test="confirm_adding_urlLink" id="cancel"
-                            class="rounded-lg bg-primary p-1 text-onPrimary hover:shadow-md" @click="doConfirm">
+                            class="rounded-lg border-2 border-primary bg-primary p-1 text-onPrimary hover:shadow-md" @click="doConfirm">
                             Confirm
                         </button>
                     </span>
@@ -49,14 +52,8 @@ import urlIcon from '~/assets/icons/link_add.svg'
  * I dont need to have a prop closing and opening it if I just have show hide outside instead
  */
 
-
+/** Dictates whether the modal is shown or not */
 const isOpen = ref(true)
-
-watchEffect(() => {
-    if (isOpen.value === false) {
-        doAbort()
-    }
-})
 
 const input = ref("")
 
@@ -78,3 +75,4 @@ const doAbort = () => {
 
 
 </script>
+

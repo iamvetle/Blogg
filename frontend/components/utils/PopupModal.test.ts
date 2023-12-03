@@ -20,14 +20,6 @@ const factory = () => {
 describe('', () => {
 
 
-    // vi.stubGlobal('useRoute', () => {
-    //     return {
-    //         params: {
-    //             id: 1
-    //         }
-    //     }
-    // });
-
     beforeEach(() => {
         // generalStore = useGeneralStore(pinia); 
         // postStore = usePostStore(pinia); 

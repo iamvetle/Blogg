@@ -85,7 +85,6 @@
                 </span>
             </div>
         </div>
-        <USkeleton v-else></USkeleton>
 
         <div id="cancel_publish_options_buttons" class="flex items-center space-x-4 py-2">
             <span class="button-option">
@@ -146,7 +145,7 @@ const add_url_link_handle = () => {
  */
 const addURL = (URL: string) => {
 
-    (props.editor as any).commands.setLink({ href: URL, target: '_blank' })
+    (props.editor as Editor).chain().focus().insertContent("asdasda").setLink({ href: URL, target: '_blank' }).run()
     showModal.value = false
 }
 
@@ -156,7 +155,6 @@ const cancelAddingURL = () => {
 
 const toggleBold = (editor: any) => {
     editor.chain().focus().toggleBold().run()
-    editor.chain().focus().replace
 }
 
 const toggleItalic = (editor: any) => {
