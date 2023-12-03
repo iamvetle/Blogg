@@ -1,5 +1,5 @@
 <template>
-	<div class="p-2" v-if="editor">
+	<div class="p-2">
 		<div id="editor-container"
 			class="w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12">
 
@@ -13,12 +13,17 @@
 
 			<!-- Editor menus -->
 			<div class="w-full not-prose mb-6">
-				<EditorFloatingMenu :editor="editor"
+				<!-- I have to do v-if because useEditor() can be undefined -->
+				<EditorFloatingMenu v-if="editor" :editor="editor"
 					class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
 					@add-image="handleAddImageChange" @cancel-making-post="buttonCancelClick"
 					@try-publish-post="buttonTryPublishClick" />
+
 				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange"
 					@try-publish-post="buttonTryPublishClick" @cancel-editing-post="buttonCancelClick" />
+				<USkeleton>
+
+				</USkeleton>
 			</div>
 
 			<hr class="not-prose mb-8">
@@ -42,6 +47,9 @@
 		</div>
 
 		<hr class="mb-4">
+
+	</div>
+	<div>
 
 	</div>
 </template>
@@ -149,6 +157,8 @@ const editor: any = useEditor({ //@ts-ignore
 		},
 	},
 })
+
+
 
 /**
  * The watcher works as a "one-time" event. It fires once

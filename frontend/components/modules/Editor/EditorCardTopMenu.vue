@@ -1,5 +1,5 @@
 <template>
-    <div id="top-menu-container" v-if="editor" class="flex w-full justify-between items-center flex-wrap">
+    <div id="top-menu-container" class="flex w-full justify-between items-center flex-wrap">
         <div data-test="url_add_modal" v-if="showModal">
             <teleport to="#modal">
                 <div class="w-full absolute blur-sm">
@@ -7,7 +7,9 @@
                 </div>
             </teleport>
         </div>
-        <div class="flex space-x-10 items-center flex-wrap">
+        
+        <!-- V-IF -->
+        <div class="flex space-x-10 items-center flex-wrap" v-if="editor">
             <div id="top-three" class="flex space-x-2 items-center py-2">
                 <span class="option-holder">
                     <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold"
@@ -83,6 +85,7 @@
                 </span>
             </div>
         </div>
+        <USkeleton v-else></USkeleton>
 
         <div id="cancel_publish_options_buttons" class="flex items-center space-x-4 py-2">
             <span class="button-option">
@@ -98,6 +101,7 @@
         </div>
 
     </div>
+
 </template>
 
 <script setup lang="ts">
@@ -133,7 +137,6 @@ const props = defineProps<{
 
 const add_url_link_handle = () => {
     showModal.value = true
-    (props.editor).
 }
 
 /**

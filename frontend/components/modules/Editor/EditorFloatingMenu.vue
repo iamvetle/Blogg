@@ -44,7 +44,7 @@ const addImageRef = ref<any>(null)
 // const emit = defineEmits()
 
 const props = defineProps<{
-	editor: Editor | undefined
+	editor: Editor
 }>();
 
 /**
