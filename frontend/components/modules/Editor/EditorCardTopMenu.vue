@@ -205,54 +205,6 @@ const discardEditingPostButton = () => {
 
 // Methods ->
 
-const toggleBold = (editor: any) => {
-    editor.chain().focus().toggleBold().run()
-}
-
-const toggleItalic = (editor: any) => {
-    editor.chain().focus().toggleItalic().run()
-}
-
-const toggleHeading = (editor: any, level: any) => {
-    editor.chain().focus().toggleHeading({ level }).run();
-};
-
-// const horizontalRule = () => {
-// 	editor.value.chain().focus().setHorizontalRule().run()
-// };
-
-const toggleUnderline = (editor: any) => {
-    editor.chain().focus().toggleUnderline().run()
-}
-
-const toggleBulletList = (editor: any) => {
-    return editor.chain().focus().toggleBulletList().run()
-}
-
-const toggleOrderedList = (editor: any) => {
-    return editor.chain().focus().toggleOrderedList().run()
-}
-
-const setUndo = (editor: any) => {
-    return editor.chain().focus().undo().run()
-}
-
-const setRedo = (editor: any) => {
-    return editor.chain().focus().redo().run()
-}
-
-// const toggleCode = () => {
-// 	editor.value.chain().focus().toggleCode().run()
-// }
-
-const toggleBlockquote = (editor: any) => {
-    editor.chain().focus().toggleBlockquote().run()
-}
-
-const toggleCodeBlock = (editor: any) => {
-    editor.chain().focus().toggleCodeBlock().run()
-}
-
 // const toggleBold = () => {
 // 	editor.value.chain().focus().toggleBold().run()
 // }

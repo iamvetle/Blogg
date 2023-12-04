@@ -157,7 +157,7 @@ const editor: any = useEditor({ //@ts-ignore
 	editorProps: {
 
 		attributes: {
-			class: 'focus:outline-none not-prose',
+			class: 'focus:outline-none',
 			// class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',	
 		},
 	},
@@ -198,15 +198,6 @@ const handleImagePaste = async (event: any) => {
  * TODO Close the instance object URL i make each time i add an image
  */
 
-
-/**
- * Tracks the "emptyness" of the editor
- */
-// const isEditorEmpty = computed(() => !editor.value?.content?.trim());
-
-// /**
-//  * On update it takes and updates the HTML value?
-//  */
 // onMounted(() => {
 // 	/**
 // 	 * ? Not sure how this works. Each time the component updates the html updates?

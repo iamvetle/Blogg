@@ -78,7 +78,9 @@ declare global {
   const resolveComponent: typeof import('vue')['resolveComponent']
   const retrieveToken: typeof import('./composables/retrieveToken')['retrieveToken']
   const setLocalInfo: typeof import('./composables/setLocalInfo')['setLocalInfo']
+  const setRedo: typeof import('./composables/editorCommands')['setRedo']
   const setTokenAndUsername: typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']
+  const setUndo: typeof import('./composables/editorCommands')['setUndo']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
@@ -88,6 +90,14 @@ declare global {
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
   const toValue: typeof import('vue')['toValue']
+  const toggleBlockquote: typeof import('./composables/editorCommands')['toggleBlockquote']
+  const toggleBold: typeof import('./composables/editorCommands')['toggleBold']
+  const toggleBulletList: typeof import('./composables/editorCommands')['toggleBulletList']
+  const toggleCodeBlock: typeof import('./composables/editorCommands')['toggleCodeBlock']
+  const toggleHeading: typeof import('./composables/editorCommands')['toggleHeading']
+  const toggleItalic: typeof import('./composables/editorCommands')['toggleItalic']
+  const toggleOrderedList: typeof import('./composables/editorCommands')['toggleOrderedList']
+  const toggleUnderline: typeof import('./composables/editorCommands')['toggleUnderline']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
@@ -174,7 +184,9 @@ declare module 'vue' {
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
+    readonly setRedo: UnwrapRef<typeof import('./composables/editorCommands')['setRedo']>
     readonly setTokenAndUsername: UnwrapRef<typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']>
+    readonly setUndo: UnwrapRef<typeof import('./composables/editorCommands')['setUndo']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
@@ -182,6 +194,14 @@ declare module 'vue' {
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
+    readonly toggleBlockquote: UnwrapRef<typeof import('./composables/editorCommands')['toggleBlockquote']>
+    readonly toggleBold: UnwrapRef<typeof import('./composables/editorCommands')['toggleBold']>
+    readonly toggleBulletList: UnwrapRef<typeof import('./composables/editorCommands')['toggleBulletList']>
+    readonly toggleCodeBlock: UnwrapRef<typeof import('./composables/editorCommands')['toggleCodeBlock']>
+    readonly toggleHeading: UnwrapRef<typeof import('./composables/editorCommands')['toggleHeading']>
+    readonly toggleItalic: UnwrapRef<typeof import('./composables/editorCommands')['toggleItalic']>
+    readonly toggleOrderedList: UnwrapRef<typeof import('./composables/editorCommands')['toggleOrderedList']>
+    readonly toggleUnderline: UnwrapRef<typeof import('./composables/editorCommands')['toggleUnderline']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
@@ -260,7 +280,9 @@ declare module '@vue/runtime-core' {
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
+    readonly setRedo: UnwrapRef<typeof import('./composables/editorCommands')['setRedo']>
     readonly setTokenAndUsername: UnwrapRef<typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']>
+    readonly setUndo: UnwrapRef<typeof import('./composables/editorCommands')['setUndo']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
@@ -268,6 +290,14 @@ declare module '@vue/runtime-core' {
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
+    readonly toggleBlockquote: UnwrapRef<typeof import('./composables/editorCommands')['toggleBlockquote']>
+    readonly toggleBold: UnwrapRef<typeof import('./composables/editorCommands')['toggleBold']>
+    readonly toggleBulletList: UnwrapRef<typeof import('./composables/editorCommands')['toggleBulletList']>
+    readonly toggleCodeBlock: UnwrapRef<typeof import('./composables/editorCommands')['toggleCodeBlock']>
+    readonly toggleHeading: UnwrapRef<typeof import('./composables/editorCommands')['toggleHeading']>
+    readonly toggleItalic: UnwrapRef<typeof import('./composables/editorCommands')['toggleItalic']>
+    readonly toggleOrderedList: UnwrapRef<typeof import('./composables/editorCommands')['toggleOrderedList']>
+    readonly toggleUnderline: UnwrapRef<typeof import('./composables/editorCommands')['toggleUnderline']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
