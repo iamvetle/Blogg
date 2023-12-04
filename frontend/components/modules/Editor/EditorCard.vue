@@ -5,22 +5,22 @@
 
 			<div v-if="showModal">
 				<teleport to="#modal">
-					<div class="w-full absolute blur-sm">
+					<div class="w-full">
 						<EditorModalPublicationConfirmation @confirm="publishPost" @abort="cancelPublishing" />
 					</div>
 				</teleport>
 			</div>
 
 			<!-- Editor menus -->
-			<div class="w-full not-prose mb-6">
-				<!-- I have to do v-if because useEditor() can be undefined -->
-				<EditorFloatingMenu v-if="editor" :editor="editor"
+			<!-- I have to do v-if because useEditor() can be undefined -->
+			<div class="w-full not-prose mb-6" v-if="editor">
+
+				<EditorFloatingMenu :editor="editor"
 					class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
-					@add-image="handleAddImageChange" @cancel-making-post="buttonCancelClick"
-					@try-publish-post="buttonTryPublishClick" />
+					@add-image="handleAddImageChange" />
 
 				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange"
-					@try-publish-post="buttonTryPublishClick" @cancel-editing-post="buttonCancelClick" />
+					@try-publish-post="buttonTryPublishClick" @discard-editing-post="discardMakingPosts" />
 			</div>
 
 			<hr class="not-prose mb-8">
@@ -245,15 +245,13 @@ const buttonTryPublishClick = async () => {
 /**
  * Cancels the post creation and navigates to the feed(home) page.
  */
-const buttonCancelClick = () => {
-	const router = useRouter();
+const discardMakingPosts = () => {
 
 	// Clears the input
 	editor.value?.commands.clearContent();
 	titleEditor.value = ""
 	title.value = ""
 	body.value = ""
-	router.push('/');
 };
 
 /** 
@@ -324,7 +322,7 @@ const handleAddImageChange = (event: any) => {
 	}
 }
 
-		// paste handler?
+// paste handler?
 onMounted(() => {
 	if (editor.value) {
 		editor.value.view.dom.addEventListener('paste', handleImagePaste);
@@ -351,8 +349,8 @@ onMounted(() => {
 			 */
 			// takes the focus away from the main editor
 			// editor.value.commands.blur()
-			
-			
+
+
 			// places the focus on the title input instead 
 			editorTitleInput.value.textInput.focus()
 

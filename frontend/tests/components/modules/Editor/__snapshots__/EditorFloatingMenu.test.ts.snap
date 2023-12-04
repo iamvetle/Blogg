@@ -1153,7 +1153,7 @@ VueWrapper {
                 "0": false,
                 "1": true,
                 "required": true,
-                "type": null,
+                "type": [Function],
               },
             },
             [],
@@ -4626,7 +4626,7 @@ VueWrapper {
             "props": {
               "editor": {
                 "required": true,
-                "type": null,
+                "type": [Function],
               },
             },
             "render": [Function],
@@ -4952,7 +4952,7 @@ VueWrapper {
           "props": {
             "editor": {
               "required": true,
-              "type": null,
+              "type": [Function],
             },
           },
           "render": [Function],
