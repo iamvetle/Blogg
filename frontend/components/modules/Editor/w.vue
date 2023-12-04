@@ -28,7 +28,7 @@
 			<div data-test="editor_title_input" class="mt-2 max-w-2xl w-full mx-auto">
 
 				<!-- Title editor -->
-				<InputText @keypress.enter="editor.commands.focus()" ref="editorTitleInput" placeholder="Title"
+				<InputText @keypress.enter="editor.commands.focus()" autofocus placeholder="Title"
 					v-model.trim="titleEditor"
 					class="not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
 
@@ -100,9 +100,6 @@ const html = ref<string | null | undefined>(null);
 
 /** This stores the title of the title input editor */
 const titleEditor = ref("")
-
-
-const editorTitleInput = ref<any>(null)
 
 // const route = useRoute()
 
@@ -190,13 +187,7 @@ const handleImagePaste = async (event: any) => {
 	}
 }
 
-/**
- * TODO Remove the prop thing i have here
- * TODO remove the watcher that is to it
- * TODO Make it so that the height of the available writing space is not "JUST" enoguh
- * TODO Place a style on the texting so that for example the images dont eat eachother up
- * TODO Close the instance object URL i make each time i add an image
- */
+
 
 
 /**
@@ -324,16 +315,13 @@ const handleAddImageChange = (event: any) => {
 	}
 }
 
-		// paste handler?
-onMounted(() => {
-	if (editor.value) {
-		editor.value.view.dom.addEventListener('paste', handleImagePaste);
-	}
-})
-
 onMounted(() => {
 	// If the editor instance has started
 	if (editor.value) {
+
+		// paste handler?
+		editor.value.view.dom.addEventListener('paste', handleImagePaste);
+
 
 		// gets the html from stored in sessionStorage (or empty string)
 		const htmlPost = (sessionStorage.getItem("htmlPost")) ?? ""
@@ -345,16 +333,14 @@ onMounted(() => {
 
 		// If not title input has been writen, put focus on the title input (else, skip)
 		if (titleEditor.value === "") {
-
-			/**
-			 * Under is the reason the focus thing didnt work
-			 */
 			// takes the focus away from the main editor
-			// editor.value.commands.blur()
+			editor.value.commands.blur()
 			
 			
 			// places the focus on the title input instead 
-			editorTitleInput.value.textInput.focus()
+			// if (editorTitleInput.value) {
+			// 	editorTitleInput.value.focus()
+			// }
 
 			// if the title has a string put the focus on the main editor
 		} else {

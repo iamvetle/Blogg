@@ -25,6 +25,9 @@ import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const postStore = usePostStore()
+const paginationStore = usePaginationStore()
+const searchStore = useSearchStore()
+const loggedInUserStore = useLoggedInUserStore()
 
 
 /** 
@@ -34,14 +37,18 @@ const postStore = usePostStore()
  * 
  * If the active url is the following url, this turns true, otherwise, it is false
  */
-const selected = computed(() => (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/"))
+const selected = computed(() => {
+    if (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/") {
+        return true
+    } else {
+        return false
+    }
+})
+    
 
-const searchStore = useSearchStore()
-const paginationStore = usePaginationStore()
-const loggedInUserStore = useLoggedInUserStore()
-
-const num_of_following = computed(() =>
-    loggedInUserStore.loggedInUserProfile.num_of_following
+const num_of_following = computed(() => {
+    return (loggedInUserStore.loggedInUserProfile.num_of_following) ?? 0
+}
 );
 
 
@@ -71,7 +78,6 @@ const followingPostSetting = async () => {
     searchStore.resetStore()
 
     paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-
     await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
