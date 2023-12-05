@@ -14,10 +14,8 @@
 
                 <!-- Input -->
                 <div data-test="url_link_input" class="mt-2 mb-4">
-                    <InputText v-model="input"
+                    <InputText v-model.trim="input"
                         class="focus:shadow-md rounded-md ring-onPrimaryFixedVariant ring-1 outline-none focus:ring-2 focus:ring-onPrimaryContainer border-none w-full p-1"
-                        
-                        
                         />
                 </div>
 
@@ -48,6 +46,9 @@
 <script setup lang="ts">
 import urlIcon from '~/assets/icons/link_add.svg'
 
+const emit = defineEmits(["confirmAddingUrl", "cancel"])
+
+
 /**
  * I dont need to have a prop closing and opening it if I just have show hide outside instead
  */
@@ -55,18 +56,20 @@ import urlIcon from '~/assets/icons/link_add.svg'
 /** Dictates whether the modal is shown or not */
 const isOpen = ref(true)
 
+/** The input text is stored here */
 const input = ref("")
 
-const emit = defineEmits(["confirmAddingUrl", "cancel"])
-
+/** When "add" is pressed a confirmation message/emit is sent together with the string */
 const doConfirm = () => {
 
+    // if the input was something, the success emit is sent, if not the abort emit is sent
     if (input.value.trim() !== "") {
         if (typeof input.value === "string") {
             emit("confirmAddingUrl", input.value)
-
         }
     }
+    // not all requirements where met
+    emit("cancel")
 }
 
 const doAbort = () => {

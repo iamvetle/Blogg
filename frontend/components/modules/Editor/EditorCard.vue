@@ -9,6 +9,10 @@
 						<EditorModalPublicationConfirmation @confirm="publishPost" @abort="cancelPublishingModalMessage" />
 					</div>
 				</teleport>
+				<!--
+					* should probebly move the "discard post" modal up here. it doesnt make that 
+					* much sense for it to be in the "top menu" component
+				-->
 			</div>
 
 			<!-- Editor menus -->
@@ -97,7 +101,6 @@ const formData = ref(new FormData())
 
 /** This stores the title of the title input editor */
 const titleEditor = ref("")
-
 
 const editorTitleInput = ref<any>(null)
 
