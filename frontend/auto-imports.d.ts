@@ -44,6 +44,7 @@ declare global {
   const getToken: typeof import('./composables/getToken')['getToken']
   const getUnfollowUser: typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']
   const h: typeof import('vue')['h']
+  const horizontalRuleRun: typeof import('./composables/editorCommands')['horizontalRuleRun']
   const inject: typeof import('vue')['inject']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
@@ -163,6 +164,7 @@ declare module 'vue' {
     readonly getSinglePostComments: UnwrapRef<typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly horizontalRuleRun: UnwrapRef<typeof import('./composables/editorCommands')['horizontalRuleRun']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
@@ -259,6 +261,7 @@ declare module '@vue/runtime-core' {
     readonly getSinglePostComments: UnwrapRef<typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly horizontalRuleRun: UnwrapRef<typeof import('./composables/editorCommands')['horizontalRuleRun']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>

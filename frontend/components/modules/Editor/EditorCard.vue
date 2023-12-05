@@ -6,7 +6,7 @@
 			<div v-if="showModal">
 				<teleport to="#modal">
 					<div class="w-full">
-						<EditorModalPublicationConfirmation @confirm="publishPost" @abort="cancelPublishing" />
+						<EditorModalPublicationConfirmation @confirm="publishPost" @abort="cancelPublishingModalMessage" />
 					</div>
 				</teleport>
 			</div>
@@ -17,10 +17,10 @@
 
 				<EditorFloatingMenu :editor="editor"
 					class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
-					@add-image="handleAddImageChange" />
+					@add-image="handleAddImageClick" />
 
-				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange"
-					@try-publish-post="buttonTryPublishClick" @discard-editing-post="discardMakingPosts" />
+				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageClick"
+					@try-publish-post="handleTryPublishClick" @discard-editing-post="discardMakingPosts" />
 			</div>
 
 			<hr class="not-prose mb-8">
@@ -36,7 +36,7 @@
 
 				<!-- Editor -->
 				<div @click="editor.commands.focus()" data-test="direct-editor" class="pt-3 w-full min-h-[500px] ">
-					<editor-content :editor="editor" @keyup.delete="maybePlaceFocusOnEditorTitle"/>
+					<editor-content :editor="editor" @keyup.delete="maybePlaceFocusOnEditorTitle" />
 				</div>
 
 			</div>
@@ -210,23 +210,30 @@ const handleImagePaste = async (event: any) => {
 /**
  * Activates the next steps to publish the post -> calls the comfirmation modal
  */
-const buttonTryPublishClick = async () => {
+const handleTryPublishClick = async () => {
+
+	// The html in string format
 	const html = editor.value?.getHTML();
+	// The html in raw text format
+	const htmlRawText = editor.value?.getText()
 
-	// -> old ->
-	// const answer = extractTitleAndContent(html.value as string);
+	// The title of the post
+	const titleText = title.value ?? ""
 
-	// title.value = answer?.title;
-	// body.value = answer?.body;
-	// <--
+	if (titleText?.length <= 1) {
+		alert("The title can't be one character long or zero") // alert to self
+		return
+	}
 
+	if (htmlRawText?.length <= 1) {
+		alert("The html content can't be one character long or zero") ///
+		return
+	}
+
+	// Puts the html and title in their "reactive" partners
 	body.value = html
 	title.value = titleEditor.value
 
-	if (!title.value || !body.value) {
-		alert("Invalid post content");
-		return;
-	}
 	showModal.value = true;
 };
 
@@ -280,7 +287,7 @@ const publishPost = () => {
  * Cancels publishing
  * * Called by the modal
  */
-const cancelPublishing = () => {
+const cancelPublishingModalMessage = () => {
 	showModal.value = false;
 };
 
@@ -289,13 +296,13 @@ const cancelPublishing = () => {
  * 
  * @param event - The image file
  */
-const handleAddImageChange = (event: any) => {
+const handleAddImageClick = (event: any) => {
 	console.log("start of handle add Image change")
 	if (event) {
 		const file = event.target.files[0];
 		const uniqueId = generateUniqueId(); // Function to generate a unique ID.
 		const fileTempUrl = URL.createObjectURL(file);
-		console.log("middle of handleaddimagechange")
+		console.log("middle of handleaddimageClick")
 
 
 		if (fileTempUrl) {
@@ -338,7 +345,6 @@ onMounted(() => {
 			// takes the focus away from the main editor
 			// editor.value.commands.blur()
 
-
 			// places the focus on the title input instead
 			//@ts-ignore
 
@@ -346,18 +352,10 @@ onMounted(() => {
 				(editorTitleInput.value as any).textInput?.focus()
 			}
 
-
 			// if the title has a string put the focus on the main editor
 		} else {
 			editor.value.commands.focus()
 		}
-
-		/**
-		 * * Not using(not implemented) yet
-		 */
-		// If the route is /edit/ it wont retrieve cached halway done post ?
-		// if (route.path.includes("edit") === false) {
-		// }
 	}
 })
 
@@ -368,7 +366,7 @@ const htmlForComputed = ref<string | null | undefined>(null);
 /** Controls if the editor is empty, and has a computed variable that tell true or false to that  */
 const isEditorEmpty = computed(() => {
 	htmlForComputed.value = editor.value.getHTML()
-	console.log(htmlForComputed.value)
+	console.log(htmlForComputed.value) // print to self
 	if (htmlForComputed.value?.trim() === "<p></p>") {
 		return true
 	} else {
@@ -389,7 +387,6 @@ const maybePlaceFocusOnEditorTitle = () => {
 		}
 	}
 }
-
 
 /**
  * Saves to sessionStorage:

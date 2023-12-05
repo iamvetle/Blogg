@@ -5,14 +5,14 @@
         <div data-test="modal_for_url_link_add" v-if="showModalAddLinkURL">
             <teleport to="#modal">
                 <div>
-                    <EditorModalAddURLLink @confirm-adding-url="addURL" @cancel="showModalAddLinkURL = false"/>
+                    <EditorModalAddURLLink @confirm-adding-url="addURLModalMessage" @cancel="showModalAddLinkURL = false"/>
                 </div>
             </teleport>
         </div>
         <div data-test="modal_for_url_discard_post" v-if="showModalDiscardPost">
             <teleport to="#modal">
                 <div>
-                    <EditorModalDiscardPost @discard-post="discardPost" @cancel="showModalDiscardPost = false"/>
+                    <EditorModalDiscardPost @discard-post="discardPostModalMessage" @cancel="showModalDiscardPost = false"/>
                 </div>
             </teleport>
         </div>
@@ -77,7 +77,7 @@
 
                     <!-- Add URL Link-->
                 <span class="option-holder">
-                    <EditorButton @click="add_url_link_handle" data-test="url_link_option" :icon="url_link_add_icon"
+                    <EditorButton @click="handleAddURLLinkClick" data-test="url_link_option" :icon="url_link_add_icon"
                         alt="Add link" :is-active="editor.isActive('link')" />
                 </span>
 
@@ -167,7 +167,7 @@ const props = defineProps<{
     editor: Editor | undefined
 }>();
 
-const add_url_link_handle = () => {
+const handleAddURLLinkClick = () => {
     showModalAddLinkURL.value = true
 }
 
@@ -178,7 +178,7 @@ const add_url_link_handle = () => {
  * 
  * @param event - the link/string from the modal
  */
-const addURL = (URL: string) => {
+const addURLModalMessage = (URL: string) => {
 
     (props.editor as Editor).chain().focus().insertContent("asdasda").setLink({ href: URL, target: '_blank' }).run()
     showModalAddLinkURL.value = false
@@ -189,7 +189,7 @@ const addURL = (URL: string) => {
  * 
  * Discards the post
  */
-const discardPost = () => {
+const discardPostModalMessage = () => {
     showModalDiscardPost.value = false
     emit("discardEditingPost")
 }

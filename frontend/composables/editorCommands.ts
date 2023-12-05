@@ -18,9 +18,9 @@ export const toggleHeadingRun = (editor: any, level:number) => {
     editor.chain().focus().toggleHeading({ level }).run();
 };
 
-// export const horizontalRule = () => {
-// 	editor.value.chain().focus().setHorizontalRule().run()
-// };
+export const horizontalRuleRun = (editor:any) => {
+	editor.chain().focus().setHorizontalRule().run()
+};
 
 export const toggleUnderlineRun = (editor: any) => {
     editor.chain().focus().toggleUnderline().run()

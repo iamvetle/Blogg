@@ -1068,11 +1068,11 @@ describe('Testing the EditorCard top menu', () => {
 
 /** SNAPSHOT */
 
-// test('Expect editor top to match snapshot', () => {
-//     wrapper = factory()
+test('Expect editor top to match snapshot', () => {
+    wrapper = factory()
 
-//     expect(wrapper).toMatchSnapshot()
-// })
+    expect(wrapper).toMatchSnapshot()
+})
 
 // describe("Testing if the options trigger the correct functions", () => {
 

@@ -44,20 +44,8 @@ export default defineNuxtConfig({
     exposeConfig: false,
     exposeLevel: 2,
     config: {
-      theme: {
-        extends: {
-          colors: {
-            hell:"#006781"
-          }
-        }
-      },
       content: [
         'docs/content/**/*.md'
-      ],
-      plugins: [
-        require("@tailwindcss/typography"),
-        require("flowbite/plugin"),
-        //require('@tailwindcss/forms'),
       ],
     },
     injectPosition: "first",

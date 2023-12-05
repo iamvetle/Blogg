@@ -17,9 +17,9 @@ describe('EditorCard testing', () => {
     beforeEach(() => {
 
         vi.stubGlobal("useRoute", () => {
-            return  {
-                path:"/something/"
-            }        
+            return {
+                path: "/something/"
+            }
         })
 
         pinia = createTestingPinia()
@@ -40,7 +40,7 @@ describe('EditorCard testing', () => {
                     EditorContent: true,
                     EditorCardTopMenu: true,
                     Modal: true,
-                    InputText:true
+                    InputText: true
                 }
             }
         })
@@ -100,4 +100,8 @@ describe('EditorCard testing', () => {
     //   expect(titleComp.exists()).toBe(true)
     // })
 
+    test('Should match snapshot', () => {
+
+        expect(wrapper).toMatchSnapshot()
+    })
 })
