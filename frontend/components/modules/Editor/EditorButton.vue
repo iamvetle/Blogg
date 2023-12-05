@@ -8,6 +8,10 @@
 
 <script setup lang="ts">
 
+/**
+ * ? cant I just remove the span and button as well and just have the plain image?
+ */
+
 withDefaults(defineProps<{
     class?:string,
     icon:string,

@@ -166,7 +166,7 @@ const handleAddURLLinkClick = () => {
  */
 const addURLModalMessage = (URL: string) => {
 
-    (props.editor as Editor).chain().focus().insertContent("asdasda").setLink({ href: URL, target: '_blank' }).run()
+    (props.editor as Editor).chain().focus().setLink({ href: URL, target: '_blank' }).insertContent(URL).run()
     showModalAddLinkURL.value = false
 }
 
@@ -176,7 +176,10 @@ const addURLModalMessage = (URL: string) => {
  * Discards the post
  */
 const discardPostModalMessage = () => {
+    // closes the modal
     showModalDiscardPost.value = false
+    // focuses on the editor again
+    props.editor?.commands.focus()
     emit("discardEditingPost")
 }
 

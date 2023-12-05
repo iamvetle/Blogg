@@ -16,28 +16,37 @@
 				</div>
 			</teleport>
 		</div>
-		<floating-menu :editor="editor" :tippy-options="{ duration: 100 }"
-			class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3" v-if="editor">
-			<!-- Image -->
-			<div data-test="add_image_button_sum">
-				<EditorButton @click="handleAddImageClick" :icon="add_image_icon" alt="Add mage" data-test="add_image" />
-				<input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="add_image_file_input" />
-			</div>
-			<!-- Link -->
-			<EditorButton :is-active="editor.isActive('link')" @click="handleAddURLLinkClick" :icon="link_icon"
-				alt="link" />
-			<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @click="toggleHeadingRun(editor, 1)"
-				:icon="heading_1_icon" alt="heading 1" />
-			<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @click="toggleHeadingRun(editor, 2)"
-				:icon="heading_2_icon" alt="heading 2" />
-			<EditorButton @click="horizontalRuleRun(editor)" :icon="seperator_icon" alt="seperator" />
-		</floating-menu>
+		<!-- Using $attrs here, so that the modal wont be included when doing :class at higher levels
+		TODO Move the modals up/ to a different place
+		-->
+		<div v-bind="$attrs">
+			<floating-menu :editor="editor" :tippy-options="{ duration: 100 }"
+				class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3" v-if="editor">
+				<!-- Image -->
+				<div data-test="add_image_button_sum">
+					<EditorButton @click="handleAddImageClick" :icon="add_image_icon" alt="Add mage" data-test="add_image" />
+					<input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="add_image_file_input" />
+				</div>
+				<!-- Link -->
+				<EditorButton :is-active="editor.isActive('link')" @click="handleAddURLLinkClick" :icon="link_icon"
+					alt="link" />
+				<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @click="toggleHeadingRun(editor, 1)"
+					:icon="heading_1_icon" alt="heading 1" />
+				<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @click="toggleHeadingRun(editor, 2)"
+					:icon="heading_2_icon" alt="heading 2" />
+				<EditorButton @click="horizontalRuleRun(editor)" :icon="seperator_icon" alt="seperator" />
+			</floating-menu>
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 
 const emit = defineEmits(["tryPublishPost", "discardEditingPost", "addImage"])
+
+defineOptions({
+	inheritAttrs:false
+})
 
 const props = defineProps<{
 	editor: Editor | undefined
