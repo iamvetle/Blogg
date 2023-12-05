@@ -215,16 +215,18 @@ const handleTryPublishClick = async () => {
 	// The html in string format
 	const html = editor.value?.getHTML();
 	// The html in raw text format
-	const htmlRawText = editor.value?.getText()
+	const htmlRawText = (editor.value?.getText()) ?? "";
 
 	// The title of the post
-	const titleText = title.value ?? ""
+	const titleText = editorTitleInput.value ?? "";
 
+	// if the title is literally one or zero letters
 	if (titleText?.length <= 1) {
 		alert("The title can't be one character long or zero") // alert to self
 		return
 	}
 
+	// if the title is literally one or zero letters
 	if (htmlRawText?.length <= 1) {
 		alert("The html content can't be one character long or zero") ///
 		return
@@ -238,7 +240,7 @@ const handleTryPublishClick = async () => {
 };
 
 /**
- * Cancels the post creation and navigates to the feed(home) page.
+ * Cancels the post creation, an discards all traces of it
  */
 const discardMakingPosts = () => {
 
@@ -247,6 +249,12 @@ const discardMakingPosts = () => {
 	titleEditor.value = ""
 	title.value = ""
 	body.value = ""
+
+	// When the post is discarded the current form is also discarded, or reset
+	formData.value = new FormData
+
+	// all of the pictures currently in store(cached?) are also discarded
+	imageFileMap.value = {}
 };
 
 /** 
@@ -308,7 +316,7 @@ const handleAddImageClick = (event: any) => {
 		if (fileTempUrl) {
 			// Store the file with its unique ID in the map
 			imageFileMap.value[uniqueId] = file;
-			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change")
+			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change") // print to self
 			console.log(uniqueId, fileTempUrl)
 
 
