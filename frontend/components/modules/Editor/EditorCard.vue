@@ -36,7 +36,7 @@
 
 				<!-- Editor -->
 				<div @click="editor.commands.focus()" data-test="direct-editor" class="pt-3 w-full min-h-[500px] ">
-					<editor-content :editor="editor" />
+					<editor-content :editor="editor" @keyup.delete="maybePlaceFocusOnEditorTitle"/>
 				</div>
 
 			</div>
@@ -94,9 +94,6 @@ const emit = defineEmits(['newPostMaterial'])
 const showModal = ref(false)
 
 const formData = ref(new FormData())
-
-/** This just stores all of the writte html as a string and gets regularly updated */
-const html = ref<string | null | undefined>(null);
 
 /** This stores the title of the title input editor */
 const titleEditor = ref("")
@@ -214,7 +211,7 @@ const handleImagePaste = async (event: any) => {
  * Activates the next steps to publish the post -> calls the comfirmation modal
  */
 const buttonTryPublishClick = async () => {
-	html.value = editor.value?.getHTML();
+	const html = editor.value?.getHTML();
 
 	// -> old ->
 	// const answer = extractTitleAndContent(html.value as string);
@@ -223,7 +220,7 @@ const buttonTryPublishClick = async () => {
 	// body.value = answer?.body;
 	// <--
 
-	body.value = html.value
+	body.value = html
 	title.value = titleEditor.value
 
 	if (!title.value || !body.value) {
@@ -342,8 +339,13 @@ onMounted(() => {
 			// editor.value.commands.blur()
 
 
-			// places the focus on the title input instead 
-			editorTitleInput.value.textInput.focus()
+			// places the focus on the title input instead
+			//@ts-ignore
+
+			if (editorTitleInput.value) {
+				(editorTitleInput.value as any).textInput?.focus()
+			}
+
 
 			// if the title has a string put the focus on the main editor
 		} else {
@@ -359,6 +361,34 @@ onMounted(() => {
 	}
 })
 
+
+/** reactive constant that makes the computed above work */
+const htmlForComputed = ref<string | null | undefined>(null);
+
+/** Controls if the editor is empty, and has a computed variable that tell true or false to that  */
+const isEditorEmpty = computed(() => {
+	htmlForComputed.value = editor.value.getHTML()
+	console.log(htmlForComputed.value)
+	if (htmlForComputed.value?.trim() === "<p></p>") {
+		return true
+	} else {
+		return false
+	}
+})
+
+/** 
+ * If there is not content then this function is properly executed 
+ * 
+ * It is continuesly called by the keyup.delete on the editor
+ * 
+*/
+const maybePlaceFocusOnEditorTitle = () => {
+	if (isEditorEmpty.value === true) {
+		if (editorTitleInput.value) {
+			(editorTitleInput.value as any).textInput?.focus()
+		}
+	}
+}
 
 
 /**

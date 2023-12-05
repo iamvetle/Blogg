@@ -23,15 +23,15 @@
             <!-- BOLD, ITALIC, UNDERLINE -->
             <div id="top-three" class="flex space-x-2 items-center py-2">
                 <span class="option-holder">
-                    <EditorButton @click="toggleBold(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold"
+                    <EditorButton @click="toggleBoldRun(editor)" data-test="bold_option" :icon="bold_icon" alt="Bold"
                         :is-active="editor.isActive('bold')" />
                 </span>
                 <span class="option-holder">
-                    <EditorButton @click="toggleItalic(editor)" data-test="italic_option" :icon="italic_icon" alt="Italic"
+                    <EditorButton @click="toggleItalicRun(editor)" data-test="italic_option" :icon="italic_icon" alt="Italic"
                         :is-active="editor.isActive('italic')" />
                 </span>
                 <span class="option-holder">
-                    <EditorButton @click="toggleUnderline(editor)" data-test="underline_option" :icon="underline_icon"
+                    <EditorButton @click="toggleUnderlineRun(editor)" data-test="underline_option" :icon="underline_icon"
                         alt="Underline" :is-active="editor.isActive('underline')" />
                 </span>
             </div>
@@ -40,26 +40,26 @@
             <div id="heading_options" class="flex space-x-2 items-center py-2">
                 <span class="option-holder">
                     <EditorButton data-test="heading1_option" :is-active="editor.isActive('heading', { level: 1 })"
-                        @click="toggleHeading(editor, 1)" :icon="heading1_icon" alt="Heading 1" />
+                        @click="toggleHeadingRun(editor, 1)" :icon="heading1_icon" alt="Heading 1" />
                 </span>
                 <span class="option-holder">
                     <EditorButton data-test="heading2_option" :is-active="editor.isActive('heading', { level: 2 })"
-                        @click="toggleHeading(editor, 2)" :icon="heading2_icon" alt="Heading 2" />
+                        @click="toggleHeadingRun(editor, 2)" :icon="heading2_icon" alt="Heading 2" />
                 </span>
                 <span class="option-holder">
                     <EditorButton data-test="heading3_option" :is-active="editor.isActive('heading', { level: 3 })"
-                        @click="toggleHeading(editor, 3)" :icon="heading3_icon" alt="Heading 3" />
+                        @click="toggleHeadingRun(editor, 3)" :icon="heading3_icon" alt="Heading 3" />
                 </span>
             </div>
 
             <!-- LISTS, BULLETLIST, ORDERED LIST-->
             <div id="list-options" class="flex space-x-2 items-center py-2">
                 <span class="option-holder">
-                    <EditorButton @click="toggleBulletList(editor)" data-test="bullet_list_option" :icon="bullet_list_icon"
+                    <EditorButton @click="toggleBulletListRun(editor)" data-test="bullet_list_option" :icon="bullet_list_icon"
                         alt="Unordered list" :is-active="editor.isActive('bulletList')" />
                 </span>
                 <span class="option-holder">
-                    <EditorButton @click="toggleOrderedList(editor)" data-test="number_list_option" :icon="number_list_icon"
+                    <EditorButton @click="toggleOrderedListRun(editor)" data-test="number_list_option" :icon="number_list_icon"
                         alt="Ordered list" :is-active="editor.isActive('orderedList')" />
                 </span>
             </div>
@@ -88,11 +88,11 @@
                 <!-- BlockQuote -->
                 <span class="option-holder">
                     <EditorButton data-test="blockquote_option" :is-active="editor.isActive('blockquote')"
-                        @click="toggleBlockquote(editor)" :icon="blockquote_icon" alt="Blockquote" />
+                        @click="toggleBlockquoteRun(editor)" :icon="blockquote_icon" alt="Blockquote" />
                 </span>
                 <span class="option-holder">
                     <EditorButton data-test="codeblock_option" :is-active="editor.isActive('codeBlock')"
-                        @click="toggleCodeBlock(editor)" :icon="codeblock_icon" alt="Codeblock" />
+                        @click="toggleCodeBlockRun(editor)" :icon="codeblock_icon" alt="Codeblock" />
                 </span>
             </div>
 
@@ -101,12 +101,12 @@
 
                 <!-- Undo-->
                 <span class="option-holder">
-                    <EditorButton @click="setUndo(editor)" data-test="undo_option" :icon="go_back_icon" alt="Undo" />
+                    <EditorButton @click="setUndoRun(editor)" data-test="undo_option" :icon="go_back_icon" alt="Undo" />
                 </span>
 
                 <!-- Redo -->
                 <span class="option-holder ">
-                    <EditorButton @click="setRedo(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo" />
+                    <EditorButton @click="setRedoRun(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo" />
                 </span>
             </div>
         </div>

@@ -6,15 +6,15 @@
 
 // Methods ->
 
-export const toggleBold = (editor: any) => {
+export const toggleBoldRun = (editor: any) => {
     editor.chain().focus().toggleBold().run()
 }
 
-export const toggleItalic = (editor: any) => {
+export const toggleItalicRun = (editor: any) => {
     editor.chain().focus().toggleItalic().run()
 }
 
-export const toggleHeading = (editor: any, level:number) => {
+export const toggleHeadingRun = (editor: any, level:number) => {
     editor.chain().focus().toggleHeading({ level }).run();
 };
 
@@ -22,23 +22,23 @@ export const toggleHeading = (editor: any, level:number) => {
 // 	editor.value.chain().focus().setHorizontalRule().run()
 // };
 
-export const toggleUnderline = (editor: any) => {
+export const toggleUnderlineRun = (editor: any) => {
     editor.chain().focus().toggleUnderline().run()
 }
 
-export const toggleBulletList = (editor: any) => {
+export const toggleBulletListRun = (editor: any) => {
     editor.chain().focus().toggleBulletList().run()
 }
 
-export const toggleOrderedList = (editor: any) => {
+export const toggleOrderedListRun = (editor: any) => {
     editor.chain().focus().toggleOrderedList().run()
 }
 
-export const setUndo = (editor: any) => {
+export const setUndoRun = (editor: any) => {
     editor.chain().focus().undo().run()
 }
 
-export const setRedo = (editor: any) => {
+export const setRedoRun = (editor: any) => {
     editor.chain().focus().redo().run()
 }
 
@@ -46,14 +46,14 @@ export const setRedo = (editor: any) => {
 // 	editor.value.chain().focus().toggleCode().run()
 // }
 
-export const toggleBlockquote = (editor: any) => {
+export const toggleBlockquoteRun = (editor: any) => {
     editor.chain().focus().toggleBlockquote().run()
 }
 
-export const toggleCodeBlock = (editor: any) => {
+export const toggleCodeBlockRun = (editor: any) => {
     editor.chain().focus().toggleCodeBlock().run()
 }
 
-// export const toggleBold = () => {
+// export const toggleBoldRun = () => {
 // 	editor.value.chain().focus().toggleBold().run()
 // }
