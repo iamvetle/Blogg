@@ -6,7 +6,7 @@
 			<div v-if="showModal">
 				<teleport to="#modal">
 					<div class="w-full absolute blur-sm">
-						<EditorModalPublicationConfirmation @confirm="publishPost" @abort="cancelPublishing" />
+						<EditorModalPublishPost @confirm="publishPost" @abort="cancelPublishing" />
 					</div>
 				</teleport>
 			</div>

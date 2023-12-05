@@ -3,10 +3,22 @@
 		<div id="editor-container"
 			class="w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12">
 
-			<div v-if="showModal">
+			<div v-if="showModalPublishPost">
 				<teleport to="#modal">
 					<div class="w-full">
-						<EditorModalPublicationConfirmation @confirm="publishPost" @abort="cancelPublishingModalMessage" />
+						<EditorModalPublishPost @confirm="publishPost" @abort="cancelChoiceFromModalMessage" />
+					</div>
+				</teleport>
+				<!--
+					* should probebly move the "discard post" modal up here. it doesnt make that 
+					* much sense for it to be in the "top menu" component
+				-->
+			</div>
+			<div v-if="showModalDiscardPost">
+				<teleport to="#modal">
+					<div class="w-full">
+						<EditorModalDiscardPost @discard-post="discardPostModalMessage"
+							@cancel="cancelChoiceFromModalMessage" />
 					</div>
 				</teleport>
 				<!--
@@ -21,10 +33,10 @@
 
 				<EditorFloatingMenu :editor="editor"
 					class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
-					@add-image="handleAddImageClick" />
+					@add-image="handleAddImageMessage" />
 
-				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageClick"
-					@try-publish-post="handleTryPublishClick" @discard-editing-post="discardMakingPosts" />
+				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageMessage" @publish-post="tryPublishPostMessage"
+					@discard-editing-post="showModalDiscardPost = true" />
 			</div>
 
 			<hr class="not-prose mb-8">
@@ -32,19 +44,17 @@
 			<div data-test="editor_title_input" class="mt-2 max-w-2xl w-full mx-auto">
 
 				<!-- Title editor -->
-				<InputText @keypress.enter="editor.commands.focus()" ref="editorTitleInput" placeholder="Title"
+				<InputText @keypress.enter="editor.commands.focus()" ref="editorTitleInputRef" placeholder="Title"
 					v-model.trim="titleEditor"
 					class="not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
 
 				<hr class="not-prose invisible">
 
-				<!-- Editor -->
+				<!-- Main Editor -->
 				<div @click="editor.commands.focus()" data-test="direct-editor" class="pt-3 w-full min-h-[500px] ">
 					<editor-content :editor="editor" @keyup.delete="maybePlaceFocusOnEditorTitle" />
 				</div>
-
 			</div>
-
 		</div>
 
 		<hr class="mb-4 ">
@@ -89,24 +99,31 @@ const emit = defineEmits(['newPostMaterial'])
  * ! element through the main css. That is just temporary - remove later
  */
 
-/**
- * This variable dictates whether the Modal is shown or not.
- * 
- * True: Modal is shown. 
- * False: Modal is hidden.
-*/
-const showModal = ref(false)
+// The state of the modals
+const showModalPublishPost = ref(false)
+const showModalDiscardPost = ref(false)
 
+/** Makes sure that not two modals can exist at the same time */
+watchEffect(() => {
+	if (showModalPublishPost.value) {
+		showModalDiscardPost.value = false
+	}
+	if (showModalDiscardPost.value) {
+		showModalPublishPost.value = false
+	}
+})
+
+/** The form that will eventually be sent with the request */
 const formData = ref(new FormData())
 
-/** This stores the title of the title input editor */
+/** This stores the title state of the title input editor */
 const titleEditor = ref("")
 
-const editorTitleInput = ref<any>(null)
+/** template ref for the title input */
+const editorTitleInputRef = ref<any>(null)
 
-// const route = useRoute()
-
-const imageFileMap = ref<any>({}); // Object to store the mapping of unique ID and file
+// Object to store the mapping of unique ID and file
+const imageFileMap = ref<any>({});
 
 /** 
  * This two are just so that I can share them between 
@@ -208,12 +225,10 @@ const handleImagePaste = async (event: any) => {
 // });
 
 
-// BUTTON ACTIONS
-
 /**
  * Activates the next steps to publish the post -> calls the comfirmation modal
  */
-const handleTryPublishClick = async () => {
+const tryPublishPostMessage = async () => {
 
 	// The html in string format
 	const html = editor.value?.getHTML();
@@ -221,7 +236,7 @@ const handleTryPublishClick = async () => {
 	const htmlRawText = (editor.value?.getText()) ?? "";
 
 	// The title of the post
-	const titleText = editorTitleInput.value ?? "";
+	const titleText = editorTitleInputRef.value ?? "";
 
 	// if the title is literally one or zero letters
 	if (titleText?.length <= 1) {
@@ -239,13 +254,16 @@ const handleTryPublishClick = async () => {
 	body.value = html
 	title.value = titleEditor.value
 
-	showModal.value = true;
+	showModalPublishPost.value = true;
 };
 
 /**
  * Cancels the post creation, an discards all traces of it
  */
-const discardMakingPosts = () => {
+const discardPostModalMessage = () => {
+
+	// close the model
+	showModalDiscardPost.value = false
 
 	// Clears the input
 	editor.value?.commands.clearContent();
@@ -258,6 +276,9 @@ const discardMakingPosts = () => {
 
 	// all of the pictures currently in store(cached?) are also discarded
 	imageFileMap.value = {}
+
+	// puts the focus back on the editor
+	editor.value.commands.focus()
 };
 
 /** 
@@ -268,7 +289,7 @@ const discardMakingPosts = () => {
 const publishPost = () => {
 	console.log("publish post was called")
 
-	showModal.value = false;
+	showModalPublishPost.value = false;
 
 	formData.value.append("title", title.value || "");
 	formData.value.append("content", body.value || "");
@@ -294,12 +315,13 @@ const publishPost = () => {
 	formData.value = new FormData()
 };
 
-/**
- * Cancels publishing
- * * Called by the modal
- */
-const cancelPublishingModalMessage = () => {
-	showModal.value = false;
+/** Cancels publishing */
+const cancelChoiceFromModalMessage = () => {
+	showModalDiscardPost.value = false;
+	showModalPublishPost.value = false
+
+	// places focus back on editor
+	editor.value.commands.focus()
 };
 
 /**
@@ -307,13 +329,13 @@ const cancelPublishingModalMessage = () => {
  * 
  * @param event - The image file
  */
-const handleAddImageClick = (event: any) => {
+const handleAddImageMessage = (event: any) => {
 	console.log("start of handle add Image change")
 	if (event) {
 		const file = event.target.files[0];
 		const uniqueId = generateUniqueId(); // Function to generate a unique ID.
 		const fileTempUrl = URL.createObjectURL(file);
-		console.log("middle of handleaddimageClick")
+		console.log("middle of handleaddimageMessage")
 
 
 		if (fileTempUrl) {
@@ -322,8 +344,11 @@ const handleAddImageClick = (event: any) => {
 			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change") // print to self
 			console.log(uniqueId, fileTempUrl)
 
-
 			editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).run()
+
+			// places focus back on editor
+			editor.value.commands.focus()
+
 		}
 	}
 }
@@ -347,29 +372,23 @@ onMounted(() => {
 		// gets the title string from the sessionStorage and inserts it into the input title.value (or empty string)
 		titleEditor.value = (sessionStorage.getItem("titlePost")) ?? ""
 
-		// If not title input has been writen, put focus on the title input (else, skip)
+		/** Takes the focus to the title inpur, if there is an empty title string*/
 		if (titleEditor.value === "") {
 
 			/**
-			 * Under is the reason the focus thing didnt work
+			 * This is the reason the focus thing didnt work initially -> editor.value.commands.blur()
 			 */
-			// takes the focus away from the main editor
-			// editor.value.commands.blur()
 
-			// places the focus on the title input instead
-			//@ts-ignore
-
-			if (editorTitleInput.value) {
-				(editorTitleInput.value as any).textInput?.focus()
+			// dobbel checks 
+			if (editorTitleInputRef.value) {
+				(editorTitleInputRef.value as any).textInput?.focus()
 			}
-
-			// if the title has a string put the focus on the main editor
+			// case: the title input already had some input, string value
 		} else {
 			editor.value.commands.focus()
 		}
 	}
 })
-
 
 /** reactive constant that makes the computed above work */
 const htmlForComputed = ref<string | null | undefined>(null);
@@ -393,8 +412,8 @@ const isEditorEmpty = computed(() => {
 */
 const maybePlaceFocusOnEditorTitle = () => {
 	if (isEditorEmpty.value === true) {
-		if (editorTitleInput.value) {
-			(editorTitleInput.value as any).textInput?.focus()
+		if (editorTitleInputRef.value) {
+			(editorTitleInputRef.value as any).textInput?.focus()
 		}
 	}
 }

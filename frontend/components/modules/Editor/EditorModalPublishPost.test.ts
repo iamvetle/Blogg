@@ -1,4 +1,4 @@
-import EditorModalPublicationConfirmation from './EditorModalPublicationConfirmation.vue';
+import EditorModalPublishPost from './EditorModalPublishPost.vue';
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 import PopupModal from '~/components/utils/PopupModal.vue';
@@ -8,7 +8,7 @@ let wrapper: any;
 let title = "Do you want to publish the post?"
 
 const factory = () => {
-    return shallowMount(EditorModalPublicationConfirmation, {
+    return shallowMount(EditorModalPublishPost, {
         global: {
             plugins: [],
             components: {

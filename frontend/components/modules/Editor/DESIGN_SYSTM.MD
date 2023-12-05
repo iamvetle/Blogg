@@ -69,6 +69,10 @@ show + Modal
 
 always
 
+**emits that are going to spawn a modal**
+
+try + functioname + message
+
 
 ## Composables
 

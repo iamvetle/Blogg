@@ -9,13 +9,6 @@
                 </div>
             </teleport>
         </div>
-        <div data-test="modal_for_url_discard_post" v-if="showModalDiscardPost">
-            <teleport to="#modal">
-                <div>
-                    <EditorModalDiscardPost @discard-post="discardPostModalMessage" @cancel="showModalDiscardPost = false" />
-                </div>
-            </teleport>
-        </div>
         
         <div id="top-menu-container" class="flex w-full justify-between items-center flex-wrap">
             <!-- V-IF -->
@@ -75,6 +68,7 @@
                             alt="Add link" :is-active="editor.isActive('link')" />
                     </span>
                 </div>
+
                 <!-- QUOTEING and CODE BLOCK-->
                 <div id="codeQuote_options" class="flex space-x-2 items-center py-2">
                     <!-- BlockQuote -->
@@ -99,19 +93,19 @@
                     </span>
                 </div>
             </div>
-            <!-- DIscard and publish buttons-->
+
             <div id="discard_publish_options_buttons" class="flex items-center space-x-4 py-2">
                 <!-- Discard Button -->
                 <span class="button-option">
                     <BaseButton id="discard" data-test="do_discard_button_option"
                         class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
-                        @click="discardEditingPostButton" text="Discard" />
+                        @click="$emit('discardEditingPost')" text="Discard"/>
                 </span>
                 <!-- Publish button-->
                 <span class="button-option">
                     <BaseButton id="publish" data-test="try_publish_button_option"
                         class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
-                        @click="$emit('tryPublishPost')" text="Publish" />
+                        @click="$emit('publishPost')" text="Publish" />
                 </span>
             </div>
         </div>
@@ -120,8 +114,6 @@
 
 
 <script setup lang="ts">
-
-const emit = defineEmits(["tryPublishPost", "discardEditingPost", "addImage"])
 
 import underline_icon from '~/assets/icons/underline.svg'
 import italic_icon from '~/assets/icons/italic.svg'
@@ -139,19 +131,17 @@ import heading1_icon from '~/assets/icons/h1.svg'
 import heading2_icon from '~/assets/icons/h2.svg'
 import heading3_icon from '~/assets/icons/h3.svg'
 
-
-
 import { Editor } from '@tiptap/core';
 
-/** The add url link modal for a post  */
-const showModalAddLinkURL = ref(false)
+const emit = defineEmits(["publishPost", "discardEditingPost", "addImage"])
 
-/** The discard modal for discarding a post */
-const showModalDiscardPost = ref(false)
 
 const props = defineProps<{
     editor: Editor | undefined
 }>();
+
+/** The add url link modal for a post  */
+const showModalAddLinkURL = ref(false)
 
 const handleAddURLLinkClick = () => {
     showModalAddLinkURL.value = true
@@ -168,28 +158,6 @@ const addURLModalMessage = (URL: string) => {
 
     (props.editor as Editor).chain().focus().setLink({ href: URL, target: '_blank' }).insertContent(URL).run()
     showModalAddLinkURL.value = false
-}
-
-/**
- * MODAL CALLED
- * 
- * Discards the post
- */
-const discardPostModalMessage = () => {
-    // closes the modal
-    showModalDiscardPost.value = false
-    // focuses on the editor again
-    props.editor?.commands.focus()
-    emit("discardEditingPost")
-}
-
-/** 
- * BUTTON CALLED
- * 
- * Called by the button 
- * */
-const discardEditingPostButton = () => {
-    showModalDiscardPost.value = true
 }
 
 // Methods ->
