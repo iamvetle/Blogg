@@ -1,5 +1,8 @@
 {
-  "files.exclude": {},
+  "files.exclude": {
+    "components\\modules\\Editor\\CustomImage.test.ts": true,
+    "components\\modules\\Editor\\CustomImage.ts": true
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.fixAll.eslint": true

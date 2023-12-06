@@ -35,7 +35,7 @@
 
 			<div data-test="editor_title_input" class="mt-2 max-w-2xl w-full mx-auto">
 				<!-- Title editor -->
-				<InputText @keypress.enter="editor.commands.focus()" ref="editorTitleInputRef" placeholder="Title"
+				<InputText @keypress.enter="editor.chain().focus().createParagraphNear()" ref="editorTitleInputRef" placeholder="Title"
 					v-model.trim="titleEditor"
 					class="not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
 
@@ -80,7 +80,7 @@ import Dropcursor from '@tiptap/extension-dropcursor'
 import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
 import Underline from '@tiptap/extension-underline'
-import Image from '@tiptap/extension-image'
+import {Image} from './CustomImage'
 
 const emit = defineEmits(['newPostMaterial'])
 
@@ -191,7 +191,7 @@ const handleImagePaste = async (event: any) => {
 			if (fileTempUrl) {
 				// Store the file with its unique ID in the image map
 				imageFileMap.value[uniqueId] = file;
-				editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).run()
+				editor.value.chain().focus().setImage({ src: fileTempUrl, data:uniqueId }).createParagraphNear().run()
 			}
 			event.preventDefault();
 		}
@@ -337,7 +337,7 @@ const handleAddImageMessage = (event: any) => {
 			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change") // print to self
 			console.log(uniqueId, fileTempUrl)
 
-			editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).createParagraphNear().run()
+			editor.value.chain().focus().setImage({ src: fileTempUrl, data: uniqueId }).createParagraphNear().run()
 
 			// places focus back on editor
 			editor.value.commands.focus()
@@ -444,5 +444,13 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.tiptap a:hover {
+  color: red !important;
+}
+.tiptap a {
+  text-decoration: underline;
+  text-decoration-color: #38bdf8;
+}
+
 
 </style>

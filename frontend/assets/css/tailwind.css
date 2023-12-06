@@ -10,12 +10,4 @@
       system-ui,
       sans-serif;
   }
-a {
-  text-decoration: underline;
-  text-decoration-color: #38bdf8;
-}
-a:hover {
-  color: #38bdf8;
-  cursor: pointer;
-}
 }
