@@ -102,12 +102,39 @@
 		],
 		"description": "Snippet for a simple async Vue test block"
 	},
+	"Vue Should exist": {
+		"prefix": "vueExistTest",
+		"body": [
+		"test('Should exist', () => {",
+		"	wrapper = factory()",
+		"	expect(wrapper.exists()).toBe(true)",
+		"})"
+		],
+		"description": "Snippet for asserting the existence of a component"
+	},
+	"Vue Should exist": {
+		"prefix": "vueCompExistTest",
+		"body": [
+		"expect($1.exists()).toBe(true)",
+		],
+		"description": "Snippet for asserting the existence of a component"
+	},
+
+	"Vue Should Match Snapshot": {
+		"prefix": "vueSnapshotTest",
+		"body": [
+		"test('Should match snapshot', () => {",
+		"	wrapper = factory()",
+		"	expect(wrapper).toMatchSnapshot()",
+		"})"
+		],
+		"description": "Snippet for extering the snapshot is the same for a component"
+	},
 	"Vue Expect": {
 		"prefix": "vueExpect",
 		"body": [
 		"expect($1).$2",
-		"",
-		"$0"
+		"$0",
 		],
 		"description": "Snippet for writing an expect statement in Vue tests"
 	},
@@ -116,8 +143,7 @@
 		"prefix": "vueLogHTML",
 		"body": [
 			"console.log(wrapper.html())",
-			"",
-			"$0"
+			"$0",
 		],
 		"description": "Snippet for setting up a logging setup for the wrapper html in Vue Tests"
 	},
@@ -126,8 +152,7 @@
 		"prefix": "vueTick",
 		"body": [
 			"await wrapper.vm.$$nextTick()",
-			"",
-			"$0"
+			"$0",
 		],
 		"description": "Snippet for setting for waiting on DOM change"
 	},

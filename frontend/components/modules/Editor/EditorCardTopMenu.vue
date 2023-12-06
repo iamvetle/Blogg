@@ -1,7 +1,6 @@
 <template>
-    <!-- MODELS = LINK ADD, DISCARD POST -->
-
     <div>
+
         <div data-test="modal_for_url_link_add" v-if="showModalAddLinkURL">
             <teleport to="#modal">
                 <div>
@@ -10,9 +9,9 @@
             </teleport>
         </div>
         
-        <div id="top-menu-container" class="flex w-full justify-between items-center flex-wrap">
+        <div class="flex w-full justify-between items-center flex-wrap" data-test="top_menu_wrapper" >
             <!-- V-IF -->
-            <div class="flex space-x-10 items-center flex-wrap" v-if="editor">
+            <div class="flex space-x-10 items-center flex-wrap" v-if="editor"> <!-- Need v-if here-->
                 <!-- BOLD, ITALIC, UNDERLINE -->
                 <div id="top-three" class="flex space-x-2 items-center py-2">
                     <span class="option-holder">
@@ -159,12 +158,6 @@ const addURLModalMessage = (URL: string) => {
     (props.editor as Editor).chain().focus().setLink({ href: URL, target: '_blank' }).insertContent(URL).run()
     showModalAddLinkURL.value = false
 }
-
-// Methods ->
-
-// const toggleBold = () => {
-// 	editor.value.chain().focus().toggleBold().run()
-// }
 
 const addImageRef = ref<any>(null)
 

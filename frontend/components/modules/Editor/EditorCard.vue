@@ -3,17 +3,16 @@
 		<div id="editor-container"
 			class="w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12">
 
+			<!-- The Modal to confirm to the post -->
 			<div v-if="showModalPublishPost">
 				<teleport to="#modal">
 					<div class="w-full">
 						<EditorModalPublishPost @confirm="publishPost" @abort="cancelChoiceFromModalMessage" />
 					</div>
 				</teleport>
-				<!--
-					* should probebly move the "discard post" modal up here. it doesnt make that 
-					* much sense for it to be in the "top menu" component
-				-->
 			</div>
+
+			<!-- The Modal to discard the content post -->
 			<div v-if="showModalDiscardPost">
 				<teleport to="#modal">
 					<div class="w-full">
@@ -21,20 +20,13 @@
 							@cancel="cancelChoiceFromModalMessage" />
 					</div>
 				</teleport>
-				<!--
-					* should probebly move the "discard post" modal up here. it doesnt make that 
-					* much sense for it to be in the "top menu" component
-				-->
 			</div>
 
-			<!-- Editor menus -->
-			<!-- I have to do v-if because useEditor() can be undefined -->
+			<!-- Menus for editor -->
 			<div class="w-full not-prose mb-6" v-if="editor">
-
 				<EditorFloatingMenu :editor="editor"
 					class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
 					@add-image="handleAddImageMessage" />
-
 				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageMessage" @publish-post="tryPublishPostMessage"
 					@discard-editing-post="showModalDiscardPost = true" />
 			</div>
@@ -42,7 +34,6 @@
 			<hr class="not-prose mb-8">
 
 			<div data-test="editor_title_input" class="mt-2 max-w-2xl w-full mx-auto">
-
 				<!-- Title editor -->
 				<InputText @keypress.enter="editor.commands.focus()" ref="editorTitleInputRef" placeholder="Title"
 					v-model.trim="titleEditor"
@@ -60,14 +51,14 @@
 		<hr class="mb-4 ">
 
 	</div>
-	<div>
-
-	</div>
 </template>
 
 <script setup lang="ts">
-
-//  class="flex flex-row justify-center items-center"
+/**
+ * Editor for creating new posts.
+ * 
+ * The post that wants to be publushed is emitted upwards.
+ */
 
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import Document from '@tiptap/extension-document' // required
