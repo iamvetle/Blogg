@@ -144,6 +144,7 @@ const showModalAddLinkURL = ref(false)
 
 const handleAddURLLinkClick = () => {
     showModalAddLinkURL.value = true
+    props.editor?.commands.focus()
 }
 
 /**
@@ -159,6 +160,7 @@ const addURLModalMessage = (URL: string) => {
     showModalAddLinkURL.value = false
 }
 
+/** A template ref to the input element */
 const addImageRef = ref<any>(null)
 
 /**
@@ -178,6 +180,9 @@ const handleAddImageClick = () => {
 const handleFileChange = (event: any) => {
     const file = event;
     emit("addImage", file)
+
+    // then focuses back on the editor
+    props.editor?.commands.focus()
 }
 
 

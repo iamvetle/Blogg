@@ -76,6 +76,8 @@ const showModalDiscardPost = ref(false)
 
 const handleAddURLLinkClick = () => {
 	showModalAddLinkURL.value = true
+	// places the focus back on the editor
+	props.editor?.commands.focus()
 }
 
 /**
@@ -99,6 +101,9 @@ const addURLModalMessage = (URL: string) => {
 const discardPostModalMessage = () => {
 	showModalDiscardPost.value = false
 	emit("discardEditingPost")
+
+	// places the focus back on the editor
+	props.editor?.commands.focus()
 }
 
 // Methods ->

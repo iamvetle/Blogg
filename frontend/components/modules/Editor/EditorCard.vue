@@ -335,7 +335,7 @@ const handleAddImageMessage = (event: any) => {
 			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change") // print to self
 			console.log(uniqueId, fileTempUrl)
 
-			editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).run()
+			editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).createParagraphNear().run()
 
 			// places focus back on editor
 			editor.value.commands.focus()
@@ -435,4 +435,6 @@ onUnmounted(() => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
