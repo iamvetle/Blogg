@@ -31,7 +31,6 @@
  * I dont need to have a prop closing and opening it if I just have show hide outside instead
  */
 
-
 const isOpen = ref(true)
 
 const emit = defineEmits(["confirm", "abort"])
