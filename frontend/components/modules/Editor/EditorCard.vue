@@ -296,8 +296,10 @@ const publishPost = () => {
 	// Tells the parents component that the post can be published
 	emit('newPostMaterial', formData.value);
 
-	editor.value?.chain().focus().clearContent().run();
+	editor.value?.commands.clearContent();
 	titleEditor.value = ""
+	title.value = ""
+	body.value = ""
 
 	// Removes all currently stored images and their ids
 	imageFileMap.value = {}
@@ -426,6 +428,12 @@ onUnmounted(() => {
 		console.log("not destroyed")
 		editor.value.destroy()
 	}
+
+	// the title input element string
+	titleEditor.value = ""
+	title.value = ""
+	body.value = ""
+	imageFileMap.value = {}
 
 	// Saves the html content in a session for storing
 	sessionStorage.setItem("htmlPost", htmlPost)

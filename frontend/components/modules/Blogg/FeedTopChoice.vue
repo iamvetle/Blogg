@@ -9,11 +9,11 @@
                 :class="selected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'"
                 text="Following" />
         </span>
-        <p class="text-lg" v-if="(num_of_following === 0) && (selected) && (postStore.posts.results.length == 0)">
+        <p class="text-lg" v-if="(num_of_following === 0) && (selected) && (postStore.posts?.results.length == 0)">
             You are
             not
             following anyone.</p>
-        <p class="text-lg" v-if="(postStore.posts?.results?.length === 0) && (selected) && (num_of_following > 0)">
+        <p class="text-lg" v-if="(postStore.posts?.results.length === 0) && (selected) && (num_of_following > 0)">
             None of who you are following have published anything.</p>
     </div>
 </template>
@@ -36,9 +36,11 @@ const loggedInUserStore = useLoggedInUserStore()
  * When the buttons are clicked this changes (also by navbar search)
  * 
  * If the active url is the following url, this turns true, otherwise, it is false
+ * 
+ * It uses the loggedinuserstore and the poststore therefore the parentcomponent makes sure those are available before rendering these 
  */
 const selected = computed(() => {
-    if (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/") {
+    if (paginationStore?.activeFetchURL === "http://localhost:8888/api/feed/following/") {
         return true
     } else {
         return false
@@ -47,7 +49,7 @@ const selected = computed(() => {
     
 
 const num_of_following = computed(() => {
-    return (loggedInUserStore.loggedInUserProfile.num_of_following) ?? 0
+    return (loggedInUserStore.loggedInUserProfile?.num_of_following) ?? 0
 }
 );
 
