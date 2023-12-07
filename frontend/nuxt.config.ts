@@ -44,9 +44,6 @@ export default defineNuxtConfig({
     exposeConfig: false,
     exposeLevel: 2,
     config: {
-      content: [
-        'docs/content/**/*.md'
-      ],
     },
     injectPosition: "first",
     viewer: true,

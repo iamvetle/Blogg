@@ -225,7 +225,9 @@ class PostCreateView(APIView):
 
             post = Post.objects.create(title=title, content=content, author=request.user)
 
-            image_map = {}
+            image_map = {
+                
+            }
             for key, image_file in request.FILES.items():
                 # Open the uploaded image using Pillow
                 image = Image.open(image_file)
