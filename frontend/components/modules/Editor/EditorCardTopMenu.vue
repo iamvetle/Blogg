@@ -130,6 +130,7 @@ import heading1_icon from '~/assets/icons/h1.svg'
 import heading2_icon from '~/assets/icons/h2.svg'
 import heading3_icon from '~/assets/icons/h3.svg'
 
+
 import { Editor } from '@tiptap/core';
 
 const emit = defineEmits(["publishPost", "discardEditingPost", "addImage"])

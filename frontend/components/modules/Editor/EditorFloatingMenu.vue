@@ -8,33 +8,31 @@
 				</div>
 			</teleport>
 		</div>
-		<div data-test="modal_for_url_discard_post" v-if="showModalDiscardPost">
-			<teleport to="#modal">
-				<div>
-					<EditorModalDiscardPost @discard-post="discardPostModalMessage"
-						@cancel="showModalDiscardPost = false" />
-				</div>
-			</teleport>
-		</div>
 		<!-- Using $attrs here, so that the modal wont be included when doing :class at higher levels
 		TODO Move the modals up/ to a different place
 		-->
 		<div v-bind="$attrs">
-			<floating-menu :editor="editor" :tippy-options="{ duration: 100 }"
-				class="flex-col items-center md:flex-row max-md:space-y-3 md:flex md:space-x-3" v-if="editor">
-				<!-- Image -->
-				<div data-test="add_image_button_sum">
-					<EditorButton @click="handleAddImageClick" :icon="add_image_icon" alt="Add mage" data-test="add_image" />
-					<input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="add_image_file_input" />
+			<floating-menu :editor="editor" :tippy-options="{ 
+				duration: 100,
+				placement:'left',
+				offset: [0, 120]
+				}"
+				 v-if="editor">
+				<div class="flex bg-surfaceContainerHighest flex-col py-2 px-2 rounded-md not-prose space-y-4 items-center justify-center">
+					<!-- Image -->
+					<div data-test="add_image_button_sum" class="">
+						<EditorButton class="" @click="handleAddImageClick" :icon="add_image_icon" alt="Add mage" data-test="add_image" />
+						<input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="add_image_file_input" />
+					</div>
+					<!-- Link -->
+					<EditorButton :is-active="editor.isActive('link')" @click="handleAddURLLinkClick" :icon="link_icon"
+						alt="link" />
+					<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @click="toggleHeadingRun(editor, 1)"
+						:icon="heading_1_icon" alt="heading 1" />
+					<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @click="toggleHeadingRun(editor, 2)"
+						:icon="heading_2_icon" alt="heading 2" />
+					<EditorButton @click="horizontalRuleRun(editor)" :icon="seperator_icon" alt="seperator" />
 				</div>
-				<!-- Link -->
-				<EditorButton :is-active="editor.isActive('link')" @click="handleAddURLLinkClick" :icon="link_icon"
-					alt="link" />
-				<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @click="toggleHeadingRun(editor, 1)"
-					:icon="heading_1_icon" alt="heading 1" />
-				<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @click="toggleHeadingRun(editor, 2)"
-					:icon="heading_2_icon" alt="heading 2" />
-				<EditorButton @click="horizontalRuleRun(editor)" :icon="seperator_icon" alt="seperator" />
 			</floating-menu>
 		</div>
 	</div>
@@ -72,7 +70,6 @@ import { Editor } from '@tiptap/core';
 const showModalAddLinkURL = ref(false)
 
 /** The discard modal for discarding a post */
-const showModalDiscardPost = ref(false)
 
 const handleAddURLLinkClick = () => {
 	showModalAddLinkURL.value = true
@@ -91,19 +88,6 @@ const addURLModalMessage = (URL: string) => {
 
 	(props.editor as Editor).chain().focus().insertContent("asdasda").setLink({ href: URL, target: '_blank' }).run()
 	showModalAddLinkURL.value = false
-}
-
-/**
- * MODAL CALLED
- * 
- * Discards the post
- */
-const discardPostModalMessage = () => {
-	showModalDiscardPost.value = false
-	emit("discardEditingPost")
-
-	// places the focus back on the editor
-	props.editor?.commands.focus()
 }
 
 // Methods ->

@@ -25,7 +25,6 @@
 			<!-- Menus for editor -->
 			<div class="w-full not-prose mb-6" v-if="editor">
 				<EditorFloatingMenu :editor="editor"
-					class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
 					@add-image="handleAddImageMessage" />
 				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageMessage" @publish-post="tryPublishPostMessage"
 					@discard-editing-post="showModalDiscardPost = true" />
@@ -83,12 +82,6 @@ import Underline from '@tiptap/extension-underline'
 import {Image} from './CustomImage'
 
 const emit = defineEmits(['newPostMaterial'])
-
-/**
- * ! I am curently customizing the
- * * <a></a>
- * ! element through the main css. That is just temporary - remove later
- */
 
 // The state of the modals
 const showModalPublishPost = ref(false)

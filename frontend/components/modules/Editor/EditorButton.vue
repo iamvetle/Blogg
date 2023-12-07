@@ -1,9 +1,7 @@
 <template>
-    <span class="flex">
-        <button :class="{ 'is-active': isActive }" @click="$emit('button-click')">
-            <img :class="class" :src="icon" :alt="alt">
-        </button>
-    </span>
+    <button :class="[{ 'is-active': isActive }, props.class]" @click="$emit('button-click')">
+        <img :class="iconImgClass" :src="icon" :alt="alt">
+    </button>
 </template>
 
 <script setup lang="ts">
@@ -12,18 +10,16 @@
  * ? cant I just remove the span and button as well and just have the plain image?
  */
 
-withDefaults(defineProps<{
-    class?:string,
-    icon:string,
-    alt?:string
-    iconImgClass?:string,
-    isActive?:string | boolean,
+const props = withDefaults(defineProps<{
+    class?: string,
+    icon: string,
+    alt?: string
+    iconImgClass?: string,
+    isActive?: string | boolean,
 }>(), {
-    class:"h-5 flex items-center",
+    iconImgClass: "h-5",
 })
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
