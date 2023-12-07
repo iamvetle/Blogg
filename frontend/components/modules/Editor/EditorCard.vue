@@ -11,7 +11,10 @@
 					</div>
 				</teleport>
 			</div>
-
+				<!-- Title editor -->
+				<EditorModalRequirements
+				v-model="showModalRequirements"				
+				/>
 			<!-- The Modal to discard the content post -->
 			<div v-if="showModalDiscardPost">
 				<teleport to="#modal">
@@ -32,7 +35,7 @@
 			<hr class="not-prose mb-8">
 
 			<div data-test="editor_title_input" class="mt-2 max-w-2xl w-full mx-auto">
-				<!-- Title editor -->
+
 				<InputText @keypress.enter="editor.chain().focus().createParagraphNear()" ref="editorTitleInputRef"
 					placeholder="Title" v-model.trim="titleEditor"
 					class="not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
@@ -85,6 +88,8 @@ const emit = defineEmits(['newPostMaterial'])
 // The state of the modals
 const showModalPublishPost = ref(false)
 const showModalDiscardPost = ref(false)
+// The modal that makes sure the requirements are met?
+const showModalRequirements = ref(false)
 
 /** Makes sure that not two modals can exist at the same time */
 watchEffect(() => {
@@ -155,10 +160,8 @@ const editor: any = useEditor({ //@ts-ignore
 	],
 
 	editorProps: {
-
 		attributes: {
 			class: 'focus:outline-none',
-			// class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',	
 		},
 	},
 })
@@ -198,16 +201,6 @@ const handleImagePaste = async (event: any) => {
  * TODO Close the instance object URL i make each time i add an image
  */
 
-// onMounted(() => {
-// 	/**
-// 	 * ? Not sure how this works. Each time the component updates the html updates?
-// 	 */
-// 	editor.value?.on("update", () => {
-// 		html.value = editor.value?.getHTML();
-// 	});
-// });
-
-
 /**
  * Activates the next steps to publish the post -> calls the comfirmation modal
  */
@@ -219,17 +212,18 @@ const tryPublishPostMessage = async () => {
 	const htmlRawText = (editor.value?.getText()) ?? "";
 
 	// The title of the post
-	const titleText = editorTitleInputRef.value ?? "";
+	const titleText = titleEditor.value ?? "";
 
-	// if the title is literally one or zero letters
-	if (titleText?.length <= 1) {
-		alert("The title can't be one character long or zero") // alert to self
+	// if the title is literally lese than three characters
+	if (titleText?.length < 3) {
+		// shows the modal that shows the requirements
+		showModalRequirements.value = true
 		return
 	}
 
-	// if the title is literally one or zero letters
-	if (htmlRawText?.length <= 1) {
-		alert("The html content can't be one character long or zero") ///
+	// if the post content is under 50
+	if (htmlRawText?.length < 50) {
+		showModalRequirements.value = true
 		return
 	}
 
@@ -238,6 +232,8 @@ const tryPublishPostMessage = async () => {
 	title.value = titleEditor.value
 
 	showModalPublishPost.value = true;
+
+	return
 };
 
 /**
@@ -304,6 +300,7 @@ function publishPost () {
 
 /** Cancels publishing */
 const cancelChoiceFromModalMessage = () => {
+	// Closes all modals (makes sure)
 	showModalDiscardPost.value = false;
 	showModalPublishPost.value = false
 

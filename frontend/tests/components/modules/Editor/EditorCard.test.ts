@@ -50,5 +50,6 @@ describe('Testing the editorcard (very small bad tests becasue of a loff rewriti
         expect(wrapper).toMatchSnapshot()
     })
     
+    
 
 });
