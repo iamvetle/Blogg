@@ -27,7 +27,6 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    //"@nuxtjs/eslint-module",
     "@formkit/nuxt",
     "@pinia/nuxt",
     "nuxt-vitest",

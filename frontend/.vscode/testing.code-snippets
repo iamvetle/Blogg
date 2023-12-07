@@ -18,6 +18,7 @@
 
 		"Vue Test Utils with factory function": {
 			"prefix": "vueSetupTest",
+			"scope": "javascript, typescript",
 			"body": [
 				"import $1",
 				"import { shallowMount } from '@vue/test-utils';",
@@ -26,35 +27,21 @@
 				"let wrapper: any;",
 				"",
 				"const factory = () => {",
-				"    return shallowMount($6, {",
+				"    return shallowMount(${2:Component}, {",
 				"        global: {",
 				"            plugins: [],",
-				"            components: {$7},",
+				"            components: {$3},",
 				"            mocks: {},",
-				"            stubs: {},",
+				"            stubs: {$4},",
 				"        },",
-				"        props: {$8},",
+				"        props: {$5},",
 				"        slots: {}",
 				"    })",
 				"};",
 				"",
-				"describe('$9', () => {",
-				"",
-				"",
-				"    // vi.stubGlobal('useRoute', () => {",
-				"    //     return {",
-				"    //         params: {",
-				"    //             id: 1",
-				"    //         }",
-				"    //     }",
-				"    // });",
+				"describe('${6:Testing component}', () => {",
 				"",
 				"    beforeEach(() => {",
-				"        // generalStore = useGeneralStore(pinia); $10",
-				"        // postStore = usePostStore(pinia); $11",
-				"        // loggedInUserStore = useLoggedInUserStore(pinia); $12",
-				"        // paginationStore = usePaginationStore(pinia); $13",
-				"",
 				"    });",
 				"",
 				"    afterEach(() => {",
@@ -62,23 +49,20 @@
 				"            wrapper.unmount();",
 				"        }",
 				"    });",
-				"$0",
+				"	test('Should exist', () => {",
+				"		wrapper = factory()",
+				"		expect(wrapper.exists()).toBe(true)",
+				"	})",
+				"	$0",
 				"});"
 			],
 			"description": "Vue Test Utils snippet with a factory function for setup"
 		},
 	"Vue Mount Component": {
-		"prefix": "vueMount",
+		"prefix": "vueFactoryTest",
+		"scope": "javascript, typescript",		
 		"body": [
-		"const wrapper = shallowMount($1, {",
-		"  global: {",
-		"    plugins: [$2],",
-		"    components: {$3},",
-		"    mocks: {},",
-		"    stubs: {}",
-		"  },",
-		"	props:{$4}",
-		"})",
+		"wrapper = factory()",
 		"$0"
 		],
 		"description": "Snippet for mounting a Vue component with Vue Test Utils"
@@ -86,15 +70,17 @@
 
 	"Vue Test Block": {
 		"prefix": "vueTest",
+		"scope": "javascript, typescript",
 		"body": [
 		"test('$1', () => {",
-		"  $0",
+		"	$0",
 		"})"
 		],
 		"description": "Snippet for a simple Vue test block"
 	},
 	"Vue Async Test Block": {
 		"prefix": "vueAsyncTest",
+		"scope": "javascript, typescript",
 		"body": [
 		"test('$1', async () => {",
 		"	$0",
@@ -104,60 +90,59 @@
 	},
 	"Vue Should exist": {
 		"prefix": "vueExistTest",
+		"scope": "javascript, typescript",
 		"body": [
 		"test('Should exist', () => {",
 		"	wrapper = factory()",
 		"	expect(wrapper.exists()).toBe(true)",
 		"})"
 		],
-		"description": "Snippet for asserting the existence of a component"
+		"description": "Snippet for a test that asserts the existence of the wrapper"
 	},
 	"Vue Should exist": {
 		"prefix": "vueCompExistTest",
+		"scope": "javascript, typescript",
 		"body": [
 		"expect($1.exists()).toBe(true)",
+		"$0",
 		],
-		"description": "Snippet for asserting the existence of a component"
+		"description": "Snippet for asserting the existence of a certain component"
 	},
 
 	"Vue Should Match Snapshot": {
 		"prefix": "vueSnapshotTest",
+		"scope": "javascript, typescript",
 		"body": [
 		"test('Should match snapshot', () => {",
 		"	wrapper = factory()",
 		"	expect(wrapper).toMatchSnapshot()",
-		"})"
+		"})",
+		"$0"
 		],
 		"description": "Snippet for extering the snapshot is the same for a component"
 	},
-	"Vue Expect": {
-		"prefix": "vueExpect",
-		"body": [
-		"expect($1).$2",
-		"$0",
-		],
-		"description": "Snippet for writing an expect statement in Vue tests"
-	},
-
-	"Log wrapper html": {
+	"Vue Log wrapper html": {
 		"prefix": "vueLogHTML",
+		"scope": "javascript, typescript",
 		"body": [
 			"console.log(wrapper.html())",
 			"$0",
 		],
-		"description": "Snippet for setting up a logging setup for the wrapper html in Vue Tests"
+		"description": "Snippet for logging the wrapper html"
 	},
 
 	"Wrapper nextTick()": {
 		"prefix": "vueTick",
+		"scope": "javascript, typescript",
 		"body": [
 			"await wrapper.vm.$$nextTick()",
 			"$0",
 		],
-		"description": "Snippet for setting for waiting on DOM change"
+		"description": "Snippet for setting up the nextTick"
 	},
 		"Post Store Detailed Initialization": {
 			"prefix": "vueInitPostSnippets",
+			"scope": "javascript, typescript",
 			"body": [
 				"postStore.posts = {",
 				"    \"count\": 31,",

@@ -24,8 +24,7 @@
 
 			<!-- Menus for editor -->
 			<div class="w-full not-prose mb-6" v-if="editor">
-				<EditorFloatingMenu :editor="editor"
-					@add-image="handleAddImageMessage" />
+				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageMessage" />
 				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageMessage" @publish-post="tryPublishPostMessage"
 					@discard-editing-post="showModalDiscardPost = true" />
 			</div>
@@ -34,8 +33,8 @@
 
 			<div data-test="editor_title_input" class="mt-2 max-w-2xl w-full mx-auto">
 				<!-- Title editor -->
-				<InputText @keypress.enter="editor.chain().focus().createParagraphNear()" ref="editorTitleInputRef" placeholder="Title"
-					v-model.trim="titleEditor"
+				<InputText @keypress.enter="editor.chain().focus().createParagraphNear()" ref="editorTitleInputRef"
+					placeholder="Title" v-model.trim="titleEditor"
 					class="not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
 
 				<hr class="not-prose invisible">
@@ -79,7 +78,7 @@ import Dropcursor from '@tiptap/extension-dropcursor'
 import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
 import Underline from '@tiptap/extension-underline'
-import {Image} from './CustomImage'
+import { Image } from './CustomImage'
 
 const emit = defineEmits(['newPostMaterial'])
 
@@ -243,8 +242,10 @@ const tryPublishPostMessage = async () => {
 
 /**
  * Cancels the post creation, an discards all traces of it
+ * 
+ * * I think I have to have a regular function because I am doing "new Formdata"
  */
-const discardPostModalMessage = () => {
+function discardPostModalMessage () {
 
 	// close the model
 	showModalDiscardPost.value = false
@@ -270,7 +271,7 @@ const discardPostModalMessage = () => {
  * 
  * * Only called by modal
  */
-const publishPost = () => {
+function publishPost () {
 	console.log("publish post was called")
 
 	showModalPublishPost.value = false;
@@ -339,13 +340,14 @@ const handleAddImageMessage = (event: any) => {
 	}
 }
 
-// paste handler?
+/** Listens for "paste" events */
 onMounted(() => {
 	if (editor.value) {
 		editor.value.view.dom.addEventListener('paste', handleImagePaste);
 	}
 })
 
+/** Initiallices the editor / makes it ready to start */
 onMounted(() => {
 	// If the editor instance has started
 	if (editor.value) {
@@ -437,13 +439,14 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+/**
+Not working */
 .tiptap a:hover {
-  color: red !important;
+	color: red !important;
 }
+
 .tiptap a {
-  text-decoration: underline;
-  text-decoration-color: #38bdf8;
+	text-decoration: underline;
+	text-decoration-color: #38bdf8;
 }
-
-
 </style>

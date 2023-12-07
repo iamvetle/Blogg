@@ -1,8 +1,14 @@
 <template>
     <div>
+        <!--
+            ! this is a bad implementation
+            TODO fix this later so it isnt two components
+            * posible with nuxt ui
+        -->
         <BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post)" @click="unsave(post)" />
 
-        <BaseIconSaveArticleUnSaved v-else @mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'"
+        <!-- Hovering over makes it gray-->
+        <BaseIconSaveArticleUnSaved v-else @mouseover="color = 'gray'" @mouseleave="color = 'black'"
             @click="save(post)" :fill-color="color" />
     </div>
 </template>
