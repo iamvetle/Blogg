@@ -184,7 +184,7 @@ const handleImagePaste = async (event: any) => {
 			if (fileTempUrl) {
 				// Store the file with its unique ID in the image map
 				imageFileMap.value[uniqueId] = file;
-				editor.value.chain().focus().setImage({ src: fileTempUrl, data:uniqueId }).createParagraphNear().run()
+				editor.value.chain().focus().setImage({ src: fileTempUrl, data: uniqueId }).createParagraphNear().run()
 			}
 			event.preventDefault();
 		}
