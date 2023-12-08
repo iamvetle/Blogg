@@ -150,7 +150,12 @@ const editor: any = useEditor({ //@ts-ignore
 		Italic,
 		Link.configure({ //@ts-ignore
 			validate: href => /^https?:\/\//.test(href),
-		}),
+			HTMLAttributes: {
+				class: ""
+			}
+		},
+
+		),
 		Bold,
 		Underline,
 		Code,
@@ -477,12 +482,4 @@ onUnmounted(() => {
 <style scoped>
 /**
 Not working */
-.tiptap a:hover {
-	color: red !important;
-}
-
-.tiptap a {
-	text-decoration: underline;
-	text-decoration-color: #38bdf8;
-}
 </style>

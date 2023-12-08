@@ -97,10 +97,8 @@ const addURLModalMessage = (URL: string) => {
 	showModalAddLinkURL.value = false
 }
 
-// Methods ->
-
-// const toggleBold = () => {
-// 	editor.value.chain().focus().toggleBold().run()
+// const testMethod = () => {
+// 	(props.editor as Editor).setEditable(false)
 // }
 
 const addImageRef = ref<any>(null)

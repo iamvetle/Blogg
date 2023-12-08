@@ -8,8 +8,8 @@
                 </div>
             </teleport>
         </div>
-        
-        <div class="flex w-full justify-between items-center flex-wrap" data-test="top_menu_wrapper" >
+
+        <div class="flex w-full justify-between items-center flex-wrap" data-test="top_menu_wrapper">
             <!-- V-IF -->
             <div class="flex space-x-10 items-center flex-wrap" v-if="editor"> <!-- Need v-if here-->
                 <!-- BOLD, ITALIC, UNDERLINE -->
@@ -23,8 +23,8 @@
                             alt="Italic" :is-active="editor.isActive('italic')" />
                     </span>
                     <span class="option-holder">
-                        <EditorButton @click="toggleUnderlineRun(editor)" data-test="underline_option" :icon="underline_icon"
-                            alt="Underline" :is-active="editor.isActive('underline')" />
+                        <EditorButton @click="toggleUnderlineRun(editor)" data-test="underline_option"
+                            :icon="underline_icon" alt="Underline" :is-active="editor.isActive('underline')" />
                     </span>
                 </div>
                 <!-- HEADINGS -->
@@ -65,7 +65,8 @@
                     <span class="option-holder" data-test="add_image_team">
                         <EditorButton @click="handleAddImageClick" :icon="image_add_icon" alt="Add image"
                             data-test="image_option" />
-                        <input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="top_input_image" />
+                        <input @change="handleFileChange" type="file" hidden ref="addImageRef"
+                            data-test="top_input_image" />
                     </span>
                     <!-- Add URL Link-->
                     <span class="option-holder" data-test="add_url_link">
@@ -94,7 +95,8 @@
                     </span>
                     <!-- Redo -->
                     <span class="option-holder ">
-                        <EditorButton @click="setRedoRun(editor)" data-test="redo_option" :icon="go_forward_icon" alt="Redo" />
+                        <EditorButton @click="setRedoRun(editor)" data-test="redo_option" :icon="go_forward_icon"
+                            alt="Redo" />
                     </span>
                 </div>
             </div>
@@ -104,7 +106,7 @@
                 <span class="button-option">
                     <BaseButton id="discard" data-test="do_discard_button_option"
                         class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
-                        @click="$emit('tryDiscardEditingPost')" text="Discard"/>
+                        @click="$emit('tryDiscardEditingPost')" text="Discard" />
                 </span>
                 <!-- Publish button-->
                 <span class="button-option">
@@ -152,8 +154,19 @@ const props = defineProps<{
 const showModalAddLinkURL = ref(false)
 
 const handleAddURLLinkClick = () => {
-    showModalAddLinkURL.value = true
-    props.editor?.commands.focus()
+
+    /**
+     * TODO - When I have selected a part of text that has a link to it I want the ICON to be able to indicate that for example turn red
+     */
+
+    const currentLink: any = (props.editor as Editor).getAttributes('link').href
+
+    if (currentLink) {
+        (props.editor as Editor).commands.toggleLink({ href: currentLink })
+    } else {
+        showModalAddLinkURL.value = true
+        props.editor?.commands.focus()
+    }
 }
 
 /**
@@ -166,6 +179,7 @@ const handleAddURLLinkClick = () => {
 const addURLModalMessage = (URL: string) => {
 
     (props.editor as Editor).chain().focus().setLink({ href: URL, target: '_blank' }).insertContent(URL).run()
+
     showModalAddLinkURL.value = false
 }
 
