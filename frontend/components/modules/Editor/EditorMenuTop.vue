@@ -53,8 +53,14 @@
                             :icon="number_list_icon" alt="Ordered list" :is-active="editor.isActive('orderedList')" />
                     </span>
                 </div>
-                <!-- Add image and Add URL - sat to false -->
+                <!-- Add, seperator image and Add URL - sat to false -->
                 <div id="add_options" class="flex space-x-2 items-center py-2">
+
+                    <!-- Add horizontal rule / seperator -->
+                    <span class="option-holder" data-test="add_seperator">
+                        <EditorButton @click="horizontalRuleRun(editor)" :icon="seperator_icon" alt="Add seperator" />
+                    </span>
+
                     <!-- Add IMAGE -->
                     <span class="option-holder" data-test="add_image_team">
                         <EditorButton @click="handleAddImageClick" :icon="image_add_icon" alt="Add image"
@@ -62,7 +68,7 @@
                         <input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="top_input_image" />
                     </span>
                     <!-- Add URL Link-->
-                    <span class="option-holder">
+                    <span class="option-holder" data-test="add_url_link">
                         <EditorButton @click="handleAddURLLinkClick" data-test="url_link_option" :icon="url_link_add_icon"
                             alt="Add link" :is-active="editor.isActive('link')" />
                     </span>
@@ -129,6 +135,8 @@ import codeblock_icon from '~/assets/icons/codeblock_icon.svg'
 import heading1_icon from '~/assets/icons/h1.svg'
 import heading2_icon from '~/assets/icons/h2.svg'
 import heading3_icon from '~/assets/icons/h3.svg'
+
+import seperator_icon from '~/assets/separator.svg'
 
 
 import { Editor } from '@tiptap/core';

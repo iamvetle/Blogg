@@ -1,7 +1,7 @@
 <template>
     <!-- <UButton label="Open" @click="isOpen = true" /> -->
-    <UModal v-model="isOpen" prevent-close>
-        <UCard class="bg-surfaceContainerLowest">
+    <UModal v-model="isOpen" :overlay="false">
+        <UCard class="bg-surfaceContainerLow shadow-lg">
             <div data-test="inner_popup_modal" class="px-2 text-onSurface">
 
                 <!-- Title -->
@@ -55,6 +55,17 @@ const emit = defineEmits(["confirmAddingUrl", "cancel"])
 
 /** Dictates whether the modal is shown or not */
 const isOpen = ref(true)
+
+/** 
+ * Makes sure that when the modal is closed by clicking outside the emit that closes the "showModal" is emit 
+ * I have to have this to make it possible to click outside of the modal and go back to editing. 
+*/
+watchEffect(() => {
+    if (isOpen.value === false) {
+        emit("cancel")
+        isOpen.value = true
+    }
+})
 
 /** The input text is stored here */
 const input = ref("")

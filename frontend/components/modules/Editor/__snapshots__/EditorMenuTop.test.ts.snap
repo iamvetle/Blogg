@@ -356,6 +356,7 @@ VueWrapper {
             "props": {
               "editor": false,
             },
+            "seperator_icon": "/assets/separator.svg",
             "showModalAddLinkURL": RefImpl {
               "__v_isRef": true,
               "__v_isShallow": false,
@@ -452,6 +453,7 @@ VueWrapper {
             ,
             ,
             ,
+            ,
             [Function],
             [Function],
           ],
@@ -511,6 +513,7 @@ VueWrapper {
             "props": {
               "editor": false,
             },
+            "seperator_icon": "/assets/separator.svg",
             "showModalAddLinkURL": false,
             "underline_icon": "/assets/icons/underline.svg",
             "url_link_add_icon": "/assets/icons/link_add.svg",

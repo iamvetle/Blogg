@@ -9,29 +9,39 @@
 			</teleport>
 		</div>
 		<!-- Using $attrs here, so that the modal wont be included when doing :class at higher levels
-		TODO Move the modals up/ to a different place
 		-->
 		<div v-bind="$attrs">
-			<floating-menu :editor="editor" :tippy-options="{ 
+			<floating-menu :editor="editor" :tippy-options="{
 				duration: 100,
-				placement:'left',
+				placement: 'left',
 				offset: [0, 120]
-				}"
-				 v-if="editor">
-				<div class="flex bg-surfaceContainerHighest flex-col py-2 px-2 rounded-md not-prose space-y-4 items-center justify-center">
+			}" v-if="editor">
+				<div
+					class="flex bg-surfaceContainerHighest flex-col py-2 px-2 rounded-md not-prose space-y-4 items-center justify-center">
+
 					<!-- Image -->
 					<div data-test="add_image_button_sum" class="">
-						<EditorButton class="" @click="handleAddImageClick" :icon="add_image_icon" alt="Add mage" data-test="add_image" />
-						<input @change="handleFileChange" type="file" hidden ref="addImageRef" data-test="add_image_file_input" />
+						<EditorButton class="" @click="handleAddImageClick" :icon="add_image_icon" alt="Add image"
+							data-test="add_image" />
+						<input @change="handleFileChange" type="file" hidden ref="addImageRef"
+							data-test="add_image_file_input" />
 					</div>
+
 					<!-- Link -->
-					<EditorButton :is-active="editor.isActive('link')" @click="handleAddURLLinkClick" :icon="link_icon"
-						alt="link" />
-					<EditorButton :is-active="editor.isActive('heading', { level: 1 })" @click="toggleHeadingRun(editor, 1)"
-						:icon="heading_1_icon" alt="heading 1" />
-					<EditorButton :is-active="editor.isActive('heading', { level: 2 })" @click="toggleHeadingRun(editor, 2)"
-						:icon="heading_2_icon" alt="heading 2" />
-					<EditorButton @click="horizontalRuleRun(editor)" :icon="seperator_icon" alt="seperator" />
+					<EditorButton @click="handleAddURLLinkClick" data-test="url_link_option" :icon="url_link_add_icon"
+						alt="Add link" :is-active="editor.isActive('link')" />
+
+					<!-- Seperator-->
+					<EditorButton @click="horizontalRuleRun(editor)" :icon="seperator_icon" alt="Add seperator" />
+
+					<!-- Blockquote-->
+					<EditorButton data-test="blockquote_option" :is-active="editor.isActive('blockquote')"
+						@click="toggleBlockquoteRun(editor)" :icon="blockquote_icon" alt="Blockquote" />
+
+					<!-- Codeblock-->
+					<EditorButton data-test="codeblock_option" :is-active="editor.isActive('codeBlock')"
+						@click="toggleCodeBlockRun(editor)" :icon="codeblock_icon" alt="Codeblock" />
+
 				</div>
 			</floating-menu>
 		</div>
@@ -40,10 +50,10 @@
 
 <script setup lang="ts">
 
-const emit = defineEmits(["tryPublishPost", "discardEditingPost", "addImage"])
+const emit = defineEmits(["addImage"])
 
 defineOptions({
-	inheritAttrs:false
+	inheritAttrs: false
 })
 
 const props = defineProps<{
@@ -57,11 +67,11 @@ const props = defineProps<{
 // Images (svgs)
 import add_image_icon from '~/assets/icons/image-add-line.svg'
 
-import link_icon from '~/assets/icons/link.svg'
+import url_link_add_icon from '~/assets/icons/link_add.svg'
 import seperator_icon from '~/assets/separator.svg'
 
-import heading_1_icon from '~/assets/icons/h1.svg'
-import heading_2_icon from '~/assets/icons/h2.svg'
+import blockquote_icon from '~/assets/icons/double-quotes-r.svg'
+import codeblock_icon from '~/assets/icons/codeblock_icon.svg'
 
 import { FloatingMenu } from '@tiptap/vue-3'
 import { Editor } from '@tiptap/core';
@@ -69,11 +79,8 @@ import { Editor } from '@tiptap/core';
 /** The add url link modal for a post  */
 const showModalAddLinkURL = ref(false)
 
-/** The discard modal for discarding a post */
-
 const handleAddURLLinkClick = () => {
 	showModalAddLinkURL.value = true
-	// places the focus back on the editor
 	props.editor?.commands.focus()
 }
 
@@ -86,7 +93,7 @@ const handleAddURLLinkClick = () => {
  */
 const addURLModalMessage = (URL: string) => {
 
-	(props.editor as Editor).chain().focus().insertContent("asdasda").setLink({ href: URL, target: '_blank' }).run()
+	(props.editor as Editor).chain().focus().setLink({ href: URL, target: '_blank' }).insertContent(URL).run()
 	showModalAddLinkURL.value = false
 }
 

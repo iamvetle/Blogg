@@ -11,7 +11,7 @@
 				</div>
 				<!-- Using Nuxt UI, don't need teleport -->
 				<div v-if="showModalRequirements">
-					<EditorModalRequirements v-model="showModalRequirements" />
+					<EditorModalRequirements @close="closeModalRequirements" />
 				</div>
 				<!-- The Modal to discard the content post -->
 				<div v-if="showModalDiscardPost">
@@ -20,16 +20,16 @@
 			</div>
 
 			<!-- Menus for editor -->
-			<div class="w-full not-prose mb-6" v-if="editor">
+			<div data-test="menus" class="w-full not-prose mb-6" v-if="editor">
 				<EditorMenuFloating :editor="editor" @add-image="handleAddImage" />
-				
+
 				<EditorMenuTop :editor="editor" @add-image="handleAddImage" @publish-post="handlePublishPost"
 					@try-discard-editing-post="handleTryDiscardEditingPost" />
 			</div>
 
 			<hr class="not-prose mb-8">
 
-			<div data-test="editor_title_input" class="mt-2 max-w-2xl w-full mx-auto">
+			<div data-test="editor_and_title_input" class="mt-2 max-w-2xl w-full mx-auto">
 
 				<InputText @keypress.enter="editor.chain().focus().createParagraphNear()" ref="editorTitleInputRef"
 					placeholder="Title" v-model.trim="titleEditor"
@@ -54,6 +54,10 @@
  * Editor for creating new posts.
  * 
  * The post that wants to be publushed is emitted upwards.
+ * 
+ * The post will be saved in session storage when navigating away from the page, but
+ * ! not when refreshing
+ * ! the images will be removed - the src code is the only thing left
  */
 
 import { useEditor, EditorContent } from '@tiptap/vue-3'
@@ -161,6 +165,28 @@ const editor: any = useEditor({ //@ts-ignore
 	},
 })
 
+const focusOnCorrectEditor = () => {
+	/** Takes the focus to the title inpur, if there is an empty title string*/
+	if (editor.value) {
+		if (titleEditor.value === "") {
+
+			/**
+			 * This is the reason the focus thing didnt work initially -> editor.value.commands.blur()
+			 */
+
+			// dobbel checks 
+			if (editorTitleInputRef.value) {
+				(editorTitleInputRef.value as any).textInput?.focus()
+			}
+			// case: the title input already had some input, string value
+		} else {
+			editor.value.commands.focus()
+		}
+	}
+}
+
+
+
 /**
  * Retrieves the file that was just pasted (before it turns into base64 string)
  * and then calls a fun
@@ -184,8 +210,14 @@ const handleImagePaste = async (event: any) => {
 				editor.value.chain().focus().setImage({ src: fileTempUrl, data: uniqueId }).createParagraphNear().run()
 			}
 			event.preventDefault();
+		} else {
+			// even if the "file" wasnt an image / nothing was pasted the focus is placed back on the editor
+			editor.value.commands.focus()
+			return
 		}
 	}
+	//? puts focus on the editor. dont know where this would be called - if there was no real paste maybe?
+	editor.value.commands.focus()
 }
 
 /**
@@ -226,6 +258,7 @@ const handlePublishPost = async () => {
 	body.value = html
 	title.value = titleEditor.value
 
+	alert("what")
 	showModalPublishPost.value = true;
 
 	return
@@ -237,6 +270,9 @@ const handleTryDiscardEditingPost = () => {
 	// if there is something to discard, the discard modal is shown, else, it is not shown
 	if (html || title) {
 		showModalDiscardPost.value = true
+	} else {
+		// puts focus back on editor - there was nothing to discard
+		editor.value.commands.focus()
 	}
 }
 
@@ -300,6 +336,9 @@ function handleModalPublishPost() {
 
 	// Creates a new formData object
 	formData.value = new FormData()
+
+	// puts the focus back on the editor
+	editor.value.commands.focus()
 };
 
 /** The cancel button of the discard modal was pressed */
@@ -311,6 +350,10 @@ const handleModalCancelTheDiscard = () => {
 	// places focus back on editor
 	editor.value.commands.focus()
 };
+
+const closeModalRequirements = () => {
+	showModalRequirements.value = false
+}
 
 /**
  * Handles the process when an image is added through file input
@@ -337,7 +380,12 @@ const handleAddImage = (event: any) => {
 			// places focus back on editor
 			editor.value.commands.focus()
 
+			return
 		}
+	} else {
+		// even if the "file" wasnt an image / nothing was pasted the focus is placed back on the editor
+		// ? dont see how this would happen though
+		editor.value.commands.focus()
 	}
 }
 
@@ -361,21 +409,8 @@ onMounted(() => {
 		// gets the title string from the sessionStorage and inserts it into the input title.value (or empty string)
 		titleEditor.value = (sessionStorage.getItem("titlePost")) ?? ""
 
-		/** Takes the focus to the title inpur, if there is an empty title string*/
-		if (titleEditor.value === "") {
-
-			/**
-			 * This is the reason the focus thing didnt work initially -> editor.value.commands.blur()
-			 */
-
-			// dobbel checks 
-			if (editorTitleInputRef.value) {
-				(editorTitleInputRef.value as any).textInput?.focus()
-			}
-			// case: the title input already had some input, string value
-		} else {
-			editor.value.commands.focus()
-		}
+		// focus on the correct editor
+		focusOnCorrectEditor()
 	}
 })
 
@@ -417,7 +452,10 @@ const maybePlaceFocusOnEditorTitle = () => {
  */
 onUnmounted(() => {
 	// gets the html from the post
-	const htmlPost = editor.value?.getHTML()
+	const htmlPostWithImg = editor.value?.getHTML()
+
+	// removes the img elements if there are any
+	const htmlPost = removeImgTags(htmlPostWithImg)
 
 	// gets the title from the input
 	const titlePost = titleEditor.value
@@ -427,12 +465,6 @@ onUnmounted(() => {
 		console.log("not destroyed")
 		editor.value.destroy()
 	}
-
-	// the title input element string JUST IN CASE
-	titleEditor.value = ""
-	title.value = ""
-	body.value = ""
-	imageFileMap.value = {}
 
 	// Saves the html content in a session for storing
 	sessionStorage.setItem("htmlPost", htmlPost)

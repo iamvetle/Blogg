@@ -20,6 +20,7 @@ import DOMPurify from 'dompurify';
  * 
  * I have to do v-model on this component though "on-top".
  */
+const emit = defineEmits(["close"])
 
 const props = withDefaults(defineProps<{
     title?:string;
@@ -28,11 +29,23 @@ const props = withDefaults(defineProps<{
     title:"Requirements not met",
     description:"<p>&#8226 The <strong>title</strong> has to be at least <strong>3</strong> characters long.</p><p>&#8226 The <strong>content</strong> of the post has to be at least <strong>50</strong> characters long.</p>"
 })
+const sanitizedDescription = DOMPurify.sanitize(props.description);
 
 const isOpen = ref(true)
 
+
+/** 
+ * Makes sure that when the modal is closed by clicking outside the emit that closes the "showModal" is emit 
+ * I have to have this to make it possible to click outside of the modal and go back to editing. 
+*/
+watchEffect(() => {
+    if (isOpen.value === false) {
+        emit("close")
+        isOpen.value = true
+    }
+})
+
 // sanitizes the input/makes it safe (imported it quick - dont know the reliability of it)
-const sanitizedDescription = DOMPurify.sanitize(props.description);
 
 </script>
 

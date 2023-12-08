@@ -68,6 +68,7 @@ declare global {
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
+  const removeImgTags: typeof import('./composables/removeImgTags')['removeImgTags']
   const resolveComponent: typeof import('vue')['resolveComponent']
   const retrieveToken: typeof import('./composables/retrieveToken')['retrieveToken']
   const setRedoRun: typeof import('./composables/editorCommands')['setRedoRun']
@@ -171,6 +172,7 @@ declare module 'vue' {
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
+    readonly removeImgTags: UnwrapRef<typeof import('./composables/removeImgTags')['removeImgTags']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
     readonly setRedoRun: UnwrapRef<typeof import('./composables/editorCommands')['setRedoRun']>
@@ -268,6 +270,7 @@ declare module '@vue/runtime-core' {
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
+    readonly removeImgTags: UnwrapRef<typeof import('./composables/removeImgTags')['removeImgTags']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
     readonly setRedoRun: UnwrapRef<typeof import('./composables/editorCommands')['setRedoRun']>
