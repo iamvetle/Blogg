@@ -81,6 +81,7 @@ import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
 import Underline from '@tiptap/extension-underline'
 import { Image } from './CustomImage'
+import { Placeholder } from '@tiptap/extension-placeholder'
 
 const emit = defineEmits(['newPostMaterial'])
 
@@ -159,6 +160,9 @@ const editor: any = useEditor({ //@ts-ignore
 		Bold,
 		Underline,
 		Code,
+		Placeholder.configure({
+			placeholder: 'Write something ...',
+		})
 		// Placeholder later on
 		// Youtube,
 	],
@@ -479,7 +483,13 @@ onUnmounted(() => {
 
 </script>
 
-<style scoped>
-/**
-Not working */
+<style lang="scss">
+/** SASS */
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+}
 </style>
