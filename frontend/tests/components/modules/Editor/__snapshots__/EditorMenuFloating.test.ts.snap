@@ -11322,7 +11322,7 @@ VueWrapper {
           "suspense": null,
           "suspenseId": 0,
           "type": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Editor/EditorMenuFloating.vue",
+            "__file": "components/modules/Editor/EditorMenuFloating.vue",
             "__name": "EditorMenuFloating",
             "components": {
               "FloatingMenu": {
@@ -11664,7 +11664,7 @@ VueWrapper {
         "targetAnchor": null,
         "transition": null,
         "type": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Editor/EditorMenuFloating.vue",
+          "__file": "components/modules/Editor/EditorMenuFloating.vue",
           "__name": "EditorMenuFloating",
           "components": {
             "FloatingMenu": {

@@ -14,12 +14,12 @@
 			<!-- Editor menus -->
 			<div class="w-full not-prose mb-6">
 				<!-- I have to do v-if because useEditor() can be undefined -->
-				<EditorFloatingMenu v-if="editor" :editor="editor"
+				<EditorMenuFloating v-if="editor" :editor="editor"
 					class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
 					@add-image="handleAddImageChange" @cancel-making-post="buttonCancelClick"
 					@try-publish-post="buttonTryPublishClick" />
 
-				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange"
+				<EditorMenuTop :editor="editor" @add-image="handleAddImageChange"
 					@try-publish-post="buttonTryPublishClick" @cancel-editing-post="buttonCancelClick" />
 			</div>
 

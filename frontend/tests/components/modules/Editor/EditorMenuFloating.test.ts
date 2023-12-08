@@ -1,4 +1,4 @@
-import EditorFloatingMenu from '~/components/modules/Editor/EditorFloatingMenu.vue';
+import EditorMenuFloating from '~/components/modules/Editor/EditorMenuFloating.vue';
 import { mount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 import { Editor } from '@tiptap/core';
@@ -19,7 +19,7 @@ const mockEditor = {
     // Add other methods and properties as needed
 };
 const factory = () => {
-    return mount(EditorFloatingMenu, {
+    return mount(EditorMenuFloating, {
         global: {
             plugins: [],
             components: {
@@ -38,7 +38,7 @@ const factory = () => {
     })
 };
 
-describe('Testing the EditorFloatingMenu component', () => {
+describe('Testing the EditorMenuFloating component', () => {
 
     beforeEach(() => {
     });

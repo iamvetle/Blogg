@@ -20,13 +20,9 @@ const factory = () => {
 describe('Testing the editorcard (very small bad tests becasue of a loff rewriting)', () => {
 
 
-    // vi.stubGlobal('useRoute', () => {
-    //     return {
-    //         params: {
-    //             id: 1
-    //         }
-    //     }
-    // });
+    vi.stubGlobal('onBeforeRouteLeave', () => {
+        return null
+    });
 
     beforeEach(() => {
         // generalStore = useGeneralStore(pinia); 
@@ -47,7 +43,12 @@ describe('Testing the editorcard (very small bad tests becasue of a loff rewriti
     })
     test('Should match snapshot', () => {
         wrapper = factory()
-        expect(wrapper).toMatchSnapshot()
+        expect(wrapper.html()).toMatchSnapshot()
+    })
+    test('Should have the "wrapper" that holds the modals', () => {
+        wrapper = factory()
+
+        expect(wrapper.find("[data-test='text_editor_modals']").exists()).toBe(true)
     })
     
     

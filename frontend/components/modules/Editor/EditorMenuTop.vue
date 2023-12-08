@@ -98,7 +98,7 @@
                 <span class="button-option">
                     <BaseButton id="discard" data-test="do_discard_button_option"
                         class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
-                        @click="$emit('discardEditingPost')" text="Discard"/>
+                        @click="$emit('tryDiscardEditingPost')" text="Discard"/>
                 </span>
                 <!-- Publish button-->
                 <span class="button-option">
@@ -133,7 +133,7 @@ import heading3_icon from '~/assets/icons/h3.svg'
 
 import { Editor } from '@tiptap/core';
 
-const emit = defineEmits(["publishPost", "discardEditingPost", "addImage"])
+const emit = defineEmits(["publishPost", "tryDiscardEditingPost", "addImage"])
 
 
 const props = defineProps<{

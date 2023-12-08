@@ -1,4 +1,4 @@
-import EditorCardTopMenu from './EditorCardTopMenu.vue';
+import EditorMenuTop from './EditorMenuTop.vue';
 import { flushPromises, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import BaseButton from '~/components/base/BaseButton.vue';
@@ -56,7 +56,7 @@ const mockToggleCodeBlock = vi.fn()
 const mockToggleHeading = vi.fn()
 
 const factory = () => {
-    return shallowMount(EditorCardTopMenu, {
+    return shallowMount(EditorMenuTop, {
         global: {
             plugins: [pinia],
             components: { EditorButton, BaseButton, PopupModal },

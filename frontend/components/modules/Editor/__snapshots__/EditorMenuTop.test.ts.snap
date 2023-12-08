@@ -404,8 +404,8 @@ VueWrapper {
           "emit": [Function],
           "emitsOptions": {
             "addImage": null,
-            "discardEditingPost": null,
             "publishPost": null,
+            "tryDiscardEditingPost": null,
           },
           "emitted": null,
           "exposeProxy": {},
@@ -1977,7 +1977,7 @@ VueWrapper {
             "components": {},
             "emits": [
               "publishPost",
-              "discardEditingPost",
+              "tryDiscardEditingPost",
               "addImage",
             ],
             "props": {
@@ -2065,7 +2065,7 @@ VueWrapper {
           "components": {},
           "emits": [
             "publishPost",
-            "discardEditingPost",
+            "tryDiscardEditingPost",
             "addImage",
           ],
           "props": {

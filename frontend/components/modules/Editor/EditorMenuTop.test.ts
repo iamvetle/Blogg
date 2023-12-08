@@ -1,4 +1,4 @@
-import EditorCardTopMenu from './EditorCardTopMenu.vue';
+import EditorMenuTop from './EditorMenuTop.vue';
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 
@@ -6,7 +6,7 @@ let wrapper: any;
 
 
 const factory = () => {
-    return shallowMount(EditorCardTopMenu, {
+    return shallowMount(EditorMenuTop, {
         global: {
             plugins: [],
             components: {},

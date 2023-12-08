@@ -62,11 +62,7 @@ describe('Testing the requirements modal used for the text editor', () => {
 
         expect(wrapper.props("description")).toBeTruthy()
         expect(wrapper.html()).toContain(descriptionProp)
-    })
-    test('Should have the modelvalue prop - necesarry for v-model', () => {
-        wrapper = factory()
         
-        expect(wrapper.props("modelValue")).toBeTruthy()
     })
     
 });

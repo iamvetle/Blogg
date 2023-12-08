@@ -3,33 +3,28 @@
 		<div id="editor-container"
 			class="w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12">
 
-			<!-- The Modal to confirm to the post -->
-			<div v-if="showModalPublishPost">
-				<teleport to="#modal">
-					<div class="w-full">
-						<EditorModalPublishPost @confirm="publishPost" @abort="cancelChoiceFromModalMessage" />
-					</div>
-				</teleport>
-			</div>
-				<!-- Title editor -->
-				<EditorModalRequirements
-				v-model="showModalRequirements"				
-				/>
-			<!-- The Modal to discard the content post -->
-			<div v-if="showModalDiscardPost">
-				<teleport to="#modal">
-					<div class="w-full">
-						<EditorModalDiscardPost @discard-post="discardPostModalMessage"
-							@cancel="cancelChoiceFromModalMessage" />
-					</div>
-				</teleport>
+			<div data-test="text_editor_modals">
+				<!-- The Modal to confirm to the post -->
+				<div v-if="showModalPublishPost">
+					<!-- Using Nuxt UI, don't need teleport -->
+					<EditorModalPublishPost @confirm="publishPost" @abort="cancelChoiceFromModalMessage" />
+				</div>
+				<!-- Using Nuxt UI, don't need teleport -->
+				<div v-if="showModalRequirements">
+					<EditorModalRequirements v-model="showModalRequirements" />
+				</div>
+				<!-- The Modal to discard the content post -->
+				<div v-if="showModalDiscardPost">
+					<EditorModalDiscardPost @discard-post="discardPostModalMessage" @cancel="cancelChoiceFromModalMessage" />
+				</div>
 			</div>
 
 			<!-- Menus for editor -->
 			<div class="w-full not-prose mb-6" v-if="editor">
-				<EditorFloatingMenu :editor="editor" @add-image="handleAddImageMessage" />
-				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageMessage" @publish-post="tryPublishPostMessage"
-					@discard-editing-post="showModalDiscardPost = true" />
+				<EditorMenuFloating :editor="editor" @add-image="handleAddImage" />
+				
+				<EditorMenuTop :editor="editor" @add-image="handleAddImage" @publish-post="handlePublishPost"
+					@try-discard-editing-post="showModalDiscardPost = true" />
 			</div>
 
 			<hr class="not-prose mb-8">
@@ -204,7 +199,7 @@ const handleImagePaste = async (event: any) => {
 /**
  * Activates the next steps to publish the post -> calls the comfirmation modal
  */
-const tryPublishPostMessage = async () => {
+const handlePublishPost = async () => {
 
 	// The html in string format
 	const html = editor.value?.getHTML();
@@ -241,7 +236,7 @@ const tryPublishPostMessage = async () => {
  * 
  * * I think I have to have a regular function because I am doing "new Formdata"
  */
-function discardPostModalMessage () {
+function discardPostModalMessage() {
 
 	// close the model
 	showModalDiscardPost.value = false
@@ -267,7 +262,7 @@ function discardPostModalMessage () {
  * 
  * * Only called by modal
  */
-function publishPost () {
+function publishPost() {
 	console.log("publish post was called")
 
 	showModalPublishPost.value = false;
@@ -313,13 +308,13 @@ const cancelChoiceFromModalMessage = () => {
  * 
  * @param event - The image file
  */
-const handleAddImageMessage = (event: any) => {
+const handleAddImage = (event: any) => {
 	console.log("start of handle add Image change")
 	if (event) {
 		const file = event.target.files[0];
 		const uniqueId = generateUniqueId(); // Function to generate a unique ID.
 		const fileTempUrl = URL.createObjectURL(file);
-		console.log("middle of handleaddimageMessage")
+		console.log("middle of handleaddimage")
 
 
 		if (fileTempUrl) {
@@ -402,6 +397,24 @@ const maybePlaceFocusOnEditorTitle = () => {
 		}
 	}
 }
+
+
+/** Makes sure that the user knows that all progress will be lost of they leave the page */
+onBeforeRouteLeave(() => {
+	// if NOT both of the editors (title editor and content editor) has no value
+	const htmlContent = editor.value?.getText()
+
+	if ((titleEditor.value) || (htmlContent)) {
+		const confirm = window.confirm("If you leave the page all of your changes will be lost")
+		if (!confirm) {
+			return false
+		}
+	}
+	else {
+		return
+	}
+})
+
 
 /**
  * Saves to sessionStorage:

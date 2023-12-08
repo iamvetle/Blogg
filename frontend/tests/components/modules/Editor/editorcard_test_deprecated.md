@@ -36,9 +36,9 @@ describe('EditorCard testing', () => {
                     Modal
                 },
                 stubs: {
-                    EditorFloatingMenu: true,
+                    EditorMenuFloating: true,
                     EditorContent: true,
-                    EditorCardTopMenu: true,
+                    EditorMenuTop: true,
                     Modal: true,
                     InputText: true
                 }
@@ -80,10 +80,10 @@ describe('EditorCard testing', () => {
 
     //     expect(editor_content.exists()).toBe(true)
 
-    //     const editor_floating_menu_component = editor_container.findComponent({ name: "EditorFloatingMenu" })
+    //     const editor_floating_menu_component = editor_container.findComponent({ name: "EditorMenuFloating" })
     //     expect(editor_floating_menu_component.exists()).toBe(true)
 
-    //     const editor_top_menu_component = editor_container.findComponent({ name: "EditorCardTopMenu" })
+    //     const editor_top_menu_component = editor_container.findComponent({ name: "EditorMenuTop" })
 
     //     expect(editor_top_menu_component.exists()).toBe(true)
 
