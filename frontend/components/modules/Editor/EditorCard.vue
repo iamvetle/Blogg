@@ -398,28 +398,13 @@ const maybePlaceFocusOnEditorTitle = () => {
 	}
 }
 
-
-/** Makes sure that the user knows that all progress will be lost of they leave the page */
-onBeforeRouteLeave(() => {
-	// if NOT both of the editors (title editor and content editor) has no value
-	const htmlContent = editor.value?.getText()
-
-	if ((titleEditor.value) || (htmlContent)) {
-		const confirm = window.confirm("If you leave the page all of your changes will be lost")
-		if (!confirm) {
-			return false
-		}
-	}
-	else {
-		return
-	}
-})
-
-
 /**
  * Saves to sessionStorage:
  * - html content
  * - title string
+ * 
+ * ! it will never, and I will never (as far as I know) be able to save
+ * ! a session when someone refreshes
  */
 onUnmounted(() => {
 	// gets the html from the post
@@ -434,7 +419,7 @@ onUnmounted(() => {
 		editor.value.destroy()
 	}
 
-	// the title input element string
+	// the title input element string JUST IN CASE
 	titleEditor.value = ""
 	title.value = ""
 	body.value = ""
