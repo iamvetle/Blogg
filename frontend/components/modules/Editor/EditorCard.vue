@@ -7,7 +7,7 @@
 				<!-- The Modal to confirm to the post -->
 				<div v-if="showModalPublishPost">
 					<!-- Using Nuxt UI, don't need teleport -->
-					<EditorModalPublishPost @confirm="publishPost" @abort="cancelChoiceFromModalMessage" />
+					<EditorModalPublishPost @confirm="handleModalPublishPost" @abort="handleModalCancelTheDiscard" />
 				</div>
 				<!-- Using Nuxt UI, don't need teleport -->
 				<div v-if="showModalRequirements">
@@ -15,7 +15,7 @@
 				</div>
 				<!-- The Modal to discard the content post -->
 				<div v-if="showModalDiscardPost">
-					<EditorModalDiscardPost @discard-post="discardPostModalMessage" @cancel="cancelChoiceFromModalMessage" />
+					<EditorModalDiscardPost @discard-post="handleModalDiscardPost" @cancel="handleModalCancelTheDiscard" />
 				</div>
 			</div>
 
@@ -24,7 +24,7 @@
 				<EditorMenuFloating :editor="editor" @add-image="handleAddImage" />
 				
 				<EditorMenuTop :editor="editor" @add-image="handleAddImage" @publish-post="handlePublishPost"
-					@try-discard-editing-post="showModalDiscardPost = true" />
+					@try-discard-editing-post="handleTryDiscardEditingPost" />
 			</div>
 
 			<hr class="not-prose mb-8">
@@ -231,12 +231,21 @@ const handlePublishPost = async () => {
 	return
 };
 
+const handleTryDiscardEditingPost = () => {
+	const html = editor.value?.getText();
+	const title = titleEditor.value
+	// if there is something to discard, the discard modal is shown, else, it is not shown
+	if (html || title) {
+		showModalDiscardPost.value = true
+	}
+}
+
 /**
  * Cancels the post creation, an discards all traces of it
  * 
  * * I think I have to have a regular function because I am doing "new Formdata"
  */
-function discardPostModalMessage() {
+function handleModalDiscardPost() {
 
 	// close the model
 	showModalDiscardPost.value = false
@@ -262,7 +271,7 @@ function discardPostModalMessage() {
  * 
  * * Only called by modal
  */
-function publishPost() {
+function handleModalPublishPost() {
 	console.log("publish post was called")
 
 	showModalPublishPost.value = false;
@@ -293,8 +302,8 @@ function publishPost() {
 	formData.value = new FormData()
 };
 
-/** Cancels publishing */
-const cancelChoiceFromModalMessage = () => {
+/** The cancel button of the discard modal was pressed */
+const handleModalCancelTheDiscard = () => {
 	// Closes all modals (makes sure)
 	showModalDiscardPost.value = false;
 	showModalPublishPost.value = false
