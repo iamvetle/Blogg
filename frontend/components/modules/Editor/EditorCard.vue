@@ -263,7 +263,7 @@ const handlePublishPost = async () => {
 	body.value = html
 	title.value = titleEditor.value
 
-	alert("what")
+	// shows the modal that is going to ask for confirmation
 	showModalPublishPost.value = true;
 
 	return
