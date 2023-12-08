@@ -1,7 +1,7 @@
 <template>
 	<div class="p-2">
 		<div id="editor-container"
-			class="w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12">
+			class="w-full px-[60px] pt-[35px] pb-[30px] flex flex-col rounded-lg min-h-[450px] mb-24">
 
 			<div data-test="text_editor_modals">
 				<!-- The Modal to confirm to the post -->
@@ -23,22 +23,28 @@
 			<div data-test="menus" class="w-full not-prose mb-6" v-if="editor">
 				<EditorMenuFloating :editor="editor" @add-image="handleAddImage" />
 
-				<EditorMenuTop :editor="editor" @add-image="handleAddImage" @publish-post="handlePublishPost"
-					@try-discard-editing-post="handleTryDiscardEditingPost" />
+				<div class="max-w-4xl mx-auto">
+					<EditorMenuTop :editor="editor" @add-image="handleAddImage" @publish-post="handlePublishPost"
+						@try-discard-editing-post="handleTryDiscardEditingPost" />
+					<hr class="not-prose mt-4 mb-8">
+
+				</div>
 			</div>
 
-			<hr class="not-prose mb-8">
 
-			<div data-test="editor_and_title_input" class="mt-2 max-w-2xl w-full mx-auto">
+			<div data-test="editor_and_title_input" class="mt-2 w-full mx-auto">
 
-				<InputText @keypress.enter="editor.commands.focus('start')" ref="editorTitleInputRef"
-					placeholder="Title" v-model.trim="titleEditor"
-					class="not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
+				<!-- Input editor (not prose)-->
+				<div class="max-w-2xl mx-auto">
+					<InputText @keypress.enter="editor.commands.focus('start')" ref="editorTitleInputRef" placeholder="Title"
+						v-model.trim="titleEditor"
+						class="not-prose mx-auto pb-3 w-full border-none bg-inherit text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
+				</div>
 
-				<hr class="not-prose invisible">
+				<hr class="not-prose invisible">	
 
-				<!-- Main Editor -->
-				<div @click="editor.commands.focus()" data-test="direct-editor" class="pt-3 w-full min-h-[500px] ">
+				<!-- Main Editor (has prose) -->
+				<div @click="editor.commands.focus()" data-test="direct-editor" class="max-w-2xl mx-auto pt-3 w-full min-h-screen prose px-1">
 					<editor-content :editor="editor" @keyup.delete="maybePlaceFocusOnEditorTitle" />
 				</div>
 			</div>
@@ -486,10 +492,10 @@ onUnmounted(() => {
 <style lang="scss">
 /** SASS */
 .tiptap p.is-editor-empty:first-child::before {
-  content: attr(data-placeholder);
-  float: left;
-  color: #adb5bd;
-  pointer-events: none;
-  height: 0;
+	content: attr(data-placeholder);
+	float: left;
+	color: #adb5bd;
+	pointer-events: none;
+	height: 0;
 }
 </style>

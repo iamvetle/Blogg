@@ -9,9 +9,9 @@
             </teleport>
         </div>
 
-        <div class="flex w-full justify-between items-center flex-wrap" data-test="top_menu_wrapper">
+        <div class="flex px-3 w-full justify-between items-center flex-wrap" data-test="top_menu_wrapper">
             <!-- V-IF -->
-            <div class="flex space-x-10 items-center flex-wrap" v-if="editor"> <!-- Need v-if here-->
+            <div class=" flex space-x-14 items-center flex-wrap" v-if="editor"> <!-- Need v-if here-->
                 <!-- BOLD, ITALIC, UNDERLINE -->
                 <div id="top-three" class="flex space-x-2 items-center py-2">
                     <span class="option-holder">

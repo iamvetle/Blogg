@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Testing the editorcard (very small bad tests becasue of a loff rewriting) > Should match snapshot 1`] = `
-"<div data-v-ffc011e4=\\"\\" class=\\"p-2\\">
-  <div data-v-ffc011e4=\\"\\" id=\\"editor-container\\" class=\\"w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12\\">
-    <div data-v-ffc011e4=\\"\\" data-test=\\"text_editor_modals\\">
+"<div class=\\"p-2\\">
+  <div id=\\"editor-container\\" class=\\"w-full px-[60px] pt-[35px] pb-[30px] flex flex-col rounded-lg min-h-[450px] mb-24\\">
+    <div data-test=\\"text_editor_modals\\">
       <!-- The Modal to confirm to the post -->
       <!--v-if-->
       <!-- Using Nuxt UI, don't need teleport -->
@@ -12,15 +12,17 @@ exports[`Testing the editorcard (very small bad tests becasue of a loff rewritin
       <!--v-if-->
     </div><!-- Menus for editor -->
     <!--v-if-->
-    <hr data-v-ffc011e4=\\"\\" class=\\"not-prose mb-8\\">
-    <div data-v-ffc011e4=\\"\\" data-test=\\"editor_title_input\\" class=\\"mt-2 max-w-2xl w-full mx-auto\\">
-      <inputtext data-v-ffc011e4=\\"\\" placeholder=\\"Title\\" modelvalue=\\"\\" modelmodifiers=\\"[object Object]\\" class=\\"not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300\\"></inputtext>
-      <hr data-v-ffc011e4=\\"\\" class=\\"not-prose invisible\\"><!-- Main Editor -->
-      <div data-v-ffc011e4=\\"\\" data-test=\\"direct-editor\\" class=\\"pt-3 w-full min-h-[500px]\\">
-        <editor-content-stub data-v-ffc011e4=\\"\\"></editor-content-stub>
+    <div data-test=\\"editor_and_title_input\\" class=\\"mt-2 w-full mx-auto\\">
+      <!-- Input editor (not prose)-->
+      <div class=\\"max-w-2xl mx-auto\\">
+        <inputtext placeholder=\\"Title\\" modelvalue=\\"\\" modelmodifiers=\\"[object Object]\\" class=\\"not-prose mx-auto pb-3 w-full border-none bg-inherit text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300\\"></inputtext>
+      </div>
+      <hr class=\\"not-prose invisible\\"><!-- Main Editor (has prose) -->
+      <div data-test=\\"direct-editor\\" class=\\"max-w-2xl mx-auto pt-3 w-full min-h-screen prose px-1\\">
+        <editor-content-stub></editor-content-stub>
       </div>
     </div>
   </div>
-  <hr data-v-ffc011e4=\\"\\" class=\\"mb-4\\">
+  <hr class=\\"mb-4\\">
 </div>"
 `;

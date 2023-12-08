@@ -3,7 +3,7 @@
 exports[`Testing the top menu for the editor (bad - after rewriting) > Should match html? snapshot 1`] = `
 "<div>
   <!--v-if-->
-  <div class=\\"flex w-full justify-between items-center flex-wrap\\" data-test=\\"top_menu_wrapper\\">
+  <div class=\\"flex px-3 w-full justify-between items-center flex-wrap\\" data-test=\\"top_menu_wrapper\\">
     <!-- V-IF -->
     <!--v-if-->
     <div id=\\"discard_publish_options_buttons\\" class=\\"flex items-center space-x-4 py-2\\">
@@ -27,7 +27,7 @@ VueWrapper {
       <div>
         <!--v-if-->
         <div
-          class="flex w-full justify-between items-center flex-wrap"
+          class="flex px-3 w-full justify-between items-center flex-wrap"
           data-test="top_menu_wrapper"
         >
           <!-- V-IF -->
@@ -1298,7 +1298,7 @@ VueWrapper {
                 "dynamicChildren": null,
                 "dynamicProps": null,
                 "el": <div
-                  class="flex w-full justify-between items-center flex-wrap"
+                  class="flex px-3 w-full justify-between items-center flex-wrap"
                   data-test="top_menu_wrapper"
                 >
                   <!-- V-IF -->
@@ -1334,7 +1334,7 @@ VueWrapper {
                 "key": null,
                 "patchFlag": 0,
                 "props": {
-                  "class": "flex w-full justify-between items-center flex-wrap",
+                  "class": "flex px-3 w-full justify-between items-center flex-wrap",
                   "data-test": "top_menu_wrapper",
                 },
                 "ref": null,
@@ -1922,7 +1922,7 @@ VueWrapper {
             "el": <div>
               <!--v-if-->
               <div
-                class="flex w-full justify-between items-center flex-wrap"
+                class="flex px-3 w-full justify-between items-center flex-wrap"
                 data-test="top_menu_wrapper"
               >
                 <!-- V-IF -->
@@ -2006,7 +2006,7 @@ VueWrapper {
         "el": <div>
           <!--v-if-->
           <div
-            class="flex w-full justify-between items-center flex-wrap"
+            class="flex px-3 w-full justify-between items-center flex-wrap"
             data-test="top_menu_wrapper"
           >
             <!-- V-IF -->
@@ -2145,7 +2145,7 @@ VueWrapper {
         "el": <div>
           <!--v-if-->
           <div
-            class="flex w-full justify-between items-center flex-wrap"
+            class="flex px-3 w-full justify-between items-center flex-wrap"
             data-test="top_menu_wrapper"
           >
             <!-- V-IF -->
@@ -2405,7 +2405,7 @@ VueWrapper {
   "wrapperElement": <div>
     <!--v-if-->
     <div
-      class="flex w-full justify-between items-center flex-wrap"
+      class="flex px-3 w-full justify-between items-center flex-wrap"
       data-test="top_menu_wrapper"
     >
       <!-- V-IF -->

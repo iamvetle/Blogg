@@ -1,18 +1,18 @@
 <template>
-	<div id="postFormWrapper" class="mt-2 mb-16">
-		<div class="max-w-4xl py-4 mx-auto prose">
+	<div class="pt-2  bg-background ">
+		<div class="">
 
-			<div id="direct-editor">
+			<div id="direct-editor" class="mx-auto">
 				<ClientOnly>
 					<EditorCard @newPostMaterial="publish" />
 				</ClientOnly>
 			</div>
 			
-			<div class="flex">
+			<!-- <div class="flex">
 				<div v-if="postState">
 					<p>Nytt innlegg lagt til!</p>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>
