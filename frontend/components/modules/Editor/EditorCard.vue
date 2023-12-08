@@ -31,7 +31,7 @@
 
 			<div data-test="editor_and_title_input" class="mt-2 max-w-2xl w-full mx-auto">
 
-				<InputText @keypress.enter="editor.chain().focus().createParagraphNear()" ref="editorTitleInputRef"
+				<InputText @keypress.enter="editor.commands.focus('start')" ref="editorTitleInputRef"
 					placeholder="Title" v-model.trim="titleEditor"
 					class="not-prose pb-3 border-none bg-inherit w-full text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
 
