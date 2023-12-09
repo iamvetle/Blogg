@@ -4,13 +4,18 @@ from rest_framework import status
 from django.contrib.auth import get_user_model
 from api.services.auth_services import LoginService
 from api.serializers.user_serializers import NormalUserSerializer
+from rest_framework.permissions import AllowAny
 
 CustomUser = get_user_model()
 
 ### AUTHENTICATION HANDELING
 
-
 class LoginView(APIView):  # Login
+    
+    # ! Obviously
+    permission_classes = [AllowAny] # Does NOT have to authenticated
+
+    
     def post(self, request):
         info_for_store = LoginService.login_user(request)
 
@@ -29,14 +34,18 @@ class LoginView(APIView):  # Login
             )  # Wrong credentials
 
 
-class RegisterUserView(APIView):  # Registrer
+class RegisterUserView(APIView):  # Register
+    
+    # ! obviously
+    permission_classes = [AllowAny] # Does NOT have to authenticated
+
     def post(self, request):
         serializer = NormalUserSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
-            return Response(data=serializer.data, status=status.HTTP_201_CREATED
+            return Response({ "message":"New account created"}, status=status.HTTP_201_CREATED
             )
 
         else:
-            return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "Failed to create a new account"}, status=status.HTTP_400_BAD_REQUEST)

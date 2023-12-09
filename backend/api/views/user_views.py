@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, CreateAPIView, RetrieveUpdateAPIView
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from rest_framework.parsers import MultiPartParser, FormParser
 
@@ -37,21 +37,25 @@ CustomUser = get_user_model()
 
 class LoggedInUserProfileView(RetrieveUpdateAPIView):
     """Returns and updates profile information about the LOGGED-IN user"""
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] # NEED to be authenticated
     serializer_class = LoggedInUserSerializer
+    
+    http_method_names = ["get", "patch", "post"]
 
     def get_object(self):
         # Retrieve the CustomUser instance for the logged-in user
         return get_object_or_404(CustomUser, username=self.request.user)
 
+    # ! this is not in use I think
     def partial_update(self, request, *args, **kwargs):
         # Custom handling for partial update if needed
         return super().partial_update(request, *args, **kwargs)
 
 class NormalUserProfileView(RetrieveAPIView):
     """Returns information about a SPECIFIC user"""
+    # ? Do I want ALL the information about the user to be returned?
+    permission_classes = [AllowAny] # Does NOT have to authenticated
 
-    permission_classes = [IsAuthenticated]
     serializer_class = NormalUserSerializer
     queryset = CustomUser.objects.all()
 
@@ -60,7 +64,9 @@ class NormalUserProfileView(RetrieveAPIView):
 
 class FollowUserView(RetrieveAPIView):
     """Follows specified user"""
-    permission_classes = [IsAuthenticated]
+    
+    permission_classes = [IsAuthenticated] # NEEDS to be authenticated
+    
     pagination_class = None
     serializer_class = FollowerSerializer
     
@@ -74,20 +80,21 @@ class FollowUserView(RetrieveAPIView):
         try:
             username = self.get_object()
         except ObjectDoesNotExist:
-            return Response({ "message": "User doesn't exist" }, status=status.HTTP_404_NOT_FOUND)  
+            return Response({ "error": "User doesn't exist" }, status=status.HTTP_404_NOT_FOUND)  
 
         if username == request.user:
-            return Response({ "message": "You can't follow yourself" }, status=status.HTTP_400_BAD_REQUEST)
+            return Response({ "error": "You can't follow yourself" }, status=status.HTTP_400_BAD_REQUEST)
                 
         if username in request.user.following.all():
-            return Response({ "message": "You are already following this user" }, status=status.HTTP_400_BAD_REQUEST)           
+            return Response({ "detail": "You are already following this user" }, status=status.HTTP_400_BAD_REQUEST)           
         else:
             request.user.following.add(username)
-            return Response({ "message": "Started following" }, status=status.HTTP_200_OK)        
+            return Response({ "detail": "Started following" }, status=status.HTTP_200_OK)        
 
 class UnfollowUserView(RetrieveAPIView):
     """Unfollows specified user"""
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] # NEEDS to be authenticated
+    
     pagination_class = None
     serializer_class = FollowerSerializer
     
@@ -101,22 +108,21 @@ class UnfollowUserView(RetrieveAPIView):
         try:
             username = self.get_object()
         except ObjectDoesNotExist:
-            return Response({ "message": "User doesn't exist" }, status=status.HTTP_404_NOT_FOUND)  
+            return Response({ "error": "User doesn't exist" }, status=status.HTTP_404_NOT_FOUND)  
 
         if username == request.user:
-            request.user.following.remove(username) # I have temporarily put this here to make users able to unfollow themselves, but not follow again
-            return Response({ "message": "You can't unfollow yourself" }, status=status.HTTP_400_BAD_REQUEST)
+            return Response({ "error": "You can't unfollow yourself" }, status=status.HTTP_400_BAD_REQUEST)
                 
         if username not in request.user.following.all():
-            return Response({ "message": "You are not following this user. There is nobody to unfollow" }, status=status.HTTP_400_BAD_REQUEST)           
+            return Response({ "error": "You are not following this user. There is nobody to unfollow" }, status=status.HTTP_400_BAD_REQUEST)           
         else:
             request.user.following.remove(username)
-            return Response({ "message": "Unfollowed user" }, status=status.HTTP_200_OK)     
+            return Response({ "detail": "Unfollowed user" }, status=status.HTTP_200_OK)     
 
 class LoggedInUserAllFollowers(ListAPIView):
     """Returns a list of users following the logged-in user"""
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] # NEEDS to be authenticated
     pagination_class = None
 
     serializer_class = FollowerSerializer
@@ -131,26 +137,27 @@ class LoggedInUserAllFollowers(ListAPIView):
 class LoggedInUserAllFollowing(ListAPIView):
     """Returns a list of users that the logged-in user is following"""
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] # NEEDS to be authenticated
 
     serializer_class = FollowerSerializer
     pagination_class = None
 
     def get_queryset(self):
         logged_in_user = self.request.user
+        # Only a list whom the logged in user is following is returned
         user_is_following = logged_in_user.following.all()
 
         return user_is_following
     
 class LoggedInUserAddOrChangeProfilePicture(APIView):
-    """Adds a profile picture to a user or changes a new one. Saves it with a UUID id in webp format"""
+    """Adds, Changes, or Deletes a profile picture of the logged in user. Saves it with a UUID id in webp format"""
     
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated] # NEEDS to be authenticated
 
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request, format=None):
-        user = request.user  # Assuming you're dealing with an authenticated user
+        user = request.user
 
         profile_picture = request.FILES.get('profile_picture', None)
         if profile_picture:
@@ -180,12 +187,18 @@ class LoggedInUserAddOrChangeProfilePicture(APIView):
             return Response({'error': 'No profile picture provided'}, status=status.HTTP_400_BAD_REQUEST)
         
     def delete(self, request, format=None):
-        user = request.user  # Assuming you're dealing with an authenticated user
+        user = request.user
 
         if user.profile_picture:
-            # Assuming 'profile_picture' is the field name in your user model
-            user.profile_picture.delete()  # This deletes the file from the storage
-            user.profile_picture = None   # This removes the association in the database
+            
+            #? What is the difference between the two?
+            
+            # This deletes the file from the storage
+            user.profile_picture.delete()
+            
+            # This removes the association in the database
+            user.profile_picture = None   
+            
             user.save()
             return Response({'detail': 'Profile picture deleted successfully'}, status=status.HTTP_200_OK)
         else:
