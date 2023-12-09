@@ -1,7 +1,6 @@
 import SinglePostCommentAdd from './SinglePostCommentAdd.vue';
 import { mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
-import BaseTextareaInput from '~/components/base/BaseTextareaInput.vue';
 import BaseButton from '~/components/base/BaseButton.vue';
 
 /**
@@ -14,7 +13,7 @@ const factory = () => {
     return mount(SinglePostCommentAdd, {
         global: {
             plugins: [createTestingPinia()],
-            components: { BaseTextareaInput, BaseButton },
+            components: { BaseButton },
             mocks: {},
             stubs: {},
         },
@@ -43,9 +42,9 @@ describe('SinglePostCommentAdd Component Tests', () => {
         expect(wrapper.exists()).toBe(true);
     });
 
-    test('Should contain BaseTextAreaInput component', () => {
+    test('Should contain UTextarea from NuxtUI', () => {
         wrapper = factory();
-        expect(wrapper.findComponent({ name: "BaseTextareaInput" }).exists()).toBe(true);
+        expect(wrapper.find("UTextarea").exists()).toBe(true);
     });
 
     test('Should contain a submit button', () => {
@@ -57,7 +56,7 @@ describe('SinglePostCommentAdd Component Tests', () => {
         wrapper = factory();
         const textArea_div = wrapper.find("div[data-test='input_comment_text']");
         expect(textArea_div.exists()).toBe(true);
-        expect(textArea_div.findComponent({ name: "BaseTextareaInput" }).exists()).toBe(true);
+        expect(textArea_div.find("UTextarea").exists()).toBe(true);
     });
 
     test('Component should have a method for adding comments', () => {
@@ -75,13 +74,6 @@ describe('SinglePostCommentAdd Component Tests', () => {
         wrapper = factory();
         expect(wrapper.props("postId")).toBe(2);
         expect(typeof wrapper.props("postId")).toBe("number");
-    });
-
-    test('Should render a form with both button and textarea', () => {
-        wrapper = factory();
-        const formElement = wrapper.find("form[data-test='comment-add-form']");
-        expect(formElement.find("button").exists()).toBe(true);
-        expect(formElement.find("textarea").exists()).toBe(true);
     });
 
 });

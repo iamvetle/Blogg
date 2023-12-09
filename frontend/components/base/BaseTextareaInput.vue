@@ -7,7 +7,6 @@
 </template>
   
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
 
 // Receives 'modelValue' prop for v-model binding. This prop represents the current value of the textarea.
 withDefaults(defineProps<{

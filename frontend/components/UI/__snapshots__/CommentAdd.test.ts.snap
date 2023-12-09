@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Should match snapshot 1`] = `
+exports[`Testing the component that adds a commponet > Should match snapshot 1`] = `
 VueWrapper {
   "__app": {
     "_component": {
@@ -11,39 +11,27 @@ VueWrapper {
     "_container": <div
       data-v-app=""
     >
-      <div
-        placeholder="testholder"
-      >
-        <button
-          class="p-1 bg-primary text-onPrimary"
+      <div>
+        <basebutton
+          class="rounded-md mb-2 p-1 bg-primary text-onPrimary"
           data-test="submit_comment_button"
-        >
-          Submit
-        </button>
+          text="Submit"
+        />
         <div
           data-test="input_comment_text"
         >
-          <base-textarea-input-stub />
+          <input-textarea-stub
+            modelmodifiers="[object Object]"
+            modelvalue=""
+          />
         </div>
       </div>
     </div>,
     "_context": {
       "app": [Circular],
       "components": {
-        "BaseButton": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-          "__name": "BaseButton",
-          "props": {
-            "text": {
-              "required": true,
-              "type": [Function],
-            },
-          },
-          "render": [Function],
-          "setup": [Function],
-        },
-        "BaseTextareaInput": {
-          "name": "BaseTextareaInput",
+        "InputTextarea": {
+          "name": "InputTextarea",
         },
         "transition": {
           "name": "transition",
@@ -55,35 +43,7 @@ VueWrapper {
       "config": {
         "compilerOptions": {},
         "errorHandler": undefined,
-        "globalProperties": {
-          "$pinia": {
-            "_a": [Circular],
-            "_e": EffectScope {
-              "_active": true,
-              "cleanups": [],
-              "detached": true,
-              "effects": [],
-              "parent": undefined,
-            },
-            "_p": [
-              [Function],
-              [Function],
-              [Function],
-            ],
-            "_s": Map {},
-            "_testing": true,
-            "app": [Circular],
-            "install": [Function],
-            "state": RefImpl {
-              "__v_isRef": true,
-              "__v_isShallow": false,
-              "_rawValue": {},
-              "_value": {},
-              "dep": undefined,
-            },
-            "use": [Function],
-          },
-        },
+        "globalProperties": {},
         "isNativeTag": [Function],
         "optionMergeStrategies": {},
         "performance": false,
@@ -98,35 +58,7 @@ VueWrapper {
       ],
       "optionsCache": WeakMap {},
       "propsCache": WeakMap {},
-      "provides": {
-        Symbol(pinia): {
-          "_a": [Circular],
-          "_e": EffectScope {
-            "_active": true,
-            "cleanups": [],
-            "detached": true,
-            "effects": [],
-            "parent": undefined,
-          },
-          "_p": [
-            [Function],
-            [Function],
-            [Function],
-          ],
-          "_s": Map {},
-          "_testing": true,
-          "app": [Circular],
-          "install": [Function],
-          "state": RefImpl {
-            "__v_isRef": true,
-            "__v_isShallow": false,
-            "_rawValue": {},
-            "_value": {},
-            "dep": undefined,
-          },
-          "use": [Function],
-        },
-      },
+      "provides": {},
       "reload": [Function],
     },
     "_instance": {
@@ -135,20 +67,8 @@ VueWrapper {
       "appContext": {
         "app": [Circular],
         "components": {
-          "BaseButton": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-            "__name": "BaseButton",
-            "props": {
-              "text": {
-                "required": true,
-                "type": [Function],
-              },
-            },
-            "render": [Function],
-            "setup": [Function],
-          },
-          "BaseTextareaInput": {
-            "name": "BaseTextareaInput",
+          "InputTextarea": {
+            "name": "InputTextarea",
           },
           "transition": {
             "name": "transition",
@@ -160,35 +80,7 @@ VueWrapper {
         "config": {
           "compilerOptions": {},
           "errorHandler": undefined,
-          "globalProperties": {
-            "$pinia": {
-              "_a": [Circular],
-              "_e": EffectScope {
-                "_active": true,
-                "cleanups": [],
-                "detached": true,
-                "effects": [],
-                "parent": undefined,
-              },
-              "_p": [
-                [Function],
-                [Function],
-                [Function],
-              ],
-              "_s": Map {},
-              "_testing": true,
-              "app": [Circular],
-              "install": [Function],
-              "state": RefImpl {
-                "__v_isRef": true,
-                "__v_isShallow": false,
-                "_rawValue": {},
-                "_value": {},
-                "dep": undefined,
-              },
-              "use": [Function],
-            },
-          },
+          "globalProperties": {},
           "isNativeTag": [Function],
           "optionMergeStrategies": {},
           "performance": false,
@@ -203,35 +95,7 @@ VueWrapper {
         ],
         "optionsCache": WeakMap {},
         "propsCache": WeakMap {},
-        "provides": {
-          Symbol(pinia): {
-            "_a": [Circular],
-            "_e": EffectScope {
-              "_active": true,
-              "cleanups": [],
-              "detached": true,
-              "effects": [],
-              "parent": undefined,
-            },
-            "_p": [
-              [Function],
-              [Function],
-              [Function],
-            ],
-            "_s": Map {},
-            "_testing": true,
-            "app": [Circular],
-            "install": [Function],
-            "state": RefImpl {
-              "__v_isRef": true,
-              "__v_isShallow": false,
-              "_rawValue": {},
-              "_value": {},
-              "dep": undefined,
-            },
-            "use": [Function],
-          },
-        },
+        "provides": {},
         "reload": [Function],
       },
       "asyncDep": null,
@@ -264,9 +128,6 @@ VueWrapper {
         "active": true,
         "allowRecurse": true,
         "deps": [
-          Set {
-            [Circular],
-          },
           Set {
             [Circular],
           },
@@ -331,9 +192,6 @@ VueWrapper {
               Set {
                 [Circular],
               },
-              Set {
-                [Circular],
-              },
             ],
             "fn": [Function],
             "onTrack": undefined,
@@ -365,20 +223,8 @@ VueWrapper {
           "appContext": {
             "app": [Circular],
             "components": {
-              "BaseButton": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                "__name": "BaseButton",
-                "props": {
-                  "text": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
-              },
-              "BaseTextareaInput": {
-                "name": "BaseTextareaInput",
+              "InputTextarea": {
+                "name": "InputTextarea",
               },
               "transition": {
                 "name": "transition",
@@ -390,35 +236,7 @@ VueWrapper {
             "config": {
               "compilerOptions": {},
               "errorHandler": undefined,
-              "globalProperties": {
-                "$pinia": {
-                  "_a": [Circular],
-                  "_e": EffectScope {
-                    "_active": true,
-                    "cleanups": [],
-                    "detached": true,
-                    "effects": [],
-                    "parent": undefined,
-                  },
-                  "_p": [
-                    [Function],
-                    [Function],
-                    [Function],
-                  ],
-                  "_s": Map {},
-                  "_testing": true,
-                  "app": [Circular],
-                  "install": [Function],
-                  "state": RefImpl {
-                    "__v_isRef": true,
-                    "__v_isShallow": false,
-                    "_rawValue": {},
-                    "_value": {},
-                    "dep": undefined,
-                  },
-                  "use": [Function],
-                },
-              },
+              "globalProperties": {},
               "isNativeTag": [Function],
               "optionMergeStrategies": {},
               "performance": false,
@@ -433,90 +251,43 @@ VueWrapper {
             ],
             "optionsCache": WeakMap {},
             "propsCache": WeakMap {},
-            "provides": {
-              Symbol(pinia): {
-                "_a": [Circular],
-                "_e": EffectScope {
-                  "_active": true,
-                  "cleanups": [],
-                  "detached": true,
-                  "effects": [],
-                  "parent": undefined,
-                },
-                "_p": [
-                  [Function],
-                  [Function],
-                  [Function],
-                ],
-                "_s": Map {},
-                "_testing": true,
-                "app": [Circular],
-                "install": [Function],
-                "state": RefImpl {
-                  "__v_isRef": true,
-                  "__v_isShallow": false,
-                  "_rawValue": {},
-                  "_value": {},
-                  "dep": undefined,
-                },
-                "use": [Function],
-              },
-            },
+            "provides": {},
             "reload": [Function],
           },
           "asyncDep": null,
           "asyncResolved": false,
-          "attrs": {
-            "placeholder": "testholder",
-          },
+          "attrs": {},
           "attrsProxy": null,
           "bc": null,
           "bm": null,
           "bu": null,
           "bum": null,
           "c": null,
-          "components": {
-            "BaseButton": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-              "__name": "BaseButton",
-              "props": {
-                "text": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
-            },
-            "BaseTextareaInput": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseTextareaInput.vue",
-              "__name": "BaseTextareaInput",
-              "__scopeId": "data-v-d321fa32",
-              "emits": [
-                "emitInput",
-              ],
-              "props": {
-                "placeholder": {
-                  "required": false,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
-            },
-          },
+          "components": {},
           "ctx": {},
           "da": null,
           "data": {},
           "devtoolsRawSetupState": {
             "emit": [Function],
-            "input": [Function],
             "textInput": RefImpl {
               "__v_isRef": true,
               "__v_isShallow": false,
               "_rawValue": "",
               "_value": "",
-              "dep": undefined,
+              "dep": Set {
+                ReactiveEffect {
+                  "active": true,
+                  "allowRecurse": true,
+                  "deps": [
+                    [Circular],
+                  ],
+                  "fn": [Function],
+                  "onTrack": undefined,
+                  "onTrigger": undefined,
+                  "parent": undefined,
+                  "scheduler": [Function],
+                },
+              },
             },
             "tryAddComment": [Function],
           },
@@ -525,7 +296,11 @@ VueWrapper {
           "effect": ReactiveEffect {
             "active": true,
             "allowRecurse": true,
-            "deps": [],
+            "deps": [
+              Set {
+                [Circular],
+              },
+            ],
             "fn": [Function],
             "onTrack": undefined,
             "onTrigger": undefined,
@@ -556,7 +331,9 @@ VueWrapper {
           "proxy": {},
           "refs": {},
           "render": [Function],
-          "renderCache": [],
+          "renderCache": [
+            [Function],
+          ],
           "root": [Circular],
           "rtc": null,
           "rtg": null,
@@ -568,7 +345,11 @@ VueWrapper {
               ReactiveEffect {
                 "active": true,
                 "allowRecurse": true,
-                "deps": [],
+                "deps": [
+                  Set {
+                    [Circular],
+                  },
+                ],
                 "fn": [Function],
                 "onTrack": undefined,
                 "onTrigger": undefined,
@@ -579,16 +360,13 @@ VueWrapper {
             "parent": undefined,
           },
           "setupContext": {
-            "attrs": {
-              "placeholder": "testholder",
-            },
+            "attrs": {},
             "emit": [Function],
             "expose": [Function],
             "slots": {},
           },
           "setupState": {
             "emit": [Function],
-            "input": [Function],
             "textInput": "",
             "tryAddComment": [Function],
           },
@@ -600,7 +378,6 @@ VueWrapper {
             "__v_skip": true,
             "anchor": null,
             "appContext": null,
-            "ce": undefined,
             "children": [
               {
                 "__v_isVNode": true,
@@ -608,306 +385,27 @@ VueWrapper {
                 "anchor": null,
                 "appContext": null,
                 "children": null,
-                "component": {
-                  "a": null,
-                  "accessCache": {},
-                  "appContext": {
-                    "app": [Circular],
-                    "components": {
-                      "BaseButton": {
-                        "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                        "__name": "BaseButton",
-                        "props": {
-                          "text": {
-                            "required": true,
-                            "type": [Function],
-                          },
-                        },
-                        "render": [Function],
-                        "setup": [Function],
-                      },
-                      "BaseTextareaInput": {
-                        "name": "BaseTextareaInput",
-                      },
-                      "transition": {
-                        "name": "transition",
-                      },
-                      "transition-group": {
-                        "name": "transition-group",
-                      },
-                    },
-                    "config": {
-                      "compilerOptions": {},
-                      "errorHandler": undefined,
-                      "globalProperties": {
-                        "$pinia": {
-                          "_a": [Circular],
-                          "_e": EffectScope {
-                            "_active": true,
-                            "cleanups": [],
-                            "detached": true,
-                            "effects": [],
-                            "parent": undefined,
-                          },
-                          "_p": [
-                            [Function],
-                            [Function],
-                            [Function],
-                          ],
-                          "_s": Map {},
-                          "_testing": true,
-                          "app": [Circular],
-                          "install": [Function],
-                          "state": RefImpl {
-                            "__v_isRef": true,
-                            "__v_isShallow": false,
-                            "_rawValue": {},
-                            "_value": {},
-                            "dep": undefined,
-                          },
-                          "use": [Function],
-                        },
-                      },
-                      "isNativeTag": [Function],
-                      "optionMergeStrategies": {},
-                      "performance": false,
-                      "warnHandler": undefined,
-                    },
-                    "directives": {},
-                    "emitsCache": WeakMap {},
-                    "mixins": [
-                      {
-                        "beforeCreate": [Function],
-                      },
-                    ],
-                    "optionsCache": WeakMap {},
-                    "propsCache": WeakMap {},
-                    "provides": {
-                      Symbol(pinia): {
-                        "_a": [Circular],
-                        "_e": EffectScope {
-                          "_active": true,
-                          "cleanups": [],
-                          "detached": true,
-                          "effects": [],
-                          "parent": undefined,
-                        },
-                        "_p": [
-                          [Function],
-                          [Function],
-                          [Function],
-                        ],
-                        "_s": Map {},
-                        "_testing": true,
-                        "app": [Circular],
-                        "install": [Function],
-                        "state": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": {},
-                          "_value": {},
-                          "dep": undefined,
-                        },
-                        "use": [Function],
-                      },
-                    },
-                    "reload": [Function],
-                  },
-                  "asyncDep": null,
-                  "asyncResolved": false,
-                  "attrs": {
-                    "class": "p-1 bg-primary text-onPrimary",
-                    "data-test": "submit_comment_button",
-                    "onClick": [Function],
-                  },
-                  "attrsProxy": null,
-                  "bc": null,
-                  "bm": null,
-                  "bu": null,
-                  "bum": null,
-                  "c": null,
-                  "components": null,
-                  "ctx": {
-                    "text": "Submit",
-                  },
-                  "da": null,
-                  "data": {},
-                  "devtoolsRawSetupState": {},
-                  "directives": null,
-                  "ec": null,
-                  "effect": ReactiveEffect {
-                    "active": true,
-                    "allowRecurse": true,
-                    "deps": [
-                      Set {
-                        [Circular],
-                      },
-                      Set {
-                        [Circular],
-                      },
-                    ],
-                    "fn": [Function],
-                    "onTrack": undefined,
-                    "onTrigger": undefined,
-                    "parent": undefined,
-                    "scheduler": [Function],
-                  },
-                  "emit": [Function],
-                  "emitsOptions": null,
-                  "emitted": null,
-                  "exposeProxy": null,
-                  "exposed": {},
-                  "inheritAttrs": undefined,
-                  "isDeactivated": false,
-                  "isMounted": true,
-                  "isUnmounted": false,
-                  "m": null,
-                  "next": null,
-                  "parent": [Circular],
-                  "props": {
-                    "text": "Submit",
-                  },
-                  "propsDefaults": {},
-                  "propsOptions": [
-                    {
-                      "text": {
-                        "0": false,
-                        "1": true,
-                        "required": true,
-                        "type": [Function],
-                      },
-                    },
-                    [],
-                  ],
-                  "provides": {},
-                  "proxy": {
-                    "text": "Submit",
-                  },
-                  "refs": {},
-                  "render": [Function],
-                  "renderCache": [],
-                  "root": [Circular],
-                  "rtc": null,
-                  "rtg": null,
-                  "scope": EffectScope {
-                    "_active": true,
-                    "cleanups": [],
-                    "detached": true,
-                    "effects": [
-                      ReactiveEffect {
-                        "active": true,
-                        "allowRecurse": true,
-                        "deps": [
-                          Set {
-                            [Circular],
-                          },
-                          Set {
-                            [Circular],
-                          },
-                        ],
-                        "fn": [Function],
-                        "onTrack": undefined,
-                        "onTrigger": undefined,
-                        "parent": undefined,
-                        "scheduler": [Function],
-                      },
-                    ],
-                    "parent": undefined,
-                  },
-                  "setupContext": {
-                    "attrs": {
-                      "class": "p-1 bg-primary text-onPrimary",
-                      "data-test": "submit_comment_button",
-                      "onClick": [Function],
-                    },
-                    "emit": [Function],
-                    "expose": [Function],
-                    "slots": {},
-                  },
-                  "setupState": {},
-                  "slots": {},
-                  "slotsProxy": {},
-                  "sp": null,
-                  "subTree": {
-                    "__v_isVNode": true,
-                    "__v_skip": true,
-                    "anchor": null,
-                    "appContext": null,
-                    "ce": undefined,
-                    "children": "Submit",
-                    "component": null,
-                    "ctx": [Circular],
-                    "dirs": null,
-                    "dynamicChildren": [],
-                    "dynamicProps": null,
-                    "el": <button
-                      class="p-1 bg-primary text-onPrimary"
-                      data-test="submit_comment_button"
-                    >
-                      Submit
-                    </button>,
-                    "key": null,
-                    "patchFlag": 17,
-                    "props": {
-                      "class": "p-1 bg-primary text-onPrimary",
-                      "data-test": "submit_comment_button",
-                      "onClick": [Function],
-                    },
-                    "ref": null,
-                    "scopeId": null,
-                    "shapeFlag": 9,
-                    "slotScopeIds": null,
-                    "ssContent": null,
-                    "ssFallback": null,
-                    "staticCount": 0,
-                    "suspense": null,
-                    "target": null,
-                    "targetAnchor": null,
-                    "transition": null,
-                    "type": "button",
-                  },
-                  "suspense": null,
-                  "suspenseId": 0,
-                  "type": {
-                    "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                    "__name": "BaseButton",
-                    "props": {
-                      "text": {
-                        "required": true,
-                        "type": [Function],
-                      },
-                    },
-                    "render": [Function],
-                    "setup": [Function],
-                  },
-                  "u": null,
-                  "uid": 38,
-                  "um": null,
-                  "update": [Function],
-                  "vnode": [Circular],
-                  "withProxy": null,
-                },
+                "component": null,
                 "ctx": [Circular],
                 "dirs": null,
                 "dynamicChildren": null,
                 "dynamicProps": null,
-                "el": <button
-                  class="p-1 bg-primary text-onPrimary"
+                "el": <basebutton
+                  class="rounded-md mb-2 p-1 bg-primary text-onPrimary"
                   data-test="submit_comment_button"
-                >
-                  Submit
-                </button>,
+                  text="Submit"
+                />,
                 "key": null,
                 "patchFlag": 0,
                 "props": {
-                  "class": "p-1 bg-primary text-onPrimary",
+                  "class": "rounded-md mb-2 p-1 bg-primary text-onPrimary",
                   "data-test": "submit_comment_button",
                   "onClick": [Function],
                   "text": "Submit",
                 },
                 "ref": null,
                 "scopeId": null,
-                "shapeFlag": 4,
+                "shapeFlag": 1,
                 "slotScopeIds": null,
                 "ssContent": null,
                 "ssFallback": null,
@@ -916,18 +414,7 @@ VueWrapper {
                 "target": null,
                 "targetAnchor": null,
                 "transition": null,
-                "type": {
-                  "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                  "__name": "BaseButton",
-                  "props": {
-                    "text": {
-                      "required": true,
-                      "type": [Function],
-                    },
-                  },
-                  "render": [Function],
-                  "setup": [Function],
-                },
+                "type": "BaseButton",
               },
               {
                 "__v_isVNode": true,
@@ -947,20 +434,8 @@ VueWrapper {
                       "appContext": {
                         "app": [Circular],
                         "components": {
-                          "BaseButton": {
-                            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                            "__name": "BaseButton",
-                            "props": {
-                              "text": {
-                                "required": true,
-                                "type": [Function],
-                              },
-                            },
-                            "render": [Function],
-                            "setup": [Function],
-                          },
-                          "BaseTextareaInput": {
-                            "name": "BaseTextareaInput",
+                          "InputTextarea": {
+                            "name": "InputTextarea",
                           },
                           "transition": {
                             "name": "transition",
@@ -972,35 +447,7 @@ VueWrapper {
                         "config": {
                           "compilerOptions": {},
                           "errorHandler": undefined,
-                          "globalProperties": {
-                            "$pinia": {
-                              "_a": [Circular],
-                              "_e": EffectScope {
-                                "_active": true,
-                                "cleanups": [],
-                                "detached": true,
-                                "effects": [],
-                                "parent": undefined,
-                              },
-                              "_p": [
-                                [Function],
-                                [Function],
-                                [Function],
-                              ],
-                              "_s": Map {},
-                              "_testing": true,
-                              "app": [Circular],
-                              "install": [Function],
-                              "state": RefImpl {
-                                "__v_isRef": true,
-                                "__v_isShallow": false,
-                                "_rawValue": {},
-                                "_value": {},
-                                "dep": undefined,
-                              },
-                              "use": [Function],
-                            },
-                          },
+                          "globalProperties": {},
                           "isNativeTag": [Function],
                           "optionMergeStrategies": {},
                           "performance": false,
@@ -1015,41 +462,17 @@ VueWrapper {
                         ],
                         "optionsCache": WeakMap {},
                         "propsCache": WeakMap {},
-                        "provides": {
-                          Symbol(pinia): {
-                            "_a": [Circular],
-                            "_e": EffectScope {
-                              "_active": true,
-                              "cleanups": [],
-                              "detached": true,
-                              "effects": [],
-                              "parent": undefined,
-                            },
-                            "_p": [
-                              [Function],
-                              [Function],
-                              [Function],
-                            ],
-                            "_s": Map {},
-                            "_testing": true,
-                            "app": [Circular],
-                            "install": [Function],
-                            "state": RefImpl {
-                              "__v_isRef": true,
-                              "__v_isShallow": false,
-                              "_rawValue": {},
-                              "_value": {},
-                              "dep": undefined,
-                            },
-                            "use": [Function],
-                          },
-                        },
+                        "provides": {},
                         "reload": [Function],
                       },
                       "asyncDep": null,
                       "asyncResolved": false,
                       "attrs": {
-                        "onEmitInput": [Function],
+                        "modelModifiers": {
+                          "trim": true,
+                        },
+                        "modelValue": "",
+                        "onUpdate:modelValue": [Function],
                       },
                       "attrsProxy": null,
                       "bc": null,
@@ -1058,9 +481,7 @@ VueWrapper {
                       "bum": null,
                       "c": null,
                       "components": null,
-                      "ctx": {
-                        "placeholder": undefined,
-                      },
+                      "ctx": {},
                       "da": null,
                       "data": {},
                       "directives": null,
@@ -1069,9 +490,6 @@ VueWrapper {
                         "active": true,
                         "allowRecurse": true,
                         "deps": [
-                          Set {
-                            [Circular],
-                          },
                           Set {
                             [Circular],
                           },
@@ -1094,25 +512,14 @@ VueWrapper {
                       "m": null,
                       "next": null,
                       "parent": [Circular],
-                      "props": {
-                        "placeholder": undefined,
-                      },
+                      "props": {},
                       "propsDefaults": {},
                       "propsOptions": [
-                        {
-                          "placeholder": {
-                            "0": false,
-                            "1": true,
-                            "required": false,
-                            "type": [Function],
-                          },
-                        },
+                        {},
                         [],
                       ],
                       "provides": {},
-                      "proxy": {
-                        "placeholder": undefined,
-                      },
+                      "proxy": {},
                       "refs": {},
                       "render": [Function],
                       "renderCache": [],
@@ -1131,9 +538,6 @@ VueWrapper {
                               Set {
                                 [Circular],
                               },
-                              Set {
-                                [Circular],
-                              },
                             ],
                             "fn": [Function],
                             "onTrack": undefined,
@@ -1146,7 +550,11 @@ VueWrapper {
                       },
                       "setupContext": {
                         "attrs": {
-                          "onEmitInput": [Function],
+                          "modelModifiers": {
+                            "trim": true,
+                          },
+                          "modelValue": "",
+                          "onUpdate:modelValue": [Function],
                         },
                         "emit": [Function],
                         "expose": [Function],
@@ -1168,12 +576,18 @@ VueWrapper {
                         "dirs": null,
                         "dynamicChildren": null,
                         "dynamicProps": null,
-                        "el": <base-textarea-input-stub />,
+                        "el": <input-textarea-stub
+                          modelmodifiers="[object Object]"
+                          modelvalue=""
+                        />,
                         "key": null,
                         "patchFlag": 16,
                         "props": {
-                          "onEmitInput": [Function],
-                          "placeholder": undefined,
+                          "modelModifiers": {
+                            "trim": true,
+                          },
+                          "modelValue": "",
+                          "onUpdate:modelValue": [Function],
                         },
                         "ref": null,
                         "scopeId": null,
@@ -1186,23 +600,18 @@ VueWrapper {
                         "target": null,
                         "targetAnchor": null,
                         "transition": null,
-                        "type": "base-textarea-input-stub",
+                        "type": "input-textarea-stub",
                       },
                       "suspense": null,
                       "suspenseId": 0,
                       "type": {
                         "model": undefined,
-                        "name": "BaseTextareaInput",
-                        "props": {
-                          "placeholder": {
-                            "required": false,
-                            "type": [Function],
-                          },
-                        },
+                        "name": "InputTextarea",
+                        "props": {},
                         "setup": [Function],
                       },
                       "u": null,
-                      "uid": 39,
+                      "uid": 5,
                       "um": null,
                       "update": [Function],
                       "vnode": [Circular],
@@ -1211,12 +620,21 @@ VueWrapper {
                     "ctx": [Circular],
                     "dirs": null,
                     "dynamicChildren": null,
-                    "dynamicProps": null,
-                    "el": <base-textarea-input-stub />,
+                    "dynamicProps": [
+                      "modelValue",
+                    ],
+                    "el": <input-textarea-stub
+                      modelmodifiers="[object Object]"
+                      modelvalue=""
+                    />,
                     "key": null,
-                    "patchFlag": 0,
+                    "patchFlag": 8,
                     "props": {
-                      "onEmitInput": [Function],
+                      "modelModifiers": {
+                        "trim": true,
+                      },
+                      "modelValue": "",
+                      "onUpdate:modelValue": [Function],
                     },
                     "ref": null,
                     "scopeId": null,
@@ -1231,13 +649,8 @@ VueWrapper {
                     "transition": null,
                     "type": {
                       "model": undefined,
-                      "name": "BaseTextareaInput",
-                      "props": {
-                        "placeholder": {
-                          "required": false,
-                          "type": [Function],
-                        },
-                      },
+                      "name": "InputTextarea",
+                      "props": {},
                       "setup": [Function],
                     },
                   },
@@ -1250,7 +663,10 @@ VueWrapper {
                 "el": <div
                   data-test="input_comment_text"
                 >
-                  <base-textarea-input-stub />
+                  <input-textarea-stub
+                    modelmodifiers="[object Object]"
+                    modelvalue=""
+                  />
                 </div>,
                 "key": null,
                 "patchFlag": 0,
@@ -1287,369 +703,15 @@ VueWrapper {
                     "@@__IMMUTABLE_ITERABLE__@@": 0,
                     "@@__IMMUTABLE_RECORD__@@": 0,
                     "_isMockFunction": 0,
-                    "hasAttribute": 0,
-                    "nodeType": 0,
-                    "tagName": 0,
-                    "text": 3,
-                    "toJSON": 0,
-                    Symbol(Symbol.toStringTag): 0,
-                  },
-                  "appContext": {
-                    "app": [Circular],
-                    "components": {
-                      "BaseButton": {
-                        "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                        "__name": "BaseButton",
-                        "props": {
-                          "text": {
-                            "required": true,
-                            "type": [Function],
-                          },
-                        },
-                        "render": [Function],
-                        "setup": [Function],
-                      },
-                      "BaseTextareaInput": {
-                        "name": "BaseTextareaInput",
-                      },
-                      "transition": {
-                        "name": "transition",
-                      },
-                      "transition-group": {
-                        "name": "transition-group",
-                      },
-                    },
-                    "config": {
-                      "compilerOptions": {},
-                      "errorHandler": undefined,
-                      "globalProperties": {
-                        "$pinia": {
-                          "_a": [Circular],
-                          "_e": EffectScope {
-                            "_active": true,
-                            "cleanups": [],
-                            "detached": true,
-                            "effects": [],
-                            "parent": undefined,
-                          },
-                          "_p": [
-                            [Function],
-                            [Function],
-                            [Function],
-                          ],
-                          "_s": Map {},
-                          "_testing": true,
-                          "app": [Circular],
-                          "install": [Function],
-                          "state": RefImpl {
-                            "__v_isRef": true,
-                            "__v_isShallow": false,
-                            "_rawValue": {},
-                            "_value": {},
-                            "dep": undefined,
-                          },
-                          "use": [Function],
-                        },
-                      },
-                      "isNativeTag": [Function],
-                      "optionMergeStrategies": {},
-                      "performance": false,
-                      "warnHandler": undefined,
-                    },
-                    "directives": {},
-                    "emitsCache": WeakMap {},
-                    "mixins": [
-                      {
-                        "beforeCreate": [Function],
-                      },
-                    ],
-                    "optionsCache": WeakMap {},
-                    "propsCache": WeakMap {},
-                    "provides": {
-                      Symbol(pinia): {
-                        "_a": [Circular],
-                        "_e": EffectScope {
-                          "_active": true,
-                          "cleanups": [],
-                          "detached": true,
-                          "effects": [],
-                          "parent": undefined,
-                        },
-                        "_p": [
-                          [Function],
-                          [Function],
-                          [Function],
-                        ],
-                        "_s": Map {},
-                        "_testing": true,
-                        "app": [Circular],
-                        "install": [Function],
-                        "state": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": {},
-                          "_value": {},
-                          "dep": undefined,
-                        },
-                        "use": [Function],
-                      },
-                    },
-                    "reload": [Function],
-                  },
-                  "asyncDep": null,
-                  "asyncResolved": false,
-                  "attrs": {
-                    "class": "p-1 bg-primary text-onPrimary",
-                    "data-test": "submit_comment_button",
-                    "onClick": [Function],
-                  },
-                  "attrsProxy": {
-                    "class": "p-1 bg-primary text-onPrimary",
-                    "data-test": "submit_comment_button",
-                    "onClick": [Function],
-                  },
-                  "bc": null,
-                  "bm": null,
-                  "bu": null,
-                  "bum": null,
-                  "c": null,
-                  "components": null,
-                  "ctx": {
-                    "text": "Submit",
-                  },
-                  "da": null,
-                  "data": {},
-                  "devtoolsRawSetupState": {},
-                  "directives": null,
-                  "ec": null,
-                  "effect": ReactiveEffect {
-                    "active": true,
-                    "allowRecurse": true,
-                    "deps": [
-                      Set {
-                        [Circular],
-                      },
-                      Set {
-                        [Circular],
-                      },
-                    ],
-                    "fn": [Function],
-                    "onTrack": undefined,
-                    "onTrigger": undefined,
-                    "parent": undefined,
-                    "scheduler": [Function],
-                  },
-                  "emit": [Function],
-                  "emitsOptions": null,
-                  "emitted": null,
-                  "exposeProxy": null,
-                  "exposed": {},
-                  "inheritAttrs": undefined,
-                  "isDeactivated": false,
-                  "isMounted": true,
-                  "isUnmounted": false,
-                  "m": null,
-                  "next": null,
-                  "parent": [Circular],
-                  "props": {
-                    "text": "Submit",
-                  },
-                  "propsDefaults": {},
-                  "propsOptions": [
-                    {
-                      "text": {
-                        "0": false,
-                        "1": true,
-                        "required": true,
-                        "type": [Function],
-                      },
-                    },
-                    [],
-                  ],
-                  "provides": {},
-                  "proxy": {
-                    "text": "Submit",
-                  },
-                  "refs": {},
-                  "render": [Function],
-                  "renderCache": [],
-                  "root": [Circular],
-                  "rtc": null,
-                  "rtg": null,
-                  "scope": EffectScope {
-                    "_active": true,
-                    "cleanups": [],
-                    "detached": true,
-                    "effects": [
-                      ReactiveEffect {
-                        "active": true,
-                        "allowRecurse": true,
-                        "deps": [
-                          Set {
-                            [Circular],
-                          },
-                          Set {
-                            [Circular],
-                          },
-                        ],
-                        "fn": [Function],
-                        "onTrack": undefined,
-                        "onTrigger": undefined,
-                        "parent": undefined,
-                        "scheduler": [Function],
-                      },
-                    ],
-                    "parent": undefined,
-                  },
-                  "setupContext": {
-                    "attrs": {
-                      "class": "p-1 bg-primary text-onPrimary",
-                      "data-test": "submit_comment_button",
-                      "onClick": [Function],
-                    },
-                    "emit": [Function],
-                    "expose": [Function],
-                    "slots": {},
-                  },
-                  "setupState": {},
-                  "slots": {},
-                  "slotsProxy": {},
-                  "sp": null,
-                  "subTree": {
-                    "__v_isVNode": true,
-                    "__v_skip": true,
-                    "anchor": null,
-                    "appContext": null,
-                    "ce": undefined,
-                    "children": "Submit",
-                    "component": null,
-                    "ctx": [Circular],
-                    "dirs": null,
-                    "dynamicChildren": [],
-                    "dynamicProps": null,
-                    "el": <button
-                      class="p-1 bg-primary text-onPrimary"
-                      data-test="submit_comment_button"
-                    >
-                      Submit
-                    </button>,
-                    "key": null,
-                    "patchFlag": 17,
-                    "props": {
-                      "class": "p-1 bg-primary text-onPrimary",
-                      "data-test": "submit_comment_button",
-                      "onClick": [Function],
-                    },
-                    "ref": null,
-                    "scopeId": null,
-                    "shapeFlag": 9,
-                    "slotScopeIds": null,
-                    "ssContent": null,
-                    "ssFallback": null,
-                    "staticCount": 0,
-                    "suspense": null,
-                    "target": null,
-                    "targetAnchor": null,
-                    "transition": null,
-                    "type": "button",
-                  },
-                  "suspense": null,
-                  "suspenseId": 0,
-                  "type": {
-                    "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                    "__name": "BaseButton",
-                    "props": {
-                      "text": {
-                        "required": true,
-                        "type": [Function],
-                      },
-                    },
-                    "render": [Function],
-                    "setup": [Function],
-                  },
-                  "u": null,
-                  "uid": 38,
-                  "um": null,
-                  "update": [Function],
-                  "vnode": [Circular],
-                  "withProxy": null,
-                },
-                "ctx": [Circular],
-                "dirs": null,
-                "dynamicChildren": null,
-                "dynamicProps": null,
-                "el": <button
-                  class="p-1 bg-primary text-onPrimary"
-                  data-test="submit_comment_button"
-                >
-                  Submit
-                </button>,
-                "key": null,
-                "patchFlag": 0,
-                "props": {
-                  "class": "p-1 bg-primary text-onPrimary",
-                  "data-test": "submit_comment_button",
-                  "onClick": [Function],
-                  "text": "Submit",
-                },
-                "ref": null,
-                "scopeId": null,
-                "shapeFlag": 4,
-                "slotScopeIds": null,
-                "ssContent": null,
-                "ssFallback": null,
-                "staticCount": 0,
-                "suspense": null,
-                "target": null,
-                "targetAnchor": null,
-                "transition": null,
-                "type": {
-                  "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                  "__name": "BaseButton",
-                  "props": {
-                    "text": {
-                      "required": true,
-                      "type": [Function],
-                    },
-                  },
-                  "render": [Function],
-                  "setup": [Function],
-                },
-              },
-              {
-                "__v_isVNode": true,
-                "__v_skip": true,
-                "anchor": null,
-                "appContext": null,
-                "children": null,
-                "component": {
-                  "a": null,
-                  "accessCache": {
-                    "@@__IMMUTABLE_ITERABLE__@@": 0,
-                    "@@__IMMUTABLE_RECORD__@@": 0,
-                    "_isMockFunction": 0,
                     "constructor": 0,
-                    "placeholder": 3,
                     "toJSON": 0,
                     Symbol(Symbol.toStringTag): 0,
                   },
                   "appContext": {
                     "app": [Circular],
                     "components": {
-                      "BaseButton": {
-                        "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                        "__name": "BaseButton",
-                        "props": {
-                          "text": {
-                            "required": true,
-                            "type": [Function],
-                          },
-                        },
-                        "render": [Function],
-                        "setup": [Function],
-                      },
-                      "BaseTextareaInput": {
-                        "name": "BaseTextareaInput",
+                      "InputTextarea": {
+                        "name": "InputTextarea",
                       },
                       "transition": {
                         "name": "transition",
@@ -1661,35 +723,7 @@ VueWrapper {
                     "config": {
                       "compilerOptions": {},
                       "errorHandler": undefined,
-                      "globalProperties": {
-                        "$pinia": {
-                          "_a": [Circular],
-                          "_e": EffectScope {
-                            "_active": true,
-                            "cleanups": [],
-                            "detached": true,
-                            "effects": [],
-                            "parent": undefined,
-                          },
-                          "_p": [
-                            [Function],
-                            [Function],
-                            [Function],
-                          ],
-                          "_s": Map {},
-                          "_testing": true,
-                          "app": [Circular],
-                          "install": [Function],
-                          "state": RefImpl {
-                            "__v_isRef": true,
-                            "__v_isShallow": false,
-                            "_rawValue": {},
-                            "_value": {},
-                            "dep": undefined,
-                          },
-                          "use": [Function],
-                        },
-                      },
+                      "globalProperties": {},
                       "isNativeTag": [Function],
                       "optionMergeStrategies": {},
                       "performance": false,
@@ -1704,44 +738,24 @@ VueWrapper {
                     ],
                     "optionsCache": WeakMap {},
                     "propsCache": WeakMap {},
-                    "provides": {
-                      Symbol(pinia): {
-                        "_a": [Circular],
-                        "_e": EffectScope {
-                          "_active": true,
-                          "cleanups": [],
-                          "detached": true,
-                          "effects": [],
-                          "parent": undefined,
-                        },
-                        "_p": [
-                          [Function],
-                          [Function],
-                          [Function],
-                        ],
-                        "_s": Map {},
-                        "_testing": true,
-                        "app": [Circular],
-                        "install": [Function],
-                        "state": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": {},
-                          "_value": {},
-                          "dep": undefined,
-                        },
-                        "use": [Function],
-                      },
-                    },
+                    "provides": {},
                     "reload": [Function],
                   },
                   "asyncDep": null,
                   "asyncResolved": false,
                   "attrs": {
-                    "onEmitInput": [Function],
+                    "modelModifiers": {
+                      "trim": true,
+                    },
+                    "modelValue": "",
+                    "onUpdate:modelValue": [Function],
                   },
                   "attrsProxy": {
-                    "onEmitInput": [Function],
+                    "modelModifiers": {
+                      "trim": true,
+                    },
+                    "modelValue": "",
+                    "onUpdate:modelValue": [Function],
                   },
                   "bc": null,
                   "bm": null,
@@ -1749,9 +763,7 @@ VueWrapper {
                   "bum": null,
                   "c": null,
                   "components": null,
-                  "ctx": {
-                    "placeholder": undefined,
-                  },
+                  "ctx": {},
                   "da": null,
                   "data": {},
                   "directives": null,
@@ -1760,9 +772,6 @@ VueWrapper {
                     "active": true,
                     "allowRecurse": true,
                     "deps": [
-                      Set {
-                        [Circular],
-                      },
                       Set {
                         [Circular],
                       },
@@ -1785,25 +794,14 @@ VueWrapper {
                   "m": null,
                   "next": null,
                   "parent": [Circular],
-                  "props": {
-                    "placeholder": undefined,
-                  },
+                  "props": {},
                   "propsDefaults": {},
                   "propsOptions": [
-                    {
-                      "placeholder": {
-                        "0": false,
-                        "1": true,
-                        "required": false,
-                        "type": [Function],
-                      },
-                    },
+                    {},
                     [],
                   ],
                   "provides": {},
-                  "proxy": {
-                    "placeholder": undefined,
-                  },
+                  "proxy": {},
                   "refs": {},
                   "render": [Function],
                   "renderCache": [],
@@ -1822,9 +820,6 @@ VueWrapper {
                           Set {
                             [Circular],
                           },
-                          Set {
-                            [Circular],
-                          },
                         ],
                         "fn": [Function],
                         "onTrack": undefined,
@@ -1837,7 +832,11 @@ VueWrapper {
                   },
                   "setupContext": {
                     "attrs": {
-                      "onEmitInput": [Function],
+                      "modelModifiers": {
+                        "trim": true,
+                      },
+                      "modelValue": "",
+                      "onUpdate:modelValue": [Function],
                     },
                     "emit": [Function],
                     "expose": [Function],
@@ -1859,12 +858,18 @@ VueWrapper {
                     "dirs": null,
                     "dynamicChildren": null,
                     "dynamicProps": null,
-                    "el": <base-textarea-input-stub />,
+                    "el": <input-textarea-stub
+                      modelmodifiers="[object Object]"
+                      modelvalue=""
+                    />,
                     "key": null,
                     "patchFlag": 16,
                     "props": {
-                      "onEmitInput": [Function],
-                      "placeholder": undefined,
+                      "modelModifiers": {
+                        "trim": true,
+                      },
+                      "modelValue": "",
+                      "onUpdate:modelValue": [Function],
                     },
                     "ref": null,
                     "scopeId": null,
@@ -1877,23 +882,18 @@ VueWrapper {
                     "target": null,
                     "targetAnchor": null,
                     "transition": null,
-                    "type": "base-textarea-input-stub",
+                    "type": "input-textarea-stub",
                   },
                   "suspense": null,
                   "suspenseId": 0,
                   "type": {
                     "model": undefined,
-                    "name": "BaseTextareaInput",
-                    "props": {
-                      "placeholder": {
-                        "required": false,
-                        "type": [Function],
-                      },
-                    },
+                    "name": "InputTextarea",
+                    "props": {},
                     "setup": [Function],
                   },
                   "u": null,
-                  "uid": 39,
+                  "uid": 5,
                   "um": null,
                   "update": [Function],
                   "vnode": [Circular],
@@ -1902,12 +902,21 @@ VueWrapper {
                 "ctx": [Circular],
                 "dirs": null,
                 "dynamicChildren": null,
-                "dynamicProps": null,
-                "el": <base-textarea-input-stub />,
+                "dynamicProps": [
+                  "modelValue",
+                ],
+                "el": <input-textarea-stub
+                  modelmodifiers="[object Object]"
+                  modelvalue=""
+                />,
                 "key": null,
-                "patchFlag": 0,
+                "patchFlag": 8,
                 "props": {
-                  "onEmitInput": [Function],
+                  "modelModifiers": {
+                    "trim": true,
+                  },
+                  "modelValue": "",
+                  "onUpdate:modelValue": [Function],
                 },
                 "ref": null,
                 "scopeId": null,
@@ -1922,38 +931,31 @@ VueWrapper {
                 "transition": null,
                 "type": {
                   "model": undefined,
-                  "name": "BaseTextareaInput",
-                  "props": {
-                    "placeholder": {
-                      "required": false,
-                      "type": [Function],
-                    },
-                  },
+                  "name": "InputTextarea",
+                  "props": {},
                   "setup": [Function],
                 },
               },
             ],
             "dynamicProps": null,
-            "el": <div
-              placeholder="testholder"
-            >
-              <button
-                class="p-1 bg-primary text-onPrimary"
+            "el": <div>
+              <basebutton
+                class="rounded-md mb-2 p-1 bg-primary text-onPrimary"
                 data-test="submit_comment_button"
-              >
-                Submit
-              </button>
+                text="Submit"
+              />
               <div
                 data-test="input_comment_text"
               >
-                <base-textarea-input-stub />
+                <input-textarea-stub
+                  modelmodifiers="[object Object]"
+                  modelvalue=""
+                />
               </div>
             </div>,
             "key": null,
-            "patchFlag": 16,
-            "props": {
-              "placeholder": "testholder",
-            },
+            "patchFlag": 0,
+            "props": null,
             "ref": null,
             "scopeId": null,
             "shapeFlag": 17,
@@ -1972,36 +974,7 @@ VueWrapper {
           "type": {
             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/CommentAdd.vue",
             "__name": "CommentAdd",
-            "components": {
-              "BaseButton": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                "__name": "BaseButton",
-                "props": {
-                  "text": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
-              },
-              "BaseTextareaInput": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseTextareaInput.vue",
-                "__name": "BaseTextareaInput",
-                "__scopeId": "data-v-d321fa32",
-                "emits": [
-                  "emitInput",
-                ],
-                "props": {
-                  "placeholder": {
-                    "required": false,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
-              },
-            },
+            "components": {},
             "emits": [
               "emitComment",
             ],
@@ -2009,7 +982,7 @@ VueWrapper {
             "setup": [Function],
           },
           "u": null,
-          "uid": 37,
+          "uid": 4,
           "um": null,
           "update": [Function],
           "vnode": [Circular],
@@ -2019,25 +992,24 @@ VueWrapper {
         "dirs": null,
         "dynamicChildren": null,
         "dynamicProps": null,
-        "el": <div
-          placeholder="testholder"
-        >
-          <button
-            class="p-1 bg-primary text-onPrimary"
+        "el": <div>
+          <basebutton
+            class="rounded-md mb-2 p-1 bg-primary text-onPrimary"
             data-test="submit_comment_button"
-          >
-            Submit
-          </button>
+            text="Submit"
+          />
           <div
             data-test="input_comment_text"
           >
-            <base-textarea-input-stub />
+            <input-textarea-stub
+              modelmodifiers="[object Object]"
+              modelvalue=""
+            />
           </div>
         </div>,
         "key": null,
         "patchFlag": 0,
         "props": {
-          "placeholder": "testholder",
           "ref": "VTU_COMPONENT",
         },
         "ref": {
@@ -2059,36 +1031,7 @@ VueWrapper {
         "type": {
           "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/CommentAdd.vue",
           "__name": "CommentAdd",
-          "components": {
-            "BaseButton": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-              "__name": "BaseButton",
-              "props": {
-                "text": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
-            },
-            "BaseTextareaInput": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseTextareaInput.vue",
-              "__name": "BaseTextareaInput",
-              "__scopeId": "data-v-d321fa32",
-              "emits": [
-                "emitInput",
-              ],
-              "props": {
-                "placeholder": {
-                  "required": false,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
-            },
-          },
+          "components": {},
           "emits": [
             "emitComment",
           ],
@@ -2104,7 +1047,7 @@ VueWrapper {
         "setup": [Function],
       },
       "u": null,
-      "uid": 36,
+      "uid": 3,
       "um": null,
       "update": [Function],
       "vnode": {
@@ -2114,20 +1057,8 @@ VueWrapper {
         "appContext": {
           "app": [Circular],
           "components": {
-            "BaseButton": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-              "__name": "BaseButton",
-              "props": {
-                "text": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
-            },
-            "BaseTextareaInput": {
-              "name": "BaseTextareaInput",
+            "InputTextarea": {
+              "name": "InputTextarea",
             },
             "transition": {
               "name": "transition",
@@ -2139,35 +1070,7 @@ VueWrapper {
           "config": {
             "compilerOptions": {},
             "errorHandler": undefined,
-            "globalProperties": {
-              "$pinia": {
-                "_a": [Circular],
-                "_e": EffectScope {
-                  "_active": true,
-                  "cleanups": [],
-                  "detached": true,
-                  "effects": [],
-                  "parent": undefined,
-                },
-                "_p": [
-                  [Function],
-                  [Function],
-                  [Function],
-                ],
-                "_s": Map {},
-                "_testing": true,
-                "app": [Circular],
-                "install": [Function],
-                "state": RefImpl {
-                  "__v_isRef": true,
-                  "__v_isShallow": false,
-                  "_rawValue": {},
-                  "_value": {},
-                  "dep": undefined,
-                },
-                "use": [Function],
-              },
-            },
+            "globalProperties": {},
             "isNativeTag": [Function],
             "optionMergeStrategies": {},
             "performance": false,
@@ -2182,35 +1085,7 @@ VueWrapper {
           ],
           "optionsCache": WeakMap {},
           "propsCache": WeakMap {},
-          "provides": {
-            Symbol(pinia): {
-              "_a": [Circular],
-              "_e": EffectScope {
-                "_active": true,
-                "cleanups": [],
-                "detached": true,
-                "effects": [],
-                "parent": undefined,
-              },
-              "_p": [
-                [Function],
-                [Function],
-                [Function],
-              ],
-              "_s": Map {},
-              "_testing": true,
-              "app": [Circular],
-              "install": [Function],
-              "state": RefImpl {
-                "__v_isRef": true,
-                "__v_isShallow": false,
-                "_rawValue": {},
-                "_value": {},
-                "dep": undefined,
-              },
-              "use": [Function],
-            },
-          },
+          "provides": {},
           "reload": [Function],
         },
         "children": null,
@@ -2219,19 +1094,19 @@ VueWrapper {
         "dirs": null,
         "dynamicChildren": null,
         "dynamicProps": null,
-        "el": <div
-          placeholder="testholder"
-        >
-          <button
-            class="p-1 bg-primary text-onPrimary"
+        "el": <div>
+          <basebutton
+            class="rounded-md mb-2 p-1 bg-primary text-onPrimary"
             data-test="submit_comment_button"
-          >
-            Submit
-          </button>
+            text="Submit"
+          />
           <div
             data-test="input_comment_text"
           >
-            <base-textarea-input-stub />
+            <input-textarea-stub
+              modelmodifiers="[object Object]"
+              modelvalue=""
+            />
           </div>
         </div>,
         "key": null,
@@ -2257,40 +1132,12 @@ VueWrapper {
       "withProxy": null,
     },
     "_props": null,
-    "_uid": 9,
+    "_uid": 1,
     "component": [Function],
     "config": {
       "compilerOptions": {},
       "errorHandler": undefined,
-      "globalProperties": {
-        "$pinia": {
-          "_a": [Circular],
-          "_e": EffectScope {
-            "_active": true,
-            "cleanups": [],
-            "detached": true,
-            "effects": [],
-            "parent": undefined,
-          },
-          "_p": [
-            [Function],
-            [Function],
-            [Function],
-          ],
-          "_s": Map {},
-          "_testing": true,
-          "app": [Circular],
-          "install": [Function],
-          "state": RefImpl {
-            "__v_isRef": true,
-            "__v_isShallow": false,
-            "_rawValue": {},
-            "_value": {},
-            "dep": undefined,
-          },
-          "use": [Function],
-        },
-      },
+      "globalProperties": {},
       "isNativeTag": [Function],
       "optionMergeStrategies": {},
       "performance": false,
@@ -2485,19 +1332,19 @@ VueWrapper {
   "rootVM": {
     "VTU_COMPONENT": {},
   },
-  "wrapperElement": <div
-    placeholder="testholder"
-  >
-    <button
-      class="p-1 bg-primary text-onPrimary"
+  "wrapperElement": <div>
+    <basebutton
+      class="rounded-md mb-2 p-1 bg-primary text-onPrimary"
       data-test="submit_comment_button"
-    >
-      Submit
-    </button>
+      text="Submit"
+    />
     <div
       data-test="input_comment_text"
     >
-      <base-textarea-input-stub />
+      <input-textarea-stub
+        modelmodifiers="[object Object]"
+        modelvalue=""
+      />
     </div>
   </div>,
 }

@@ -225,7 +225,9 @@ class PostCreateView(APIView):
 
             post = Post.objects.create(title=title, content=content, author=request.user)
 
-            image_map = {}
+            image_map = {
+                
+            }
             for key, image_file in request.FILES.items():
                 # Open the uploaded image using Pillow
                 image = Image.open(image_file)
@@ -244,9 +246,9 @@ class PostCreateView(APIView):
 
             soup = BeautifulSoup(content, 'html.parser')
             for img in soup.find_all('img'):
-                alt_text = img.get('alt')
-                if alt_text in image_map:
-                    relativeImageSource = image_map[alt_text]
+                data_text = img.get('data')
+                if data_text in image_map:
+                    relativeImageSource = image_map[data_text]
                     actualFullImageSource = f"http://localhost:8888{relativeImageSource}"                    
                     img['src'] = actualFullImageSource
 

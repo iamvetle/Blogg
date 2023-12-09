@@ -4,7 +4,14 @@
             <BaseButton text="Submit" class="bg-primary text-onPrimary p-1 rounded-md mb-2"
                 data-test="submit_comment_button" />
             <div data-test="input_comment_text">
-                <BaseTextareaInput v-model="textInput" />
+                <!-- <BaseTextareaInput v-model="textInput" /> -->
+                <UTextarea
+                :color="borderColor"
+            autoresize
+            placeholder="Write comment.."
+            v-model="textInput"
+            :maxlength="maxCharacters"
+            />
             </div>
         </div>
     </form>
@@ -24,9 +31,25 @@ const props = defineProps({
     postId: Number,
 });
 
+/** The text go(is stored) here */
+const textInput = ref("");
+
+/** The maximum number of characters a comment can be */
+const maxCharacters = 250
+
+/** The color of the ui textarea border */
+const borderColor = ref("")
+
+watchEffect(() => {
+    if (textInput.value.length === 250) {
+        borderColor.value = "red"
+    } else {
+        borderColor.value = "primary"
+    }
+})
+
 const baseCommentURL = `http://localhost:8888/api/post/${props.postId}/add-comment/`;
 const allPostCommentsURL = `http://localhost:8888/api/post/${props.postId}/comments/`;
-const textInput = ref("");
 
 /**
  * @method tryAddComment

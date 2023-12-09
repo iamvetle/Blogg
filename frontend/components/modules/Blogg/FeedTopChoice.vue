@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="postStore.posts">
         <span class="flex space-x-8 justify-center">
             <BaseButton class="p-2 rounded-lg"
                 :class="selected ? 'bg-onPrimary text-primary border-primary border shadow-md  ' : 'bg-primary text-onPrimary border'"
@@ -9,12 +9,18 @@
                 :class="selected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'"
                 text="Following" />
         </span>
-        <p class="text-lg" v-if="(num_of_following === 0) && (selected) && (postStore.posts.results.length == 0)">
-            You are
-            not
-            following anyone.</p>
-        <p class="text-lg" v-if="(postStore.posts?.results?.length === 0) && (selected) && (num_of_following > 0)">
-            None of who you are following have published anything.</p>
+
+        <!-- IF the following buttons is pressed-->
+        <div v-if="selected">
+            <!-- Following NO one-->
+            <p class="text-lg" v-if="(num_of_following === 0)">
+                You are not following anyone.
+            </p>
+            <!-- Following someone but with NO posts -->
+            <p class="text-lg" v-if="(num_of_following) && (posts_by_following === 0)">
+                None of who you are following have published anything.
+            </p>
+        </div>
     </div>
 </template>
 
@@ -25,6 +31,9 @@ import { usePostStore } from '~/store/postStore';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const postStore = usePostStore()
+const paginationStore = usePaginationStore()
+const searchStore = useSearchStore()
+const loggedInUserStore = useLoggedInUserStore()
 
 
 /** 
@@ -33,16 +42,33 @@ const postStore = usePostStore()
  * When the buttons are clicked this changes (also by navbar search)
  * 
  * If the active url is the following url, this turns true, otherwise, it is false
+ * 
+ * It uses the loggedinuserstore and the poststore therefore the parentcomponent makes sure those are available before rendering these 
  */
-const selected = computed(() => (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/"))
+const selected = computed(() => {
+    if (paginationStore?.activeFetchURL === "http://localhost:8888/api/feed/following/") {
+        return true
+    } else {
+        return false
+    }
+})
+    
 
-const searchStore = useSearchStore()
-const paginationStore = usePaginationStore()
-const loggedInUserStore = useLoggedInUserStore()
+const num_of_following = computed(() => {
+    if (loggedInUserStore.loggedInUserProfile && loggedInUserStore.loggedInUserProfile.num_of_following > 0) {
+        return loggedInUserStore.loggedInUserProfile?.num_of_following
+    } else {
+        return 0
+    }
+});
 
-const num_of_following = computed(() =>
-    loggedInUserStore.loggedInUserProfile.num_of_following
-);
+const posts_by_following = computed(() => {
+    if (postStore.posts && postStore.posts.results.length > 0) {
+        return postStore.posts.results.length
+    } else {
+        return 0
+    }
+})
 
 
 /**
@@ -71,7 +97,6 @@ const followingPostSetting = async () => {
     searchStore.resetStore()
 
     paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-
     await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 

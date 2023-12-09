@@ -2,7 +2,7 @@
     <div>
         <BaseButton class="rounded-md mb-2 p-1 bg-primary text-onPrimary" @click="tryAddComment" text="Submit" data-test="submit_comment_button"/>
         <div data-test="input_comment_text">
-            <BaseTextareaInput @emitInput="input" />
+            <InputTextarea v-model.trim="textInput" />
         </div>
     </div>
 </template>
@@ -11,11 +11,7 @@
 
 const emit = defineEmits(["emitComment"])
 
-const textInput = ref("")
-
-const input = (value: string) => {
-    textInput.value = value
-}
+const textInput = ref<any>("")
 
 const tryAddComment = () => {
     if (textInput.value.trim() !== "") {

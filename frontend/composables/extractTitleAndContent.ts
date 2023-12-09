@@ -17,7 +17,6 @@ export const extractTitleAndContent = (htmlFromEditor:string): TitleAndContentTy
         const title = null
         const body = null
         console.log("The input was not a string") // print to self
-        alert(`The input was not a string: ${typeof htmlFromEditor}`)
         return { title, body }
     };
 

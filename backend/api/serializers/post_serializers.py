@@ -181,3 +181,5 @@ class PostSaveStyleSerializer(serializers.ModelSerializer):
             "last_name": obj.post.author.last_name,
         }
         return post
+    
+    

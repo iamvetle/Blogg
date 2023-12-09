@@ -9,7 +9,7 @@
 				<slot />
 			</div>
 		</main>
-		<TheFooter />
+		<LazyTheFooter />
 	</div>
 </template>
 

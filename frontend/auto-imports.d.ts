@@ -6,11 +6,9 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
-  const apiEndpointCheck: typeof import('./composables/apiEndpointCheck')['apiEndpointCheck']
   const checkIfFollowingUser: typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']
   const checkIfLoggedInUser: typeof import('./composables/checkIfLoggedInUser')['checkIfLoggedInUser']
   const checkIfPostIsSaved: typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']
-  const checkLocalInfo: typeof import('./composables/checkLocalInfo')['checkLocalInfo']
   const computed: typeof import('vue')['computed']
   const constructURL: typeof import('./composables/constructURL')['constructURL']
   const createApp: typeof import('vue')['createApp']
@@ -19,11 +17,9 @@ declare global {
   const defineComponent: typeof import('vue')['defineComponent']
   const deleteLoggedInUserPost: typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']
   const deleteLoggedInUserProfilePicture: typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']
-  const deleteMethod: typeof import('./composables/apiByCRUD')['deleteMethod']
   const deleteSinglePostSingleComment: typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']
   const effectScope: typeof import('vue')['effectScope']
   const extractTitleAndContent: typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']
-  const fetchPost: typeof import('./composables/deprecatedFetchPost')['fetchPost']
   const fixPagination: typeof import('./composables/fixPagination')['fixPagination']
   const generateUniqueId: typeof import('./composables/generateUniqueId')['generateUniqueId']
   const getAllTags: typeof import('./composables/crud/getAllTags')['getAllTags']
@@ -34,16 +30,15 @@ declare global {
   const getLoggedInUserAllFollowing: typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']
   const getLoggedInUserAllPostSnippets: typeof import('./composables/crud/getLoggedInUserAllPostSnippets')['getLoggedInUserAllPostSnippets']
   const getLoggedInUserProfile: typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']
-  const getMethod: typeof import('./composables/apiByCRUD')['getMethod']
   const getNormalUserPosts: typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']
   const getNormalUserProfile: typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']
   const getPostMultipleSnippet: typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']
   const getSaveOrUnsavePost: typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']
   const getSinglePost: typeof import('./composables/crud/getSinglePost')['getSinglePost']
   const getSinglePostComments: typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']
-  const getToken: typeof import('./composables/getToken')['getToken']
   const getUnfollowUser: typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']
   const h: typeof import('vue')['h']
+  const horizontalRuleRun: typeof import('./composables/editorCommands')['horizontalRuleRun']
   const inject: typeof import('vue')['inject']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
@@ -51,7 +46,6 @@ declare global {
   const isRef: typeof import('vue')['isRef']
   const markRaw: typeof import('vue')['markRaw']
   const nextTick: typeof import('vue')['nextTick']
-  const nuxtConfig: typeof import('./nuxt.config')['default']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
   const onBeforeUnmount: typeof import('vue')['onBeforeUnmount']
@@ -61,7 +55,6 @@ declare global {
   const onMounted: typeof import('vue')['onMounted']
   const onRenderTracked: typeof import('vue')['onRenderTracked']
   const onRenderTriggered: typeof import('vue')['onRenderTriggered']
-  const onResetAllStore: typeof import('./composables/onResetAllStore')['onResetAllStore']
   const onScopeDispose: typeof import('vue')['onScopeDispose']
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onUnmounted: typeof import('vue')['onUnmounted']
@@ -75,27 +68,33 @@ declare global {
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
+  const removeImgTags: typeof import('./composables/removeImgTags')['removeImgTags']
   const resolveComponent: typeof import('vue')['resolveComponent']
   const retrieveToken: typeof import('./composables/retrieveToken')['retrieveToken']
-  const setLocalInfo: typeof import('./composables/setLocalInfo')['setLocalInfo']
+  const setRedoRun: typeof import('./composables/editorCommands')['setRedoRun']
   const setTokenAndUsername: typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']
+  const setUndoRun: typeof import('./composables/editorCommands')['setUndoRun']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
-  const taailwindConfig: typeof import('./taailwind.config')['default']
-  const tailwindConfig: typeof import('./tailwind.config')['default']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
   const toValue: typeof import('vue')['toValue']
+  const toggleBlockquoteRun: typeof import('./composables/editorCommands')['toggleBlockquoteRun']
+  const toggleBoldRun: typeof import('./composables/editorCommands')['toggleBoldRun']
+  const toggleBulletListRun: typeof import('./composables/editorCommands')['toggleBulletListRun']
+  const toggleCodeBlockRun: typeof import('./composables/editorCommands')['toggleCodeBlockRun']
+  const toggleHeadingRun: typeof import('./composables/editorCommands')['toggleHeadingRun']
+  const toggleItalicRun: typeof import('./composables/editorCommands')['toggleItalicRun']
+  const toggleOrderedListRun: typeof import('./composables/editorCommands')['toggleOrderedListRun']
+  const toggleUnderlineRun: typeof import('./composables/editorCommands')['toggleUnderlineRun']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useSlots: typeof import('vue')['useSlots']
-  const vitestConfig: typeof import('./vitest.config')['default']
-  const vueShimsD: typeof import('./vue-shims.d')['default']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const watchPostEffect: typeof import('vue')['watchPostEffect']
@@ -143,6 +142,7 @@ declare module 'vue' {
     readonly getSinglePostComments: UnwrapRef<typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly horizontalRuleRun: UnwrapRef<typeof import('./composables/editorCommands')['horizontalRuleRun']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
@@ -172,9 +172,12 @@ declare module 'vue' {
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
+    readonly removeImgTags: UnwrapRef<typeof import('./composables/removeImgTags')['removeImgTags']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
+    readonly setRedoRun: UnwrapRef<typeof import('./composables/editorCommands')['setRedoRun']>
     readonly setTokenAndUsername: UnwrapRef<typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']>
+    readonly setUndoRun: UnwrapRef<typeof import('./composables/editorCommands')['setUndoRun']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
@@ -182,6 +185,14 @@ declare module 'vue' {
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
+    readonly toggleBlockquoteRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleBlockquoteRun']>
+    readonly toggleBoldRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleBoldRun']>
+    readonly toggleBulletListRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleBulletListRun']>
+    readonly toggleCodeBlockRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleCodeBlockRun']>
+    readonly toggleHeadingRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleHeadingRun']>
+    readonly toggleItalicRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleItalicRun']>
+    readonly toggleOrderedListRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleOrderedListRun']>
+    readonly toggleUnderlineRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleUnderlineRun']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
@@ -229,6 +240,7 @@ declare module '@vue/runtime-core' {
     readonly getSinglePostComments: UnwrapRef<typeof import('./composables/crud/getSinglePostComments')['getSinglePostComments']>
     readonly getUnfollowUser: UnwrapRef<typeof import('./composables/crud/getUnfollowUser')['getUnfollowUser']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
+    readonly horizontalRuleRun: UnwrapRef<typeof import('./composables/editorCommands')['horizontalRuleRun']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isProxy: UnwrapRef<typeof import('vue')['isProxy']>
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
@@ -258,9 +270,12 @@ declare module '@vue/runtime-core' {
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
+    readonly removeImgTags: UnwrapRef<typeof import('./composables/removeImgTags')['removeImgTags']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
+    readonly setRedoRun: UnwrapRef<typeof import('./composables/editorCommands')['setRedoRun']>
     readonly setTokenAndUsername: UnwrapRef<typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']>
+    readonly setUndoRun: UnwrapRef<typeof import('./composables/editorCommands')['setUndoRun']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
@@ -268,6 +283,14 @@ declare module '@vue/runtime-core' {
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
+    readonly toggleBlockquoteRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleBlockquoteRun']>
+    readonly toggleBoldRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleBoldRun']>
+    readonly toggleBulletListRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleBulletListRun']>
+    readonly toggleCodeBlockRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleCodeBlockRun']>
+    readonly toggleHeadingRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleHeadingRun']>
+    readonly toggleItalicRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleItalicRun']>
+    readonly toggleOrderedListRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleOrderedListRun']>
+    readonly toggleUnderlineRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleUnderlineRun']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>

@@ -36,7 +36,9 @@
 		</div>
 
 		<div class="mb-4">
-			<BaseButton text="Back" class="border-2 bg-light-blue-400" @click="navigateTo('/')" />
+			<NuxtLink to="/">
+				<BaseButton text="Back" class="border-2 bg-light-blue-400" />
+			</NuxtLink>
 		</div>
 
 		<hr>

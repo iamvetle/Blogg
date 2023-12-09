@@ -29,7 +29,7 @@ describe('validateAndCleanImageMap', () => {
     });
 
     it('should remove images not present in HTML content', () => {
-        const htmlContent = `<div><img alt="1"></div>`;
+        const htmlContent = `<div><img data="1"></div>`;
         let imageFileMap = { "1": "Image1", "2": "Image2" };
 
         const result = validateAndCleanImageMap(htmlContent, imageFileMap);
