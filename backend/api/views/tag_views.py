@@ -12,7 +12,7 @@ from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 
 class AllTagsView(ListCreateAPIView):
-    """Returns all tags"""
+    """Returns all tags, or can create a tag?"""
     permission_classes = [IsAuthenticated]
     serializer_class = TagSerializer
     pagination_class = None  # will probably remove this later

@@ -19,6 +19,7 @@ VueWrapper {
         "BaseImage": {
           "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
           "__name": "BaseImage",
+          "inheritAttrs": false,
           "props": {
             "src": {
               "required": true,
@@ -48,6 +49,9 @@ VueWrapper {
         },
         "MyProfileNumOfFollowers": {
           "name": "MyProfileNumOfFollowers",
+        },
+        "MyProfileNumOfFollowing": {
+          "name": "MyProfileNumOfFollowing",
         },
         "MyProfilePicture": {
           "name": "MyProfilePicture",
@@ -569,6 +573,7 @@ VueWrapper {
           "BaseImage": {
             "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
             "__name": "BaseImage",
+            "inheritAttrs": false,
             "props": {
               "src": {
                 "required": true,
@@ -598,6 +603,9 @@ VueWrapper {
           },
           "MyProfileNumOfFollowers": {
             "name": "MyProfileNumOfFollowers",
+          },
+          "MyProfileNumOfFollowing": {
+            "name": "MyProfileNumOfFollowing",
           },
           "MyProfilePicture": {
             "name": "MyProfilePicture",
@@ -1122,6 +1130,7 @@ VueWrapper {
       "components": null,
       "ctx": {
         "VTU_COMPONENT": {},
+        "updateBio": [MockFunction spy],
       },
       "da": null,
       "data": {},
@@ -1177,6 +1186,7 @@ VueWrapper {
       "provides": {},
       "proxy": {
         "VTU_COMPONENT": {},
+        "updateBio": [MockFunction spy],
       },
       "refs": {
         "VTU_COMPONENT": {},
@@ -1238,6 +1248,7 @@ VueWrapper {
               "BaseImage": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
                 "__name": "BaseImage",
+                "inheritAttrs": false,
                 "props": {
                   "src": {
                     "required": true,
@@ -1267,6 +1278,9 @@ VueWrapper {
               },
               "MyProfileNumOfFollowers": {
                 "name": "MyProfileNumOfFollowers",
+              },
+              "MyProfileNumOfFollowing": {
+                "name": "MyProfileNumOfFollowing",
               },
               "MyProfilePicture": {
                 "name": "MyProfilePicture",
@@ -1792,6 +1806,7 @@ VueWrapper {
             "BaseImage": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
               "__name": "BaseImage",
+              "inheritAttrs": false,
               "props": {
                 "src": {
                   "required": true,
@@ -1816,6 +1831,9 @@ VueWrapper {
             "MyProfileBio": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileBio.vue",
               "__name": "MyProfileBio",
+              "emits": [
+                "bioUpdate",
+              ],
               "render": [Function],
               "setup": [Function],
             },
@@ -2569,6 +2587,7 @@ VueWrapper {
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
             },
+            "loggedInUserURL": "http://localhost:8888/api/min-side/",
             "postStore": {
               "$dispose": [Function],
               "$id": "Store for containing posts and related to posts",
@@ -2802,6 +2821,7 @@ VueWrapper {
               "posts": null,
               "resetStore": [MockFunction spy],
             },
+            "updateBio": [MockFunction spy],
           },
           "directives": null,
           "ec": null,
@@ -3585,6 +3605,7 @@ VueWrapper {
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
             },
+            "loggedInUserURL": "http://localhost:8888/api/min-side/",
             "postStore": {
               "$dispose": [Function],
               "$id": "Store for containing posts and related to posts",
@@ -3818,6 +3839,7 @@ VueWrapper {
               "posts": null,
               "resetStore": [MockFunction spy],
             },
+            "updateBio": [MockFunction spy],
           },
           "slots": {},
           "slotsProxy": {},
@@ -3859,6 +3881,7 @@ VueWrapper {
               "BaseImage": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
                 "__name": "BaseImage",
+                "inheritAttrs": false,
                 "props": {
                   "src": {
                     "required": true,
@@ -3883,6 +3906,9 @@ VueWrapper {
               "MyProfileBio": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileBio.vue",
                 "__name": "MyProfileBio",
+                "emits": [
+                  "bioUpdate",
+                ],
                 "render": [Function],
                 "setup": [Function],
               },
@@ -3934,7 +3960,7 @@ VueWrapper {
             "setup": [Function],
           },
           "u": null,
-          "uid": 60,
+          "uid": 65,
           "um": null,
           "update": [Function],
           "vnode": [Circular],
@@ -3973,6 +3999,7 @@ VueWrapper {
             "BaseImage": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
               "__name": "BaseImage",
+              "inheritAttrs": false,
               "props": {
                 "src": {
                   "required": true,
@@ -3997,6 +4024,9 @@ VueWrapper {
             "MyProfileBio": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/MyProfile/MyProfileBio.vue",
               "__name": "MyProfileBio",
+              "emits": [
+                "bioUpdate",
+              ],
               "render": [Function],
               "setup": [Function],
             },
@@ -4056,7 +4086,7 @@ VueWrapper {
         "setup": [Function],
       },
       "u": null,
-      "uid": 59,
+      "uid": 64,
       "um": null,
       "update": [Function],
       "vnode": {
@@ -4069,6 +4099,7 @@ VueWrapper {
             "BaseImage": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
               "__name": "BaseImage",
+              "inheritAttrs": false,
               "props": {
                 "src": {
                   "required": true,
@@ -4098,6 +4129,9 @@ VueWrapper {
             },
             "MyProfileNumOfFollowers": {
               "name": "MyProfileNumOfFollowers",
+            },
+            "MyProfileNumOfFollowing": {
+              "name": "MyProfileNumOfFollowing",
             },
             "MyProfilePicture": {
               "name": "MyProfilePicture",
@@ -4900,6 +4934,7 @@ VueWrapper {
   "isDisabled": [Function],
   "rootVM": {
     "VTU_COMPONENT": {},
+    "updateBio": [MockFunction spy],
   },
   "wrapperElement": <!--v-if-->,
 }

@@ -1,8 +1,10 @@
 <template>
     <div data-test="everything" class="col-span-6 mx-auto w-full">
 
+        <!-- Doing v-if on the componenents that use the stores included in the v-if - or else error -->
+
         <div id="top-search" >
-            <FeedTopSearch v-if="postStore.posts" />
+            <FeedTopSearch v-if="postStore.posts && loggedInUserStore.loggedInUserProfile"/>
         </div>
 
         <div id="top-choice" >
@@ -20,7 +22,9 @@
 
 <script setup lang="ts">
 import { usePostStore } from '~/store/postStore';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
+const loggedInUserStore = useLoggedInUserStore()
 const postStore = usePostStore()
 
 </script>

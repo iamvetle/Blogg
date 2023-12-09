@@ -3,15 +3,15 @@
         <span class="mb-2 w-full flex items-center text-center justify-center">
             <button data-test="dropdown-button"
                 class="w-full h-full text-lg hover:text-primaryFixedDim rounded-md px-1 py-1 text-onPrimary flex text-center items-center justify-center"
-                @click="changeDropdown"
+                @click="changeDropdown()"
                 >
                 Filter posts
             </button>
         </span>
-        <div v-show="dropdown" class="px-2 py-2">
+        <div v-show="dropdown" class="px-2 py-2" data-test="filter-component" >
             <!-- The filter dropdown compontent-->
             <KeepAlive>
-                <component :is="dropdown" data-test="filter-component" :list-of-options="tagOptions"
+                <component :is="dropdown" :list-of-options="tagOptions"
                     class="w-full mb-2 px-2 py-1" @output="action" />
             </KeepAlive>
         </div>
@@ -38,7 +38,7 @@ const tagOptions = computed(() => {
 
     if (postStore.allTags != null) {
         for (let i of postStore.allTags) {
-            temp.push(i.name)
+            temp.push(i)
         }
     }
     return temp
@@ -53,7 +53,7 @@ const tagOptions = computed(() => {
  * The 'component' together with 'KeepAlive' caches the component state 
  * so that what is 'checked' with checkboxes doesnt dissapear when the tab is toggled
  */
-const dropdown = ref<any>(false)
+const dropdown = shallowRef<any>(false)
 const f = resolveComponent('FilterBox')
 const changeDropdown = () => {
     if (dropdown.value == f) {

@@ -1,71 +1,67 @@
 {
-    "files.autoSave": "afterDelay",
-    "explorer.confirmDragAndDrop": false,
-    "editor.accessibilitySupport": "off",
-    "[python]": {
-        "editor.formatOnType": true
-    },
-    "git.ignoreMissingGitWarning": true,
-    "git.openRepositoryInParentFolders": "never",
-    "git.autofetch": true,
-    "django.snippets.exclude": [
-        
-
-
-        
-        "cms",
-        "wagtail"
-    ],
-    "update.showReleaseNotes": false,
-    "css.enabledLanguages": [
-        "django-html",
-        "html"
-    ],
-    "[django-html]": {
-        
-
-        "editor.quickSuggestions": {
-            "other": true,
-            "comments": true,
-            "strings": true
-        }
-    },
-    "html.format.templating": true,
-    "html-css-class-completion.CSSLanguages": [
-        "css",
-        "sass",
-        "scss"
-    ],
-    "html-css-class-completion.HTMLLanguages": [
-        "html",
-        "vue",
-        "razor",
-        "blade",
-        "handlebars",
-        "twig",
-        "django-html",
-        "django",
-        "php",
-        "markdown",
-        "erb",
-        "ejs",
-        "svelte"
-    ],
-    "workbench.startupEditor": "none",
-    "workbench.iconTheme": "vscode-icons",
-    "terminal.integrated.env.windows": {},
-    "tailwindCSS.emmetCompletions": true,
-    "tailwindCSS.experimental.classRegex": [
-        
-    ],
-    "vitest.enable": false,
-    "python.testing.unittestArgs": [
-        "-v",
-        "-s",
-        "./backend",
-        "-p",
-        "*test.py"
-    ],
-    "python.testing.pytestEnabled": false,
-    "python.testing.unittestEnabled": true
+  "files.autoSave": "afterDelay",
+  "explorer.confirmDragAndDrop": false,
+  "editor.accessibilitySupport": "off",
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "git.ignoreMissingGitWarning": true,
+  "git.openRepositoryInParentFolders": "never",
+  "git.autofetch": true,
+  "django.snippets.exclude": [
+    "cms",
+    "wagtail"
+  ],
+  "update.showReleaseNotes": false,
+  "css.enabledLanguages": [
+    "django-html",
+    "html"
+  ],
+  "[django-html]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    }
+  },
+  "html.format.templating": true,
+  "html-css-class-completion.CSSLanguages": [
+    "css",
+    "sass",
+    "scss"
+  ],
+  "html-css-class-completion.HTMLLanguages": [
+    "html",
+    "vue",
+    "razor",
+    "blade",
+    "handlebars",
+    "twig",
+    "django-html",
+    "django",
+    "php",
+    "markdown",
+    "erb",
+    "ejs",
+    "svelte"
+  ],
+  "workbench.startupEditor": "none",
+  "workbench.iconTheme": "vscode-icons",
+  "terminal.integrated.env.windows": {},
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.classRegex": [],
+  "vitest.enable": false,
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./backend",
+    "-p",
+    "*test.py"
+  ],
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": true,
+  "files.exclude": {
+    "frontend\\components\\utils": true,
+    "frontend": true
+  }
 }

@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the editorcard (very small bad tests becasue of a loff rewriting) > Should match snapshot 1`] = `
+"<div class=\\"p-2\\">
+  <div id=\\"editor-container\\" class=\\"w-full px-[60px] pt-[35px] pb-[30px] flex flex-col rounded-lg min-h-[450px] mb-24\\">
+    <div data-test=\\"text_editor_modals\\">
+      <!-- The Modal to confirm to the post -->
+      <!--v-if-->
+      <!-- Using Nuxt UI, don't need teleport -->
+      <!--v-if-->
+      <!-- The Modal to discard the content post -->
+      <!--v-if-->
+    </div><!-- Menus for editor -->
+    <!--v-if-->
+    <div data-test=\\"editor_and_title_input\\" class=\\"mt-2 w-full mx-auto\\">
+      <!-- Input editor (not prose)-->
+      <div class=\\"max-w-2xl mx-auto\\">
+        <inputtext placeholder=\\"Title\\" modelvalue=\\"\\" modelmodifiers=\\"[object Object]\\" class=\\"not-prose mx-auto pb-3 w-full border-none bg-inherit text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300\\"></inputtext>
+      </div>
+      <hr class=\\"not-prose invisible\\"><!-- Main Editor (has prose) -->
+      <div data-test=\\"direct-editor\\" class=\\"max-w-2xl mx-auto pt-3 w-full min-h-screen prose px-1\\">
+        <editor-content-stub></editor-content-stub>
+      </div>
+    </div>
+  </div>
+  <hr class=\\"mb-4\\">
+</div>"
+`;

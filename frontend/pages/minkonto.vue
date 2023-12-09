@@ -50,21 +50,23 @@
 							</div>
 						</div>
 						<div>
-							<div id="following">
-								<div class="mt-4">
+							<div class="mt-4" id="following">
+								<div>
 									<span class="prose">
 										<h3>You are following:</h3>
 									</span>
-									<MyProfileFollowing v-if="loggedInUserStore.loggedInUserProfile.num_of_following" class="items-center pt-2 ms-6" />
+									<MyProfileFollowing v-if="loggedInUserStore.loggedInUserProfile.num_of_following"
+										class="items-center pt-2 ms-6" />
 									<span v-else>Nobody.</span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-span-4 sm:col-span-7 xl:col-span-9">
 
-						<div id="bio">
-							<MyProfileBio />
+					<!-- Main 9/12  -->
+					<div class="col-span-4 sm:col-span-7 xl:col-span-9">
+						<div data-test="bio">
+							<MyProfileBio @bio-update="updateBio" />
 						</div>
 						<div id="all-posts">
 							<MyProfilePostsList />
@@ -90,6 +92,8 @@ definePageMeta({
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
 
+const loggedInUserURL = "http://localhost:8888/api/min-side/"
+
 /**
  * Fetches:
  * 
@@ -98,12 +102,45 @@ const loggedInUserStore = useLoggedInUserStore()
  * 2. USER INFORMATION about the logged in user
  */
 onMounted(async () => {
-	const loggedInUserURL = "http://localhost:8888/api/min-side/"
 	const loggedInUserPostsURL = "http://localhost:8888/api/min-side/posts/"
 
 	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
 	await getLoggedInUserProfile(loggedInUserURL)
 })
+
+/**
+ * Calls a composable that fetches new "my profile information"
+ */
+
+const updateBio = async (bioInput: string) => {
+
+	const formData = {
+		bio: bioInput
+	}
+
+	const response = await patchLoggedInUserBio(loggedInUserURL, formData)
+
+	if (response == null) {
+		console.error("Failed to fetch logged-in user profile information")
+		return
+	} else {
+		const response = await getLoggedInUserProfile(loggedInUserURL)
+
+		if (response == null) {
+			console.error("Failed to fetch logged-in user profile information")
+		}
+	}
+
+	/**
+	 * Fetches all user information instead of JUST the bio
+	 * TODO ^ unpractical - find a new way to deal with it
+	 */
+
+
+}
+
+
+
 
 </script>
 

@@ -111,7 +111,8 @@ export interface PostSavedType {
 // 	results: TagType[]
 // }
 export interface TagType {
-	name: string
+	name: string,
+	post_count:string
 }
 
 /**

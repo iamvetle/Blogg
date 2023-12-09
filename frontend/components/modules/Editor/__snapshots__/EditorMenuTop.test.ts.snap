@@ -1,0 +1,2443 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the top menu for the editor (bad - after rewriting) > Should match html? snapshot 1`] = `
+"<div>
+  <!--v-if-->
+  <div class=\\"flex px-3 w-full justify-between items-center flex-wrap\\" data-test=\\"top_menu_wrapper\\">
+    <!-- V-IF -->
+    <!--v-if-->
+    <div id=\\"discard_publish_options_buttons\\" class=\\"flex items-center space-x-4 py-2\\">
+      <!-- Discard Button --><span class=\\"button-option\\"><base-button-stub id=\\"discard\\" data-test=\\"do_discard_button_option\\" class=\\"py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md\\" text=\\"Discard\\"></base-button-stub></span><!-- Publish button--><span class=\\"button-option\\"><base-button-stub id=\\"publish\\" data-test=\\"try_publish_button_option\\" class=\\"py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md\\" text=\\"Publish\\"></base-button-stub></span>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`Testing the top menu for the editor (bad - after rewriting) > Should match snapshot 1`] = `
+VueWrapper {
+  "__app": {
+    "_component": {
+      "name": "VTU_ROOT",
+      "render": [Function],
+      "setup": [Function],
+    },
+    "_container": <div
+      data-v-app=""
+    >
+      <div>
+        <!--v-if-->
+        <div
+          class="flex px-3 w-full justify-between items-center flex-wrap"
+          data-test="top_menu_wrapper"
+        >
+          <!-- V-IF -->
+          <!--v-if-->
+          <div
+            class="flex items-center space-x-4 py-2"
+            id="discard_publish_options_buttons"
+          >
+            <!-- Discard Button -->
+            <span
+              class="button-option"
+            >
+              <base-button-stub
+                class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                data-test="do_discard_button_option"
+                id="discard"
+                text="Discard"
+              />
+            </span>
+            <!-- Publish button-->
+            <span
+              class="button-option"
+            >
+              <base-button-stub
+                class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                data-test="try_publish_button_option"
+                id="publish"
+                text="Publish"
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>,
+    "_context": {
+      "app": [Circular],
+      "components": {
+        "BaseButton": {
+          "name": "BaseButton",
+        },
+        "EditorButton": {
+          "name": "EditorButton",
+        },
+        "EditorModalAddURLLink": {
+          "name": "EditorModalAddURLLink",
+        },
+        "transition": {
+          "name": "transition",
+        },
+        "transition-group": {
+          "name": "transition-group",
+        },
+      },
+      "config": {
+        "compilerOptions": {},
+        "errorHandler": undefined,
+        "globalProperties": {},
+        "isNativeTag": [Function],
+        "optionMergeStrategies": {},
+        "performance": false,
+        "warnHandler": undefined,
+      },
+      "directives": {},
+      "emitsCache": WeakMap {},
+      "mixins": [
+        {
+          "beforeCreate": [Function],
+        },
+      ],
+      "optionsCache": WeakMap {},
+      "propsCache": WeakMap {},
+      "provides": {},
+      "reload": [Function],
+    },
+    "_instance": {
+      "a": null,
+      "accessCache": {},
+      "appContext": {
+        "app": [Circular],
+        "components": {
+          "BaseButton": {
+            "name": "BaseButton",
+          },
+          "EditorButton": {
+            "name": "EditorButton",
+          },
+          "EditorModalAddURLLink": {
+            "name": "EditorModalAddURLLink",
+          },
+          "transition": {
+            "name": "transition",
+          },
+          "transition-group": {
+            "name": "transition-group",
+          },
+        },
+        "config": {
+          "compilerOptions": {},
+          "errorHandler": undefined,
+          "globalProperties": {},
+          "isNativeTag": [Function],
+          "optionMergeStrategies": {},
+          "performance": false,
+          "warnHandler": undefined,
+        },
+        "directives": {},
+        "emitsCache": WeakMap {},
+        "mixins": [
+          {
+            "beforeCreate": [Function],
+          },
+        ],
+        "optionsCache": WeakMap {},
+        "propsCache": WeakMap {},
+        "provides": {},
+        "reload": [Function],
+      },
+      "asyncDep": null,
+      "asyncResolved": false,
+      "attrs": {},
+      "attrsProxy": null,
+      "bc": null,
+      "bm": null,
+      "bu": null,
+      "bum": null,
+      "c": null,
+      "components": null,
+      "ctx": {
+        "VTU_COMPONENT": {},
+      },
+      "da": null,
+      "data": {},
+      "devtoolsRawSetupState": {
+        "VTU_COMPONENT": RefImpl {
+          "__v_isRef": true,
+          "__v_isShallow": false,
+          "_rawValue": {},
+          "_value": {},
+          "dep": undefined,
+        },
+      },
+      "directives": null,
+      "ec": null,
+      "effect": ReactiveEffect {
+        "active": true,
+        "allowRecurse": true,
+        "deps": [
+          Set {
+            [Circular],
+          },
+          Set {
+            [Circular],
+          },
+          Set {
+            [Circular],
+          },
+          Set {
+            [Circular],
+          },
+        ],
+        "fn": [Function],
+        "onTrack": undefined,
+        "onTrigger": undefined,
+        "parent": undefined,
+        "scheduler": [Function],
+      },
+      "emit": [Function],
+      "emitsOptions": null,
+      "emitted": null,
+      "exposeProxy": null,
+      "exposed": null,
+      "inheritAttrs": undefined,
+      "isDeactivated": false,
+      "isMounted": true,
+      "isUnmounted": false,
+      "m": null,
+      "next": null,
+      "parent": null,
+      "props": {},
+      "propsDefaults": {},
+      "propsOptions": [
+        {},
+        [],
+      ],
+      "provides": {},
+      "proxy": {
+        "VTU_COMPONENT": {},
+      },
+      "refs": {
+        "VTU_COMPONENT": {},
+      },
+      "render": [Function],
+      "renderCache": [],
+      "root": [Circular],
+      "rtc": null,
+      "rtg": null,
+      "scope": EffectScope {
+        "_active": true,
+        "cleanups": [],
+        "detached": true,
+        "effects": [
+          ReactiveEffect {
+            "active": true,
+            "allowRecurse": true,
+            "deps": [
+              Set {
+                [Circular],
+              },
+              Set {
+                [Circular],
+              },
+              Set {
+                [Circular],
+              },
+              Set {
+                [Circular],
+              },
+            ],
+            "fn": [Function],
+            "onTrack": undefined,
+            "onTrigger": undefined,
+            "parent": undefined,
+            "scheduler": [Function],
+          },
+        ],
+        "parent": undefined,
+      },
+      "setupContext": null,
+      "setupState": {
+        "VTU_COMPONENT": {},
+      },
+      "slots": {},
+      "slotsProxy": null,
+      "sp": null,
+      "subTree": {
+        "__v_isVNode": true,
+        "__v_skip": true,
+        "anchor": null,
+        "appContext": null,
+        "children": {
+          "_ctx": [Circular],
+        },
+        "component": {
+          "a": null,
+          "accessCache": {},
+          "appContext": {
+            "app": [Circular],
+            "components": {
+              "BaseButton": {
+                "name": "BaseButton",
+              },
+              "EditorButton": {
+                "name": "EditorButton",
+              },
+              "EditorModalAddURLLink": {
+                "name": "EditorModalAddURLLink",
+              },
+              "transition": {
+                "name": "transition",
+              },
+              "transition-group": {
+                "name": "transition-group",
+              },
+            },
+            "config": {
+              "compilerOptions": {},
+              "errorHandler": undefined,
+              "globalProperties": {},
+              "isNativeTag": [Function],
+              "optionMergeStrategies": {},
+              "performance": false,
+              "warnHandler": undefined,
+            },
+            "directives": {},
+            "emitsCache": WeakMap {},
+            "mixins": [
+              {
+                "beforeCreate": [Function],
+              },
+            ],
+            "optionsCache": WeakMap {},
+            "propsCache": WeakMap {},
+            "provides": {},
+            "reload": [Function],
+          },
+          "asyncDep": null,
+          "asyncResolved": false,
+          "attrs": {},
+          "attrsProxy": null,
+          "bc": null,
+          "bm": null,
+          "bu": null,
+          "bum": null,
+          "c": null,
+          "components": {},
+          "ctx": {
+            "editor": false,
+          },
+          "da": null,
+          "data": {},
+          "devtoolsRawSetupState": {
+            "addImageRef": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": null,
+              "_value": null,
+              "dep": undefined,
+            },
+            "addURLModalMessage": [Function],
+            "blockquote_icon": "/assets/icons/double-quotes-r.svg",
+            "bold_icon": "/assets/icons/bold.svg",
+            "bullet_list_icon": "/assets/icons/bullet_list.svg",
+            "codeblock_icon": "/assets/icons/codeblock_icon.svg",
+            "emit": [Function],
+            "go_back_icon": "/assets/icons/go_back_icon.svg",
+            "go_forward_icon": "/assets/icons/go_forward_icon.svg",
+            "handleAddImageClick": [Function],
+            "handleAddURLLinkClick": [Function],
+            "handleFileChange": [Function],
+            "heading1_icon": "/assets/icons/h1.svg",
+            "heading2_icon": "/assets/icons/h2.svg",
+            "heading3_icon": "/assets/icons/h3.svg",
+            "image_add_icon": "/assets/icons/image-add-line.svg",
+            "italic_icon": "/assets/icons/italic.svg",
+            "number_list_icon": "/assets/icons/number_list.svg",
+            "props": {
+              "editor": false,
+            },
+            "seperator_icon": "/assets/separator.svg",
+            "showModalAddLinkURL": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": false,
+              "_value": false,
+              "dep": Set {
+                ReactiveEffect {
+                  "active": true,
+                  "allowRecurse": true,
+                  "deps": [
+                    [Circular],
+                    Set {
+                      [Circular],
+                    },
+                  ],
+                  "fn": [Function],
+                  "onTrack": undefined,
+                  "onTrigger": undefined,
+                  "parent": undefined,
+                  "scheduler": [Function],
+                },
+              },
+            },
+            "underline_icon": "/assets/icons/underline.svg",
+            "url_link_add_icon": "/assets/icons/link_add.svg",
+          },
+          "directives": null,
+          "ec": null,
+          "effect": ReactiveEffect {
+            "active": true,
+            "allowRecurse": true,
+            "deps": [
+              Set {
+                [Circular],
+              },
+              Set {
+                [Circular],
+              },
+            ],
+            "fn": [Function],
+            "onTrack": undefined,
+            "onTrigger": undefined,
+            "parent": undefined,
+            "scheduler": [Function],
+          },
+          "emit": [Function],
+          "emitsOptions": {
+            "addImage": null,
+            "publishPost": null,
+            "tryDiscardEditingPost": null,
+          },
+          "emitted": null,
+          "exposeProxy": {},
+          "exposed": {},
+          "inheritAttrs": undefined,
+          "isDeactivated": false,
+          "isMounted": true,
+          "isUnmounted": false,
+          "m": null,
+          "next": null,
+          "parent": [Circular],
+          "props": {
+            "editor": false,
+          },
+          "propsDefaults": {},
+          "propsOptions": [
+            {
+              "editor": {
+                "0": false,
+                "1": true,
+                "required": true,
+                "type": null,
+              },
+            },
+            [],
+          ],
+          "provides": {},
+          "proxy": {
+            "editor": false,
+          },
+          "refs": {},
+          "render": [Function],
+          "renderCache": [
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            ,
+            [Function],
+            [Function],
+          ],
+          "root": [Circular],
+          "rtc": null,
+          "rtg": null,
+          "scope": EffectScope {
+            "_active": true,
+            "cleanups": [],
+            "detached": true,
+            "effects": [
+              ReactiveEffect {
+                "active": true,
+                "allowRecurse": true,
+                "deps": [
+                  Set {
+                    [Circular],
+                  },
+                  Set {
+                    [Circular],
+                  },
+                ],
+                "fn": [Function],
+                "onTrack": undefined,
+                "onTrigger": undefined,
+                "parent": undefined,
+                "scheduler": [Function],
+              },
+            ],
+            "parent": undefined,
+          },
+          "setupContext": {
+            "attrs": {},
+            "emit": [Function],
+            "expose": [Function],
+            "slots": {},
+          },
+          "setupState": {
+            "addImageRef": null,
+            "addURLModalMessage": [Function],
+            "blockquote_icon": "/assets/icons/double-quotes-r.svg",
+            "bold_icon": "/assets/icons/bold.svg",
+            "bullet_list_icon": "/assets/icons/bullet_list.svg",
+            "codeblock_icon": "/assets/icons/codeblock_icon.svg",
+            "emit": [Function],
+            "go_back_icon": "/assets/icons/go_back_icon.svg",
+            "go_forward_icon": "/assets/icons/go_forward_icon.svg",
+            "handleAddImageClick": [Function],
+            "handleAddURLLinkClick": [Function],
+            "handleFileChange": [Function],
+            "heading1_icon": "/assets/icons/h1.svg",
+            "heading2_icon": "/assets/icons/h2.svg",
+            "heading3_icon": "/assets/icons/h3.svg",
+            "image_add_icon": "/assets/icons/image-add-line.svg",
+            "italic_icon": "/assets/icons/italic.svg",
+            "number_list_icon": "/assets/icons/number_list.svg",
+            "props": {
+              "editor": false,
+            },
+            "seperator_icon": "/assets/separator.svg",
+            "showModalAddLinkURL": false,
+            "underline_icon": "/assets/icons/underline.svg",
+            "url_link_add_icon": "/assets/icons/link_add.svg",
+          },
+          "slots": {},
+          "slotsProxy": {},
+          "sp": null,
+          "subTree": {
+            "__v_isVNode": true,
+            "__v_skip": true,
+            "anchor": null,
+            "appContext": null,
+            "children": [
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": "v-if",
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": [],
+                "dynamicProps": null,
+                "el": <!--v-if-->,
+                "key": null,
+                "patchFlag": 0,
+                "props": null,
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 8,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": Symbol(v-cmt),
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": " V-IF ",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <!-- V-IF -->,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 8,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-cmt),
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": "v-if",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": [],
+                    "dynamicProps": null,
+                    "el": <!--v-if-->,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 8,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-cmt),
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": [
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": " Discard Button ",
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <!-- Discard Button -->,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": null,
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 8,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": Symbol(v-cmt),
+                      },
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": [
+                          {
+                            "__v_isVNode": true,
+                            "__v_skip": true,
+                            "anchor": null,
+                            "appContext": null,
+                            "children": null,
+                            "component": {
+                              "a": null,
+                              "accessCache": {},
+                              "appContext": {
+                                "app": [Circular],
+                                "components": {
+                                  "BaseButton": {
+                                    "name": "BaseButton",
+                                  },
+                                  "EditorButton": {
+                                    "name": "EditorButton",
+                                  },
+                                  "EditorModalAddURLLink": {
+                                    "name": "EditorModalAddURLLink",
+                                  },
+                                  "transition": {
+                                    "name": "transition",
+                                  },
+                                  "transition-group": {
+                                    "name": "transition-group",
+                                  },
+                                },
+                                "config": {
+                                  "compilerOptions": {},
+                                  "errorHandler": undefined,
+                                  "globalProperties": {},
+                                  "isNativeTag": [Function],
+                                  "optionMergeStrategies": {},
+                                  "performance": false,
+                                  "warnHandler": undefined,
+                                },
+                                "directives": {},
+                                "emitsCache": WeakMap {},
+                                "mixins": [
+                                  {
+                                    "beforeCreate": [Function],
+                                  },
+                                ],
+                                "optionsCache": WeakMap {},
+                                "propsCache": WeakMap {},
+                                "provides": {},
+                                "reload": [Function],
+                              },
+                              "asyncDep": null,
+                              "asyncResolved": false,
+                              "attrs": {
+                                "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md",
+                                "data-test": "do_discard_button_option",
+                                "id": "discard",
+                                "onClick": [Function],
+                                "text": "Discard",
+                              },
+                              "attrsProxy": null,
+                              "bc": null,
+                              "bm": null,
+                              "bu": null,
+                              "bum": null,
+                              "c": null,
+                              "components": null,
+                              "ctx": {},
+                              "da": null,
+                              "data": {},
+                              "directives": null,
+                              "ec": null,
+                              "effect": ReactiveEffect {
+                                "active": true,
+                                "allowRecurse": true,
+                                "deps": [
+                                  Set {
+                                    [Circular],
+                                  },
+                                ],
+                                "fn": [Function],
+                                "onTrack": undefined,
+                                "onTrigger": undefined,
+                                "parent": undefined,
+                                "scheduler": [Function],
+                              },
+                              "emit": [Function],
+                              "emitsOptions": null,
+                              "emitted": null,
+                              "exposeProxy": null,
+                              "exposed": null,
+                              "inheritAttrs": undefined,
+                              "isDeactivated": false,
+                              "isMounted": true,
+                              "isUnmounted": false,
+                              "m": null,
+                              "next": null,
+                              "parent": [Circular],
+                              "props": {},
+                              "propsDefaults": {},
+                              "propsOptions": [
+                                {},
+                                [],
+                              ],
+                              "provides": {},
+                              "proxy": {},
+                              "refs": {},
+                              "render": [Function],
+                              "renderCache": [],
+                              "root": [Circular],
+                              "rtc": null,
+                              "rtg": null,
+                              "scope": EffectScope {
+                                "_active": true,
+                                "cleanups": [],
+                                "detached": true,
+                                "effects": [
+                                  ReactiveEffect {
+                                    "active": true,
+                                    "allowRecurse": true,
+                                    "deps": [
+                                      Set {
+                                        [Circular],
+                                      },
+                                    ],
+                                    "fn": [Function],
+                                    "onTrack": undefined,
+                                    "onTrigger": undefined,
+                                    "parent": undefined,
+                                    "scheduler": [Function],
+                                  },
+                                ],
+                                "parent": undefined,
+                              },
+                              "setupContext": {
+                                "attrs": {
+                                  "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md",
+                                  "data-test": "do_discard_button_option",
+                                  "id": "discard",
+                                  "onClick": [Function],
+                                  "text": "Discard",
+                                },
+                                "emit": [Function],
+                                "expose": [Function],
+                                "slots": {},
+                              },
+                              "setupState": {},
+                              "slots": {},
+                              "slotsProxy": {},
+                              "sp": null,
+                              "subTree": {
+                                "__v_isVNode": true,
+                                "__v_skip": true,
+                                "anchor": null,
+                                "appContext": null,
+                                "ce": undefined,
+                                "children": null,
+                                "component": null,
+                                "ctx": [Circular],
+                                "dirs": null,
+                                "dynamicChildren": null,
+                                "dynamicProps": null,
+                                "el": <base-button-stub
+                                  class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                                  data-test="do_discard_button_option"
+                                  id="discard"
+                                  text="Discard"
+                                />,
+                                "key": null,
+                                "patchFlag": 16,
+                                "props": {
+                                  "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md",
+                                  "data-test": "do_discard_button_option",
+                                  "id": "discard",
+                                  "onClick": [Function],
+                                  "text": "Discard",
+                                },
+                                "ref": null,
+                                "scopeId": null,
+                                "shapeFlag": 1,
+                                "slotScopeIds": null,
+                                "ssContent": null,
+                                "ssFallback": null,
+                                "staticCount": 0,
+                                "suspense": null,
+                                "target": null,
+                                "targetAnchor": null,
+                                "transition": null,
+                                "type": "base-button-stub",
+                              },
+                              "suspense": null,
+                              "suspenseId": 0,
+                              "type": {
+                                "model": undefined,
+                                "name": "BaseButton",
+                                "props": {},
+                                "setup": [Function],
+                              },
+                              "u": null,
+                              "uid": 6,
+                              "um": null,
+                              "update": [Function],
+                              "vnode": [Circular],
+                              "withProxy": null,
+                            },
+                            "ctx": [Circular],
+                            "dirs": null,
+                            "dynamicChildren": null,
+                            "dynamicProps": null,
+                            "el": <base-button-stub
+                              class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                              data-test="do_discard_button_option"
+                              id="discard"
+                              text="Discard"
+                            />,
+                            "key": null,
+                            "patchFlag": 0,
+                            "props": {
+                              "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md",
+                              "data-test": "do_discard_button_option",
+                              "id": "discard",
+                              "onClick": [Function],
+                              "text": "Discard",
+                            },
+                            "ref": null,
+                            "scopeId": null,
+                            "shapeFlag": 4,
+                            "slotScopeIds": null,
+                            "ssContent": null,
+                            "ssFallback": null,
+                            "staticCount": 0,
+                            "suspense": null,
+                            "target": null,
+                            "targetAnchor": null,
+                            "transition": null,
+                            "type": {
+                              "model": undefined,
+                              "name": "BaseButton",
+                              "props": {},
+                              "setup": [Function],
+                            },
+                          },
+                        ],
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <span
+                          class="button-option"
+                        >
+                          <base-button-stub
+                            class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                            data-test="do_discard_button_option"
+                            id="discard"
+                            text="Discard"
+                          />
+                        </span>,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": {
+                          "class": "button-option",
+                        },
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 17,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": "span",
+                      },
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": " Publish button",
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <!-- Publish button-->,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": null,
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 8,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": Symbol(v-cmt),
+                      },
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": [
+                          {
+                            "__v_isVNode": true,
+                            "__v_skip": true,
+                            "anchor": null,
+                            "appContext": null,
+                            "children": null,
+                            "component": {
+                              "a": null,
+                              "accessCache": {},
+                              "appContext": {
+                                "app": [Circular],
+                                "components": {
+                                  "BaseButton": {
+                                    "name": "BaseButton",
+                                  },
+                                  "EditorButton": {
+                                    "name": "EditorButton",
+                                  },
+                                  "EditorModalAddURLLink": {
+                                    "name": "EditorModalAddURLLink",
+                                  },
+                                  "transition": {
+                                    "name": "transition",
+                                  },
+                                  "transition-group": {
+                                    "name": "transition-group",
+                                  },
+                                },
+                                "config": {
+                                  "compilerOptions": {},
+                                  "errorHandler": undefined,
+                                  "globalProperties": {},
+                                  "isNativeTag": [Function],
+                                  "optionMergeStrategies": {},
+                                  "performance": false,
+                                  "warnHandler": undefined,
+                                },
+                                "directives": {},
+                                "emitsCache": WeakMap {},
+                                "mixins": [
+                                  {
+                                    "beforeCreate": [Function],
+                                  },
+                                ],
+                                "optionsCache": WeakMap {},
+                                "propsCache": WeakMap {},
+                                "provides": {},
+                                "reload": [Function],
+                              },
+                              "asyncDep": null,
+                              "asyncResolved": false,
+                              "attrs": {
+                                "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md",
+                                "data-test": "try_publish_button_option",
+                                "id": "publish",
+                                "onClick": [Function],
+                                "text": "Publish",
+                              },
+                              "attrsProxy": null,
+                              "bc": null,
+                              "bm": null,
+                              "bu": null,
+                              "bum": null,
+                              "c": null,
+                              "components": null,
+                              "ctx": {},
+                              "da": null,
+                              "data": {},
+                              "directives": null,
+                              "ec": null,
+                              "effect": ReactiveEffect {
+                                "active": true,
+                                "allowRecurse": true,
+                                "deps": [
+                                  Set {
+                                    [Circular],
+                                  },
+                                ],
+                                "fn": [Function],
+                                "onTrack": undefined,
+                                "onTrigger": undefined,
+                                "parent": undefined,
+                                "scheduler": [Function],
+                              },
+                              "emit": [Function],
+                              "emitsOptions": null,
+                              "emitted": null,
+                              "exposeProxy": null,
+                              "exposed": null,
+                              "inheritAttrs": undefined,
+                              "isDeactivated": false,
+                              "isMounted": true,
+                              "isUnmounted": false,
+                              "m": null,
+                              "next": null,
+                              "parent": [Circular],
+                              "props": {},
+                              "propsDefaults": {},
+                              "propsOptions": [
+                                {},
+                                [],
+                              ],
+                              "provides": {},
+                              "proxy": {},
+                              "refs": {},
+                              "render": [Function],
+                              "renderCache": [],
+                              "root": [Circular],
+                              "rtc": null,
+                              "rtg": null,
+                              "scope": EffectScope {
+                                "_active": true,
+                                "cleanups": [],
+                                "detached": true,
+                                "effects": [
+                                  ReactiveEffect {
+                                    "active": true,
+                                    "allowRecurse": true,
+                                    "deps": [
+                                      Set {
+                                        [Circular],
+                                      },
+                                    ],
+                                    "fn": [Function],
+                                    "onTrack": undefined,
+                                    "onTrigger": undefined,
+                                    "parent": undefined,
+                                    "scheduler": [Function],
+                                  },
+                                ],
+                                "parent": undefined,
+                              },
+                              "setupContext": {
+                                "attrs": {
+                                  "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md",
+                                  "data-test": "try_publish_button_option",
+                                  "id": "publish",
+                                  "onClick": [Function],
+                                  "text": "Publish",
+                                },
+                                "emit": [Function],
+                                "expose": [Function],
+                                "slots": {},
+                              },
+                              "setupState": {},
+                              "slots": {},
+                              "slotsProxy": {},
+                              "sp": null,
+                              "subTree": {
+                                "__v_isVNode": true,
+                                "__v_skip": true,
+                                "anchor": null,
+                                "appContext": null,
+                                "ce": undefined,
+                                "children": null,
+                                "component": null,
+                                "ctx": [Circular],
+                                "dirs": null,
+                                "dynamicChildren": null,
+                                "dynamicProps": null,
+                                "el": <base-button-stub
+                                  class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                                  data-test="try_publish_button_option"
+                                  id="publish"
+                                  text="Publish"
+                                />,
+                                "key": null,
+                                "patchFlag": 16,
+                                "props": {
+                                  "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md",
+                                  "data-test": "try_publish_button_option",
+                                  "id": "publish",
+                                  "onClick": [Function],
+                                  "text": "Publish",
+                                },
+                                "ref": null,
+                                "scopeId": null,
+                                "shapeFlag": 1,
+                                "slotScopeIds": null,
+                                "ssContent": null,
+                                "ssFallback": null,
+                                "staticCount": 0,
+                                "suspense": null,
+                                "target": null,
+                                "targetAnchor": null,
+                                "transition": null,
+                                "type": "base-button-stub",
+                              },
+                              "suspense": null,
+                              "suspenseId": 0,
+                              "type": {
+                                "model": undefined,
+                                "name": "BaseButton",
+                                "props": {},
+                                "setup": [Function],
+                              },
+                              "u": null,
+                              "uid": 7,
+                              "um": null,
+                              "update": [Function],
+                              "vnode": [Circular],
+                              "withProxy": null,
+                            },
+                            "ctx": [Circular],
+                            "dirs": null,
+                            "dynamicChildren": null,
+                            "dynamicProps": null,
+                            "el": <base-button-stub
+                              class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                              data-test="try_publish_button_option"
+                              id="publish"
+                              text="Publish"
+                            />,
+                            "key": null,
+                            "patchFlag": 0,
+                            "props": {
+                              "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md",
+                              "data-test": "try_publish_button_option",
+                              "id": "publish",
+                              "onClick": [Function],
+                              "text": "Publish",
+                            },
+                            "ref": null,
+                            "scopeId": null,
+                            "shapeFlag": 4,
+                            "slotScopeIds": null,
+                            "ssContent": null,
+                            "ssFallback": null,
+                            "staticCount": 0,
+                            "suspense": null,
+                            "target": null,
+                            "targetAnchor": null,
+                            "transition": null,
+                            "type": {
+                              "model": undefined,
+                              "name": "BaseButton",
+                              "props": {},
+                              "setup": [Function],
+                            },
+                          },
+                        ],
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <span
+                          class="button-option"
+                        >
+                          <base-button-stub
+                            class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                            data-test="try_publish_button_option"
+                            id="publish"
+                            text="Publish"
+                          />
+                        </span>,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": {
+                          "class": "button-option",
+                        },
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 17,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": "span",
+                      },
+                    ],
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <div
+                      class="flex items-center space-x-4 py-2"
+                      id="discard_publish_options_buttons"
+                    >
+                      <!-- Discard Button -->
+                      <span
+                        class="button-option"
+                      >
+                        <base-button-stub
+                          class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                          data-test="do_discard_button_option"
+                          id="discard"
+                          text="Discard"
+                        />
+                      </span>
+                      <!-- Publish button-->
+                      <span
+                        class="button-option"
+                      >
+                        <base-button-stub
+                          class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                          data-test="try_publish_button_option"
+                          id="publish"
+                          text="Publish"
+                        />
+                      </span>
+                    </div>,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": {
+                      "class": "flex items-center space-x-4 py-2",
+                      "id": "discard_publish_options_buttons",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 17,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "div",
+                  },
+                ],
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": null,
+                "el": <div
+                  class="flex px-3 w-full justify-between items-center flex-wrap"
+                  data-test="top_menu_wrapper"
+                >
+                  <!-- V-IF -->
+                  <!--v-if-->
+                  <div
+                    class="flex items-center space-x-4 py-2"
+                    id="discard_publish_options_buttons"
+                  >
+                    <!-- Discard Button -->
+                    <span
+                      class="button-option"
+                    >
+                      <base-button-stub
+                        class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                        data-test="do_discard_button_option"
+                        id="discard"
+                        text="Discard"
+                      />
+                    </span>
+                    <!-- Publish button-->
+                    <span
+                      class="button-option"
+                    >
+                      <base-button-stub
+                        class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                        data-test="try_publish_button_option"
+                        id="publish"
+                        text="Publish"
+                      />
+                    </span>
+                  </div>
+                </div>,
+                "key": null,
+                "patchFlag": 0,
+                "props": {
+                  "class": "flex px-3 w-full justify-between items-center flex-wrap",
+                  "data-test": "top_menu_wrapper",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 17,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": "div",
+              },
+            ],
+            "component": null,
+            "ctx": [Circular],
+            "dirs": null,
+            "dynamicChildren": [
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": "v-if",
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": [],
+                "dynamicProps": null,
+                "el": <!--v-if-->,
+                "key": null,
+                "patchFlag": 0,
+                "props": null,
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 8,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": Symbol(v-cmt),
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": "v-if",
+                "component": null,
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": [],
+                "dynamicProps": null,
+                "el": <!--v-if-->,
+                "key": null,
+                "patchFlag": 0,
+                "props": null,
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 8,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": Symbol(v-cmt),
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": {
+                  "a": null,
+                  "accessCache": {
+                    "@@__IMMUTABLE_ITERABLE__@@": 0,
+                    "@@__IMMUTABLE_RECORD__@@": 0,
+                    "_isMockFunction": 0,
+                    "constructor": 0,
+                    "toJSON": 0,
+                    Symbol(Symbol.toStringTag): 0,
+                  },
+                  "appContext": {
+                    "app": [Circular],
+                    "components": {
+                      "BaseButton": {
+                        "name": "BaseButton",
+                      },
+                      "EditorButton": {
+                        "name": "EditorButton",
+                      },
+                      "EditorModalAddURLLink": {
+                        "name": "EditorModalAddURLLink",
+                      },
+                      "transition": {
+                        "name": "transition",
+                      },
+                      "transition-group": {
+                        "name": "transition-group",
+                      },
+                    },
+                    "config": {
+                      "compilerOptions": {},
+                      "errorHandler": undefined,
+                      "globalProperties": {},
+                      "isNativeTag": [Function],
+                      "optionMergeStrategies": {},
+                      "performance": false,
+                      "warnHandler": undefined,
+                    },
+                    "directives": {},
+                    "emitsCache": WeakMap {},
+                    "mixins": [
+                      {
+                        "beforeCreate": [Function],
+                      },
+                    ],
+                    "optionsCache": WeakMap {},
+                    "propsCache": WeakMap {},
+                    "provides": {},
+                    "reload": [Function],
+                  },
+                  "asyncDep": null,
+                  "asyncResolved": false,
+                  "attrs": {
+                    "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md",
+                    "data-test": "do_discard_button_option",
+                    "id": "discard",
+                    "onClick": [Function],
+                    "text": "Discard",
+                  },
+                  "attrsProxy": {
+                    "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md",
+                    "data-test": "do_discard_button_option",
+                    "id": "discard",
+                    "onClick": [Function],
+                    "text": "Discard",
+                  },
+                  "bc": null,
+                  "bm": null,
+                  "bu": null,
+                  "bum": null,
+                  "c": null,
+                  "components": null,
+                  "ctx": {},
+                  "da": null,
+                  "data": {},
+                  "directives": null,
+                  "ec": null,
+                  "effect": ReactiveEffect {
+                    "active": true,
+                    "allowRecurse": true,
+                    "deps": [
+                      Set {
+                        [Circular],
+                      },
+                    ],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  "emit": [Function],
+                  "emitsOptions": null,
+                  "emitted": null,
+                  "exposeProxy": null,
+                  "exposed": null,
+                  "inheritAttrs": undefined,
+                  "isDeactivated": false,
+                  "isMounted": true,
+                  "isUnmounted": false,
+                  "m": null,
+                  "next": null,
+                  "parent": [Circular],
+                  "props": {},
+                  "propsDefaults": {},
+                  "propsOptions": [
+                    {},
+                    [],
+                  ],
+                  "provides": {},
+                  "proxy": {},
+                  "refs": {},
+                  "render": [Function],
+                  "renderCache": [],
+                  "root": [Circular],
+                  "rtc": null,
+                  "rtg": null,
+                  "scope": EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": true,
+                    "effects": [
+                      ReactiveEffect {
+                        "active": true,
+                        "allowRecurse": true,
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    ],
+                    "parent": undefined,
+                  },
+                  "setupContext": {
+                    "attrs": {
+                      "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md",
+                      "data-test": "do_discard_button_option",
+                      "id": "discard",
+                      "onClick": [Function],
+                      "text": "Discard",
+                    },
+                    "emit": [Function],
+                    "expose": [Function],
+                    "slots": {},
+                  },
+                  "setupState": {},
+                  "slots": {},
+                  "slotsProxy": {},
+                  "sp": null,
+                  "subTree": {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "ce": undefined,
+                    "children": null,
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <base-button-stub
+                      class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                      data-test="do_discard_button_option"
+                      id="discard"
+                      text="Discard"
+                    />,
+                    "key": null,
+                    "patchFlag": 16,
+                    "props": {
+                      "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md",
+                      "data-test": "do_discard_button_option",
+                      "id": "discard",
+                      "onClick": [Function],
+                      "text": "Discard",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 1,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "base-button-stub",
+                  },
+                  "suspense": null,
+                  "suspenseId": 0,
+                  "type": {
+                    "model": undefined,
+                    "name": "BaseButton",
+                    "props": {},
+                    "setup": [Function],
+                  },
+                  "u": null,
+                  "uid": 6,
+                  "um": null,
+                  "update": [Function],
+                  "vnode": [Circular],
+                  "withProxy": null,
+                },
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": null,
+                "el": <base-button-stub
+                  class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                  data-test="do_discard_button_option"
+                  id="discard"
+                  text="Discard"
+                />,
+                "key": null,
+                "patchFlag": 0,
+                "props": {
+                  "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md",
+                  "data-test": "do_discard_button_option",
+                  "id": "discard",
+                  "onClick": [Function],
+                  "text": "Discard",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 4,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": {
+                  "model": undefined,
+                  "name": "BaseButton",
+                  "props": {},
+                  "setup": [Function],
+                },
+              },
+              {
+                "__v_isVNode": true,
+                "__v_skip": true,
+                "anchor": null,
+                "appContext": null,
+                "children": null,
+                "component": {
+                  "a": null,
+                  "accessCache": {
+                    "@@__IMMUTABLE_ITERABLE__@@": 0,
+                    "@@__IMMUTABLE_RECORD__@@": 0,
+                    "_isMockFunction": 0,
+                    "constructor": 0,
+                    "toJSON": 0,
+                    Symbol(Symbol.toStringTag): 0,
+                  },
+                  "appContext": {
+                    "app": [Circular],
+                    "components": {
+                      "BaseButton": {
+                        "name": "BaseButton",
+                      },
+                      "EditorButton": {
+                        "name": "EditorButton",
+                      },
+                      "EditorModalAddURLLink": {
+                        "name": "EditorModalAddURLLink",
+                      },
+                      "transition": {
+                        "name": "transition",
+                      },
+                      "transition-group": {
+                        "name": "transition-group",
+                      },
+                    },
+                    "config": {
+                      "compilerOptions": {},
+                      "errorHandler": undefined,
+                      "globalProperties": {},
+                      "isNativeTag": [Function],
+                      "optionMergeStrategies": {},
+                      "performance": false,
+                      "warnHandler": undefined,
+                    },
+                    "directives": {},
+                    "emitsCache": WeakMap {},
+                    "mixins": [
+                      {
+                        "beforeCreate": [Function],
+                      },
+                    ],
+                    "optionsCache": WeakMap {},
+                    "propsCache": WeakMap {},
+                    "provides": {},
+                    "reload": [Function],
+                  },
+                  "asyncDep": null,
+                  "asyncResolved": false,
+                  "attrs": {
+                    "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md",
+                    "data-test": "try_publish_button_option",
+                    "id": "publish",
+                    "onClick": [Function],
+                    "text": "Publish",
+                  },
+                  "attrsProxy": {
+                    "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md",
+                    "data-test": "try_publish_button_option",
+                    "id": "publish",
+                    "onClick": [Function],
+                    "text": "Publish",
+                  },
+                  "bc": null,
+                  "bm": null,
+                  "bu": null,
+                  "bum": null,
+                  "c": null,
+                  "components": null,
+                  "ctx": {},
+                  "da": null,
+                  "data": {},
+                  "directives": null,
+                  "ec": null,
+                  "effect": ReactiveEffect {
+                    "active": true,
+                    "allowRecurse": true,
+                    "deps": [
+                      Set {
+                        [Circular],
+                      },
+                    ],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  "emit": [Function],
+                  "emitsOptions": null,
+                  "emitted": null,
+                  "exposeProxy": null,
+                  "exposed": null,
+                  "inheritAttrs": undefined,
+                  "isDeactivated": false,
+                  "isMounted": true,
+                  "isUnmounted": false,
+                  "m": null,
+                  "next": null,
+                  "parent": [Circular],
+                  "props": {},
+                  "propsDefaults": {},
+                  "propsOptions": [
+                    {},
+                    [],
+                  ],
+                  "provides": {},
+                  "proxy": {},
+                  "refs": {},
+                  "render": [Function],
+                  "renderCache": [],
+                  "root": [Circular],
+                  "rtc": null,
+                  "rtg": null,
+                  "scope": EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": true,
+                    "effects": [
+                      ReactiveEffect {
+                        "active": true,
+                        "allowRecurse": true,
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    ],
+                    "parent": undefined,
+                  },
+                  "setupContext": {
+                    "attrs": {
+                      "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md",
+                      "data-test": "try_publish_button_option",
+                      "id": "publish",
+                      "onClick": [Function],
+                      "text": "Publish",
+                    },
+                    "emit": [Function],
+                    "expose": [Function],
+                    "slots": {},
+                  },
+                  "setupState": {},
+                  "slots": {},
+                  "slotsProxy": {},
+                  "sp": null,
+                  "subTree": {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "ce": undefined,
+                    "children": null,
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <base-button-stub
+                      class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                      data-test="try_publish_button_option"
+                      id="publish"
+                      text="Publish"
+                    />,
+                    "key": null,
+                    "patchFlag": 16,
+                    "props": {
+                      "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md",
+                      "data-test": "try_publish_button_option",
+                      "id": "publish",
+                      "onClick": [Function],
+                      "text": "Publish",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 1,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "base-button-stub",
+                  },
+                  "suspense": null,
+                  "suspenseId": 0,
+                  "type": {
+                    "model": undefined,
+                    "name": "BaseButton",
+                    "props": {},
+                    "setup": [Function],
+                  },
+                  "u": null,
+                  "uid": 7,
+                  "um": null,
+                  "update": [Function],
+                  "vnode": [Circular],
+                  "withProxy": null,
+                },
+                "ctx": [Circular],
+                "dirs": null,
+                "dynamicChildren": null,
+                "dynamicProps": null,
+                "el": <base-button-stub
+                  class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                  data-test="try_publish_button_option"
+                  id="publish"
+                  text="Publish"
+                />,
+                "key": null,
+                "patchFlag": 0,
+                "props": {
+                  "class": "py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md",
+                  "data-test": "try_publish_button_option",
+                  "id": "publish",
+                  "onClick": [Function],
+                  "text": "Publish",
+                },
+                "ref": null,
+                "scopeId": null,
+                "shapeFlag": 4,
+                "slotScopeIds": null,
+                "ssContent": null,
+                "ssFallback": null,
+                "staticCount": 0,
+                "suspense": null,
+                "target": null,
+                "targetAnchor": null,
+                "transition": null,
+                "type": {
+                  "model": undefined,
+                  "name": "BaseButton",
+                  "props": {},
+                  "setup": [Function],
+                },
+              },
+            ],
+            "dynamicProps": null,
+            "el": <div>
+              <!--v-if-->
+              <div
+                class="flex px-3 w-full justify-between items-center flex-wrap"
+                data-test="top_menu_wrapper"
+              >
+                <!-- V-IF -->
+                <!--v-if-->
+                <div
+                  class="flex items-center space-x-4 py-2"
+                  id="discard_publish_options_buttons"
+                >
+                  <!-- Discard Button -->
+                  <span
+                    class="button-option"
+                  >
+                    <base-button-stub
+                      class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                      data-test="do_discard_button_option"
+                      id="discard"
+                      text="Discard"
+                    />
+                  </span>
+                  <!-- Publish button-->
+                  <span
+                    class="button-option"
+                  >
+                    <base-button-stub
+                      class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                      data-test="try_publish_button_option"
+                      id="publish"
+                      text="Publish"
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>,
+            "key": null,
+            "patchFlag": 0,
+            "props": null,
+            "ref": null,
+            "scopeId": null,
+            "shapeFlag": 17,
+            "slotScopeIds": null,
+            "ssContent": null,
+            "ssFallback": null,
+            "staticCount": 0,
+            "suspense": null,
+            "target": null,
+            "targetAnchor": null,
+            "transition": null,
+            "type": "div",
+          },
+          "suspense": null,
+          "suspenseId": 0,
+          "type": {
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Editor/EditorMenuTop.vue",
+            "__name": "EditorMenuTop",
+            "components": {},
+            "emits": [
+              "publishPost",
+              "tryDiscardEditingPost",
+              "addImage",
+            ],
+            "props": {
+              "editor": {
+                "required": true,
+                "type": null,
+              },
+            },
+            "render": [Function],
+            "setup": [Function],
+          },
+          "u": null,
+          "uid": 5,
+          "um": null,
+          "update": [Function],
+          "vnode": [Circular],
+          "withProxy": null,
+        },
+        "ctx": [Circular],
+        "dirs": null,
+        "dynamicChildren": null,
+        "dynamicProps": null,
+        "el": <div>
+          <!--v-if-->
+          <div
+            class="flex px-3 w-full justify-between items-center flex-wrap"
+            data-test="top_menu_wrapper"
+          >
+            <!-- V-IF -->
+            <!--v-if-->
+            <div
+              class="flex items-center space-x-4 py-2"
+              id="discard_publish_options_buttons"
+            >
+              <!-- Discard Button -->
+              <span
+                class="button-option"
+              >
+                <base-button-stub
+                  class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                  data-test="do_discard_button_option"
+                  id="discard"
+                  text="Discard"
+                />
+              </span>
+              <!-- Publish button-->
+              <span
+                class="button-option"
+              >
+                <base-button-stub
+                  class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                  data-test="try_publish_button_option"
+                  id="publish"
+                  text="Publish"
+                />
+              </span>
+            </div>
+          </div>
+        </div>,
+        "key": null,
+        "patchFlag": 0,
+        "props": {
+          "editor": false,
+          "ref": "VTU_COMPONENT",
+        },
+        "ref": {
+          "f": false,
+          "i": [Circular],
+          "k": undefined,
+          "r": "VTU_COMPONENT",
+        },
+        "scopeId": null,
+        "shapeFlag": 36,
+        "slotScopeIds": null,
+        "ssContent": null,
+        "ssFallback": null,
+        "staticCount": 0,
+        "suspense": null,
+        "target": null,
+        "targetAnchor": null,
+        "transition": null,
+        "type": {
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Editor/EditorMenuTop.vue",
+          "__name": "EditorMenuTop",
+          "components": {},
+          "emits": [
+            "publishPost",
+            "tryDiscardEditingPost",
+            "addImage",
+          ],
+          "props": {
+            "editor": {
+              "required": true,
+              "type": null,
+            },
+          },
+          "render": [Function],
+          "setup": [Function],
+        },
+      },
+      "suspense": null,
+      "suspenseId": 0,
+      "type": {
+        "name": "VTU_ROOT",
+        "render": [Function],
+        "setup": [Function],
+      },
+      "u": null,
+      "uid": 4,
+      "um": null,
+      "update": [Function],
+      "vnode": {
+        "__v_isVNode": true,
+        "__v_skip": true,
+        "anchor": null,
+        "appContext": {
+          "app": [Circular],
+          "components": {
+            "BaseButton": {
+              "name": "BaseButton",
+            },
+            "EditorButton": {
+              "name": "EditorButton",
+            },
+            "EditorModalAddURLLink": {
+              "name": "EditorModalAddURLLink",
+            },
+            "transition": {
+              "name": "transition",
+            },
+            "transition-group": {
+              "name": "transition-group",
+            },
+          },
+          "config": {
+            "compilerOptions": {},
+            "errorHandler": undefined,
+            "globalProperties": {},
+            "isNativeTag": [Function],
+            "optionMergeStrategies": {},
+            "performance": false,
+            "warnHandler": undefined,
+          },
+          "directives": {},
+          "emitsCache": WeakMap {},
+          "mixins": [
+            {
+              "beforeCreate": [Function],
+            },
+          ],
+          "optionsCache": WeakMap {},
+          "propsCache": WeakMap {},
+          "provides": {},
+          "reload": [Function],
+        },
+        "children": null,
+        "component": [Circular],
+        "ctx": null,
+        "dirs": null,
+        "dynamicChildren": null,
+        "dynamicProps": null,
+        "el": <div>
+          <!--v-if-->
+          <div
+            class="flex px-3 w-full justify-between items-center flex-wrap"
+            data-test="top_menu_wrapper"
+          >
+            <!-- V-IF -->
+            <!--v-if-->
+            <div
+              class="flex items-center space-x-4 py-2"
+              id="discard_publish_options_buttons"
+            >
+              <!-- Discard Button -->
+              <span
+                class="button-option"
+              >
+                <base-button-stub
+                  class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+                  data-test="do_discard_button_option"
+                  id="discard"
+                  text="Discard"
+                />
+              </span>
+              <!-- Publish button-->
+              <span
+                class="button-option"
+              >
+                <base-button-stub
+                  class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+                  data-test="try_publish_button_option"
+                  id="publish"
+                  text="Publish"
+                />
+              </span>
+            </div>
+          </div>
+        </div>,
+        "key": null,
+        "patchFlag": 0,
+        "props": null,
+        "ref": null,
+        "scopeId": null,
+        "shapeFlag": 4,
+        "slotScopeIds": null,
+        "ssContent": null,
+        "ssFallback": null,
+        "staticCount": 0,
+        "suspense": null,
+        "target": null,
+        "targetAnchor": null,
+        "transition": null,
+        "type": {
+          "name": "VTU_ROOT",
+          "render": [Function],
+          "setup": [Function],
+        },
+      },
+      "withProxy": null,
+    },
+    "_props": null,
+    "_uid": 1,
+    "component": [Function],
+    "config": {
+      "compilerOptions": {},
+      "errorHandler": undefined,
+      "globalProperties": {},
+      "isNativeTag": [Function],
+      "optionMergeStrategies": {},
+      "performance": false,
+      "warnHandler": undefined,
+    },
+    "directive": [Function],
+    "mixin": [Function],
+    "mount": [Function],
+    "provide": [Function],
+    "runWithContext": [Function],
+    "unmount": [Function],
+    "use": [Function],
+    "version": "3.3.7",
+  },
+  "__setProps": [Function],
+  "cleanUpCallbacks": [
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+    [Function],
+  ],
+  "componentVM": {},
+  "isDisabled": [Function],
+  "rootVM": {
+    "VTU_COMPONENT": {},
+  },
+  "wrapperElement": <div>
+    <!--v-if-->
+    <div
+      class="flex px-3 w-full justify-between items-center flex-wrap"
+      data-test="top_menu_wrapper"
+    >
+      <!-- V-IF -->
+      <!--v-if-->
+      <div
+        class="flex items-center space-x-4 py-2"
+        id="discard_publish_options_buttons"
+      >
+        <!-- Discard Button -->
+        <span
+          class="button-option"
+        >
+          <base-button-stub
+            class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-secondary hover:shadow-md"
+            data-test="do_discard_button_option"
+            id="discard"
+            text="Discard"
+          />
+        </span>
+        <!-- Publish button-->
+        <span
+          class="button-option"
+        >
+          <base-button-stub
+            class="py-1 px-2 rounded-md text-sm cursor-pointer border border-secondary text-onSecondary bg-secondary hover:shadow-md"
+            data-test="try_publish_button_option"
+            id="publish"
+            text="Publish"
+          />
+        </span>
+      </div>
+    </div>
+  </div>,
+}
+`;

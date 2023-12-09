@@ -2,18 +2,8 @@ import BaseImage from './BaseImage.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useGeneralStore } from '~/store/generalStore';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
-
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
-
-// let generalStore; 
-// let postStore; 
-// let loggedInUserStore; 
-// let paginationStore; 
 
 const factory = () => {
     return shallowMount(BaseImage, {
@@ -30,13 +20,9 @@ const factory = () => {
     })  
 };
 
-describe('', () => {
+describe('Testing baseimage', () => {
 
     beforeEach(() => {
-        // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
-        // paginationStore = usePaginationStore(pinia); 
 
     });
 

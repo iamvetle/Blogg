@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Customimage should match snapshot 1`] = `
+Node {
+  "child": null,
+  "config": {
+    "addAttributes": [Function],
+    "addCommands": [Function],
+    "addInputRules": [Function],
+    "addOptions": [Function],
+    "defaultOptions": {},
+    "draggable": true,
+    "group": [Function],
+    "inline": [Function],
+    "name": "image",
+    "parseHTML": [Function],
+    "renderHTML": [Function],
+  },
+  "name": "image",
+  "options": {
+    "HTMLAttributes": {},
+    "allowBase64": false,
+    "inline": false,
+  },
+  "parent": null,
+  "storage": {},
+  "type": "node",
+}
+`;

@@ -1,46 +1,70 @@
 <template>
-	<div class="p-2" v-if="editor">
+	<div class="p-2">
 		<div id="editor-container"
-			class="w-full px-[60px] pt-[35px] pb-[30px] bg-background flex flex-col text-gray-800 rounded-lg min-h-[450px] mb-12"
-			@click="editor.commands.focus()">
+			class="w-full px-[60px] pt-[35px] pb-[30px] flex flex-col rounded-lg min-h-[450px] mb-24">
 
-			<div v-if="showModal">
-				<teleport to="#modal">
-					<div class="w-full absolute blur-sm">
-						<Modal @confirm-published="publishPost" @cancel-published="cancelPublishing" />
-					</div>
-				</teleport>
+			<div data-test="text_editor_modals">
+				<!-- The Modal to confirm to the post -->
+				<div v-if="showModalPublishPost">
+					<!-- Using Nuxt UI, don't need teleport -->
+					<EditorModalPublishPost @confirm="handleModalPublishPost" @abort="handleModalCancelTheDiscard" />
+				</div>
+				<!-- Using Nuxt UI, don't need teleport -->
+				<div v-if="showModalRequirements">
+					<EditorModalRequirements @close="closeModalRequirements" />
+				</div>
+				<!-- The Modal to discard the content post -->
+				<div v-if="showModalDiscardPost">
+					<EditorModalDiscardPost @discard-post="handleModalDiscardPost" @cancel="handleModalCancelTheDiscard" />
+				</div>
 			</div>
 
-			<div class="w-full not-prose mb-6">
-				<EditorFloatingMenu :editor="editor" 
-				
-				class="bg-surface md:visible hidden relative p-1 shadow-md rounded-md border not-prose md:-left-[275px]"
+			<!-- Menus for editor -->
+			<div data-test="menus" class="w-full not-prose mb-6" v-if="editor">
+				<EditorMenuFloating :editor="editor" @add-image="handleAddImage" />
 
-				@add-image="handleAddImageChange" 
-				@cancel-making-post="buttonCancelClick"
-				@try-publish-post="buttonTryPublishClick"
-				
-				/>
-				<EditorCardTopMenu :editor="editor" @add-image="handleAddImageChange" 
-				@try-publish-post="buttonTryPublishClick" @cancel-editing-post="buttonCancelClick"
-				/>
+				<div class="max-w-4xl mx-auto">
+					<EditorMenuTop :editor="editor" @add-image="handleAddImage" @publish-post="handlePublishPost"
+						@try-discard-editing-post="handleTryDiscardEditingPost" />
+					<hr class="not-prose mt-4 mb-8">
+
+				</div>
 			</div>
 
-			<hr class="not-prose mb-8">
 
-			<div data-test="direct-editor" class="mt-4 max-w-2xl w-full mx-auto">
-					<editor-content :editor="editor" />
+			<div data-test="editor_and_title_input" class="mt-2 w-full mx-auto">
+
+				<!-- Input editor (not prose)-->
+				<div class="max-w-2xl mx-auto">
+					<InputText @keypress.enter="editor.commands.focus('start')" ref="editorTitleInputRef" placeholder="Title"
+						v-model.trim="titleEditor"
+						class="not-prose mx-auto pb-3 w-full border-none bg-inherit text-4xl leading-4 font-extrabold outline-none placeholder:text-gray-300 " />
+				</div>
+
+				<hr class="not-prose invisible">	
+
+				<!-- Main Editor (has prose) -->
+				<div @click="editor.commands.focus()" data-test="direct-editor" class="max-w-2xl mx-auto pt-3 w-full min-h-screen prose px-1">
+					<editor-content :editor="editor" @keyup.delete="maybePlaceFocusOnEditorTitle" />
+				</div>
 			</div>
-
 		</div>
 
-		<hr class="mb-4">
+		<hr class="mb-4 ">
 
 	</div>
 </template>
 
 <script setup lang="ts">
+/**
+ * Editor for creating new posts.
+ * 
+ * The post that wants to be publushed is emitted upwards.
+ * 
+ * The post will be saved in session storage when navigating away from the page, but
+ * ! not when refreshing
+ * ! the images will be removed - the src code is the only thing left
+ */
 
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import Document from '@tiptap/extension-document' // required
@@ -62,30 +86,38 @@ import Dropcursor from '@tiptap/extension-dropcursor'
 import Gapcursor from '@tiptap/extension-gapcursor'
 import History from '@tiptap/extension-history'
 import Underline from '@tiptap/extension-underline'
-import Image from '@tiptap/extension-image'
+import { Image } from './CustomImage'
+import { Placeholder } from '@tiptap/extension-placeholder'
 
-import { useGeneralStore } from '~/store/generalStore';
-
-const generalStore = useGeneralStore()
 const emit = defineEmits(['newPostMaterial'])
 
-const props = defineProps<{
-	initialPost?: string;
-}>();
+// The state of the modals
+const showModalPublishPost = ref(false)
+const showModalDiscardPost = ref(false)
+// The modal that makes sure the requirements are met?
+const showModalRequirements = ref(false)
 
-/**
- * This variable dictates whether the Modal is shown or not.
- * 
- * True: Modal is shown. 
- * False: Modal is hidden.
-*/
-const showModal = ref(false)
+/** Makes sure that not two modals can exist at the same time */
+watchEffect(() => {
+	if (showModalPublishPost.value) {
+		showModalDiscardPost.value = false
+	}
+	if (showModalDiscardPost.value) {
+		showModalPublishPost.value = false
+	}
+})
 
-/** This just stores all of the writte html as a string and gets regularly updated */
-const html = ref<string | null | undefined>(null);
-const route = useRoute()
+/** The form that will eventually be sent with the request */
+const formData = ref(new FormData())
 
-const imageFileMap = ref<any>({}); // Object to store the mapping of unique ID and file
+/** This stores the title state of the title input editor */
+const titleEditor = ref("")
+
+/** template ref for the title input */
+const editorTitleInputRef = ref<any>(null)
+
+// Object to store the mapping of unique ID and file
+const imageFileMap = ref<any>({});
 
 /** 
  * This two are just so that I can share them between 
@@ -125,10 +157,18 @@ const editor: any = useEditor({ //@ts-ignore
 		Italic,
 		Link.configure({ //@ts-ignore
 			validate: href => /^https?:\/\//.test(href),
-		}),
+			HTMLAttributes: {
+				class: ""
+			}
+		},
+
+		),
 		Bold,
 		Underline,
 		Code,
+		Placeholder.configure({
+			placeholder: 'Write something ...',
+		})
 		// Placeholder later on
 		// Youtube,
 	],
@@ -136,23 +176,30 @@ const editor: any = useEditor({ //@ts-ignore
 	editorProps: {
 		attributes: {
 			class: 'focus:outline-none',
-			// class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none',	
 		},
 	},
-	autofocus: true
 })
 
-/**
- * The watcher works as a "one-time" event. It fires once
- */
-const unwatch = watch(() => props.initialPost, (newPost) => {
-	if (newPost) {
-		editor.value.commands.setContent(newPost);
-		unwatch(); // Unwatch after the first trigger
+const focusOnCorrectEditor = () => {
+	/** Takes the focus to the title inpur, if there is an empty title string*/
+	if (editor.value) {
+		if (titleEditor.value === "") {
+
+			/**
+			 * This is the reason the focus thing didnt work initially -> editor.value.commands.blur()
+			 */
+
+			// dobbel checks 
+			if (editorTitleInputRef.value) {
+				(editorTitleInputRef.value as any).textInput?.focus()
+			}
+			// case: the title input already had some input, string value
+		} else {
+			editor.value.commands.focus()
+		}
 	}
-}, {
-	immediate: false // ? This will ensure the watcher doesn't trigger on initial setup
-});
+}
+
 
 
 /**
@@ -175,65 +222,99 @@ const handleImagePaste = async (event: any) => {
 			if (fileTempUrl) {
 				// Store the file with its unique ID in the image map
 				imageFileMap.value[uniqueId] = file;
-				editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).run()
+				editor.value.chain().focus().setImage({ src: fileTempUrl, data: uniqueId }).createParagraphNear().run()
 			}
 			event.preventDefault();
+		} else {
+			// even if the "file" wasnt an image / nothing was pasted the focus is placed back on the editor
+			editor.value.commands.focus()
+			return
 		}
 	}
+	//? puts focus on the editor. dont know where this would be called - if there was no real paste maybe?
+	editor.value.commands.focus()
 }
 
-
-
 /**
- * Tracks the "emptyness" of the editor
+ * TODO Remove the prop thing i have here
+ * TODO remove the watcher that is to it
+ * TODO Make it so that the height of the available writing space is not "JUST" enoguh
+ * TODO Place a style on the texting so that for example the images dont eat eachother up
+ * TODO Close the instance object URL i make each time i add an image
  */
-// const isEditorEmpty = computed(() => !editor.value?.content?.trim());
-
-/**
- * On update it takes and updates the HTML value?
- */
-onMounted(() => {
-	/**
-	 * ? Not sure how this works. Each time the component updates the html updates?
-	 */
-	editor.value?.on("update", () => {
-		html.value = editor.value?.getHTML();
-	});
-});
-
-onMounted(() => {
-	editor.value.view.dom.addEventListener('paste', handleImagePaste);
-})
-
-const formData = ref(new FormData())
-
-// BUTTON ACTIONS
 
 /**
  * Activates the next steps to publish the post -> calls the comfirmation modal
  */
-const buttonTryPublishClick = async () => {
-	html.value = editor.value?.getHTML();
-	const answer = extractTitleAndContent(html.value as string);
+const handlePublishPost = async () => {
 
-	title.value = answer?.title;
-	body.value = answer?.body;
+	// The html in string format
+	const html = editor.value?.getHTML();
+	// The html in raw text format
+	const htmlRawText = (editor.value?.getText()) ?? "";
 
-	if (!title.value || !body.value) {
-		alert("Invalid post content");
-		return;
+	// The title of the post
+	const titleText = titleEditor.value ?? "";
+
+	// if the title is literally lese than three characters
+	if (titleText?.length < 3) {
+		// shows the modal that shows the requirements
+		showModalRequirements.value = true
+		return
 	}
-	showModal.value = true;
+
+	// if the post content is under 50
+	if (htmlRawText?.length < 50) {
+		showModalRequirements.value = true
+		return
+	}
+
+	// Puts the html and title in their "reactive" partners
+	body.value = html
+	title.value = titleEditor.value
+
+	// shows the modal that is going to ask for confirmation
+	showModalPublishPost.value = true;
+
+	return
 };
 
+const handleTryDiscardEditingPost = () => {
+	const html = editor.value?.getText();
+	const title = titleEditor.value
+	// if there is something to discard, the discard modal is shown, else, it is not shown
+	if (html || title) {
+		showModalDiscardPost.value = true
+	} else {
+		// puts focus back on editor - there was nothing to discard
+		editor.value.commands.focus()
+	}
+}
+
 /**
- * Cancels the post creation and navigates to the feed(home) page.
+ * Cancels the post creation, an discards all traces of it
+ * 
+ * * I think I have to have a regular function because I am doing "new Formdata"
  */
-const buttonCancelClick = () => {
-	const router = useRouter();
+function handleModalDiscardPost() {
+
+	// close the model
+	showModalDiscardPost.value = false
+
 	// Clears the input
 	editor.value?.commands.clearContent();
-	router.push('/');
+	titleEditor.value = ""
+	title.value = ""
+	body.value = ""
+
+	// When the post is discarded the current form is also discarded, or reset
+	formData.value = new FormData
+
+	// all of the pictures currently in store(cached?) are also discarded
+	imageFileMap.value = {}
+
+	// puts the focus back on the editor
+	editor.value.commands.focus()
 };
 
 /** 
@@ -241,10 +322,10 @@ const buttonCancelClick = () => {
  * 
  * * Only called by modal
  */
-const publishPost = () => {
+function handleModalPublishPost() {
 	console.log("publish post was called")
 
-	showModal.value = false;
+	showModalPublishPost.value = false;
 
 	formData.value.append("title", title.value || "");
 	formData.value.append("content", body.value || "");
@@ -260,88 +341,161 @@ const publishPost = () => {
 	// Tells the parents component that the post can be published
 	emit('newPostMaterial', formData.value);
 
-	editor.value?.chain().focus().clearContent().run();
+	editor.value?.commands.clearContent();
+	titleEditor.value = ""
+	title.value = ""
+	body.value = ""
 
 	// Removes all currently stored images and their ids
 	imageFileMap.value = {}
 
 	// Creates a new formData object
 	formData.value = new FormData()
+
+	// puts the focus back on the editor
+	editor.value.commands.focus()
 };
 
-/**
- * Cancels publishing
- * * Called by the modal
- */
-const cancelPublishing = () => {
-	showModal.value = false;
+/** The cancel button of the discard modal was pressed */
+const handleModalCancelTheDiscard = () => {
+	// Closes all modals (makes sure)
+	showModalDiscardPost.value = false;
+	showModalPublishPost.value = false
+
+	// places focus back on editor
+	editor.value.commands.focus()
 };
+
+const closeModalRequirements = () => {
+	showModalRequirements.value = false
+}
 
 /**
  * Handles the process when an image is added through file input
  * 
  * @param event - The image file
  */
-const handleAddImageChange = (event: any) => {
+const handleAddImage = (event: any) => {
 	console.log("start of handle add Image change")
 	if (event) {
 		const file = event.target.files[0];
 		const uniqueId = generateUniqueId(); // Function to generate a unique ID.
 		const fileTempUrl = URL.createObjectURL(file);
-		console.log("middle of handleaddimagechange")
+		console.log("middle of handleaddimage")
 
 
 		if (fileTempUrl) {
 			// Store the file with its unique ID in the map
 			imageFileMap.value[uniqueId] = file;
-			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change")
+			console.log(" imagefilemap.value[uniqueid] has been declared  last  of handle add Image change") // print to self
 			console.log(uniqueId, fileTempUrl)
 
+			editor.value.chain().focus().setImage({ src: fileTempUrl, data: uniqueId }).createParagraphNear().run()
 
-			editor.value.chain().focus().setImage({ src: fileTempUrl, alt: uniqueId }).run()
+			// places focus back on editor
+			editor.value.commands.focus()
+
+			return
+		}
+	} else {
+		// even if the "file" wasnt an image / nothing was pasted the focus is placed back on the editor
+		// ? dont see how this would happen though
+		editor.value.commands.focus()
+	}
+}
+
+/** Listens for "paste" events */
+onMounted(() => {
+	if (editor.value) {
+		editor.value.view.dom.addEventListener('paste', handleImagePaste);
+	}
+})
+
+/** Initiallices the editor / makes it ready to start */
+onMounted(() => {
+	// If the editor instance has started
+	if (editor.value) {
+
+		// gets the html from stored in sessionStorage (or empty string)
+		const htmlPost = (sessionStorage.getItem("htmlPost")) ?? ""
+		// inserts the html into the documented
+		editor.value.commands.setContent(htmlPost)
+
+		// gets the title string from the sessionStorage and inserts it into the input title.value (or empty string)
+		titleEditor.value = (sessionStorage.getItem("titlePost")) ?? ""
+
+		// focus on the correct editor
+		focusOnCorrectEditor()
+	}
+})
+
+/** reactive constant that makes the computed above work */
+const htmlForComputed = ref<string | null | undefined>(null);
+
+/** Controls if the editor is empty, and has a computed variable that tell true or false to that  */
+const isEditorEmpty = computed(() => {
+	htmlForComputed.value = editor.value.getHTML()
+	console.log(htmlForComputed.value) // print to self
+	if (htmlForComputed.value?.trim() === "<p></p>") {
+		return true
+	} else {
+		return false
+	}
+})
+
+/** 
+ * If there is not content then this function is properly executed 
+ * 
+ * It is continuesly called by the keyup.delete on the editor
+ * 
+*/
+const maybePlaceFocusOnEditorTitle = () => {
+	if (isEditorEmpty.value === true) {
+		if (editorTitleInputRef.value) {
+			(editorTitleInputRef.value as any).textInput?.focus()
 		}
 	}
 }
 
-
 /**
- * Fils the content if there is a post content inside of sessionstorage
- * ? what is this
- */
-onMounted(() => {
-	if (editor) {
-
-		// If the route is /edit/ it wont retrieve cached halway done post
-
-		if (route.path.includes("edit") === false) {
-			const htmlPost = sessionStorage.getItem("htmlPost")
-
-			if (htmlPost) {
-				editor.value.chain().focus().insertContent(htmlPost).run()
-			}
-		}
-	}
-})
-
-/**
- * Saves the content of the post to sessionStorage
+ * Saves to sessionStorage:
+ * - html content
+ * - title string
+ * 
+ * ! it will never, and I will never (as far as I know) be able to save
+ * ! a session when someone refreshes
  */
 onUnmounted(() => {
-	const htmlPost = editor.value?.getHTML()
+	// gets the html from the post
+	const htmlPostWithImg = editor.value?.getHTML()
 
+	// removes the img elements if there are any
+	const htmlPost = removeImgTags(htmlPostWithImg)
+
+	// gets the title from the input
+	const titlePost = titleEditor.value
+
+	// Not supposed to happen
+	if (editor.value.isDestroyed != true) {
+		console.log("not destroyed")
+		editor.value.destroy()
+	}
+
+	// Saves the html content in a session for storing
 	sessionStorage.setItem("htmlPost", htmlPost)
+	// Saves the title string in a session for storing
+	sessionStorage.setItem("titlePost", titlePost)
 })
-
-
-
-
 
 </script>
 
-<style scoped>
-.editor-placeholder {
-	color: grey;
-	font-style: italic;
-	/* Additional styling as needed */
+<style lang="scss">
+/** SASS */
+.tiptap p.is-editor-empty:first-child::before {
+	content: attr(data-placeholder);
+	float: left;
+	color: #adb5bd;
+	pointer-events: none;
+	height: 0;
 }
 </style>

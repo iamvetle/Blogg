@@ -4,10 +4,12 @@ import { createTestingPinia } from "@pinia/testing";
 
 import { shallowMount } from '@vue/test-utils';
 import { usePostStore } from '~/store/postStore';
+import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 
 let wrapper: any;
 let postStore: any;
+let loggedInUserStore:any;
 
 let pinia: any;
 
@@ -36,7 +38,7 @@ describe('main feed part of the index page testing', () => {
     pinia = createTestingPinia()
 
     postStore = usePostStore(pinia)
-
+    loggedInUserStore = useLoggedInUserStore(pinia)
 
     postStore.posts = {
         results: [
@@ -54,6 +56,10 @@ describe('main feed part of the index page testing', () => {
             }
         ]
     }
+
+    loggedInUserStore.loggedInUserProfile = true
+
+
 
     afterEach(() => {
         if (wrapper) {

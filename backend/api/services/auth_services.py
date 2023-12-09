@@ -1,5 +1,5 @@
 from rest_framework.views import APIView
-from api.serializers.user_serializers import LoggedInUserSerializer
+from api.serializers.user_serializers import NormalUserSerializer, LoggedInUserSerializer
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
@@ -35,21 +35,13 @@ class LoginService:  # Try login logic
 class NewUserService(APIView):  # Try to register a user logic
     @staticmethod
     def register_user(registration_data):
-        serializer = LoggedInUserSerializer(data=registration_data)
+        serializer =  NormalUserSerializer(data=registration_data)
 
         print(registration_data)
 
         if serializer.is_valid():
-            data = registration_data
-
-            CustomUser.objects.create_user(
-                username=data["username"],
-                email=data["email"],
-                first_name=data["first_name"],
-                last_name=data["last_name"],
-                password=data["password"],
-            )
-            return data
+            serializer.save()
+            return registration_data
         else:
             print("Returned none?")
             return None

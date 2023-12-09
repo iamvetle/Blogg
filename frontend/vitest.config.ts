@@ -7,19 +7,13 @@ export default defineConfig({
         Vue(),
         AutoImport({
             imports: ['vue'],
-            dirs: ['./composables', './composables/crud'],
+            dirs: ['./composables', './composables/crud', './components'],
             vueTemplate: true,
         }),
     ],
     test: {
         globals: true,
         environment: "happy-dom",
-        server: {
-            deps: {
-                inline: ['vuetify']
-            }
-        }
-        
     },
     resolve: {
         alias: {

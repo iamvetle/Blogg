@@ -1,42 +1,70 @@
-import { VueWrapper, flushPromises, mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils';
+import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 import LoginCard from '~/components/modules/Auth/LoginCard.vue';
-import { useGeneralStore } from '~/store/generalStore';
-import { createTestingPinia } from '@pinia/testing'
 
-let wrapper: VueWrapper
-let pinia:any;
-let generalStore:any;
+let wrapper: any;
 
-describe('FormLogin page testing', () => {
+const factory = () => {
+    return shallowMount(LoginCard, {
+        global: {
+            plugins: [],
+            components: {},
+            mocks: {},
+            stubs: {
+                NuxtLink:true
+            },
+        },
+        props: {},
+        slots: {}
+    })
+};
+
+describe('Testin the Login card component', () => {
 
     beforeEach(() => {
-        pinia = createTestingPinia()
-        generalStore = useGeneralStore(pinia)
-        generalStore.isAuthenticated = false
+    });
 
-        wrapper = mount(LoginCard, {
-            global: {
-                plugins:[pinia]
-            }
-            
-        })
-
-    })
-
-    test('exists', async () => {
-
-        await flushPromises()
-        await (wrapper.vm as any).$nextTick()
+    afterEach(() => {
+        if (wrapper) {
+            wrapper.unmount();
+        }
+    });
+    test('Should exist', () => {
+        wrapper = factory()
 
         expect(wrapper.exists()).toBe(true)
+      
     })
-    
-    test("renders the login form", async () => {
-        console.log(wrapper.html())
+    test('Should have a username field', () => {
+        wrapper = factory()
 
-        await (wrapper.vm as any).$nextTick()
+        const field = wrapper.find("[data-test='form_username']")
+        expect(field.exists()).toBe(true)
 
-        expect(wrapper.html()).toContain("Invalid credentials")
-        expect(wrapper.html()).toContain("Login successfull")
+        const formkitField = field.find("formkit")
+        expect(formkitField.exists()).toBe(true)
+        expect(formkitField.attributes("type")).toBe("text")
     })
-})
+
+    test('Should have a password field', () => {
+        wrapper = factory()
+
+        const field = wrapper.find("[data-test='form_password']")
+        expect(field.exists()).toBe(true)
+
+        const formkitField = field.find("formkit")
+        expect(formkitField.exists()).toBe(true)
+        expect(formkitField.attributes("type")).toBe("password")
+    })
+    test('Should have a button submit ', () => {
+        wrapper = factory()
+
+        const field = wrapper.find("[data-test='form_button_submit']")
+        expect(field.exists()).toBe(true)
+
+        const formkitField = field.find("formkit")
+        expect(formkitField.exists()).toBe(true)
+        expect(formkitField.attributes("type")).toBe("submit")
+    })
+
+});

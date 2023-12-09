@@ -3,12 +3,13 @@ import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import BaseButton from '~/components/base/BaseButton.vue';
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+import { usePostStore } from '~/store/postStore';
 
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
 
 // let generalStore; 
-// let postStore; 
+let postStore; 
 let loggedInUserStore;
 // let paginationStore; 
 
@@ -30,11 +31,14 @@ describe('', () => {
 
     beforeEach(() => {
         // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
+        postStore = usePostStore(pinia); 
         loggedInUserStore = useLoggedInUserStore(pinia);
         // paginationStore = usePaginationStore(pinia); 
 
         loggedInUserStore.loggedInUserProfile = { num_of_following: 8 }
+        postStore.posts = {
+            results:true
+        }
 
     });
 

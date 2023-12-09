@@ -15,7 +15,7 @@ export const validateAndCleanImageMap = (htmlContent: any, imageFileMap:any) => 
 	// Create a set of all image IDs present in the HTML content
 	let imageIdsInContent = new Set();
 	imagesInContent.forEach(img => {
-		let imageId = img.getAttribute('alt'); // Assuming 'alt' is used for storing the image ID
+		let imageId = img.getAttribute('data'); // Assuming 'data' is used for storing the image ID
 		if (imageId) {
 			imageIdsInContent.add(imageId);
 		}

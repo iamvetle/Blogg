@@ -1,11 +1,7 @@
 import PostBookmark from './PostBookmark.vue';
-import { VueWrapper, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useGeneralStore } from '~/store/generalStore';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
 import BaseIconSaveArticleSaved from '~/components/base/BaseIconSaveArticleSaved.vue';
 import BaseIconSaveArticleUnSaved from '~/components/base/BaseIconSaveArticleUnSaved.vue';
 
@@ -39,6 +35,10 @@ const factory = () => {
 };
 
 describe('Testing the articlebookmark component', () => {
+
+    vi.stubGlobal("useToast", () => {
+        return null
+    })
 
     beforeEach(() => {
         // generalStore = useGeneralStore(pinia); 
@@ -82,5 +82,6 @@ describe('Testing the articlebookmark component', () => {
 
         expect(typeof idProp).toBe("number")
     })
-    
+
+
 });

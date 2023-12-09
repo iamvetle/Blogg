@@ -1,8 +1,14 @@
 <template>
     <div>
+        <!--
+            ! this is a bad implementation
+            TODO fix this later so it isnt two components
+            * posible with nuxt ui
+        -->
         <BaseIconSaveArticleSaved v-if="checkIfPostIsSaved(post)" @click="unsave(post)" />
 
-        <BaseIconSaveArticleUnSaved v-else @mouseover="color = 'fill-primary'" @mouseleave="color = 'fill-black'"
+        <!-- Hovering over makes it gray-->
+        <BaseIconSaveArticleUnSaved v-else @mouseover="color = 'gray'" @mouseleave="color = 'black'"
             @click="save(post)" :fill-color="color" />
     </div>
 </template>
@@ -22,6 +28,8 @@ defineProps<{
 // Reactive variable for icon color
 const color = ref("fill-black");
 
+const toast = useToast()
+
 // Importing the loggedInUserStore from the store directory
 import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
@@ -36,6 +44,10 @@ const unsave = async (post: number) => {
     const index = loggedInUserStore.idArrayOfSavedPosts.findIndex((id) => id === post);
     loggedInUserStore.idArrayOfSavedPosts.splice(index, 1);
     await getSaveOrUnsavePost(post);
+    toast.add({
+        title: 'Post unsaved',
+        timeout:2000,
+    })
 }
 
 /**
@@ -44,6 +56,10 @@ const unsave = async (post: number) => {
  */
 const save = async (post: number) => {
     await getSaveOrUnsavePost(post);
+    toast.add({
+        title: 'Post saved',
+        timeout:2000,
+    })
 }
 
 // Note: The function getSaveOrUnsavePost is used but not defined or imported in this snippet.

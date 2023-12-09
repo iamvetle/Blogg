@@ -1,11 +1,9 @@
-<template>
-  <div>
-    <v-skeleton-loader boilerplate type="article"></v-skeleton-loader>
-
-
-  </div>
-</template>
 <script setup>
+const toast = useToast()
 </script>
 
-<style scoped></style>
+<template>
+  <div>
+    <PopupModal/>
+  </div>
+</template>
