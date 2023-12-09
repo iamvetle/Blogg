@@ -1,4 +1,3 @@
-import { useSearchStore } from '~/store/searchStore';
 
 /**
  * Constructs a new URL that we want to fetch post data from, that is based on the correct

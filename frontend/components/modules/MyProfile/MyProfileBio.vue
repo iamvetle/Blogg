@@ -26,7 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import BaseButton from '~/components/base/BaseButton.vue';
 
 const emit = defineEmits(["bioUpdate"])

@@ -1,4 +1,3 @@
-import { useGeneralStore } from "@/store/generalStore";
 
 /**
  * Effective and IN-USE

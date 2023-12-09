@@ -25,7 +25,6 @@
 </template>
 
 <script setup lang="ts">
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png'
 import BaseButton from '~/components/base/BaseButton.vue';
 

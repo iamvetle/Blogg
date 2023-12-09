@@ -10,8 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /**
  * Lists all posts made by the loggedinuser - part of the minkonto page

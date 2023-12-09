@@ -1,4 +1,3 @@
-import { useGeneralStore } from "@/store/generalStore";
 
 /**
  * Takes the arguments and sets them as info in localStorage

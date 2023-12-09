@@ -1,4 +1,3 @@
-import { usePostStore } from "~/store/postStore"
 import { defineStore } from 'pinia';
 
 export const usePaginationStore = defineStore("Pagination Store", () => {

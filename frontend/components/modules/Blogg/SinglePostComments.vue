@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore';
 
 /**
  * This component is part of the single post [id] page

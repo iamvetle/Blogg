@@ -1,5 +1,5 @@
 import { getMethod } from '~/services/apiByCRUD';
-import { usePostStore } from '~/store/postStore'
+
 
 /**
  * Fetches all of the posts made by the logged in user

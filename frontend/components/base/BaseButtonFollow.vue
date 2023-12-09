@@ -1,4 +1,3 @@
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 <template>
     <div data-test="default-slot">
         <div :class="isFollowingClass" v-if="checkIfFollowingUser(username) === true" id="following"
@@ -15,7 +14,6 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 <script setup lang="ts">
 
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /** Represents the text that is going to be displayed on the (un)follow button */
 const followText = ref("Following")

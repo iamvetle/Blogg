@@ -12,9 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
 
 const paginationStore = usePaginationStore()
 const loggedInUserStore = useLoggedInUserStore()

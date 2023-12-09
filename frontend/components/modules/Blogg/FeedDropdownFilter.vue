@@ -19,9 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { useSearchStore } from '~/store/searchStore';
-import { usePostStore } from '~/store/postStore';
-import { usePaginationStore } from '~/store/paginationStore';
 
 const searchStore = useSearchStore()
 const postStore = usePostStore()

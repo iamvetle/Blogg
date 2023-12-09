@@ -80,7 +80,6 @@
 <script setup lang="ts">
 
 import profile_picture from '~/assets/placeholder-profile-picture.png'
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const loggedInUserStore = useLoggedInUserStore()
 

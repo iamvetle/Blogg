@@ -12,12 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore'
-// import { useGeneralStore } from '~/store/generalStore';
-import { useSearchStore } from '~/store/searchStore';
-// import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
-
+// 
+// 
 // Importing all stores
 
 const postStore = usePostStore()

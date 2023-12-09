@@ -1,5 +1,4 @@
 import { getMethod } from '~/services/apiByCRUD';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /**
  * Fetches the profile information about the logged in user.

@@ -72,7 +72,6 @@
 </template>
 
 <script setup lang="ts">
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /**
  * The prop that is received is a list of all of the users posts. This component lists all of those.

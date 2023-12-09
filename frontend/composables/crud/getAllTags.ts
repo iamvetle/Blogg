@@ -1,4 +1,3 @@
-import { usePostStore } from '~/store/postStore';
 import { getMethod } from '~/services/apiByCRUD';
 
 /** Fetches all tags possible */

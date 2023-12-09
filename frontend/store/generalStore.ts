@@ -13,10 +13,21 @@ export const useGeneralStore = defineStore("General store for general things", (
    */
   const isAuthenticated = ref(false);
 
+  /** Is continuesly updated by the watcher */
+  const token = ref(localStorage.getItem('token'));
+
+  /** Automatically updates when I get a value in localstorage */
+  const isAuth = computed(() => !!token.value);
+  
+  // Watch for changes in localStorage and update the ref accordingly
+  watch(() => localStorage.getItem('token'), (newToken) => {
+    token.value = newToken;
+  });
+
   /**
    * Has the username of the authenticated web client. Is given at the login page (i think)
    */
-  const username = ref<string | null>(null);
+  const username = ref<string | null>(null)
 
   /**
    * @deprecated
@@ -38,5 +49,5 @@ export const useGeneralStore = defineStore("General store for general things", (
    */
   const search_bar_show = ref(false)
   
-  return { search_bar_show, isAuthenticated, apiDownError, username, baseAPIURL, backgroundForModal, turnBackgroundForModel }
+  return { search_bar_show, isAuth, token, isAuthenticated, apiDownError, username, baseAPIURL, backgroundForModal, turnBackgroundForModel }
 });

@@ -57,7 +57,6 @@
 
 import placeholder_header_image from '~/assets/placeholder-image.jpg'
 import UserFullName from '~/components/modules/UserProfile/UserFullName.vue';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 
 /**

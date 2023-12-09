@@ -50,7 +50,6 @@
 </template>
 
 <script setup lang="ts">
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /**
  * Lists the basic information about the user in the sidebar at the 'minkonto' page

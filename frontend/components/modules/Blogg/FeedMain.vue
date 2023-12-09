@@ -21,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const loggedInUserStore = useLoggedInUserStore()
 const postStore = usePostStore()

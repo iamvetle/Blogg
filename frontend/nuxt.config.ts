@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 
     timeline: {
       enabled: true,
-      
+
     },
   },
 
@@ -22,7 +22,27 @@ export default defineNuxtConfig({
     },
   ],
   imports: {
-    dirs: ['./typescript', './store', './composables/crud', './composables/editor']
+    dirs: ['./typescript', './store', './composables/crud', './composables/editor', './constants'],
+    presets: [
+      {
+        from: "./store",
+        imports: [
+          { name: "usePaginationStore", as: "usePaginationStore" },
+          { name: "useLoggedInUserStore", as: "useLoggedInUserStore" },
+          { name: "useGeneralStore", as: "useGeneralStore" },
+          { name: "usePostStore", as: "usePostStore" },
+          { name: "useSearchStore", as: "useSearchStore" }
+        ]
+      },
+      {
+        from: 'axios',
+        imports: [
+          { name: "default", as: "axios" },
+          { name: "AxiosResponse", as: 'AxiosResponse', type:true }
+        ]
+      }
+
+    ]
 
   },
 
@@ -46,7 +66,7 @@ export default defineNuxtConfig({
     },
     injectPosition: "first",
     viewer: true,
-  
+
   },
   pinia: {
     autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],

@@ -1,4 +1,4 @@
-import { usePostStore } from '~/store/postStore'
+
 import { getMethod } from '~/services/apiByCRUD';
 
 /**

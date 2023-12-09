@@ -63,7 +63,6 @@
 
 // import noimage from '~/assets/noimage.jpg'
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const post = ref<PostSingleType | null>(null);
 

@@ -81,7 +81,7 @@
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore'
+
 
 import account_picture from '~/assets/account-pin-circle-line.svg'
 const post_image = ref('https://picsum.photos/500/300')

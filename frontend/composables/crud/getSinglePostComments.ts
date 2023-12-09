@@ -1,5 +1,4 @@
 import { getMethod } from "~/services/apiByCRUD";
-import { usePostStore } from '~/store/postStore';
 
 /**
  * Fetches comments for a single post from the API using a GET request.

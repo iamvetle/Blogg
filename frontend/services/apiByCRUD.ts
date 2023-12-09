@@ -1,4 +1,3 @@
-import axios, { type AxiosResponse } from 'axios'
 /**
  * getMethod sends a GET request to a specified url, with a possibly custom header
  * 

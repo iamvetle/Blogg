@@ -1,4 +1,3 @@
-import { useLoggedInUserStore } from "~/store/loggedInUserStore"
 
 /**
  * Takes the parameter and checks whether the logged in user is following it or not
