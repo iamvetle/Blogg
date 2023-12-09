@@ -54,7 +54,33 @@ VueWrapper {
                   "_active": true,
                   "cleanups": [],
                   "detached": false,
-                  "effects": [],
+                  "effects": [
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": true,
+                        "_setter": [Function],
+                        "dep": undefined,
+                        "effect": [Circular],
+                      },
+                      "deps": [],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                    ReactiveEffect {
+                      "active": true,
+                      "deps": [],
+                      "fn": [Function],
+                      "onTrack": undefined,
+                      "onTrigger": undefined,
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  ],
                   "index": 0,
                   "parent": [Circular],
                 },
@@ -82,11 +108,31 @@ VueWrapper {
                 "$reset": [MockFunction spy],
                 "$subscribe": [Function],
                 "_customProperties": Set {},
+                "_getters": [
+                  "isAuth",
+                ],
                 "_hmrPayload": {
                   "actions": {
                     "turnBackgroundForModel": [Function],
                   },
-                  "getters": {},
+                  "getters": {
+                    "isAuth": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": true,
+                      "_setter": [Function],
+                      "dep": undefined,
+                      "effect": ReactiveEffect {
+                        "active": true,
+                        "computed": [Circular],
+                        "deps": [],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
                   "hotState": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -96,6 +142,7 @@ VueWrapper {
                   },
                   "state": [
                     "search_bar_show",
+                    "token",
                     "isAuthenticated",
                     "apiDownError",
                     "username",
@@ -108,8 +155,10 @@ VueWrapper {
                 "apiDownError": false,
                 "backgroundForModal": null,
                 "baseAPIURL": "http://localhost:8888",
+                "isAuth": false,
                 "isAuthenticated": false,
                 "search_bar_show": false,
+                "token": null,
                 "turnBackgroundForModel": [MockFunction spy],
                 "username": null,
               },
@@ -187,6 +236,33 @@ VueWrapper {
                     "_value": false,
                     "dep": undefined,
                   },
+                  "token": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": null,
+                    "_value": null,
+                    "dep": Set {
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          [Circular],
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
                   "username": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -251,6 +327,7 @@ VueWrapper {
                   "baseAPIURL": "http://localhost:8888",
                   "isAuthenticated": false,
                   "search_bar_show": false,
+                  "token": null,
                   "username": null,
                 },
                 "Store for storing information about the logged in user": {
@@ -292,7 +369,38 @@ VueWrapper {
                 "_active": true,
                 "cleanups": [],
                 "detached": false,
-                "effects": [],
+                "effects": [
+                  ReactiveEffect {
+                    "active": true,
+                    "computed": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": false,
+                      "_setter": [Function],
+                      "_value": false,
+                      "dep": undefined,
+                      "effect": [Circular],
+                    },
+                    "deps": [
+                      Set {
+                        [Circular],
+                      },
+                    ],
+                    "fn": [Function],
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  ReactiveEffect {
+                    "active": true,
+                    "deps": [],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                ],
                 "index": 0,
                 "parent": [Circular],
               },
@@ -320,11 +428,36 @@ VueWrapper {
               "$reset": [MockFunction spy],
               "$subscribe": [Function],
               "_customProperties": Set {},
+              "_getters": [
+                "isAuth",
+              ],
               "_hmrPayload": {
                 "actions": {
                   "turnBackgroundForModel": [Function],
                 },
-                "getters": {},
+                "getters": {
+                  "isAuth": ComputedRefImpl {
+                    "__v_isReadonly": true,
+                    "__v_isRef": true,
+                    "_cacheable": true,
+                    "_dirty": false,
+                    "_setter": [Function],
+                    "_value": false,
+                    "dep": undefined,
+                    "effect": ReactiveEffect {
+                      "active": true,
+                      "computed": [Circular],
+                      "deps": [
+                        Set {
+                          [Circular],
+                        },
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
                 "hotState": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -334,6 +467,7 @@ VueWrapper {
                 },
                 "state": [
                   "search_bar_show",
+                  "token",
                   "isAuthenticated",
                   "apiDownError",
                   "username",
@@ -346,8 +480,10 @@ VueWrapper {
               "apiDownError": false,
               "backgroundForModal": null,
               "baseAPIURL": "http://localhost:8888",
+              "isAuth": false,
               "isAuthenticated": false,
               "search_bar_show": false,
+              "token": null,
               "turnBackgroundForModel": [MockFunction spy],
               "username": null,
             },
@@ -425,6 +561,33 @@ VueWrapper {
                   "_value": false,
                   "dep": undefined,
                 },
+                "token": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": null,
+                  "_value": null,
+                  "dep": Set {
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": [Circular],
+                      },
+                      "deps": [
+                        [Circular],
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
                 "username": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -489,6 +652,7 @@ VueWrapper {
                 "baseAPIURL": "http://localhost:8888",
                 "isAuthenticated": false,
                 "search_bar_show": false,
+                "token": null,
                 "username": null,
               },
               "Store for storing information about the logged in user": {
@@ -534,7 +698,38 @@ VueWrapper {
                     "_active": true,
                     "cleanups": [],
                     "detached": false,
-                    "effects": [],
+                    "effects": [
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                      ReactiveEffect {
+                        "active": true,
+                        "deps": [],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    ],
                     "index": 0,
                     "parent": [Circular],
                   },
@@ -562,11 +757,36 @@ VueWrapper {
                   "$reset": [MockFunction spy],
                   "$subscribe": [Function],
                   "_customProperties": Set {},
+                  "_getters": [
+                    "isAuth",
+                  ],
                   "_hmrPayload": {
                     "actions": {
                       "turnBackgroundForModel": [Function],
                     },
-                    "getters": {},
+                    "getters": {
+                      "isAuth": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": ReactiveEffect {
+                          "active": true,
+                          "computed": [Circular],
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
                     "hotState": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
@@ -576,6 +796,7 @@ VueWrapper {
                     },
                     "state": [
                       "search_bar_show",
+                      "token",
                       "isAuthenticated",
                       "apiDownError",
                       "username",
@@ -588,8 +809,10 @@ VueWrapper {
                   "apiDownError": false,
                   "backgroundForModal": null,
                   "baseAPIURL": "http://localhost:8888",
+                  "isAuth": false,
                   "isAuthenticated": false,
                   "search_bar_show": false,
+                  "token": null,
                   "turnBackgroundForModel": [MockFunction spy],
                   "username": null,
                 },
@@ -667,6 +890,33 @@ VueWrapper {
                       "_value": false,
                       "dep": undefined,
                     },
+                    "token": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": null,
+                      "_value": null,
+                      "dep": Set {
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            [Circular],
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
                     "username": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
@@ -731,6 +981,7 @@ VueWrapper {
                     "baseAPIURL": "http://localhost:8888",
                     "isAuthenticated": false,
                     "search_bar_show": false,
+                    "token": null,
                     "username": null,
                   },
                   "Store for storing information about the logged in user": {
@@ -772,7 +1023,38 @@ VueWrapper {
                   "_active": true,
                   "cleanups": [],
                   "detached": false,
-                  "effects": [],
+                  "effects": [
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": [Circular],
+                      },
+                      "deps": [
+                        Set {
+                          [Circular],
+                        },
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                    ReactiveEffect {
+                      "active": true,
+                      "deps": [],
+                      "fn": [Function],
+                      "onTrack": undefined,
+                      "onTrigger": undefined,
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  ],
                   "index": 0,
                   "parent": [Circular],
                 },
@@ -800,11 +1082,36 @@ VueWrapper {
                 "$reset": [MockFunction spy],
                 "$subscribe": [Function],
                 "_customProperties": Set {},
+                "_getters": [
+                  "isAuth",
+                ],
                 "_hmrPayload": {
                   "actions": {
                     "turnBackgroundForModel": [Function],
                   },
-                  "getters": {},
+                  "getters": {
+                    "isAuth": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": false,
+                      "_setter": [Function],
+                      "_value": false,
+                      "dep": undefined,
+                      "effect": ReactiveEffect {
+                        "active": true,
+                        "computed": [Circular],
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
                   "hotState": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -814,6 +1121,7 @@ VueWrapper {
                   },
                   "state": [
                     "search_bar_show",
+                    "token",
                     "isAuthenticated",
                     "apiDownError",
                     "username",
@@ -826,8 +1134,10 @@ VueWrapper {
                 "apiDownError": false,
                 "backgroundForModal": null,
                 "baseAPIURL": "http://localhost:8888",
+                "isAuth": false,
                 "isAuthenticated": false,
                 "search_bar_show": false,
+                "token": null,
                 "turnBackgroundForModel": [MockFunction spy],
                 "username": null,
               },
@@ -905,6 +1215,33 @@ VueWrapper {
                     "_value": false,
                     "dep": undefined,
                   },
+                  "token": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": null,
+                    "_value": null,
+                    "dep": Set {
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          [Circular],
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
                   "username": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -969,6 +1306,7 @@ VueWrapper {
                   "baseAPIURL": "http://localhost:8888",
                   "isAuthenticated": false,
                   "search_bar_show": false,
+                  "token": null,
                   "username": null,
                 },
                 "Store for storing information about the logged in user": {
@@ -1133,7 +1471,38 @@ VueWrapper {
                         "_active": true,
                         "cleanups": [],
                         "detached": false,
-                        "effects": [],
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
                         "index": 0,
                         "parent": [Circular],
                       },
@@ -1161,11 +1530,36 @@ VueWrapper {
                       "$reset": [MockFunction spy],
                       "$subscribe": [Function],
                       "_customProperties": Set {},
+                      "_getters": [
+                        "isAuth",
+                      ],
                       "_hmrPayload": {
                         "actions": {
                           "turnBackgroundForModel": [Function],
                         },
-                        "getters": {},
+                        "getters": {
+                          "isAuth": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": ReactiveEffect {
+                              "active": true,
+                              "computed": [Circular],
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
                         "hotState": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -1175,6 +1569,7 @@ VueWrapper {
                         },
                         "state": [
                           "search_bar_show",
+                          "token",
                           "isAuthenticated",
                           "apiDownError",
                           "username",
@@ -1187,8 +1582,10 @@ VueWrapper {
                       "apiDownError": false,
                       "backgroundForModal": null,
                       "baseAPIURL": "http://localhost:8888",
+                      "isAuth": false,
                       "isAuthenticated": false,
                       "search_bar_show": false,
+                      "token": null,
                       "turnBackgroundForModel": [MockFunction spy],
                       "username": null,
                     },
@@ -1266,6 +1663,33 @@ VueWrapper {
                           "_value": false,
                           "dep": undefined,
                         },
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
                         "username": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -1330,6 +1754,7 @@ VueWrapper {
                         "baseAPIURL": "http://localhost:8888",
                         "isAuthenticated": false,
                         "search_bar_show": false,
+                        "token": null,
                         "username": null,
                       },
                       "Store for storing information about the logged in user": {
@@ -1371,7 +1796,38 @@ VueWrapper {
                       "_active": true,
                       "cleanups": [],
                       "detached": false,
-                      "effects": [],
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
                       "index": 0,
                       "parent": [Circular],
                     },
@@ -1399,11 +1855,36 @@ VueWrapper {
                     "$reset": [MockFunction spy],
                     "$subscribe": [Function],
                     "_customProperties": Set {},
+                    "_getters": [
+                      "isAuth",
+                    ],
                     "_hmrPayload": {
                       "actions": {
                         "turnBackgroundForModel": [Function],
                       },
-                      "getters": {},
+                      "getters": {
+                        "isAuth": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
                       "hotState": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -1413,6 +1894,7 @@ VueWrapper {
                       },
                       "state": [
                         "search_bar_show",
+                        "token",
                         "isAuthenticated",
                         "apiDownError",
                         "username",
@@ -1425,8 +1907,10 @@ VueWrapper {
                     "apiDownError": false,
                     "backgroundForModal": null,
                     "baseAPIURL": "http://localhost:8888",
+                    "isAuth": false,
                     "isAuthenticated": false,
                     "search_bar_show": false,
+                    "token": null,
                     "turnBackgroundForModel": [MockFunction spy],
                     "username": null,
                   },
@@ -1504,6 +1988,33 @@ VueWrapper {
                         "_value": false,
                         "dep": undefined,
                       },
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
                       "username": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -1568,6 +2079,7 @@ VueWrapper {
                       "baseAPIURL": "http://localhost:8888",
                       "isAuthenticated": false,
                       "search_bar_show": false,
+                      "token": null,
                       "username": null,
                     },
                     "Store for storing information about the logged in user": {
@@ -1633,7 +2145,38 @@ VueWrapper {
                         "_active": true,
                         "cleanups": [],
                         "detached": false,
-                        "effects": [],
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
                         "index": 0,
                         "parent": [Circular],
                       },
@@ -1661,11 +2204,36 @@ VueWrapper {
                       "$reset": [MockFunction spy],
                       "$subscribe": [Function],
                       "_customProperties": Set {},
+                      "_getters": [
+                        "isAuth",
+                      ],
                       "_hmrPayload": {
                         "actions": {
                           "turnBackgroundForModel": [Function],
                         },
-                        "getters": {},
+                        "getters": {
+                          "isAuth": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": ReactiveEffect {
+                              "active": true,
+                              "computed": [Circular],
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
                         "hotState": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -1675,6 +2243,7 @@ VueWrapper {
                         },
                         "state": [
                           "search_bar_show",
+                          "token",
                           "isAuthenticated",
                           "apiDownError",
                           "username",
@@ -1687,8 +2256,10 @@ VueWrapper {
                       "apiDownError": false,
                       "backgroundForModal": null,
                       "baseAPIURL": "http://localhost:8888",
+                      "isAuth": false,
                       "isAuthenticated": false,
                       "search_bar_show": false,
+                      "token": null,
                       "turnBackgroundForModel": [MockFunction spy],
                       "username": null,
                     },
@@ -1736,6 +2307,33 @@ VueWrapper {
                           "_rawValue": false,
                           "_value": false,
                           "dep": undefined,
+                        },
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
                         },
                         "username": RefImpl {
                           "__v_isRef": true,
@@ -1801,6 +2399,7 @@ VueWrapper {
                         "baseAPIURL": "http://localhost:8888",
                         "isAuthenticated": false,
                         "search_bar_show": false,
+                        "token": null,
                         "username": null,
                       },
                       "Store for storing information about the logged in user": {
@@ -1872,7 +2471,38 @@ VueWrapper {
                       "_active": true,
                       "cleanups": [],
                       "detached": false,
-                      "effects": [],
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
                       "index": 0,
                       "parent": [Circular],
                     },
@@ -1900,11 +2530,36 @@ VueWrapper {
                     "$reset": [MockFunction spy],
                     "$subscribe": [Function],
                     "_customProperties": Set {},
+                    "_getters": [
+                      "isAuth",
+                    ],
                     "_hmrPayload": {
                       "actions": {
                         "turnBackgroundForModel": [Function],
                       },
-                      "getters": {},
+                      "getters": {
+                        "isAuth": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
                       "hotState": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -1914,6 +2569,7 @@ VueWrapper {
                       },
                       "state": [
                         "search_bar_show",
+                        "token",
                         "isAuthenticated",
                         "apiDownError",
                         "username",
@@ -1926,8 +2582,10 @@ VueWrapper {
                     "apiDownError": false,
                     "backgroundForModal": null,
                     "baseAPIURL": "http://localhost:8888",
+                    "isAuth": false,
                     "isAuthenticated": false,
                     "search_bar_show": false,
+                    "token": null,
                     "turnBackgroundForModel": [MockFunction spy],
                     "username": null,
                   },
@@ -1975,6 +2633,33 @@ VueWrapper {
                         "_rawValue": false,
                         "_value": false,
                         "dep": undefined,
+                      },
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
                       },
                       "username": RefImpl {
                         "__v_isRef": true,
@@ -2040,6 +2725,7 @@ VueWrapper {
                       "baseAPIURL": "http://localhost:8888",
                       "isAuthenticated": false,
                       "search_bar_show": false,
+                      "token": null,
                       "username": null,
                     },
                     "Store for storing information about the logged in user": {
@@ -2180,7 +2866,38 @@ VueWrapper {
                         "_active": true,
                         "cleanups": [],
                         "detached": false,
-                        "effects": [],
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
                         "index": 0,
                         "parent": [Circular],
                       },
@@ -2208,11 +2925,36 @@ VueWrapper {
                       "$reset": [MockFunction spy],
                       "$subscribe": [Function],
                       "_customProperties": Set {},
+                      "_getters": [
+                        "isAuth",
+                      ],
                       "_hmrPayload": {
                         "actions": {
                           "turnBackgroundForModel": [Function],
                         },
-                        "getters": {},
+                        "getters": {
+                          "isAuth": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": ReactiveEffect {
+                              "active": true,
+                              "computed": [Circular],
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
                         "hotState": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -2222,6 +2964,7 @@ VueWrapper {
                         },
                         "state": [
                           "search_bar_show",
+                          "token",
                           "isAuthenticated",
                           "apiDownError",
                           "username",
@@ -2234,8 +2977,10 @@ VueWrapper {
                       "apiDownError": false,
                       "backgroundForModal": null,
                       "baseAPIURL": "http://localhost:8888",
+                      "isAuth": false,
                       "isAuthenticated": false,
                       "search_bar_show": false,
+                      "token": null,
                       "turnBackgroundForModel": [MockFunction spy],
                       "username": null,
                     },
@@ -2283,6 +3028,33 @@ VueWrapper {
                           "_rawValue": false,
                           "_value": false,
                           "dep": undefined,
+                        },
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
                         },
                         "username": RefImpl {
                           "__v_isRef": true,
@@ -2348,6 +3120,7 @@ VueWrapper {
                         "baseAPIURL": "http://localhost:8888",
                         "isAuthenticated": false,
                         "search_bar_show": false,
+                        "token": null,
                         "username": null,
                       },
                       "Store for storing information about the logged in user": {
@@ -2462,7 +3235,38 @@ VueWrapper {
                       "_active": true,
                       "cleanups": [],
                       "detached": false,
-                      "effects": [],
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
                       "index": 0,
                       "parent": [Circular],
                     },
@@ -2490,11 +3294,36 @@ VueWrapper {
                     "$reset": [MockFunction spy],
                     "$subscribe": [Function],
                     "_customProperties": Set {},
+                    "_getters": [
+                      "isAuth",
+                    ],
                     "_hmrPayload": {
                       "actions": {
                         "turnBackgroundForModel": [Function],
                       },
-                      "getters": {},
+                      "getters": {
+                        "isAuth": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
                       "hotState": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -2504,6 +3333,7 @@ VueWrapper {
                       },
                       "state": [
                         "search_bar_show",
+                        "token",
                         "isAuthenticated",
                         "apiDownError",
                         "username",
@@ -2516,8 +3346,10 @@ VueWrapper {
                     "apiDownError": false,
                     "backgroundForModal": null,
                     "baseAPIURL": "http://localhost:8888",
+                    "isAuth": false,
                     "isAuthenticated": false,
                     "search_bar_show": false,
+                    "token": null,
                     "turnBackgroundForModel": [MockFunction spy],
                     "username": null,
                   },
@@ -2565,6 +3397,33 @@ VueWrapper {
                         "_rawValue": false,
                         "_value": false,
                         "dep": undefined,
+                      },
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
                       },
                       "username": RefImpl {
                         "__v_isRef": true,
@@ -2630,6 +3489,7 @@ VueWrapper {
                       "baseAPIURL": "http://localhost:8888",
                       "isAuthenticated": false,
                       "search_bar_show": false,
+                      "token": null,
                       "username": null,
                     },
                     "Store for storing information about the logged in user": {
@@ -3057,7 +3917,38 @@ VueWrapper {
                       "_active": true,
                       "cleanups": [],
                       "detached": false,
-                      "effects": [],
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
                       "index": 0,
                       "parent": [Circular],
                     },
@@ -3085,11 +3976,36 @@ VueWrapper {
                     "$reset": [MockFunction spy],
                     "$subscribe": [Function],
                     "_customProperties": Set {},
+                    "_getters": [
+                      "isAuth",
+                    ],
                     "_hmrPayload": {
                       "actions": {
                         "turnBackgroundForModel": [Function],
                       },
-                      "getters": {},
+                      "getters": {
+                        "isAuth": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
                       "hotState": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -3099,6 +4015,7 @@ VueWrapper {
                       },
                       "state": [
                         "search_bar_show",
+                        "token",
                         "isAuthenticated",
                         "apiDownError",
                         "username",
@@ -3111,8 +4028,10 @@ VueWrapper {
                     "apiDownError": false,
                     "backgroundForModal": null,
                     "baseAPIURL": "http://localhost:8888",
+                    "isAuth": false,
                     "isAuthenticated": false,
                     "search_bar_show": false,
+                    "token": null,
                     "turnBackgroundForModel": [MockFunction spy],
                     "username": null,
                   },
@@ -3190,6 +4109,33 @@ VueWrapper {
                         "_value": false,
                         "dep": undefined,
                       },
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": null,
+                        "_value": null,
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
                       "username": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -3254,6 +4200,7 @@ VueWrapper {
                       "baseAPIURL": "http://localhost:8888",
                       "isAuthenticated": false,
                       "search_bar_show": false,
+                      "token": null,
                       "username": null,
                     },
                     "Store for storing information about the logged in user": {
@@ -3295,7 +4242,38 @@ VueWrapper {
                     "_active": true,
                     "cleanups": [],
                     "detached": false,
-                    "effects": [],
+                    "effects": [
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                      ReactiveEffect {
+                        "active": true,
+                        "deps": [],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    ],
                     "index": 0,
                     "parent": [Circular],
                   },
@@ -3323,11 +4301,36 @@ VueWrapper {
                   "$reset": [MockFunction spy],
                   "$subscribe": [Function],
                   "_customProperties": Set {},
+                  "_getters": [
+                    "isAuth",
+                  ],
                   "_hmrPayload": {
                     "actions": {
                       "turnBackgroundForModel": [Function],
                     },
-                    "getters": {},
+                    "getters": {
+                      "isAuth": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": ReactiveEffect {
+                          "active": true,
+                          "computed": [Circular],
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
                     "hotState": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
@@ -3337,6 +4340,7 @@ VueWrapper {
                     },
                     "state": [
                       "search_bar_show",
+                      "token",
                       "isAuthenticated",
                       "apiDownError",
                       "username",
@@ -3349,8 +4353,10 @@ VueWrapper {
                   "apiDownError": false,
                   "backgroundForModal": null,
                   "baseAPIURL": "http://localhost:8888",
+                  "isAuth": false,
                   "isAuthenticated": false,
                   "search_bar_show": false,
+                  "token": null,
                   "turnBackgroundForModel": [MockFunction spy],
                   "username": null,
                 },
@@ -3428,6 +4434,33 @@ VueWrapper {
                       "_value": false,
                       "dep": undefined,
                     },
+                    "token": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": null,
+                      "_value": null,
+                      "dep": Set {
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            [Circular],
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
                     "username": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
@@ -3492,6 +4525,7 @@ VueWrapper {
                     "baseAPIURL": "http://localhost:8888",
                     "isAuthenticated": false,
                     "search_bar_show": false,
+                    "token": null,
                     "username": null,
                   },
                   "Store for storing information about the logged in user": {
@@ -3570,7 +4604,38 @@ VueWrapper {
                 "_active": true,
                 "cleanups": [],
                 "detached": false,
-                "effects": [],
+                "effects": [
+                  ReactiveEffect {
+                    "active": true,
+                    "computed": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": false,
+                      "_setter": [Function],
+                      "_value": false,
+                      "dep": undefined,
+                      "effect": [Circular],
+                    },
+                    "deps": [
+                      Set {
+                        [Circular],
+                      },
+                    ],
+                    "fn": [Function],
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  ReactiveEffect {
+                    "active": true,
+                    "deps": [],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                ],
                 "index": 0,
                 "parent": [Circular],
               },
@@ -3598,11 +4663,36 @@ VueWrapper {
               "$reset": [MockFunction spy],
               "$subscribe": [Function],
               "_customProperties": Set {},
+              "_getters": [
+                "isAuth",
+              ],
               "_hmrPayload": {
                 "actions": {
                   "turnBackgroundForModel": [Function],
                 },
-                "getters": {},
+                "getters": {
+                  "isAuth": ComputedRefImpl {
+                    "__v_isReadonly": true,
+                    "__v_isRef": true,
+                    "_cacheable": true,
+                    "_dirty": false,
+                    "_setter": [Function],
+                    "_value": false,
+                    "dep": undefined,
+                    "effect": ReactiveEffect {
+                      "active": true,
+                      "computed": [Circular],
+                      "deps": [
+                        Set {
+                          [Circular],
+                        },
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
                 "hotState": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -3612,6 +4702,7 @@ VueWrapper {
                 },
                 "state": [
                   "search_bar_show",
+                  "token",
                   "isAuthenticated",
                   "apiDownError",
                   "username",
@@ -3624,8 +4715,10 @@ VueWrapper {
               "apiDownError": false,
               "backgroundForModal": null,
               "baseAPIURL": "http://localhost:8888",
+              "isAuth": false,
               "isAuthenticated": false,
               "search_bar_show": false,
+              "token": null,
               "turnBackgroundForModel": [MockFunction spy],
               "username": null,
             },
@@ -3703,6 +4796,33 @@ VueWrapper {
                   "_value": false,
                   "dep": undefined,
                 },
+                "token": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": null,
+                  "_value": null,
+                  "dep": Set {
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": [Circular],
+                      },
+                      "deps": [
+                        [Circular],
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
                 "username": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -3767,6 +4887,7 @@ VueWrapper {
                 "baseAPIURL": "http://localhost:8888",
                 "isAuthenticated": false,
                 "search_bar_show": false,
+                "token": null,
                 "username": null,
               },
               "Store for storing information about the logged in user": {

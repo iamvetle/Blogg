@@ -6,6 +6,13 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const Image: typeof import('./components/modules/Editor/CustomImage')['Image']
+  const afterAll: typeof import('vitest')['afterAll']
+  const afterEach: typeof import('vitest')['afterEach']
+  const assert: typeof import('vitest')['assert']
+  const beforeAll: typeof import('vitest')['beforeAll']
+  const beforeEach: typeof import('vitest')['beforeEach']
+  const chai: typeof import('vitest')['chai']
   const checkIfFollowingUser: typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']
   const checkIfLoggedInUser: typeof import('./composables/checkIfLoggedInUser')['checkIfLoggedInUser']
   const checkIfPostIsSaved: typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']
@@ -18,7 +25,9 @@ declare global {
   const deleteLoggedInUserPost: typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']
   const deleteLoggedInUserProfilePicture: typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']
   const deleteSinglePostSingleComment: typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']
+  const describe: typeof import('vitest')['describe']
   const effectScope: typeof import('vue')['effectScope']
+  const expect: typeof import('vitest')['expect']
   const extractTitleAndContent: typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']
   const fixPagination: typeof import('./composables/fixPagination')['fixPagination']
   const generateUniqueId: typeof import('./composables/generateUniqueId')['generateUniqueId']
@@ -40,10 +49,12 @@ declare global {
   const h: typeof import('vue')['h']
   const horizontalRuleRun: typeof import('./composables/editorCommands')['horizontalRuleRun']
   const inject: typeof import('vue')['inject']
+  const inputRegex: typeof import('./components/modules/Editor/CustomImage')['inputRegex']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
   const isReadonly: typeof import('vue')['isReadonly']
   const isRef: typeof import('vue')['isRef']
+  const it: typeof import('vitest')['it']
   const markRaw: typeof import('vue')['markRaw']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
@@ -68,6 +79,7 @@ declare global {
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
+  const removeImageFromMap: typeof import('./composables/editor/removeImageFromMap')['removeImageFromMap']
   const removeImgTags: typeof import('./composables/removeImgTags')['removeImgTags']
   const resolveComponent: typeof import('vue')['resolveComponent']
   const retrieveToken: typeof import('./composables/retrieveToken')['retrieveToken']
@@ -77,6 +89,8 @@ declare global {
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
+  const suite: typeof import('vitest')['suite']
+  const test: typeof import('vitest')['test']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
@@ -94,7 +108,15 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useGeneralStore: typeof import('./store/generalStore')['useGeneralStore']
+  const useLoggedInUserStore: typeof import('./store/loggedInUserStore')['useLoggedInUserStore']
+  const usePaginationStore: typeof import('./store/paginationStore')['usePaginationStore']
+  const usePostStore: typeof import('./store/postStore')['usePostStore']
+  const useSearchStore: typeof import('./store/searchStore')['useSearchStore']
   const useSlots: typeof import('vue')['useSlots']
+  const validateAndCleanImageMap: typeof import('./composables/editor/validateAndCleanImageMap')['validateAndCleanImageMap']
+  const vi: typeof import('vitest')['vi']
+  const vitest: typeof import('vitest')['vitest']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const watchPostEffect: typeof import('vue')['watchPostEffect']
@@ -110,6 +132,12 @@ import { UnwrapRef } from 'vue'
 declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly afterAll: UnwrapRef<typeof import('vitest')['afterAll']>
+    readonly afterEach: UnwrapRef<typeof import('vitest')['afterEach']>
+    readonly assert: UnwrapRef<typeof import('vitest')['assert']>
+    readonly beforeAll: UnwrapRef<typeof import('vitest')['beforeAll']>
+    readonly beforeEach: UnwrapRef<typeof import('vitest')['beforeEach']>
+    readonly chai: UnwrapRef<typeof import('vitest')['chai']>
     readonly checkIfFollowingUser: UnwrapRef<typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']>
     readonly checkIfLoggedInUser: UnwrapRef<typeof import('./composables/checkIfLoggedInUser')['checkIfLoggedInUser']>
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
@@ -122,7 +150,9 @@ declare module 'vue' {
     readonly deleteLoggedInUserPost: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']>
     readonly deleteLoggedInUserProfilePicture: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']>
     readonly deleteSinglePostSingleComment: UnwrapRef<typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']>
+    readonly describe: UnwrapRef<typeof import('vitest')['describe']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly expect: UnwrapRef<typeof import('vitest')['expect']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
     readonly generateUniqueId: UnwrapRef<typeof import('./composables/generateUniqueId')['generateUniqueId']>
@@ -148,6 +178,7 @@ declare module 'vue' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
+    readonly it: UnwrapRef<typeof import('vitest')['it']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
@@ -181,6 +212,8 @@ declare module 'vue' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly suite: UnwrapRef<typeof import('vitest')['suite']>
+    readonly test: UnwrapRef<typeof import('vitest')['test']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
@@ -198,7 +231,14 @@ declare module 'vue' {
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useGeneralStore: UnwrapRef<typeof import('./store/generalStore')['useGeneralStore']>
+    readonly useLoggedInUserStore: UnwrapRef<typeof import('./store/loggedInUserStore')['useLoggedInUserStore']>
+    readonly usePaginationStore: UnwrapRef<typeof import('./store/paginationStore')['usePaginationStore']>
+    readonly usePostStore: UnwrapRef<typeof import('./store/postStore')['usePostStore']>
+    readonly useSearchStore: UnwrapRef<typeof import('./store/searchStore')['useSearchStore']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
+    readonly vi: UnwrapRef<typeof import('vitest')['vi']>
+    readonly vitest: UnwrapRef<typeof import('vitest')['vitest']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>
@@ -208,6 +248,12 @@ declare module 'vue' {
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly afterAll: UnwrapRef<typeof import('vitest')['afterAll']>
+    readonly afterEach: UnwrapRef<typeof import('vitest')['afterEach']>
+    readonly assert: UnwrapRef<typeof import('vitest')['assert']>
+    readonly beforeAll: UnwrapRef<typeof import('vitest')['beforeAll']>
+    readonly beforeEach: UnwrapRef<typeof import('vitest')['beforeEach']>
+    readonly chai: UnwrapRef<typeof import('vitest')['chai']>
     readonly checkIfFollowingUser: UnwrapRef<typeof import('./composables/checkIfFollowingUser')['checkIfFollowingUser']>
     readonly checkIfLoggedInUser: UnwrapRef<typeof import('./composables/checkIfLoggedInUser')['checkIfLoggedInUser']>
     readonly checkIfPostIsSaved: UnwrapRef<typeof import('./composables/checkIfPostIsSaved')['checkIfPostIsSaved']>
@@ -220,7 +266,9 @@ declare module '@vue/runtime-core' {
     readonly deleteLoggedInUserPost: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']>
     readonly deleteLoggedInUserProfilePicture: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']>
     readonly deleteSinglePostSingleComment: UnwrapRef<typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']>
+    readonly describe: UnwrapRef<typeof import('vitest')['describe']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly expect: UnwrapRef<typeof import('vitest')['expect']>
     readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
     readonly generateUniqueId: UnwrapRef<typeof import('./composables/generateUniqueId')['generateUniqueId']>
@@ -246,6 +294,7 @@ declare module '@vue/runtime-core' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
+    readonly it: UnwrapRef<typeof import('vitest')['it']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
@@ -279,6 +328,8 @@ declare module '@vue/runtime-core' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly suite: UnwrapRef<typeof import('vitest')['suite']>
+    readonly test: UnwrapRef<typeof import('vitest')['test']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
@@ -296,7 +347,14 @@ declare module '@vue/runtime-core' {
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useGeneralStore: UnwrapRef<typeof import('./store/generalStore')['useGeneralStore']>
+    readonly useLoggedInUserStore: UnwrapRef<typeof import('./store/loggedInUserStore')['useLoggedInUserStore']>
+    readonly usePaginationStore: UnwrapRef<typeof import('./store/paginationStore')['usePaginationStore']>
+    readonly usePostStore: UnwrapRef<typeof import('./store/postStore')['usePostStore']>
+    readonly useSearchStore: UnwrapRef<typeof import('./store/searchStore')['useSearchStore']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
+    readonly vi: UnwrapRef<typeof import('vitest')['vi']>
+    readonly vitest: UnwrapRef<typeof import('vitest')['vitest']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>

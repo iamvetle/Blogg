@@ -6,8 +6,9 @@ export default defineConfig({
     plugins: [
         Vue(),
         AutoImport({
-            imports: ['vue'],
-            dirs: ['./composables', './composables/crud', './components'],
+            imports: ['vue', "vitest"],
+            dts:true,
+            dirs: ['./composables', './store', './composables/crud', './components'],
             vueTemplate: true,
         }),
     ],
