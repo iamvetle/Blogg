@@ -11,7 +11,7 @@
 
 const authStore = useAuthStore()
 
-onBeforeMount(() => {
+onMounted(() => {
     authStore.authStoreSetup()
 
 })

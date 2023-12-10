@@ -14,7 +14,7 @@
 					</span>
 				</nuxt-link>
 
-				<span v-if="authStore?.isAuthenticated === true" id="searchbar" class="ms-8">
+				<span id="searchbar" class="ms-8">
 					<BaseSearchBar @search-action="search"
 						class="bg-surface text-onSurface shadow-sm rounded-md h-10 md:max-w-[250px] max-w-[175px] hidden items-center sm:flex" 
 						/>
@@ -42,7 +42,7 @@
 					<span class="text-xs"><nuxt-link to="/minkonto">Min profil</nuxt-link></span>
 				</span>
 
-				<span v-if="authStore?.isAuthenticated === true" class="me-4 flex items-center flex-col">
+				<span v-if="authStore?.isAuthenticated" class="me-4 flex items-center flex-col">
 					<nuxt-link to="/loggut">
 						<svg class="mb-1 w-8 h-auto fill-onPrimary hover:fill-onPrimaryFixed"
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

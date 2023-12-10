@@ -98,7 +98,7 @@ const ready = computed(() => {
 const followers = ref(0)
 
 
-beforeCreate( async () => {
+onMounted( async () => {
 	/**
 	 * @param id The username of the user profile page
 	 */

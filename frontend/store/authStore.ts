@@ -25,20 +25,26 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
      * Watch for changes in localStorage and update the token accordingly.
      */
     watchEffect(() => {
-        const tokenFromStorage = localStorage.getItem('token');
+        if (process.client) {
+            const tokenFromStorage = localStorage.getItem('token');
 
-        // Update token if present in localStorage
-        token.value = tokenFromStorage ?? '';
+            // Update token if present in localStorage
+            token.value = tokenFromStorage ?? '';
+        }
+
     });
 
     /** 
      * Watch for changes in localStorage and update the username accordingly.
      */
     watchEffect(() => {
-        const usernameFromStorage = localStorage.getItem('username');
+        if (process.client) {
+            const usernameFromStorage = localStorage.getItem('username');
 
-        // Update username if present in localStorage
-        username.value = usernameFromStorage ?? '';
+            // Update username if present in localStorage
+            username.value = usernameFromStorage ?? '';
+        }
+
     });
 
     /**

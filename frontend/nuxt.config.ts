@@ -74,5 +74,5 @@ tailwindcss: {
 	viewer: true,
 
 },
-// ssr: false, // client only (single site application) all api fetch on client
+ssr: false, // client only (single site application) all api fetch on client
 });
