@@ -1,6 +1,6 @@
 
 /**
- * ! Effective and IN-USE?????
+ * ! Does it help make server side rendering work on certain paths?
  * 
  * ---
  * 
@@ -20,60 +20,90 @@
 //@ts-ignore
 export default defineNuxtRouteMiddleware((to, from) => {
 
-  const authStore = useAuthStore()
+	const authStore = useAuthStore()
 
-  if (process.client) {
+	// The path we are elaving from
+	const fromPath = from.path
+	// The path we are trying to access
+	const toPath = to.path
 
-    const path_place = to.path;
+	/** 
+	 * Checks if the web client is authenticated and then either requets or accepts the path request 
+	 * 
+	 * If true, ACCEPT the navigation
+	 */
+	const checkIfAuthenticatedAndRedirect = (): any => {
+		if (process.client) {
+			authStore.authStoreSetup()
 
-    if (!authStore.isAuthenticated) { // If NOT authorized (token==null)
+			// checks if the web client is authenticated
+			if (authStore.isAuthenticated) {
+				// go to the desired path
+				return navigateTo(toPath)
+			} else {
+				// go nowhere - redirect to same path?
+				return navigateTo(fromPath)
+			}
+		}
+	}
 
-      /**
-       * These rules makes makes that a web client that does NOT have a (localStorage) token,
-       * can access sites that are meant for authorized users.
-       * 
-       * They are rather redirected to the "un-authorized" equivelant. Such as "/register" instead
-       * of "/login"
-       */
-      switch (path_place) {
-        case "/minkonto":
-          return navigateTo("/login");
-        case "/newpost":
-          return navigateTo("/login");
-        case "/loggut":
-          return navigateTo("/wait");
-        case "/":
-          return navigateTo("/wait");
-        default:
-          console.log(
-            "Allowed navigation route: ",
-            `from ${from.path} to ${to.path}`,
-          );
-          return null;
-      }
-    } else { // If IS authorized
+	/** 
+	 * The oppistes of "checkIfAuthenticatedAndRedirect" 
+	 * 
+	 * If true, STOP the navigation, and redirect
+	 * 
+	 */
+	const checkIfAuthenticatedAndStopRedirect = (): any => {
+		if (process.client) {
+			authStore.authStoreSetup()
 
-      /**
-       * These "rules" makes sure that a web client with  a (localStorage) token,
-       * cannot access sites that are meant for unauthorized users, such as "/register",
-       * or "/login".
-       * 
-       * They are then rather redirected to the "logged-in" equivelant
-       */
-      switch (path_place) {
-        case "/registrer":
-          return navigateTo("/minkonto");
-        case "/login":
-          return navigateTo("/minkonto");
-        case "/wait":
-          return navigateTo("/");
-        default:
-          console.log(
-            "Allowed navigation route: ",
-            `from ${from.path} to ${to.path}`,
-          );
-          return null;
-      }
-    }
-  }
+			// checks if the web client is authenticated
+			if (authStore.isAuthenticated) {
+				// go to the desired path
+				return navigateTo(fromPath)
+			} else {
+				// go nowhere - redirect to same path?
+				return navigateTo(toPath)
+			}
+		}
+	}
+
+	/**
+	 * * Paths that doesn't need authentication 
+	 * 
+	 * -- "/"
+	 * -- "/[id] (post)"
+	 * -- "/[id] (user)"
+	 */
+
+	/** Paths that NEED authentication */
+	if (to.path === "/minkonto") {
+		return checkIfAuthenticatedAndRedirect()
+	} else if (to.path === "/newpost") {
+		return checkIfAuthenticatedAndRedirect()
+	}
+
+	/** Paths that if IS AUTHENTICATED do redirect */
+	if (to.path === "/registrer") {
+		return checkIfAuthenticatedAndStopRedirect()
+	} else if (to.path === "/login") {
+		return checkIfAuthenticatedAndStopRedirect()
+	} else if (to.path === "/wait") {
+		return checkIfAuthenticatedAndStopRedirect()
+	}
+
+	/** Just redirect to different place */
+	if (to.path === "/loggut") {
+		const authStore = useAuthStore()
+
+		if (process.client) {
+			// checks if the web client is authenticated
+			if (authStore.isAuthenticated) {
+				// go to the desired path
+				return navigateTo(toPath)
+			} else {
+				return navigateTo("/login")
+			}
+		}
+	}
 });
