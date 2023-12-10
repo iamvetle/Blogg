@@ -12,7 +12,6 @@
     "auto-imports.d.ts": true,
     "components.d.ts": true,
     "coverage": true,
-    "public": true,
     "vue-shims.d.ts": true,
     "yarn-error.log": true,
     "yarn.lock": true,

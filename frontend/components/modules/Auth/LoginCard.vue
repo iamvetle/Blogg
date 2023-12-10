@@ -32,9 +32,9 @@
 				</p>
 				<p class="text-sm  text-onSurface font-light mt-3">
 					Don't have an account yet?
-					<nuxt-link to="/registrer/" class="font-medium text-primary hover:underline">
+					<NuxtLink to="/registrer/" class="font-medium text-primary hover:underline">
 						Sign up
-					</nuxt-link>
+					</NuxtLink>
 				</p>
 			</FormKit>
 		</div>
@@ -44,11 +44,10 @@
 <script setup lang="ts">
 //@ts-nocheck
 
-/**
- * TODO Fullføre denne så den sender postdataen
- * TODO også fikse name og value slik at den kan bli godt ordentlig av django
- */
 import { reset } from '@formkit/core'
+
+const authStore = useAuthStore()
+
 const address = ref(null)
 const all = ref<any>(null)
 
@@ -75,7 +74,8 @@ const submitForm = async (formData: any, node) => {
 	if (responseData) {
 
 		/** Takes the username and token from the responseData and puts it in localStorage */
-		setTokenAndUsername(responseData.token, responseData.username);
+		authStore.setTokenToLocalStorage(responseData.token)
+		authStore.setUsernameToLocalStorage(responseData.username)
 
 		loginsucess.value = true;
 		loginerror.value = false;

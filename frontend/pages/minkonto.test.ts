@@ -1,8 +1,6 @@
 import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import minkonto from '~/pages/minkonto.vue'
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePostStore } from '~/store/postStore';
 import BaseImage from '~/components/base/BaseImage.vue';
 import MyProfileBio from '~/components/modules/MyProfile/MyProfileBio.vue';
 import MyProfilePostsList from '~/components/modules/MyProfile/MyProfilePostsList.vue';

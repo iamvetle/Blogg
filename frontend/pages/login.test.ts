@@ -2,7 +2,6 @@ import { mount } from '@vue/test-utils'
 import login from './login.vue'
 import LoginCard from '~/components/modules/Auth/LoginCard.vue'
 import { createTestingPinia } from '@pinia/testing'
-import { useGeneralStore } from '@/store/generalStore';
 
 let wrapper
 let pinia = createTestingPinia()
@@ -33,7 +32,6 @@ describe('login page testing', () => {
 
         // Arrange
         wrapper = factory()
-        generalStore.isAuthenticated = true
 
         await (wrapper.vm as any).$nextTick()
 
@@ -49,7 +47,6 @@ describe('login page testing', () => {
     test('Should render the loginform when the user is not authenticated', async () => {
         // Arrange
         wrapper = factory()
-        generalStore.isAuthenticated = false
         
         await (wrapper.vm as any).$nextTick()
 

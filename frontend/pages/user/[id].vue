@@ -10,7 +10,8 @@
 						class="h-[150px] w-full object-cover border-v border-slate-500" />
 					<div id="top" class="px-2 pt-[50px]">
 						<div class="prose">
-							<UserFullName :first_name="normalUserProfile.first_name" :last_name="normalUserProfile.last_name" />
+							<UserFullName :first_name="normalUserProfile.first_name"
+								:last_name="normalUserProfile.last_name" />
 						</div>
 						<div id="nav" class="pt-[30px]">
 							<UserNav />
@@ -48,7 +49,7 @@
 			</div>
 		</div>
 		<div v-else>
-			<p>loading</p>		
+			<p>loading</p>
 		</div>
 	</div>
 </template>
@@ -69,6 +70,7 @@ import UserFullName from '~/components/modules/UserProfile/UserFullName.vue';
  * that the user has made. It compares the followers the user has against the whom the logged in user is following.
  */
 
+
 const loggedInUserStore = useLoggedInUserStore()
 const route = useRoute();
 
@@ -78,7 +80,11 @@ const normalUserProfile = ref<NormalUserProfileType | null>(null);
 /** Stores all of the posts made by the user */
 const normalUserPosts = ref<NormalUserSnippetPostType | null>(null);
 
+const authStore = useAuthStore()
+
+
 /** Regulates of if anything is displayed or not */
+
 
 const ready = computed(() => {
 	if ((normalUserProfile.value) && (normalUserPosts.value)) {
@@ -91,7 +97,46 @@ const ready = computed(() => {
 /** Has the **number count** of users that the (normal)user has */
 const followers = ref(0)
 
-onMounted(async () => {
+
+beforeCreate( async () => {
+	/**
+	 * @param id The username of the user profile page
+	 */
+	const username = route.params.id
+
+	const theNormalUserProfileURL = `http://localhost:8888/api/${username}/`;
+
+	/**
+	 * Fetches the profile data about the user through the API address of the user.
+	 * 
+	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
+	 */
+	const responseData_profile = await getNormalUserProfile(theNormalUserProfileURL);
+
+	if (responseData_profile) {
+		normalUserProfile.value = responseData_profile
+
+		/** Populates/updates the constant that counts the number of followers the normal-user has */
+		followers.value = normalUserProfile.value.num_of_followers
+	}
+
+	const theNormalUserPostsURL = `http://localhost:8888/api/${username}/posts/`
+
+	/**
+	 * Fetches the posts the user has made through the API address of the user.
+	 * And puts them in a reactive variable.
+	 * 
+	 * @param theNormalUserPostsURL The URL address that the function is going to fetch from.
+	 */
+	const responseData_posts = await getNormalUserPosts(theNormalUserPostsURL);
+
+	if (responseData_posts) {
+		normalUserPosts.value = responseData_posts
+	}
+})
+
+
+onBeforeMount(async () => {
 	/**
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
@@ -139,8 +184,13 @@ onMounted(async () => {
  * Makes sure that data made with 'optimistic ui update' is removed. That is to ensure that the numbers doesn't get duplicated
  * upon revisit. This can happen because the pinia store caches it's data. The collision happens because the data get's refetched
  * each time the page is mounted. 
+ * 
+ * ? is this wrong?
  */
 onDeactivated(() => {
+	console.log("The 'onDeactivated' lifecycle hook was run on [id] user (which is weird)") // print to self
+	alert("The 'onDeactivated' lifecycle hook was run on [id] user (which is weird)") // alert to self
+
 	followers.value = 0
 	loggedInUserStore.idArrayOfLoggedInUserFollowingUsers = []
 })
@@ -164,13 +214,9 @@ onUnmounted(() => {
  * Makes sure that the logged-in user can't access it's own [id]user page. 
  */
 watchEffect(() => {
-	if (normalUserProfile.value) {
-		const localUsername = localStorage.getItem("username")
-		if (normalUserProfile.value.username === localUsername) {
-			console.log("Can't access it's own [id] user page") // print to self
-
-			navigateTo("/minkonto")
-		}
+	if (normalUserProfile.value.username === authStore.username) {
+		console.log("Can't access it's own [id] user page") // print to self
+		navigateTo("/minkonto")
 	}
 })
 

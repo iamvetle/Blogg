@@ -1,7 +1,6 @@
 import idVue from './[id].vue'
 import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
-import { usePostStore } from '~/store/postStore';
 
 // Components in the page
 import SinglePostCommentsList from '~/components/modules/Blogg/SinglePostCommentsList.vue';

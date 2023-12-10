@@ -5,11 +5,6 @@ import { createTestingPinia } from '@pinia/testing';
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
 
-// let generalStore; 
-// let postStore; 
-// let loggedInUserStore; 
-// let paginationStore; 
-
 const factory = () => {
     return shallowMount(FeedDropdownFilter, {
         global: {
@@ -28,11 +23,6 @@ const factory = () => {
 describe('Testing FeedDropdownFilter', () => {
 
     beforeEach(() => {
-        // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
-        // paginationStore = usePaginationStore(pinia); 
-
     });
 
     afterEach(() => {

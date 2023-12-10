@@ -2,9 +2,6 @@ import FeedSidebar from './FeedSidebar.vue';
 import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
 import FeedPostsListSidebar from '~/components/modules/Blogg/FeedPostsListSidebar.vue';
 import FeedDropdownFilter from './FeedDropdownFilter.vue';
 

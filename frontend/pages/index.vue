@@ -17,9 +17,7 @@
 // Importing all stores
 
 const postStore = usePostStore()
-// const generalStore = useGeneralStore()
 const searchStore = useSearchStore()
-// const loggedInUserStore = useLoggedInUserStore()
 const paginationStore = usePaginationStore()
 
 definePageMeta({
@@ -38,7 +36,7 @@ definePageMeta({
  * ? maybe i should have this in a store instead ?
  */
 // const ready = computed(() => {
-// 	if ((postStore.posts) && (loggedInUserStore.loggedInUserProfile) && (generalStore.isAuthenticated)) {
+// 	if ((postStore.posts) && (loggedInUserStore.loggedInUserProfile) && (authStore?.isAuthenticated)) {
 // 		return true
 // 	} else {
 // 		return false

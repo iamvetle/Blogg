@@ -7,7 +7,6 @@ import PostSavedCardList from "~/components/UI/PostSavedCardList.vue";
 import Following from "~/components/UI/Following.vue";
 import { createTestingPinia } from '@pinia/testing';
 import { ref } from 'vue'
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 let wrapper: VueWrapper
 let loggedInUserStore:any

@@ -1,17 +1,14 @@
 import SinglePostCommentSingle from './SinglePostCommentSingle.vue';
-import { VueWrapper, flushPromises, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useGeneralStore } from '~/store/generalStore';
 import BaseButton from '~/components/base/BaseButton.vue';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();
 
 let generalStore: any;
-// let postStore; 
-// let loggedInUserStore; 
-// let paginationStore; 
+
 
 const mockDeleteComment = vi.fn()
 
@@ -30,7 +27,9 @@ const factory = () => {
             mocks: {
                 deleteComment: mockDeleteComment,
                 checkIfLoggedInUser: ((author:any) => {
-                    return true
+                    let empty = author
+                    empty = true
+                    return empty
                 })
             },
             stubs: {

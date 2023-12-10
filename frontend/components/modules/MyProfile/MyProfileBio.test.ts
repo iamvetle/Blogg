@@ -1,7 +1,6 @@
 import MyProfileBio from './MyProfileBio.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import InputTextarea from '~/components/form/InputTextarea.vue';
 
 let wrapper: any;

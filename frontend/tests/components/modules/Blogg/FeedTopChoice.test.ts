@@ -2,8 +2,6 @@ import FeedTopChoice from '~/components/modules/Blogg/FeedTopChoice.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import BaseButton from '~/components/base/BaseButton.vue';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePostStore } from '~/store/postStore';
 
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();

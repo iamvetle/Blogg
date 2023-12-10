@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 export default <Partial<Config>>{
+	mode:"jit",
 	content: [
 		'docs/content/**/*.md'
 	],

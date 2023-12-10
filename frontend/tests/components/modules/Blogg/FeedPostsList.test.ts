@@ -1,8 +1,6 @@
 import { VueWrapper, mount } from '@vue/test-utils'
 import FeedPostsList from '~/components/modules/Blogg/FeedPostsList.vue'
 import { createTestingPinia } from '@pinia/testing'
-import { useGeneralStore } from '~/store/generalStore'
-import { usePostStore } from '~/store/postStore'
 import PostBookmark from '~/components/UI/PostBookmark.vue'
 import FeedPostPreviewCard from '~/components/modules/Blogg/FeedPostPreviewCard.vue'
 

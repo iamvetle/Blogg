@@ -15,7 +15,9 @@ export const getLoggedInUserAllFollowing = async (): Promise<FollowingType[] | n
     /**
      * Fetches the token from local storage, or just returns null.
      */
-    const token = retrieveToken();
+    const authStore = useAuthStore()
+
+const token = authStore.retrieveToken()
 
     if (token === null) {
         console.log("There was no token")

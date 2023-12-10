@@ -2,10 +2,6 @@ import TagsList from './TagsList.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useGeneralStore } from '~/store/generalStore';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
 import BaseTag from '~/components/base/BaseTag.vue';
 
 let wrapper: VueWrapper;

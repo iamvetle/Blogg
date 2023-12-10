@@ -1,7 +1,6 @@
 import { VueWrapper, mount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing'
 import TheNavbar from '~/components/layout/TheNavbar.vue'
-import { useGeneralStore } from '~/store/generalStore'
 
 let wrapper: VueWrapper;
 let pinia: any;

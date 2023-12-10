@@ -2,7 +2,9 @@ import { patchMethod } from "~/services/apiByCRUD";
 
 export const patchLoggedInUserBio = async (url: string, formData: object): Promise<object | null> => {
     try {
-        const token = retrieveToken();
+        const authStore = useAuthStore()
+
+const token = authStore.retrieveToken()
 
         const headers = {
             "Authorization": `Token ${token}`,

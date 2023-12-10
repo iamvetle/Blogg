@@ -2,8 +2,6 @@ import MyProfilePostsList from './MyProfilePostsList.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import MyProfilePostPreviewCard from './MyProfilePostPreviewCard.vue';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();

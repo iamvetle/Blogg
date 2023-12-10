@@ -12,33 +12,26 @@
 <script setup lang="ts">
 
 definePageMeta({
-  layout:"blank"
+  layout: "blank"
 })
 
-const generalStore = useGeneralStore();
-
+const authStore = useAuthStore();
 const removed = ref(false);
 
 const logoutFunction = () => {
-  const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
 
-  if (token != null || username != null) {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
+  // Removes the token and username from localstorage and store
+  authStore.removeTokenFromLocalStorage()
+  authStore.removeUsernameFromLocalStorage()
 
-    generalStore.isAuthenticated = true;
-
+  // Redirects to login page
+  setTimeout(() => {
+    removed.value = true;
     setTimeout(() => {
-      removed.value = true;
-      setTimeout(() => {
-        return navigateTo("/login");
-      }, 750);
-    }, 500);
-  } else {
-    navigateTo("/"); // temperory redirectioon
-  }
-};
+      return navigateTo("/login");
+    }, 750);
+  }, 500);
+}
 
 onMounted(logoutFunction);
 

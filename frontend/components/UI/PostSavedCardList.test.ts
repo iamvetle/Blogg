@@ -2,7 +2,6 @@ import PostSavedCardList from './PostSavedCardList.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 import PostSavedCard from '~/components/UI/PostSavedCard.vue';
 

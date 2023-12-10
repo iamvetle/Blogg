@@ -14,7 +14,9 @@ export const getLoggedInUserAllFollowers = async (url: string): Promise<Follower
     /**
      * Fetches the token from local storage, or just returns null.
      */
-    const token = retrieveToken();
+    const authStore = useAuthStore()
+
+const token = authStore.retrieveToken()
 
     if (token === null) {
         console.log("There was not token")

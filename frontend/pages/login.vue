@@ -1,6 +1,6 @@
 <template>
     <div
-    v-if="generalStore?.isAuthenticated == false" class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0 mt-24"
+    v-if="authStore?.isAuthenticated == false" class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0 mt-24"
     >
       <div
         class="w-full bg-surfaceContainerLowest border-surfaceContainerLowest border rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0"
@@ -16,13 +16,11 @@
 
 <script setup lang="ts">
 
-
-
 definePageMeta({
   layout:"form-layout"
 })
 
-const generalStore = useGeneralStore()
+const authStore = useAuthStore()
 
 </script>
 

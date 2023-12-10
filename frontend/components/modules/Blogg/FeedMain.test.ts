@@ -3,8 +3,6 @@ import FeedMain from './FeedMain.vue';
 import { createTestingPinia } from "@pinia/testing";
 
 import { shallowMount } from '@vue/test-utils';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 
 let wrapper: any;

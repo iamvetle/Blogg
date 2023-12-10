@@ -1,8 +1,6 @@
 import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import FeedPagination from '~/components/modules/Blogg/FeedPagination.vue'
-import { useGeneralStore } from '~/store/generalStore'
-import { usePaginationStore } from '~/store/paginationStore'
 
 let wrapper:VueWrapper
 let store

@@ -13,7 +13,9 @@ export const deleteSinglePostSingleComment = async (userURL: string): Promise<tr
      * 
      * @returns {string|null} The token if available, otherwise null.
      */
-    const token = retrieveToken();
+    const authStore = useAuthStore()
+
+const token = authStore.retrieveToken()
 
     // Handle the case where no token is present
     if (token === null) {

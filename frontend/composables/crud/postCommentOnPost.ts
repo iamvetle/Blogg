@@ -2,7 +2,9 @@ import { postMethod } from "~/services/apiByCRUD";
 
 export const postCommentOnPost = async (url: string, formData: object): Promise<object | null> => {
 
-    const token = retrieveToken();
+    const authStore = useAuthStore()
+
+const token = authStore.retrieveToken()
 
     if (token === null) {
         console.log("There was no token")

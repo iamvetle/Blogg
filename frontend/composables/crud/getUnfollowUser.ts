@@ -5,7 +5,9 @@ import { postMethod } from "~/services/apiByCRUD";
  * It also takes care of the header for you
 */
 export const getUnfollowUser = async (url: string): Promise<object | null> => {
-	const token = retrieveToken();
+	const authStore = useAuthStore()
+
+const token = authStore.retrieveToken()
 
 	if (token === null) {
 		console.log("There was no token")

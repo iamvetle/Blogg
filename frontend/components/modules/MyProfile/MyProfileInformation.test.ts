@@ -1,8 +1,6 @@
 import { VueWrapper, shallowMount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import MyProfileInformation from './MyProfileInformation.vue';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePostStore } from '~/store/postStore';
 
 let wrapper: VueWrapper
 let loggedInUserStore:any;

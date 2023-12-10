@@ -1,13 +1,6 @@
 // import { createTestingPinia } from "@pinia/testing"
 // import { VueWrapper, flushPromises, mount } from '@vue/test-utils';
 // import index from "~/pages/index.vue";
-// import { useGeneralStore } from '~/store/generalStore';
-// import FeedPostsList from '~/components/modules/Blogg/FeedPostsList.vue';
-// import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-// import { usePostStore } from '~/store/postStore';
-// import { useSearchStore } from '~/store/searchStore';
-// import { usePaginationStore } from '~/store/paginationStore';
-// import BaseButton from '~/components/base/BaseButton.vue'
 // import FeedTopChoice from '~/components/modules/Blogg/FeedTopChoice.vue';
 // import FeedTopSearch from "~/components/modules/Blogg/FeedTopSearch.vue";
 
@@ -211,10 +204,6 @@ import index from './index.vue';
 import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useGeneralStore } from '~/store/generalStore';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();

@@ -106,6 +106,7 @@ declare global {
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
+  const useAuthStore: typeof import('./store/authStore')['useAuthStore']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useGeneralStore: typeof import('./store/generalStore')['useGeneralStore']
@@ -205,9 +206,7 @@ declare module 'vue' {
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly removeImgTags: UnwrapRef<typeof import('./composables/removeImgTags')['removeImgTags']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
-    readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
     readonly setRedoRun: UnwrapRef<typeof import('./composables/editorCommands')['setRedoRun']>
-    readonly setTokenAndUsername: UnwrapRef<typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']>
     readonly setUndoRun: UnwrapRef<typeof import('./composables/editorCommands')['setUndoRun']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
@@ -229,6 +228,7 @@ declare module 'vue' {
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
+    readonly useAuthStore: UnwrapRef<typeof import('./store/authStore')['useAuthStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useGeneralStore: UnwrapRef<typeof import('./store/generalStore')['useGeneralStore']>
@@ -321,9 +321,7 @@ declare module '@vue/runtime-core' {
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
     readonly removeImgTags: UnwrapRef<typeof import('./composables/removeImgTags')['removeImgTags']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
-    readonly retrieveToken: UnwrapRef<typeof import('./composables/retrieveToken')['retrieveToken']>
     readonly setRedoRun: UnwrapRef<typeof import('./composables/editorCommands')['setRedoRun']>
-    readonly setTokenAndUsername: UnwrapRef<typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']>
     readonly setUndoRun: UnwrapRef<typeof import('./composables/editorCommands')['setUndoRun']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
@@ -345,6 +343,7 @@ declare module '@vue/runtime-core' {
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
+    readonly useAuthStore: UnwrapRef<typeof import('./store/authStore')['useAuthStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useGeneralStore: UnwrapRef<typeof import('./store/generalStore')['useGeneralStore']>
