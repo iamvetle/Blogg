@@ -81,9 +81,8 @@
 </template>
 
 <script setup lang="ts">
-
-
 import account_picture from '~/assets/account-pin-circle-line.svg'
+
 const post_image = ref('https://picsum.photos/500/300')
 
 const postStore = usePostStore()
@@ -125,7 +124,7 @@ const redirect_to_post_page = (postId: SnippetPostSingleType) => {
  */
 const author_full_name = (author: SnippetPostSingleType) => {
 
-	console.log(author) // print to self
+	// console.log(author) // print to self
 
 	const full_name = `${author.first_name} ${author.last_name}`
 	return full_name.trim() == "" ? author.username : full_name

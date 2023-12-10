@@ -97,46 +97,7 @@ const ready = computed(() => {
 /** Has the **number count** of users that the (normal)user has */
 const followers = ref(0)
 
-
-onMounted( async () => {
-	/**
-	 * @param id The username of the user profile page
-	 */
-	const username = route.params.id
-
-	const theNormalUserProfileURL = `http://localhost:8888/api/${username}/`;
-
-	/**
-	 * Fetches the profile data about the user through the API address of the user.
-	 * 
-	 * @param theNormalUserProfileURL The URL address that the function is going to fetch from.
-	 */
-	const responseData_profile = await getNormalUserProfile(theNormalUserProfileURL);
-
-	if (responseData_profile) {
-		normalUserProfile.value = responseData_profile
-
-		/** Populates/updates the constant that counts the number of followers the normal-user has */
-		followers.value = normalUserProfile.value.num_of_followers
-	}
-
-	const theNormalUserPostsURL = `http://localhost:8888/api/${username}/posts/`
-
-	/**
-	 * Fetches the posts the user has made through the API address of the user.
-	 * And puts them in a reactive variable.
-	 * 
-	 * @param theNormalUserPostsURL The URL address that the function is going to fetch from.
-	 */
-	const responseData_posts = await getNormalUserPosts(theNormalUserPostsURL);
-
-	if (responseData_posts) {
-		normalUserPosts.value = responseData_posts
-	}
-})
-
-
-onBeforeMount(async () => {
+const dataSetup = async () => {
 	/**
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
@@ -178,7 +139,10 @@ onBeforeMount(async () => {
 	if (responseData_posts) {
 		normalUserPosts.value = responseData_posts
 	}
-})
+}
+
+await dataSetup()
+
 
 /**
  * Makes sure that data made with 'optimistic ui update' is removed. That is to ensure that the numbers doesn't get duplicated

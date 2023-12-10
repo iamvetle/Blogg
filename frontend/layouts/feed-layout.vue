@@ -9,7 +9,7 @@
 			</div>
 		</main>
 	<div>
-		<LazyFeedPagination v-if="postStore.posts" />
+		<LazyFeedPagination/>
 		<LazyTheFooter/>
 	</div>
 	</div>

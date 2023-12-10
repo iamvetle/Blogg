@@ -14,7 +14,7 @@
 			</span>
 		</div>
 
-		<hr> 
+		<hr>
 
 		<div data-test="post-title" id="title">
 			<PostTitle :title="post.title" />
@@ -44,7 +44,7 @@
 		<hr>
 
 		<div data-test="comments" id="post_comments">
-			<SinglePostComments :post="post"/>
+			<SinglePostComments :post="post" />
 		</div>
 	</div>
 </template>
@@ -64,6 +64,8 @@
 // import noimage from '~/assets/noimage.jpg'
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png';
 
+const authStore = useAuthStore()
+
 const post = ref<PostSingleType | null>(null);
 
 /** Computed value of all of the "actual" comments in the poststore */
@@ -79,22 +81,21 @@ const fetchPostRelated = async () => {
 
 	const commentsURL = `http://localhost:8888/api/post/${route.params.id}/comments/`
 	await getSinglePostComments(commentsURL)
-};
 
-await fetchPostRelated()
-
-onMounted(async () => {
-
-	/**
+	if (authStore.isAuthenticated) {
+		/**
 	 * I need to fetch this to be able to check if I am following the user
 	 * 
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
-	if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
-		await getLoggedInUserProfile("http://localhost:8888/api/min-side/");
-	}
+		if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
+			await getLoggedInUserProfile("http://localhost:8888/api/min-side/");
+		}
 
-})
+	}
+};
+
+await fetchPostRelated()
 
 definePageMeta({
 	layout: 'default'

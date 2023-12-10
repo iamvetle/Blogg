@@ -1,3 +1,5 @@
+import { defineStore } from 'pinia';
+
 /**
  * @fileoverview
  * This file defines a Pinia store for managing authentication-related state in a Nuxt 3 application.

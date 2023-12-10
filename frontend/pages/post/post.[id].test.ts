@@ -1,5 +1,5 @@
 import idVue from './[id].vue'
-import { shallowMount } from '@vue/test-utils';
+import { flushPromises, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
 // Components in the page
@@ -69,6 +69,10 @@ const factory = () => {
 describe('Testing the single post component', () => {
 
     vi.stubGlobal('definePageMeta', () => {
+        return null
+    });
+
+    vi.stubGlobal('fetchPostRelated', () => {
         return null
     });
 
@@ -151,6 +155,7 @@ describe('Testing the single post component', () => {
         wrapper = factory()
         wrapper.vm.post = standardPost
         await wrapper.vm.$nextTick()
+        console.log(wrapper.html())
         expect(wrapper.findComponent({ name: "PostContentHTML" }).exists()).toBe(true)
     })  
     test('Should render the basebutton, back button, on page', async () => {
@@ -161,8 +166,13 @@ describe('Testing the single post component', () => {
     })
     test('Should render the comments component', async () => {
         wrapper = factory()
+        
         wrapper.vm.post = standardPost
+
+        await flushPromises()
         await wrapper.vm.$nextTick()
+        console.log(wrapper.html())
+    
         expect(wrapper.findComponent({ name: "SinglePostComments" }).exists()).toBe(true)
 
     })
