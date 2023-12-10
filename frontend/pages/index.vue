@@ -12,9 +12,6 @@
 </template>
 
 <script setup lang="ts">
-// 
-// 
-// Importing all stores
 
 const postStore = usePostStore()
 const searchStore = useSearchStore()
@@ -46,6 +43,10 @@ definePageMeta({
 // Declerations
 
 /**
+ * ! what about fetching when "following" buttons is on
+ * ? what about fetching when "following" buttons is on
+
+ * 
  * NEW: I removed the IF statements that was meant to check whether it was already information/posts there already,
  * but it said it was when it wasnt sometimes, which was very weird, so I removed it on all->
  */
@@ -53,7 +54,7 @@ definePageMeta({
 /**
  * All of the data that is needed from the api endpoint is fetched here.
  */
-onMounted(async () => {
+const fetchData = async () => {
 
 	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
 	const loggedInUserProfileURL = "http://localhost:8888/api/min-side/"
@@ -76,7 +77,9 @@ onMounted(async () => {
 	 * Fetches all possible tags. And then assigns all of them in a variable in the post store
 	*/
 	await getAllTags()
-})
+}
+
+await fetchData()
 
 
 /**

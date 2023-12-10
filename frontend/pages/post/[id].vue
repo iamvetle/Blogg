@@ -70,7 +70,7 @@ const post = ref<PostSingleType | null>(null);
 const route = useRoute()
 const loggedInUserStore = useLoggedInUserStore()
 
-onMounted(async () => {
+const fetchPostRelated = async () => {
 	const postURL = `http://localhost:8888/api/post/${route.params.id}/`;
 
 
@@ -79,7 +79,9 @@ onMounted(async () => {
 
 	const commentsURL = `http://localhost:8888/api/post/${route.params.id}/comments/`
 	await getSinglePostComments(commentsURL)
-});
+};
+
+await fetchPostRelated()
 
 onMounted(async () => {
 

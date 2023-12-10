@@ -11,7 +11,8 @@ export const getSinglePostComments = async (url: string): Promise<Comment[] | nu
 	try {
 		const postStore = usePostStore();
 
-		const token = localStorage.getItem("token");
+		const authStore = useAuthStore();
+		const token = authStore.retrieveToken();;
 		const headers = {
 			"Content-Type": "application/json",
 			"Authorization": `Token ${token}`,

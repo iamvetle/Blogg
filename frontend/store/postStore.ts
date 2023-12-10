@@ -1,5 +1,3 @@
-import { defineStore } from 'pinia';
-
 export const usePostStore = defineStore("Store for containing posts and related to posts", () => {
 
     /**
