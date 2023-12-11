@@ -79,7 +79,7 @@ const fetchData = async () => {
 	await getAllTags()
 }
 
-await fetchData()
+onBeforeMount( async() => await fetchData())
 
 
 /**

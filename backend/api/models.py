@@ -72,10 +72,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50, blank=False)  # Required
 
     CHOICES = (("Male", "Male"), ("Female", "Female"), ("Other", "Other"))
-
+    
+    # Required
     gender = models.CharField(
         max_length=10, blank=True, default="", choices=CHOICES
-    )  # Required
+    ) 
 
     date_of_birth = models.DateField(null=True, blank=True)
 
@@ -115,19 +116,19 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     ]
 
     def __str__(self):
-        return self.username
+        return f"{self.username}"
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
 
     def birth(self):
-        return self.date_of_birth
+        return f"({self.date_of_birth}"
 
     def phone(self):
-        return self.phone_number
+        return f"{self.phone_number}"
 
     def zipcode(self):
-        return self.postal_code
+        return f"{self.postal_code}"
 
     """
     followers: A ManyToManyField with 'self' allows users to follow each other.
@@ -148,7 +149,7 @@ class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
 
 
 class Post(models.Model):
@@ -166,13 +167,13 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, related_name="posts", blank=True)
 
     def __str__(self):
-        return self.title
+        return f"{self.title}"
 
     def published(self):
-        return self.date_published
+        return f"{self.date_published}"
 
     def body(self):
-        return self.content
+        return f"{self.content}"
 
 
 class PostImage(models.Model):
@@ -201,11 +202,12 @@ class Comment(models.Model):
     )
     date_published = models.DateField(auto_now_add=True)
 
-    def __str__(self):
-        return self.id
+    def __str__(self): 
+        # Can only return as string
+        return f"{self.id}"
 
     def body(self):
-        return self.content
+        return f"{self.content}"
 
     def full_comment(self):
         return (
@@ -226,4 +228,4 @@ class SavedPost(models.Model):
         ]
 
     def __str__(self):
-        return self.post.title
+        return f"{self.post.title}"

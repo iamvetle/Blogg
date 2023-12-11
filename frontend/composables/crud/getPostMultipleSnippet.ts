@@ -12,20 +12,20 @@ export const getPostMultipleSnippet = async (url: string): Promise<SnippetPostMu
 
 	const postStore = usePostStore()
 
-	/**
-	 * Fetches the token from local storage, or just returns null.
-	 */
-	const authStore = useAuthStore()
+// 	/**
+// 	 * Fetches the token from local storage, or just returns null.
+// 	 */
+// 	const authStore = useAuthStore()
 
-const token = authStore.retrieveToken()
+// const token = authStore.retrieveToken()
 
-	if (token === null) {
-		console.log("There was not token")
-		return null
-	}
+	// if (token === null) {
+	// 	console.log("There was not token")
+	// 	return null
+	// }
 	const headers = {
 		"Content-Type": "application/json",
-		Authorization: `Token ${token}`
+		// Authorization: `Token ${token}`
 	}
 
 	/** It uses the last set URL */
@@ -40,7 +40,7 @@ const token = authStore.retrieveToken()
 		 * This makes sure that the pagination component 'next button', for instance, is
 		 * in sync with the next expected posts.
 		*/
-		await fixPagination(response.data)
+		fixPagination(response.data)
 
 		/**
 		 * TODO take the assigning to posstore down to page level

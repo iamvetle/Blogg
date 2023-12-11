@@ -141,7 +141,7 @@ const dataSetup = async () => {
 	}
 }
 
-await dataSetup()
+onBeforeMount(async () => dataSetup())
 
 
 /**
@@ -178,10 +178,13 @@ onUnmounted(() => {
  * Makes sure that the logged-in user can't access it's own [id]user page. 
  */
 watchEffect(() => {
-	if (normalUserProfile.value.username === authStore.username) {
-		console.log("Can't access it's own [id] user page") // print to self
-		navigateTo("/minkonto")
+	if (normalUserProfile.value) {
+		if (normalUserProfile.value?.username === authStore.username) {
+			console.log("Can't access it's own [id] user page") // print to self
+			navigateTo("/minkonto")
+		}
 	}
+
 })
 
 /**

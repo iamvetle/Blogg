@@ -49,7 +49,7 @@ class SavedPostInline(admin.TabularInline):
 
     def has_change_permission(self, request, obj=None):
         """
-        Only allow saving a new post if obj is None (which means it's a new a editing a book already saved)
+        Only allow saving a new post if obj is None (which means it's a new a editing a book? - post?- already saved)
         """
         if obj is None:
             return True

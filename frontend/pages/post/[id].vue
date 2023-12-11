@@ -95,7 +95,7 @@ const fetchPostRelated = async () => {
 	}
 };
 
-await fetchPostRelated()
+onBeforeMount(async() =>await fetchPostRelated())
 
 definePageMeta({
 	layout: 'default'
