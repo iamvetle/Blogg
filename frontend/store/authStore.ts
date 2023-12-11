@@ -20,7 +20,7 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
      * This property is automatically updated based on the presence of the authentication token.
      */
     const isAuthenticated = computed(() => {
-        return Boolean(token.value);
+        return token.value.length > 1 ? true : false
     });
 
     /** 
@@ -31,7 +31,11 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
             const tokenFromStorage = localStorage.getItem('token');
 
             // Update token if present in localStorage
-            token.value = tokenFromStorage ?? '';
+            if (tokenFromStorage === "") {
+                token.value = "";
+            } else {
+                token.value = tokenFromStorage ?? ""
+            }
         }
 
     });
@@ -43,8 +47,12 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
         if (process.client) {
             const usernameFromStorage = localStorage.getItem('username');
 
-            // Update username if present in localStorage
-            username.value = usernameFromStorage ?? '';
+            // Update token if present in localStorage
+            if (usernameFromStorage === "") {
+                username.value = "";
+            } else {
+                username.value = usernameFromStorage ?? ""
+            }
         }
 
     });
@@ -54,7 +62,7 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
      * @param tokenInput - The authentication token.
      */
     const setTokenToLocalStorage = (tokenInput: string): void => {
-        const tokenValue = tokenInput ?? '';
+        const tokenValue = tokenInput;
         localStorage.setItem('token', tokenValue);
     }
 
@@ -63,7 +71,7 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
      * @param usernameInput - The username.
      */
     const setUsernameToLocalStorage = (usernameInput: string): void => {
-        const usernameValue = usernameInput ?? '';
+        const usernameValue = usernameInput;
         localStorage.setItem('username', usernameValue);
     }
 
@@ -82,7 +90,8 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
     }
 
     /** 
-     * Retrieves the authentication token.
+     * Retrieves the authentication token. 
+     * * I am doing it this way because there is so many places that depend on exactly this "null or string check if retrieve token thing?"
      * @returns - The authentication token or null if empty.
      */
     const retrieveToken = (): string | null => {
@@ -93,12 +102,24 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
      * Sets up the initial state based on the localStorage token on component mount.
      */
     const authStoreSetup = (): void => {
-        console.log('authStoreSetup was actually called');
-        const tokenFromLocalStorage = localStorage.getItem('token');
-        console.log(tokenFromLocalStorage);
+        console.log('authStoreSetup is called to check for token');
+        if (process.client) {
+            console.log('is now on client side');
 
-        // Assign an empty string, "", if there was no localStorage token
-        token.value = tokenFromLocalStorage ?? '';
+            const tokenFromLocalStorage = localStorage.getItem('token');
+            console.log(tokenFromLocalStorage);
+
+            // Assign an empty string, "", if there was no localStorage token
+
+            if (tokenFromLocalStorage === "") {
+                token.value = '';
+
+            } else {
+                token.value = tokenFromLocalStorage ?? ""
+            }
+
+        }
+
     };
 
     /** 
