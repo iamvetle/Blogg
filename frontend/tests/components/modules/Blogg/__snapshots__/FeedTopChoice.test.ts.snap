@@ -1,7 +1,76 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Should match snapshot 1`] = `
-"<div><span class=\\"flex space-x-8 justify-center\\"><base-button-stub text=\\"Feed\\" class=\\"p-2 rounded-lg bg-primary text-onPrimary border\\" data-test=\\"feed-posts-option\\"></base-button-stub><base-button-stub text=\\"Following\\" class=\\"p-2 rounded-lg bg-onPrimary text-primary border-primary border shadow-md\\" data-test=\\"following-posts-option\\"></base-button-stub></span><!-- IF the following buttons is pressed-->
+"<div class=\\"flex-row\\">
+  <div class=\\"grid gap-8 grid-cols-12 flex items-center\\">
+    <div class=\\"col-start-1 col-end-9 text-center space-x-6\\">
+      <base-button-stub text=\\"Feed\\" class=\\"p-2 rounded-lg bg-primary text-onPrimary border\\" data-test=\\"feed_all_posts_option_button\\"></base-button-stub>
+      <base-button-stub text=\\"Following\\" class=\\"p-2 rounded-lg bg-onPrimary text-primary border-primary border shadow-md\\" data-test=\\"following_posts_option\\"></base-button-stub>
+    </div>
+    <div class=\\"col-span-4\\">
+      <feeddropdownfilter></feeddropdownfilter>
+    </div>
+  </div><!-- IF the following buttons is pressed-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`Testing the choices I > Should match snapshot 1`] = `
+"<div class=\\"flex-row\\">
+  <div class=\\"grid gap-8 grid-cols-12 flex items-center\\">
+    <div class=\\"col-start-1 col-end-9 text-center space-x-6\\">
+      <base-button-stub text=\\"Feed\\" class=\\"p-2 rounded-lg bg-primary text-onPrimary border\\" data-test=\\"feed_all_posts_option_button\\"></base-button-stub>
+      <base-button-stub text=\\"Following\\" class=\\"p-2 rounded-lg bg-onPrimary text-primary border-primary border shadow-md\\" data-test=\\"following_posts_option\\"></base-button-stub>
+    </div>
+    <div class=\\"col-span-4\\">
+      <feeddropdownfilter></feeddropdownfilter>
+    </div>
+  </div><!-- IF the following buttons is pressed-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`Testing the choices that are on th > Should match snapshot 1`] = `
+"<div class=\\"flex-row\\">
+  <div class=\\"grid gap-8 grid-cols-12 flex items-center\\">
+    <div class=\\"col-start-1 col-end-9 text-center space-x-6\\">
+      <base-button-stub text=\\"Feed\\" class=\\"p-2 rounded-lg bg-primary text-onPrimary border\\" data-test=\\"feed_all_posts_option_button\\"></base-button-stub>
+      <base-button-stub text=\\"Following\\" class=\\"p-2 rounded-lg bg-onPrimary text-primary border-primary border shadow-md\\" data-test=\\"following_posts_option\\"></base-button-stub>
+    </div>
+    <div class=\\"col-span-4\\">
+      <feeddropdownfilter></feeddropdownfilter>
+    </div>
+  </div><!-- IF the following buttons is pressed-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`Testing the choices that are over the feed of posts > Should match snapshot 1`] = `
+"<div class=\\"flex-row\\">
+  <div class=\\"grid gap-8 grid-cols-12 flex items-center\\">
+    <div class=\\"col-start-1 col-end-9 text-center space-x-6\\">
+      <base-button-stub text=\\"Feed\\" class=\\"p-2 rounded-lg bg-primary text-onPrimary border\\" data-test=\\"feed_all_posts_option_button\\"></base-button-stub>
+      <base-button-stub text=\\"Following\\" class=\\"p-2 rounded-lg bg-onPrimary text-primary border-primary border shadow-md\\" data-test=\\"following_posts_option\\"></base-button-stub>
+    </div>
+    <div class=\\"col-span-4\\">
+      <feeddropdownfilter></feeddropdownfilter>
+    </div>
+  </div><!-- IF the following buttons is pressed-->
+  <!--v-if-->
+</div>"
+`;
+
+exports[`Testing the top > Should match snapshot 1`] = `
+"<div class=\\"flex-row\\">
+  <div class=\\"grid gap-8 grid-cols-12 flex items-center\\">
+    <div class=\\"col-start-1 col-end-9 text-center space-x-6\\">
+      <base-button-stub text=\\"Feed\\" class=\\"p-2 rounded-lg bg-primary text-onPrimary border\\" data-test=\\"feed_all_posts_option_button\\"></base-button-stub>
+      <base-button-stub text=\\"Following\\" class=\\"p-2 rounded-lg bg-onPrimary text-primary border-primary border shadow-md\\" data-test=\\"following_posts_option\\"></base-button-stub>
+    </div>
+    <div class=\\"col-span-4\\">
+      <feeddropdownfilter></feeddropdownfilter>
+    </div>
+  </div><!-- IF the following buttons is pressed-->
   <!--v-if-->
 </div>"
 `;

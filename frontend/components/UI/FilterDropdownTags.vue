@@ -1,27 +1,25 @@
 <template>
     <div>
-        <USelectMenu :options="options" v-model="selected" multiple placeholder="Filter with tags"
-            class="text-primary" size="lg"
-            
-            >
+        <USelectMenu :options="options" v-model="selected" multiple placeholder="Option tags" size="lg"
+            selectClass="items-center bg-primaryContainer text-onPrimaryContainer outline-none text-sm">
             <template #leading>
-                <Icon name="filter" />
+                <Icon name="filter" size="1rem" />
             </template>
 
 
             <!-- When closed -->
             <template #label>
-                <div class="ms-2">
+                <div class="text-md flex items-center">
 
-                    <span v-if="selected.length" class="truncate">{{ selected.join(', ') }}</span>
-                    <span v-else>Select tags</span>
+                    <span v-if="selected.length" class="break-words">{{ selected.length }} filter</span>
+                    <span v-else>Filter</span>
                 </div>
 
             </template>
 
             <!-- The options when open-->
             <template #option="{ option: tag }">
-                <div class="">
+                <div class="text-sm">
                     <span class="truncate">{{ tag }}</span>
                 </div>
             </template>
@@ -35,12 +33,13 @@
 const emit = defineEmits(["output"])
 
 defineProps<{
-    options:string[]
+    options: string[]
 }>()
 
 const selected = ref([])
 
 /** Emits whenever a tag is selected or unselected */
+//@ts-ignore
 watch(selected, (newValue, oldValue) => {
     // Your logic when 'selected' changes
     emit("output", newValue);

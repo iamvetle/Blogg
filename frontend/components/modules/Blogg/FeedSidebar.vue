@@ -13,7 +13,6 @@
 
 <script setup lang="ts">
 
-const paginationStore = usePaginationStore()
 const loggedInUserStore = useLoggedInUserStore()
 
 </script>

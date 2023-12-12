@@ -3,7 +3,6 @@ import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
 import FeedPostsListSidebar from '~/components/modules/Blogg/FeedPostsListSidebar.vue';
-import FeedDropdownFilter from './FeedDropdownFilter.vue';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();                  
@@ -19,7 +18,6 @@ const factory = () => {
             plugins: [pinia],
             components: {
                 FeedPostsListSidebar,
-                FeedDropdownFilter
             },
             mocks: {},
             stubs: {
@@ -44,11 +42,6 @@ describe('Testing the sidebar of the feed', () => {
         loggedInUserStore.loggedInUserProfile = {
             username: "testusername"
         }
-
-        postStore.allTags = [
-            "Food",
-            "Animals"
-        ]
         paginationStore.activeFetchURL = false
 
     });
@@ -64,29 +57,19 @@ describe('Testing the sidebar of the feed', () => {
 
         expect(wrapper.exists()).toBe(true)
     })
-    test('Should render the the feedpostsidebar and the feeddropdownfilter', () => {
+    test('Should render the the feedpostsidebar', () => {
         wrapper = factory()
 
         const sidebar = wrapper.findComponent({ name: "FeedPostsListSidebar" })
-        const dropdownFilter = wrapper.findComponent({ name: "FeedDropdownFilter" })
 
         expect(sidebar.exists()).toBe(true)
-        expect(dropdownFilter.exists()).toBe(true)
     })
-    test('Should not render the feeddropdownfilter if not tags are specified', async () => {
+    test('Should not render the feeddropdownfilter (because that component is not there anymore)', async () => {
         wrapper = factory()
-        postStore.allTags = null
-
-        await wrapper.vm.$nextTick()
 
         const feedDropdown = wrapper.findComponent({ name: "FeedDropdownFilter" })
 
         expect(feedDropdown.exists()).toBe(false)
-
-        // but still render the feedsidebar
-        const sidebar = wrapper.findComponent({ name: "FeedPostsListSidebar" })
-
-        expect(sidebar.exists()).toBe(true)
     })
     test('Should match snapshot', () => {
         wrapper = factory()

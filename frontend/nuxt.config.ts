@@ -61,7 +61,7 @@ export default defineNuxtConfig({
 								},
 								ui: {
 																global: true,
-																icons: ['mdi', 'simple-icons'],
+																icons: ['mdi', 'simple-icons', 'solar'],
 								},
 								tailwindcss: {
 																cssPath: "~/assets/css/tailwind.css",

@@ -1,12 +1,12 @@
 <template>
     <div v-if="postStore.posts" class="flex-row">
         
-        <div class="grid gap-8 grid-cols-12">
+        <div class="grid gap-8 grid-cols-12 flex items-center">
             <div class="col-start-1 col-end-9 text-center space-x-6">
-                <BaseButton class="p-2 rounded-lg"
+                <BaseButton class="p-2 rounded-lg" data-test="feed_all_posts_option_button"
                     :class="selected ? 'bg-onPrimary text-primary border-primary border shadow-md  ' : 'bg-primary text-onPrimary border'"
-                    data-test="feed-posts-option" @click="feedPostSetting" text="Feed" />
-                <BaseButton class="p-2 rounded-lg" data-test="following-posts-option" @click="followingPostSetting"
+                    @click="setToShowAllFeedPosts" text="Feed" />
+                <BaseButton class="p-2 rounded-lg" data-test="following_posts_option" @click="setToOnlyShowFollowingPosts"
                     :class="selected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'"
                     text="Following" />
             </div>
@@ -85,7 +85,7 @@ const posts_by_following = computed(() => {
  * 
  * It has its base here - the url.
  */
-const feedPostSetting = async () => {
+const setToShowAllFeedPosts = async () => {
     searchStore.resetStore()
 
     paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
@@ -98,7 +98,7 @@ const feedPostSetting = async () => {
  * It changes the api endpoint url from where posts are fetched to 
  * the main feed one. It then fetches all posts.
  */
-const followingPostSetting = async () => {
+const setToOnlyShowFollowingPosts = async () => {
 
     searchStore.resetStore()
 
