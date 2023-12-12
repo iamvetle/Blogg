@@ -1,7 +1,6 @@
 from api.models import Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
 from api.serializers.only_serializers import (
     OnlyAuthorCustomUserSerializer,
-    OnlyTitlePostSerializer,
 )
 from django.contrib.auth import get_user_model
 from rest_framework import serializers

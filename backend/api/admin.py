@@ -1,7 +1,10 @@
 from django.contrib import admin
-from .models import CustomUser, Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
+from .models import Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
+from django.contrib.auth import get_user_model
+
+CustomUser = get_user_model
 
 
 # Inlines -> (is put inside the admin models)
