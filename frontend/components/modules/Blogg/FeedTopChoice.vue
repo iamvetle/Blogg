@@ -10,7 +10,7 @@
                     :class="selected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'"
                     text="Following" />
             </div>
-            <div class="col-span-4">
+            <div class="col-span-4" data-test="feed_filter_component">
                 <FeedDropdownFilter v-if="selected === false"/>
             </div>
         </div>
