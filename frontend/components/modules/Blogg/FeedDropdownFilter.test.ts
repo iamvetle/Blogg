@@ -12,7 +12,7 @@ const factory = () => {
             components: {},
             mocks: {},
             stubs: {
-                FilterBox:true
+                FilterDropdownTags:true
             },
         },
         props: {},
@@ -32,12 +32,19 @@ describe('Testing FeedDropdownFilter', () => {
     });
 
     test('Should exist', () => {
-      wrapper = factory()
+        wrapper = factory()
 
-      expect(wrapper.exists()).toBe(true)
+        expect(wrapper.exists()).toBe(true)
     })
     test('Should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot()
+        wrapper = factory()
+
+        expect(wrapper).toMatchSnapshot()
+    })
+    test('Should have filterdropdowntags', () => {
+        wrapper = factory()
+
+        expect(wrapper.findComponent({ name: "FilterDropdownTags" }).exists()).toBe(true)
     })
 
 

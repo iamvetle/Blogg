@@ -4,7 +4,7 @@ import TheNavbar from '~/components/layout/TheNavbar.vue'
 
 let wrapper: VueWrapper;
 let pinia: any;
-let generalStore:any;
+let authStore:any;
 
 
 
@@ -18,8 +18,8 @@ describe("thenavvbarr testing", () => {
 
         pinia = createTestingPinia()
 
-        generalStore = useGeneralStore(pinia)
-        generalStore.isAuthenticated = true
+        authStore = useAuthStore(pinia)
+        authStore.isAuthenticated = true
 
 
         wrapper = mount(TheNavbar, {
@@ -27,7 +27,8 @@ describe("thenavvbarr testing", () => {
                 plugins: [pinia],
                 stubs: {
                     BaseSearchBar: true,
-                    FormKit:true
+                    FormKit:true,
+                    Icon:true
                 },
             },
         })
@@ -39,19 +40,20 @@ describe("thenavvbarr testing", () => {
 
         expect(wrapper.exists()).toBe(true)
     })
-
-    test("Should render the default navbar text", async () => {
-        console.log(generalStore.isAuthenticated)
-
-        await (wrapper.vm as any).$nextTick()
-
-
-        console.log(wrapper.html())
-        console.log(generalStore.isAuthenticated)
-
-        expect(wrapper.text()).toContain("Nytt innlegg")
-        expect(wrapper.text()).toContain("Min profil")
-
+    test('Should render the brand icon', () => {
+        expect(wrapper.find("[data-test='brand_icon']").exists()).toBe(true)
+    })
+    test('Should render the write new post icon', () => {
+        expect(wrapper.find("[data-test='new_post_icon']").exists()).toBe(true)
+        
+    })
+    test('Should render the my profile icon', () => {
+        expect(wrapper.find("[data-test='my_profile_icon']").exists()).toBe(true)
+        
+    })
+    test('Should render loggout', () => {
+        expect(wrapper.find("[data-test='loggout_icon']").exists()).toBe(true)
+        
     })
 
 })

@@ -9,7 +9,7 @@
     <div v-else>
         <SkeletonFeedPostsListSidebar/>
     </div>
-</template>
+    </template>
 
 <script setup lang="ts">
 

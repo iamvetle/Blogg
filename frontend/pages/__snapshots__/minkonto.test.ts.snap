@@ -104,6 +104,49 @@ VueWrapper {
                   "index": 1,
                   "parent": [Circular],
                 },
+                EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": false,
+                  "effects": [
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": true,
+                        "_setter": [Function],
+                        "dep": undefined,
+                        "effect": [Circular],
+                      },
+                      "deps": [],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                    ReactiveEffect {
+                      "active": true,
+                      "deps": [],
+                      "fn": [Function],
+                      "onTrack": undefined,
+                      "onTrigger": undefined,
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                    ReactiveEffect {
+                      "active": true,
+                      "deps": [],
+                      "fn": [Function],
+                      "onTrack": undefined,
+                      "onTrigger": undefined,
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  ],
+                  "index": 2,
+                  "parent": [Circular],
+                },
               ],
             },
             "_p": [
@@ -185,6 +228,83 @@ VueWrapper {
                 "posts": null,
                 "resetStore": [MockFunction spy],
               },
+              "Auth Store for managing authentication-related state" => {
+                "$dispose": [Function],
+                "$id": "Auth Store for managing authentication-related state",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_getters": [
+                  "isAuthenticated",
+                ],
+                "_hmrPayload": {
+                  "actions": {
+                    "authStoreSetup": [Function],
+                    "removeTokenFromLocalStorage": [Function],
+                    "removeUsernameFromLocalStorage": [Function],
+                    "retrieveToken": [Function],
+                    "setTokenToLocalStorage": [Function],
+                    "setUsernameToLocalStorage": [Function],
+                  },
+                  "getters": {
+                    "isAuthenticated": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": true,
+                      "_setter": [Function],
+                      "dep": undefined,
+                      "effect": ReactiveEffect {
+                        "active": true,
+                        "computed": [Circular],
+                        "deps": [],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "token",
+                    "username",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": [Circular],
+                "authStoreSetup": [MockFunction spy],
+                "isAuthenticated": false,
+                "removeTokenFromLocalStorage": [MockFunction spy],
+                "removeUsernameFromLocalStorage": [MockFunction spy],
+                "retrieveToken": [MockFunction spy] {
+                  "calls": [
+                    [],
+                    [],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                },
+                "setTokenToLocalStorage": [MockFunction spy],
+                "setUsernameToLocalStorage": [MockFunction spy],
+                "token": "",
+                "username": "",
+              },
             },
             "_testing": true,
             "app": [Circular],
@@ -193,6 +313,42 @@ VueWrapper {
               "__v_isRef": true,
               "__v_isShallow": false,
               "_rawValue": {
+                "Auth Store for managing authentication-related state": {
+                  "token": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": "",
+                    "_value": "",
+                    "dep": Set {
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          [Circular],
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
+                  "username": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": "",
+                    "_value": "",
+                    "dep": undefined,
+                  },
+                },
                 "Store for containing posts and related to posts": {
                   "allCategories": RefImpl {
                     "__v_isRef": true,
@@ -292,6 +448,10 @@ VueWrapper {
                 },
               },
               "_value": {
+                "Auth Store for managing authentication-related state": {
+                  "token": "",
+                  "username": "",
+                },
                 "Store for containing posts and related to posts": {
                   "allCategories": null,
                   "allComments": null,
@@ -351,6 +511,54 @@ VueWrapper {
                 "detached": false,
                 "effects": [],
                 "index": 1,
+                "parent": [Circular],
+              },
+              EffectScope {
+                "_active": true,
+                "cleanups": [],
+                "detached": false,
+                "effects": [
+                  ReactiveEffect {
+                    "active": true,
+                    "computed": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": false,
+                      "_setter": [Function],
+                      "_value": false,
+                      "dep": undefined,
+                      "effect": [Circular],
+                    },
+                    "deps": [
+                      Set {
+                        [Circular],
+                      },
+                    ],
+                    "fn": [Function],
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  ReactiveEffect {
+                    "active": true,
+                    "deps": [],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  ReactiveEffect {
+                    "active": true,
+                    "deps": [],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                ],
+                "index": 2,
                 "parent": [Circular],
               },
             ],
@@ -434,6 +642,88 @@ VueWrapper {
               "posts": null,
               "resetStore": [MockFunction spy],
             },
+            "Auth Store for managing authentication-related state" => {
+              "$dispose": [Function],
+              "$id": "Auth Store for managing authentication-related state",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_getters": [
+                "isAuthenticated",
+              ],
+              "_hmrPayload": {
+                "actions": {
+                  "authStoreSetup": [Function],
+                  "removeTokenFromLocalStorage": [Function],
+                  "removeUsernameFromLocalStorage": [Function],
+                  "retrieveToken": [Function],
+                  "setTokenToLocalStorage": [Function],
+                  "setUsernameToLocalStorage": [Function],
+                },
+                "getters": {
+                  "isAuthenticated": ComputedRefImpl {
+                    "__v_isReadonly": true,
+                    "__v_isRef": true,
+                    "_cacheable": true,
+                    "_dirty": false,
+                    "_setter": [Function],
+                    "_value": false,
+                    "dep": undefined,
+                    "effect": ReactiveEffect {
+                      "active": true,
+                      "computed": [Circular],
+                      "deps": [
+                        Set {
+                          [Circular],
+                        },
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "token",
+                  "username",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": [Circular],
+              "authStoreSetup": [MockFunction spy],
+              "isAuthenticated": false,
+              "removeTokenFromLocalStorage": [MockFunction spy],
+              "removeUsernameFromLocalStorage": [MockFunction spy],
+              "retrieveToken": [MockFunction spy] {
+                "calls": [
+                  [],
+                  [],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+              "setTokenToLocalStorage": [MockFunction spy],
+              "setUsernameToLocalStorage": [MockFunction spy],
+              "token": "",
+              "username": "",
+            },
           },
           "_testing": true,
           "app": [Circular],
@@ -442,6 +732,42 @@ VueWrapper {
             "__v_isRef": true,
             "__v_isShallow": false,
             "_rawValue": {
+              "Auth Store for managing authentication-related state": {
+                "token": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": "",
+                  "_value": "",
+                  "dep": Set {
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": [Circular],
+                      },
+                      "deps": [
+                        [Circular],
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
+                "username": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": "",
+                  "_value": "",
+                  "dep": undefined,
+                },
+              },
               "Store for containing posts and related to posts": {
                 "allCategories": RefImpl {
                   "__v_isRef": true,
@@ -541,6 +867,10 @@ VueWrapper {
               },
             },
             "_value": {
+              "Auth Store for managing authentication-related state": {
+                "token": "",
+                "username": "",
+              },
               "Store for containing posts and related to posts": {
                 "allCategories": null,
                 "allComments": null,
@@ -658,6 +988,54 @@ VueWrapper {
                     "index": 1,
                     "parent": [Circular],
                   },
+                  EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": false,
+                    "effects": [
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                      ReactiveEffect {
+                        "active": true,
+                        "deps": [],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                      ReactiveEffect {
+                        "active": true,
+                        "deps": [],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    ],
+                    "index": 2,
+                    "parent": [Circular],
+                  },
                 ],
               },
               "_p": [
@@ -739,6 +1117,88 @@ VueWrapper {
                   "posts": null,
                   "resetStore": [MockFunction spy],
                 },
+                "Auth Store for managing authentication-related state" => {
+                  "$dispose": [Function],
+                  "$id": "Auth Store for managing authentication-related state",
+                  "$onAction": [Function],
+                  "$patch": [MockFunction $patch],
+                  "$reset": [MockFunction spy],
+                  "$subscribe": [Function],
+                  "_customProperties": Set {},
+                  "_getters": [
+                    "isAuthenticated",
+                  ],
+                  "_hmrPayload": {
+                    "actions": {
+                      "authStoreSetup": [Function],
+                      "removeTokenFromLocalStorage": [Function],
+                      "removeUsernameFromLocalStorage": [Function],
+                      "retrieveToken": [Function],
+                      "setTokenToLocalStorage": [Function],
+                      "setUsernameToLocalStorage": [Function],
+                    },
+                    "getters": {
+                      "isAuthenticated": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": ReactiveEffect {
+                          "active": true,
+                          "computed": [Circular],
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
+                    "hotState": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": {},
+                      "_value": {},
+                      "dep": undefined,
+                    },
+                    "state": [
+                      "token",
+                      "username",
+                    ],
+                  },
+                  "_hotUpdate": [Function],
+                  "_p": [Circular],
+                  "authStoreSetup": [MockFunction spy],
+                  "isAuthenticated": false,
+                  "removeTokenFromLocalStorage": [MockFunction spy],
+                  "removeUsernameFromLocalStorage": [MockFunction spy],
+                  "retrieveToken": [MockFunction spy] {
+                    "calls": [
+                      [],
+                      [],
+                    ],
+                    "results": [
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                    ],
+                  },
+                  "setTokenToLocalStorage": [MockFunction spy],
+                  "setUsernameToLocalStorage": [MockFunction spy],
+                  "token": "",
+                  "username": "",
+                },
               },
               "_testing": true,
               "app": [Circular],
@@ -747,6 +1207,42 @@ VueWrapper {
                 "__v_isRef": true,
                 "__v_isShallow": false,
                 "_rawValue": {
+                  "Auth Store for managing authentication-related state": {
+                    "token": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": "",
+                      "_value": "",
+                      "dep": Set {
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            [Circular],
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
+                    "username": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": "",
+                      "_value": "",
+                      "dep": undefined,
+                    },
+                  },
                   "Store for containing posts and related to posts": {
                     "allCategories": RefImpl {
                       "__v_isRef": true,
@@ -846,6 +1342,10 @@ VueWrapper {
                   },
                 },
                 "_value": {
+                  "Auth Store for managing authentication-related state": {
+                    "token": "",
+                    "username": "",
+                  },
                   "Store for containing posts and related to posts": {
                     "allCategories": null,
                     "allComments": null,
@@ -905,6 +1405,54 @@ VueWrapper {
                   "detached": false,
                   "effects": [],
                   "index": 1,
+                  "parent": [Circular],
+                },
+                EffectScope {
+                  "_active": true,
+                  "cleanups": [],
+                  "detached": false,
+                  "effects": [
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": [Circular],
+                      },
+                      "deps": [
+                        Set {
+                          [Circular],
+                        },
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                    ReactiveEffect {
+                      "active": true,
+                      "deps": [],
+                      "fn": [Function],
+                      "onTrack": undefined,
+                      "onTrigger": undefined,
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                    ReactiveEffect {
+                      "active": true,
+                      "deps": [],
+                      "fn": [Function],
+                      "onTrack": undefined,
+                      "onTrigger": undefined,
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  ],
+                  "index": 2,
                   "parent": [Circular],
                 },
               ],
@@ -988,6 +1536,88 @@ VueWrapper {
                 "posts": null,
                 "resetStore": [MockFunction spy],
               },
+              "Auth Store for managing authentication-related state" => {
+                "$dispose": [Function],
+                "$id": "Auth Store for managing authentication-related state",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_getters": [
+                  "isAuthenticated",
+                ],
+                "_hmrPayload": {
+                  "actions": {
+                    "authStoreSetup": [Function],
+                    "removeTokenFromLocalStorage": [Function],
+                    "removeUsernameFromLocalStorage": [Function],
+                    "retrieveToken": [Function],
+                    "setTokenToLocalStorage": [Function],
+                    "setUsernameToLocalStorage": [Function],
+                  },
+                  "getters": {
+                    "isAuthenticated": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": false,
+                      "_setter": [Function],
+                      "_value": false,
+                      "dep": undefined,
+                      "effect": ReactiveEffect {
+                        "active": true,
+                        "computed": [Circular],
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "token",
+                    "username",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": [Circular],
+                "authStoreSetup": [MockFunction spy],
+                "isAuthenticated": false,
+                "removeTokenFromLocalStorage": [MockFunction spy],
+                "removeUsernameFromLocalStorage": [MockFunction spy],
+                "retrieveToken": [MockFunction spy] {
+                  "calls": [
+                    [],
+                    [],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                },
+                "setTokenToLocalStorage": [MockFunction spy],
+                "setUsernameToLocalStorage": [MockFunction spy],
+                "token": "",
+                "username": "",
+              },
             },
             "_testing": true,
             "app": [Circular],
@@ -996,6 +1626,42 @@ VueWrapper {
               "__v_isRef": true,
               "__v_isShallow": false,
               "_rawValue": {
+                "Auth Store for managing authentication-related state": {
+                  "token": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": "",
+                    "_value": "",
+                    "dep": Set {
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          [Circular],
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
+                  "username": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": "",
+                    "_value": "",
+                    "dep": undefined,
+                  },
+                },
                 "Store for containing posts and related to posts": {
                   "allCategories": RefImpl {
                     "__v_isRef": true,
@@ -1095,6 +1761,10 @@ VueWrapper {
                 },
               },
               "_value": {
+                "Auth Store for managing authentication-related state": {
+                  "token": "",
+                  "username": "",
+                },
                 "Store for containing posts and related to posts": {
                   "allCategories": null,
                   "allComments": null,
@@ -1333,6 +2003,54 @@ VueWrapper {
                         "index": 1,
                         "parent": [Circular],
                       },
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
+                        "index": 2,
+                        "parent": [Circular],
+                      },
                     ],
                   },
                   "_p": [
@@ -1414,6 +2132,88 @@ VueWrapper {
                       "posts": null,
                       "resetStore": [MockFunction spy],
                     },
+                    "Auth Store for managing authentication-related state" => {
+                      "$dispose": [Function],
+                      "$id": "Auth Store for managing authentication-related state",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_getters": [
+                        "isAuthenticated",
+                      ],
+                      "_hmrPayload": {
+                        "actions": {
+                          "authStoreSetup": [Function],
+                          "removeTokenFromLocalStorage": [Function],
+                          "removeUsernameFromLocalStorage": [Function],
+                          "retrieveToken": [Function],
+                          "setTokenToLocalStorage": [Function],
+                          "setUsernameToLocalStorage": [Function],
+                        },
+                        "getters": {
+                          "isAuthenticated": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": ReactiveEffect {
+                              "active": true,
+                              "computed": [Circular],
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "token",
+                          "username",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "authStoreSetup": [MockFunction spy],
+                      "isAuthenticated": false,
+                      "removeTokenFromLocalStorage": [MockFunction spy],
+                      "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "retrieveToken": [MockFunction spy] {
+                        "calls": [
+                          [],
+                          [],
+                        ],
+                        "results": [
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "setTokenToLocalStorage": [MockFunction spy],
+                      "setUsernameToLocalStorage": [MockFunction spy],
+                      "token": "",
+                      "username": "",
+                    },
                   },
                   "_testing": true,
                   "app": [Circular],
@@ -1422,6 +2222,42 @@ VueWrapper {
                     "__v_isRef": true,
                     "__v_isShallow": false,
                     "_rawValue": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "username": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": undefined,
+                        },
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": RefImpl {
                           "__v_isRef": true,
@@ -1521,6 +2357,10 @@ VueWrapper {
                       },
                     },
                     "_value": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": "",
+                        "username": "",
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
                         "allComments": null,
@@ -1580,6 +2420,54 @@ VueWrapper {
                       "detached": false,
                       "effects": [],
                       "index": 1,
+                      "parent": [Circular],
+                    },
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
+                      "index": 2,
                       "parent": [Circular],
                     },
                   ],
@@ -1663,6 +2551,88 @@ VueWrapper {
                     "posts": null,
                     "resetStore": [MockFunction spy],
                   },
+                  "Auth Store for managing authentication-related state" => {
+                    "$dispose": [Function],
+                    "$id": "Auth Store for managing authentication-related state",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_getters": [
+                      "isAuthenticated",
+                    ],
+                    "_hmrPayload": {
+                      "actions": {
+                        "authStoreSetup": [Function],
+                        "removeTokenFromLocalStorage": [Function],
+                        "removeUsernameFromLocalStorage": [Function],
+                        "retrieveToken": [Function],
+                        "setTokenToLocalStorage": [Function],
+                        "setUsernameToLocalStorage": [Function],
+                      },
+                      "getters": {
+                        "isAuthenticated": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "token",
+                        "username",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "authStoreSetup": [MockFunction spy],
+                    "isAuthenticated": false,
+                    "removeTokenFromLocalStorage": [MockFunction spy],
+                    "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "retrieveToken": [MockFunction spy] {
+                      "calls": [
+                        [],
+                        [],
+                      ],
+                      "results": [
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                      ],
+                    },
+                    "setTokenToLocalStorage": [MockFunction spy],
+                    "setUsernameToLocalStorage": [MockFunction spy],
+                    "token": "",
+                    "username": "",
+                  },
                 },
                 "_testing": true,
                 "app": [Circular],
@@ -1671,6 +2641,42 @@ VueWrapper {
                   "__v_isRef": true,
                   "__v_isShallow": false,
                   "_rawValue": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "username": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": undefined,
+                      },
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": RefImpl {
                         "__v_isRef": true,
@@ -1770,6 +2776,10 @@ VueWrapper {
                     },
                   },
                   "_value": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": "",
+                      "username": "",
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
                       "allComments": null,
@@ -1883,19 +2893,49 @@ VueWrapper {
           },
           "ctx": {
             "_pStores": {
-              "Store for containing posts and related to posts": {
+              "Auth Store for managing authentication-related state": {
                 "$dispose": [Function],
-                "$id": "Store for containing posts and related to posts",
+                "$id": "Auth Store for managing authentication-related state",
                 "$onAction": [Function],
                 "$patch": [MockFunction $patch],
                 "$reset": [MockFunction spy],
                 "$subscribe": [Function],
                 "_customProperties": Set {},
+                "_getters": [
+                  "isAuthenticated",
+                ],
                 "_hmrPayload": {
                   "actions": {
-                    "resetStore": [Function],
+                    "authStoreSetup": [Function],
+                    "removeTokenFromLocalStorage": [Function],
+                    "removeUsernameFromLocalStorage": [Function],
+                    "retrieveToken": [Function],
+                    "setTokenToLocalStorage": [Function],
+                    "setUsernameToLocalStorage": [Function],
                   },
-                  "getters": {},
+                  "getters": {
+                    "isAuthenticated": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": false,
+                      "_setter": [Function],
+                      "_value": false,
+                      "dep": undefined,
+                      "effect": ReactiveEffect {
+                        "active": true,
+                        "computed": [Circular],
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
                   "hotState": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -1904,14 +2944,8 @@ VueWrapper {
                     "dep": undefined,
                   },
                   "state": [
-                    "posts",
-                    "allComments",
-                    "followingPosts",
-                    "allCategories",
-                    "allTags",
-                    "loggedInUserPosts",
-                    "baseFetchURL",
-                    "baseLoggedInUserPostsURL",
+                    "token",
+                    "username",
                   ],
                 },
                 "_hotUpdate": [Function],
@@ -1938,6 +2972,54 @@ VueWrapper {
                         "detached": false,
                         "effects": [],
                         "index": 1,
+                        "parent": [Circular],
+                      },
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
+                        "index": 2,
                         "parent": [Circular],
                       },
                     ],
@@ -1978,7 +3060,50 @@ VueWrapper {
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
                     },
-                    "Store for containing posts and related to posts" => [Circular],
+                    "Store for containing posts and related to posts" => {
+                      "$dispose": [Function],
+                      "$id": "Store for containing posts and related to posts",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_hmrPayload": {
+                        "actions": {
+                          "resetStore": [Function],
+                        },
+                        "getters": {},
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "posts",
+                          "allComments",
+                          "followingPosts",
+                          "allCategories",
+                          "allTags",
+                          "loggedInUserPosts",
+                          "baseFetchURL",
+                          "baseLoggedInUserPostsURL",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "allCategories": null,
+                      "allComments": null,
+                      "allTags": null,
+                      "baseFetchURL": "http://localhost:8888/api/feed/",
+                      "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
+                      "followingPosts": null,
+                      "loggedInUserPosts": null,
+                      "posts": null,
+                      "resetStore": [MockFunction spy],
+                    },
+                    "Auth Store for managing authentication-related state" => [Circular],
                   },
                   "_testing": true,
                   "app": [Circular],
@@ -1987,6 +3112,42 @@ VueWrapper {
                     "__v_isRef": true,
                     "__v_isShallow": false,
                     "_rawValue": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "username": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": undefined,
+                        },
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": RefImpl {
                           "__v_isRef": true,
@@ -2086,6 +3247,428 @@ VueWrapper {
                       },
                     },
                     "_value": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": "",
+                        "username": "",
+                      },
+                      "Store for containing posts and related to posts": {
+                        "allCategories": null,
+                        "allComments": null,
+                        "allTags": null,
+                        "baseFetchURL": "http://localhost:8888/api/feed/",
+                        "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
+                        "followingPosts": null,
+                        "loggedInUserPosts": null,
+                        "posts": null,
+                      },
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": [],
+                        "idArrayOfSavedPosts": [],
+                        "loggedInUserProfile": null,
+                      },
+                    },
+                    "dep": undefined,
+                  },
+                  "use": [Function],
+                },
+                "authStoreSetup": [MockFunction spy],
+                "isAuthenticated": false,
+                "removeTokenFromLocalStorage": [MockFunction spy],
+                "removeUsernameFromLocalStorage": [MockFunction spy],
+                "retrieveToken": [MockFunction spy] {
+                  "calls": [
+                    [],
+                    [],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                },
+                "setTokenToLocalStorage": [MockFunction spy],
+                "setUsernameToLocalStorage": [MockFunction spy],
+                "token": "",
+                "username": "",
+              },
+              "Store for containing posts and related to posts": {
+                "$dispose": [Function],
+                "$id": "Store for containing posts and related to posts",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_hmrPayload": {
+                  "actions": {
+                    "resetStore": [Function],
+                  },
+                  "getters": {},
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "posts",
+                    "allComments",
+                    "followingPosts",
+                    "allCategories",
+                    "allTags",
+                    "loggedInUserPosts",
+                    "baseFetchURL",
+                    "baseLoggedInUserPostsURL",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": {
+                  "_a": [Circular],
+                  "_e": EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": true,
+                    "effects": [],
+                    "parent": undefined,
+                    "scopes": [
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [],
+                        "index": 0,
+                        "parent": [Circular],
+                      },
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [],
+                        "index": 1,
+                        "parent": [Circular],
+                      },
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
+                        "index": 2,
+                        "parent": [Circular],
+                      },
+                    ],
+                  },
+                  "_p": [
+                    [Function],
+                    [Function],
+                    [Function],
+                  ],
+                  "_s": Map {
+                    "Store for storing information about the logged in user" => {
+                      "$dispose": [Function],
+                      "$id": "Store for storing information about the logged in user",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_hmrPayload": {
+                        "actions": {},
+                        "getters": {},
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "loggedInUserProfile",
+                          "idArrayOfSavedPosts",
+                          "idArrayOfLoggedInUserFollowingUsers",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": null,
+                    },
+                    "Store for containing posts and related to posts" => [Circular],
+                    "Auth Store for managing authentication-related state" => {
+                      "$dispose": [Function],
+                      "$id": "Auth Store for managing authentication-related state",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_getters": [
+                        "isAuthenticated",
+                      ],
+                      "_hmrPayload": {
+                        "actions": {
+                          "authStoreSetup": [Function],
+                          "removeTokenFromLocalStorage": [Function],
+                          "removeUsernameFromLocalStorage": [Function],
+                          "retrieveToken": [Function],
+                          "setTokenToLocalStorage": [Function],
+                          "setUsernameToLocalStorage": [Function],
+                        },
+                        "getters": {
+                          "isAuthenticated": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": ReactiveEffect {
+                              "active": true,
+                              "computed": [Circular],
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "token",
+                          "username",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "authStoreSetup": [MockFunction spy],
+                      "isAuthenticated": false,
+                      "removeTokenFromLocalStorage": [MockFunction spy],
+                      "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "retrieveToken": [MockFunction spy] {
+                        "calls": [
+                          [],
+                          [],
+                        ],
+                        "results": [
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "setTokenToLocalStorage": [MockFunction spy],
+                      "setUsernameToLocalStorage": [MockFunction spy],
+                      "token": "",
+                      "username": "",
+                    },
+                  },
+                  "_testing": true,
+                  "app": [Circular],
+                  "install": [Function],
+                  "state": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "username": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": undefined,
+                        },
+                      },
+                      "Store for containing posts and related to posts": {
+                        "allCategories": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "allComments": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "allTags": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "baseFetchURL": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "http://localhost:8888/api/feed/",
+                          "_value": "http://localhost:8888/api/feed/",
+                          "dep": undefined,
+                        },
+                        "baseLoggedInUserPostsURL": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "http://localhost:8888/api/min-side/posts/",
+                          "_value": "http://localhost:8888/api/min-side/posts/",
+                          "dep": undefined,
+                        },
+                        "followingPosts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "loggedInUserPosts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "allowRecurse": true,
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "onTrack": undefined,
+                              "onTrigger": undefined,
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "posts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                      },
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "idArrayOfSavedPosts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "loggedInUserProfile": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                      },
+                    },
+                    "_value": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": "",
+                        "username": "",
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
                         "allComments": null,
@@ -2166,6 +3749,54 @@ VueWrapper {
                         "index": 1,
                         "parent": [Circular],
                       },
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
+                        "index": 2,
+                        "parent": [Circular],
+                      },
                     ],
                   },
                   "_p": [
@@ -2218,6 +3849,88 @@ VueWrapper {
                       "posts": null,
                       "resetStore": [MockFunction spy],
                     },
+                    "Auth Store for managing authentication-related state" => {
+                      "$dispose": [Function],
+                      "$id": "Auth Store for managing authentication-related state",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_getters": [
+                        "isAuthenticated",
+                      ],
+                      "_hmrPayload": {
+                        "actions": {
+                          "authStoreSetup": [Function],
+                          "removeTokenFromLocalStorage": [Function],
+                          "removeUsernameFromLocalStorage": [Function],
+                          "retrieveToken": [Function],
+                          "setTokenToLocalStorage": [Function],
+                          "setUsernameToLocalStorage": [Function],
+                        },
+                        "getters": {
+                          "isAuthenticated": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": ReactiveEffect {
+                              "active": true,
+                              "computed": [Circular],
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "token",
+                          "username",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "authStoreSetup": [MockFunction spy],
+                      "isAuthenticated": false,
+                      "removeTokenFromLocalStorage": [MockFunction spy],
+                      "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "retrieveToken": [MockFunction spy] {
+                        "calls": [
+                          [],
+                          [],
+                        ],
+                        "results": [
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "setTokenToLocalStorage": [MockFunction spy],
+                      "setUsernameToLocalStorage": [MockFunction spy],
+                      "token": "",
+                      "username": "",
+                    },
                   },
                   "_testing": true,
                   "app": [Circular],
@@ -2226,6 +3939,42 @@ VueWrapper {
                     "__v_isRef": true,
                     "__v_isShallow": false,
                     "_rawValue": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "username": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": undefined,
+                        },
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": RefImpl {
                           "__v_isRef": true,
@@ -2325,6 +4074,10 @@ VueWrapper {
                       },
                     },
                     "_value": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": "",
+                        "username": "",
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
                         "allComments": null,
@@ -2404,6 +4157,54 @@ VueWrapper {
                       "index": 1,
                       "parent": [Circular],
                     },
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
+                      "index": 2,
+                      "parent": [Circular],
+                    },
                   ],
                 },
                 "_p": [
@@ -2456,6 +4257,88 @@ VueWrapper {
                     "posts": null,
                     "resetStore": [MockFunction spy],
                   },
+                  "Auth Store for managing authentication-related state" => {
+                    "$dispose": [Function],
+                    "$id": "Auth Store for managing authentication-related state",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_getters": [
+                      "isAuthenticated",
+                    ],
+                    "_hmrPayload": {
+                      "actions": {
+                        "authStoreSetup": [Function],
+                        "removeTokenFromLocalStorage": [Function],
+                        "removeUsernameFromLocalStorage": [Function],
+                        "retrieveToken": [Function],
+                        "setTokenToLocalStorage": [Function],
+                        "setUsernameToLocalStorage": [Function],
+                      },
+                      "getters": {
+                        "isAuthenticated": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "token",
+                        "username",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "authStoreSetup": [MockFunction spy],
+                    "isAuthenticated": false,
+                    "removeTokenFromLocalStorage": [MockFunction spy],
+                    "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "retrieveToken": [MockFunction spy] {
+                      "calls": [
+                        [],
+                        [],
+                      ],
+                      "results": [
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                      ],
+                    },
+                    "setTokenToLocalStorage": [MockFunction spy],
+                    "setUsernameToLocalStorage": [MockFunction spy],
+                    "token": "",
+                    "username": "",
+                  },
                 },
                 "_testing": true,
                 "app": [Circular],
@@ -2464,6 +4347,42 @@ VueWrapper {
                   "__v_isRef": true,
                   "__v_isShallow": false,
                   "_rawValue": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "username": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": undefined,
+                      },
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": RefImpl {
                         "__v_isRef": true,
@@ -2563,6 +4482,10 @@ VueWrapper {
                     },
                   },
                   "_value": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": "",
+                      "username": "",
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
                       "allComments": null,
@@ -2645,6 +4568,54 @@ VueWrapper {
                       "index": 1,
                       "parent": [Circular],
                     },
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
+                      "index": 2,
+                      "parent": [Circular],
+                    },
                   ],
                 },
                 "_p": [
@@ -2684,6 +4655,88 @@ VueWrapper {
                     "loggedInUserProfile": null,
                   },
                   "Store for containing posts and related to posts" => [Circular],
+                  "Auth Store for managing authentication-related state" => {
+                    "$dispose": [Function],
+                    "$id": "Auth Store for managing authentication-related state",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_getters": [
+                      "isAuthenticated",
+                    ],
+                    "_hmrPayload": {
+                      "actions": {
+                        "authStoreSetup": [Function],
+                        "removeTokenFromLocalStorage": [Function],
+                        "removeUsernameFromLocalStorage": [Function],
+                        "retrieveToken": [Function],
+                        "setTokenToLocalStorage": [Function],
+                        "setUsernameToLocalStorage": [Function],
+                      },
+                      "getters": {
+                        "isAuthenticated": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "token",
+                        "username",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "authStoreSetup": [MockFunction spy],
+                    "isAuthenticated": false,
+                    "removeTokenFromLocalStorage": [MockFunction spy],
+                    "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "retrieveToken": [MockFunction spy] {
+                      "calls": [
+                        [],
+                        [],
+                      ],
+                      "results": [
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                      ],
+                    },
+                    "setTokenToLocalStorage": [MockFunction spy],
+                    "setUsernameToLocalStorage": [MockFunction spy],
+                    "token": "",
+                    "username": "",
+                  },
                 },
                 "_testing": true,
                 "app": [Circular],
@@ -2692,6 +4745,42 @@ VueWrapper {
                   "__v_isRef": true,
                   "__v_isShallow": false,
                   "_rawValue": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "username": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": undefined,
+                      },
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": RefImpl {
                         "__v_isRef": true,
@@ -2791,6 +4880,10 @@ VueWrapper {
                     },
                   },
                   "_value": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": "",
+                      "username": "",
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
                       "allComments": null,
@@ -2866,19 +4959,49 @@ VueWrapper {
           "provides": {},
           "proxy": {
             "_pStores": {
-              "Store for containing posts and related to posts": {
+              "Auth Store for managing authentication-related state": {
                 "$dispose": [Function],
-                "$id": "Store for containing posts and related to posts",
+                "$id": "Auth Store for managing authentication-related state",
                 "$onAction": [Function],
                 "$patch": [MockFunction $patch],
                 "$reset": [MockFunction spy],
                 "$subscribe": [Function],
                 "_customProperties": Set {},
+                "_getters": [
+                  "isAuthenticated",
+                ],
                 "_hmrPayload": {
                   "actions": {
-                    "resetStore": [Function],
+                    "authStoreSetup": [Function],
+                    "removeTokenFromLocalStorage": [Function],
+                    "removeUsernameFromLocalStorage": [Function],
+                    "retrieveToken": [Function],
+                    "setTokenToLocalStorage": [Function],
+                    "setUsernameToLocalStorage": [Function],
                   },
-                  "getters": {},
+                  "getters": {
+                    "isAuthenticated": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": false,
+                      "_setter": [Function],
+                      "_value": false,
+                      "dep": undefined,
+                      "effect": ReactiveEffect {
+                        "active": true,
+                        "computed": [Circular],
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    },
+                  },
                   "hotState": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -2887,14 +5010,8 @@ VueWrapper {
                     "dep": undefined,
                   },
                   "state": [
-                    "posts",
-                    "allComments",
-                    "followingPosts",
-                    "allCategories",
-                    "allTags",
-                    "loggedInUserPosts",
-                    "baseFetchURL",
-                    "baseLoggedInUserPostsURL",
+                    "token",
+                    "username",
                   ],
                 },
                 "_hotUpdate": [Function],
@@ -2921,6 +5038,54 @@ VueWrapper {
                         "detached": false,
                         "effects": [],
                         "index": 1,
+                        "parent": [Circular],
+                      },
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
+                        "index": 2,
                         "parent": [Circular],
                       },
                     ],
@@ -2961,7 +5126,50 @@ VueWrapper {
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
                     },
-                    "Store for containing posts and related to posts" => [Circular],
+                    "Store for containing posts and related to posts" => {
+                      "$dispose": [Function],
+                      "$id": "Store for containing posts and related to posts",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_hmrPayload": {
+                        "actions": {
+                          "resetStore": [Function],
+                        },
+                        "getters": {},
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "posts",
+                          "allComments",
+                          "followingPosts",
+                          "allCategories",
+                          "allTags",
+                          "loggedInUserPosts",
+                          "baseFetchURL",
+                          "baseLoggedInUserPostsURL",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "allCategories": null,
+                      "allComments": null,
+                      "allTags": null,
+                      "baseFetchURL": "http://localhost:8888/api/feed/",
+                      "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
+                      "followingPosts": null,
+                      "loggedInUserPosts": null,
+                      "posts": null,
+                      "resetStore": [MockFunction spy],
+                    },
+                    "Auth Store for managing authentication-related state" => [Circular],
                   },
                   "_testing": true,
                   "app": [Circular],
@@ -2970,6 +5178,42 @@ VueWrapper {
                     "__v_isRef": true,
                     "__v_isShallow": false,
                     "_rawValue": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "username": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": undefined,
+                        },
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": RefImpl {
                           "__v_isRef": true,
@@ -3069,6 +5313,428 @@ VueWrapper {
                       },
                     },
                     "_value": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": "",
+                        "username": "",
+                      },
+                      "Store for containing posts and related to posts": {
+                        "allCategories": null,
+                        "allComments": null,
+                        "allTags": null,
+                        "baseFetchURL": "http://localhost:8888/api/feed/",
+                        "baseLoggedInUserPostsURL": "http://localhost:8888/api/min-side/posts/",
+                        "followingPosts": null,
+                        "loggedInUserPosts": null,
+                        "posts": null,
+                      },
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": [],
+                        "idArrayOfSavedPosts": [],
+                        "loggedInUserProfile": null,
+                      },
+                    },
+                    "dep": undefined,
+                  },
+                  "use": [Function],
+                },
+                "authStoreSetup": [MockFunction spy],
+                "isAuthenticated": false,
+                "removeTokenFromLocalStorage": [MockFunction spy],
+                "removeUsernameFromLocalStorage": [MockFunction spy],
+                "retrieveToken": [MockFunction spy] {
+                  "calls": [
+                    [],
+                    [],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                },
+                "setTokenToLocalStorage": [MockFunction spy],
+                "setUsernameToLocalStorage": [MockFunction spy],
+                "token": "",
+                "username": "",
+              },
+              "Store for containing posts and related to posts": {
+                "$dispose": [Function],
+                "$id": "Store for containing posts and related to posts",
+                "$onAction": [Function],
+                "$patch": [MockFunction $patch],
+                "$reset": [MockFunction spy],
+                "$subscribe": [Function],
+                "_customProperties": Set {},
+                "_hmrPayload": {
+                  "actions": {
+                    "resetStore": [Function],
+                  },
+                  "getters": {},
+                  "hotState": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {},
+                    "_value": {},
+                    "dep": undefined,
+                  },
+                  "state": [
+                    "posts",
+                    "allComments",
+                    "followingPosts",
+                    "allCategories",
+                    "allTags",
+                    "loggedInUserPosts",
+                    "baseFetchURL",
+                    "baseLoggedInUserPostsURL",
+                  ],
+                },
+                "_hotUpdate": [Function],
+                "_p": {
+                  "_a": [Circular],
+                  "_e": EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": true,
+                    "effects": [],
+                    "parent": undefined,
+                    "scopes": [
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [],
+                        "index": 0,
+                        "parent": [Circular],
+                      },
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [],
+                        "index": 1,
+                        "parent": [Circular],
+                      },
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
+                        "index": 2,
+                        "parent": [Circular],
+                      },
+                    ],
+                  },
+                  "_p": [
+                    [Function],
+                    [Function],
+                    [Function],
+                  ],
+                  "_s": Map {
+                    "Store for storing information about the logged in user" => {
+                      "$dispose": [Function],
+                      "$id": "Store for storing information about the logged in user",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_hmrPayload": {
+                        "actions": {},
+                        "getters": {},
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "loggedInUserProfile",
+                          "idArrayOfSavedPosts",
+                          "idArrayOfLoggedInUserFollowingUsers",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "idArrayOfLoggedInUserFollowingUsers": [],
+                      "idArrayOfSavedPosts": [],
+                      "loggedInUserProfile": null,
+                    },
+                    "Store for containing posts and related to posts" => [Circular],
+                    "Auth Store for managing authentication-related state" => {
+                      "$dispose": [Function],
+                      "$id": "Auth Store for managing authentication-related state",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_getters": [
+                        "isAuthenticated",
+                      ],
+                      "_hmrPayload": {
+                        "actions": {
+                          "authStoreSetup": [Function],
+                          "removeTokenFromLocalStorage": [Function],
+                          "removeUsernameFromLocalStorage": [Function],
+                          "retrieveToken": [Function],
+                          "setTokenToLocalStorage": [Function],
+                          "setUsernameToLocalStorage": [Function],
+                        },
+                        "getters": {
+                          "isAuthenticated": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": ReactiveEffect {
+                              "active": true,
+                              "computed": [Circular],
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "token",
+                          "username",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "authStoreSetup": [MockFunction spy],
+                      "isAuthenticated": false,
+                      "removeTokenFromLocalStorage": [MockFunction spy],
+                      "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "retrieveToken": [MockFunction spy] {
+                        "calls": [
+                          [],
+                          [],
+                        ],
+                        "results": [
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "setTokenToLocalStorage": [MockFunction spy],
+                      "setUsernameToLocalStorage": [MockFunction spy],
+                      "token": "",
+                      "username": "",
+                    },
+                  },
+                  "_testing": true,
+                  "app": [Circular],
+                  "install": [Function],
+                  "state": RefImpl {
+                    "__v_isRef": true,
+                    "__v_isShallow": false,
+                    "_rawValue": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "username": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": undefined,
+                        },
+                      },
+                      "Store for containing posts and related to posts": {
+                        "allCategories": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "allComments": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "allTags": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "baseFetchURL": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "http://localhost:8888/api/feed/",
+                          "_value": "http://localhost:8888/api/feed/",
+                          "dep": undefined,
+                        },
+                        "baseLoggedInUserPostsURL": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "http://localhost:8888/api/min-side/posts/",
+                          "_value": "http://localhost:8888/api/min-side/posts/",
+                          "dep": undefined,
+                        },
+                        "followingPosts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                        "loggedInUserPosts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "allowRecurse": true,
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "onTrack": undefined,
+                              "onTrigger": undefined,
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "posts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                      },
+                      "Store for storing information about the logged in user": {
+                        "idArrayOfLoggedInUserFollowingUsers": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "idArrayOfSavedPosts": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": [],
+                          "_value": [],
+                          "dep": undefined,
+                        },
+                        "loggedInUserProfile": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": null,
+                          "_value": null,
+                          "dep": undefined,
+                        },
+                      },
+                    },
+                    "_value": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": "",
+                        "username": "",
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
                         "allComments": null,
@@ -3149,6 +5815,54 @@ VueWrapper {
                         "index": 1,
                         "parent": [Circular],
                       },
+                      EffectScope {
+                        "_active": true,
+                        "cleanups": [],
+                        "detached": false,
+                        "effects": [
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                          ReactiveEffect {
+                            "active": true,
+                            "deps": [],
+                            "fn": [Function],
+                            "onTrack": undefined,
+                            "onTrigger": undefined,
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        ],
+                        "index": 2,
+                        "parent": [Circular],
+                      },
                     ],
                   },
                   "_p": [
@@ -3201,6 +5915,88 @@ VueWrapper {
                       "posts": null,
                       "resetStore": [MockFunction spy],
                     },
+                    "Auth Store for managing authentication-related state" => {
+                      "$dispose": [Function],
+                      "$id": "Auth Store for managing authentication-related state",
+                      "$onAction": [Function],
+                      "$patch": [MockFunction $patch],
+                      "$reset": [MockFunction spy],
+                      "$subscribe": [Function],
+                      "_customProperties": Set {},
+                      "_getters": [
+                        "isAuthenticated",
+                      ],
+                      "_hmrPayload": {
+                        "actions": {
+                          "authStoreSetup": [Function],
+                          "removeTokenFromLocalStorage": [Function],
+                          "removeUsernameFromLocalStorage": [Function],
+                          "retrieveToken": [Function],
+                          "setTokenToLocalStorage": [Function],
+                          "setUsernameToLocalStorage": [Function],
+                        },
+                        "getters": {
+                          "isAuthenticated": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": ReactiveEffect {
+                              "active": true,
+                              "computed": [Circular],
+                              "deps": [
+                                Set {
+                                  [Circular],
+                                },
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "hotState": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": {},
+                          "_value": {},
+                          "dep": undefined,
+                        },
+                        "state": [
+                          "token",
+                          "username",
+                        ],
+                      },
+                      "_hotUpdate": [Function],
+                      "_p": [Circular],
+                      "authStoreSetup": [MockFunction spy],
+                      "isAuthenticated": false,
+                      "removeTokenFromLocalStorage": [MockFunction spy],
+                      "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "retrieveToken": [MockFunction spy] {
+                        "calls": [
+                          [],
+                          [],
+                        ],
+                        "results": [
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "setTokenToLocalStorage": [MockFunction spy],
+                      "setUsernameToLocalStorage": [MockFunction spy],
+                      "token": "",
+                      "username": "",
+                    },
                   },
                   "_testing": true,
                   "app": [Circular],
@@ -3209,6 +6005,42 @@ VueWrapper {
                     "__v_isRef": true,
                     "__v_isShallow": false,
                     "_rawValue": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": Set {
+                            ReactiveEffect {
+                              "active": true,
+                              "computed": ComputedRefImpl {
+                                "__v_isReadonly": true,
+                                "__v_isRef": true,
+                                "_cacheable": true,
+                                "_dirty": false,
+                                "_setter": [Function],
+                                "_value": false,
+                                "dep": undefined,
+                                "effect": [Circular],
+                              },
+                              "deps": [
+                                [Circular],
+                              ],
+                              "fn": [Function],
+                              "parent": undefined,
+                              "scheduler": [Function],
+                            },
+                          },
+                        },
+                        "username": RefImpl {
+                          "__v_isRef": true,
+                          "__v_isShallow": false,
+                          "_rawValue": "",
+                          "_value": "",
+                          "dep": undefined,
+                        },
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": RefImpl {
                           "__v_isRef": true,
@@ -3308,6 +6140,10 @@ VueWrapper {
                       },
                     },
                     "_value": {
+                      "Auth Store for managing authentication-related state": {
+                        "token": "",
+                        "username": "",
+                      },
                       "Store for containing posts and related to posts": {
                         "allCategories": null,
                         "allComments": null,
@@ -3422,6 +6258,54 @@ VueWrapper {
                       "index": 1,
                       "parent": [Circular],
                     },
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
+                      "index": 2,
+                      "parent": [Circular],
+                    },
                   ],
                 },
                 "_p": [
@@ -3474,6 +6358,88 @@ VueWrapper {
                     "posts": null,
                     "resetStore": [MockFunction spy],
                   },
+                  "Auth Store for managing authentication-related state" => {
+                    "$dispose": [Function],
+                    "$id": "Auth Store for managing authentication-related state",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_getters": [
+                      "isAuthenticated",
+                    ],
+                    "_hmrPayload": {
+                      "actions": {
+                        "authStoreSetup": [Function],
+                        "removeTokenFromLocalStorage": [Function],
+                        "removeUsernameFromLocalStorage": [Function],
+                        "retrieveToken": [Function],
+                        "setTokenToLocalStorage": [Function],
+                        "setUsernameToLocalStorage": [Function],
+                      },
+                      "getters": {
+                        "isAuthenticated": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "token",
+                        "username",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "authStoreSetup": [MockFunction spy],
+                    "isAuthenticated": false,
+                    "removeTokenFromLocalStorage": [MockFunction spy],
+                    "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "retrieveToken": [MockFunction spy] {
+                      "calls": [
+                        [],
+                        [],
+                      ],
+                      "results": [
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                      ],
+                    },
+                    "setTokenToLocalStorage": [MockFunction spy],
+                    "setUsernameToLocalStorage": [MockFunction spy],
+                    "token": "",
+                    "username": "",
+                  },
                 },
                 "_testing": true,
                 "app": [Circular],
@@ -3482,6 +6448,42 @@ VueWrapper {
                   "__v_isRef": true,
                   "__v_isShallow": false,
                   "_rawValue": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "username": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": undefined,
+                      },
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": RefImpl {
                         "__v_isRef": true,
@@ -3581,6 +6583,10 @@ VueWrapper {
                     },
                   },
                   "_value": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": "",
+                      "username": "",
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
                       "allComments": null,
@@ -3663,6 +6669,54 @@ VueWrapper {
                       "index": 1,
                       "parent": [Circular],
                     },
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
+                      "index": 2,
+                      "parent": [Circular],
+                    },
                   ],
                 },
                 "_p": [
@@ -3702,6 +6756,88 @@ VueWrapper {
                     "loggedInUserProfile": null,
                   },
                   "Store for containing posts and related to posts" => [Circular],
+                  "Auth Store for managing authentication-related state" => {
+                    "$dispose": [Function],
+                    "$id": "Auth Store for managing authentication-related state",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_getters": [
+                      "isAuthenticated",
+                    ],
+                    "_hmrPayload": {
+                      "actions": {
+                        "authStoreSetup": [Function],
+                        "removeTokenFromLocalStorage": [Function],
+                        "removeUsernameFromLocalStorage": [Function],
+                        "retrieveToken": [Function],
+                        "setTokenToLocalStorage": [Function],
+                        "setUsernameToLocalStorage": [Function],
+                      },
+                      "getters": {
+                        "isAuthenticated": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "token",
+                        "username",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "authStoreSetup": [MockFunction spy],
+                    "isAuthenticated": false,
+                    "removeTokenFromLocalStorage": [MockFunction spy],
+                    "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "retrieveToken": [MockFunction spy] {
+                      "calls": [
+                        [],
+                        [],
+                      ],
+                      "results": [
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                      ],
+                    },
+                    "setTokenToLocalStorage": [MockFunction spy],
+                    "setUsernameToLocalStorage": [MockFunction spy],
+                    "token": "",
+                    "username": "",
+                  },
                 },
                 "_testing": true,
                 "app": [Circular],
@@ -3710,6 +6846,42 @@ VueWrapper {
                   "__v_isRef": true,
                   "__v_isShallow": false,
                   "_rawValue": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "username": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": undefined,
+                      },
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": RefImpl {
                         "__v_isRef": true,
@@ -3809,6 +6981,10 @@ VueWrapper {
                     },
                   },
                   "_value": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": "",
+                      "username": "",
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
                       "allComments": null,
@@ -4184,6 +7360,54 @@ VueWrapper {
                       "index": 1,
                       "parent": [Circular],
                     },
+                    EffectScope {
+                      "_active": true,
+                      "cleanups": [],
+                      "detached": false,
+                      "effects": [
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                        ReactiveEffect {
+                          "active": true,
+                          "deps": [],
+                          "fn": [Function],
+                          "onTrack": undefined,
+                          "onTrigger": undefined,
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      ],
+                      "index": 2,
+                      "parent": [Circular],
+                    },
                   ],
                 },
                 "_p": [
@@ -4265,6 +7489,88 @@ VueWrapper {
                     "posts": null,
                     "resetStore": [MockFunction spy],
                   },
+                  "Auth Store for managing authentication-related state" => {
+                    "$dispose": [Function],
+                    "$id": "Auth Store for managing authentication-related state",
+                    "$onAction": [Function],
+                    "$patch": [MockFunction $patch],
+                    "$reset": [MockFunction spy],
+                    "$subscribe": [Function],
+                    "_customProperties": Set {},
+                    "_getters": [
+                      "isAuthenticated",
+                    ],
+                    "_hmrPayload": {
+                      "actions": {
+                        "authStoreSetup": [Function],
+                        "removeTokenFromLocalStorage": [Function],
+                        "removeUsernameFromLocalStorage": [Function],
+                        "retrieveToken": [Function],
+                        "setTokenToLocalStorage": [Function],
+                        "setUsernameToLocalStorage": [Function],
+                      },
+                      "getters": {
+                        "isAuthenticated": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": ReactiveEffect {
+                            "active": true,
+                            "computed": [Circular],
+                            "deps": [
+                              Set {
+                                [Circular],
+                              },
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "hotState": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": {},
+                        "_value": {},
+                        "dep": undefined,
+                      },
+                      "state": [
+                        "token",
+                        "username",
+                      ],
+                    },
+                    "_hotUpdate": [Function],
+                    "_p": [Circular],
+                    "authStoreSetup": [MockFunction spy],
+                    "isAuthenticated": false,
+                    "removeTokenFromLocalStorage": [MockFunction spy],
+                    "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "retrieveToken": [MockFunction spy] {
+                      "calls": [
+                        [],
+                        [],
+                      ],
+                      "results": [
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                      ],
+                    },
+                    "setTokenToLocalStorage": [MockFunction spy],
+                    "setUsernameToLocalStorage": [MockFunction spy],
+                    "token": "",
+                    "username": "",
+                  },
                 },
                 "_testing": true,
                 "app": [Circular],
@@ -4273,6 +7579,42 @@ VueWrapper {
                   "__v_isRef": true,
                   "__v_isShallow": false,
                   "_rawValue": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": Set {
+                          ReactiveEffect {
+                            "active": true,
+                            "computed": ComputedRefImpl {
+                              "__v_isReadonly": true,
+                              "__v_isRef": true,
+                              "_cacheable": true,
+                              "_dirty": false,
+                              "_setter": [Function],
+                              "_value": false,
+                              "dep": undefined,
+                              "effect": [Circular],
+                            },
+                            "deps": [
+                              [Circular],
+                            ],
+                            "fn": [Function],
+                            "parent": undefined,
+                            "scheduler": [Function],
+                          },
+                        },
+                      },
+                      "username": RefImpl {
+                        "__v_isRef": true,
+                        "__v_isShallow": false,
+                        "_rawValue": "",
+                        "_value": "",
+                        "dep": undefined,
+                      },
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": RefImpl {
                         "__v_isRef": true,
@@ -4372,6 +7714,10 @@ VueWrapper {
                     },
                   },
                   "_value": {
+                    "Auth Store for managing authentication-related state": {
+                      "token": "",
+                      "username": "",
+                    },
                     "Store for containing posts and related to posts": {
                       "allCategories": null,
                       "allComments": null,
@@ -4431,6 +7777,54 @@ VueWrapper {
                     "detached": false,
                     "effects": [],
                     "index": 1,
+                    "parent": [Circular],
+                  },
+                  EffectScope {
+                    "_active": true,
+                    "cleanups": [],
+                    "detached": false,
+                    "effects": [
+                      ReactiveEffect {
+                        "active": true,
+                        "computed": ComputedRefImpl {
+                          "__v_isReadonly": true,
+                          "__v_isRef": true,
+                          "_cacheable": true,
+                          "_dirty": false,
+                          "_setter": [Function],
+                          "_value": false,
+                          "dep": undefined,
+                          "effect": [Circular],
+                        },
+                        "deps": [
+                          Set {
+                            [Circular],
+                          },
+                        ],
+                        "fn": [Function],
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                      ReactiveEffect {
+                        "active": true,
+                        "deps": [],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                      ReactiveEffect {
+                        "active": true,
+                        "deps": [],
+                        "fn": [Function],
+                        "onTrack": undefined,
+                        "onTrigger": undefined,
+                        "parent": undefined,
+                        "scheduler": [Function],
+                      },
+                    ],
+                    "index": 2,
                     "parent": [Circular],
                   },
                 ],
@@ -4514,6 +7908,88 @@ VueWrapper {
                   "posts": null,
                   "resetStore": [MockFunction spy],
                 },
+                "Auth Store for managing authentication-related state" => {
+                  "$dispose": [Function],
+                  "$id": "Auth Store for managing authentication-related state",
+                  "$onAction": [Function],
+                  "$patch": [MockFunction $patch],
+                  "$reset": [MockFunction spy],
+                  "$subscribe": [Function],
+                  "_customProperties": Set {},
+                  "_getters": [
+                    "isAuthenticated",
+                  ],
+                  "_hmrPayload": {
+                    "actions": {
+                      "authStoreSetup": [Function],
+                      "removeTokenFromLocalStorage": [Function],
+                      "removeUsernameFromLocalStorage": [Function],
+                      "retrieveToken": [Function],
+                      "setTokenToLocalStorage": [Function],
+                      "setUsernameToLocalStorage": [Function],
+                    },
+                    "getters": {
+                      "isAuthenticated": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": ReactiveEffect {
+                          "active": true,
+                          "computed": [Circular],
+                          "deps": [
+                            Set {
+                              [Circular],
+                            },
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
+                    "hotState": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": {},
+                      "_value": {},
+                      "dep": undefined,
+                    },
+                    "state": [
+                      "token",
+                      "username",
+                    ],
+                  },
+                  "_hotUpdate": [Function],
+                  "_p": [Circular],
+                  "authStoreSetup": [MockFunction spy],
+                  "isAuthenticated": false,
+                  "removeTokenFromLocalStorage": [MockFunction spy],
+                  "removeUsernameFromLocalStorage": [MockFunction spy],
+                  "retrieveToken": [MockFunction spy] {
+                    "calls": [
+                      [],
+                      [],
+                    ],
+                    "results": [
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                    ],
+                  },
+                  "setTokenToLocalStorage": [MockFunction spy],
+                  "setUsernameToLocalStorage": [MockFunction spy],
+                  "token": "",
+                  "username": "",
+                },
               },
               "_testing": true,
               "app": [Circular],
@@ -4522,6 +7998,42 @@ VueWrapper {
                 "__v_isRef": true,
                 "__v_isShallow": false,
                 "_rawValue": {
+                  "Auth Store for managing authentication-related state": {
+                    "token": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": "",
+                      "_value": "",
+                      "dep": Set {
+                        ReactiveEffect {
+                          "active": true,
+                          "computed": ComputedRefImpl {
+                            "__v_isReadonly": true,
+                            "__v_isRef": true,
+                            "_cacheable": true,
+                            "_dirty": false,
+                            "_setter": [Function],
+                            "_value": false,
+                            "dep": undefined,
+                            "effect": [Circular],
+                          },
+                          "deps": [
+                            [Circular],
+                          ],
+                          "fn": [Function],
+                          "parent": undefined,
+                          "scheduler": [Function],
+                        },
+                      },
+                    },
+                    "username": RefImpl {
+                      "__v_isRef": true,
+                      "__v_isShallow": false,
+                      "_rawValue": "",
+                      "_value": "",
+                      "dep": undefined,
+                    },
+                  },
                   "Store for containing posts and related to posts": {
                     "allCategories": RefImpl {
                       "__v_isRef": true,
@@ -4621,6 +8133,10 @@ VueWrapper {
                   },
                 },
                 "_value": {
+                  "Auth Store for managing authentication-related state": {
+                    "token": "",
+                    "username": "",
+                  },
                   "Store for containing posts and related to posts": {
                     "allCategories": null,
                     "allComments": null,
@@ -4705,6 +8221,54 @@ VueWrapper {
                 "index": 1,
                 "parent": [Circular],
               },
+              EffectScope {
+                "_active": true,
+                "cleanups": [],
+                "detached": false,
+                "effects": [
+                  ReactiveEffect {
+                    "active": true,
+                    "computed": ComputedRefImpl {
+                      "__v_isReadonly": true,
+                      "__v_isRef": true,
+                      "_cacheable": true,
+                      "_dirty": false,
+                      "_setter": [Function],
+                      "_value": false,
+                      "dep": undefined,
+                      "effect": [Circular],
+                    },
+                    "deps": [
+                      Set {
+                        [Circular],
+                      },
+                    ],
+                    "fn": [Function],
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  ReactiveEffect {
+                    "active": true,
+                    "deps": [],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                  ReactiveEffect {
+                    "active": true,
+                    "deps": [],
+                    "fn": [Function],
+                    "onTrack": undefined,
+                    "onTrigger": undefined,
+                    "parent": undefined,
+                    "scheduler": [Function],
+                  },
+                ],
+                "index": 2,
+                "parent": [Circular],
+              },
             ],
           },
           "_p": [
@@ -4786,6 +8350,88 @@ VueWrapper {
               "posts": null,
               "resetStore": [MockFunction spy],
             },
+            "Auth Store for managing authentication-related state" => {
+              "$dispose": [Function],
+              "$id": "Auth Store for managing authentication-related state",
+              "$onAction": [Function],
+              "$patch": [MockFunction $patch],
+              "$reset": [MockFunction spy],
+              "$subscribe": [Function],
+              "_customProperties": Set {},
+              "_getters": [
+                "isAuthenticated",
+              ],
+              "_hmrPayload": {
+                "actions": {
+                  "authStoreSetup": [Function],
+                  "removeTokenFromLocalStorage": [Function],
+                  "removeUsernameFromLocalStorage": [Function],
+                  "retrieveToken": [Function],
+                  "setTokenToLocalStorage": [Function],
+                  "setUsernameToLocalStorage": [Function],
+                },
+                "getters": {
+                  "isAuthenticated": ComputedRefImpl {
+                    "__v_isReadonly": true,
+                    "__v_isRef": true,
+                    "_cacheable": true,
+                    "_dirty": false,
+                    "_setter": [Function],
+                    "_value": false,
+                    "dep": undefined,
+                    "effect": ReactiveEffect {
+                      "active": true,
+                      "computed": [Circular],
+                      "deps": [
+                        Set {
+                          [Circular],
+                        },
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
+                "hotState": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": {},
+                  "_value": {},
+                  "dep": undefined,
+                },
+                "state": [
+                  "token",
+                  "username",
+                ],
+              },
+              "_hotUpdate": [Function],
+              "_p": [Circular],
+              "authStoreSetup": [MockFunction spy],
+              "isAuthenticated": false,
+              "removeTokenFromLocalStorage": [MockFunction spy],
+              "removeUsernameFromLocalStorage": [MockFunction spy],
+              "retrieveToken": [MockFunction spy] {
+                "calls": [
+                  [],
+                  [],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              },
+              "setTokenToLocalStorage": [MockFunction spy],
+              "setUsernameToLocalStorage": [MockFunction spy],
+              "token": "",
+              "username": "",
+            },
           },
           "_testing": true,
           "app": [Circular],
@@ -4794,6 +8440,42 @@ VueWrapper {
             "__v_isRef": true,
             "__v_isShallow": false,
             "_rawValue": {
+              "Auth Store for managing authentication-related state": {
+                "token": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": "",
+                  "_value": "",
+                  "dep": Set {
+                    ReactiveEffect {
+                      "active": true,
+                      "computed": ComputedRefImpl {
+                        "__v_isReadonly": true,
+                        "__v_isRef": true,
+                        "_cacheable": true,
+                        "_dirty": false,
+                        "_setter": [Function],
+                        "_value": false,
+                        "dep": undefined,
+                        "effect": [Circular],
+                      },
+                      "deps": [
+                        [Circular],
+                      ],
+                      "fn": [Function],
+                      "parent": undefined,
+                      "scheduler": [Function],
+                    },
+                  },
+                },
+                "username": RefImpl {
+                  "__v_isRef": true,
+                  "__v_isShallow": false,
+                  "_rawValue": "",
+                  "_value": "",
+                  "dep": undefined,
+                },
+              },
               "Store for containing posts and related to posts": {
                 "allCategories": RefImpl {
                   "__v_isRef": true,
@@ -4893,6 +8575,10 @@ VueWrapper {
               },
             },
             "_value": {
+              "Auth Store for managing authentication-related state": {
+                "token": "",
+                "username": "",
+              },
               "Store for containing posts and related to posts": {
                 "allCategories": null,
                 "allComments": null,
