@@ -17,8 +17,6 @@
 
 <script setup lang="ts">
 
-const postStore = usePostStore()
-
 </script>
 
 <style scoped>
