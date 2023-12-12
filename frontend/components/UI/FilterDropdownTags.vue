@@ -1,12 +1,15 @@
 <template>
     <div>
-        <USelectMenu :options="tags" v-model="selected" multiple placeholder="Choose tags"
+        <USelectMenu :options="options" v-model="selected" multiple placeholder="Filter with tags"
             class="text-primary" size="lg"
             
             >
             <template #leading>
                 <Icon name="filter" />
             </template>
+
+
+            <!-- When closed -->
             <template #label>
                 <div class="ms-2">
 
@@ -15,10 +18,11 @@
                 </div>
 
             </template>
+
+            <!-- The options when open-->
             <template #option="{ option: tag }">
                 <div class="">
                     <span class="truncate">{{ tag }}</span>
-                    <span class="ms-2">({{ tag }})</span>
                 </div>
             </template>
 
@@ -30,25 +34,20 @@
 
 const emit = defineEmits(["output"])
 
+defineProps<{
+    options:string[]
+}>()
+
 const selected = ref([])
 
-const tags = ref<string[]>([])
+/** Emits whenever a tag is selected or unselected */
+watch(selected, (newValue, oldValue) => {
+    // Your logic when 'selected' changes
+    emit("output", newValue);
+}, { deep: true, immediate: true });
 
-watchEffect(() => {
-    emit("output", selected.value)
-})
 
-onMounted(async () => {
-    const response = await getAllTags()
 
-    if (response) {
-
-            for (let tag of response) {
-                tags.value.push(tag.name)
-        }
-
-    }
-})
 
 </script>
 

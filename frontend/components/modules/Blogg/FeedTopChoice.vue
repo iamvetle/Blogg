@@ -1,14 +1,19 @@
 <template>
-    <div v-if="postStore.posts">
-        <span class="flex space-x-8 justify-center">
-            <BaseButton class="p-2 rounded-lg"
-                :class="selected ? 'bg-onPrimary text-primary border-primary border shadow-md  ' : 'bg-primary text-onPrimary border'"
-                data-test="feed-posts-option" @click="feedPostSetting" text="Feed" />
-
-            <BaseButton class="p-2 rounded-lg" data-test="following-posts-option" @click="followingPostSetting"
-                :class="selected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'"
-                text="Following" />
-        </span>
+    <div v-if="postStore.posts" class="flex-row">
+        
+        <div class="grid gap-8 grid-cols-12">
+            <div class="col-start-1 col-end-9 text-center space-x-6">
+                <BaseButton class="p-2 rounded-lg"
+                    :class="selected ? 'bg-onPrimary text-primary border-primary border shadow-md  ' : 'bg-primary text-onPrimary border'"
+                    data-test="feed-posts-option" @click="feedPostSetting" text="Feed" />
+                <BaseButton class="p-2 rounded-lg" data-test="following-posts-option" @click="followingPostSetting"
+                    :class="selected ? 'bg-primary text-onPrimary border' : 'bg-onPrimary text-primary border-primary border shadow-md'"
+                    text="Following" />
+            </div>
+            <div class="col-span-4">
+                <FeedDropdownFilter v-if="selected === false"/>
+            </div>
+        </div>
 
         <!-- IF the following buttons is pressed-->
         <div v-if="selected">
@@ -25,12 +30,17 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * Has two buttons where you can switch between seeing all posts and only the ones
+ * from whom you are followning
+ * 
+ * And the option to filter with tags
+ */
 
 const postStore = usePostStore()
 const paginationStore = usePaginationStore()
 const searchStore = useSearchStore()
 const loggedInUserStore = useLoggedInUserStore()
-
 
 /** 
  * FEED or FOLLOWING button selected display 
@@ -48,7 +58,7 @@ const selected = computed(() => {
         return false
     }
 })
-    
+
 
 const num_of_following = computed(() => {
     if (loggedInUserStore.loggedInUserProfile && loggedInUserStore.loggedInUserProfile.num_of_following > 0) {

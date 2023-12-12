@@ -1,6 +1,8 @@
 <template>
 	<div class="article grid-cols-12 grid gap-8 mb-16">
+
 		<div id="left-col-article" class="col-start-1 col-end-9">
+			
 			<span class="flex items-center w-full mb-2">
 				<span class="user-picture flex items-center">
 					<slot name="profile_picture"></slot>

@@ -2,14 +2,12 @@ import { getMethod } from '~/services/apiByCRUD';
 
 /** Fetches all tags possible */
 
-/** @todo Jeg burde kanskje ha et sted hvor jeg fetcher alle "filters?" */
-
 /**
  * Fetches all tags.
  * 
  * The tags in store is updated if the request was successfull
  * 
- * @returns - The request response (.data, .status)
+ * @returns - The request response (.data)
  */
 export const getAllTags = async (): Promise<TagType[] | null> => {
     const baseURL = "http://localhost:8888/api/tags/"
@@ -29,7 +27,6 @@ const token = authStore.retrieveToken()
     
     const headers = {
         "Content-Type": "application/json",
-        Authorization: `Token ${token}`,
     };
 
     const response = await getMethod(baseURL, headers)

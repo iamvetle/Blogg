@@ -16,7 +16,7 @@
 
 		<hr>
 
-		<div data-test="post-title" id="title">
+		<div data-test="post_title" id="title">
 			<PostTitle :title="post.title" />
 		</div>
 
@@ -31,7 +31,7 @@
 			</div>
 		</div>
 
-		<div id="main-content">
+		<div id="main-content" data-test="html_rendered_content">
 			<PostContentHTML :html="post.content" />
 		</div>
 

@@ -17,87 +17,22 @@ VueWrapper {
       "app": [Circular],
       "components": {
         "BaseButton": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-          "__name": "BaseButton",
-          "props": {
-            "text": {
-              "required": true,
-              "type": [Function],
-            },
-          },
-          "render": [Function],
-          "setup": [Function],
+          "name": "BaseButton",
         },
         "BaseImage": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
-          "__name": "BaseImage",
-          "inheritAttrs": false,
-          "props": {
-            "src": {
-              "required": true,
-              "type": [Function],
-            },
-          },
-          "render": [Function],
-          "setup": [Function],
+          "name": "BaseImage",
         },
         "PostBookmark": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
-          "__name": "PostBookmark",
-          "props": {
-            "post": {
-              "required": true,
-              "type": [Function],
-            },
-          },
-          "render": [Function],
-          "setup": [Function],
+          "name": "PostBookmark",
         },
         "PostContentHTML": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
-          "__name": "PostContentHTML",
-          "props": {
-            "html": {
-              "required": true,
-              "type": [Function],
-            },
-          },
-          "render": [Function],
-          "setup": [Function],
+          "name": "PostContentHTML",
         },
         "PostTitle": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
-          "__name": "PostTitle",
-          "props": {
-            "title": {
-              "required": true,
-              "type": [Function],
-            },
-          },
-          "render": [Function],
-          "setup": [Function],
+          "name": "PostTitle",
         },
         "SinglePostComments": {
           "name": "SinglePostComments",
-        },
-        "SinglePostCommentsList": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
-          "__name": "SinglePostCommentsList",
-          "props": {
-            "comments": {
-              "required": true,
-              "type": [
-                [Function],
-                null,
-              ],
-            },
-            "postAuthor": {
-              "required": true,
-              "type": [Function],
-            },
-          },
-          "render": [Function],
-          "setup": [Function],
         },
         "TagsList": {
           "name": "TagsList",
@@ -923,87 +858,22 @@ VueWrapper {
         "app": [Circular],
         "components": {
           "BaseButton": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-            "__name": "BaseButton",
-            "props": {
-              "text": {
-                "required": true,
-                "type": [Function],
-              },
-            },
-            "render": [Function],
-            "setup": [Function],
+            "name": "BaseButton",
           },
           "BaseImage": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
-            "__name": "BaseImage",
-            "inheritAttrs": false,
-            "props": {
-              "src": {
-                "required": true,
-                "type": [Function],
-              },
-            },
-            "render": [Function],
-            "setup": [Function],
+            "name": "BaseImage",
           },
           "PostBookmark": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
-            "__name": "PostBookmark",
-            "props": {
-              "post": {
-                "required": true,
-                "type": [Function],
-              },
-            },
-            "render": [Function],
-            "setup": [Function],
+            "name": "PostBookmark",
           },
           "PostContentHTML": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
-            "__name": "PostContentHTML",
-            "props": {
-              "html": {
-                "required": true,
-                "type": [Function],
-              },
-            },
-            "render": [Function],
-            "setup": [Function],
+            "name": "PostContentHTML",
           },
           "PostTitle": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
-            "__name": "PostTitle",
-            "props": {
-              "title": {
-                "required": true,
-                "type": [Function],
-              },
-            },
-            "render": [Function],
-            "setup": [Function],
+            "name": "PostTitle",
           },
           "SinglePostComments": {
             "name": "SinglePostComments",
-          },
-          "SinglePostCommentsList": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
-            "__name": "SinglePostCommentsList",
-            "props": {
-              "comments": {
-                "required": true,
-                "type": [
-                  [Function],
-                  null,
-                ],
-              },
-              "postAuthor": {
-                "required": true,
-                "type": [Function],
-              },
-            },
-            "render": [Function],
-            "setup": [Function],
           },
           "TagsList": {
             "name": "TagsList",
@@ -1834,6 +1704,7 @@ VueWrapper {
       "components": null,
       "ctx": {
         "VTU_COMPONENT": {},
+        "fetchPostRelated": [MockFunction spy],
       },
       "da": null,
       "data": {},
@@ -1889,6 +1760,7 @@ VueWrapper {
       "provides": {},
       "proxy": {
         "VTU_COMPONENT": {},
+        "fetchPostRelated": [MockFunction spy],
       },
       "refs": {
         "VTU_COMPONENT": {},
@@ -1950,87 +1822,22 @@ VueWrapper {
             "app": [Circular],
             "components": {
               "BaseButton": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-                "__name": "BaseButton",
-                "props": {
-                  "text": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
+                "name": "BaseButton",
               },
               "BaseImage": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
-                "__name": "BaseImage",
-                "inheritAttrs": false,
-                "props": {
-                  "src": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
+                "name": "BaseImage",
               },
               "PostBookmark": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
-                "__name": "PostBookmark",
-                "props": {
-                  "post": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
+                "name": "PostBookmark",
               },
               "PostContentHTML": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
-                "__name": "PostContentHTML",
-                "props": {
-                  "html": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
+                "name": "PostContentHTML",
               },
               "PostTitle": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
-                "__name": "PostTitle",
-                "props": {
-                  "title": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
+                "name": "PostTitle",
               },
               "SinglePostComments": {
                 "name": "SinglePostComments",
-              },
-              "SinglePostCommentsList": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
-                "__name": "SinglePostCommentsList",
-                "props": {
-                  "comments": {
-                    "required": true,
-                    "type": [
-                      [Function],
-                      null,
-                    ],
-                  },
-                  "postAuthor": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
               },
               "TagsList": {
                 "name": "TagsList",
@@ -2929,25 +2736,6 @@ VueWrapper {
                 "post": {
                   "required": true,
                   "type": null,
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
-            },
-            "SinglePostCommentsList": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
-              "__name": "SinglePostCommentsList",
-              "props": {
-                "comments": {
-                  "required": true,
-                  "type": [
-                    [Function],
-                    null,
-                  ],
-                },
-                "postAuthor": {
-                  "required": true,
-                  "type": [Function],
                 },
               },
               "render": [Function],
@@ -4541,7 +4329,7 @@ VueWrapper {
               "token": "",
               "username": "",
             },
-            "fetchPostRelated": [Function],
+            "fetchPostRelated": [MockFunction spy],
             "loggedInUserStore": {
               "$dispose": [Function],
               "$id": "Store for storing information about the logged in user",
@@ -6603,7 +6391,7 @@ VueWrapper {
               "token": "",
               "username": "",
             },
-            "fetchPostRelated": [Function],
+            "fetchPostRelated": [MockFunction spy],
             "loggedInUserStore": {
               "$dispose": [Function],
               "$id": "Store for storing information about the logged in user",
@@ -7114,25 +6902,6 @@ VueWrapper {
                 "render": [Function],
                 "setup": [Function],
               },
-              "SinglePostCommentsList": {
-                "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
-                "__name": "SinglePostCommentsList",
-                "props": {
-                  "comments": {
-                    "required": true,
-                    "type": [
-                      [Function],
-                      null,
-                    ],
-                  },
-                  "postAuthor": {
-                    "required": true,
-                    "type": [Function],
-                  },
-                },
-                "render": [Function],
-                "setup": [Function],
-              },
               "TagsList": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/TagsList.vue",
                 "__name": "TagsList",
@@ -7259,25 +7028,6 @@ VueWrapper {
               "render": [Function],
               "setup": [Function],
             },
-            "SinglePostCommentsList": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
-              "__name": "SinglePostCommentsList",
-              "props": {
-                "comments": {
-                  "required": true,
-                  "type": [
-                    [Function],
-                    null,
-                  ],
-                },
-                "postAuthor": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
-            },
             "TagsList": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/TagsList.vue",
               "__name": "TagsList",
@@ -7314,87 +7064,22 @@ VueWrapper {
           "app": [Circular],
           "components": {
             "BaseButton": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
-              "__name": "BaseButton",
-              "props": {
-                "text": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
+              "name": "BaseButton",
             },
             "BaseImage": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
-              "__name": "BaseImage",
-              "inheritAttrs": false,
-              "props": {
-                "src": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
+              "name": "BaseImage",
             },
             "PostBookmark": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostBookmark.vue",
-              "__name": "PostBookmark",
-              "props": {
-                "post": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
+              "name": "PostBookmark",
             },
             "PostContentHTML": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostContentHTML.vue",
-              "__name": "PostContentHTML",
-              "props": {
-                "html": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
+              "name": "PostContentHTML",
             },
             "PostTitle": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/UI/PostTitle.vue",
-              "__name": "PostTitle",
-              "props": {
-                "title": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
+              "name": "PostTitle",
             },
             "SinglePostComments": {
               "name": "SinglePostComments",
-            },
-            "SinglePostCommentsList": {
-              "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/SinglePostCommentsList.vue",
-              "__name": "SinglePostCommentsList",
-              "props": {
-                "comments": {
-                  "required": true,
-                  "type": [
-                    [Function],
-                    null,
-                  ],
-                },
-                "postAuthor": {
-                  "required": true,
-                  "type": [Function],
-                },
-              },
-              "render": [Function],
-              "setup": [Function],
             },
             "TagsList": {
               "name": "TagsList",
@@ -8662,6 +8347,7 @@ VueWrapper {
   "isDisabled": [Function],
   "rootVM": {
     "VTU_COMPONENT": {},
+    "fetchPostRelated": [MockFunction spy],
   },
   "wrapperElement": <!--v-if-->,
 }

@@ -1,13 +1,17 @@
+import { createTestingPinia } from '@pinia/testing';
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 import LoginCard from '~/components/modules/Auth/LoginCard.vue';
+import { useAuthStore } from '~/store/authStore';
 
 let wrapper: any;
+let authStore:any;
+let pinia:any = createTestingPinia
 
 const factory = () => {
     return shallowMount(LoginCard, {
         global: {
-            plugins: [],
+            plugins: [pinia],
             components: {},
             mocks: {},
             stubs: {

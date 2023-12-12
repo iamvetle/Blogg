@@ -1,5 +1,5 @@
 <template>
-    <div data-test="everything" class="col-span-6 mx-auto w-full">
+    <div data-test="everything" class="w-full">
 
         <!-- Doing v-if on the componenents that use the stores included in the v-if - or else error -->
 

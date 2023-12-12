@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <FilterDropdownTags @output="action" />
+    <div data-test="filter_tags">
+        <FilterDropdownTags @output="action" :options="tags" />
     </div>
 </template>
 
@@ -8,6 +8,9 @@
 
 const searchStore = useSearchStore()
 const paginationStore = usePaginationStore()
+
+/** State that holds all the tags - fetched */
+const tags = ref(<string[]>[])
 
 /**
  * This function is called whenever the tagFilter FilterBox is updated. This
@@ -19,12 +22,25 @@ const action = async (items: any) => {
     searchStore.tagFilterPart = items
 
     /** 
-     * ? Inside of the function instead?
+     * Create a new url with tag paramaters
      */
     paginationStore.activeFetchURL = constructURL("http://localhost:8888/api/feed/")
 
+    /** Fetches all posts again based on new url made w */
     await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
+
+onMounted(async () => {
+    /** Fetches all tags */
+    const response = await getAllTags()
+
+    if (response) {
+            for (let tag of response) {
+                tags.value.push(tag.name)
+        }
+
+    }
+})
 
 </script>
 

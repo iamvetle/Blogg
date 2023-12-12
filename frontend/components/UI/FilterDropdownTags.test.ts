@@ -1,13 +1,16 @@
+import { createTestingPinia } from '@pinia/testing';
 import FilterDropdownTags from './FilterDropdownTags.vue';
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 
 let wrapper: any;
+let postStore: any
+let pinia: any = createTestingPinia
 
 const factory = () => {
     return shallowMount(FilterDropdownTags, {
         global: {
-            plugins: [],
+            plugins: [pinia],
             components: {},
             mocks: {},
             stubs: {},
@@ -18,6 +21,7 @@ const factory = () => {
 };
 
 describe('Testing component', () => {
+
 
     beforeEach(() => {
     });

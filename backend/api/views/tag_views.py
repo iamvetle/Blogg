@@ -16,7 +16,8 @@ class AllTagsView(ListCreateAPIView):
     # ? can also create a new one
     # TODO - ^remove it later after adding a bunch
     
-    permission_classes = [IsAuthenticated] # NEED to be authenticated
+    permission_classes = [AllowAny] # NO need to be authenticated
+    
     serializer_class = TagSerializer
     
     pagination_class = None

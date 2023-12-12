@@ -1,7 +1,7 @@
 <template>
-    <div id="feed-dropdown-filter" v-if="postStore.allTags && !selected" class="mb-4 bg-primary rounded-lg text-onPrimary">
+    <!-- <div id="feed-dropdown-filter" v-if="selected === false" class="mb-4 bg-primary rounded-lg text-onPrimary">
         <FeedDropdownFilter />
-    </div>
+    </div> -->
     <!-- This lists the (saved)articles in thes sidebar -->
     <div v-if="loggedInUserStore.loggedInUserProfile" id="feed-post-list-sidebar">
         <FeedPostsListSidebar class="w-full"/>
@@ -15,11 +15,6 @@
 
 const paginationStore = usePaginationStore()
 const loggedInUserStore = useLoggedInUserStore()
-
-const selected = computed(() => (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/"))
-
-const postStore = usePostStore()
-
 
 </script>
 

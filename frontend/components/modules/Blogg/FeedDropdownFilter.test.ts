@@ -44,6 +44,8 @@ describe('Testing FeedDropdownFilter', () => {
     test('Should have filterdropdowntags', () => {
         wrapper = factory()
 
+        expect(wrapper.find("[data-test='filter_tags']").exists()).toBe(true)
+        
         expect(wrapper.findComponent({ name: "FilterDropdownTags" }).exists()).toBe(true)
     })
 
