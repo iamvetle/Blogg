@@ -27,46 +27,25 @@ urlpatterns = [
     
     # General paths
     # path("search/", PostMultipleAfterSearchView.as_view(), name="search"),
-    path("feed/", PostMultipleSnippetView.as_view(), name="all_or_multiple_posts"),
-    path("feed/following/", PostMultipleSnippetOnlyMyFollowingView.as_view(), name="all_or_multiple_following_posts"),
-    path("tags/", AllTagsView.as_view(), name="tags"),
-    path("categories/", AllCategoriesView.as_view(), name="categories"),
+    path("posts/feed/", PostMultipleSnippetView.as_view(), name="all_or_multiple_posts"),
+    path("posts/following/", PostMultipleSnippetOnlyMyFollowingView.as_view(), name="all_or_multiple_following_posts"),
+    path("posts/tags/", AllTagsView.as_view(), name="tags"),
+    path("posts/categories/", AllCategoriesView.as_view(), name="categories"),
     
     # Very specific and independent paths
     path("health_check/", HealthCheck.as_view(), name="health_check"),
-    path("login/", LoginView.as_view(), name="login"),
-    path("register/", RegisterUserView.as_view(), name="register_user"), # CHANGED FROM "REGISTRER"
     
-    # Paths related to the logged-in user
-    path("min-side/", LoggedInUserProfileView.as_view(), name="min_side"),
-    path("min-side/profile_picture/edit/", LoggedInUserAddOrChangeProfilePicture.as_view(), name="edit_logged_in_user_profile_picture"),
-
+    path("myuser/posts/", PostAllLoggedInUserView.as_view(), name="my_posts"),
+    path("myuser/post/<int:pk>/edit/", PostEditSingleView.as_view(), name="edit_my_post"), # GET, DELETE, PATCH (update) weird if I don't have this?
     
-    path("min-side/posts/", PostAllLoggedInUserView.as_view(), name="my_posts"),
-        
-    path("min-side/posts/<int:pk>/edit/", PostEditSingleView.as_view(), name="edit_my_post"), # GET, DELETE, PATCH (update) weird if I don't have this?
-    # NOT ACTIVE path("min-side/posts/<int:pk>/add-image/", PostEditSingleView.as_view(), name="add-image-to-post"), # POST add image
-    # NOT ACTIVE path("min-side/posts/<int:pk>/remove-image/<int:image_id>/", PostEditSingleView.as_view(), name="remove-image-from-post"), # DELETE Image
-    
-    path("min-side/followers/", LoggedInUserAllFollowers.as_view(), name="my_followers"),
-    path("min-side/following/", LoggedInUserAllFollowing.as_view(), name="my_following"),
-    
-    
-    # Posts and related actions
-    path("newpost/", PostCreateView.as_view(), name="new_post"),
     
     path("posts/saved/", PostAllSavedLoggedInUserView.as_view(), name="saved_posts"),
     path("post/<int:pk>/", PostReadSingleView.as_view(), name="single_post"),
     path("post/<int:post_id>/save/", PostSaveView.as_view(), name="save_unsave_post"),
+    path("post/newpost/", PostCreateView.as_view(), name="new_post"),
     
     path("post/<int:post_id>/comments/", PostCommentsView.as_view(), name="post_comments"),
     path("post/<int:post_id>/add-comment/", PostAddCommentView.as_view(), name="add_comment_to_post" ),
     path("post/<int:post_id>/remove-comment/<int:comment_id>/", PostDeleteCommentView.as_view(), name="remove_comment_from_post" ),
-    
-    # User-specific paths (Most general last)
-    path("<str:username>/", NormalUserProfileView.as_view(), name="user_profile"),
-    path("<str:username>/posts/", PostAllNormalUserView.as_view(), name="user_posts"),
-    path("<str:username>/follow/", FollowUserView.as_view(), name="user_follow"),
-    path("<str:username>/unfollow/", UnfollowUserView.as_view(), name="user_unfollow"),
-]
+    ]
 

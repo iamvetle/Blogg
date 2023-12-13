@@ -45,7 +45,7 @@ withDefaults(defineProps<{
  * @param username The username of the user that is going to be unfollowed
  */
 const unFollowUser = async (username: string) => {
-    const theNormalUserProfileUnfollowURL = urls.usersUrls.userUnfollow(username);
+    const theNormalUserProfileUnfollowURL = urls.users.user.unfollow(username);
 
     const responseData = await getUnfollowUser(theNormalUserProfileUnfollowURL)
 
