@@ -29,12 +29,12 @@
 </template>
 
 <script setup lang="ts">
-
-const emit = defineEmits(["output"])
-
 defineProps<{
     options: string[]
 }>()
+
+const emit = defineEmits(["output"])
+
 
 const selected = ref([])
 

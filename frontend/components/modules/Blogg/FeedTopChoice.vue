@@ -103,7 +103,7 @@ const setToOnlyShowFollowingPosts = async () => {
     searchStore.resetStore()
 
     paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
-    await getPostMultipleSnippet(paginationStore.activeFetchURL)
+    await getPostMultipleFollowingOnly(paginationStore.activeFetchURL)
 }
 
 </script>
