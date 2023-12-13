@@ -34,6 +34,7 @@ AUTH_USER_MODEL = "api.CustomUser"
 
 INSTALLED_APPS = [
     "api",
+    "users",
     "debug_toolbar",
     "rest_framework",
     "corsheaders",
