@@ -18,12 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import EditorCard from '~/components/modules/Editor/EditorCard.vue';
-import { postCreateNewPost } from '../composables/crud/postCreateNewPost';
-
 definePageMeta({
 	layout: "creating"
 })
+
+import EditorCard from '~/components/modules/Editor/EditorCard.vue';
+
 
 const baseURL = "http://localhost:8888/api/newpost/"
 

@@ -4,9 +4,6 @@ from django.contrib.auth.models import (
     BaseUserManager,
     PermissionsMixin,
 )
-from django.conf import settings
-from django.contrib.auth import get_user_model
-from django.utils import timezone
 
 
 class CustomUserManager(BaseUserManager):
@@ -113,6 +110,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         "first_name",
         "last_name",
         "email",
+        "gender",
     ]
 
     def __str__(self):
@@ -135,4 +133,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     related_name='following' allows you to access the users that a user is following.
     symmetrical=False ensures the relationship isn't automatically two-way (i.e., if User A follows User B, it doesn't mean User B follows User A).
-    blank=True allows for a user to have zero followers or following."""
+    blank=True allows for a user to have zero followers or following.
+    
+    """

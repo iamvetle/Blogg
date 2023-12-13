@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
