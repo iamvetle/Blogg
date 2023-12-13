@@ -2,7 +2,6 @@
 from django.urls import path
 
 # Local
-from api.views.auth_views import LoginView, RegisterUserView
 from api.views.post_views import (
     PostReadSingleView,
     PostCreateView,
@@ -18,15 +17,6 @@ from api.views.post_views import (
     PostAddCommentView,
     PostDeleteCommentView
     
-)
-from api.views.user_views import (
-    LoggedInUserProfileView,
-    NormalUserProfileView,
-    FollowUserView,
-    LoggedInUserAllFollowers,
-    LoggedInUserAllFollowing,
-    UnfollowUserView,
-    LoggedInUserAddOrChangeProfilePicture
 )
 from api.views.tag_views import AllTagsView
 from api.views.category_views import AllCategoriesView
@@ -45,7 +35,7 @@ urlpatterns = [
     # Very specific and independent paths
     path("health_check/", HealthCheck.as_view(), name="health_check"),
     path("login/", LoginView.as_view(), name="login"),
-    path("registrer/", RegisterUserView.as_view(), name="register_user"),
+    path("register/", RegisterUserView.as_view(), name="register_user"), # CHANGED FROM "REGISTRER"
     
     # Paths related to the logged-in user
     path("min-side/", LoggedInUserProfileView.as_view(), name="min_side"),

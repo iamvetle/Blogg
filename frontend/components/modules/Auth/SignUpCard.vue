@@ -144,12 +144,11 @@ const baseMessageClass = "prose text-onSurface text-sm text-red-500"
 const genders = ["Male", "Female", "Other"]
 
 const submitted = ref(false);
-const baseURL = "http://localhost:8888/api/registrer/";
 
 const all = ref(null)
 
 const submitForm = async (formData) => {
-	const responseData = await postForm(baseURL, formData);
+	const responseData = await postForm(urls.baseApiURL, formData);
 	if (responseData) {
 		submitted.value = true;
 		setTimeout(() => {

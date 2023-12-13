@@ -24,7 +24,7 @@ const action = async (items: any) => {
     /** 
      * Create a new url with tag paramaters
      */
-    paginationStore.activeFetchURL = constructURL("http://localhost:8888/api/feed/")
+    paginationStore.activeFetchURL = constructURL(urls.baseApiURL)
 
     /** Fetches all posts again based on new url made w */
     await getPostMultipleSnippet(paginationStore.activeFetchURL)

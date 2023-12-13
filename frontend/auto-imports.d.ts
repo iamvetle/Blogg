@@ -41,6 +41,7 @@ declare global {
   const getLoggedInUserProfile: typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']
   const getNormalUserPosts: typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']
   const getNormalUserProfile: typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']
+  const getPostMultipleFollowingOnly: typeof import('./composables/crud/getPostMultipleFollowingOnly')['getPostMultipleFollowingOnly']
   const getPostMultipleSnippet: typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']
   const getSaveOrUnsavePost: typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']
   const getSinglePost: typeof import('./composables/crud/getSinglePost')['getSinglePost']
@@ -167,6 +168,7 @@ declare module 'vue' {
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
     readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
+    readonly getPostMultipleFollowingOnly: UnwrapRef<typeof import('./composables/crud/getPostMultipleFollowingOnly')['getPostMultipleFollowingOnly']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
     readonly getSinglePost: UnwrapRef<typeof import('./composables/crud/getSinglePost')['getSinglePost']>
@@ -282,6 +284,7 @@ declare module '@vue/runtime-core' {
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
     readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
+    readonly getPostMultipleFollowingOnly: UnwrapRef<typeof import('./composables/crud/getPostMultipleFollowingOnly')['getPostMultipleFollowingOnly']>
     readonly getPostMultipleSnippet: UnwrapRef<typeof import('./composables/crud/getPostMultipleSnippet')['getPostMultipleSnippet']>
     readonly getSaveOrUnsavePost: UnwrapRef<typeof import('./composables/crud/getSaveOrUnsavePost')['getSaveOrUnsavePost']>
     readonly getSinglePost: UnwrapRef<typeof import('./composables/crud/getSinglePost')['getSinglePost']>
