@@ -24,7 +24,7 @@ onMounted(async () => {
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
 	if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
-		await getLoggedInUserProfile("http://localhost:8888/api/min-side/");
+		await getLoggedInUserProfile(urls.users.myUser.profile);
 	}
 })
 
@@ -67,7 +67,7 @@ const unFollowUser = async (username: string) => {
  * @param username The username of the user that is going to be followed
  */
 const followUser = async (username: string) => {
-    const theNormalUserProfileFollowURL = `http://localhost:8888/api/${username}/follow/`;
+    const theNormalUserProfileFollowURL = urls.users.user.follow(username);
 
     const responseData = await getFollowUser(theNormalUserProfileFollowURL)
 

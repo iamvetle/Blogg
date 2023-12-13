@@ -10,7 +10,7 @@ import { getMethod } from '~/services/apiByCRUD';
  * @returns - The request response (.data)
  */
 export const getAllTags = async (): Promise<TagType[] | null> => {
-    const baseURL = "http://localhost:8888/api/tags/"
+    const baseURL = urls.api.posts.filter.tags
     const postStore = usePostStore()
 
     /**

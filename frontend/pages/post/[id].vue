@@ -73,13 +73,13 @@ const route = useRoute()
 const loggedInUserStore = useLoggedInUserStore()
 
 const fetchPostRelated = async () => {
-	const postURL = `http://localhost:8888/api/post/${route.params.id}/`;
+	const postURL = urls.api.posts.singlePost.view(route.params.id);
 
 
 	/** The actual fetch, that fetches one post */
 	post.value = await getSinglePost(postURL);
 
-	const commentsURL = `http://localhost:8888/api/post/${route.params.id}/comments/`
+	const commentsURL = urls.api.posts.singlePost.comments(route.params.id)
 	await getSinglePostComments(commentsURL)
 
 	if (authStore.isAuthenticated) {
@@ -89,7 +89,7 @@ const fetchPostRelated = async () => {
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
 		if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
-			await getLoggedInUserProfile("http://localhost:8888/api/min-side/");
+			await getLoggedInUserProfile(urls.users.myUser.profile);
 		}
 
 	}

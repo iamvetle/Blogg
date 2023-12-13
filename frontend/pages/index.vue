@@ -1,14 +1,13 @@
 <template>
-		<div
-			class="mt-8 max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28">
-			<div data-test="everything" class="col-span-6 mx-auto w-full">
-				<FeedMain/>
-			</div>
-			<div id="feed-sidebar" class="col-span-4 mx-auto w-full">
-				<FeedSidebar/>
-			</div>
+	<div class="mt-8 max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28">
+		<div data-test="everything" class="col-span-6 mx-auto w-full">
+			<FeedMain />
 		</div>
-		<!-- fallback -->
+		<div id="feed-sidebar" class="col-span-4 mx-auto w-full">
+			<FeedSidebar />
+		</div>
+	</div>
+	<!-- fallback -->
 </template>
 
 <script setup lang="ts">
@@ -56,20 +55,19 @@ definePageMeta({
  */
 const fetchData = async () => {
 
-	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
-	const loggedInUserProfileURL = "http://localhost:8888/api/min-side/"
 
 	/**
 	* Fetches the profile information of the logged-in user
 	*/
+	const loggedInUserProfileURL = urls.users.myUser.profile
 	await getLoggedInUserProfile(loggedInUserProfileURL)
 
 	/**
 	 * Fetches all posts in snippets (not full content length)
 	 * 
 	 * * not strictly necesarry as it is already reset when the index get's unmounted (but what about when the index wasnt mounted in the first palce do? - dont know)
-	   */
-	paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
+	 */
+	paginationStore.activeFetchURL = urls.api.posts.feed
 
 	await getPostMultipleSnippet(paginationStore.activeFetchURL)
 
@@ -79,7 +77,7 @@ const fetchData = async () => {
 	await getAllTags()
 }
 
-onBeforeMount( async() => await fetchData())
+onBeforeMount(async () => await fetchData())
 
 
 /**

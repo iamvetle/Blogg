@@ -95,11 +95,11 @@ const clearUpload = () => {
 
 const cancelUpload = async () => {
     clearUpload()
-    await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
+    await getLoggedInUserProfile(urls.users.myUser.profile)
 }
 
 const handlePostNewProfileImage = async () => {
-    const profilePictureEditURL = "http://localhost:8888/api/min-side/profile_picture/edit/"
+    const profilePictureEditURL = urls.users.myUser.edit.profilePicture
 
     if (uploadedImage_file.value) {
         const formData = new FormData();
@@ -122,13 +122,13 @@ const handlePostNewProfileImage = async () => {
 
 // should put confirmation on this
 const removeProfileImage = async () => {
-    const profilePictureEditURL = "http://localhost:8888/api/min-side/profile_picture/edit/"
+    const profilePictureEditURL = urls.users.myUser.edit.profilePicture
 
     // only procedd if there is no uploaded picture and if the logged in user has a profile picture
     if (!uploadedImage_file.value && loggedInUserStore.loggedInUserProfile.profile_picture) {
         const response = await deleteSinglePostSingleComment(profilePictureEditURL)
         if (response) {
-            await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
+            await getLoggedInUserProfile(urls.users.myUser.profile)
             alert("successfully managed to edit profile picture of logged in user")
         }
     } else {

@@ -102,7 +102,7 @@ const dataSetup = async () => {
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
 	if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
-		await getLoggedInUserProfile("http://localhost:8888/api/min-side/");
+		await getLoggedInUserProfile(urls.users.myUser.profile);
 	}
 
 	/**
@@ -110,7 +110,7 @@ const dataSetup = async () => {
 	 */
 	const username = route.params.id
 
-	const theNormalUserProfileURL = `http://localhost:8888/api/${username}/`;
+	const theNormalUserProfileURL = urls.users.user.profile(username);
 
 	/**
 	 * Fetches the profile data about the user through the API address of the user.
@@ -126,7 +126,7 @@ const dataSetup = async () => {
 		followers.value = normalUserProfile.value.num_of_followers
 	}
 
-	const theNormalUserPostsURL = `http://localhost:8888/api/${username}/posts/`
+	const theNormalUserPostsURL = urls.api.posts.user(username)
 
 	/**
 	 * Fetches the posts the user has made through the API address of the user.

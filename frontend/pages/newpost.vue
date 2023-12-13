@@ -25,7 +25,7 @@ definePageMeta({
 import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 
 
-const baseURL = "http://localhost:8888/api/newpost/"
+const baseURL = urls.api.posts.singlePost.action.newPost
 
 /** If this is true a success message is rendered */
 const postState = ref<false | true | null>(null);

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
+from api.models import Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 from django.contrib.auth import get_user_model
@@ -9,7 +9,7 @@ from users.models import CustomUser
 # Inlines -> (is put inside the admin models)
 class CommentInline(admin.TabularInline):
     model = Comment
-    fields = ["content", "post", "author", "date_pub    lished"]
+    fields = ["content", "post", "author", "date_published"]
     readonly_fields = ["date_published", "post"]
     extra = 0  # or else, the three extra default fields are shown - annoying
     can_delete = False

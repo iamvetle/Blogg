@@ -52,7 +52,7 @@ const loggedInUserStore = useLoggedInUserStore()
  * It uses the loggedinuserstore and the poststore therefore the parentcomponent makes sure those are available before rendering these 
  */
 const selected = computed(() => {
-    if (paginationStore?.activeFetchURL === "http://localhost:8888/api/feed/following/") {
+    if (paginationStore?.activeFetchURL === urls.api.posts.following) {
         return true
     } else {
         return false
@@ -88,7 +88,7 @@ const posts_by_following = computed(() => {
 const setToShowAllFeedPosts = async () => {
     searchStore.resetStore()
 
-    paginationStore.activeFetchURL = "http://localhost:8888/api/feed/"
+    paginationStore.activeFetchURL = urls.api.posts.feed
     await getPostMultipleSnippet(paginationStore.activeFetchURL)
 }
 
@@ -102,7 +102,7 @@ const setToOnlyShowFollowingPosts = async () => {
 
     searchStore.resetStore()
 
-    paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
+    paginationStore.activeFetchURL = urls.api.posts.following
     await getPostMultipleFollowingOnly(paginationStore.activeFetchURL)
 }
 

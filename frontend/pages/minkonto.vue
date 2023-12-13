@@ -90,7 +90,7 @@ definePageMeta({
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
 
-const loggedInUserURL = "http://localhost:8888/api/min-side/"
+const loggedInUserURL = urls.users.myUser.profile
 
 /**
  * Fetches:
@@ -100,7 +100,7 @@ const loggedInUserURL = "http://localhost:8888/api/min-side/"
  * 2. USER INFORMATION about the logged in user
  */
 onMounted(async () => {
-	const loggedInUserPostsURL = "http://localhost:8888/api/min-side/posts/"
+	const loggedInUserPostsURL = urls.api.posts.myuser
 
 	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
 	await getLoggedInUserProfile(loggedInUserURL)

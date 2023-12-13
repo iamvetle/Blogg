@@ -63,12 +63,12 @@ const theAuthorIsLoggedInUser = computed(() => {
  */
 const deleteComment = async () => {
 
-    const baseCommentURL = `http://localhost:8888/api/post/${props.comment.post}/remove-comment/${props.comment.id}/`
+    const baseCommentURL = urls.api.posts.singlePost.action.removeComment(props.comment.post as number, props.comment.id as number)
 
     const response = await deleteSinglePostSingleComment(baseCommentURL)
 
     if (response) {
-        const basePostURL = `http://localhost:8888/api/post/${props.comment.post}/comments/`
+        const basePostURL = urls.api.posts.singlePost.comments(props.comment.post as number)
         await getSinglePostComments(basePostURL)
     } else {
         console.error("An error occured while trying to delete comment")
