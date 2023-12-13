@@ -62,6 +62,7 @@
   "python.testing.unittestEnabled": true,
   "files.exclude": {
     "frontend\\components\\utils": true,
-    "frontend": true
+    "frontend": true,
+    "backend\\old database": true
   }
 }
