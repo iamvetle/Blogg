@@ -35,7 +35,7 @@ from api.serializers.post_serializers import (
     PostShortenSerializer,
     CommentSerializer,
 )
-from api.serializers.user_serializers import NormalUserSerializer
+from users.serializers.user_serializers import NormalUserSerializer
 from api.filters import CustomPostFilter
 
 from bs4 import BeautifulSoup

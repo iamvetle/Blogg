@@ -23,7 +23,7 @@ import uuid
 
 # Local application imports
 from django.shortcuts import get_object_or_404
-from api.serializers.user_serializers import (
+from users.serializers.user_serializers import (
     LoggedInUserSerializer,
     NormalUserSerializer,
     FollowerSerializer,
