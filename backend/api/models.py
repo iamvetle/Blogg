@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -19,6 +20,8 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
+    # Makes the id key (extremely) unique (and unecesarriy complicated)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=100)  # 100 characters
     content = models.TextField(max_length=80000)  # 80,000 characters
     date_published = models.DateTimeField(
