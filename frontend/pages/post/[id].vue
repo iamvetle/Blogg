@@ -73,6 +73,7 @@ const route = useRoute()
 const loggedInUserStore = useLoggedInUserStore()
 
 const fetchPostRelated = async () => {
+	console.log(route.params.id)
 	const postURL = urls.api.posts.singlePost.view(route.params.id);
 
 

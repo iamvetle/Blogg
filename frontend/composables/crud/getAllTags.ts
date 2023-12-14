@@ -11,6 +11,7 @@ import { getMethod } from '~/services/apiByCRUD';
  */
 export const getAllTags = async (): Promise<TagType[] | null> => {
     const baseURL = urls.api.posts.filter.tags
+    console.log(baseURL)
     const postStore = usePostStore()
 
     /**

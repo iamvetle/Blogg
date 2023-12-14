@@ -368,6 +368,7 @@ const handleModalCancelTheDiscard = () => {
 
 const closeModalRequirements = () => {
 	showModalRequirements.value = false
+	focusOnCorrectEditor()
 }
 
 /**

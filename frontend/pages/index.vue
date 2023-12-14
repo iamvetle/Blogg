@@ -50,35 +50,6 @@ definePageMeta({
  * but it said it was when it wasnt sometimes, which was very weird, so I removed it on all->
  */
 
-/**
- * All of the data that is needed from the api endpoint is fetched here.
- */
-const fetchData = async () => {
-
-
-	/**
-	* Fetches the profile information of the logged-in user
-	*/
-	const loggedInUserProfileURL = urls.users.myUser.profile
-	await getLoggedInUserProfile(loggedInUserProfileURL)
-
-	/**
-	 * Fetches all posts in snippets (not full content length)
-	 * 
-	 * * not strictly necesarry as it is already reset when the index get's unmounted (but what about when the index wasnt mounted in the first palce do? - dont know)
-	 */
-	paginationStore.activeFetchURL = urls.api.posts.feed
-
-	await getPostMultipleSnippet(paginationStore.activeFetchURL)
-
-	/** 
-	 * Fetches all possible tags. And then assigns all of them in a variable in the post store
-	*/
-	await getAllTags()
-}
-
-onBeforeMount(async () => await fetchData())
-
 
 /**
  * Middleware in the background makes sure that only authenticated users can access this page,

@@ -19,7 +19,7 @@ const token = authStore.retrieveToken()
 		Authorization: `Token ${token}`,
 	};
 
-	const postURL = `http://localhost:8888/api/post/${postId}/save/`
+	const postURL = urls.api.posts.singlePost.action.savePost(postId)
 
 	const response = await postMethod(postURL, {}, headers);
 
@@ -30,7 +30,7 @@ const token = authStore.retrieveToken()
 		 * * I think this refreshses everything - unsure
 		 * ? Should I rather have this at the earlier level? 
 		 */
-		await getLoggedInUserProfile("http://localhost:8888/api/min-side/")
+		await getLoggedInUserProfile(urls.users.myUser.profile)
 
 		return response.data
 	} else {

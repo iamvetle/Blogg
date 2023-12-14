@@ -5,7 +5,7 @@ export const useGeneralStore = defineStore("General store for general things", (
   /**
  * This is the base url of the API endpoint where everything is fetched.
  */
-  const baseAPIURL = ref("http://localhost:8888") // baseSearchURL (<any>null)
+  const baseAPIURL = ref(urls.baseApiURL) // baseSearchURL (<any>null)
 
   const backgroundForModal = ref<null | string>(null)
 

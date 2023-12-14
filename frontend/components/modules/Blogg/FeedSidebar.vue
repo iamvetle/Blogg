@@ -3,17 +3,23 @@
         <FeedDropdownFilter />
     </div> -->
     <!-- This lists the (saved)articles in thes sidebar -->
-    <div v-if="loggedInUserStore.loggedInUserProfile" id="feed-post-list-sidebar">
-        <FeedPostsListSidebar class="w-full"/>
-    </div>
-    <div v-else>
-        <SkeletonFeedPostsListSidebar/>
-    </div>
-    </template>
+
+    <Suspense>
+        <template #default>
+            <div id="feed-post-list-sidebar">
+                <FeedPostsListSidebar class="w-full" />
+            </div>
+        </template>
+        <template #fallback>
+            <div>
+                <SkeletonFeedPostsListSidebar />
+            </div>
+        </template>
+    </Suspense>
+</template>
 
 <script setup lang="ts">
 
-const loggedInUserStore = useLoggedInUserStore()
 
 </script>
 

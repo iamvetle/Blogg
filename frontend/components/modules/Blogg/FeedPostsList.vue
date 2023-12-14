@@ -16,7 +16,7 @@
 							</p>
 						</span>
 					</template>
-								
+
 					<template #date_published v-if="post.date_published">
 						<span>
 							<p class="font-light" v-text="post.date_published"></p>
@@ -46,19 +46,17 @@
 
 					<template #tags v-if="post.tags">
 						<span class="me-1" v-for="tag in post.tags">
-							<BaseTag :key="post.id" :text="tag.name"/>
+							<BaseTag :key="post.id" :text="tag.name" />
 						</span>
 					</template>
 
 					<template #amount-of-comments v-if="post.num_of_comments !== null">
-						<span>{{ post.num_of_comments }} comments</span>						
+						<span>{{ post.num_of_comments }} comments</span>
 					</template>
 
 					<template #save-article-icon v-if="(post.id) && (!checkIfLoggedInUser(post.author.username))">
 
-						<PostBookmark
-						:post="post.id"
-						/>
+						<PostBookmark :post="post.id" />
 
 					</template>
 
@@ -129,6 +127,20 @@ const author_full_name = (author: SnippetPostSingleType) => {
 	const full_name = `${author.first_name} ${author.last_name}`
 	return full_name.trim() == "" ? author.username : full_name
 }
+
+const paginationStore = usePaginationStore()
+
+onBeforeMount(async () => {
+	/**
+	* Fetches all posts in snippets (not full content length)
+	* 
+	* * not strictly necesarry as it is already reset when the index get's unmounted (but what about when the index wasnt mounted in the first palce do? - dont know)
+	*/
+	paginationStore.activeFetchURL = urls.api.posts.feed
+	console.log(paginationStore.activeFetchURL)
+
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
+})
 
 </script>
 

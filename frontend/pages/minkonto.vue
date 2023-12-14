@@ -80,17 +80,16 @@
 </template>
 
 <script setup lang="ts">
-
-definePageMeta({
-	layout: 'default'
-})
-
 // Declaring stores
 
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
 
 const loggedInUserURL = urls.users.myUser.profile
+const loggedInUserPostsURL = urls.api.posts.myuser
+definePageMeta({
+	layout: 'default'
+})
 
 /**
  * Fetches:
@@ -99,8 +98,7 @@ const loggedInUserURL = urls.users.myUser.profile
  * 
  * 2. USER INFORMATION about the logged in user
  */
-onMounted(async () => {
-	const loggedInUserPostsURL = urls.api.posts.myuser
+onBeforeMount(async () => {
 
 	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
 	await getLoggedInUserProfile(loggedInUserURL)

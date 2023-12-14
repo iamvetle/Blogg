@@ -32,7 +32,7 @@ const api = {
              * @param postId - The ID of the post
              * @returns - The URL of the post
              */
-            view: (postId: number) => `${baseApiURL}post/${postId}/`,  // URL for a specific post.
+            view: (postId: string | number) => `${baseApiURL}post/${postId}/`,  // URL for a specific post.
             // Functions that modify or add something a a post
             action: {
                 /**
@@ -41,21 +41,21 @@ const api = {
                  * @param postId - The ID of the post
                  * @returns - The URL
                  */
-                edit: (postId: number) => `${baseApiURL}myuser/post/${postId}/edit/`,  // URL for editing a specific post.
+                edit: (postId: string | number) => `${baseApiURL}myuser/post/${postId}/edit/`,  // URL for editing a specific post.
                 /**
                  * Returns the URL for saving the post
                  * 
                  * @param postId - The ID of the post
                  * @returns - The URL
                  */
-                savePost: (postId: number) => `${baseApiURL}post/${postId}/save/`,  // URL for saving a specific post.
+                savePost: (postId: string | number) => `${baseApiURL}post/${postId}/save/`,  // URL for saving a specific post.
                 /**
                  * Returns the URL for adding a comment to the post based on the ID of the post
                  * 
                  * @param postId - The ID of the post
                  * @returns - The URL
                  */
-                addComment: (postId: number) => `${baseApiURL}post/${postId}/add-comment/`,  // URL for adding a comment to a post.
+                addComment: (postId: string | number) => `${baseApiURL}post/${postId}/add-comment/`,  // URL for adding a comment to a post.
                 /**
                  * Returns the URL for removing a specific comment from a specific post
                  * 
@@ -63,7 +63,7 @@ const api = {
                  * @param commentId - The ID of the comment
                  * @returns - The URL
                  */
-                removeComment: (postId: number, commentId: number) =>
+                removeComment: (postId: string | number, commentId: string) =>
                     `${baseApiURL}post/${postId}/remove-comment/${commentId}/`,  // URL for removing a comment from a post.
                 newPost: `${baseApiURL}post/newpost/` // URL for adding a new post
             },
@@ -73,7 +73,7 @@ const api = {
              * @param postId - The ID of the post
              * @returns - The URL
              */
-            comments: (postId: number) => `${baseApiURL}post/${postId}/comments/`,  // URL for post comments.
+            comments: (postId: string | number) => `${baseApiURL}post/${postId}/comments/`,  // URL for post comments.
         },
         // Filter-related API URLs.
         filter: {
@@ -90,10 +90,12 @@ const users = {
         register: `${baseUsersURL}register/`,  // URL for user registration.
     },
     myUser: {
-        profile: `${baseUsersURL}min-side/`,  // Base URL for user-specific operations.
+        profile: `${baseUsersURL}myuser/`,  // Base URL for user-specific operations.
         edit: {
             profilePicture: `${baseUsersURL}profile_picture/edit`,  // URL for editing profile picture.
-        }
+        },
+        following: `${baseUsersURL}myuser/following`,
+        followers: `${baseUsersURL}myuser/followers`
     },
     user: {
         /**

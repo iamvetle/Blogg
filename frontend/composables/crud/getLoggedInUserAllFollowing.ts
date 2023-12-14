@@ -9,7 +9,7 @@ import { getMethod } from '~/services/apiByCRUD';
  */
 
 export const getLoggedInUserAllFollowing = async (): Promise<FollowingType[] | null> => {
-    const baseURL = "http://localhost:8888/api/min-side/following/"
+    const baseURL = urls.users.myUser.following
     const loggedInUserStore = useLoggedInUserStore()
 
     /**
