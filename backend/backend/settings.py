@@ -35,7 +35,6 @@ AUTH_USER_MODEL = "users.CustomUser"
 INSTALLED_APPS = [
     "api",
     "users",
-    "django_uuid_primary_key",
     "debug_toolbar",
     "rest_framework",
     "corsheaders",

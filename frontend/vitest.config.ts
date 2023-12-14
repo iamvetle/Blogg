@@ -8,7 +8,7 @@ export default defineConfig({
         AutoImport({
             imports: ['vue', "vitest"],
             dts:true,
-            dirs: ['./composables', './store', './composables/crud', './components'],
+            dirs: ['./composables', './store', './composables/crud', './components', './constants'],
             vueTemplate: true,
         }),
     ],

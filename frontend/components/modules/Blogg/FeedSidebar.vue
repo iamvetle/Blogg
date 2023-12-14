@@ -3,7 +3,6 @@
         <FeedDropdownFilter />
     </div> -->
     <!-- This lists the (saved)articles in thes sidebar -->
-
     <Suspense>
         <template #default>
             <div id="feed-post-list-sidebar">

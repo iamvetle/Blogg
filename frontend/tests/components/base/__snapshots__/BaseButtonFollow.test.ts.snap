@@ -146,7 +146,7 @@ VueWrapper {
                 "_hotUpdate": [Function],
                 "_p": [Circular],
                 "backgroundForModal": null,
-                "baseAPIURL": "http://localhost:8888",
+                "baseAPIURL": "http://localhost:8888/api/",
                 "search_bar_show": false,
                 "turnBackgroundForModel": [MockFunction spy],
               },
@@ -307,8 +307,8 @@ VueWrapper {
                   "baseAPIURL": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
-                    "_rawValue": "http://localhost:8888",
-                    "_value": "http://localhost:8888",
+                    "_rawValue": "http://localhost:8888/api/",
+                    "_value": "http://localhost:8888/api/",
                     "dep": undefined,
                   },
                   "search_bar_show": RefImpl {
@@ -375,7 +375,7 @@ VueWrapper {
                 },
                 "General store for general things": {
                   "backgroundForModal": null,
-                  "baseAPIURL": "http://localhost:8888",
+                  "baseAPIURL": "http://localhost:8888/api/",
                   "search_bar_show": false,
                 },
                 "Store for storing information about the logged in user": {
@@ -514,7 +514,7 @@ VueWrapper {
               "_hotUpdate": [Function],
               "_p": [Circular],
               "backgroundForModal": null,
-              "baseAPIURL": "http://localhost:8888",
+              "baseAPIURL": "http://localhost:8888/api/",
               "search_bar_show": false,
               "turnBackgroundForModel": [MockFunction spy],
             },
@@ -680,8 +680,8 @@ VueWrapper {
                 "baseAPIURL": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
-                  "_rawValue": "http://localhost:8888",
-                  "_value": "http://localhost:8888",
+                  "_rawValue": "http://localhost:8888/api/",
+                  "_value": "http://localhost:8888/api/",
                   "dep": undefined,
                 },
                 "search_bar_show": RefImpl {
@@ -748,7 +748,7 @@ VueWrapper {
               },
               "General store for general things": {
                 "backgroundForModal": null,
-                "baseAPIURL": "http://localhost:8888",
+                "baseAPIURL": "http://localhost:8888/api/",
                 "search_bar_show": false,
               },
               "Store for storing information about the logged in user": {
@@ -891,7 +891,7 @@ VueWrapper {
                   "_hotUpdate": [Function],
                   "_p": [Circular],
                   "backgroundForModal": null,
-                  "baseAPIURL": "http://localhost:8888",
+                  "baseAPIURL": "http://localhost:8888/api/",
                   "search_bar_show": false,
                   "turnBackgroundForModel": [MockFunction spy],
                 },
@@ -1057,8 +1057,8 @@ VueWrapper {
                     "baseAPIURL": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
-                      "_rawValue": "http://localhost:8888",
-                      "_value": "http://localhost:8888",
+                      "_rawValue": "http://localhost:8888/api/",
+                      "_value": "http://localhost:8888/api/",
                       "dep": undefined,
                     },
                     "search_bar_show": RefImpl {
@@ -1125,7 +1125,7 @@ VueWrapper {
                   },
                   "General store for general things": {
                     "backgroundForModal": null,
-                    "baseAPIURL": "http://localhost:8888",
+                    "baseAPIURL": "http://localhost:8888/api/",
                     "search_bar_show": false,
                   },
                   "Store for storing information about the logged in user": {
@@ -1264,7 +1264,7 @@ VueWrapper {
                 "_hotUpdate": [Function],
                 "_p": [Circular],
                 "backgroundForModal": null,
-                "baseAPIURL": "http://localhost:8888",
+                "baseAPIURL": "http://localhost:8888/api/",
                 "search_bar_show": false,
                 "turnBackgroundForModel": [MockFunction spy],
               },
@@ -1430,8 +1430,8 @@ VueWrapper {
                   "baseAPIURL": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
-                    "_rawValue": "http://localhost:8888",
-                    "_value": "http://localhost:8888",
+                    "_rawValue": "http://localhost:8888/api/",
+                    "_value": "http://localhost:8888/api/",
                     "dep": undefined,
                   },
                   "search_bar_show": RefImpl {
@@ -1498,7 +1498,7 @@ VueWrapper {
                 },
                 "General store for general things": {
                   "backgroundForModal": null,
-                  "baseAPIURL": "http://localhost:8888",
+                  "baseAPIURL": "http://localhost:8888/api/",
                   "search_bar_show": false,
                 },
                 "Store for storing information about the logged in user": {
@@ -1760,7 +1760,7 @@ VueWrapper {
                       "_hotUpdate": [Function],
                       "_p": [Circular],
                       "backgroundForModal": null,
-                      "baseAPIURL": "http://localhost:8888",
+                      "baseAPIURL": "http://localhost:8888/api/",
                       "search_bar_show": false,
                       "turnBackgroundForModel": [MockFunction spy],
                     },
@@ -1926,8 +1926,8 @@ VueWrapper {
                         "baseAPIURL": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
-                          "_rawValue": "http://localhost:8888",
-                          "_value": "http://localhost:8888",
+                          "_rawValue": "http://localhost:8888/api/",
+                          "_value": "http://localhost:8888/api/",
                           "dep": undefined,
                         },
                         "search_bar_show": RefImpl {
@@ -1994,7 +1994,7 @@ VueWrapper {
                       },
                       "General store for general things": {
                         "backgroundForModal": null,
-                        "baseAPIURL": "http://localhost:8888",
+                        "baseAPIURL": "http://localhost:8888/api/",
                         "search_bar_show": false,
                       },
                       "Store for storing information about the logged in user": {
@@ -2133,7 +2133,7 @@ VueWrapper {
                     "_hotUpdate": [Function],
                     "_p": [Circular],
                     "backgroundForModal": null,
-                    "baseAPIURL": "http://localhost:8888",
+                    "baseAPIURL": "http://localhost:8888/api/",
                     "search_bar_show": false,
                     "turnBackgroundForModel": [MockFunction spy],
                   },
@@ -2299,8 +2299,8 @@ VueWrapper {
                       "baseAPIURL": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
-                        "_rawValue": "http://localhost:8888",
-                        "_value": "http://localhost:8888",
+                        "_rawValue": "http://localhost:8888/api/",
+                        "_value": "http://localhost:8888/api/",
                         "dep": undefined,
                       },
                       "search_bar_show": RefImpl {
@@ -2367,7 +2367,7 @@ VueWrapper {
                     },
                     "General store for general things": {
                       "backgroundForModal": null,
-                      "baseAPIURL": "http://localhost:8888",
+                      "baseAPIURL": "http://localhost:8888/api/",
                       "search_bar_show": false,
                     },
                     "Store for storing information about the logged in user": {
@@ -2561,7 +2561,7 @@ VueWrapper {
                       "_hotUpdate": [Function],
                       "_p": [Circular],
                       "backgroundForModal": null,
-                      "baseAPIURL": "http://localhost:8888",
+                      "baseAPIURL": "http://localhost:8888/api/",
                       "search_bar_show": false,
                       "turnBackgroundForModel": [MockFunction spy],
                     },
@@ -2651,8 +2651,8 @@ VueWrapper {
                         "baseAPIURL": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
-                          "_rawValue": "http://localhost:8888",
-                          "_value": "http://localhost:8888",
+                          "_rawValue": "http://localhost:8888/api/",
+                          "_value": "http://localhost:8888/api/",
                           "dep": undefined,
                         },
                         "search_bar_show": RefImpl {
@@ -2719,7 +2719,7 @@ VueWrapper {
                       },
                       "General store for general things": {
                         "backgroundForModal": null,
-                        "baseAPIURL": "http://localhost:8888",
+                        "baseAPIURL": "http://localhost:8888/api/",
                         "search_bar_show": false,
                       },
                       "Store for storing information about the logged in user": {
@@ -2887,7 +2887,7 @@ VueWrapper {
                       "_hotUpdate": [Function],
                       "_p": [Circular],
                       "backgroundForModal": null,
-                      "baseAPIURL": "http://localhost:8888",
+                      "baseAPIURL": "http://localhost:8888/api/",
                       "search_bar_show": false,
                       "turnBackgroundForModel": [MockFunction spy],
                     },
@@ -3024,8 +3024,8 @@ VueWrapper {
                         "baseAPIURL": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
-                          "_rawValue": "http://localhost:8888",
-                          "_value": "http://localhost:8888",
+                          "_rawValue": "http://localhost:8888/api/",
+                          "_value": "http://localhost:8888/api/",
                           "dep": undefined,
                         },
                         "search_bar_show": RefImpl {
@@ -3092,7 +3092,7 @@ VueWrapper {
                       },
                       "General store for general things": {
                         "backgroundForModal": null,
-                        "baseAPIURL": "http://localhost:8888",
+                        "baseAPIURL": "http://localhost:8888/api/",
                         "search_bar_show": false,
                       },
                       "Store for storing information about the logged in user": {
@@ -3261,7 +3261,7 @@ VueWrapper {
                     "_hotUpdate": [Function],
                     "_p": [Circular],
                     "backgroundForModal": null,
-                    "baseAPIURL": "http://localhost:8888",
+                    "baseAPIURL": "http://localhost:8888/api/",
                     "search_bar_show": false,
                     "turnBackgroundForModel": [MockFunction spy],
                   },
@@ -3398,8 +3398,8 @@ VueWrapper {
                       "baseAPIURL": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
-                        "_rawValue": "http://localhost:8888",
-                        "_value": "http://localhost:8888",
+                        "_rawValue": "http://localhost:8888/api/",
+                        "_value": "http://localhost:8888/api/",
                         "dep": undefined,
                       },
                       "search_bar_show": RefImpl {
@@ -3466,7 +3466,7 @@ VueWrapper {
                     },
                     "General store for general things": {
                       "backgroundForModal": null,
-                      "baseAPIURL": "http://localhost:8888",
+                      "baseAPIURL": "http://localhost:8888/api/",
                       "search_bar_show": false,
                     },
                     "Store for storing information about the logged in user": {
@@ -3735,7 +3735,7 @@ VueWrapper {
                       "_hotUpdate": [Function],
                       "_p": [Circular],
                       "backgroundForModal": null,
-                      "baseAPIURL": "http://localhost:8888",
+                      "baseAPIURL": "http://localhost:8888/api/",
                       "search_bar_show": false,
                       "turnBackgroundForModel": [MockFunction spy],
                     },
@@ -3825,8 +3825,8 @@ VueWrapper {
                         "baseAPIURL": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
-                          "_rawValue": "http://localhost:8888",
-                          "_value": "http://localhost:8888",
+                          "_rawValue": "http://localhost:8888/api/",
+                          "_value": "http://localhost:8888/api/",
                           "dep": undefined,
                         },
                         "search_bar_show": RefImpl {
@@ -3893,7 +3893,7 @@ VueWrapper {
                       },
                       "General store for general things": {
                         "backgroundForModal": null,
-                        "baseAPIURL": "http://localhost:8888",
+                        "baseAPIURL": "http://localhost:8888/api/",
                         "search_bar_show": false,
                       },
                       "Store for storing information about the logged in user": {
@@ -4061,7 +4061,7 @@ VueWrapper {
                       "_hotUpdate": [Function],
                       "_p": [Circular],
                       "backgroundForModal": null,
-                      "baseAPIURL": "http://localhost:8888",
+                      "baseAPIURL": "http://localhost:8888/api/",
                       "search_bar_show": false,
                       "turnBackgroundForModel": [MockFunction spy],
                     },
@@ -4198,8 +4198,8 @@ VueWrapper {
                         "baseAPIURL": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
-                          "_rawValue": "http://localhost:8888",
-                          "_value": "http://localhost:8888",
+                          "_rawValue": "http://localhost:8888/api/",
+                          "_value": "http://localhost:8888/api/",
                           "dep": undefined,
                         },
                         "search_bar_show": RefImpl {
@@ -4266,7 +4266,7 @@ VueWrapper {
                       },
                       "General store for general things": {
                         "backgroundForModal": null,
-                        "baseAPIURL": "http://localhost:8888",
+                        "baseAPIURL": "http://localhost:8888/api/",
                         "search_bar_show": false,
                       },
                       "Store for storing information about the logged in user": {
@@ -4478,7 +4478,7 @@ VueWrapper {
                     "_hotUpdate": [Function],
                     "_p": [Circular],
                     "backgroundForModal": null,
-                    "baseAPIURL": "http://localhost:8888",
+                    "baseAPIURL": "http://localhost:8888/api/",
                     "search_bar_show": false,
                     "turnBackgroundForModel": [MockFunction spy],
                   },
@@ -4615,8 +4615,8 @@ VueWrapper {
                       "baseAPIURL": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
-                        "_rawValue": "http://localhost:8888",
-                        "_value": "http://localhost:8888",
+                        "_rawValue": "http://localhost:8888/api/",
+                        "_value": "http://localhost:8888/api/",
                         "dep": undefined,
                       },
                       "search_bar_show": RefImpl {
@@ -4683,7 +4683,7 @@ VueWrapper {
                     },
                     "General store for general things": {
                       "backgroundForModal": null,
-                      "baseAPIURL": "http://localhost:8888",
+                      "baseAPIURL": "http://localhost:8888/api/",
                       "search_bar_show": false,
                     },
                     "Store for storing information about the logged in user": {
@@ -5208,7 +5208,7 @@ VueWrapper {
                     "_hotUpdate": [Function],
                     "_p": [Circular],
                     "backgroundForModal": null,
-                    "baseAPIURL": "http://localhost:8888",
+                    "baseAPIURL": "http://localhost:8888/api/",
                     "search_bar_show": false,
                     "turnBackgroundForModel": [MockFunction spy],
                   },
@@ -5374,8 +5374,8 @@ VueWrapper {
                       "baseAPIURL": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
-                        "_rawValue": "http://localhost:8888",
-                        "_value": "http://localhost:8888",
+                        "_rawValue": "http://localhost:8888/api/",
+                        "_value": "http://localhost:8888/api/",
                         "dep": undefined,
                       },
                       "search_bar_show": RefImpl {
@@ -5442,7 +5442,7 @@ VueWrapper {
                     },
                     "General store for general things": {
                       "backgroundForModal": null,
-                      "baseAPIURL": "http://localhost:8888",
+                      "baseAPIURL": "http://localhost:8888/api/",
                       "search_bar_show": false,
                     },
                     "Store for storing information about the logged in user": {
@@ -5581,7 +5581,7 @@ VueWrapper {
                   "_hotUpdate": [Function],
                   "_p": [Circular],
                   "backgroundForModal": null,
-                  "baseAPIURL": "http://localhost:8888",
+                  "baseAPIURL": "http://localhost:8888/api/",
                   "search_bar_show": false,
                   "turnBackgroundForModel": [MockFunction spy],
                 },
@@ -5747,8 +5747,8 @@ VueWrapper {
                     "baseAPIURL": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
-                      "_rawValue": "http://localhost:8888",
-                      "_value": "http://localhost:8888",
+                      "_rawValue": "http://localhost:8888/api/",
+                      "_value": "http://localhost:8888/api/",
                       "dep": undefined,
                     },
                     "search_bar_show": RefImpl {
@@ -5815,7 +5815,7 @@ VueWrapper {
                   },
                   "General store for general things": {
                     "backgroundForModal": null,
-                    "baseAPIURL": "http://localhost:8888",
+                    "baseAPIURL": "http://localhost:8888/api/",
                     "search_bar_show": false,
                   },
                   "Store for storing information about the logged in user": {
@@ -5991,7 +5991,7 @@ VueWrapper {
               "_hotUpdate": [Function],
               "_p": [Circular],
               "backgroundForModal": null,
-              "baseAPIURL": "http://localhost:8888",
+              "baseAPIURL": "http://localhost:8888/api/",
               "search_bar_show": false,
               "turnBackgroundForModel": [MockFunction spy],
             },
@@ -6157,8 +6157,8 @@ VueWrapper {
                 "baseAPIURL": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
-                  "_rawValue": "http://localhost:8888",
-                  "_value": "http://localhost:8888",
+                  "_rawValue": "http://localhost:8888/api/",
+                  "_value": "http://localhost:8888/api/",
                   "dep": undefined,
                 },
                 "search_bar_show": RefImpl {
@@ -6225,7 +6225,7 @@ VueWrapper {
               },
               "General store for general things": {
                 "backgroundForModal": null,
-                "baseAPIURL": "http://localhost:8888",
+                "baseAPIURL": "http://localhost:8888/api/",
                 "search_bar_show": false,
               },
               "Store for storing information about the logged in user": {

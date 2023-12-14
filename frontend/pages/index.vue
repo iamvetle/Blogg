@@ -21,13 +21,7 @@ definePageMeta({
 })
 
 /**
- * if all of these are true, then the page can be rendered:
  * 
- * - the user is authenticated
- * - there data about the logged in user (logged in user data is fetched)
- * - There are data about posts (post(s) data is fetched)
- * 
- * returns true if all of those "requirements are met", false otherwise
  * 
  * ? maybe i should have this in a store instead ?
  */

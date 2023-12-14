@@ -5,6 +5,7 @@ django-filter==23.3
 django-extensions==3.2.3
 django-filter==23.3
 Pillow==10.1.0
+uuid==1.30
 
 # * I installed bs4 and all of these where said to be installed
 beautifulsoup4==4.12.2  # ? is this correct

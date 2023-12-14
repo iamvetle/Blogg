@@ -4,18 +4,13 @@ exports[`Testing the choices that are over the feed of posts > Should match snap
 "<div class=\\"flex-row\\">
   <div class=\\"grid gap-8 grid-cols-12 flex items-center\\">
     <div class=\\"col-start-1 col-end-9 text-center space-x-6\\">
-      <base-button-stub text=\\"Feed\\" class=\\"p-2 rounded-lg bg-onPrimary text-primary border-primary border shadow-md\\" data-test=\\"feed_all_posts_option_button\\"></base-button-stub>
-      <base-button-stub text=\\"Following\\" class=\\"p-2 rounded-lg bg-primary text-onPrimary border\\" data-test=\\"following_posts_option\\"></base-button-stub>
+      <base-button-stub text=\\"Feed\\" class=\\"p-2 rounded-lg bg-primary text-onPrimary border\\" data-test=\\"feed_all_posts_option_button\\"></base-button-stub>
+      <base-button-stub text=\\"Following\\" class=\\"p-2 rounded-lg bg-onPrimary text-primary border-primary border shadow-md\\" data-test=\\"following_posts_option\\"></base-button-stub>
     </div>
     <div class=\\"col-span-4\\" data-test=\\"feed_filter_component\\">
-      <!--v-if-->
+      <feed-dropdown-filter-stub></feed-dropdown-filter-stub>
     </div>
   </div><!-- IF the following buttons is pressed-->
-  <div>
-    <!-- Following NO one-->
-    <!--v-if-->
-    <!-- Following someone but with NO posts -->
-    <p class=\\"text-lg\\"> None of who you are following have published anything. </p>
-  </div>
+  <!--v-if-->
 </div>"
 `;

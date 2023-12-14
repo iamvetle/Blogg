@@ -10,7 +10,7 @@ from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 # Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated, AllowAny, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import (
@@ -79,7 +79,7 @@ class PostAllSavedLoggedInUserView(ListAPIView):  # /api/saved/
 class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
     """Returns ALL of the posts (snippets) made by the specified user"""
 
-    permission_classes = [AllowAny] # Does NOT have to authenticated
+    # permission_classes = [AllowAny] # Does NOT have to authenticated
     
     serializer_class = PostShortenSerializer
     pagination_class = GenericPagination

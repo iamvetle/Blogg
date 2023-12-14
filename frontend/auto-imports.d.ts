@@ -6,7 +6,6 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
-  const Image: typeof import('./components/modules/Editor/CustomImage')['Image']
   const afterAll: typeof import('vitest')['afterAll']
   const afterEach: typeof import('vitest')['afterEach']
   const assert: typeof import('vitest')['assert']
@@ -50,7 +49,6 @@ declare global {
   const h: typeof import('vue')['h']
   const horizontalRuleRun: typeof import('./composables/editorCommands')['horizontalRuleRun']
   const inject: typeof import('vue')['inject']
-  const inputRegex: typeof import('./components/modules/Editor/CustomImage')['inputRegex']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
   const isReadonly: typeof import('vue')['isReadonly']
@@ -80,12 +78,9 @@ declare global {
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
-  const removeImageFromMap: typeof import('./composables/editor/removeImageFromMap')['removeImageFromMap']
   const removeImgTags: typeof import('./composables/removeImgTags')['removeImgTags']
   const resolveComponent: typeof import('vue')['resolveComponent']
-  const retrieveToken: typeof import('./composables/retrieveToken')['retrieveToken']
   const setRedoRun: typeof import('./composables/editorCommands')['setRedoRun']
-  const setTokenAndUsername: typeof import('./composables/setTokenAndUsername')['setTokenAndUsername']
   const setUndoRun: typeof import('./composables/editorCommands')['setUndoRun']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
@@ -106,6 +101,7 @@ declare global {
   const toggleUnderlineRun: typeof import('./composables/editorCommands')['toggleUnderlineRun']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
+  const urls: typeof import('./constants/urls')['default']
   const useAttrs: typeof import('vue')['useAttrs']
   const useAuthStore: typeof import('./store/authStore')['useAuthStore']
   const useCssModule: typeof import('vue')['useCssModule']
@@ -116,7 +112,6 @@ declare global {
   const usePostStore: typeof import('./store/postStore')['usePostStore']
   const useSearchStore: typeof import('./store/searchStore')['useSearchStore']
   const useSlots: typeof import('vue')['useSlots']
-  const validateAndCleanImageMap: typeof import('./composables/editor/validateAndCleanImageMap')['validateAndCleanImageMap']
   const vi: typeof import('vitest')['vi']
   const vitest: typeof import('vitest')['vitest']
   const watch: typeof import('vue')['watch']
@@ -229,6 +224,7 @@ declare module 'vue' {
     readonly toggleUnderlineRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleUnderlineRun']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
+    readonly urls: UnwrapRef<typeof import('./constants/urls')['default']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useAuthStore: UnwrapRef<typeof import('./store/authStore')['useAuthStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
@@ -345,6 +341,7 @@ declare module '@vue/runtime-core' {
     readonly toggleUnderlineRun: UnwrapRef<typeof import('./composables/editorCommands')['toggleUnderlineRun']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
+    readonly urls: UnwrapRef<typeof import('./constants/urls')['default']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useAuthStore: UnwrapRef<typeof import('./store/authStore')['useAuthStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>

@@ -28,7 +28,10 @@ onMounted(async () => {
 	}
 })
 
-const emit = defineEmits(["followersPluss", "followersMinus"])
+const emit = defineEmits<{
+    followersPluss:[void];
+    followersMinus:[void];
+}>();
 
 withDefaults(defineProps<{
     username: string,
