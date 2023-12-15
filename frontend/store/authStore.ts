@@ -80,6 +80,7 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
      */
     const removeTokenFromLocalStorage = (): void => {
         localStorage.removeItem('token');
+        token.value = ""
     }
 
     /** 
@@ -87,6 +88,7 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
      */
     const removeUsernameFromLocalStorage = (): void => {
         localStorage.removeItem('username');
+        username.value = ""
     }
 
     /** 
@@ -122,6 +124,17 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
 
     };
 
+    /**
+     * Removes any data regarding the (now not) logged in user.
+     * 
+     * Is used for when logging out.
+     */
+    const resetStore = () => {
+        token.value = ""
+        removeTokenFromLocalStorage()
+        removeUsernameFromLocalStorage()
+    }
+
     /** 
      * Returns the computed property and the reactive variable for external use.
      */
@@ -129,6 +142,6 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
         isAuthenticated, token, username,
         setUsernameToLocalStorage, setTokenToLocalStorage,
         removeTokenFromLocalStorage, removeUsernameFromLocalStorage,
-        retrieveToken, authStoreSetup
+        retrieveToken, authStoreSetup, resetStore
     };
 });

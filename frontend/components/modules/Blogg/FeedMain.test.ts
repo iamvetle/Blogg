@@ -30,7 +30,7 @@ const factory = () => {
     })
 }
 
-describe('main feed part of the index page testing', () => {
+describe('Testing the main part of the index page', () => {
 
     pinia = createTestingPinia()
 
@@ -38,20 +38,7 @@ describe('main feed part of the index page testing', () => {
     loggedInUserStore = useLoggedInUserStore(pinia)
 
     postStore.posts = {
-        results: [
-            {
-                title: "testtitle1",
-                content: "testcontent1"
-            },
-            {
-                title: "testtitle2",
-                content: "testcontent2"
-            },
-            {
-                title: "testtitle3",
-                content: "testcontent3"
-            }
-        ]
+        results: true
     }
 
     loggedInUserStore.loggedInUserProfile = true
@@ -87,13 +74,12 @@ describe('main feed part of the index page testing', () => {
     })
     test('If posts and logged in user data hasnt been fetched and is not in the stores, only the feedpostslist should be shown (it is regulating v-if internally)', async () => {
 
-
         wrapper = factory()
 
         postStore.posts = null
 
         await wrapper.vm.$nextTick()
-        
+
         
         // this test is not working - whhich is why it is not testing anything
         console.log(wrapper.html())

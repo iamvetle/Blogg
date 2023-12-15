@@ -21,8 +21,7 @@ const removed = ref(false);
 const logoutFunction = () => {
 
   // Removes the token and username from localstorage and store
-  authStore.removeTokenFromLocalStorage()
-  authStore.removeUsernameFromLocalStorage()
+  authStore.resetStore()
 
   // Redirects to login page
   setTimeout(() => {

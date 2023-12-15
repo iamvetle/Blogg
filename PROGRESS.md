@@ -31,7 +31,8 @@ customize *functions* and *custom admin classes*
 
 ## Big advances
 
-- [ ] Make the whole URL reflect on all of the filters used - and the search done
+- [ ] Make the whole URL reflect on all of the filters used - and the search done (What?)
+  - [ ] Make it prettier?
 
 
 ## Big current problems
@@ -53,6 +54,8 @@ There is also a user sidebar where the currently saved posts are, and some other
 
 ## URL Reflection
 
+# Possible the biggest challenge as well ->
+
 - [ ] Make the whole URL reflect on all of the filters used - and the search done
   - [ ] ? Should maybe have an array in a store that saves all of the options taken
   - [ ] Should have a *watcher* that makes sure that all of the query parameters the url have is being stored
@@ -65,7 +68,7 @@ There is also a user sidebar where the currently saved posts are, and some other
 
 **when web clients not logged in**
 
-- [ ] Can still read posts
+- [x] Can still read posts
 - [ ] Can NOT make comment
 - [ ] Can NOT save post
 

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="postStore.posts" class="flex-row">
+    <div class="flex-row">
         
         <div class="grid gap-8 grid-cols-12 flex items-center">
             <div class="col-start-1 col-end-9 text-center space-x-6">
@@ -23,7 +23,7 @@
             </p>
             <!-- Following someone but with NO posts -->
             <p class="text-lg" v-if="(num_of_following) && (posts_by_following === 0)">
-                None of who you are following have published anything.
+                None of whom you are following have published anything.
             </p>
         </div>
     </div>

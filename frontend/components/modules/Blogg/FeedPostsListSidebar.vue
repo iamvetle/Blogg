@@ -78,6 +78,11 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * @async
+ * 
+ * Async component
+ */
 
 import profile_picture from '~/assets/placeholder-profile-picture.png'
 
@@ -121,7 +126,7 @@ const fetchData = async () => {
 
 }
 
-onBeforeMount(async () => await fetchData())
+await fetchData()
 </script>
 
 <style scoped></style>

@@ -7,7 +7,11 @@ export default defineNuxtConfig({
 
 		},
 	},
-
+	debug:true,
+	sourcemap: {
+		server: true,
+		client: true
+	  },
 	vite: {
 		vue: {
 			script: {
