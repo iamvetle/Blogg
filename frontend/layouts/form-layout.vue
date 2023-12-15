@@ -1,19 +1,23 @@
 <template>
-	<!-- Background color -->
-	<div id="site-wrapper" class="bg-surface">
-		<ClientOnly>
-			<TheNavbar />
-		</ClientOnly>
-		<main>
-			<div>
-				<slot />
-			</div>
-		</main>
-		<LazyTheFooter />
+	<div id="modal" :class="store.backgroundForModal"> <!-- Possibly gray,blur background-->
+		<!-- Background color -->
+		<div id="site-wrapper" class="bg-background">
+			<ClientOnly>
+				<TheNavbar />
+			</ClientOnly>
+			<main>
+				<div>
+					<slot />
+				</div>
+			</main>
+			<LazyTheFooter />
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
+
+const store = useGeneralStore()
 
 </script>
 
@@ -27,4 +31,4 @@
 main {
 	flex: 1;
 }
-</style>
+</style>  

@@ -30,13 +30,15 @@
 				<p v-show="loginsucess" class="mt-5 text-green-700">
 					Login successfull
 				</p>
+			</FormKit>
+			<div>
 				<p class="text-sm  text-onSurface font-light mt-3">
 					Don't have an account yet?
 					<NuxtLink to="/registrer/" class="font-medium text-primary hover:underline">
 						Sign up
 					</NuxtLink>
 				</p>
-			</FormKit>
+			</div>
 		</div>
 	</div>
 </template>
@@ -68,7 +70,7 @@ withDefaults(defineProps<{
 })
 
 const submitForm = async (formData: any, node) => {
-	const responseData = await postForm(baseURL, formData)
+	const responseData = await postForm(urls.users.auth.login, formData)
 
 	/** If the request was successfull */
 	if (responseData) {
@@ -87,7 +89,7 @@ const submitForm = async (formData: any, node) => {
 		 * ? Unsure whether I this is a good idea
 		 */
 
-		return navigateTo("/minkonto");
+		return await navigateTo("/minkonto");
 
 
 		/**

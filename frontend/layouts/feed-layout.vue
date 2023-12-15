@@ -1,17 +1,17 @@
 <template>
 	<div id="site-wrapper" class="bg-background">
 		<ClientOnly>
-			<TheNavbar/>
+			<TheNavbar />
 		</ClientOnly>
 		<main>
 			<div>
 				<slot />
 			</div>
 		</main>
-	<div>
-		<LazyFeedPagination/>
-		<LazyTheFooter/>
-	</div>
+		<div>
+			<LazyFeedPagination />
+			<LazyTheFooter />
+		</div>
 	</div>
 </template>
 

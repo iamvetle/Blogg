@@ -148,7 +148,7 @@ const submitted = ref(false);
 const all = ref(null)
 
 const submitForm = async (formData) => {
-	const responseData = await postForm(urls.baseApiURL, formData);
+	const responseData = await postForm(urls.users.auth.register, formData);
 	if (responseData) {
 		submitted.value = true;
 		setTimeout(() => {
