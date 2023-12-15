@@ -4,6 +4,7 @@
 
 			<div id="direct-editor" class="mx-auto">
 				<ClientOnly>
+					<EditorCardChooseTags/>
 					<EditorCard @newPostMaterial="publish" />
 				</ClientOnly>
 			</div>
