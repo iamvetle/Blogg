@@ -18,8 +18,13 @@ export const useLoggedInUserStore = defineStore("Store for storing information a
      */
     const idArrayOfLoggedInUserFollowingUsers = ref<string[]>([])
 
+    /** Resets everything in the store - all information about the user */
+    const resetStore = () => {
+        loggedInUserProfile.value = null
+        idArrayOfLoggedInUserFollowingUsers.value = []
+        idArrayOfSavedPosts.value = []
+    }
 
-
-    return { loggedInUserProfile, idArrayOfSavedPosts, idArrayOfLoggedInUserFollowingUsers }
+    return { loggedInUserProfile, idArrayOfSavedPosts, idArrayOfLoggedInUserFollowingUsers, resetStore }
 })
 

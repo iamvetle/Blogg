@@ -15,7 +15,8 @@ export const getMethod = async (url: string, headers?: object): Promise<AxiosRes
         }
 
         if (response.data === null) {
-            console.log(`The request to ${url} was returned with 'null' data:`, response.data) // print to self
+            // console.error(`The request to ${url} was returned with 'null' data:`, response.data) // | verbose | print to self
+            console.error(`The request to ${url} was returned with 'null' data`) // print to self
         }
 
         /**
@@ -52,12 +53,13 @@ export const deleteMethod = async (url: string, headers?: object): Promise<Axios
         const response: AxiosResponse = await axios.delete(url, { headers })
         // console.log(toRaw(response)) // print to self
 
-        if (response.status !== null) {
+        if (response.status !=null) {
             // console.log(`Request to ${url} returned ${response.status}`) // print to self
         }
 
         if (response.data === null) {
-            // console.log(`The request to ${url} was returned with 'null' data:`, response.data) // print to self
+            // console.error(`The request to ${url} was returned with 'null' data:`, response.data) // | verbose | print to self
+            console.error(`The request to ${url} was returned with 'null' data:`) // print to self
         }
 
         /**
@@ -87,7 +89,7 @@ export const postMethod = async (url: string, formData: object, headers?: object
         const response: AxiosResponse = await axios.post(url, formData, { headers })
         // console.log(toRaw(response)) // print to self
 
-        if (response.status !== null) {
+        if (response.status != null) {
             console.log(`Request to ${url} returned ${response.status}`) // print to self
         }
 
@@ -122,12 +124,13 @@ export const patchMethod = async (url: string, formData: object, headers?: objec
         const response: AxiosResponse = await axios.patch(url, formData, { headers })
         // console.log(toRaw(response)) // print to self
 
-        if (response.status !== null) {
-            console.log(`Request to ${url} returned ${response.status}`) // print to self
+        if (response.status != null) {
+            // console.log(`Request to ${url} returned ${response.status}`) // print to self
         }
 
         if (response.data === null) {
-            console.log(`The request to ${url} was returned with 'null' data:`, response.data) // print to self
+            // console.error(`The request to ${url} was returned with 'null' data:`, response.data) // | verbose | print to self
+            console.error(`The request to ${url} was returned with 'null' data:`) // print to self
         }
 
         /**
@@ -141,7 +144,8 @@ export const patchMethod = async (url: string, formData: object, headers?: objec
          */
         return response
     } catch (e: unknown) {
-        console.error(`An error occured when trying to send a patch request to ${url}`, e)
+        // console.error(`An error occured when trying to send a patch request to ${url}`, e) | verbose | // print to self
+        console.error(`An error occured when trying to send a patch request to ${url}.`)
         console.error('The headers used was:', headers)
 
         /**

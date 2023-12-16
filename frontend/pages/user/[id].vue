@@ -108,7 +108,7 @@ const dataSetup = async () => {
 	/**
 	 * @param id The username of the user profile page
 	 */
-	const username = route.params.id
+	const username = (route.params.id).toString()
 
 	const theNormalUserProfileURL = urls.users.user.profile(username);
 

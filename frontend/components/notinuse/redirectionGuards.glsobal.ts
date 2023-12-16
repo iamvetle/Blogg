@@ -152,7 +152,7 @@
 
 // 	}
 
-// 	const needToCheckAuthFirst = ["/wait", "/registrer", "/login", "/minside", "/wait", "/newpost", "/wait", "/loggut"]
+// 	const needToCheckAuthFirst = ["/wait", "/registrer", "/login", "/minkonto", "/wait", "/newpost", "/wait", "/loggut"]
 
 // 	// If authenticated
 // 	if (toPath === "/wait") {
@@ -164,7 +164,7 @@
 // 	}
 
 // 	// If NOT authenticated
-// 	if (toPath === "/minside") {
+// 	if (toPath === "/minkonto") {
 // 		ifNotAuthRedirect("/wait")
 // 	} else if (toPath === "/newpost") {
 // 		ifNotAuthRedirect("/wait")

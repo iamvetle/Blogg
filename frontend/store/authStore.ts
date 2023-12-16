@@ -133,9 +133,16 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
      * Is used for when logging out.
      */
     const resetStore = () => {
+        const loggedInUserStore = useLoggedInUserStore()
+        const postStore = usePostStore()
+
         removeTokenFromLocalStorage()
         removeUsernameFromLocalStorage()
         token.value = ""
+        username.value = ""
+
+        loggedInUserStore.resetStore()
+        postStore.resetStore()
 
     }
 
