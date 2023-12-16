@@ -188,6 +188,7 @@ VueWrapper {
                     "authStoreSetup": [Function],
                     "removeTokenFromLocalStorage": [Function],
                     "removeUsernameFromLocalStorage": [Function],
+                    "resetStore": [Function],
                     "retrieveToken": [Function],
                     "setTokenToLocalStorage": [Function],
                     "setUsernameToLocalStorage": [Function],
@@ -233,6 +234,7 @@ VueWrapper {
                 "isAuthenticated": false,
                 "removeTokenFromLocalStorage": [MockFunction spy],
                 "removeUsernameFromLocalStorage": [MockFunction spy],
+                "resetStore": [MockFunction spy],
                 "retrieveToken": [MockFunction spy] {
                   "calls": [
                     [],
@@ -596,6 +598,7 @@ VueWrapper {
                   "authStoreSetup": [Function],
                   "removeTokenFromLocalStorage": [Function],
                   "removeUsernameFromLocalStorage": [Function],
+                  "resetStore": [Function],
                   "retrieveToken": [Function],
                   "setTokenToLocalStorage": [Function],
                   "setUsernameToLocalStorage": [Function],
@@ -641,6 +644,7 @@ VueWrapper {
               "isAuthenticated": false,
               "removeTokenFromLocalStorage": [MockFunction spy],
               "removeUsernameFromLocalStorage": [MockFunction spy],
+              "resetStore": [MockFunction spy],
               "retrieveToken": [MockFunction spy] {
                 "calls": [
                   [],
@@ -1029,6 +1033,7 @@ VueWrapper {
                       "authStoreSetup": [Function],
                       "removeTokenFromLocalStorage": [Function],
                       "removeUsernameFromLocalStorage": [Function],
+                      "resetStore": [Function],
                       "retrieveToken": [Function],
                       "setTokenToLocalStorage": [Function],
                       "setUsernameToLocalStorage": [Function],
@@ -1074,6 +1079,7 @@ VueWrapper {
                   "isAuthenticated": false,
                   "removeTokenFromLocalStorage": [MockFunction spy],
                   "removeUsernameFromLocalStorage": [MockFunction spy],
+                  "resetStore": [MockFunction spy],
                   "retrieveToken": [MockFunction spy] {
                     "calls": [
                       [],
@@ -1437,6 +1443,7 @@ VueWrapper {
                     "authStoreSetup": [Function],
                     "removeTokenFromLocalStorage": [Function],
                     "removeUsernameFromLocalStorage": [Function],
+                    "resetStore": [Function],
                     "retrieveToken": [Function],
                     "setTokenToLocalStorage": [Function],
                     "setUsernameToLocalStorage": [Function],
@@ -1482,6 +1489,7 @@ VueWrapper {
                 "isAuthenticated": false,
                 "removeTokenFromLocalStorage": [MockFunction spy],
                 "removeUsernameFromLocalStorage": [MockFunction spy],
+                "resetStore": [MockFunction spy],
                 "retrieveToken": [MockFunction spy] {
                   "calls": [
                     [],
@@ -1993,6 +2001,7 @@ VueWrapper {
                           "authStoreSetup": [Function],
                           "removeTokenFromLocalStorage": [Function],
                           "removeUsernameFromLocalStorage": [Function],
+                          "resetStore": [Function],
                           "retrieveToken": [Function],
                           "setTokenToLocalStorage": [Function],
                           "setUsernameToLocalStorage": [Function],
@@ -2038,6 +2047,7 @@ VueWrapper {
                       "isAuthenticated": false,
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "resetStore": [MockFunction spy],
                       "retrieveToken": [MockFunction spy] {
                         "calls": [
                           [],
@@ -2401,6 +2411,7 @@ VueWrapper {
                         "authStoreSetup": [Function],
                         "removeTokenFromLocalStorage": [Function],
                         "removeUsernameFromLocalStorage": [Function],
+                        "resetStore": [Function],
                         "retrieveToken": [Function],
                         "setTokenToLocalStorage": [Function],
                         "setUsernameToLocalStorage": [Function],
@@ -2446,6 +2457,7 @@ VueWrapper {
                     "isAuthenticated": false,
                     "removeTokenFromLocalStorage": [MockFunction spy],
                     "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "resetStore": [MockFunction spy],
                     "retrieveToken": [MockFunction spy] {
                       "calls": [
                         [],
@@ -2772,6 +2784,7 @@ VueWrapper {
                     "authStoreSetup": [Function],
                     "removeTokenFromLocalStorage": [Function],
                     "removeUsernameFromLocalStorage": [Function],
+                    "resetStore": [Function],
                     "retrieveToken": [Function],
                     "setTokenToLocalStorage": [Function],
                     "setUsernameToLocalStorage": [Function],
@@ -3122,6 +3135,7 @@ VueWrapper {
                 "isAuthenticated": false,
                 "removeTokenFromLocalStorage": [MockFunction spy],
                 "removeUsernameFromLocalStorage": [MockFunction spy],
+                "resetStore": [MockFunction spy],
                 "retrieveToken": [MockFunction spy] {
                   "calls": [
                     [],
@@ -3278,6 +3292,7 @@ VueWrapper {
                           "authStoreSetup": [Function],
                           "removeTokenFromLocalStorage": [Function],
                           "removeUsernameFromLocalStorage": [Function],
+                          "resetStore": [Function],
                           "retrieveToken": [Function],
                           "setTokenToLocalStorage": [Function],
                           "setUsernameToLocalStorage": [Function],
@@ -3323,6 +3338,7 @@ VueWrapper {
                       "isAuthenticated": false,
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "resetStore": [MockFunction spy],
                       "retrieveToken": [MockFunction spy] {
                         "calls": [
                           [],
@@ -3705,6 +3721,7 @@ VueWrapper {
                           "authStoreSetup": [Function],
                           "removeTokenFromLocalStorage": [Function],
                           "removeUsernameFromLocalStorage": [Function],
+                          "resetStore": [Function],
                           "retrieveToken": [Function],
                           "setTokenToLocalStorage": [Function],
                           "setUsernameToLocalStorage": [Function],
@@ -3750,6 +3767,7 @@ VueWrapper {
                       "isAuthenticated": false,
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "resetStore": [MockFunction spy],
                       "retrieveToken": [MockFunction spy] {
                         "calls": [
                           [],
@@ -3953,6 +3971,7 @@ VueWrapper {
                   "authStoreSetup": [Function],
                   "removeTokenFromLocalStorage": [Function],
                   "removeUsernameFromLocalStorage": [Function],
+                  "resetStore": [Function],
                   "retrieveToken": [Function],
                   "setTokenToLocalStorage": [Function],
                   "setUsernameToLocalStorage": [Function],
@@ -4303,6 +4322,7 @@ VueWrapper {
               "isAuthenticated": false,
               "removeTokenFromLocalStorage": [MockFunction spy],
               "removeUsernameFromLocalStorage": [MockFunction spy],
+              "resetStore": [MockFunction spy],
               "retrieveToken": [MockFunction spy] {
                 "calls": [
                   [],
@@ -4495,6 +4515,7 @@ VueWrapper {
                         "authStoreSetup": [Function],
                         "removeTokenFromLocalStorage": [Function],
                         "removeUsernameFromLocalStorage": [Function],
+                        "resetStore": [Function],
                         "retrieveToken": [Function],
                         "setTokenToLocalStorage": [Function],
                         "setUsernameToLocalStorage": [Function],
@@ -4540,6 +4561,7 @@ VueWrapper {
                     "isAuthenticated": false,
                     "removeTokenFromLocalStorage": [MockFunction spy],
                     "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "resetStore": [MockFunction spy],
                     "retrieveToken": [MockFunction spy] {
                       "calls": [
                         [],
@@ -4802,6 +4824,7 @@ VueWrapper {
                     "authStoreSetup": [Function],
                     "removeTokenFromLocalStorage": [Function],
                     "removeUsernameFromLocalStorage": [Function],
+                    "resetStore": [Function],
                     "retrieveToken": [Function],
                     "setTokenToLocalStorage": [Function],
                     "setUsernameToLocalStorage": [Function],
@@ -5152,6 +5175,7 @@ VueWrapper {
                 "isAuthenticated": false,
                 "removeTokenFromLocalStorage": [MockFunction spy],
                 "removeUsernameFromLocalStorage": [MockFunction spy],
+                "resetStore": [MockFunction spy],
                 "retrieveToken": [MockFunction spy] {
                   "calls": [
                     [],
@@ -5308,6 +5332,7 @@ VueWrapper {
                           "authStoreSetup": [Function],
                           "removeTokenFromLocalStorage": [Function],
                           "removeUsernameFromLocalStorage": [Function],
+                          "resetStore": [Function],
                           "retrieveToken": [Function],
                           "setTokenToLocalStorage": [Function],
                           "setUsernameToLocalStorage": [Function],
@@ -5353,6 +5378,7 @@ VueWrapper {
                       "isAuthenticated": false,
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "resetStore": [MockFunction spy],
                       "retrieveToken": [MockFunction spy] {
                         "calls": [
                           [],
@@ -5735,6 +5761,7 @@ VueWrapper {
                           "authStoreSetup": [Function],
                           "removeTokenFromLocalStorage": [Function],
                           "removeUsernameFromLocalStorage": [Function],
+                          "resetStore": [Function],
                           "retrieveToken": [Function],
                           "setTokenToLocalStorage": [Function],
                           "setUsernameToLocalStorage": [Function],
@@ -5780,6 +5807,7 @@ VueWrapper {
                       "isAuthenticated": false,
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
+                      "resetStore": [MockFunction spy],
                       "retrieveToken": [MockFunction spy] {
                         "calls": [
                           [],
@@ -6015,6 +6043,7 @@ VueWrapper {
                   "authStoreSetup": [Function],
                   "removeTokenFromLocalStorage": [Function],
                   "removeUsernameFromLocalStorage": [Function],
+                  "resetStore": [Function],
                   "retrieveToken": [Function],
                   "setTokenToLocalStorage": [Function],
                   "setUsernameToLocalStorage": [Function],
@@ -6365,6 +6394,7 @@ VueWrapper {
               "isAuthenticated": false,
               "removeTokenFromLocalStorage": [MockFunction spy],
               "removeUsernameFromLocalStorage": [MockFunction spy],
+              "resetStore": [MockFunction spy],
               "retrieveToken": [MockFunction spy] {
                 "calls": [
                   [],
@@ -6557,6 +6587,7 @@ VueWrapper {
                         "authStoreSetup": [Function],
                         "removeTokenFromLocalStorage": [Function],
                         "removeUsernameFromLocalStorage": [Function],
+                        "resetStore": [Function],
                         "retrieveToken": [Function],
                         "setTokenToLocalStorage": [Function],
                         "setUsernameToLocalStorage": [Function],
@@ -6602,6 +6633,7 @@ VueWrapper {
                     "isAuthenticated": false,
                     "removeTokenFromLocalStorage": [MockFunction spy],
                     "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "resetStore": [MockFunction spy],
                     "retrieveToken": [MockFunction spy] {
                       "calls": [
                         [],
@@ -7235,6 +7267,7 @@ VueWrapper {
                         "authStoreSetup": [Function],
                         "removeTokenFromLocalStorage": [Function],
                         "removeUsernameFromLocalStorage": [Function],
+                        "resetStore": [Function],
                         "retrieveToken": [Function],
                         "setTokenToLocalStorage": [Function],
                         "setUsernameToLocalStorage": [Function],
@@ -7280,6 +7313,7 @@ VueWrapper {
                     "isAuthenticated": false,
                     "removeTokenFromLocalStorage": [MockFunction spy],
                     "removeUsernameFromLocalStorage": [MockFunction spy],
+                    "resetStore": [MockFunction spy],
                     "retrieveToken": [MockFunction spy] {
                       "calls": [
                         [],
@@ -7643,6 +7677,7 @@ VueWrapper {
                       "authStoreSetup": [Function],
                       "removeTokenFromLocalStorage": [Function],
                       "removeUsernameFromLocalStorage": [Function],
+                      "resetStore": [Function],
                       "retrieveToken": [Function],
                       "setTokenToLocalStorage": [Function],
                       "setUsernameToLocalStorage": [Function],
@@ -7688,6 +7723,7 @@ VueWrapper {
                   "isAuthenticated": false,
                   "removeTokenFromLocalStorage": [MockFunction spy],
                   "removeUsernameFromLocalStorage": [MockFunction spy],
+                  "resetStore": [MockFunction spy],
                   "retrieveToken": [MockFunction spy] {
                     "calls": [
                       [],
@@ -8074,6 +8110,7 @@ VueWrapper {
                   "authStoreSetup": [Function],
                   "removeTokenFromLocalStorage": [Function],
                   "removeUsernameFromLocalStorage": [Function],
+                  "resetStore": [Function],
                   "retrieveToken": [Function],
                   "setTokenToLocalStorage": [Function],
                   "setUsernameToLocalStorage": [Function],
@@ -8119,6 +8156,7 @@ VueWrapper {
               "isAuthenticated": false,
               "removeTokenFromLocalStorage": [MockFunction spy],
               "removeUsernameFromLocalStorage": [MockFunction spy],
+              "resetStore": [MockFunction spy],
               "retrieveToken": [MockFunction spy] {
                 "calls": [
                   [],

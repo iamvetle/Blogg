@@ -12,9 +12,6 @@ VueWrapper {
       data-v-app=""
     >
       
-      <!-- &lt;div id="feed-dropdown-filter" v-if="selected === false" class="mb-4 bg-primary rounded-lg text-onPrimary"&gt;
-        &lt;FeedDropdownFilter /&gt;
-    &lt;/div&gt; -->
       <!-- This lists the (saved)articles in thes sidebar -->
       <suspense-stub />
       
@@ -524,38 +521,6 @@ VueWrapper {
             "anchor": ,
             "appContext": null,
             "children": [
-              {
-                "__v_isVNode": true,
-                "__v_skip": true,
-                "anchor": null,
-                "appContext": null,
-                "children": " <div id=\\"feed-dropdown-filter\\" v-if=\\"selected === false\\" class=\\"mb-4 bg-primary rounded-lg text-onPrimary\\">
-        <FeedDropdownFilter />
-    </div> ",
-                "component": null,
-                "ctx": [Circular],
-                "dirs": null,
-                "dynamicChildren": null,
-                "dynamicProps": null,
-                "el": <!-- &lt;div id="feed-dropdown-filter" v-if="selected === false" class="mb-4 bg-primary rounded-lg text-onPrimary"&gt;
-        &lt;FeedDropdownFilter /&gt;
-    &lt;/div&gt; -->,
-                "key": null,
-                "patchFlag": 0,
-                "props": null,
-                "ref": null,
-                "scopeId": null,
-                "shapeFlag": 8,
-                "slotScopeIds": null,
-                "ssContent": null,
-                "ssFallback": null,
-                "staticCount": 0,
-                "suspense": null,
-                "target": null,
-                "targetAnchor": null,
-                "transition": null,
-                "type": Symbol(v-cmt),
-              },
               {
                 "__v_isVNode": true,
                 "__v_skip": true,

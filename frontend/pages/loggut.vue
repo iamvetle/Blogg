@@ -32,7 +32,7 @@ const logoutFunction = () => {
   }, 500);
 }
 
-onMounted(logoutFunction);
+onMounted(() => logoutFunction());
 
 </script>
 

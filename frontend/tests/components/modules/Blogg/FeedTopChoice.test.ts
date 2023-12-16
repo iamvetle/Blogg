@@ -14,7 +14,7 @@ let loggedInUserStore;
 let paginationStore:any;
 
 let mockSetToOnlyShowFollowingPosts = vi.fn()
-let mockSetToShowAllFeedPosts = vi.fn()
+let mockShowAllFeedPosts = vi.fn()
 
 
 const factory = () => {
@@ -27,10 +27,12 @@ const factory = () => {
 			},
 			mocks: {
 				setToOnlyShowFollowingPosts: mockSetToOnlyShowFollowingPosts,
-				setToShowAllFeedPosts: mockSetToShowAllFeedPosts
+				handleShowAllFeedPosts: mockShowAllFeedPosts
 			},
 			stubs: {
-				"FeedDropdownFilter":true
+				"FeedDropdownFilter":true,
+				"FeedTopChoiceFeedOptionButton":true,
+				"FeedTopChoiceFollowingOptionButton":true
 			},
 		},
 		slots: {}
@@ -65,11 +67,6 @@ describe('Testing the choices that are over the feed of posts', () => {
 
 		expect(wrapper.exists()).toBe(true)
 	})
-	test('Should render two (base)buttons', () => {
-		const buttons = wrapper.findAllComponents({ name: "BaseButton" })
-
-		expect(buttons).toHaveLength(2)
-	})
 
 	test('Should match snapshot', () => {
 		expect(wrapper.html()).toMatchSnapshot()
@@ -90,9 +87,9 @@ describe('Testing the choices that are over the feed of posts', () => {
 	test('Should have a button call the function that shows all feed posts', async () => {
 		const setToFeedButton = wrapper.find("[data-test='feed_all_posts_option_button']")
 
-		await setToFeedButton.trigger("click")
+		await setToFeedButton.trigger("showAllFeedPosts")
 
-		expect(mockSetToShowAllFeedPosts).toHaveBeenCalledOnce()
+		expect(mockShowAllFeedPosts).toHaveBeenCalledOnce()
 	})
 	/**
 	 * ! why not working?

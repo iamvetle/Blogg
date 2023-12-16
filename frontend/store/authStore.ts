@@ -64,6 +64,7 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
     const setTokenToLocalStorage = (tokenInput: string): void => {
         const tokenValue = tokenInput;
         localStorage.setItem('token', tokenValue);
+        token.value = tokenInput
     }
 
     /**
@@ -73,6 +74,8 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
     const setUsernameToLocalStorage = (usernameInput: string): void => {
         const usernameValue = usernameInput;
         localStorage.setItem('username', usernameValue);
+        // The watcher does this automatically, but it becomes more secure to do it this way as well
+        username.value = usernameInput
     }
 
     /** 
@@ -130,9 +133,10 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
      * Is used for when logging out.
      */
     const resetStore = () => {
-        token.value = ""
         removeTokenFromLocalStorage()
         removeUsernameFromLocalStorage()
+        token.value = ""
+
     }
 
     /** 
