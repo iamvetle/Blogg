@@ -14,7 +14,6 @@
 
             <FeedTopChoice v-if="postStore.posts && postStore.posts?.results" />
         </div>
-        <!-- I need to do this v-if statement because of when I am using following i dont what this here I think (strictly speaking not necesarry to use v-if) -->
         <div id="posts-list">
             <FeedPostsList class="w-full mt-12" />
         </div>
@@ -26,7 +25,6 @@
 
 <script setup lang="ts">
 
-const loggedInUserStore = useLoggedInUserStore()
 const postStore = usePostStore()
 
 </script>

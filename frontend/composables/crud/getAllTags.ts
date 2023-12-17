@@ -12,20 +12,9 @@ import { getMethod } from '~/services/apiByCRUD';
 export const getAllTags = async (): Promise<TagType[] | null> => {
     const baseURL = urls.api.posts.filter.tags
     console.log(baseURL)
+    
     const postStore = usePostStore()
 
-    /**
-     * Fetches the token from local storage, or just returns null.
-     */
-    const authStore = useAuthStore()
-
-const token = authStore.retrieveToken()
-
-    if (token === null) {
-        console.log("There was not token")
-        return null
-    }
-    
     const headers = {
         "Content-Type": "application/json",
     };

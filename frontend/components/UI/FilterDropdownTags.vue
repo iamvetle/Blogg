@@ -43,7 +43,7 @@ const selected = ref([])
 watch(selected, (newValue, oldValue) => {
     // Your logic when 'selected' changes
     emit("output", newValue);
-}, { deep: true, immediate: true });
+}, { deep: true, immediate: false });
 
 
 

@@ -70,7 +70,7 @@ const search = async (payload: any) => {
 	 * ! Ønsker ikke ha denne løsningen her. Passer ikke med seperation of concerns:
 	 */
 
-	paginationStore.activeFetchURL = constructURL(urls.baseApiURL);
+	paginationStore.activeFetchURL = constructURL(urls.api.posts.feed);
 	await getPostMultipleSnippet(paginationStore.activeFetchURL); // this should happend ideally on the page level
 };
 
@@ -93,12 +93,10 @@ const logoclick = async () => {
 	searchStore.resetStore();
 
 	if (route.path !== "/") {
-		alert(route.path)
 
 		await navigateTo("/");
 	} else {
 		await getPostMultipleSnippet(paginationStore.activeFetchURL)
-		alert("is /")
 	}
 };
 </script>

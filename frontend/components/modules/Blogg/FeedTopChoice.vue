@@ -117,6 +117,11 @@ const handleShowFollowingPosts = async () => {
 	paginationStore.activeFetchURL = urls.api.posts.following;
 	await getPostMultipleFollowingOnly(paginationStore.activeFetchURL);
 };
+
+// onBeforeMount( async () => {
+// 	await getAllTags()
+// })
+
 </script>
 
 <style scoped></style>

@@ -133,6 +133,7 @@ const author_full_name = (author: SnippetPostSingleType) => {
 const paginationStore = usePaginationStore()
 
 onBeforeMount(async () => {
+	console.log("onBeforeMount")
 	/**
 	* Fetches all posts in snippets (not full content length)
 	* 
