@@ -1,17 +1,22 @@
 <template>
 	<div class="flex-row">
 		<div class="grid gap-8 grid-cols-12 flex items-center">
-			<div class="col-start-1 col-end-9 text-center space-x-6">
-				<FeedTopChoiceFeedOptionButton
-					data-test="feed_all_posts_option_button"
-					:show-as-selected="showFollowingPosts"
-					@show-all-feed-posts="handleShowAllFeedPosts"
-				/>
-				<FeedTopChoiceFollowingOptionButton
-					data-test="following_posts_option"
-                    :show-as-selected="showFollowingPosts === false ? true : false"
-					@show-following-posts="handleShowFollowingPosts"
-				/>
+			<div class="col-start-1 col-end-9">
+				<!-- Only show the two options when web client is authenticated-->
+				<div v-if="authStore.isAuthenticated" class="text-center space-x-6">
+					<FeedTopChoiceFeedOptionButton
+						data-test="feed_all_posts_option_button"
+						:show-as-selected="showFollowingPosts"
+						@show-all-feed-posts="handleShowAllFeedPosts"
+					/>
+					<FeedTopChoiceFollowingOptionButton
+						data-test="following_posts_option"
+						:show-as-selected="
+							showFollowingPosts === false ? true : false
+						"
+						@show-following-posts="handleShowFollowingPosts"
+					/>
+				</div>
 			</div>
 			<div class="col-span-4" data-test="feed_filter_component">
 				<FeedDropdownFilter v-if="showFollowingPosts === false" />
@@ -47,6 +52,7 @@ const postStore = usePostStore();
 const paginationStore = usePaginationStore();
 const searchStore = useSearchStore();
 const loggedInUserStore = useLoggedInUserStore();
+const authStore = useAuthStore()
 
 /**
  * FEED or FOLLOWING button selected display

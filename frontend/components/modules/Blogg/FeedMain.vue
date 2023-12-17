@@ -7,12 +7,12 @@
             <!--
                 * Unsure whether I want to do it this way
             -->
-            <FeedTopSearch v-if="postStore.posts && loggedInUserStore.loggedInUserProfile" />
+            <FeedTopSearch v-if="postStore.posts" />
         </div>
 
         <div id="top-choice">
 
-            <FeedTopChoice v-if="authStore.isAuthenticated && postStore.posts && postStore.posts?.results" />
+            <FeedTopChoice v-if="postStore.posts && postStore.posts?.results" />
         </div>
         <!-- I need to do this v-if statement because of when I am using following i dont what this here I think (strictly speaking not necesarry to use v-if) -->
         <div id="posts-list">
@@ -25,8 +25,6 @@
 </template>
 
 <script setup lang="ts">
-
-const authStore = useAuthStore()
 
 const loggedInUserStore = useLoggedInUserStore()
 const postStore = usePostStore()

@@ -21,12 +21,12 @@ export const usePostStore = defineStore("Store for containing posts and related 
 /**
  * The url that the baseFetchURL initially was before it started getting modified
  */
-    const initialBaseFetchURL = urls.api.posts.feed
+    const initialFeedBaseFetchURL = urls.api.posts.feed
 
     /**
      * The URL that api fetches regarding search generally go to
      */
-    const baseFetchURL = ref<string>(initialBaseFetchURL) // post_snippets_url
+    const baseFetchURL = ref<string>(initialFeedBaseFetchURL) // post_snippets_url
     const baseLoggedInUserPostsURL = ref<string>(urls.api.posts.myuser) // personal_post_snippets_url ? why is this with ref - think i should remove later
 
     /** 
@@ -51,8 +51,6 @@ export const usePostStore = defineStore("Store for containing posts and related 
         allTags.value = null
         allCategories.value = null
         allComments.value = null
-        // sets it back to the initial value
-        baseLoggedInUserPostsURL.value = initialBaseFetchURL
     }
 
     return { posts, resetStore, allComments, followingPosts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };

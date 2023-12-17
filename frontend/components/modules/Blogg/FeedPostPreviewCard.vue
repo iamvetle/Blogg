@@ -41,11 +41,11 @@
 						<slot name="amount-of-comments"></slot>
 					</span>
 
-					<span id="save-article" class="me-2 w-auto h-auto mx-auto flex items-center justify-center">
+					<span id="save-article" class="me-2">
 						<slot name="save-article-icon"></slot>
 					</span>
 
-					<span id="article-options" class="w-auto h-auto mx-auto flex items-center justify-center">
+					<span id="article-options" class="">
 
 						<slot name="more-options-icon"></slot>
 

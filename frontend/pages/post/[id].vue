@@ -20,7 +20,8 @@
 			<PostTitle :title="post.title" />
 		</div>
 
-		<span v-if="!checkIfLoggedInUser(post.author.username)">
+		<!-- 1. Can't be the logged in user. 2. Can't be not logged in -->
+		<span v-if="!checkIfLoggedInUser(post.author.username) && authStore.isAuthenticated">
 			<PostBookmark :post="post.id" />
 		</span>
 
@@ -70,19 +71,24 @@ const post = ref<PostSingleType | null>(null);
 
 /** Computed value of all of the "actual" comments in the poststore */
 const route = useRoute()
+const postRoute = route.params.id.toString()
+
 const loggedInUserStore = useLoggedInUserStore()
 
 const fetchPostRelated = async () => {
 	console.log(route.params.id)
-	const postURL = urls.api.posts.singlePost.view(route.params.id);
+	const postURL = urls.api.posts.singlePost.view(postRoute);
 
 
 	/** The actual fetch, that fetches one post */
 	post.value = await getSinglePost(postURL);
 
-	const commentsURL = urls.api.posts.singlePost.comments(route.params.id)
+	const commentsURL = urls.api.posts.singlePost.comments(postRoute)
 	await getSinglePostComments(commentsURL)
 
+	/**
+	 * Only checks this if the web client is authenticated
+	 */
 	if (authStore.isAuthenticated) {
 		/**
 	 * I need to fetch this to be able to check if I am following the user

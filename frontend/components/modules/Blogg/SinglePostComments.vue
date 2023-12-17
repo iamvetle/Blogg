@@ -7,7 +7,7 @@
 
         <hr>
 
-        <SinglePostCommentAdd :post-id="post.id" />
+        <SinglePostCommentAdd v-if="authStore.isAuthenticated" :post-id="post.id" />
     </div>
 </template>
 
@@ -18,6 +18,8 @@
  * It deals with the comments associated with the post and
  * other comments stuff
  */
+
+const authStore = useAuthStore()
 
 const postStore = usePostStore()
 

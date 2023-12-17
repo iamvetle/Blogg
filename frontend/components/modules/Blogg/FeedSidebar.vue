@@ -2,9 +2,8 @@
     <!-- This lists the (saved)articles in thes sidebar -->
     <Suspense>
         <template #default>
-            <div id="feed-post-list-sidebar">
-                <FeedPostsListSidebar class="w-full" />
-            </div>
+                <FeedPostsListSidebar v-if="authStore.isAuthenticated" class="w-full" />
+                <FeedSidebarNotAuthenticated v-else/>
         </template>
         <template #fallback>
             <div>
@@ -15,6 +14,8 @@
 </template>
 
 <script setup lang="ts">
+
+const authStore = useAuthStore()
 
 
 </script>

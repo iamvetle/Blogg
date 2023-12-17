@@ -1,13 +1,15 @@
 import FeedSidebar from './FeedSidebar.vue';
 import { flushPromises, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
-
+import { useAuthStore } from '~/store/authStore';
+import type { FeedSidebarNotAuthenticated } from '#build/components';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();                  
 
 // let generalStore; 
 let loggedInUserStore: any
+let authStore:any
 
 const factory = () => {
     return shallowMount(FeedSidebar, {
@@ -17,7 +19,7 @@ const factory = () => {
             },
             mocks: {},
             stubs: {
-                FeedDropdownFilter: true,
+                FeedSidebarNotAuthenticated: true,
                 FeedPostsListSidebar: true,
                 SkeletonFeedPostsListSidebar: true
             },
@@ -33,6 +35,9 @@ describe('Testing the sidebar of the feed', () => {
 
     });
 
+    /**
+     * * cant really test anything because of the Suspense element
+     */
     afterEach(() => {
         if (wrapper) {
             wrapper.unmount();
@@ -43,13 +48,6 @@ describe('Testing the sidebar of the feed', () => {
         wrapper = factory()
 
         expect(wrapper.exists()).toBe(true)
-    })
-    test('Should render the the feedpostsidebar', async () => {
-        wrapper = factory()
-        expect(wrapper.findComponent({ name: 'Suspense' }).exists()).toBe(true);
-        await wrapper.vm.$nextTick();
-
-        // expect(wrapper.findComponent({ name: 'FeedPostsListSidebar' }).exists()).toBe(true);
     })
     test('Should match snapshot', () => {
         wrapper = factory()

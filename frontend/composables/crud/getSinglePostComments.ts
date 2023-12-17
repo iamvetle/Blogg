@@ -10,12 +10,8 @@ import { getMethod } from "~/services/apiByCRUD";
 export const getSinglePostComments = async (url: string): Promise<Comment[] | null> => {
 	try {
 		const postStore = usePostStore();
-
-		const authStore = useAuthStore();
-		const token = authStore.retrieveToken();;
 		const headers = {
 			"Content-Type": "application/json",
-			"Authorization": `Token ${token}`,
 		};
 
 		const response = await getMethod(url, headers);

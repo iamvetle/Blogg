@@ -13,20 +13,8 @@ export const getSinglePost = async (url: string): Promise<PostSingleType | null>
 
 	const postStore = usePostStore()
 
-	/**
-	 * Fetches the token from local storage, or just returns null.
-	 */
-	const authStore = useAuthStore()
-
-const token = authStore.retrieveToken()
-
-	if (token === null) {
-		console.log("There was not token")
-		return null
-	}
 	const headers = {
 		"Content-Type": "application/json",
-		Authorization: `Token ${token}`
 	}
 
 	/** It uses the last set URL */

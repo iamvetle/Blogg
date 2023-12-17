@@ -44,7 +44,8 @@
 						</span>
 					</template>
 
-					<template #tags v-if="post.tags">
+					<!-- Needs to be authenticated to be able to save posts-->
+					<template #tags v-if="post.tags && authStore.isAuthenticated">
 						<span class="me-1" v-for="tag in post.tags">
 							<BaseTag :key="post.id" :text="tag.name" />
 						</span>
@@ -54,7 +55,7 @@
 						<span>{{ post.num_of_comments }} comments</span>
 					</template>
 
-					<template #save-article-icon v-if="(post.id) && (!checkIfLoggedInUser(post.author.username))">
+					<template #save-article-icon v-if="(post.id) && (!checkIfLoggedInUser(post.author.username)) && authStore.isAuthenticated">
 
 						<PostBookmark :post="post.id" />
 
@@ -84,6 +85,7 @@ import account_picture from '~/assets/account-pin-circle-line.svg'
 const post_image = ref('https://picsum.photos/500/300')
 
 const postStore = usePostStore()
+const authStore = useAuthStore()
 
 const color = ref("fill-black")
 
