@@ -24,7 +24,7 @@ const api = {
          * @param username - The username of the user
          * @returns - The URL to all of the user's posts
          */
-        user: (username: string) => `${baseUsersURL}user/${username}/posts/`,  // Posts by a specific user    
+        user: (username: string) => `${baseUsersURL}${username}/posts/`,  // Posts by a specific user    
         singlePost: {
             /**
              * Returns the URL to the post based on its unique ID
@@ -104,7 +104,7 @@ const users = {
          * @param username - The username of the user
          * @returns - The URL
          */
-        profile: (username: string) => `${baseUsersURL}user/${username}/`,  // URL for accessing a user's profile.
+        profile: (username: string) => `${baseUsersURL}${username}/`,  // URL for accessing a user's profile.
 
         /**
         * Returns the URL for following a user, based on the user's username
@@ -112,7 +112,7 @@ const users = {
         * @param username - The username of the user
         * @returns - The URL
         */
-        follow: (username: string) => `${baseUsersURL}user/${username}/follow/`,  // URL for following a user.
+        follow: (username: string) => `${baseUsersURL}${username}/follow/`,  // URL for following a user.
 
         /**
         * Returns the URL for unfollowing a user, based on the user's username
@@ -120,7 +120,7 @@ const users = {
         * @param username - The username of the user
         * @returns - The URL
         */
-        unfollow: (username: string) => `${baseUsersURL}user/${username}/unfollow/`,  // URL for unfollowing a user.
+        unfollow: (username: string) => `${baseUsersURL}${username}/unfollow/`,  // URL for unfollowing a user.
     }
 };
 

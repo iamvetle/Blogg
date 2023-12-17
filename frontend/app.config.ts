@@ -16,6 +16,8 @@ export default defineAppConfig({
         'brand': 'solar:tornado-small-broken',
         'new-post':'solar:pen-new-square-linear',
         'my-profile':'solar:user-circle-linear',
+        'register':'solar:user-plus-rounded-linear',
+        'login':'solar:login-2-linear',
         'loggout':'solar:logout-2-linear',
         'user':'solar:user-rounded-linear',
         'following':'solar:users-group-rounded-linear',

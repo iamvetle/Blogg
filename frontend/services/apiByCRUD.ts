@@ -30,8 +30,9 @@ export const getMethod = async (url: string, headers?: object): Promise<AxiosRes
          */
         return response
     } catch (e: unknown) {
-        console.error(`An error occured when trying to send a get request to ${url}`, e)
-        console.error('The headers used was:', headers)
+        // console.error(`An error occured when trying to send a get request to ${url}`, e) // | verbose | print to self
+        console.error(`An error occured when trying to send a get request to ${url}`) // print to self
+        console.error('The headers used was:', headers) // print to self
 
         /**
          * If the request is failed, the error is returned.

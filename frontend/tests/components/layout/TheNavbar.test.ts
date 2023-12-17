@@ -1,63 +1,60 @@
-import { VueWrapper, mount } from '@vue/test-utils';
-import { createTestingPinia } from '@pinia/testing'
-import TheNavbar from '~/components/layout/TheNavbar.vue'
+import { shallowMount } from '@vue/test-utils';
+import { describe, expect, test, beforeEach, afterEach } from 'vitest';
+import TheNavbar from '~/components/layout/TheNavbar.vue';
+import { createTestingPinia } from '@pinia/testing';
 
-let wrapper: VueWrapper;
-let pinia: any;
+let wrapper: any;
+const pinia:any = createTestingPinia()
 let authStore:any;
 
+const factory = () => {
+    return shallowMount(TheNavbar, {
+        global: {
+            plugins: [pinia],
+            components: {},
+            mocks: {},
+            stubs: {},
+        },
+        props: {},
+        slots: {}
+    })
+};
 
-
-describe("thenavvbarr testing", () => {
+describe('Testing the navbar layout element component', () => {
 
     beforeEach(() => {
-        vi.stubGlobal("useRoute", () => {
-            return null
-        })
-
-
-        pinia = createTestingPinia()
-
         authStore = useAuthStore(pinia)
-        authStore.isAuthenticated = true
+    });
 
+    afterEach(() => {
+        if (wrapper) {
+            wrapper.unmount();
+        }
+        vi.clearAllMocks()
 
-        wrapper = mount(TheNavbar, {
-            global: {
-                plugins: [pinia],
-                stubs: {
-                    BaseSearchBar: true,
-                    FormKit:true,
-                    Icon:true
-                },
-            },
-        })
-
-    })
-
+    });
 
     test('Should exist', () => {
-
+        wrapper = factory()
         expect(wrapper.exists()).toBe(true)
     })
-    test('Should render the brand icon', () => {
-        expect(wrapper.find("[data-test='brand_icon']").exists()).toBe(true)
-    })
-    test('Should render the write new post icon', () => {
-        expect(wrapper.find("[data-test='new_post_icon']").exists()).toBe(true)
-        
-    })
-    test('Should render the my profile icon', () => {
-        expect(wrapper.find("[data-test='my_profile_icon']").exists()).toBe(true)
-        
-    })
-    test('Should render loggout', () => {
-        expect(wrapper.find("[data-test='loggout_icon']").exists()).toBe(true)
-        
-    })
+    test('Should have the logged in navbar component show if the user is not logged in', () => {
+        wrapper = factory()
 
-})
+        // not authenticated
+        expect(wrapper.find("[data-test='logged_in_navbar']").exists()).toBe(false)
+        expect(wrapper.find("[data-test='logged_out_navbar']").exists()).toBe(true)
+    })
+    test('Should render the navbar meant for when the web client is authenticated', async () => {
+        wrapper = factory()
 
-/**
- * bare ga opp med å ha store.isauthenticated jeg
- */
+        // IS authenticated
+        authStore.isAuthenticated = true
+        await wrapper.vm.$nextTick()
+        
+    
+        expect(wrapper.find("[data-test='logged_in_navbar']").exists()).toBe(true)
+        expect(wrapper.find("[data-test='logged_out_navbar']").exists()).toBe(false)    
+        
+    })
+});
