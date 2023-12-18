@@ -2,7 +2,6 @@ import MyProfileUsername from './MyProfileUsername.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 import Username from '~/components/UI/Username.vue';
 

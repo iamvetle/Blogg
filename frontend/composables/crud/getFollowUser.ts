@@ -6,7 +6,9 @@ import { postMethod } from "~/services/apiByCRUD";
 */
 export const getFollowUser = async (url: string): Promise<object | null> => {
 
-	const token = retrieveToken();
+	const authStore = useAuthStore()
+
+const token = authStore.retrieveToken()
 
 	if (token === null) {
 		console.log("There was no token")

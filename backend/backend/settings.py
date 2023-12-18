@@ -28,12 +28,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = "api.CustomUser"
+AUTH_USER_MODEL = "users.CustomUser"
 
 # Application definition
 
 INSTALLED_APPS = [
     "api",
+    "users",
     "debug_toolbar",
     "rest_framework",
     "corsheaders",
@@ -122,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "UTC"   
 
 USE_I18N = True
 

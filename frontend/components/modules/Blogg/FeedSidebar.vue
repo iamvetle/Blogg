@@ -1,27 +1,21 @@
 <template>
-    <div id="feed-dropdown-filter" v-if="postStore.allTags && !selected" class="mb-4 bg-primary rounded-lg text-onPrimary">
-        <FeedDropdownFilter />
-    </div>
     <!-- This lists the (saved)articles in thes sidebar -->
-    <div v-if="loggedInUserStore.loggedInUserProfile" id="feed-post-list-sidebar">
-        <FeedPostsListSidebar class="w-full"/>
-    </div>
-    <div v-else>
-        <SkeletonFeedPostsListSidebar/>
-    </div>
+    <Suspense>
+        <template #default>
+                <FeedPostsListSidebar v-if="authStore.isAuthenticated" class="w-full" />
+                <FeedSidebarNotAuthenticated v-else/>
+        </template>
+        <template #fallback>
+            <div>
+                <SkeletonFeedPostsListSidebar />
+            </div>
+        </template>
+    </Suspense>
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
 
-const paginationStore = usePaginationStore()
-const loggedInUserStore = useLoggedInUserStore()
-
-const selected = computed(() => (paginationStore.activeFetchURL === "http://localhost:8888/api/feed/following/"))
-
-const postStore = usePostStore()
+const authStore = useAuthStore()
 
 
 </script>

@@ -7,7 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 defineOptions({
     inheritAttrs:false

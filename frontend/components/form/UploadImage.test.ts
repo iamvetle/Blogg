@@ -6,8 +6,8 @@ import BaseImage from '~/components/base/BaseImage.vue';
 
 let wrapper: any;
 
-let inputClassProp = "bg-red-500 text-lg"
-let labelProp = "some label text"
+// let inputClassProp = "bg-red-500 text-lg"
+// let labelProp = "some label text"
 
 const mockHandleFile = vi.fn()
 

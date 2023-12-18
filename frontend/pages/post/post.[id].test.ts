@@ -1,17 +1,15 @@
 import idVue from './[id].vue'
-import { shallowMount } from '@vue/test-utils';
+import { flushPromises, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
-import { usePostStore } from '~/store/postStore';
 
 // Components in the page
-import SinglePostCommentsList from '~/components/modules/Blogg/SinglePostCommentsList.vue';
+import SinglePostComments from '~/components/modules/Blogg/SinglePostComments.vue';
 import PostBookmark from '~/components/UI/PostBookmark.vue';
 import TagsList from '~/components/UI/TagsList.vue';
 import PostTitle from '~/components/UI/PostTitle.vue';
 import BaseImage from '~/components/base/BaseImage.vue';
 import PostContentHTML from '~/components/UI/PostContentHTML.vue';
 import BaseButton from '~/components/base/BaseButton.vue';
-import SinglePostComments from '~/components/modules/Blogg/SinglePostComments.vue';
 
 
 const standardPost = {
@@ -42,24 +40,32 @@ let postStore;
 // let loggedInUserStore; 
 // let paginationStore; 
 
+const mockFetchPostRelated = vi.fn()
+
 const factory = () => {
     return shallowMount(idVue, {
         global: {
             plugins: [pinia],
             components: {
-                SinglePostCommentsList,
+                SinglePostComments,
                 PostBookmark,
                 TagsList,
                 PostTitle,
                 BaseImage,
                 PostContentHTML,
                 BaseButton,
-                SinglePostComments
             },
-            mocks: {},
+            mocks: {
+                fetchPostRelated:mockFetchPostRelated
+            },
             stubs: {
                 TagsList: true,
-                SinglePostComments:true
+                SinglePostComments:true,
+                BaseButton:true,
+                PostContentHTML:true,
+                PostTitle:true,
+                PostBookmark:true,
+                BaseImage:true
             },
         },
         props: {},
@@ -72,6 +78,10 @@ describe('Testing the single post component', () => {
     vi.stubGlobal('definePageMeta', () => {
         return null
     });
+
+    // vi.stubGlobal('fetchPostRelated', () => {
+    //     return null
+    // });
 
     vi.stubGlobal('useRoute', () => {
         return {
@@ -126,22 +136,6 @@ describe('Testing the single post component', () => {
         const bookmark = wrapper.findComponent({ name: "TagsList" })
         expect(bookmark.exists()).toBe(true)
     })
-    test('Should have a title prop', async () => {
-        wrapper = factory()
-        wrapper.vm.post = standardPost
-        await wrapper.vm.$nextTick()
-        expect(wrapper.findComponent({ name: "PostTitle" }).exists()).toBe(true)
-    })
-    test('Should render the title from the post', async () => {
-        wrapper = factory()
-        wrapper.vm.post = standardPost
-        await wrapper.vm.$nextTick()
-
-        const postTitleDiv = wrapper.find("[data-test='post-title']")
-        expect(postTitleDiv.exists()).toBe(true)
-
-        expect(postTitleDiv.html()).toContain(standardPost.title)
-    })
     test('Should have the image component', async () => {
         wrapper = factory()
         wrapper.vm.post = standardPost
@@ -152,6 +146,7 @@ describe('Testing the single post component', () => {
         wrapper = factory()
         wrapper.vm.post = standardPost
         await wrapper.vm.$nextTick()
+        console.log(wrapper.html())
         expect(wrapper.findComponent({ name: "PostContentHTML" }).exists()).toBe(true)
     })  
     test('Should render the basebutton, back button, on page', async () => {
@@ -162,10 +157,27 @@ describe('Testing the single post component', () => {
     })
     test('Should render the comments component', async () => {
         wrapper = factory()
+        
         wrapper.vm.post = standardPost
-        await wrapper.vm.$nextTick()
-        expect(wrapper.findComponent({ name: "SinglePostComments" }).exists()).toBe(true)
 
+        await wrapper.vm.$nextTick()
+        console.log(wrapper.html())
+    
+        expect(wrapper.find("[data-test='comments']").exists()).toBe(true)
+        expect(wrapper.findComponent({ name:"SinglePostComments" }).exists()).toBe(true)
+
+
+    })
+    test('Should render the post title component', async () => {
+        wrapper = factory()
+        
+        wrapper.vm.post = standardPost
+
+        await wrapper.vm.$nextTick()
+        console.log(wrapper.html())
+    
+        expect(wrapper.find("[data-test='post_title']").exists()).toBe(true)
+        expect(wrapper.findComponent({ name:"PostTitle" }).exists()).toBe(true)
     })
 
 

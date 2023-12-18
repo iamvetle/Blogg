@@ -1,6 +1,5 @@
 import { flushPromises, mount, type VueWrapper } from '@vue/test-utils';
 import Modal from './Modal.vue';
-import { useGeneralStore } from '~/store/generalStore';
 import { createTestingPinia } from '@pinia/testing';
 
 import {

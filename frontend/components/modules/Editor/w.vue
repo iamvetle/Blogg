@@ -225,7 +225,9 @@ const buttonTryPublishClick = async () => {
 
 	body.value = html.value
 	title.value = titleEditor.value
-
+/**
+ * ! I think i have to change the (!...) to comparing strings instead, becase I think tht will never happen
+ */
 	if (!title.value || !body.value) {
 		alert("Invalid post content");
 		return;

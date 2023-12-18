@@ -1,5 +1,5 @@
 import { getMethod } from '~/services/apiByCRUD';
-import { usePostStore } from '~/store/postStore'
+
 
 /**
  * Fetches all of the posts made by the logged in user
@@ -15,7 +15,9 @@ export const getLoggedInUserAllPostSnippets = async (api_endpoint_url: string): 
   /**
    * Fetches the token from local storage, or just returns null.
    */
-  const token = retrieveToken();
+  const authStore = useAuthStore()
+
+  const token = authStore.retrieveToken()
 
   if (token === null) {
     console.log("There was not token")

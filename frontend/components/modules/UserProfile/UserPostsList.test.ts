@@ -2,11 +2,6 @@ import UserPostsList from './UserPostsList.vue';
 import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useGeneralStore } from '~/store/generalStore';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
-
 import FeedPostPreviewCard from '../Blogg/FeedPostPreviewCard.vue';
 
 let wrapper: any;

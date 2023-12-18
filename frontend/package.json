@@ -18,7 +18,7 @@
 		"@formkit/nuxt": "^0.18.3",
 		"@iconify-json/mdi": "^1.1.58",
 		"@iconify/json": "^2.2.151",
-		"@nuxt/devtools": "latest",
+		"@nuxt/devtools": "npm:@nuxt/devtools-edge@latest",
 		"@nuxtjs/eslint-config-typescript": "^12.1.0",
 		"@nuxtjs/eslint-module": "^4.1.0",
 		"@pinia/nuxt": "^0.4.11",

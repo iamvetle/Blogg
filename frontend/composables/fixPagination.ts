@@ -1,4 +1,3 @@
-import { usePaginationStore } from '~/store/paginationStore';
 
 /**
  * Basically sets up a pagination system based on the all of the posts

@@ -6,16 +6,21 @@ from rest_framework import status
 from api.models import Tag
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 
 class AllTagsView(ListCreateAPIView):
-    """Returns all tags, or can create a tag?"""
-    permission_classes = [IsAuthenticated]
+    """Returns all tag"""
+    # ? can also create a new one
+    # TODO - ^remove it later after adding a bunch
+    
+    permission_classes = [AllowAny] # NO need to be authenticated
+    
     serializer_class = TagSerializer
-    pagination_class = None  # will probably remove this later
+    
+    pagination_class = None
 
     queryset = Tag.objects.all()
 
@@ -27,5 +32,5 @@ class AllTagsView(ListCreateAPIView):
             return super().create(request, *args, **kwargs)
         except serializers.ValidationError:
             return Response(
-                {"error": "tag already exists"}, status=status.HTTP_400_BAD_REQUEST
+                {"error": "Tag already exists"}, status=status.HTTP_400_BAD_REQUEST
             )

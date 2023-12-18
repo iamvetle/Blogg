@@ -1,23 +1,17 @@
 <template >
-    <!-- Background color -->
     <div id="modal" :class="generalStore.backgroundForModal">
 
-    <div id="site-wrapper">
-        <ClientOnly>
+        <div id="site-wrapper">
             <TheNavbar />
-        </ClientOnly>
-        <main>
-            <div>
-                <slot />
-            </div>
-        </main>
-        <TheFooter />
+            <main>
+                <slot></slot>
+            </main>
+            <TheFooter />
+        </div>
     </div>
-</div>
 </template>
 
 <script setup lang="ts">
-import { useGeneralStore } from '~/store/generalStore';
 
 const generalStore = useGeneralStore()
 

@@ -2,10 +2,6 @@ import UserFullName from './UserFullName.vue';
 import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useGeneralStore } from '~/store/generalStore';
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-import { usePaginationStore } from '~/store/paginationStore';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();

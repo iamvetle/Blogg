@@ -1,12 +1,10 @@
 import { createTestingPinia } from '@pinia/testing'
 import { VueWrapper, mount } from '@vue/test-utils'
 import loggut from '~/pages/loggut.vue'
-import { useGeneralStore } from '~/store/generalStore'
 
 vi.stubGlobal("navigateTo", () => {
     return null
 })
-
 
 vi.stubGlobal("definePageMeta", () => {
     return null

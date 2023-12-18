@@ -74,7 +74,6 @@
 
 <script setup lang="ts">
 
-import { usePaginationStore } from '~/store/paginationStore';
 
 const paginationStore = usePaginationStore()
 

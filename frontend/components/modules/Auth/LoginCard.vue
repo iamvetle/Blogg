@@ -30,13 +30,15 @@
 				<p v-show="loginsucess" class="mt-5 text-green-700">
 					Login successfull
 				</p>
+			</FormKit>
+			<div>
 				<p class="text-sm  text-onSurface font-light mt-3">
 					Don't have an account yet?
-					<nuxt-link to="/registrer/" class="font-medium text-primary hover:underline">
+					<NuxtLink to="/registrer/" class="font-medium text-primary hover:underline">
 						Sign up
-					</nuxt-link>
+					</NuxtLink>
 				</p>
-			</FormKit>
+			</div>
 		</div>
 	</div>
 </template>
@@ -44,11 +46,10 @@
 <script setup lang="ts">
 //@ts-nocheck
 
-/**
- * TODO Fullføre denne så den sender postdataen
- * TODO også fikse name og value slik at den kan bli godt ordentlig av django
- */
 import { reset } from '@formkit/core'
+
+const authStore = useAuthStore()
+
 const address = ref(null)
 const all = ref<any>(null)
 
@@ -59,7 +60,7 @@ const baseLabelClass = "prose text-onSurface"
 const baseInputClass = "prose border border-gray-300 sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
 const baseMessageClass = "prose text-onSurface text-sm text-red-500"
 
-const baseURL = "http://localhost:8888/api/login/";
+const baseURL = urls.baseApiURL
 const genders = ["Male", "Female", "Annet"]
 
 withDefaults(defineProps<{
@@ -69,13 +70,14 @@ withDefaults(defineProps<{
 })
 
 const submitForm = async (formData: any, node) => {
-	const responseData = await postForm(baseURL, formData)
+	const responseData = await postForm(urls.users.auth.login, formData)
 
 	/** If the request was successfull */
 	if (responseData) {
 
 		/** Takes the username and token from the responseData and puts it in localStorage */
-		setTokenAndUsername(responseData.token, responseData.username);
+		authStore.setTokenToLocalStorage(responseData.token)
+		authStore.setUsernameToLocalStorage(responseData.username)
 
 		loginsucess.value = true;
 		loginerror.value = false;
@@ -87,7 +89,7 @@ const submitForm = async (formData: any, node) => {
 		 * ? Unsure whether I this is a good idea
 		 */
 
-		return navigateTo("/minkonto");
+		return await navigateTo("/minkonto");
 
 
 		/**

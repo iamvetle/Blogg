@@ -1,7 +1,6 @@
 import { createTestingPinia } from '@pinia/testing';
 import IdVue from './[id].vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
-import { useGeneralStore } from '~/store/generalStore';
 import BaseIconMoreOptions from '~/components/base/BaseIconMoreOptions.vue';
 import BaseTag from '~/components/base/BaseTag.vue';
 import FeedPostPreviewCard from '~/components/modules/Blogg/FeedPostPreviewCard.vue'

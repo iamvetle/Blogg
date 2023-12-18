@@ -1,4 +1,4 @@
-import { usePostStore } from '~/store/postStore'
+
 import { getMethod } from '~/services/apiByCRUD';
 
 /**
@@ -13,18 +13,8 @@ export const getSinglePost = async (url: string): Promise<PostSingleType | null>
 
 	const postStore = usePostStore()
 
-	/**
-	 * Fetches the token from local storage, or just returns null.
-	 */
-	const token = retrieveToken();
-
-	if (token === null) {
-		console.log("There was not token")
-		return null
-	}
 	const headers = {
 		"Content-Type": "application/json",
-		Authorization: `Token ${token}`
 	}
 
 	/** It uses the last set URL */

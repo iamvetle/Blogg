@@ -1,6 +1,5 @@
 import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import { useGeneralStore } from '~/store/generalStore'
 import register from '~/pages/registrer.vue'
 
 let wrapper: VueWrapper

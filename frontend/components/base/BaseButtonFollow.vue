@@ -1,4 +1,3 @@
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 <template>
     <div data-test="default-slot">
         <div :class="isFollowingClass" v-if="checkIfFollowingUser(username) === true" id="following"
@@ -15,7 +14,6 @@ import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 <script setup lang="ts">
 
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /** Represents the text that is going to be displayed on the (un)follow button */
 const followText = ref("Following")
@@ -26,11 +24,14 @@ onMounted(async () => {
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
 	if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
-		await getLoggedInUserProfile("http://localhost:8888/api/min-side/");
+		await getLoggedInUserProfile(urls.users.myUser.profile);
 	}
 })
 
-const emit = defineEmits(["followersPluss", "followersMinus"])
+const emit = defineEmits<{
+    followersPluss:[void];
+    followersMinus:[void];
+}>();
 
 withDefaults(defineProps<{
     username: string,
@@ -47,7 +48,7 @@ withDefaults(defineProps<{
  * @param username The username of the user that is going to be unfollowed
  */
 const unFollowUser = async (username: string) => {
-    const theNormalUserProfileUnfollowURL = `http://localhost:8888/api/${username}/unfollow/`;
+    const theNormalUserProfileUnfollowURL = urls.users.user.unfollow(username);
 
     const responseData = await getUnfollowUser(theNormalUserProfileUnfollowURL)
 
@@ -69,7 +70,7 @@ const unFollowUser = async (username: string) => {
  * @param username The username of the user that is going to be followed
  */
 const followUser = async (username: string) => {
-    const theNormalUserProfileFollowURL = `http://localhost:8888/api/${username}/follow/`;
+    const theNormalUserProfileFollowURL = urls.users.user.follow(username);
 
     const responseData = await getFollowUser(theNormalUserProfileFollowURL)
 

@@ -48,8 +48,8 @@ watchEffect(() => {
     }
 })
 
-const baseCommentURL = `http://localhost:8888/api/post/${props.postId}/add-comment/`;
-const allPostCommentsURL = `http://localhost:8888/api/post/${props.postId}/comments/`;
+const baseCommentURL = urls.api.posts.singlePost.action.addComment(props.postId as number)
+const allPostCommentsURL = urls.api.posts.singlePost.comments(props.postId as number)
 
 /**
  * @method tryAddComment

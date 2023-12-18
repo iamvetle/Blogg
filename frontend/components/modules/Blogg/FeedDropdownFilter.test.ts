@@ -5,11 +5,6 @@ import { createTestingPinia } from '@pinia/testing';
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
 
-// let generalStore; 
-// let postStore; 
-// let loggedInUserStore; 
-// let paginationStore; 
-
 const factory = () => {
     return shallowMount(FeedDropdownFilter, {
         global: {
@@ -17,7 +12,7 @@ const factory = () => {
             components: {},
             mocks: {},
             stubs: {
-                FilterBox:true
+                FilterDropdownTags:true
             },
         },
         props: {},
@@ -28,11 +23,6 @@ const factory = () => {
 describe('Testing FeedDropdownFilter', () => {
 
     beforeEach(() => {
-        // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
-        // paginationStore = usePaginationStore(pinia); 
-
     });
 
     afterEach(() => {
@@ -42,12 +32,21 @@ describe('Testing FeedDropdownFilter', () => {
     });
 
     test('Should exist', () => {
-      wrapper = factory()
+        wrapper = factory()
 
-      expect(wrapper.exists()).toBe(true)
+        expect(wrapper.exists()).toBe(true)
     })
     test('Should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot()
+        wrapper = factory()
+
+        expect(wrapper).toMatchSnapshot()
+    })
+    test('Should have filterdropdowntags', () => {
+        wrapper = factory()
+
+        expect(wrapper.find("[data-test='filter_tags']").exists()).toBe(true)
+        
+        expect(wrapper.findComponent({ name: "FilterDropdownTags" }).exists()).toBe(true)
     })
 
 

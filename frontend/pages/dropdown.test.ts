@@ -1,6 +1,5 @@
 import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import { useGeneralStore } from '~/store/generalStore'
 import dropdown from '~/pages/dropdown.vue'
 
 describe('dropdown page testing', () => {

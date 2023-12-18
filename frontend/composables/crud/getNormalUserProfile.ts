@@ -9,19 +9,8 @@ import { getMethod } from '~/services/apiByCRUD';
  */
 export const getNormalUserProfile = async (userURL: string): Promise<NormalUserProfileType | null> => {
 
-  /**
-   * Fetches the token from local storage, or just returns null.
-   */
-  const token = retrieveToken();
-
-  if (token === null) {
-    console.log("There was no token")
-    return null
-  }
-
   const headers = {
     "Content-Type": "application/json",
-    Authorization: `Token ${token}`,
   };
 
   const response = await getMethod(userURL, headers)

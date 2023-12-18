@@ -80,19 +80,17 @@
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
-
-definePageMeta({
-	layout: 'default'
-})
-
 // Declaring stores
 
 const postStore = usePostStore()
 const loggedInUserStore = useLoggedInUserStore()
 
-const loggedInUserURL = "http://localhost:8888/api/min-side/"
+const loggedInUserURL = urls.users.myUser.profile
+const loggedInUserPostsURL = urls.api.posts.myuser
+definePageMeta({
+	layout: 'default',
+	middleware:["auth-guard"]
+})
 
 /**
  * Fetches:
@@ -101,8 +99,7 @@ const loggedInUserURL = "http://localhost:8888/api/min-side/"
  * 
  * 2. USER INFORMATION about the logged in user
  */
-onMounted(async () => {
-	const loggedInUserPostsURL = "http://localhost:8888/api/min-side/posts/"
+onBeforeMount(async () => {
 
 	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
 	await getLoggedInUserProfile(loggedInUserURL)

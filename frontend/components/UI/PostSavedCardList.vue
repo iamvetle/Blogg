@@ -20,7 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 /**
  * Lists all of the posts the logged in user has saved

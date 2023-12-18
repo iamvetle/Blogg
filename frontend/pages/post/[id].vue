@@ -4,7 +4,7 @@
 			<span class="flex items-center justify-between">
 				<span class="flex items-center not-prose">
 					<BaseImage :src="placeholder_profile_picture" alt="" class="mr-2 h-8" />
-					<NuxtLink :to="`/user/${post.author.username}`">
+					<NuxtLink :to="authorProfilePage">
 						<p class="font-bold inline">
 							- {{ post.author.first_name }} {{ post.author.last_name }}
 						</p>
@@ -14,13 +14,14 @@
 			</span>
 		</div>
 
-		<hr> 
+		<hr>
 
-		<div data-test="post-title" id="title">
+		<div data-test="post_title" id="title">
 			<PostTitle :title="post.title" />
 		</div>
 
-		<span v-if="!checkIfLoggedInUser(post.author.username)">
+		<!-- 1. Can't be the logged in user. 2. Can't be not logged in -->
+		<span v-if="!checkIfLoggedInUser(post.author.username) && authStore.isAuthenticated">
 			<PostBookmark :post="post.id" />
 		</span>
 
@@ -31,7 +32,7 @@
 			</div>
 		</div>
 
-		<div id="main-content">
+		<div id="main-content" data-test="html_rendered_content">
 			<PostContentHTML :html="post.content" />
 		</div>
 
@@ -44,7 +45,7 @@
 		<hr>
 
 		<div data-test="comments" id="post_comments">
-			<SinglePostComments :post="post"/>
+			<SinglePostComments :post="post" />
 		</div>
 	</div>
 </template>
@@ -63,41 +64,58 @@
 
 // import noimage from '~/assets/noimage.jpg'
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png';
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
+definePageMeta({
+	layout: 'default'
+})
+
+const authStore = useAuthStore()
 
 const post = ref<PostSingleType | null>(null);
 
 /** Computed value of all of the "actual" comments in the poststore */
 const route = useRoute()
+const postRoute = (route.params.id).toString()
+
+const authorProfilePage = ref("")
+
 const loggedInUserStore = useLoggedInUserStore()
 
-onMounted(async () => {
-	const postURL = `http://localhost:8888/api/post/${route.params.id}/`;
+const fetchPostRelated = async () => {
+	console.log(route.params.id)
+	const postURL = urls.api.posts.singlePost.view(postRoute);
 
 
 	/** The actual fetch, that fetches one post */
 	post.value = await getSinglePost(postURL);
 
-	const commentsURL = `http://localhost:8888/api/post/${route.params.id}/comments/`
-	await getSinglePostComments(commentsURL)
-});
+	/** The username of the author of the post */
+	const username = post.value?.author.username ?? ""
 
-onMounted(async () => {
+	/** The appropriate link to the author user profile page */
+	authorProfilePage.value = `/user/${username}` ?? ""
+
+	const commentsURL = urls.api.posts.singlePost.comments(postRoute)
+	await getSinglePostComments(commentsURL)
 
 	/**
+	 * Only checks this if the web client is authenticated
+	 */
+	if (authStore.isAuthenticated) {
+		/**
 	 * I need to fetch this to be able to check if I am following the user
 	 * 
 	 * Checks if the pinia store already has information about whom the logged-in user is following. 
 	 */
-	if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
-		await getLoggedInUserProfile("http://localhost:8888/api/min-side/");
+		if (!Array.isArray(loggedInUserStore.idArrayOfLoggedInUserFollowingUsers) || !loggedInUserStore.idArrayOfLoggedInUserFollowingUsers.length) {
+			await getLoggedInUserProfile(urls.users.myUser.profile);
+		}
+
 	}
+};
 
-})
+onBeforeMount(async() =>await fetchPostRelated())
 
-definePageMeta({
-	layout: 'default'
-})
+
 
 </script>
 

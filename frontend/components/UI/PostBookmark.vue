@@ -31,7 +31,6 @@ const color = ref("fill-black");
 const toast = useToast()
 
 // Importing the loggedInUserStore from the store directory
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 // Using the loggedInUserStore for managing the saved posts
 const loggedInUserStore = useLoggedInUserStore();

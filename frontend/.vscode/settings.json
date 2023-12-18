@@ -3,7 +3,6 @@
     "components\\modules\\Editor\\CustomImage.test.ts": true,
     "components\\modules\\Editor\\CustomImage.ts": true,
     ".prettierignore": true,
-    ".gitignore": true,
     ".npmrc": true,
     ".nuxt": true,
     ".output": true,
@@ -12,14 +11,12 @@
     "auto-imports.d.ts": true,
     "components.d.ts": true,
     "coverage": true,
-    "node_modules": true,
-    "public": true,
     "vue-shims.d.ts": true,
     "yarn-error.log": true,
-    "yarn.lock": true,
     "components\\modules\\Editor\\EditorImageNode.vue": true,
     "components\\modules\\Editor\\EditorBubbleMenu.test.ts": true,
-    "components\\modules\\Editor\\EditorBubbleMenu.vue": true
+    "components\\modules\\Editor\\EditorBubbleMenu.vue": true,
+    "components\\modules\\Blogg\\FeedTopChoiceAllButton.test.ts": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
@@ -29,5 +26,28 @@
     "javascript",
     "javascriptreact",
     "vue"
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.experimental.configFile": "tailwind.config.ts",
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "ui:\\s*{([^)]*)\\s*}",
+      "[\"'`]([^\"'`]*).*?[\"'`]"
+    ],
+    [
+      "/\\*ui\\*/\\s*{([^;]*)}",
+      ":\\s*[\"'`]([^\"'`]*).*?[\"'`]"
+    ]
+  ],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "ui"
   ]
 }

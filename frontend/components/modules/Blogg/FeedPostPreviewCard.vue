@@ -1,6 +1,8 @@
 <template>
 	<div class="article grid-cols-12 grid gap-8 mb-16">
+
 		<div id="left-col-article" class="col-start-1 col-end-9">
+			
 			<span class="flex items-center w-full mb-2">
 				<span class="user-picture flex items-center">
 					<slot name="profile_picture"></slot>
@@ -39,11 +41,11 @@
 						<slot name="amount-of-comments"></slot>
 					</span>
 
-					<span id="save-article" class="me-2 w-auto h-auto mx-auto flex items-center justify-center">
+					<span id="save-article" class="me-2">
 						<slot name="save-article-icon"></slot>
 					</span>
 
-					<span id="article-options" class="w-auto h-auto mx-auto flex items-center justify-center">
+					<span id="article-options" class="">
 
 						<slot name="more-options-icon"></slot>
 

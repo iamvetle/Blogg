@@ -1,6 +1,5 @@
 import InputFile from './InputFile.vue';
-import { VueWrapper, shallowMount } from '@vue/test-utils';
-import { createTestingPinia } from '@pinia/testing';
+import { shallowMount } from '@vue/test-utils';
 
 let wrapper: any;
 

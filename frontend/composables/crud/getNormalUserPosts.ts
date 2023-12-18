@@ -7,21 +7,10 @@ import { getMethod } from '~/services/apiByCRUD';
  *  
  * @returns - The request response (.data, .status)
  */
-export const getNormalUserPosts = async (userURL: string): Promise<NormalUserSnippetPostType | null> => {
-
-    /**
-     * Fetches the token from local storage, or just returns null.
-     */
-	const token = retrieveToken();
-
-	if (token === null) {
-		console.log("There was no token")
-		return null
-	}
+export const getNormalUserPosts = async (userURL: string): Promise<SnippetPostMultipleType | null> => {
 
 	const headers = {
 		"Content-Type": "application/json",
-		Authorization: `Token ${token}`,
 	};
 
         const response = await getMethod(userURL, headers)

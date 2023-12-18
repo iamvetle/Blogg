@@ -7,7 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import { useSearchStore } from '~/store/searchStore';
 
 const searchStore = useSearchStore()
 

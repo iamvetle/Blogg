@@ -4,7 +4,6 @@ import { createTestingPinia } from '@pinia/testing';
 
 import BaseImage from '~/components/base/BaseImage.vue';
 
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 import UploadImage from '~/components/form/UploadImage.vue';
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png';

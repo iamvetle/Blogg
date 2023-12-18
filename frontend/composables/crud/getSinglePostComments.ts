@@ -1,5 +1,4 @@
 import { getMethod } from "~/services/apiByCRUD";
-import { usePostStore } from '~/store/postStore';
 
 /**
  * Fetches comments for a single post from the API using a GET request.
@@ -11,11 +10,8 @@ import { usePostStore } from '~/store/postStore';
 export const getSinglePostComments = async (url: string): Promise<Comment[] | null> => {
 	try {
 		const postStore = usePostStore();
-
-		const token = localStorage.getItem("token");
 		const headers = {
 			"Content-Type": "application/json",
-			"Authorization": `Token ${token}`,
 		};
 
 		const response = await getMethod(url, headers);

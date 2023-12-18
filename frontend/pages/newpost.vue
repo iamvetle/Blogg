@@ -4,6 +4,7 @@
 
 			<div id="direct-editor" class="mx-auto">
 				<ClientOnly>
+					<!-- <EditorCardChooseTags/> -->
 					<EditorCard @newPostMaterial="publish" />
 				</ClientOnly>
 			</div>
@@ -18,14 +19,15 @@
 </template>
 
 <script setup lang="ts">
-import EditorCard from '~/components/modules/Editor/EditorCard.vue';
-import { postCreateNewPost } from '../composables/crud/postCreateNewPost';
-
 definePageMeta({
-	layout: "creating"
+	layout: "creating",
+	middleware:["auth-guard"]
 })
 
-const baseURL = "http://localhost:8888/api/newpost/"
+import EditorCard from '~/components/modules/Editor/EditorCard.vue';
+
+
+const baseURL = urls.api.posts.singlePost.action.newPost
 
 /** If this is true a success message is rendered */
 const postState = ref<false | true | null>(null);

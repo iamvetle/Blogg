@@ -4,7 +4,6 @@ import { createTestingPinia } from '@pinia/testing';
 
 import SinglePostCommentsList from '~/components/modules/Blogg/SinglePostCommentsList.vue';
 import SinglePostCommentAdd from './SinglePostCommentAdd.vue';
-import { usePostStore } from '~/store/postStore';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();

@@ -1,20 +1,21 @@
 <template>
-	<!-- Background color -->
-	<div id="site-wrapper" class="bg-surface">
-		<ClientOnly>
+	<div id="modal" :class="store.backgroundForModal">
+		<!-- Possibly gray,blur background-->
+		<!-- Background color -->
+		<div id="site-wrapper" class="bg-background">
 			<TheNavbar />
-		</ClientOnly>
-		<main>
-			<div>
-				<slot />
-			</div>
-		</main>
-		<LazyTheFooter />
+			<main>
+				<div>
+					<slot />
+				</div>
+			</main>
+			<LazyTheFooter />
+		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-
+const store = useGeneralStore();
 </script>
 
 <style scoped>

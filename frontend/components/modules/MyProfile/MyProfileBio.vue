@@ -7,14 +7,18 @@
 
 
             <div data-test="bio_input_output" id="bio-text" class="break-words">
-                <InputTextarea maxlength="275" :class="borderAndRingClass" class="py-4 mb-1 border-none resize-none rounded-lg w-full
+                <UTextarea maxlength="1000" :class="borderAndRingClass" variant="none" autoresize class="py-4 border-none resize-none rounded-lg w-full
                 
                 hover:ring-primaryContainer
                 hover:ring-2
+
+                focus-within:ring-primary
+                focus-within:ring-2
                 
                 focus:ring-primary
-                focus:ring-2
-                " v-model.trim="bioText" id="bio" placeholder="Write bio here" />
+                focus:ring-2" v-model.trim="bioText" id="bio" placeholder="Write bio here" />
+
+
             </div>
             <div v-if="showSaveBioInputButton" data-test="submit_bio_input_change">
                 <BaseButton
@@ -26,7 +30,6 @@
 </template>
 
 <script setup lang="ts">
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 import BaseButton from '~/components/base/BaseButton.vue';
 
 const emit = defineEmits(["bioUpdate"])

@@ -117,9 +117,9 @@
 
 				<p class="text-sm font-light text-gray-500 dark:text-gray-400 mt-4">
 					Already have an account?
-					<nuxt-link to="/login/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">
+					<NuxtLink to="/login/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">
 						Login here
-					</nuxt-link>>
+					</NuxtLink>>
 				</p>
 			</FormKit>
 		</div>
@@ -144,12 +144,11 @@ const baseMessageClass = "prose text-onSurface text-sm text-red-500"
 const genders = ["Male", "Female", "Other"]
 
 const submitted = ref(false);
-const baseURL = "http://localhost:8888/api/registrer/";
 
 const all = ref(null)
 
 const submitForm = async (formData) => {
-	const responseData = await postForm(baseURL, formData);
+	const responseData = await postForm(urls.users.auth.register, formData);
 	if (responseData) {
 		submitted.value = true;
 		setTimeout(() => {

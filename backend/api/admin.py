@@ -1,7 +1,9 @@
 from django.contrib import admin
-from .models import CustomUser, Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
+from api.models import Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
+from django.contrib.auth import get_user_model
+from users.models import CustomUser
 
 
 # Inlines -> (is put inside the admin models)
@@ -49,7 +51,7 @@ class SavedPostInline(admin.TabularInline):
 
     def has_change_permission(self, request, obj=None):
         """
-        Only allow saving a new post if obj is None (which means it's a new a editing a book already saved)
+        Only allow saving a new post if obj is None (which means it's a new a editing a book? - post?- already saved)
         """
         if obj is None:
             return True

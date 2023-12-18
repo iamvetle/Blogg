@@ -58,8 +58,11 @@ const toPlainText = (htmlContent: string) => {
  */
 
 const deletePostRequest = async (postId: number) => {
-    const minSideMyPostURL = `http://localhost:8888/api/min-side/posts/${postId}/edit/`
-    const minSideMyPostsURL = `http://localhost:8888/api/min-side/posts/`
+    /**
+     * ! change later
+     */
+    const minSideMyPostURL = urls.api.posts.singlePost.action.edit(postId)
+    const minSideMyPostsURL = urls.api.posts.myuser
 
     const responseData = await deleteLoggedInUserPost(minSideMyPostURL)
 

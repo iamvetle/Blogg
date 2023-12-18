@@ -7,18 +7,19 @@
 
         <hr>
 
-        <SinglePostCommentAdd :post-id="post.id" />
+        <SinglePostCommentAdd v-if="authStore.isAuthenticated" :post-id="post.id" />
     </div>
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore';
 
 /**
  * This component is part of the single post [id] page
  * It deals with the comments associated with the post and
  * other comments stuff
  */
+
+const authStore = useAuthStore()
 
 const postStore = usePostStore()
 

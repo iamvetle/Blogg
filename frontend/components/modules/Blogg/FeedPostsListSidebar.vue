@@ -9,7 +9,7 @@
 					<img data-test="imgprop" :src="profilePicture" class="w-20 h-auto text-onPrimaryContainer mr-4">
 				</template>
 
-				<template	 #username v-if="loggedInUserStore.loggedInUserProfile.username">
+				<template #username v-if="loggedInUserStore.loggedInUserProfile.username">
 					{{ loggedInUserStore.loggedInUserProfile.username }}
 				</template>
 
@@ -78,9 +78,13 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * @async
+ * 
+ * Async component
+ */
 
 import profile_picture from '~/assets/placeholder-profile-picture.png'
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 const loggedInUserStore = useLoggedInUserStore()
 
@@ -107,6 +111,22 @@ const profilePicture = computed(() => {
 
 })
 
+
+/**
+ * All of the data that is needed from the api endpoint is fetched here.
+ */
+const fetchData = async () => {
+	/**
+	* Fetches the profile information of the logged-in user
+	*/
+	const loggedInUserProfileURL = urls.users.myUser.profile
+	console.log(loggedInUserProfileURL)
+	await getLoggedInUserProfile(loggedInUserProfileURL)
+
+
+}
+
+await fetchData()
 </script>
 
 <style scoped></style>

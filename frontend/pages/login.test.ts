@@ -2,63 +2,69 @@ import { mount } from '@vue/test-utils'
 import login from './login.vue'
 import LoginCard from '~/components/modules/Auth/LoginCard.vue'
 import { createTestingPinia } from '@pinia/testing'
-import { useGeneralStore } from '@/store/generalStore';
+import { useAuthStore } from '~/store/authStore';
 
 let wrapper
 let pinia = createTestingPinia()
-let generalStore = useGeneralStore(pinia)
-
-vi.stubGlobal("definePageMeta", () => {
-    return null
-})
+let authStore:any
 
 
 const factory = () => {
     return mount(login, {
         global: {
+            plugins:[pinia],
             components: {
                 LoginCard
             },
             stubs: {
                 "LoginCard":true
             },
-            plugins: [pinia]
         }
     })
 }
 
 describe('login page testing', () => {
 
+    beforeEach(() => {
+        vi.stubGlobal("definePageMeta", () => {
+            return null
+        })
+    })
+
+    authStore = useAuthStore(pinia)
+
     test('Should NOT render loginform when the user is authenticated', async () => {
 
         // Arrange
         wrapper = factory()
-        generalStore.isAuthenticated = true
+        authStore.isAuthenticated = true
 
-        await (wrapper.vm as any).$nextTick()
-
-        const login = wrapper.findComponent({ name: "LoginCard" })
-
-        // no act?
-
-        // Assert
-        expect(wrapper.exists()).toBe(true)
-        expect(login.exists()).toBe(false)
-    })
-
-    test('Should render the loginform when the user is not authenticated', async () => {
-        // Arrange
-        wrapper = factory()
-        generalStore.isAuthenticated = false
-        
         await (wrapper.vm as any).$nextTick()
 
         const loginCard = wrapper.findComponent({ name: "LoginCard" })
 
         // no act?
 
-        // Assert        
+        // Assert
+        expect(wrapper.exists()).toBe(true)
+        expect(loginCard.exists()).toBe(false)
+    })
+
+    test('Should render the loginform when the user is NOT authenticated', async () => {
+        // Arrange
+        wrapper = factory()
+        authStore.isAuthenticated = false
+        
+        await (wrapper.vm as any).$nextTick()
+
+        const loginCard = wrapper.findComponent({ name: "LoginCard" })
+ 
         expect(loginCard.exists()).toBe(true)
     })
+    test('Should match snapshot', () => {
+        wrapper = factory()
+        expect(wrapper).toMatchSnapshot()
+    })
+    
 }
 )

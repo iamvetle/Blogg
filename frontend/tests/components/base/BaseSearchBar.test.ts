@@ -1,6 +1,5 @@
 import { VueWrapper, shallowMount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import { useGeneralStore } from '~/store/generalStore'
 import BaseSearchbar from '~/components/base/BaseSearchBar.vue'
 
 describe('Testing the BaseSearchBar component', () => {

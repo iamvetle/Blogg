@@ -2,7 +2,6 @@ import MyProfileNumOfFollowing from './MyProfileNumOfFollowing.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
-import { useLoggedInUserStore } from '~/store/loggedInUserStore';
 
 import NumOfFollowing from '~/components/UI/NumOfFollowing.vue';
 

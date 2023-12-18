@@ -16,7 +16,7 @@
 							</p>
 						</span>
 					</template>
-								
+
 					<template #date_published v-if="post.date_published">
 						<span>
 							<p class="font-light" v-text="post.date_published"></p>
@@ -44,21 +44,20 @@
 						</span>
 					</template>
 
-					<template #tags v-if="post.tags">
+					<!-- Needs to be authenticated to be able to save posts-->
+					<template #tags v-if="post.tags && authStore.isAuthenticated">
 						<span class="me-1" v-for="tag in post.tags">
-							<BaseTag :key="post.id" :text="tag.name"/>
+							<BaseTag :key="post.id" :text="tag.name" />
 						</span>
 					</template>
 
 					<template #amount-of-comments v-if="post.num_of_comments !== null">
-						<span>{{ post.num_of_comments }} comments</span>						
+						<span>{{ post.num_of_comments }} comments</span>
 					</template>
 
-					<template #save-article-icon v-if="(post.id) && (!checkIfLoggedInUser(post.author.username))">
+					<template #save-article-icon v-if="(post.id) && (!checkIfLoggedInUser(post.author.username)) && authStore.isAuthenticated">
 
-						<PostBookmark
-						:post="post.id"
-						/>
+						<PostBookmark :post="post.id" />
 
 					</template>
 
@@ -81,12 +80,12 @@
 </template>
 
 <script setup lang="ts">
-import { usePostStore } from '~/store/postStore'
-
 import account_picture from '~/assets/account-pin-circle-line.svg'
+
 const post_image = ref('https://picsum.photos/500/300')
 
 const postStore = usePostStore()
+const authStore = useAuthStore()
 
 const color = ref("fill-black")
 
@@ -105,7 +104,7 @@ const toPlainText = (htmlContent: string) => {
  * Redirects the web client to the profile page of the author
  * @param username 
  */
-const redirect_to_author_page = (username: SnippetPostSingleType) => {
+const redirect_to_author_page = (username:string) => {
 
 	return navigateTo(`/user/${username}`)
 }
@@ -114,7 +113,7 @@ const redirect_to_author_page = (username: SnippetPostSingleType) => {
  * Redirects the web client to the page of the post 
  * @param post 
  */
-const redirect_to_post_page = (postId: SnippetPostSingleType) => {
+const redirect_to_post_page = (postId: number) => {
 
 	return navigateTo(`/post/${postId}`)
 }
@@ -123,13 +122,28 @@ const redirect_to_post_page = (postId: SnippetPostSingleType) => {
  * 
  * @param author - the 'author' part of the relevant 'post'
  */
-const author_full_name = (author: SnippetPostSingleType) => {
+const author_full_name = (author: AuthorType) => {
 
-	console.log(author) // print to self
+	// console.log(author) // print to self
 
 	const full_name = `${author.first_name} ${author.last_name}`
 	return full_name.trim() == "" ? author.username : full_name
 }
+
+const paginationStore = usePaginationStore()
+
+onBeforeMount(async () => {
+	console.log("onBeforeMount")
+	/**
+	* Fetches all posts in snippets (not full content length)
+	* 
+	* * not strictly necesarry as it is already reset when the index get's unmounted (but what about when the index wasnt mounted in the first palce do? - dont know)
+	*/
+	paginationStore.activeFetchURL = urls.api.posts.feed
+	console.log(paginationStore.activeFetchURL)
+
+	await getPostMultipleSnippet(paginationStore.activeFetchURL)
+})
 
 </script>
 

@@ -1,26 +1,19 @@
 <template>
 	<div id="site-wrapper" class="bg-background">
-		<ClientOnly>
-			<TheNavbar/>
-		</ClientOnly>
+		<TheNavbar />
 		<main>
 			<div>
 				<slot />
 			</div>
 		</main>
-	<div>
-		<LazyFeedPagination v-if="postStore.posts" />
-		<LazyTheFooter/>
-	</div>
+		<div>
+			<LazyFeedPagination />
+			<LazyTheFooter />
+		</div>
 	</div>
 </template>
 
-<script setup lang="ts">
-import { usePostStore } from '~/store/postStore';
-
-const postStore = usePostStore()
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 #site-wrapper {

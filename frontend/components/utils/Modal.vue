@@ -50,7 +50,7 @@ import {
     // DialogDescription,
 } from '@headlessui/vue'
 
-import { useGeneralStore } from '~/store/generalStore';
+
 
 /**
  * Is shown immidietly when the component is mounted.
