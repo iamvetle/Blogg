@@ -13,7 +13,6 @@
     "coverage": true,
     "vue-shims.d.ts": true,
     "yarn-error.log": true,
-    "yarn.lock": true,
     "components\\modules\\Editor\\EditorImageNode.vue": true,
     "components\\modules\\Editor\\EditorBubbleMenu.test.ts": true,
     "components\\modules\\Editor\\EditorBubbleMenu.vue": true,

@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 			enabled: true,
 
 		},
+		
 	},
 	debug:true,
 	sourcemap: {

@@ -64,6 +64,9 @@
 
 // import noimage from '~/assets/noimage.jpg'
 import placeholder_profile_picture from '~/assets/placeholder-profile-picture.png';
+definePageMeta({
+	layout: 'default'
+})
 
 const authStore = useAuthStore()
 
@@ -71,7 +74,7 @@ const post = ref<PostSingleType | null>(null);
 
 /** Computed value of all of the "actual" comments in the poststore */
 const route = useRoute()
-const postRoute = route.params.id.toString()
+const postRoute = (route.params.id).toString()
 
 const loggedInUserStore = useLoggedInUserStore()
 
@@ -104,9 +107,7 @@ const fetchPostRelated = async () => {
 
 onBeforeMount(async() =>await fetchPostRelated())
 
-definePageMeta({
-	layout: 'default'
-})
+
 
 </script>
 

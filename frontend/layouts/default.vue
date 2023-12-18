@@ -2,9 +2,7 @@
 	<div id="modal" :class="store.backgroundForModal"> <!-- Possibly gray,blur background-->
 		<!-- Background color -->
 		<div id="site-wrapper" class="bg-background">
-			<ClientOnly>
 				<TheNavbar />
-			</ClientOnly>
 			<main>
 				<div>
 					<slot />

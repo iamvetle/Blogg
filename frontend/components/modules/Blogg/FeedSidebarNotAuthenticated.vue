@@ -1,10 +1,34 @@
 <template>
-    <div class="text-lg mb-4">
-        <h3>Login to be be able to make your own posts</h3>
-    </div>
-    <div class="space-x-4">
-        <NuxtLink to="/login"><span data-test="login_here">Login</span></NuxtLink>
-        <NuxtLink to="/registrer"><span data-test="register_here">Register</span></NuxtLink>
+    <div>
+        <UCard>
+            <template #header>
+                <div class="prose">
+                    <h2>Create an account</h2>
+                </div>
+            </template>
+
+            <template #default>
+                <div class="px-4 prose">
+                    <span class="block font-bold mb-2">By creating an account you can:</span>
+                    <ul class="">
+                        <li>Bookmark posts</li>
+                        <li>Create you own posts</li>
+                        <li>Follow users</li>
+                        <li>Comment on posts</li>
+                    </ul>
+                </div>
+            </template>
+            <template #footer>
+                <div class="space-x-6 flex justify-center">
+                    <NuxtLink to="/login">
+                        <UButton class="hover:shadow-md hover:bg-onPrimary text-primary bg-onPrimary ring-primary ring-1">Login</UButton>
+                    </NuxtLink>
+                    <NuxtLink to="/registrer">
+                        <UButton class="hover:shadow-md hover:bg-primary bg-primary" >Register</UButton>
+                    </NuxtLink>
+                </div>
+            </template>
+        </UCard>
     </div>
 </template>
 

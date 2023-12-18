@@ -7,7 +7,7 @@ import { getMethod } from '~/services/apiByCRUD';
  *  
  * @returns - The request response (.data, .status)
  */
-export const getNormalUserPosts = async (userURL: string): Promise<NormalUserSnippetPostType | null> => {
+export const getNormalUserPosts = async (userURL: string): Promise<SnippetPostMultipleType | null> => {
 
 	const headers = {
 		"Content-Type": "application/json",

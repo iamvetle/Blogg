@@ -1,8 +1,6 @@
 <template>
 	<div id="site-wrapper" class="bg-background">
-		<ClientOnly>
-			<TheNavbar />
-		</ClientOnly>
+		<TheNavbar />
 		<main>
 			<div>
 				<slot />
@@ -15,9 +13,7 @@
 	</div>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 #site-wrapper {

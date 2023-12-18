@@ -104,7 +104,7 @@ const toPlainText = (htmlContent: string) => {
  * Redirects the web client to the profile page of the author
  * @param username 
  */
-const redirect_to_author_page = (username: SnippetPostSingleType) => {
+const redirect_to_author_page = (username:string) => {
 
 	return navigateTo(`/user/${username}`)
 }
@@ -113,7 +113,7 @@ const redirect_to_author_page = (username: SnippetPostSingleType) => {
  * Redirects the web client to the page of the post 
  * @param post 
  */
-const redirect_to_post_page = (postId: SnippetPostSingleType) => {
+const redirect_to_post_page = (postId: number) => {
 
 	return navigateTo(`/post/${postId}`)
 }
@@ -122,7 +122,7 @@ const redirect_to_post_page = (postId: SnippetPostSingleType) => {
  * 
  * @param author - the 'author' part of the relevant 'post'
  */
-const author_full_name = (author: SnippetPostSingleType) => {
+const author_full_name = (author: AuthorType) => {
 
 	// console.log(author) // print to self
 

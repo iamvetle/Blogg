@@ -1,10 +1,9 @@
 <template>
-	<div id="modal" :class="store.backgroundForModal"> <!-- Possibly gray,blur background-->
+	<div id="modal" :class="store.backgroundForModal">
+		<!-- Possibly gray,blur background-->
 		<!-- Background color -->
 		<div id="site-wrapper" class="bg-background">
-			<ClientOnly>
-				<TheNavbar />
-			</ClientOnly>
+			<TheNavbar />
 			<main>
 				<div>
 					<slot />
@@ -16,9 +15,7 @@
 </template>
 
 <script setup lang="ts">
-
-const store = useGeneralStore()
-
+const store = useGeneralStore();
 </script>
 
 <style scoped>
@@ -31,4 +28,4 @@ const store = useGeneralStore()
 main {
 	flex: 1;
 }
-</style>  
+</style>
