@@ -65,11 +65,14 @@ const factory = () => {
             },
             mocks: {},
             stubs: {
-                "FeedPostPreviewCard":true
+                FeedPostPreviewCard:true,
+                BaseTag:true,
+                PostBookmark:true,
+                BaseIconMoreOptions:true,  
             },
         },
-        props: {
-            user_posts: mockUserposts
+        props:{
+            username:"testUsername"
         }
     })
 };
@@ -89,22 +92,38 @@ describe('Testing the component that holds and renders all of the posts in the u
             wrapper.unmount();
         }
     });
+
     test('Should exist', () => {
         wrapper = factory()
 
         expect(wrapper.exists()).toBe(true)
+    });
+
+    test('Should have the username prop', () => {
+        wrapper = factory()
+        
+        expect(wrapper.props("username")).toBe("testUsername")        
     })
+
     test('Should render the post preview cards the components', async () => {
         wrapper = factory()
 
         await wrapper.vm.$nextTick()
 
-        console.log(wrapper.html())
+        wrapper.vm.posts = {
+            results:mockUserposts
+        } 
+        await wrapper.vm.$nextTick()
 
         const articleCard = wrapper.findComponent({ name: "FeedPostPreviewCard" });
 
         expect(articleCard.exists()).toBe(true);
+    });
+    test('Should match snapshot', () => {
+        wrapper = factory()
+        expect(wrapper.html()).toMatchSnapshot()
     })
+    
 
 
 });

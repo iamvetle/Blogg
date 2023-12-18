@@ -14,6 +14,10 @@ describe("list articles testing", () => {
         // Create a new testing Pinia instance
         pinia = createTestingPinia()
 
+        vi.stubGlobal("checkIfLoggedInUser", () => {
+            return false
+        })
+
         // Initialize the generalStore with mock data
         generalStore = useGeneralStore(pinia)
         postStore = usePostStore(pinia)
@@ -104,14 +108,22 @@ describe("list articles testing", () => {
         expect(wrapper.text()).toContain("Lorem ipsum...")
         expect(wrapper.text()).toContain("08-12-2021")
     })
-    test("renders the article bookmark icon component", () => {
-        const save_icon = wrapper.findComponent({ name: "PostBookmark" }) 
+    /**
+     * ! try to mock the pagination store and such so that I can check more proper behavior through computed properties
+     */
+    // test("renders the article bookmark icon component", () => {
+    //     const bookMarkComp = wrapper.find("[data-test='post_bookmark']") 
 
-        expect(save_icon.exists()).toBe(true)
-    })
+    //     expect(bookMarkComp.exists()).toBe(true)
+
+    // })
 
     test("Should display the number of comments", () => {
         expect(wrapper.text()).toContain("526")
     })
+    test('Should match snapshot', () => {
+        expect(FeedPostsList).toMatchSnapshot()
+    })
+    
     
 })

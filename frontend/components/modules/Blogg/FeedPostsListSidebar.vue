@@ -126,7 +126,7 @@ const fetchData = async () => {
 
 }
 
-await fetchData()
+onBeforeMount(() => fetchData())
 </script>
 
 <style scoped></style>

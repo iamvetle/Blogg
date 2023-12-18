@@ -103,7 +103,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -125,6 +127,7 @@ VueWrapper {
                 "loggedInUserProfile": {
                   "profile_picture": "~/src/picture.jpeg",
                 },
+                "resetStore": [MockFunction spy],
               },
             },
             "_testing": true,
@@ -466,7 +469,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -488,6 +493,7 @@ VueWrapper {
               "loggedInUserProfile": {
                 "profile_picture": "~/src/picture.jpeg",
               },
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,
@@ -842,7 +848,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -864,6 +872,7 @@ VueWrapper {
                   "loggedInUserProfile": {
                     "profile_picture": "~/src/picture.jpeg",
                   },
+                  "resetStore": [MockFunction spy],
                 },
               },
               "_testing": true,
@@ -1205,7 +1214,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -1227,6 +1238,7 @@ VueWrapper {
                 "loggedInUserProfile": {
                   "profile_picture": "~/src/picture.jpeg",
                 },
+                "resetStore": [MockFunction spy],
               },
             },
             "_testing": true,
@@ -1706,7 +1718,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -1728,6 +1742,7 @@ VueWrapper {
                       "loggedInUserProfile": {
                         "profile_picture": "~/src/picture.jpeg",
                       },
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -2069,7 +2084,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -2091,6 +2108,7 @@ VueWrapper {
                     "loggedInUserProfile": {
                       "profile_picture": "~/src/picture.jpeg",
                     },
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -2429,7 +2447,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -2766,6 +2786,7 @@ VueWrapper {
                 "loggedInUserProfile": {
                   "profile_picture": "~/src/picture.jpeg",
                 },
+                "resetStore": [MockFunction spy],
               },
             },
           },
@@ -2804,7 +2825,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -3141,6 +3164,7 @@ VueWrapper {
               "loggedInUserProfile": {
                 "profile_picture": "~/src/picture.jpeg",
               },
+              "resetStore": [MockFunction spy],
             },
             "profile_picture": ComputedRefImpl {
               "__v_isReadonly": true,
@@ -3848,7 +3872,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -4185,6 +4211,7 @@ VueWrapper {
                 "loggedInUserProfile": {
                   "profile_picture": "~/src/picture.jpeg",
                 },
+                "resetStore": [MockFunction spy],
               },
             },
           },
@@ -4560,7 +4587,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -4897,6 +4926,7 @@ VueWrapper {
               "loggedInUserProfile": {
                 "profile_picture": "~/src/picture.jpeg",
               },
+              "resetStore": [MockFunction spy],
             },
             "profile_picture": "~/src/picture.jpeg",
             "removeProfileImage": [Function],
@@ -4990,7 +5020,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -5012,6 +5044,7 @@ VueWrapper {
                                       "loggedInUserProfile": {
                                         "profile_picture": "~/src/picture.jpeg",
                                       },
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -5353,7 +5386,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -5375,6 +5410,7 @@ VueWrapper {
                                     "loggedInUserProfile": {
                                       "profile_picture": "~/src/picture.jpeg",
                                     },
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -5951,7 +5987,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -5973,6 +6011,7 @@ VueWrapper {
                                       "loggedInUserProfile": {
                                         "profile_picture": "~/src/picture.jpeg",
                                       },
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -6314,7 +6353,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -6336,6 +6377,7 @@ VueWrapper {
                                     "loggedInUserProfile": {
                                       "profile_picture": "~/src/picture.jpeg",
                                     },
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -6961,7 +7003,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -6983,6 +7027,7 @@ VueWrapper {
                                       "loggedInUserProfile": {
                                         "profile_picture": "~/src/picture.jpeg",
                                       },
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -7324,7 +7369,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -7346,6 +7393,7 @@ VueWrapper {
                                     "loggedInUserProfile": {
                                       "profile_picture": "~/src/picture.jpeg",
                                     },
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -8064,7 +8112,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -8086,6 +8136,7 @@ VueWrapper {
                                   "loggedInUserProfile": {
                                     "profile_picture": "~/src/picture.jpeg",
                                   },
+                                  "resetStore": [MockFunction spy],
                                 },
                               },
                               "_testing": true,
@@ -8427,7 +8478,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -8449,6 +8502,7 @@ VueWrapper {
                                 "loggedInUserProfile": {
                                   "profile_picture": "~/src/picture.jpeg",
                                 },
+                                "resetStore": [MockFunction spy],
                               },
                             },
                             "_testing": true,
@@ -9111,7 +9165,9 @@ VueWrapper {
                               "$subscribe": [Function],
                               "_customProperties": Set {},
                               "_hmrPayload": {
-                                "actions": {},
+                                "actions": {
+                                  "resetStore": [Function],
+                                },
                                 "getters": {},
                                 "hotState": RefImpl {
                                   "__v_isRef": true,
@@ -9133,6 +9189,7 @@ VueWrapper {
                               "loggedInUserProfile": {
                                 "profile_picture": "~/src/picture.jpeg",
                               },
+                              "resetStore": [MockFunction spy],
                             },
                           },
                           "_testing": true,
@@ -9474,7 +9531,9 @@ VueWrapper {
                             "$subscribe": [Function],
                             "_customProperties": Set {},
                             "_hmrPayload": {
-                              "actions": {},
+                              "actions": {
+                                "resetStore": [Function],
+                              },
                               "getters": {},
                               "hotState": RefImpl {
                                 "__v_isRef": true,
@@ -9496,6 +9555,7 @@ VueWrapper {
                             "loggedInUserProfile": {
                               "profile_picture": "~/src/picture.jpeg",
                             },
+                            "resetStore": [MockFunction spy],
                           },
                         },
                         "_testing": true,
@@ -10056,7 +10116,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -10078,6 +10140,7 @@ VueWrapper {
                                   "loggedInUserProfile": {
                                     "profile_picture": "~/src/picture.jpeg",
                                   },
+                                  "resetStore": [MockFunction spy],
                                 },
                               },
                               "_testing": true,
@@ -10419,7 +10482,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -10441,6 +10506,7 @@ VueWrapper {
                                 "loggedInUserProfile": {
                                   "profile_picture": "~/src/picture.jpeg",
                                 },
+                                "resetStore": [MockFunction spy],
                               },
                             },
                             "_testing": true,
@@ -11069,7 +11135,9 @@ VueWrapper {
                                   "$subscribe": [Function],
                                   "_customProperties": Set {},
                                   "_hmrPayload": {
-                                    "actions": {},
+                                    "actions": {
+                                      "resetStore": [Function],
+                                    },
                                     "getters": {},
                                     "hotState": RefImpl {
                                       "__v_isRef": true,
@@ -11091,6 +11159,7 @@ VueWrapper {
                                   "loggedInUserProfile": {
                                     "profile_picture": "~/src/picture.jpeg",
                                   },
+                                  "resetStore": [MockFunction spy],
                                 },
                               },
                               "_testing": true,
@@ -11432,7 +11501,9 @@ VueWrapper {
                                 "$subscribe": [Function],
                                 "_customProperties": Set {},
                                 "_hmrPayload": {
-                                  "actions": {},
+                                  "actions": {
+                                    "resetStore": [Function],
+                                  },
                                   "getters": {},
                                   "hotState": RefImpl {
                                     "__v_isRef": true,
@@ -11454,6 +11525,7 @@ VueWrapper {
                                 "loggedInUserProfile": {
                                   "profile_picture": "~/src/picture.jpeg",
                                 },
+                                "resetStore": [MockFunction spy],
                               },
                             },
                             "_testing": true,
@@ -12135,7 +12207,9 @@ VueWrapper {
                               "$subscribe": [Function],
                               "_customProperties": Set {},
                               "_hmrPayload": {
-                                "actions": {},
+                                "actions": {
+                                  "resetStore": [Function],
+                                },
                                 "getters": {},
                                 "hotState": RefImpl {
                                   "__v_isRef": true,
@@ -12157,6 +12231,7 @@ VueWrapper {
                               "loggedInUserProfile": {
                                 "profile_picture": "~/src/picture.jpeg",
                               },
+                              "resetStore": [MockFunction spy],
                             },
                           },
                           "_testing": true,
@@ -12498,7 +12573,9 @@ VueWrapper {
                             "$subscribe": [Function],
                             "_customProperties": Set {},
                             "_hmrPayload": {
-                              "actions": {},
+                              "actions": {
+                                "resetStore": [Function],
+                              },
                               "getters": {},
                               "hotState": RefImpl {
                                 "__v_isRef": true,
@@ -12520,6 +12597,7 @@ VueWrapper {
                             "loggedInUserProfile": {
                               "profile_picture": "~/src/picture.jpeg",
                             },
+                            "resetStore": [MockFunction spy],
                           },
                         },
                         "_testing": true,
@@ -13326,7 +13404,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -13348,6 +13428,7 @@ VueWrapper {
                     "loggedInUserProfile": {
                       "profile_picture": "~/src/picture.jpeg",
                     },
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -13689,7 +13770,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -13711,6 +13794,7 @@ VueWrapper {
                   "loggedInUserProfile": {
                     "profile_picture": "~/src/picture.jpeg",
                   },
+                  "resetStore": [MockFunction spy],
                 },
               },
               "_testing": true,
@@ -14108,7 +14192,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -14130,6 +14216,7 @@ VueWrapper {
               "loggedInUserProfile": {
                 "profile_picture": "~/src/picture.jpeg",
               },
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,

@@ -1,17 +1,15 @@
 import NavbarLoggedIn from './NavbarLoggedIn.vue'
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
-import { usePostStore } from '../../store/postStore';
+import { createTestingPinia } from '@pinia/testing';
 
 let wrapper: any;
-let postStore:any
-let searchStore:any
-let paginationStore:any
+let pinia = createTestingPinia()
 
 const factory = () => {
     return shallowMount(NavbarLoggedIn, {
         global: {
-            plugins: [],
+            plugins: [pinia],
             components: {},
             mocks: {},
             stubs: {},

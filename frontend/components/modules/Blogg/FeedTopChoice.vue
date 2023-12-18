@@ -19,7 +19,7 @@
 				</div>
 			</div>
 			<div class="col-span-4" data-test="feed_filter_component">
-				<FeedDropdownFilter v-if="showFollowingPosts === false" />
+				<FeedDropdownFilter data-test="feed_dropdown_filter" v-if="showFollowingPosts === false" />
 			</div>
 		</div>
 

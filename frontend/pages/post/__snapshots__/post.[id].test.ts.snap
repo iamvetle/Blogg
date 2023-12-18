@@ -235,27 +235,7 @@ VueWrapper {
                 "removeTokenFromLocalStorage": [MockFunction spy],
                 "removeUsernameFromLocalStorage": [MockFunction spy],
                 "resetStore": [MockFunction spy],
-                "retrieveToken": [MockFunction spy] {
-                  "calls": [
-                    [],
-                    [],
-                    [],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                  ],
-                },
+                "retrieveToken": [MockFunction spy],
                 "setTokenToLocalStorage": [MockFunction spy],
                 "setUsernameToLocalStorage": [MockFunction spy],
                 "token": "",
@@ -270,7 +250,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -290,6 +272,7 @@ VueWrapper {
                 "idArrayOfLoggedInUserFollowingUsers": [],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
             "_testing": true,
@@ -645,27 +628,7 @@ VueWrapper {
               "removeTokenFromLocalStorage": [MockFunction spy],
               "removeUsernameFromLocalStorage": [MockFunction spy],
               "resetStore": [MockFunction spy],
-              "retrieveToken": [MockFunction spy] {
-                "calls": [
-                  [],
-                  [],
-                  [],
-                ],
-                "results": [
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              },
+              "retrieveToken": [MockFunction spy],
               "setTokenToLocalStorage": [MockFunction spy],
               "setUsernameToLocalStorage": [MockFunction spy],
               "token": "",
@@ -680,7 +643,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -700,6 +665,7 @@ VueWrapper {
               "idArrayOfLoggedInUserFollowingUsers": [],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,
@@ -1080,27 +1046,7 @@ VueWrapper {
                   "removeTokenFromLocalStorage": [MockFunction spy],
                   "removeUsernameFromLocalStorage": [MockFunction spy],
                   "resetStore": [MockFunction spy],
-                  "retrieveToken": [MockFunction spy] {
-                    "calls": [
-                      [],
-                      [],
-                      [],
-                    ],
-                    "results": [
-                      {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                      {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                      {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                    ],
-                  },
+                  "retrieveToken": [MockFunction spy],
                   "setTokenToLocalStorage": [MockFunction spy],
                   "setUsernameToLocalStorage": [MockFunction spy],
                   "token": "",
@@ -1115,7 +1061,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -1135,6 +1083,7 @@ VueWrapper {
                   "idArrayOfLoggedInUserFollowingUsers": [],
                   "idArrayOfSavedPosts": [],
                   "loggedInUserProfile": null,
+                  "resetStore": [MockFunction spy],
                 },
               },
               "_testing": true,
@@ -1490,27 +1439,7 @@ VueWrapper {
                 "removeTokenFromLocalStorage": [MockFunction spy],
                 "removeUsernameFromLocalStorage": [MockFunction spy],
                 "resetStore": [MockFunction spy],
-                "retrieveToken": [MockFunction spy] {
-                  "calls": [
-                    [],
-                    [],
-                    [],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                  ],
-                },
+                "retrieveToken": [MockFunction spy],
                 "setTokenToLocalStorage": [MockFunction spy],
                 "setUsernameToLocalStorage": [MockFunction spy],
                 "token": "",
@@ -1525,7 +1454,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -1545,6 +1476,7 @@ VueWrapper {
                 "idArrayOfLoggedInUserFollowingUsers": [],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
             "_testing": true,
@@ -2048,27 +1980,7 @@ VueWrapper {
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
                       "resetStore": [MockFunction spy],
-                      "retrieveToken": [MockFunction spy] {
-                        "calls": [
-                          [],
-                          [],
-                          [],
-                        ],
-                        "results": [
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                        ],
-                      },
+                      "retrieveToken": [MockFunction spy],
                       "setTokenToLocalStorage": [MockFunction spy],
                       "setUsernameToLocalStorage": [MockFunction spy],
                       "token": "",
@@ -2083,7 +1995,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -2103,6 +2017,7 @@ VueWrapper {
                       "idArrayOfLoggedInUserFollowingUsers": [],
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -2458,27 +2373,7 @@ VueWrapper {
                     "removeTokenFromLocalStorage": [MockFunction spy],
                     "removeUsernameFromLocalStorage": [MockFunction spy],
                     "resetStore": [MockFunction spy],
-                    "retrieveToken": [MockFunction spy] {
-                      "calls": [
-                        [],
-                        [],
-                        [],
-                      ],
-                      "results": [
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                      ],
-                    },
+                    "retrieveToken": [MockFunction spy],
                     "setTokenToLocalStorage": [MockFunction spy],
                     "setUsernameToLocalStorage": [MockFunction spy],
                     "token": "",
@@ -2493,7 +2388,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -2513,6 +2410,7 @@ VueWrapper {
                     "idArrayOfLoggedInUserFollowingUsers": [],
                     "idArrayOfSavedPosts": [],
                     "loggedInUserProfile": null,
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -2959,7 +2857,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -2979,6 +2879,7 @@ VueWrapper {
                       "idArrayOfLoggedInUserFollowingUsers": [],
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -3136,27 +3037,7 @@ VueWrapper {
                 "removeTokenFromLocalStorage": [MockFunction spy],
                 "removeUsernameFromLocalStorage": [MockFunction spy],
                 "resetStore": [MockFunction spy],
-                "retrieveToken": [MockFunction spy] {
-                  "calls": [
-                    [],
-                    [],
-                    [],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                  ],
-                },
+                "retrieveToken": [MockFunction spy],
                 "setTokenToLocalStorage": [MockFunction spy],
                 "setUsernameToLocalStorage": [MockFunction spy],
                 "token": "",
@@ -3339,27 +3220,7 @@ VueWrapper {
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
                       "resetStore": [MockFunction spy],
-                      "retrieveToken": [MockFunction spy] {
-                        "calls": [
-                          [],
-                          [],
-                          [],
-                        ],
-                        "results": [
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                        ],
-                      },
+                      "retrieveToken": [MockFunction spy],
                       "setTokenToLocalStorage": [MockFunction spy],
                       "setUsernameToLocalStorage": [MockFunction spy],
                       "token": "",
@@ -3374,7 +3235,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -3394,6 +3257,7 @@ VueWrapper {
                       "idArrayOfLoggedInUserFollowingUsers": [],
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -3565,7 +3429,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -3768,27 +3634,7 @@ VueWrapper {
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
                       "resetStore": [MockFunction spy],
-                      "retrieveToken": [MockFunction spy] {
-                        "calls": [
-                          [],
-                          [],
-                          [],
-                        ],
-                        "results": [
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                        ],
-                      },
+                      "retrieveToken": [MockFunction spy],
                       "setTokenToLocalStorage": [MockFunction spy],
                       "setUsernameToLocalStorage": [MockFunction spy],
                       "token": "",
@@ -3949,6 +3795,7 @@ VueWrapper {
                 "idArrayOfLoggedInUserFollowingUsers": [],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
           },
@@ -4146,7 +3993,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -4166,6 +4015,7 @@ VueWrapper {
                     "idArrayOfLoggedInUserFollowingUsers": [],
                     "idArrayOfSavedPosts": [],
                     "loggedInUserProfile": null,
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -4323,31 +4173,18 @@ VueWrapper {
               "removeTokenFromLocalStorage": [MockFunction spy],
               "removeUsernameFromLocalStorage": [MockFunction spy],
               "resetStore": [MockFunction spy],
-              "retrieveToken": [MockFunction spy] {
-                "calls": [
-                  [],
-                  [],
-                  [],
-                ],
-                "results": [
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              },
+              "retrieveToken": [MockFunction spy],
               "setTokenToLocalStorage": [MockFunction spy],
               "setUsernameToLocalStorage": [MockFunction spy],
               "token": "",
               "username": "",
+            },
+            "authorProfilePage": RefImpl {
+              "__v_isRef": true,
+              "__v_isShallow": false,
+              "_rawValue": "",
+              "_value": "",
+              "dep": undefined,
             },
             "fetchPostRelated": [MockFunction spy],
             "loggedInUserStore": {
@@ -4359,7 +4196,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -4562,27 +4401,7 @@ VueWrapper {
                     "removeTokenFromLocalStorage": [MockFunction spy],
                     "removeUsernameFromLocalStorage": [MockFunction spy],
                     "resetStore": [MockFunction spy],
-                    "retrieveToken": [MockFunction spy] {
-                      "calls": [
-                        [],
-                        [],
-                        [],
-                      ],
-                      "results": [
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                      ],
-                    },
+                    "retrieveToken": [MockFunction spy],
                     "setTokenToLocalStorage": [MockFunction spy],
                     "setUsernameToLocalStorage": [MockFunction spy],
                     "token": "",
@@ -4743,6 +4562,7 @@ VueWrapper {
               "idArrayOfLoggedInUserFollowingUsers": [],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
             "placeholder_profile_picture": "/assets/placeholder-profile-picture.png",
             "post": RefImpl {
@@ -4765,6 +4585,7 @@ VueWrapper {
                 },
               },
             },
+            "postRoute": "1",
             "route": {
               "params": {
                 "id": 1,
@@ -4999,7 +4820,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -5019,6 +4842,7 @@ VueWrapper {
                       "idArrayOfLoggedInUserFollowingUsers": [],
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -5176,27 +5000,7 @@ VueWrapper {
                 "removeTokenFromLocalStorage": [MockFunction spy],
                 "removeUsernameFromLocalStorage": [MockFunction spy],
                 "resetStore": [MockFunction spy],
-                "retrieveToken": [MockFunction spy] {
-                  "calls": [
-                    [],
-                    [],
-                    [],
-                  ],
-                  "results": [
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                    {
-                      "type": "return",
-                      "value": undefined,
-                    },
-                  ],
-                },
+                "retrieveToken": [MockFunction spy],
                 "setTokenToLocalStorage": [MockFunction spy],
                 "setUsernameToLocalStorage": [MockFunction spy],
                 "token": "",
@@ -5379,27 +5183,7 @@ VueWrapper {
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
                       "resetStore": [MockFunction spy],
-                      "retrieveToken": [MockFunction spy] {
-                        "calls": [
-                          [],
-                          [],
-                          [],
-                        ],
-                        "results": [
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                        ],
-                      },
+                      "retrieveToken": [MockFunction spy],
                       "setTokenToLocalStorage": [MockFunction spy],
                       "setUsernameToLocalStorage": [MockFunction spy],
                       "token": "",
@@ -5414,7 +5198,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -5434,6 +5220,7 @@ VueWrapper {
                       "idArrayOfLoggedInUserFollowingUsers": [],
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -5605,7 +5392,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -5808,27 +5597,7 @@ VueWrapper {
                       "removeTokenFromLocalStorage": [MockFunction spy],
                       "removeUsernameFromLocalStorage": [MockFunction spy],
                       "resetStore": [MockFunction spy],
-                      "retrieveToken": [MockFunction spy] {
-                        "calls": [
-                          [],
-                          [],
-                          [],
-                        ],
-                        "results": [
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                        ],
-                      },
+                      "retrieveToken": [MockFunction spy],
                       "setTokenToLocalStorage": [MockFunction spy],
                       "setUsernameToLocalStorage": [MockFunction spy],
                       "token": "",
@@ -5989,6 +5758,7 @@ VueWrapper {
                 "idArrayOfLoggedInUserFollowingUsers": [],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
           },
@@ -6218,7 +5988,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -6238,6 +6010,7 @@ VueWrapper {
                     "idArrayOfLoggedInUserFollowingUsers": [],
                     "idArrayOfSavedPosts": [],
                     "loggedInUserProfile": null,
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -6395,32 +6168,13 @@ VueWrapper {
               "removeTokenFromLocalStorage": [MockFunction spy],
               "removeUsernameFromLocalStorage": [MockFunction spy],
               "resetStore": [MockFunction spy],
-              "retrieveToken": [MockFunction spy] {
-                "calls": [
-                  [],
-                  [],
-                  [],
-                ],
-                "results": [
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              },
+              "retrieveToken": [MockFunction spy],
               "setTokenToLocalStorage": [MockFunction spy],
               "setUsernameToLocalStorage": [MockFunction spy],
               "token": "",
               "username": "",
             },
+            "authorProfilePage": "",
             "fetchPostRelated": [MockFunction spy],
             "loggedInUserStore": {
               "$dispose": [Function],
@@ -6431,7 +6185,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -6634,27 +6390,7 @@ VueWrapper {
                     "removeTokenFromLocalStorage": [MockFunction spy],
                     "removeUsernameFromLocalStorage": [MockFunction spy],
                     "resetStore": [MockFunction spy],
-                    "retrieveToken": [MockFunction spy] {
-                      "calls": [
-                        [],
-                        [],
-                        [],
-                      ],
-                      "results": [
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                      ],
-                    },
+                    "retrieveToken": [MockFunction spy],
                     "setTokenToLocalStorage": [MockFunction spy],
                     "setUsernameToLocalStorage": [MockFunction spy],
                     "token": "",
@@ -6815,9 +6551,11 @@ VueWrapper {
               "idArrayOfLoggedInUserFollowingUsers": [],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
             "placeholder_profile_picture": "/assets/placeholder-profile-picture.png",
             "post": null,
+            "postRoute": "1",
             "route": {
               "params": {
                 "id": 1,
@@ -7314,27 +7052,7 @@ VueWrapper {
                     "removeTokenFromLocalStorage": [MockFunction spy],
                     "removeUsernameFromLocalStorage": [MockFunction spy],
                     "resetStore": [MockFunction spy],
-                    "retrieveToken": [MockFunction spy] {
-                      "calls": [
-                        [],
-                        [],
-                        [],
-                      ],
-                      "results": [
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                        {
-                          "type": "return",
-                          "value": undefined,
-                        },
-                      ],
-                    },
+                    "retrieveToken": [MockFunction spy],
                     "setTokenToLocalStorage": [MockFunction spy],
                     "setUsernameToLocalStorage": [MockFunction spy],
                     "token": "",
@@ -7349,7 +7067,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -7369,6 +7089,7 @@ VueWrapper {
                     "idArrayOfLoggedInUserFollowingUsers": [],
                     "idArrayOfSavedPosts": [],
                     "loggedInUserProfile": null,
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -7724,27 +7445,7 @@ VueWrapper {
                   "removeTokenFromLocalStorage": [MockFunction spy],
                   "removeUsernameFromLocalStorage": [MockFunction spy],
                   "resetStore": [MockFunction spy],
-                  "retrieveToken": [MockFunction spy] {
-                    "calls": [
-                      [],
-                      [],
-                      [],
-                    ],
-                    "results": [
-                      {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                      {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                      {
-                        "type": "return",
-                        "value": undefined,
-                      },
-                    ],
-                  },
+                  "retrieveToken": [MockFunction spy],
                   "setTokenToLocalStorage": [MockFunction spy],
                   "setUsernameToLocalStorage": [MockFunction spy],
                   "token": "",
@@ -7759,7 +7460,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -7779,6 +7482,7 @@ VueWrapper {
                   "idArrayOfLoggedInUserFollowingUsers": [],
                   "idArrayOfSavedPosts": [],
                   "loggedInUserProfile": null,
+                  "resetStore": [MockFunction spy],
                 },
               },
               "_testing": true,
@@ -8157,27 +7861,7 @@ VueWrapper {
               "removeTokenFromLocalStorage": [MockFunction spy],
               "removeUsernameFromLocalStorage": [MockFunction spy],
               "resetStore": [MockFunction spy],
-              "retrieveToken": [MockFunction spy] {
-                "calls": [
-                  [],
-                  [],
-                  [],
-                ],
-                "results": [
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              },
+              "retrieveToken": [MockFunction spy],
               "setTokenToLocalStorage": [MockFunction spy],
               "setUsernameToLocalStorage": [MockFunction spy],
               "token": "",
@@ -8192,7 +7876,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -8212,6 +7898,7 @@ VueWrapper {
               "idArrayOfLoggedInUserFollowingUsers": [],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,
@@ -8390,3 +8077,5 @@ VueWrapper {
   "wrapperElement": <!--v-if-->,
 }
 `;
+
+exports[`Testing the single post component > Should match snapshot 2`] = `"<!--v-if-->"`;

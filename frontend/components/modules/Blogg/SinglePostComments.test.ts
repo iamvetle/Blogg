@@ -4,6 +4,9 @@ import { createTestingPinia } from '@pinia/testing';
 
 import SinglePostCommentsList from '~/components/modules/Blogg/SinglePostCommentsList.vue';
 import SinglePostCommentAdd from './SinglePostCommentAdd.vue';
+import { useAuthStore } from '~/store/authStore';
+
+let authStore:any
 
 let wrapper: any;
 let pinia: any = createTestingPinia();
@@ -12,9 +15,9 @@ const mockPost = {
     id: 5,
     title: "testtitle",
     author: {
-        first_name:"test_first_name",
-        last_name:"test_last_name",
-        username:"test_username"
+        first_name: "test_first_name",
+        last_name: "test_last_name",
+        username: "test_username"
     },
     num_of_comments: 6
 }
@@ -36,7 +39,7 @@ const mockAllComments = {
 }
 
 // let generalStore; 
-let postStore:any
+let postStore: any
 // let loggedInUserStore; 
 // let paginationStore; 
 
@@ -64,8 +67,9 @@ const factory = () => {
 describe('Testing the comments component that is inside of post id page', () => {
 
     beforeEach(() => {
+        authStore = useAuthStore(pinia)
         // generalStore = useGeneralStore(pinia); 
-        postStore = usePostStore(pinia); 
+        postStore = usePostStore(pinia);
         // loggedInUserStore = useLoggedInUserStore(pinia); 
         // paginationStore = usePaginationStore(pinia); 
 
@@ -89,8 +93,14 @@ describe('Testing the comments component that is inside of post id page', () => 
 
         expect(wrapper.props("post")).toBeTruthy()
     })
-    test('Should have the two comments components', () => {
+    test('Should have the two comments components', async () => {
         wrapper = factory()
+
+        postStore.allComments = mockAllComments;
+
+        authStore.isAuthenticated = true
+        await wrapper.vm.$nextTick()
+
 
         const commentList = wrapper.findComponent({ name: "SinglePostCommentsList" })
         expect(commentList.exists()).toBe(true)
@@ -101,6 +111,6 @@ describe('Testing the comments component that is inside of post id page', () => 
     test('Should match snapshot', () => {
         wrapper = factory()
 
-        expect(wrapper).toMatchSnapshot()
+        expect(wrapper.html()).toMatchSnapshot()
     })
 });

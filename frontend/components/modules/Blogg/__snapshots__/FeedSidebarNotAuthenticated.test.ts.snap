@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the sidebar that is used when the web client isnt logged in/authenticated > Should match snapshot 1`] = `
+"<div>
+  <ucard><template>
+      <div class=\\"px-4 prose\\"><span class=\\"block font-bold mb-2\\">By creating an account you can:</span>
+        <ul class=\\"\\">
+          <li>Bookmark posts</li>
+          <li>Create you own posts</li>
+          <li>Follow users</li>
+          <li>Comment on posts</li>
+        </ul>
+      </div>
+    </template></ucard>
+</div>"
+`;

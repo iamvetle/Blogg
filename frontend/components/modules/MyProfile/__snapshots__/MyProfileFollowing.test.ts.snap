@@ -91,7 +91,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -115,6 +117,7 @@ VueWrapper {
                 ],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
             "_testing": true,
@@ -276,7 +279,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -300,6 +305,7 @@ VueWrapper {
               ],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,
@@ -477,7 +483,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -501,6 +509,7 @@ VueWrapper {
                   ],
                   "idArrayOfSavedPosts": [],
                   "loggedInUserProfile": null,
+                  "resetStore": [MockFunction spy],
                 },
               },
               "_testing": true,
@@ -662,7 +671,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -686,6 +697,7 @@ VueWrapper {
                 ],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
             "_testing": true,
@@ -982,7 +994,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -1006,6 +1020,7 @@ VueWrapper {
                       ],
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
+                      "resetStore": [MockFunction spy],
                     },
                   },
                   "_testing": true,
@@ -1167,7 +1182,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -1191,6 +1208,7 @@ VueWrapper {
                     ],
                     "idArrayOfSavedPosts": [],
                     "loggedInUserProfile": null,
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -1339,7 +1357,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -1498,6 +1518,7 @@ VueWrapper {
                 ],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
           },
@@ -1569,7 +1590,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -1728,6 +1751,7 @@ VueWrapper {
               ],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
           },
           "directives": null,
@@ -1791,7 +1815,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -1950,6 +1976,7 @@ VueWrapper {
                 ],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
           },
@@ -2073,7 +2100,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -2232,6 +2261,7 @@ VueWrapper {
               ],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
           },
           "slots": {},
@@ -2324,7 +2354,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -2348,6 +2380,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -2509,7 +2542,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -2533,6 +2568,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -2925,7 +2961,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -2949,6 +2987,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -3110,7 +3149,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -3134,6 +3175,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -3542,7 +3584,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -3566,6 +3610,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -3727,7 +3772,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -3751,6 +3798,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -4143,7 +4191,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -4167,6 +4217,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -4328,7 +4379,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -4352,6 +4405,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -4760,7 +4814,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -4784,6 +4840,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -4945,7 +5002,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -4969,6 +5028,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -5361,7 +5421,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -5385,6 +5447,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -5546,7 +5609,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -5570,6 +5635,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -6020,7 +6086,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -6044,6 +6112,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -6205,7 +6274,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -6229,6 +6300,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -6621,7 +6693,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -6645,6 +6719,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -6806,7 +6881,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -6830,6 +6907,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -7246,7 +7324,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -7270,6 +7350,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -7431,7 +7512,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -7455,6 +7538,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -7847,7 +7931,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -7871,6 +7957,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -8032,7 +8119,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -8056,6 +8145,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -8472,7 +8562,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -8496,6 +8588,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -8657,7 +8750,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -8681,6 +8776,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -9073,7 +9169,9 @@ VueWrapper {
                                       "$subscribe": [Function],
                                       "_customProperties": Set {},
                                       "_hmrPayload": {
-                                        "actions": {},
+                                        "actions": {
+                                          "resetStore": [Function],
+                                        },
                                         "getters": {},
                                         "hotState": RefImpl {
                                           "__v_isRef": true,
@@ -9097,6 +9195,7 @@ VueWrapper {
                                       ],
                                       "idArrayOfSavedPosts": [],
                                       "loggedInUserProfile": null,
+                                      "resetStore": [MockFunction spy],
                                     },
                                   },
                                   "_testing": true,
@@ -9258,7 +9357,9 @@ VueWrapper {
                                     "$subscribe": [Function],
                                     "_customProperties": Set {},
                                     "_hmrPayload": {
-                                      "actions": {},
+                                      "actions": {
+                                        "resetStore": [Function],
+                                      },
                                       "getters": {},
                                       "hotState": RefImpl {
                                         "__v_isRef": true,
@@ -9282,6 +9383,7 @@ VueWrapper {
                                     ],
                                     "idArrayOfSavedPosts": [],
                                     "loggedInUserProfile": null,
+                                    "resetStore": [MockFunction spy],
                                   },
                                 },
                                 "_testing": true,
@@ -9846,7 +9948,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -9870,6 +9974,7 @@ VueWrapper {
                     ],
                     "idArrayOfSavedPosts": [],
                     "loggedInUserProfile": null,
+                    "resetStore": [MockFunction spy],
                   },
                 },
                 "_testing": true,
@@ -10031,7 +10136,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -10055,6 +10162,7 @@ VueWrapper {
                   ],
                   "idArrayOfSavedPosts": [],
                   "loggedInUserProfile": null,
+                  "resetStore": [MockFunction spy],
                 },
               },
               "_testing": true,
@@ -10257,7 +10365,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -10281,6 +10391,7 @@ VueWrapper {
               ],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
           },
           "_testing": true,

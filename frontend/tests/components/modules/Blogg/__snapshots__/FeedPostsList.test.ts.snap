@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`list articles testing > Should match snapshot 1`] = `
+{
+  "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/FeedPostsList.vue",
+  "__name": "FeedPostsList",
+  "render": [Function],
+  "setup": [Function],
+}
+`;
