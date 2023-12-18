@@ -8,7 +8,7 @@
 				<NuxtLink to="/" @click="logoclick()">
 					<Icon
 						name="brand"
-						class="text-onPrimary"
+						class="text-onPrimary cursor-pointer"
 						size="2.5em"
 						data-test="brand_icon"
 					/>

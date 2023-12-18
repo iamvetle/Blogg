@@ -88,7 +88,8 @@ const loggedInUserStore = useLoggedInUserStore()
 const loggedInUserURL = urls.users.myUser.profile
 const loggedInUserPostsURL = urls.api.posts.myuser
 definePageMeta({
-	layout: 'default'
+	layout: 'default',
+	middleware:["auth-guard"]
 })
 
 /**

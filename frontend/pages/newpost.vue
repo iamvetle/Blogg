@@ -20,7 +20,8 @@
 
 <script setup lang="ts">
 definePageMeta({
-	layout: "creating"
+	layout: "creating",
+	middleware:["auth-guard"]
 })
 
 import EditorCard from '~/components/modules/Editor/EditorCard.vue';

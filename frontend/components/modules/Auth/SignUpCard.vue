@@ -117,9 +117,9 @@
 
 				<p class="text-sm font-light text-gray-500 dark:text-gray-400 mt-4">
 					Already have an account?
-					<nuxt-link to="/login/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">
+					<NuxtLink to="/login/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">
 						Login here
-					</nuxt-link>>
+					</NuxtLink>>
 				</p>
 			</FormKit>
 		</div>

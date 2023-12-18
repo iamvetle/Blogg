@@ -12,11 +12,11 @@
         {{ postProp.title }}
       </h3>
       <div class="prose" v-html="postProp.content_snippet" />
-      <nuxt-link :to="readpost">
+      <NuxtLink :to="readpost">
         <p class="pt-2 text-xs font-light hover:font-normal">
           Read more
         </p>
-      </nuxt-link>
+      </NuxtLink>
     </div>
 
     <div id="article-img" class="col-span-3 border-v2 border-red-300">

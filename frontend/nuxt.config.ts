@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 		server: true,
 		client: true
 	  },
+	  spaLoadingTemplate:"./app/spa-loading-template.html",
 	vite: {
 		vue: {
 			script: {

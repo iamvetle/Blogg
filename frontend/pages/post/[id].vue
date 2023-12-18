@@ -4,7 +4,7 @@
 			<span class="flex items-center justify-between">
 				<span class="flex items-center not-prose">
 					<BaseImage :src="placeholder_profile_picture" alt="" class="mr-2 h-8" />
-					<NuxtLink :to="`/user/${post.author.username}`">
+					<NuxtLink :to="authorProfilePage">
 						<p class="font-bold inline">
 							- {{ post.author.first_name }} {{ post.author.last_name }}
 						</p>
@@ -76,6 +76,8 @@ const post = ref<PostSingleType | null>(null);
 const route = useRoute()
 const postRoute = (route.params.id).toString()
 
+const authorProfilePage = ref("")
+
 const loggedInUserStore = useLoggedInUserStore()
 
 const fetchPostRelated = async () => {
@@ -85,6 +87,12 @@ const fetchPostRelated = async () => {
 
 	/** The actual fetch, that fetches one post */
 	post.value = await getSinglePost(postURL);
+
+	/** The username of the author of the post */
+	const username = post.value?.author.username ?? ""
+
+	/** The appropriate link to the author user profile page */
+	authorProfilePage.value = `/user/${username}` ?? ""
 
 	const commentsURL = urls.api.posts.singlePost.comments(postRoute)
 	await getSinglePostComments(commentsURL)
