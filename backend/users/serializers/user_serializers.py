@@ -140,7 +140,6 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
         
         read_only_fields = ["date_joined"]
 
-
 class NormalUserSerializer(serializers.ModelSerializer):
     num_of_followers = serializers.SerializerMethodField()
     num_of_following = serializers.SerializerMethodField()
@@ -190,16 +189,8 @@ class NormalUserSerializer(serializers.ModelSerializer):
         # read_only_fields = ["date_joined", "num_of_posts_published", "num_of_following", "num_of_followers"]
 
     def to_internal_value(self, data):
-        # data = super().to_internal_value(data)
 
-        # date_str = data.get('date_of_birth')
-        # if date_str:
-        #     try:
-        #         data['date_of_birth'] = datetime.strptime(date_str, '%Y-%m-%d').date()
-        #     except ValueError:
-        #         raise serializers.ValidationError({"date_of_birth": "Date format is incorrect. Should be YYYY-MM-DD."})
-
-        # Turns username lowercase
+        # Turns the username lowercase
         username = data.get('username')
         if username:
             data['username'] = username.lower()

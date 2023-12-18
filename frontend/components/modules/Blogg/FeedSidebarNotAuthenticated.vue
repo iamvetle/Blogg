@@ -7,7 +7,7 @@
                 </div>
             </template>
 
-            <template>
+            <template #default>
                 <div class="px-4 prose">
                     <span class="block font-bold mb-2">By creating an account you can:</span>
                     <ul class="">
