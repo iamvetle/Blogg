@@ -137,8 +137,9 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             "num_of_saved_posts",
             "profile_picture",
         )
-        
-        read_only_fields = ["date_joined"]
+        # These fields cannot be updated through PATCH
+        read_only_fields = ["date_joined", "id", "username", "email", "date_of_birth", "gender"]
+
 
 class NormalUserSerializer(serializers.ModelSerializer):
     num_of_followers = serializers.SerializerMethodField()
@@ -186,7 +187,6 @@ class NormalUserSerializer(serializers.ModelSerializer):
             "password": {"write_only": True},
             "password_confirm": {"write_only": True},
         }
-        # read_only_fields = ["date_joined", "num_of_posts_published", "num_of_following", "num_of_followers"]
 
     def to_internal_value(self, data):
 
