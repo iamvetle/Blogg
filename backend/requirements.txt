@@ -30,7 +30,7 @@ pyasn1==0.5.1
 pyasn1-modules==0.3.0
 pycparser==2.21
 pydot==1.4.2
-PyJWT==1.7.1 # smallgreen uses a different version
+PyJWT==1.7.1
 pyOpenSSL==23.3.0
 pyparsing==3.1.1
 pyproject_hooks==1.0.0
