@@ -25,7 +25,7 @@
 
 				<div class="max-w-4xl mx-auto">
 					<EditorMenuTop :editor="editor" @add-image="handleAddImage" @publish-post="handlePublishPost"
-						@try-discard-editing-post="handleTryDiscardEditingPost" />
+						@try-discard-editing-post="handleTryDiscardEditingPost" :charCount="charCount"/>
 					<hr class="not-prose mt-4 mb-8">
 
 				</div>
@@ -47,6 +47,8 @@
 				<div @click="editor.commands.focus()" data-test="direct-editor" class="max-w-2xl mx-auto pt-3 w-full min-h-screen prose px-1">
 					<editor-content :editor="editor" @keyup.delete="maybePlaceFocusOnEditorTitle" />
 				</div>
+			</div>
+			<div>
 			</div>
 		</div>
 
@@ -89,7 +91,7 @@ import Underline from '@tiptap/extension-underline'
 import { Image } from './CustomImage'
 import { Placeholder } from '@tiptap/extension-placeholder'
 
-const emit = defineEmits(['newPostMaterial'])
+const emit = defineEmits(['newPostMaterial', 'charactersCount'])
 
 // The state of the modals
 const showModalPublishPost = ref(false)
@@ -97,7 +99,10 @@ const showModalDiscardPost = ref(false)
 // The modal that makes sure the requirements are met?
 const showModalRequirements = ref(false)
 
-/** Makes sure that not two modals can exist at the same time */
+/** 
+ * Makes sure that not two modals can exist at the same time 
+ * ? what about the requirments modal?
+ */
 watchEffect(() => {
 	if (showModalPublishPost.value) {
 		showModalDiscardPost.value = false
@@ -169,7 +174,6 @@ const editor: any = useEditor({ //@ts-ignore
 		Placeholder.configure({
 			placeholder: 'Write something ...',
 		})
-		// Placeholder later on
 		// Youtube,
 	],
 
@@ -179,6 +183,14 @@ const editor: any = useEditor({ //@ts-ignore
 		},
 	},
 })
+
+/** Has the momentary raw text */
+const contentText = computed(() => editor.value?.getText() || "")
+
+/** Has the character count at the moment */
+const charCount = computed(() => contentText.value.length)
+
+watchEffect(() => emit("charactersCount", charCount.value))
 
 const focusOnCorrectEditor = () => {
 	/** Takes the focus to the title inpur, if there is an empty title string*/

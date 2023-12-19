@@ -9,9 +9,9 @@ vi.stubGlobal("definePageMeta", () => {
     return null
 })
 
-vi.stubGlobal("publishPost", () => {
-    return null
-})
+
+let mockPublish = vi.fn()
+let wrapper:any;
 
 const factory = () => {
 
@@ -24,6 +24,9 @@ const factory = () => {
             },
             stubs: {
                 EditorCard: true
+            },
+            mocks: {
+                publish:mockPublish
             }
         }
     });
@@ -40,15 +43,32 @@ const factory = () => {
 describe('newPost', () => {
     afterEach(() => {
         vi.clearAllMocks(); // Clear the mocked function's call count after each test
+
+        if (wrapper) {
+            wrapper.unmount()
+        }
     });
 
     test('Should have an editor', async () => {
-        const wrapper = factory()
+        wrapper = factory()
         
         const editor = wrapper.findComponent({ name:"EditorCard" })
 
         expect(editor.exists()).toBe(true)
     })
+    /**
+     * ! its client only which makes things difficult
+     */
+    // test('When an new post material emit comes from the Editor card a function should be called', async () => {
+    //     wrapper = factory() 
+
+    //     const editorCard = wrapper.find("[data-test='editorcard']")
+
+    //     await editorCard.trigger("newPostMaterial")
+    //     await wrapper.vm.$nextTick()
+        
+    //     expect(mockPublish).toHaveBeenCalledOnce()
+    // })
     
 
 });

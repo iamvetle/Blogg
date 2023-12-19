@@ -3,8 +3,9 @@
 		<div id="direct-editor" class="mx-auto">
 			<ClientOnly>
 				<!-- <EditorCardChooseTags/> -->
-				<EditorCard @newPostMaterial="publish" />
+				<EditorCard @newPostMaterial="publish" @charactersCount="handleCharacters" data-test="editorcard"/>
 			</ClientOnly>
+			<span class="block pl-8 pb-6">{{ charCount }}</span>
 		</div>
 	</div>
 </template>
@@ -39,6 +40,14 @@ const publish = async (postContent: object) => {
 		return null;
 	}
 };
+
+/** Fill characters */
+const handleCharacters = (event: number) => {
+	charCount.value = event
+}
+
+const charCount = ref(0)
+
 </script>
 
 <style scoped></style>
