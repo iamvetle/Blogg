@@ -118,7 +118,7 @@
 		"body": [
 		"test('Should match snapshot', () => {",
 		"	wrapper = factory()",
-		"	expect(wrapper).toMatchSnapshot()",
+		"	expect(wrapper.html()).toMatchSnapshot()",
 		"})",
 		"$0"
 		],

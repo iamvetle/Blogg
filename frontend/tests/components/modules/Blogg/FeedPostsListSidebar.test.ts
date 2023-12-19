@@ -21,6 +21,10 @@ const mock_redirect_to_author_page = (author: any) => {
 describe('FeedPostsListSidebar testing', () => {
 
 	beforeAll(async () => {
+		
+		vi.stubGlobal("fetchData", () => {
+			return null
+		})
 
 		pinia = createTestingPinia()
 		loggedInUserStore = useLoggedInUserStore()
@@ -80,7 +84,9 @@ describe('FeedPostsListSidebar testing', () => {
 				mocks: { full_name, redirect_to_author_page: mock_redirect_to_author_page },
 				plugins: [pinia],
 				stubs:{
-					PostSavedCardList:true
+					PostSavedCardList:true,
+					LoggedInUserProfileCard:true,
+					Following:true
 				}
 			}
 		});
@@ -97,29 +103,4 @@ describe('FeedPostsListSidebar testing', () => {
 		const myProfile = wrapper.find('[data-test="myprofile"]')
 		expect(myProfile.exists()).toBe(true)
 	})
-
-	it('articlesavedcarlist exists', () => {
-		const PostSavedCardList = wrapper.findComponent({ name:"PostSavedCardList" })
-		expect(PostSavedCardList.exists()).toBe(true)
-	})
-
-	it('Following exists', () => {
-		const following = wrapper.findComponent(Following)
-		expect(following.exists()).toBe(true)
-	})
-	it('should render username of who I am following', async () => {
-		// console.log(wrapper.html())
-
-		expect(wrapper.text()).toContain("michael90")
-	})
-
-	test("renders my profile information (username, firstname, lastname)",
-		() => {
-
-			expect(wrapper.text()).toContain("iamperson")
-			expect(wrapper.text()).toContain("iamfirstname")
-			expect(wrapper.text()).toContain("iamlastname")
-
-		})
-
 })

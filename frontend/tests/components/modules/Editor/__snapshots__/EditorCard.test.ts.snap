@@ -22,6 +22,7 @@ exports[`Testing the editorcard (very small bad tests becasue of a loff rewritin
         <editor-content-stub></editor-content-stub>
       </div>
     </div>
+    <div></div>
   </div>
   <hr class=\\"mb-4\\">
 </div>"

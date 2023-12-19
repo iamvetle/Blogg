@@ -21,10 +21,10 @@
             <template #footer>
                 <div class="space-x-6 flex justify-center">
                     <NuxtLink to="/login">
-                        <UButton class="hover:shadow-md hover:bg-onPrimary text-primary bg-onPrimary ring-primary ring-1">Login</UButton>
+                        <UButton data-test="login_here" class="hover:shadow-md hover:bg-onPrimary text-primary bg-onPrimary ring-primary ring-1">Login</UButton>
                     </NuxtLink>
                     <NuxtLink to="/registrer">
-                        <UButton class="hover:shadow-md hover:bg-primary bg-primary" >Register</UButton>
+                        <UButton data-test="register_here" class="hover:shadow-md hover:bg-primary bg-primary" >Register</UButton>
                     </NuxtLink>
                 </div>
             </template>

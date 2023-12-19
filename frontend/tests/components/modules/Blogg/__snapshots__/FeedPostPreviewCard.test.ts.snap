@@ -99,14 +99,14 @@ VueWrapper {
                 
               </span>
               <span
-                class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+                class="me-2"
                 id="save-article"
               >
                 
                 
               </span>
               <span
-                class="w-auto h-auto mx-auto flex items-center justify-center"
+                class=""
                 id="article-options"
               >
                 
@@ -1333,7 +1333,7 @@ VueWrapper {
                             "dynamicChildren": null,
                             "dynamicProps": null,
                             "el": <span
-                              class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+                              class="me-2"
                               id="save-article"
                             >
                               
@@ -1342,7 +1342,7 @@ VueWrapper {
                             "key": null,
                             "patchFlag": 0,
                             "props": {
-                              "class": "me-2 w-auto h-auto mx-auto flex items-center justify-center",
+                              "class": "me-2",
                               "id": "save-article",
                             },
                             "ref": null,
@@ -1401,7 +1401,7 @@ VueWrapper {
                             "dynamicChildren": null,
                             "dynamicProps": null,
                             "el": <span
-                              class="w-auto h-auto mx-auto flex items-center justify-center"
+                              class=""
                               id="article-options"
                             >
                               
@@ -1410,7 +1410,7 @@ VueWrapper {
                             "key": null,
                             "patchFlag": 0,
                             "props": {
-                              "class": "w-auto h-auto mx-auto flex items-center justify-center",
+                              "class": "",
                               "id": "article-options",
                             },
                             "ref": null,
@@ -1446,14 +1446,14 @@ VueWrapper {
                             
                           </span>
                           <span
-                            class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+                            class="me-2"
                             id="save-article"
                           >
                             
                             
                           </span>
                           <span
-                            class="w-auto h-auto mx-auto flex items-center justify-center"
+                            class=""
                             id="article-options"
                           >
                             
@@ -1516,14 +1516,14 @@ VueWrapper {
                           
                         </span>
                         <span
-                          class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+                          class="me-2"
                           id="save-article"
                         >
                           
                           
                         </span>
                         <span
-                          class="w-auto h-auto mx-auto flex items-center justify-center"
+                          class=""
                           id="article-options"
                         >
                           
@@ -1640,14 +1640,14 @@ VueWrapper {
                         
                       </span>
                       <span
-                        class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+                        class="me-2"
                         id="save-article"
                       >
                         
                         
                       </span>
                       <span
-                        class="w-auto h-auto mx-auto flex items-center justify-center"
+                        class=""
                         id="article-options"
                       >
                         
@@ -2444,14 +2444,14 @@ VueWrapper {
                       
                     </span>
                     <span
-                      class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+                      class="me-2"
                       id="save-article"
                     >
                       
                       
                     </span>
                     <span
-                      class="w-auto h-auto mx-auto flex items-center justify-center"
+                      class=""
                       id="article-options"
                     >
                       
@@ -2598,14 +2598,14 @@ VueWrapper {
                   
                 </span>
                 <span
-                  class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+                  class="me-2"
                   id="save-article"
                 >
                   
                   
                 </span>
                 <span
-                  class="w-auto h-auto mx-auto flex items-center justify-center"
+                  class=""
                   id="article-options"
                 >
                   
@@ -2795,14 +2795,14 @@ VueWrapper {
                   
                 </span>
                 <span
-                  class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+                  class="me-2"
                   id="save-article"
                 >
                   
                   
                 </span>
                 <span
-                  class="w-auto h-auto mx-auto flex items-center justify-center"
+                  class=""
                   id="article-options"
                 >
                   
@@ -3134,14 +3134,14 @@ VueWrapper {
             
           </span>
           <span
-            class="me-2 w-auto h-auto mx-auto flex items-center justify-center"
+            class="me-2"
             id="save-article"
           >
             
             
           </span>
           <span
-            class="w-auto h-auto mx-auto flex items-center justify-center"
+            class=""
             id="article-options"
           >
             

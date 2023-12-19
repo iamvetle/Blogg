@@ -159,7 +159,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -179,6 +181,7 @@ VueWrapper {
                 "idArrayOfLoggedInUserFollowingUsers": [],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
               "Auth Store for managing authentication-related state" => {
                 "$dispose": [Function],
@@ -529,7 +532,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -549,6 +554,7 @@ VueWrapper {
               "idArrayOfLoggedInUserFollowingUsers": [],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
             "Auth Store for managing authentication-related state" => {
               "$dispose": [Function],
@@ -908,7 +914,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -928,6 +936,7 @@ VueWrapper {
                   "idArrayOfLoggedInUserFollowingUsers": [],
                   "idArrayOfSavedPosts": [],
                   "loggedInUserProfile": null,
+                  "resetStore": [MockFunction spy],
                 },
                 "Auth Store for managing authentication-related state" => {
                   "$dispose": [Function],
@@ -1283,7 +1292,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -1303,6 +1314,7 @@ VueWrapper {
                 "idArrayOfLoggedInUserFollowingUsers": [],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
               "Auth Store for managing authentication-related state" => {
                 "$dispose": [Function],
@@ -1781,7 +1793,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -1801,6 +1815,7 @@ VueWrapper {
                       "idArrayOfLoggedInUserFollowingUsers": [],
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
+                      "resetStore": [MockFunction spy],
                     },
                     "Auth Store for managing authentication-related state" => {
                       "$dispose": [Function],
@@ -2156,7 +2171,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -2176,6 +2193,7 @@ VueWrapper {
                     "idArrayOfLoggedInUserFollowingUsers": [],
                     "idArrayOfSavedPosts": [],
                     "loggedInUserProfile": null,
+                    "resetStore": [MockFunction spy],
                   },
                   "Auth Store for managing authentication-related state" => {
                     "$dispose": [Function],
@@ -2587,7 +2605,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -2607,6 +2627,7 @@ VueWrapper {
                       "idArrayOfLoggedInUserFollowingUsers": [],
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
+                      "resetStore": [MockFunction spy],
                     },
                     "Auth Store for managing authentication-related state" => [Circular],
                   },
@@ -2775,7 +2796,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -3124,6 +3147,7 @@ VueWrapper {
                 "idArrayOfLoggedInUserFollowingUsers": [],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
             "isFollowingClass": "w-fit h-fit cursor-pointer bg-primary text-onPrimary hover:bg-inversePrimary p-1 rounded-md",
@@ -3151,7 +3175,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -3500,6 +3526,7 @@ VueWrapper {
               "idArrayOfLoggedInUserFollowingUsers": [],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
             "unFollowUser": [Function],
           },
@@ -3767,7 +3794,9 @@ VueWrapper {
                       "$subscribe": [Function],
                       "_customProperties": Set {},
                       "_hmrPayload": {
-                        "actions": {},
+                        "actions": {
+                          "resetStore": [Function],
+                        },
                         "getters": {},
                         "hotState": RefImpl {
                           "__v_isRef": true,
@@ -3787,6 +3816,7 @@ VueWrapper {
                       "idArrayOfLoggedInUserFollowingUsers": [],
                       "idArrayOfSavedPosts": [],
                       "loggedInUserProfile": null,
+                      "resetStore": [MockFunction spy],
                     },
                     "Auth Store for managing authentication-related state" => [Circular],
                   },
@@ -3955,7 +3985,9 @@ VueWrapper {
                 "$subscribe": [Function],
                 "_customProperties": Set {},
                 "_hmrPayload": {
-                  "actions": {},
+                  "actions": {
+                    "resetStore": [Function],
+                  },
                   "getters": {},
                   "hotState": RefImpl {
                     "__v_isRef": true,
@@ -4304,6 +4336,7 @@ VueWrapper {
                 "idArrayOfLoggedInUserFollowingUsers": [],
                 "idArrayOfSavedPosts": [],
                 "loggedInUserProfile": null,
+                "resetStore": [MockFunction spy],
               },
             },
             "isFollowingClass": "w-fit h-fit cursor-pointer bg-primary text-onPrimary hover:bg-inversePrimary p-1 rounded-md",
@@ -4374,7 +4407,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -4723,6 +4758,7 @@ VueWrapper {
               "idArrayOfLoggedInUserFollowingUsers": [],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
             "unFollowUser": [Function],
           },
@@ -5245,7 +5281,9 @@ VueWrapper {
                     "$subscribe": [Function],
                     "_customProperties": Set {},
                     "_hmrPayload": {
-                      "actions": {},
+                      "actions": {
+                        "resetStore": [Function],
+                      },
                       "getters": {},
                       "hotState": RefImpl {
                         "__v_isRef": true,
@@ -5265,6 +5303,7 @@ VueWrapper {
                     "idArrayOfLoggedInUserFollowingUsers": [],
                     "idArrayOfSavedPosts": [],
                     "loggedInUserProfile": null,
+                    "resetStore": [MockFunction spy],
                   },
                   "Auth Store for managing authentication-related state" => {
                     "$dispose": [Function],
@@ -5620,7 +5659,9 @@ VueWrapper {
                   "$subscribe": [Function],
                   "_customProperties": Set {},
                   "_hmrPayload": {
-                    "actions": {},
+                    "actions": {
+                      "resetStore": [Function],
+                    },
                     "getters": {},
                     "hotState": RefImpl {
                       "__v_isRef": true,
@@ -5640,6 +5681,7 @@ VueWrapper {
                   "idArrayOfLoggedInUserFollowingUsers": [],
                   "idArrayOfSavedPosts": [],
                   "loggedInUserProfile": null,
+                  "resetStore": [MockFunction spy],
                 },
                 "Auth Store for managing authentication-related state" => {
                   "$dispose": [Function],
@@ -6032,7 +6074,9 @@ VueWrapper {
               "$subscribe": [Function],
               "_customProperties": Set {},
               "_hmrPayload": {
-                "actions": {},
+                "actions": {
+                  "resetStore": [Function],
+                },
                 "getters": {},
                 "hotState": RefImpl {
                   "__v_isRef": true,
@@ -6052,6 +6096,7 @@ VueWrapper {
               "idArrayOfLoggedInUserFollowingUsers": [],
               "idArrayOfSavedPosts": [],
               "loggedInUserProfile": null,
+              "resetStore": [MockFunction spy],
             },
             "Auth Store for managing authentication-related state" => {
               "$dispose": [Function],

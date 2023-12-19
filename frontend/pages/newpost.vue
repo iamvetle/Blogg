@@ -1,19 +1,11 @@
 <template>
-	<div class="pt-2  bg-background ">
-		<div class="">
-
-			<div id="direct-editor" class="mx-auto">
-				<ClientOnly>
-					<!-- <EditorCardChooseTags/> -->
-					<EditorCard @newPostMaterial="publish" />
-				</ClientOnly>
-			</div>
-			
-			<!-- <div class="flex">
-				<div v-if="postState">
-					<p>Nytt innlegg lagt til!</p>
-				</div>
-			</div> -->
+	<div class="pt-2 bg-background">
+		<div id="direct-editor" class="mx-auto">
+			<ClientOnly>
+				<!-- <EditorCardChooseTags/> -->
+				<EditorCard @newPostMaterial="publish" @charactersCount="handleCharacters" data-test="editorcard"/>
+			</ClientOnly>
+			<span class="block pl-8 pb-6">{{ charCount }}</span>
 		</div>
 	</div>
 </template>
@@ -21,34 +13,40 @@
 <script setup lang="ts">
 definePageMeta({
 	layout: "creating",
-	middleware:["auth-guard"]
-})
+	middleware: ["auth-guard"],
+});
 
-import EditorCard from '~/components/modules/Editor/EditorCard.vue';
+import EditorCard from "~/components/modules/Editor/EditorCard.vue";
 
-
-const baseURL = urls.api.posts.singlePost.action.newPost
+const baseURL = urls.api.posts.singlePost.action.newPost;
 
 /** If this is true a success message is rendered */
 const postState = ref<false | true | null>(null);
 
-/** 
- * * Final publishing step 
+/**
+ * * Final publishing step
  */
-const publish = async (postContent:object) => {
-	const responseData = await postCreateNewPost(baseURL, postContent)
+const publish = async (postContent: object) => {
+	const responseData = await postCreateNewPost(baseURL, postContent);
 
 	if (responseData) {
-		postState.value = true
+		postState.value = true;
 
 		setTimeout(() => {
 			navigateTo("/minkonto");
 		}, 1000);
 	} else {
 		// console.log("Failed to publish the post") // print to self
-		return null
+		return null;
 	}
+};
+
+/** Fill characters */
+const handleCharacters = (event: number) => {
+	charCount.value = event
 }
+
+const charCount = ref(0)
 
 </script>
 

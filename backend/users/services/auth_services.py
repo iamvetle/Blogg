@@ -10,24 +10,31 @@ CustomUser = get_user_model()
 class LoginService:  # Try login logic
     @staticmethod
     def login_user(request):
+        """Takes the username and password input and tries to authenticate.
+        If sucessfull, returns a new token, if one has not already been assigned.
+        """
         username = request.data.get("username")
+        # Turns the username lowercase - so it is possible to login even though you dont have ALL of the letters lowercase
+        username = username.lower()
         password = request.data.get("password")
 
+        # Tries to authenticate
         user = authenticate(
             username=username, password=password
-        )  # Tries to authenticate
+        )
 
+        # Create new token, or retrieve existing token
         if user:
             token, _ = Token.objects.get_or_create(
                 user=user
-            )  # 'Get' or 'Create' a token
+            )
 
-            info_for_store = {
+            response = {
                 "username": username,
                 "token": token.key,
             }
 
-            return info_for_store
+            return response
         else:
             return None
 

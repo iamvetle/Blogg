@@ -57,7 +57,7 @@
 
 					<template #save-article-icon v-if="(post.id) && (!checkIfLoggedInUser(post.author.username)) && authStore.isAuthenticated">
 
-						<PostBookmark :post="post.id" />
+						<PostBookmark :post="post.id" data-test="post_bookmark" />
 
 					</template>
 

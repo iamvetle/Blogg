@@ -137,8 +137,8 @@ class LoggedInUserSerializer(serializers.ModelSerializer):
             "num_of_saved_posts",
             "profile_picture",
         )
-        
-        read_only_fields = ["date_joined"]
+        # These fields cannot be updated through PATCH
+        read_only_fields = ["date_joined", "id", "username", "email", "date_of_birth", "gender"]
 
 
 class NormalUserSerializer(serializers.ModelSerializer):
@@ -187,19 +187,10 @@ class NormalUserSerializer(serializers.ModelSerializer):
             "password": {"write_only": True},
             "password_confirm": {"write_only": True},
         }
-        # read_only_fields = ["date_joined", "num_of_posts_published", "num_of_following", "num_of_followers"]
 
     def to_internal_value(self, data):
-        # data = super().to_internal_value(data)
 
-        # date_str = data.get('date_of_birth')
-        # if date_str:
-        #     try:
-        #         data['date_of_birth'] = datetime.strptime(date_str, '%Y-%m-%d').date()
-        #     except ValueError:
-        #         raise serializers.ValidationError({"date_of_birth": "Date format is incorrect. Should be YYYY-MM-DD."})
-
-        # Turns username lowercase
+        # Turns the username lowercase
         username = data.get('username')
         if username:
             data['username'] = username.lower()

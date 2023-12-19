@@ -46,10 +46,9 @@ class LoggedInUserProfileView(RetrieveUpdateAPIView):
         # Retrieve the CustomUser instance for the logged-in user
         return get_object_or_404(CustomUser, username=self.request.user)
 
-    # ! this is not in use I think
-    def partial_update(self, request, *args, **kwargs):
-        # Custom handling for partial update if needed
-        return super().partial_update(request, *args, **kwargs)
+    # # ! this is not in use I think
+    def perform_update(self, serializer):
+        serializer.save(partial=True)
 
 class NormalUserProfileView(RetrieveAPIView):
     """Returns information about a SPECIFIC user"""

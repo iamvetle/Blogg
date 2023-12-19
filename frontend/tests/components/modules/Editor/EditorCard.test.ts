@@ -25,11 +25,6 @@ const factory = () => {
 describe('Testing the editorcard (very small bad tests becasue of a loff rewriting)', () => {
 
     beforeEach(() => {
-        // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
-        // paginationStore = usePaginationStore(pinia); 
-
     });
 
     afterEach(() => {
