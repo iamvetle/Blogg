@@ -11,9 +11,10 @@ vi.mock('./removeImageFromMap', () => ({
     }),
 }));
 
+let window;
+let document;
+
 describe('validateAndCleanImageMap', () => {
-    let window;
-    let document;
 
     beforeEach(() => {
         // Setup HappyDOM

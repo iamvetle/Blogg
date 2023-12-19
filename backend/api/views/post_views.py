@@ -23,17 +23,19 @@ from rest_framework.generics import (
 )
 
 from rest_framework import parsers
+
 # Django Filter
 from django_filters import rest_framework as filters
 from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 # Local application imports
-from api.models import Post, SavedPost, Comment, PostImage, PostVideo
+from api.models import Post, SavedPost, Comment, PostImage, PostVideo, Tag
 from api.serializers.post_serializers import (
     PostSerializer,
     PostSaveStyleSerializer,
     PostShortenSerializer,
     CommentSerializer,
+    TagSerializer,
 )
 from users.serializers.user_serializers import NormalUserSerializer
 from api.filters import CustomPostFilter
@@ -48,10 +50,11 @@ from io import BytesIO
 
 CustomUser = get_user_model()
 
+
 class PostAllLoggedInUserView(ListAPIView):  # /api/min-side/posts/
     """Retrieves all posts (in snippets) created by the logged in user"""
 
-    permission_classes = [IsAuthenticated] # NEEDS to be authenticated
+    permission_classes = [IsAuthenticated]  # NEEDS to be authenticated
     serializer_class = PostShortenSerializer
 
     http_method_names = ["get"]
@@ -62,10 +65,11 @@ class PostAllLoggedInUserView(ListAPIView):  # /api/min-side/posts/
 
         return logged_in_user.posts.all()
 
+
 class PostAllSavedLoggedInUserView(ListAPIView):  # /api/saved/
     """Retrieves a small part of all posts saved by the user"""
 
-    permission_classes = [IsAuthenticated] # NEEDS to be authenticated
+    permission_classes = [IsAuthenticated]  # NEEDS to be authenticated
     serializer_class = PostSaveStyleSerializer
 
     http_method_names = ["get"]
@@ -76,11 +80,12 @@ class PostAllSavedLoggedInUserView(ListAPIView):  # /api/saved/
 
         return logged_in_user.saved_posts.all()
 
+
 class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
     """Returns ALL of the posts (snippets) made by the specified user"""
 
     # permission_classes = [AllowAny] # Does NOT have to authenticated
-    
+
     serializer_class = PostShortenSerializer
     pagination_class = GenericPagination
     queryset = Post.objects.all()
@@ -99,15 +104,15 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
     """Responds {x} amount of posts as snippets.
     The response is tailored after the search and filter parameters in the url fetch."""
 
-    permission_classes = [AllowAny] # Does NOT have to authenticated
-    
+    permission_classes = [AllowAny]  # Does NOT have to authenticated
+
     serializer_class = PostShortenSerializer
     # It paginates automatically - se settings.py
     filter_backends = [
         filters.DjangoFilterBackend,
         SearchFilter,
     ]
-    
+
     filterset_class = CustomPostFilter
     search_fields = ["title", "content", "author__username"]
 
@@ -118,11 +123,11 @@ class PostMultipleSnippetView(ListAPIView):  # /api/feed/
 
 
 class PostMultipleSnippetOnlyMyFollowingView(ListAPIView):
-    """ Returns a list of all of the users the logged in user is following"""
-    
-    permission_classes = [IsAuthenticated] # NEEDS to be authenticated
-    serializer_class = PostShortenSerializer    
-    
+    """Returns a list of all of the users the logged in user is following"""
+
+    permission_classes = [IsAuthenticated]  # NEEDS to be authenticated
+    serializer_class = PostShortenSerializer
+
     # Makes sure that the *newest* posts are listed first by the frontend
     queryset = Post.objects.all().order_by("-date_published")
 
@@ -142,8 +147,8 @@ class PostReadSingleView(RetrieveAPIView):
     """Retrieves a single post to read"""
 
     # ? this means that all web clients can read all posts - do I want that?
-    permission_classes = [AllowAny] # Does NOT have to authenticated
-    
+    permission_classes = [AllowAny]  # Does NOT have to authenticated
+
     serializer_class = PostSerializer
     lookup_field = "pk"
     queryset = Post.objects.all()
@@ -155,7 +160,7 @@ class PostReadSingleView(RetrieveAPIView):
 class PostEditSingleView(RetrieveUpdateDestroyAPIView):
     """Retrieves, updates or deletes a single post"""
 
-    permission_classes = [IsAuthenticated] # NEED to be authenticated
+    permission_classes = [IsAuthenticated]  # NEED to be authenticated
     serializer_class = PostSerializer
     lookup_field = "pk"
     queryset = Post.objects.all()
@@ -169,11 +174,12 @@ class PostEditSingleView(RetrieveUpdateDestroyAPIView):
 
         return posts_only_made_by_the_user
 
+
 # * not in use
 class PostDeleteView(APIView):
     """Deletes a post, if ask for by the user owning the post"""
 
-    permission_classes = [IsAuthenticated] # NEEDS to be authenticated
+    permission_classes = [IsAuthenticated]  # NEEDS to be authenticated
 
     def delete(self, request, post_id):
         post = get_object_or_404(Post, id=post_id)
@@ -187,10 +193,11 @@ class PostDeleteView(APIView):
             post.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 class PostSaveView(APIView):
     """Saves or un-saves a requested post for the user"""
 
-    permission_classes = [IsAuthenticated] # NEED to be authenticated
+    permission_classes = [IsAuthenticated]  # NEED to be authenticated
 
     # ? might be overly complicated
     def post(self, request, post_id):
@@ -221,70 +228,107 @@ class PostSaveView(APIView):
                     status=status.HTTP_201_CREATED,
                 )
 
+
 class PostCreateView(APIView):
-    """ Creates a post together with images"""
+    """Creates a post together with images"""
+
     parser_classes = [parsers.MultiPartParser, parsers.FormParser]
-    
-    permission_classes = [IsAuthenticated] # NEED to be authenticated
+
+    permission_classes = [IsAuthenticated]  # NEED to be authenticated
 
     def post(self, request, *args, **kwargs):
         try:
-            
-            title = request.data.get('title')
-            content = request.data.get('content')
-            
+            title = request.data["title"]
+            content = request.data["content"]
+            tagsString = request.data.get("tags")
+
+            print(type(tagsString))
+            print(tagsString)
+
+            tagsList = tagsString.split(",")
+
+            print(type(tagsList))
+            print(tagsList)
+
             if not title and not content:
-                return Response({'error': 'Both a title and content is missing'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response(
+                    {"error": "Both a title and content is missing"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
             elif not title:
-                return Response({'error': 'A title is required'})
+                return Response({"error": "A title is required"})
             elif not content:
-                return Response({'error': 'Content for the post is missing'})
-            
-            post = Post.objects.create(title=title, content=content, author=request.user)
+                return Response({"error": "Content for the post is missing"})
+
+            post = Post.objects.create(
+                title=title, content=content, author=request.user
+            )
+
+            for tagItem in tagsList:
+                print(tagItem)
+                tag, created = Tag.objects.get_or_create(name=tagItem)
+                print(tag)
+                post.tags.add(tag)
+
+            if not post:
+                return Response(
+                    {"error": "Failed to create the post"},
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                )
 
             image_map = {}
-            
+
             for key, image_file in request.FILES.items():
                 # Open the uploaded image using Pillow
                 image = Image.open(image_file)
 
                 # Compress and convert the image to WebP
                 output = BytesIO()
-                image.save(output, format='WEBP', quality=80)
+                image.save(output, format="WEBP", quality=80)
                 output.seek(0)
 
                 # Create a new Django file-like object for the WebP image
-                webp_file = ContentFile(output.read(), name=image_file.name.split('.')[0] + '.webp')
+                webp_file = ContentFile(
+                    output.read(), name=image_file.name.split(".")[0] + ".webp"
+                )
 
                 # Create the PostImage instance with the converted WebP image
                 image_instance = PostImage.objects.create(post=post, image=webp_file)
                 image_map[key.split("_")[1]] = image_instance.image.url
 
-            soup = BeautifulSoup(content, 'html.parser')
-            for img in soup.find_all('img'):
+            soup = BeautifulSoup(content, "html.parser")
+            for img in soup.find_all("img"):
                 # Gets the unique id referance to the image in the "data" html attribute
-                data_text = img.get('data')
+                data_text = img.get("data")
                 if data_text in image_map:
                     relativeImageSource = image_map[data_text]
-                    actualFullImageSource = f"http://localhost:8888{relativeImageSource}"                    
-                    img['src'] = actualFullImageSource
+                    actualFullImageSource = (
+                        f"http://localhost:8888{relativeImageSource}"
+                    )
+                    img["src"] = actualFullImageSource
 
             post.content = str(soup)
             post.save()
 
-            return Response({'status': 'Post created successfully'}, status=status.HTTP_201_CREATED)
+            return Response(
+                {"status": "Post created successfully"}, status=status.HTTP_201_CREATED
+            )
 
         except ValidationError as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             # Log the exception for debugging
-            return Response({'error': 'An unexpected error occurred'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response(
+                {"error": "An unexpected error occurred"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
 
 class PostCommentsView(ListAPIView):
     """Returns all of the comments associated with a post"""
 
-    permission_classes = [AllowAny] # Does NOT have to authenticated
-    
+    permission_classes = [AllowAny]  # Does NOT have to authenticated
+
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
     pagination_class = None
@@ -303,7 +347,7 @@ class PostCommentsView(ListAPIView):
 class PostAddCommentView(CreateAPIView):
     """Adds a comment to a specified post"""
 
-    permission_classes = [IsAuthenticated] # NEED to be authenticated
+    permission_classes = [IsAuthenticated]  # NEED to be authenticated
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
 
@@ -327,7 +371,7 @@ class PostDeleteCommentView(DestroyAPIView):
     """Deletes a comment from a specified post"""
 
     queryset = Comment.objects.all()
-    permission_classes = [IsAuthenticated] # NEED to be authenticated
+    permission_classes = [IsAuthenticated]  # NEED to be authenticated
     serializer_class = CommentSerializer
 
     lookup_field = "id"
