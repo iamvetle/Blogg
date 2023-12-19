@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 		},
 	],
 	imports: {
-		dirs: ['./typescript', './store', './composables/crud', './composables/editor', './constants'],
+		dirs: ['./typescript', './store', './utils/editor', './composables/crud', './composables/editor', './constants'],
 		presets: [
 			{
 				from: "./store",

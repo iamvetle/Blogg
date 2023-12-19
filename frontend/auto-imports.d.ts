@@ -150,9 +150,7 @@ declare module 'vue' {
     readonly describe: UnwrapRef<typeof import('vitest')['describe']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly expect: UnwrapRef<typeof import('vitest')['expect']>
-    readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
-    readonly generateUniqueId: UnwrapRef<typeof import('./composables/generateUniqueId')['generateUniqueId']>
     readonly getAllTags: UnwrapRef<typeof import('./composables/crud/getAllTags')['getAllTags']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
@@ -201,7 +199,6 @@ declare module 'vue' {
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
-    readonly removeImgTags: UnwrapRef<typeof import('./composables/removeImgTags')['removeImgTags']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly setRedoRun: UnwrapRef<typeof import('./composables/editorCommands')['setRedoRun']>
     readonly setUndoRun: UnwrapRef<typeof import('./composables/editorCommands')['setUndoRun']>
@@ -267,9 +264,7 @@ declare module '@vue/runtime-core' {
     readonly describe: UnwrapRef<typeof import('vitest')['describe']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly expect: UnwrapRef<typeof import('vitest')['expect']>
-    readonly extractTitleAndContent: UnwrapRef<typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']>
     readonly fixPagination: UnwrapRef<typeof import('./composables/fixPagination')['fixPagination']>
-    readonly generateUniqueId: UnwrapRef<typeof import('./composables/generateUniqueId')['generateUniqueId']>
     readonly getAllTags: UnwrapRef<typeof import('./composables/crud/getAllTags')['getAllTags']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
@@ -318,7 +313,6 @@ declare module '@vue/runtime-core' {
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
     readonly ref: UnwrapRef<typeof import('vue')['ref']>
-    readonly removeImgTags: UnwrapRef<typeof import('./composables/removeImgTags')['removeImgTags']>
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly setRedoRun: UnwrapRef<typeof import('./composables/editorCommands')['setRedoRun']>
     readonly setUndoRun: UnwrapRef<typeof import('./composables/editorCommands')['setUndoRun']>

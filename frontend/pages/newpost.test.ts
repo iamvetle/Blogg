@@ -1,16 +1,17 @@
 import { mount } from '@vue/test-utils';
 import newpost from './newpost.vue';
-import EditorCard from '~/components/modules/Editor/EditorCard.vue';
-import Modal from '~/components/utils/Modal.vue';
+// import EditorCard from '~/components/modules/Editor/EditorCard.vue';
+// import { FilterDropdownTags } from '#build/components';
 
 // Mock the postCreateNewPost function
 
-vi.stubGlobal("definePageMeta", () => {
-    return null
-})
 
 
+
+let mockGetAllTags = vi.fn()
 let mockPublish = vi.fn()
+let mockAction = vi.fn()
+let mockHandleCharacters = vi.fn()
 let wrapper:any;
 
 const factory = () => {
@@ -19,14 +20,16 @@ const factory = () => {
     return mount(newpost, {
         global: {
             components: {
-                EditorCard,
-                Modal
             },
             stubs: {
-                EditorCard: true
+                EditorCard: true,
+                FilterDropdownTags:true
             },
             mocks: {
-                publish:mockPublish
+                publish:mockPublish,
+                getAllTags:mockGetAllTags,
+                action:mockAction,
+                handleCharacters:mockHandleCharacters
             }
         }
     });
@@ -41,6 +44,14 @@ const factory = () => {
 
 
 describe('newPost', () => {
+
+    beforeEach(() => {
+        vi.stubGlobal("definePageMeta", () => {
+            return null
+        })
+    })
+
+
     afterEach(() => {
         vi.clearAllMocks(); // Clear the mocked function's call count after each test
 
@@ -59,16 +70,7 @@ describe('newPost', () => {
     /**
      * ! its client only which makes things difficult
      */
-    // test('When an new post material emit comes from the Editor card a function should be called', async () => {
-    //     wrapper = factory() 
-
-    //     const editorCard = wrapper.find("[data-test='editorcard']")
-
-    //     await editorCard.trigger("newPostMaterial")
-    //     await wrapper.vm.$nextTick()
-        
-    //     expect(mockPublish).toHaveBeenCalledOnce()
-    // })
+ 
     
 
 });
