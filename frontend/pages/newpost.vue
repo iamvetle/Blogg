@@ -37,7 +37,6 @@ const selected = ref<any>([])
  * * Final publishing step
  */
 const publish = async (formData: any) => {
-	formData.append("tags", selected.value)
 	const responseData = await postCreateNewPost(baseURL, formData);
 
 	if (responseData) {
