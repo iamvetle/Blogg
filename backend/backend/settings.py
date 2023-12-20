@@ -32,6 +32,10 @@ AUTH_USER_MODEL = "users.CustomUser"
 
 # Application definition
 
+# So that it is possible to do both /path and /path/
+APPEND_SLASH=True
+
+
 INSTALLED_APPS = [
     "api",
     "users",

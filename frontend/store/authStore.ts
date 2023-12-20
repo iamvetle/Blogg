@@ -29,6 +29,7 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
     watchEffect(() => {
         if (process.client) {
             const tokenFromStorage = localStorage.getItem('token');
+            console.log(tokenFromStorage)
 
             // Update token if present in localStorage
             if (tokenFromStorage === "") {

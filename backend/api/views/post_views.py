@@ -5,6 +5,8 @@ from django.contrib.auth import get_user_model
 from rest_framework.filters import SearchFilter
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 
+from api.services.post_services import PostService
+
 # Third-party libraries
 
 # Django Rest Framework
@@ -237,77 +239,10 @@ class PostCreateView(APIView):
     permission_classes = [IsAuthenticated]  # NEED to be authenticated
 
     def post(self, request, *args, **kwargs):
+        
         try:
-            title = request.data["title"]
-            content = request.data["content"]
-            tagsString = request.data.get("tags")
-
-            print(type(tagsString))
-            print(tagsString)
-
-            tagsList = tagsString.split(",")
-
-            print(type(tagsList))
-            print(tagsList)
-
-            if not title and not content:
-                return Response(
-                    {"error": "Both a title and content is missing"},
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
-            elif not title:
-                return Response({"error": "A title is required"})
-            elif not content:
-                return Response({"error": "Content for the post is missing"})
-
-            post = Post.objects.create(
-                title=title, content=content, author=request.user
-            )
-
-            for tagItem in tagsList:
-                print(tagItem)
-                tag, created = Tag.objects.get_or_create(name=tagItem)
-                print(tag)
-                post.tags.add(tag)
-
-            if not post:
-                return Response(
-                    {"error": "Failed to create the post"},
-                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                )
-
-            image_map = {}
-
-            for key, image_file in request.FILES.items():
-                # Open the uploaded image using Pillow
-                image = Image.open(image_file)
-
-                # Compress and convert the image to WebP
-                output = BytesIO()
-                image.save(output, format="WEBP", quality=80)
-                output.seek(0)
-
-                # Create a new Django file-like object for the WebP image
-                webp_file = ContentFile(
-                    output.read(), name=image_file.name.split(".")[0] + ".webp"
-                )
-
-                # Create the PostImage instance with the converted WebP image
-                image_instance = PostImage.objects.create(post=post, image=webp_file)
-                image_map[key.split("_")[1]] = image_instance.image.url
-
-            soup = BeautifulSoup(content, "html.parser")
-            for img in soup.find_all("img"):
-                # Gets the unique id referance to the image in the "data" html attribute
-                data_text = img.get("data")
-                if data_text in image_map:
-                    relativeImageSource = image_map[data_text]
-                    actualFullImageSource = (
-                        f"http://localhost:8888{relativeImageSource}"
-                    )
-                    img["src"] = actualFullImageSource
-
-            post.content = str(soup)
+            post = PostService.craft_post(request=request)
+            
             post.save()
 
             return Response(
