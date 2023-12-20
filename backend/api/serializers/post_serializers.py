@@ -1,4 +1,4 @@
-from api.models import Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
+from api.models import Post, Comment, Tag, SavedPost, PostVideo, PostImage
 from api.serializers.only_serializers import (
     OnlyAuthorCustomUserSerializer,
     OnlyTitlePostSerializer,
@@ -39,7 +39,7 @@ class TagSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Tag
-        fields = ["name", "post_count"]
+        fields = ["id", "name", "post_count"]
         
         extra_kwargs = {
             "post_count":{"write_only":True}
@@ -48,12 +48,6 @@ class TagSerializer(serializers.ModelSerializer):
     def get_post_count(self, obj):
         """Returns the number of posts that have this exact tag"""
         return obj.posts.count()
-
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = ["name"]
-
         
 class PostImageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -76,7 +70,6 @@ class PostSerializer(serializers.ModelSerializer):
     
     content = serializers.CharField(max_length=10000)
     tags = serializers.StringRelatedField(many=True, required=False)
-    categories = serializers.StringRelatedField(many=True, required=False)
     
     images = PostImageSerializer(many=True, required=False) # Cannot be updated
     videos = PostVideoSerializer(many=True, required=False) # Cannot be updated
@@ -84,7 +77,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
 
-        fields = ["id", "title", "content", "author", "date_published", "tags", "categories", "images", "videos", "num_of_comments"]
+        fields = ["id", "title", "content", "author", "date_published", "tags", "images", "videos", "num_of_comments"]
         read_only_fields = ["id", "date_published", "author"]
     
     def create(self, validated_data):
@@ -121,7 +114,6 @@ class PostShortenSerializer(serializers.ModelSerializer):
     num_of_comments = serializers.SerializerMethodField()
 
     tags = TagSerializer(many=True, read_only=True)
-    categories = CategorySerializer(many=True, read_only=True)
     
     images = PostImageSerializer(many=True, read_only=True)
     
@@ -135,7 +127,6 @@ class PostShortenSerializer(serializers.ModelSerializer):
             "content_snippet",
             "date_published",
             "tags",
-            "categories",
             "images",
             "num_of_comments",
         ]

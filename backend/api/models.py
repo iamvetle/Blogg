@@ -5,13 +5,6 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.name
-
-
 class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
@@ -30,7 +23,6 @@ class Post(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="posts"
     )
 
-    categories = models.ManyToManyField(Category, blank=True)
     tags = models.ManyToManyField(Tag, related_name="posts", blank=True)
 
     def __str__(self):

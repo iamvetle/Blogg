@@ -19,7 +19,6 @@ from api.views.post_views import (
     
 )
 from api.views.tag_views import AllTagsView
-from api.views.category_views import AllCategoriesView
 from api.views.other_views import HealthCheck
 
 
@@ -30,7 +29,6 @@ urlpatterns = [
     path("posts/feed/", PostMultipleSnippetView.as_view(), name="all_or_multiple_posts"),
     path("posts/following/", PostMultipleSnippetOnlyMyFollowingView.as_view(), name="all_or_multiple_following_posts"),
     path("posts/tags/", AllTagsView.as_view(), name="tags"),
-    path("posts/categories/", AllCategoriesView.as_view(), name="categories"),
     
     # Very specific and independent paths
     path("health_check/", HealthCheck.as_view(), name="health_check"),

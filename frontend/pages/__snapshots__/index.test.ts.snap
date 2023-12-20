@@ -116,7 +116,6 @@ VueWrapper {
                     "posts",
                     "allComments",
                     "followingPosts",
-                    "allCategories",
                     "allTags",
                     "loggedInUserPosts",
                     "baseFetchURL",
@@ -125,7 +124,6 @@ VueWrapper {
                 },
                 "_hotUpdate": [Function],
                 "_p": [Circular],
-                "allCategories": null,
                 "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -329,13 +327,6 @@ VueWrapper {
                   },
                 },
                 "Store for containing posts and related to posts": {
-                  "allCategories": RefImpl {
-                    "__v_isRef": true,
-                    "__v_isShallow": false,
-                    "_rawValue": null,
-                    "_value": null,
-                    "dep": undefined,
-                  },
                   "allComments": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -421,7 +412,6 @@ VueWrapper {
                   "previous_page": "",
                 },
                 "Store for containing posts and related to posts": {
-                  "allCategories": null,
                   "allComments": null,
                   "allTags": null,
                   "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -521,7 +511,6 @@ VueWrapper {
                   "posts",
                   "allComments",
                   "followingPosts",
-                  "allCategories",
                   "allTags",
                   "loggedInUserPosts",
                   "baseFetchURL",
@@ -530,7 +519,6 @@ VueWrapper {
               },
               "_hotUpdate": [Function],
               "_p": [Circular],
-              "allCategories": null,
               "allComments": null,
               "allTags": null,
               "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -734,13 +722,6 @@ VueWrapper {
                 },
               },
               "Store for containing posts and related to posts": {
-                "allCategories": RefImpl {
-                  "__v_isRef": true,
-                  "__v_isShallow": false,
-                  "_rawValue": null,
-                  "_value": null,
-                  "dep": undefined,
-                },
                 "allComments": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -826,7 +807,6 @@ VueWrapper {
                 "previous_page": "",
               },
               "Store for containing posts and related to posts": {
-                "allCategories": null,
                 "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -936,7 +916,6 @@ VueWrapper {
                       "posts",
                       "allComments",
                       "followingPosts",
-                      "allCategories",
                       "allTags",
                       "loggedInUserPosts",
                       "baseFetchURL",
@@ -945,7 +924,6 @@ VueWrapper {
                   },
                   "_hotUpdate": [Function],
                   "_p": [Circular],
-                  "allCategories": null,
                   "allComments": null,
                   "allTags": null,
                   "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -1149,13 +1127,6 @@ VueWrapper {
                     },
                   },
                   "Store for containing posts and related to posts": {
-                    "allCategories": RefImpl {
-                      "__v_isRef": true,
-                      "__v_isShallow": false,
-                      "_rawValue": null,
-                      "_value": null,
-                      "dep": undefined,
-                    },
                     "allComments": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
@@ -1241,7 +1212,6 @@ VueWrapper {
                     "previous_page": "",
                   },
                   "Store for containing posts and related to posts": {
-                    "allCategories": null,
                     "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -1341,7 +1311,6 @@ VueWrapper {
                     "posts",
                     "allComments",
                     "followingPosts",
-                    "allCategories",
                     "allTags",
                     "loggedInUserPosts",
                     "baseFetchURL",
@@ -1350,7 +1319,6 @@ VueWrapper {
                 },
                 "_hotUpdate": [Function],
                 "_p": [Circular],
-                "allCategories": null,
                 "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -1554,13 +1522,6 @@ VueWrapper {
                   },
                 },
                 "Store for containing posts and related to posts": {
-                  "allCategories": RefImpl {
-                    "__v_isRef": true,
-                    "__v_isShallow": false,
-                    "_rawValue": null,
-                    "_value": null,
-                    "dep": undefined,
-                  },
                   "allComments": RefImpl {
                     "__v_isRef": true,
                     "__v_isShallow": false,
@@ -1646,7 +1607,6 @@ VueWrapper {
                   "previous_page": "",
                 },
                 "Store for containing posts and related to posts": {
-                  "allCategories": null,
                   "allComments": null,
                   "allTags": null,
                   "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -1877,7 +1837,6 @@ VueWrapper {
                           "posts",
                           "allComments",
                           "followingPosts",
-                          "allCategories",
                           "allTags",
                           "loggedInUserPosts",
                           "baseFetchURL",
@@ -1886,7 +1845,6 @@ VueWrapper {
                       },
                       "_hotUpdate": [Function],
                       "_p": [Circular],
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -2090,13 +2048,6 @@ VueWrapper {
                         },
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": null,
-                          "_value": null,
-                          "dep": undefined,
-                        },
                         "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -2182,7 +2133,6 @@ VueWrapper {
                         "previous_page": "",
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": null,
                         "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -2282,7 +2232,6 @@ VueWrapper {
                         "posts",
                         "allComments",
                         "followingPosts",
-                        "allCategories",
                         "allTags",
                         "loggedInUserPosts",
                         "baseFetchURL",
@@ -2291,7 +2240,6 @@ VueWrapper {
                     },
                     "_hotUpdate": [Function],
                     "_p": [Circular],
-                    "allCategories": null,
                     "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -2495,13 +2443,6 @@ VueWrapper {
                       },
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": null,
-                        "_value": null,
-                        "dep": undefined,
-                      },
                       "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -2587,7 +2528,6 @@ VueWrapper {
                       "previous_page": "",
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -2717,7 +2657,6 @@ VueWrapper {
                           "posts",
                           "allComments",
                           "followingPosts",
-                          "allCategories",
                           "allTags",
                           "loggedInUserPosts",
                           "baseFetchURL",
@@ -2726,7 +2665,6 @@ VueWrapper {
                       },
                       "_hotUpdate": [Function],
                       "_p": [Circular],
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -2870,13 +2808,6 @@ VueWrapper {
                         },
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": null,
-                          "_value": null,
-                          "dep": undefined,
-                        },
                         "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -2962,7 +2893,6 @@ VueWrapper {
                         "previous_page": "",
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": null,
                         "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -3034,7 +2964,6 @@ VueWrapper {
                     "posts",
                     "allComments",
                     "followingPosts",
-                    "allCategories",
                     "allTags",
                     "loggedInUserPosts",
                     "baseFetchURL",
@@ -3258,13 +3187,6 @@ VueWrapper {
                         },
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": null,
-                          "_value": null,
-                          "dep": undefined,
-                        },
                         "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -3350,7 +3272,6 @@ VueWrapper {
                         "previous_page": "",
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": null,
                         "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -3369,7 +3290,6 @@ VueWrapper {
                   },
                   "use": [Function],
                 },
-                "allCategories": null,
                 "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -3491,7 +3411,6 @@ VueWrapper {
                           "posts",
                           "allComments",
                           "followingPosts",
-                          "allCategories",
                           "allTags",
                           "loggedInUserPosts",
                           "baseFetchURL",
@@ -3500,7 +3419,6 @@ VueWrapper {
                       },
                       "_hotUpdate": [Function],
                       "_p": [Circular],
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -3652,13 +3570,6 @@ VueWrapper {
                         },
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": null,
-                          "_value": null,
-                          "dep": undefined,
-                        },
                         "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -3744,7 +3655,6 @@ VueWrapper {
                         "previous_page": "",
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": null,
                         "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -3889,7 +3799,6 @@ VueWrapper {
                         "posts",
                         "allComments",
                         "followingPosts",
-                        "allCategories",
                         "allTags",
                         "loggedInUserPosts",
                         "baseFetchURL",
@@ -3898,7 +3807,6 @@ VueWrapper {
                     },
                     "_hotUpdate": [Function],
                     "_p": [Circular],
-                    "allCategories": null,
                     "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -4042,13 +3950,6 @@ VueWrapper {
                       },
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": null,
-                        "_value": null,
-                        "dep": undefined,
-                      },
                       "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -4134,7 +4035,6 @@ VueWrapper {
                       "previous_page": "",
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -4206,7 +4106,6 @@ VueWrapper {
                   "posts",
                   "allComments",
                   "followingPosts",
-                  "allCategories",
                   "allTags",
                   "loggedInUserPosts",
                   "baseFetchURL",
@@ -4430,13 +4329,6 @@ VueWrapper {
                       },
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": null,
-                        "_value": null,
-                        "dep": undefined,
-                      },
                       "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -4522,7 +4414,6 @@ VueWrapper {
                       "previous_page": "",
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -4541,7 +4432,6 @@ VueWrapper {
                 },
                 "use": [Function],
               },
-              "allCategories": null,
               "allComments": null,
               "allTags": null,
               "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -4663,7 +4553,6 @@ VueWrapper {
                         "posts",
                         "allComments",
                         "followingPosts",
-                        "allCategories",
                         "allTags",
                         "loggedInUserPosts",
                         "baseFetchURL",
@@ -4672,7 +4561,6 @@ VueWrapper {
                     },
                     "_hotUpdate": [Function],
                     "_p": [Circular],
-                    "allCategories": null,
                     "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -4824,13 +4712,6 @@ VueWrapper {
                       },
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": null,
-                        "_value": null,
-                        "dep": undefined,
-                      },
                       "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -4916,7 +4797,6 @@ VueWrapper {
                       "previous_page": "",
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -5090,7 +4970,6 @@ VueWrapper {
                           "posts",
                           "allComments",
                           "followingPosts",
-                          "allCategories",
                           "allTags",
                           "loggedInUserPosts",
                           "baseFetchURL",
@@ -5099,7 +4978,6 @@ VueWrapper {
                       },
                       "_hotUpdate": [Function],
                       "_p": [Circular],
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -5243,13 +5121,6 @@ VueWrapper {
                         },
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": null,
-                          "_value": null,
-                          "dep": undefined,
-                        },
                         "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -5335,7 +5206,6 @@ VueWrapper {
                         "previous_page": "",
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": null,
                         "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -5407,7 +5277,6 @@ VueWrapper {
                     "posts",
                     "allComments",
                     "followingPosts",
-                    "allCategories",
                     "allTags",
                     "loggedInUserPosts",
                     "baseFetchURL",
@@ -5631,13 +5500,6 @@ VueWrapper {
                         },
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": null,
-                          "_value": null,
-                          "dep": undefined,
-                        },
                         "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -5723,7 +5585,6 @@ VueWrapper {
                         "previous_page": "",
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": null,
                         "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -5742,7 +5603,6 @@ VueWrapper {
                   },
                   "use": [Function],
                 },
-                "allCategories": null,
                 "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -5864,7 +5724,6 @@ VueWrapper {
                           "posts",
                           "allComments",
                           "followingPosts",
-                          "allCategories",
                           "allTags",
                           "loggedInUserPosts",
                           "baseFetchURL",
@@ -5873,7 +5732,6 @@ VueWrapper {
                       },
                       "_hotUpdate": [Function],
                       "_p": [Circular],
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -6025,13 +5883,6 @@ VueWrapper {
                         },
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": RefImpl {
-                          "__v_isRef": true,
-                          "__v_isShallow": false,
-                          "_rawValue": null,
-                          "_value": null,
-                          "dep": undefined,
-                        },
                         "allComments": RefImpl {
                           "__v_isRef": true,
                           "__v_isShallow": false,
@@ -6117,7 +5968,6 @@ VueWrapper {
                         "previous_page": "",
                       },
                       "Store for containing posts and related to posts": {
-                        "allCategories": null,
                         "allComments": null,
                         "allTags": null,
                         "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -6290,7 +6140,6 @@ VueWrapper {
                         "posts",
                         "allComments",
                         "followingPosts",
-                        "allCategories",
                         "allTags",
                         "loggedInUserPosts",
                         "baseFetchURL",
@@ -6299,7 +6148,6 @@ VueWrapper {
                     },
                     "_hotUpdate": [Function],
                     "_p": [Circular],
-                    "allCategories": null,
                     "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -6443,13 +6291,6 @@ VueWrapper {
                       },
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": null,
-                        "_value": null,
-                        "dep": undefined,
-                      },
                       "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -6535,7 +6376,6 @@ VueWrapper {
                       "previous_page": "",
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -6607,7 +6447,6 @@ VueWrapper {
                   "posts",
                   "allComments",
                   "followingPosts",
-                  "allCategories",
                   "allTags",
                   "loggedInUserPosts",
                   "baseFetchURL",
@@ -6831,13 +6670,6 @@ VueWrapper {
                       },
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": null,
-                        "_value": null,
-                        "dep": undefined,
-                      },
                       "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -6923,7 +6755,6 @@ VueWrapper {
                       "previous_page": "",
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -6942,7 +6773,6 @@ VueWrapper {
                 },
                 "use": [Function],
               },
-              "allCategories": null,
               "allComments": null,
               "allTags": null,
               "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -7064,7 +6894,6 @@ VueWrapper {
                         "posts",
                         "allComments",
                         "followingPosts",
-                        "allCategories",
                         "allTags",
                         "loggedInUserPosts",
                         "baseFetchURL",
@@ -7073,7 +6902,6 @@ VueWrapper {
                     },
                     "_hotUpdate": [Function],
                     "_p": [Circular],
-                    "allCategories": null,
                     "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -7225,13 +7053,6 @@ VueWrapper {
                       },
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": null,
-                        "_value": null,
-                        "dep": undefined,
-                      },
                       "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -7317,7 +7138,6 @@ VueWrapper {
                       "previous_page": "",
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -7477,7 +7297,6 @@ VueWrapper {
                                           "posts",
                                           "allComments",
                                           "followingPosts",
-                                          "allCategories",
                                           "allTags",
                                           "loggedInUserPosts",
                                           "baseFetchURL",
@@ -7486,7 +7305,6 @@ VueWrapper {
                                       },
                                       "_hotUpdate": [Function],
                                       "_p": [Circular],
-                                      "allCategories": null,
                                       "allComments": null,
                                       "allTags": null,
                                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -7690,13 +7508,6 @@ VueWrapper {
                                         },
                                       },
                                       "Store for containing posts and related to posts": {
-                                        "allCategories": RefImpl {
-                                          "__v_isRef": true,
-                                          "__v_isShallow": false,
-                                          "_rawValue": null,
-                                          "_value": null,
-                                          "dep": undefined,
-                                        },
                                         "allComments": RefImpl {
                                           "__v_isRef": true,
                                           "__v_isShallow": false,
@@ -7782,7 +7593,6 @@ VueWrapper {
                                         "previous_page": "",
                                       },
                                       "Store for containing posts and related to posts": {
-                                        "allCategories": null,
                                         "allComments": null,
                                         "allTags": null,
                                         "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -7882,7 +7692,6 @@ VueWrapper {
                                         "posts",
                                         "allComments",
                                         "followingPosts",
-                                        "allCategories",
                                         "allTags",
                                         "loggedInUserPosts",
                                         "baseFetchURL",
@@ -7891,7 +7700,6 @@ VueWrapper {
                                     },
                                     "_hotUpdate": [Function],
                                     "_p": [Circular],
-                                    "allCategories": null,
                                     "allComments": null,
                                     "allTags": null,
                                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -8095,13 +7903,6 @@ VueWrapper {
                                       },
                                     },
                                     "Store for containing posts and related to posts": {
-                                      "allCategories": RefImpl {
-                                        "__v_isRef": true,
-                                        "__v_isShallow": false,
-                                        "_rawValue": null,
-                                        "_value": null,
-                                        "dep": undefined,
-                                      },
                                       "allComments": RefImpl {
                                         "__v_isRef": true,
                                         "__v_isShallow": false,
@@ -8187,7 +7988,6 @@ VueWrapper {
                                       "previous_page": "",
                                     },
                                     "Store for containing posts and related to posts": {
-                                      "allCategories": null,
                                       "allComments": null,
                                       "allTags": null,
                                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -8496,7 +8296,6 @@ VueWrapper {
                                           "posts",
                                           "allComments",
                                           "followingPosts",
-                                          "allCategories",
                                           "allTags",
                                           "loggedInUserPosts",
                                           "baseFetchURL",
@@ -8505,7 +8304,6 @@ VueWrapper {
                                       },
                                       "_hotUpdate": [Function],
                                       "_p": [Circular],
-                                      "allCategories": null,
                                       "allComments": null,
                                       "allTags": null,
                                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -8709,13 +8507,6 @@ VueWrapper {
                                         },
                                       },
                                       "Store for containing posts and related to posts": {
-                                        "allCategories": RefImpl {
-                                          "__v_isRef": true,
-                                          "__v_isShallow": false,
-                                          "_rawValue": null,
-                                          "_value": null,
-                                          "dep": undefined,
-                                        },
                                         "allComments": RefImpl {
                                           "__v_isRef": true,
                                           "__v_isShallow": false,
@@ -8801,7 +8592,6 @@ VueWrapper {
                                         "previous_page": "",
                                       },
                                       "Store for containing posts and related to posts": {
-                                        "allCategories": null,
                                         "allComments": null,
                                         "allTags": null,
                                         "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -8901,7 +8691,6 @@ VueWrapper {
                                         "posts",
                                         "allComments",
                                         "followingPosts",
-                                        "allCategories",
                                         "allTags",
                                         "loggedInUserPosts",
                                         "baseFetchURL",
@@ -8910,7 +8699,6 @@ VueWrapper {
                                     },
                                     "_hotUpdate": [Function],
                                     "_p": [Circular],
-                                    "allCategories": null,
                                     "allComments": null,
                                     "allTags": null,
                                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -9114,13 +8902,6 @@ VueWrapper {
                                       },
                                     },
                                     "Store for containing posts and related to posts": {
-                                      "allCategories": RefImpl {
-                                        "__v_isRef": true,
-                                        "__v_isShallow": false,
-                                        "_rawValue": null,
-                                        "_value": null,
-                                        "dep": undefined,
-                                      },
                                       "allComments": RefImpl {
                                         "__v_isRef": true,
                                         "__v_isShallow": false,
@@ -9206,7 +8987,6 @@ VueWrapper {
                                       "previous_page": "",
                                     },
                                     "Store for containing posts and related to posts": {
-                                      "allCategories": null,
                                       "allComments": null,
                                       "allTags": null,
                                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -9589,7 +9369,6 @@ VueWrapper {
                                   "posts",
                                   "allComments",
                                   "followingPosts",
-                                  "allCategories",
                                   "allTags",
                                   "loggedInUserPosts",
                                   "baseFetchURL",
@@ -9598,7 +9377,6 @@ VueWrapper {
                               },
                               "_hotUpdate": [Function],
                               "_p": [Circular],
-                              "allCategories": null,
                               "allComments": null,
                               "allTags": null,
                               "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -9802,13 +9580,6 @@ VueWrapper {
                                 },
                               },
                               "Store for containing posts and related to posts": {
-                                "allCategories": RefImpl {
-                                  "__v_isRef": true,
-                                  "__v_isShallow": false,
-                                  "_rawValue": null,
-                                  "_value": null,
-                                  "dep": undefined,
-                                },
                                 "allComments": RefImpl {
                                   "__v_isRef": true,
                                   "__v_isShallow": false,
@@ -9894,7 +9665,6 @@ VueWrapper {
                                 "previous_page": "",
                               },
                               "Store for containing posts and related to posts": {
-                                "allCategories": null,
                                 "allComments": null,
                                 "allTags": null,
                                 "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -9994,7 +9764,6 @@ VueWrapper {
                                 "posts",
                                 "allComments",
                                 "followingPosts",
-                                "allCategories",
                                 "allTags",
                                 "loggedInUserPosts",
                                 "baseFetchURL",
@@ -10003,7 +9772,6 @@ VueWrapper {
                             },
                             "_hotUpdate": [Function],
                             "_p": [Circular],
-                            "allCategories": null,
                             "allComments": null,
                             "allTags": null,
                             "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -10207,13 +9975,6 @@ VueWrapper {
                               },
                             },
                             "Store for containing posts and related to posts": {
-                              "allCategories": RefImpl {
-                                "__v_isRef": true,
-                                "__v_isShallow": false,
-                                "_rawValue": null,
-                                "_value": null,
-                                "dep": undefined,
-                              },
                               "allComments": RefImpl {
                                 "__v_isRef": true,
                                 "__v_isShallow": false,
@@ -10299,7 +10060,6 @@ VueWrapper {
                               "previous_page": "",
                             },
                             "Store for containing posts and related to posts": {
-                              "allCategories": null,
                               "allComments": null,
                               "allTags": null,
                               "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -10578,7 +10338,6 @@ VueWrapper {
                                   "posts",
                                   "allComments",
                                   "followingPosts",
-                                  "allCategories",
                                   "allTags",
                                   "loggedInUserPosts",
                                   "baseFetchURL",
@@ -10587,7 +10346,6 @@ VueWrapper {
                               },
                               "_hotUpdate": [Function],
                               "_p": [Circular],
-                              "allCategories": null,
                               "allComments": null,
                               "allTags": null,
                               "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -10791,13 +10549,6 @@ VueWrapper {
                                 },
                               },
                               "Store for containing posts and related to posts": {
-                                "allCategories": RefImpl {
-                                  "__v_isRef": true,
-                                  "__v_isShallow": false,
-                                  "_rawValue": null,
-                                  "_value": null,
-                                  "dep": undefined,
-                                },
                                 "allComments": RefImpl {
                                   "__v_isRef": true,
                                   "__v_isShallow": false,
@@ -10883,7 +10634,6 @@ VueWrapper {
                                 "previous_page": "",
                               },
                               "Store for containing posts and related to posts": {
-                                "allCategories": null,
                                 "allComments": null,
                                 "allTags": null,
                                 "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -10983,7 +10733,6 @@ VueWrapper {
                                 "posts",
                                 "allComments",
                                 "followingPosts",
-                                "allCategories",
                                 "allTags",
                                 "loggedInUserPosts",
                                 "baseFetchURL",
@@ -10992,7 +10741,6 @@ VueWrapper {
                             },
                             "_hotUpdate": [Function],
                             "_p": [Circular],
-                            "allCategories": null,
                             "allComments": null,
                             "allTags": null,
                             "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -11196,13 +10944,6 @@ VueWrapper {
                               },
                             },
                             "Store for containing posts and related to posts": {
-                              "allCategories": RefImpl {
-                                "__v_isRef": true,
-                                "__v_isShallow": false,
-                                "_rawValue": null,
-                                "_value": null,
-                                "dep": undefined,
-                              },
                               "allComments": RefImpl {
                                 "__v_isRef": true,
                                 "__v_isShallow": false,
@@ -11288,7 +11029,6 @@ VueWrapper {
                               "previous_page": "",
                             },
                             "Store for containing posts and related to posts": {
-                              "allCategories": null,
                               "allComments": null,
                               "allTags": null,
                               "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -11637,7 +11377,6 @@ VueWrapper {
                         "posts",
                         "allComments",
                         "followingPosts",
-                        "allCategories",
                         "allTags",
                         "loggedInUserPosts",
                         "baseFetchURL",
@@ -11646,7 +11385,6 @@ VueWrapper {
                     },
                     "_hotUpdate": [Function],
                     "_p": [Circular],
-                    "allCategories": null,
                     "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -11850,13 +11588,6 @@ VueWrapper {
                       },
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": RefImpl {
-                        "__v_isRef": true,
-                        "__v_isShallow": false,
-                        "_rawValue": null,
-                        "_value": null,
-                        "dep": undefined,
-                      },
                       "allComments": RefImpl {
                         "__v_isRef": true,
                         "__v_isShallow": false,
@@ -11942,7 +11673,6 @@ VueWrapper {
                       "previous_page": "",
                     },
                     "Store for containing posts and related to posts": {
-                      "allCategories": null,
                       "allComments": null,
                       "allTags": null,
                       "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -12042,7 +11772,6 @@ VueWrapper {
                       "posts",
                       "allComments",
                       "followingPosts",
-                      "allCategories",
                       "allTags",
                       "loggedInUserPosts",
                       "baseFetchURL",
@@ -12051,7 +11780,6 @@ VueWrapper {
                   },
                   "_hotUpdate": [Function],
                   "_p": [Circular],
-                  "allCategories": null,
                   "allComments": null,
                   "allTags": null,
                   "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -12255,13 +11983,6 @@ VueWrapper {
                     },
                   },
                   "Store for containing posts and related to posts": {
-                    "allCategories": RefImpl {
-                      "__v_isRef": true,
-                      "__v_isShallow": false,
-                      "_rawValue": null,
-                      "_value": null,
-                      "dep": undefined,
-                    },
                     "allComments": RefImpl {
                       "__v_isRef": true,
                       "__v_isShallow": false,
@@ -12347,7 +12068,6 @@ VueWrapper {
                     "previous_page": "",
                   },
                   "Store for containing posts and related to posts": {
-                    "allCategories": null,
                     "allComments": null,
                     "allTags": null,
                     "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -12470,7 +12190,6 @@ VueWrapper {
                   "posts",
                   "allComments",
                   "followingPosts",
-                  "allCategories",
                   "allTags",
                   "loggedInUserPosts",
                   "baseFetchURL",
@@ -12479,7 +12198,6 @@ VueWrapper {
               },
               "_hotUpdate": [Function],
               "_p": [Circular],
-              "allCategories": null,
               "allComments": null,
               "allTags": null,
               "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -12683,13 +12401,6 @@ VueWrapper {
                 },
               },
               "Store for containing posts and related to posts": {
-                "allCategories": RefImpl {
-                  "__v_isRef": true,
-                  "__v_isShallow": false,
-                  "_rawValue": null,
-                  "_value": null,
-                  "dep": undefined,
-                },
                 "allComments": RefImpl {
                   "__v_isRef": true,
                   "__v_isShallow": false,
@@ -12775,7 +12486,6 @@ VueWrapper {
                 "previous_page": "",
               },
               "Store for containing posts and related to posts": {
-                "allCategories": null,
                 "allComments": null,
                 "allTags": null,
                 "baseFetchURL": "http://localhost:8888/api/posts/feed/",
@@ -12807,7 +12517,7 @@ VueWrapper {
     "runWithContext": [Function],
     "unmount": [Function],
     "use": [Function],
-    "version": "3.3.7",
+    "version": "3.3.12",
   },
   "__setProps": [Function],
   "cleanUpCallbacks": [

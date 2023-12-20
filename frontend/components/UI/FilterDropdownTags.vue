@@ -1,6 +1,6 @@
 <template>
     <div>
-        <USelectMenu :options="options" v-model="selected" multiple placeholder="Option tags" size="lg"
+        <USelectMenu :options="options" v-model="selected" searchable searchablePlaceholder="Search a tag..." multiple placeholder="Option tags" size="lg"
             selectClass="items-center bg-primaryContainer text-onPrimaryContainer outline-none text-sm">
             <template #leading>
                 <Icon name="filter" size="1rem" />

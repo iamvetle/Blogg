@@ -11,7 +11,7 @@
 import profile_picture from '~/assets/placeholder-profile-picture.png'
 
 defineProps<{
-  following:FollowingType
+  following:string
 }>()
 
 </script>

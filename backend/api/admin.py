@@ -1,5 +1,5 @@
 from django.contrib import admin
-from api.models import Post, Comment, Tag, Category, SavedPost, PostVideo, PostImage
+from api.models import Post, Comment, Tag, SavedPost, PostVideo, PostImage
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
 from django.contrib.auth import get_user_model
@@ -71,17 +71,6 @@ class TagAdmin(admin.ModelAdmin):
 
     readonly_field = "name"
 
-
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    model = Category
-
-    list_display = ("name",)
-
-    search_fields = ("name",)
-
-    readonly_field = ("name",)
-
 class PostVideoInline(admin.TabularInline):
     model = PostVideo
     extra = 1
@@ -95,20 +84,6 @@ class PostAdmin(admin.ModelAdmin):
     save_on_top = True
     model = Post
     inlines = [CommentInline, PostVideoInline, PostImageInline]
-
-    def list_categories(self, obj):
-        """Turns each object/tag into a string, that are concatenated into one long string"""
-        list_of_categories = []
-
-        for category in obj.categories.all():
-            category = category.name
-
-            list_of_categories.append(category)
-
-        string_of_categories = ", ".join(list_of_categories)
-        return string_of_categories
-
-    list_categories.short_description = "Categories"
 
     def list_tags(self, obj):
         """Turns each object/tag into a string, that are concatenated into one long string"""
@@ -126,7 +101,6 @@ class PostAdmin(admin.ModelAdmin):
 
     filter_horizontal = (
         "tags",
-        "categories",
     )
 
     def body(self, obj):
@@ -136,7 +110,6 @@ class PostAdmin(admin.ModelAdmin):
         "title",
         "id",
         "date_published",
-        "list_categories",
         "list_tags",
         "author"
     )
@@ -154,13 +127,13 @@ class PostAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {"fields": ("id", "title", "body", "content", "author")}),
-        ("Additional", {"fields": ("tags", "categories")}),
+        ("Additional", {"fields": ("tags",)}),
         ("Extra", {"fields": ("date_published",)}),
     )
 
     add_fieldsets = (
         (None, {"classes": ("wide"), "fields": ("title", "content", "author")}),
-        ("Additional", {"fields": ("tags", "categories")}),
+        ("Additional", {"fields": ("tags",)}),
     )
 
 

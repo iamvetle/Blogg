@@ -17,7 +17,6 @@ export interface NormalUserSnippetPostType {
 			num_of_followers: string;
 
 			tags: string[];
-			categories: string[];
 
 			images: ImageType[];
 
@@ -43,7 +42,6 @@ export interface SnippetPostSingleType {
 	date_published: string;
 	author: AuthorType;
 	tags: null | TagType[];
-	categories: null | CategoryType[];
 
 	images: ImageType[];
 	num_of_comments: number;
@@ -59,7 +57,6 @@ export interface PostSingleType {
 	date_published: string;
 	author: AuthorType;
 	tags: null | TagType[];
-	categories: null | CategoryType[];
 
 	images: ImageType[];
 	videos: VideoType[];
@@ -111,22 +108,9 @@ export interface PostSavedType {
 // 	results: TagType[]
 // }
 export interface TagType {
+	id:number,
 	name: string,
 	post_count:string
-}
-
-/**
- * url: /api/categories/
- */
-// export interface AllCategoriesType { // With pagination
-// 	count: number;
-// 	next: string | null;
-// 	previous: string | null;
-// 	current_page: number | null;
-// 	results: CategoryType[]
-// }
-export interface CategoryType {
-	name: string
 }
 
 export interface ImageType {

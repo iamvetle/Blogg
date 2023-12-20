@@ -36,7 +36,6 @@ export const usePostStore = defineStore("Store for containing posts and related 
     /**
      * Has all (paginated) tags 
      */
-    const allCategories = ref<CategoryType[] | null>(null)
 
     /**
      * Contains all of the comments of a post
@@ -49,9 +48,8 @@ export const usePostStore = defineStore("Store for containing posts and related 
         followingPosts.value = null
         loggedInUserPosts.value = null
         allTags.value = null
-        allCategories.value = null
         allComments.value = null
     }
 
-    return { posts, resetStore, allComments, followingPosts, allCategories, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
+    return { posts, resetStore, allComments, followingPosts, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
 });
