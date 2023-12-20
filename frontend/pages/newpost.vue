@@ -2,13 +2,6 @@
 	<div class="pt-2 bg-background">
 		<div id="direct-editor" class="mx-auto">
 			<ClientOnly>
-				<!-- <EditorCardChooseTags/> -->
-				<div>
-					<FilterDropdownTags @output="action" :options="tags"/>
-				</div>
-				<div>
-					<pre>{{ selected }}</pre>
-				</div>
 				<EditorCard @newPostMaterial="publish" @charactersCount="handleCharacters" data-test="editorcard"/>
 			</ClientOnly>
 			<span class="block pl-8 pb-6">{{ charCount }}</span>
@@ -30,9 +23,6 @@ const postState = ref<false | true | null>(null);
 /** Contains all tags */
 const tags = ref<string[]>([])
 
-/** Contains only the selected tags */
-const selected = ref<any>([])
-
 /**
  * * Final publishing step
  */
@@ -50,10 +40,6 @@ const publish = async (formData: any) => {
 		return null;
 	}	
 };
-
-const action = (items:any) => {
-	selected.value = items
-}
 
 /** Fill characters */
 const handleCharacters = (event: number) => {
