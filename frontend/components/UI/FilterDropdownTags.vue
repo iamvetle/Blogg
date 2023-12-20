@@ -35,7 +35,7 @@ defineProps<{
 
 const emit = defineEmits(["output"])
 
-
+/** State for all of the selected tags */
 const selected = ref([])
 
 /** Emits whenever a tag is selected or unselected */

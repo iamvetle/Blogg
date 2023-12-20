@@ -27,6 +27,8 @@
 					<EditorMenuTop :editor="editor" @add-image="handleAddImage" @publish-post="handlePublishPost"
 						@try-discard-editing-post="handleTryDiscardEditingPost" :charCount="charCount"/>
 					<hr class="not-prose mt-4 mb-8">
+					<EditorDropdownAddTags @output="action"
+					/>
 
 				</div>
 			</div>
@@ -131,6 +133,9 @@ const imageFileMap = ref<any>({});
 const title = ref<string | null | undefined>(null);
 const body = ref<string | null | undefined>(null);
 
+const selectedTags = ref<any>([])
+
+
 const editor: any = useEditor({ //@ts-ignore
 	"type": "doc",
 	content: '',
@@ -184,6 +189,8 @@ const editor: any = useEditor({ //@ts-ignore
 	},
 })
 
+/** Holds the selected tags */
+
 /** Has the momentary raw text */
 const contentText = computed(() => editor.value?.getText() || "")
 
@@ -210,6 +217,10 @@ const focusOnCorrectEditor = () => {
 			editor.value.commands.focus()
 		}
 	}
+}
+
+const action = (event:any) => {
+	selectedTags.value = event
 }
 
 
@@ -318,6 +329,7 @@ function handleModalDiscardPost() {
 	titleEditor.value = ""
 	title.value = ""
 	body.value = ""
+	selectedTags.value = []
 
 	// When the post is discarded the current form is also discarded, or reset
 	formData.value = new FormData
@@ -342,6 +354,12 @@ function handleModalPublishPost() {
 	formData.value.append("title", title.value || "");
 	formData.value.append("content", body.value || "");
 
+	/** If there are any tags, add tags to formdata */
+	if (selectedTags.value.length) {
+
+		formData.value.append("tags", selectedTags.value);
+	} 
+
 	imageFileMap.value = validateAndCleanImageMap(body.value, imageFileMap.value)
 
 	// Append each file with its unique ID
@@ -357,6 +375,7 @@ function handleModalPublishPost() {
 	titleEditor.value = ""
 	title.value = ""
 	body.value = ""
+	selectedTags.value = []
 
 	// Removes all currently stored images and their ids
 	imageFileMap.value = {}
