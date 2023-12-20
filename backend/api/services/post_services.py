@@ -97,7 +97,7 @@ class PostService:  # Try login logic
             print(tagsList)
             for tagItem in tagsList:
                 print(tagItem)
-                tag, created = Tag.objects.get_or_create(name=tagItem)
+                tag = Tag.objects.get(name=tagItem)
                 print(tag)
                 post.tags.add(tag)
 

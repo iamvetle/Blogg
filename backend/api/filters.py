@@ -4,9 +4,6 @@ from django_filters import DateFromToRangeFilter
 from django.db.models import Q 
 
 class CustomPostFilter(filters.FilterSet):
-    # author = filters.CharFilter(field_name='author__username', lookup_expr='iexact')
-    categories = filters.CharFilter(field_name='categories__name', lookup_expr="iexact") ## probebly don't want this
-
     # This makes sure that I can choose MULTIPLE tags in an OR way, instead of using AND, so that all the posts 
     # (so that each post has to have all the tags (which i dont want)) 
     tags = filters.ModelMultipleChoiceFilter(

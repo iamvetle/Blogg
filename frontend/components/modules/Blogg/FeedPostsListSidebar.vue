@@ -93,7 +93,7 @@ const loggedInUserStore = useLoggedInUserStore()
  * Either returns the full name of the user, or returns only the username (which is not supposed to actually happen)
  */
 const full_name = computed(() => {
-	let name = `${loggedInUserStore.loggedInUserProfile.first_name} ${loggedInUserStore.loggedInUserProfile.last_name}`
+	let name = `${loggedInUserStore.loggedInUserProfile?.first_name} ${loggedInUserStore.loggedInUserProfile?.last_name}` || ""
 
 	if (name.trim() == "") {
 		return null
@@ -103,8 +103,8 @@ const full_name = computed(() => {
 })
 
 const profilePicture = computed(() => {
-	if (loggedInUserStore.loggedInUserProfile.profile_picture) {
-		return loggedInUserStore.loggedInUserProfile.profile_picture
+	if (loggedInUserStore.loggedInUserProfile?.profile_picture || "") {
+		return loggedInUserStore.loggedInUserProfile?.profile_picture || ""
 	} else {
 		return profile_picture
 	}
