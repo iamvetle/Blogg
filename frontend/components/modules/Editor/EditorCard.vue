@@ -83,6 +83,13 @@
 /**
  * Editor for creating new posts.
  *
+ * All the:
+ * - visuals
+ * - logic
+ * - modals
+ * - and such
+ * are here.
+ *
  * The post that wants to be publushed is emitted upwards.
  *
  * The post will be saved in session storage when navigating away from the page, but
@@ -256,7 +263,7 @@ const clearEverythingInEditor = () => {
 	formData.value = new FormData();
 
 	// puts the focus back on the editor (the correct one)
-	focusOnCorrectEditor()
+	focusOnCorrectEditor();
 };
 
 /**
@@ -333,6 +340,16 @@ const handlePublishPost = async () => {
 		return;
 	}
 
+	/**
+	 * * If there are more than three tags
+	 * ! Obviously going to increase this later
+	 */
+	if (selectedTags.value.length > 3) {
+		showModalRequirements.value = true;
+		return;
+	}
+
+
 	// Puts the html and title in their "reactive" partners
 	body.value = html;
 	title.value = titleEditor.value;
@@ -365,7 +382,7 @@ function handleModalDiscardPost() {
 	showModalDiscardPost.value = false;
 
 	// Clears the input
-	clearEverythingInEditor()
+	clearEverythingInEditor();
 }
 
 /**
@@ -401,7 +418,7 @@ function handleModalPublishPost() {
 	emit("newPostMaterial", formData.value);
 
 	// Clears everything in the editor
-	clearEverythingInEditor()
+	clearEverythingInEditor();
 }
 
 /** The cancel button of the discard modal was pressed */
