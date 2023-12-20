@@ -5,10 +5,6 @@ from django.contrib.auth import get_user_model
 from rest_framework.filters import SearchFilter
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 
-from api.services.post_services import PostService
-
-# Third-party libraries
-
 # Django Rest Framework
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -18,20 +14,17 @@ from rest_framework import status
 from rest_framework.generics import (
     ListAPIView,
     RetrieveAPIView,
-    GenericAPIView,
     RetrieveUpdateDestroyAPIView,
     CreateAPIView,
     DestroyAPIView,
 )
-
-from rest_framework import parsers
 
 # Django Filter
 from django_filters import rest_framework as filters
 from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 # Local application imports
-from api.models import Post, SavedPost, Comment, PostImage, PostVideo, Tag
+from api.models import Post, SavedPost, Comment
 from api.serializers.post_serializers import (
     PostSerializer,
     PostSaveStyleSerializer,
@@ -39,19 +32,10 @@ from api.serializers.post_serializers import (
     CommentSerializer,
 )
 
-from api.serializers.tag_serializers import TagSerializer
-
-from users.serializers.user_serializers import NormalUserSerializer
+# Filter
 from api.filters import CustomPostFilter
 
-from bs4 import BeautifulSoup
-
-from django.core.exceptions import ValidationError
-
-from PIL import Image
-from django.core.files.base import ContentFile
-from io import BytesIO
-
+# The active user model in the app
 CustomUser = get_user_model()
 
 
