@@ -39,7 +39,7 @@
 						@add-image="handleAddImage"
 						@publish-post="handlePublishPost"
 						@try-discard-editing-post="handleTryDiscardEditingPost"
-						:charCount="charCount"
+						:totalCharCount="totalCharCount"
 					/>
 					<hr class="not-prose mt-4 mb-8" />
 					<EditorDropdownAddTags @output="action" />
@@ -215,15 +215,19 @@ const editor: any = useEditor({
 	},
 });
 
-/** Holds the selected tags */
-
 /** Has the momentary raw text */
 const contentText = computed(() => editor.value?.getText() || "");
 
-/** Has the character count at the moment */
-const charCount = computed(() => contentText.value.length);
+/** Has the character count of the content from the main editor */
+const charCountContent = computed(() => contentText.value.length);
 
-watchEffect(() => emit("charactersCount", charCount.value));
+/** Has the character count of the title from the title editor */
+const charCountTitle = computed(() => titleEditor.value.length)
+
+/** Hast the total character count of all the post input (from title and main editor) */
+const totalCharCount = computed(() => charCountContent.value + charCountTitle.value)
+
+watchEffect(() => emit("charactersCount", totalCharCount.value));
 
 const focusOnCorrectEditor = () => {
 	/** Takes the focus to the title inpur, if there is an empty title string*/

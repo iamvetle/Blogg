@@ -2,7 +2,7 @@
 	<div class="pt-2 bg-background">
 		<div id="direct-editor" class="mx-auto">
 			<ClientOnly>
-				<EditorCard @newPostMaterial="publish" @charactersCount="handleCharacters" data-test="editorcard"/>
+				<EditorCard @newPostMaterial="publish" @totalCharCount="handleCharacters" data-test="editorcard"/>
 			</ClientOnly>
 			<span class="block pl-8 pb-6">{{ charCount }}</span>
 		</div>
