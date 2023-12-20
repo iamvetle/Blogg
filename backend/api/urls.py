@@ -4,20 +4,18 @@ from django.urls import path
 # Local
 from api.views.post_views import (
     PostReadSingleView,
-    PostCreateView,
     PostAllLoggedInUserView,
     PostMultipleSnippetView,
     PostMultipleSnippetOnlyMyFollowingView,
     PostSaveView,
     PostAllSavedLoggedInUserView,
-    PostAllNormalUserView,
-    PostDeleteView,
     PostEditSingleView,
     PostCommentsView,
     PostAddCommentView,
     PostDeleteCommentView
     
 )
+from api.views.post_create_views import PostCreateView
 from api.views.tag_views import TagsAllView
 from api.views.other_views import HealthCheck
 

@@ -65,48 +65,63 @@ class PostService:  # Try login logic
         - Images
         """
 
+        # The title of the post
         title = request.data["title"]
+
+        # The html post content
         content = request.data["content"]
+
+        # The tags in the request are all in one long string
         tagsString = request.data.get("tags")
 
-        print(type(tagsString))
-        print(tagsString)
+        # List to hold all of the tags
+        tagsList = []
+        # Checks if the request has too many tags in it
+
+        if tagsString:
+            # Splits the string with all of the posts
+            tagsList = tagsString.split(",")
+            print("The tags in the request:", tagsList, type(tagsList)) # print to self
+            
+            # Checking if the request contained too many tags - it should not have more than 3
+            if (len(tagsList) > 3 ):
+                print("The number of tags included in the request was/is:", len(tagsList))
+                return Response({"error": "The request had too many tags in it (max=3)"}, status=status.HTTP_400_BAD_REQUEST)
 
         if not title and not content:
+            print("There was no 'title' AND no 'content' values") # print to self
             return Response(
                 {"error": "Both a title and content is missing"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
         elif not title:
+            print("There was no 'title' value") # print to self
             return Response({"error": "A title is required"})
-        elif not content:
-            return Response({"error": "Content for the post is missing"})
-
-        post = Post.objects.create(
-            title=title, content=content, author=request.user
-        )
-
-        # List to hold all of the tags
-        tagsList = []
         
-        if tagsString:
-        # The tags in the request are returned as one long string, so I need to split it
-            tagsList = tagsString.split(",")
+        elif not content:
+            print("There was no 'content' value") # print to self
+            return Response({"error": "Content for the post is required"})
 
-            print(type(tagsList))
-            print(tagsList)
-            for tagItem in tagsList:
-                print(tagItem)
-                tag = Tag.objects.get(name=tagItem)
-                print(tag)
-                post.tags.add(tag)
+        post = Post.objects.create(title=title, content=content, author=request.user)
 
         if not post:
-            return Response(
+            print("Failed to create post. There was no 'post'.") # print to self
+            return Response (
                 {"error": "Failed to create the post"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
+            
+        # If there are tags in the request, that are added to the post instance 
+        if tagsList:
+            for tagItem in tagsList:
 
+                # Creates a new tag object instance
+                tag = Tag.objects.get(name=tagItem)
+
+                # Adds that instance to the post model
+                post.tags.add(tag)
+
+        # Going to contain all of the images
         image_map = {}
 
         for key, image_file in request.FILES.items():
@@ -133,12 +148,10 @@ class PostService:  # Try login logic
             data_text = img.get("data")
             if data_text in image_map:
                 relativeImageSource = image_map[data_text]
-                actualFullImageSource = (
-                    f"http://localhost:8888{relativeImageSource}"
-                )
+                actualFullImageSource = f"http://localhost:8888{relativeImageSource}"
                 img["src"] = actualFullImageSource
 
         post.content = str(soup)
-        
-        # returning the post after all the changes
+
+        # Returning the post after all the changes
         return post
