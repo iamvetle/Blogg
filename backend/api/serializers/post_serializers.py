@@ -3,6 +3,9 @@ from api.serializers.only_serializers import (
     OnlyAuthorCustomUserSerializer,
     OnlyTitlePostSerializer,
 )
+
+from api.serializers.tag_serializers import TagSerializer
+
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from django.utils.safestring import mark_safe
@@ -32,22 +35,6 @@ class CommentSerializer(serializers.ModelSerializer):
 
     def get_date_published(self, obj):
         return obj.date_published.strftime("%d-%m-%Y")
-
-
-class TagSerializer(serializers.ModelSerializer):
-    post_count = serializers.SerializerMethodField()
-    
-    class Meta:
-        model = Tag
-        fields = ["id", "name", "post_count"]
-        
-        extra_kwargs = {
-            "post_count":{"write_only":True}
-        }
-
-    def get_post_count(self, obj):
-        """Returns the number of posts that have this exact tag"""
-        return obj.posts.count()
         
 class PostImageSerializer(serializers.ModelSerializer):
     class Meta:

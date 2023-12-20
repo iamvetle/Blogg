@@ -37,8 +37,10 @@ from api.serializers.post_serializers import (
     PostSaveStyleSerializer,
     PostShortenSerializer,
     CommentSerializer,
-    TagSerializer,
 )
+
+from api.serializers.tag_serializers import TagSerializer
+
 from users.serializers.user_serializers import NormalUserSerializer
 from api.filters import CustomPostFilter
 
@@ -229,35 +231,6 @@ class PostSaveView(APIView):
                     {"detail": "Post saved"},
                     status=status.HTTP_201_CREATED,
                 )
-
-
-class PostCreateView(APIView):
-    """Creates a post together with images"""
-
-    parser_classes = [parsers.MultiPartParser, parsers.FormParser]
-
-    permission_classes = [IsAuthenticated]  # NEED to be authenticated
-
-    def post(self, request, *args, **kwargs):
-        
-        try:
-            post = PostService.craft_post(request=request)
-            
-            post.save()
-
-            return Response(
-                {"status": "Post created successfully"}, status=status.HTTP_201_CREATED
-            )
-
-        except ValidationError as e:
-            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            # Log the exception for debugging
-            return Response(
-                {"error": "An unexpected error occurred"},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            )
-
 
 class PostCommentsView(ListAPIView):
     """Returns all of the comments associated with a post"""

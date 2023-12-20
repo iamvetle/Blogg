@@ -242,7 +242,7 @@ const action = (event: any) => {
 };
 
 /** Clear everything in the editor */
-const clearEverything = () => {
+const clearEverythingInEditor = () => {
 	editor.value?.commands.clearContent();
 	titleEditor.value = "";
 	title.value = "";
@@ -365,7 +365,7 @@ function handleModalDiscardPost() {
 	showModalDiscardPost.value = false;
 
 	// Clears the input
-	clearEverything()
+	clearEverythingInEditor()
 }
 
 /**
@@ -401,6 +401,7 @@ function handleModalPublishPost() {
 	emit("newPostMaterial", formData.value);
 
 	// Clears everything in the editor
+	clearEverythingInEditor()
 }
 
 /** The cancel button of the discard modal was pressed */
