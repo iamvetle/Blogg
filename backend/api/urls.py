@@ -18,7 +18,7 @@ from api.views.post_views import (
     PostDeleteCommentView
     
 )
-from api.views.tag_views import AllTagsView
+from api.views.tag_views import TagsAllView
 from api.views.other_views import HealthCheck
 
 
@@ -28,7 +28,7 @@ urlpatterns = [
     # path("search/", PostMultipleAfterSearchView.as_view(), name="search"),
     path("posts/feed/", PostMultipleSnippetView.as_view(), name="all_or_multiple_posts"),
     path("posts/following/", PostMultipleSnippetOnlyMyFollowingView.as_view(), name="all_or_multiple_following_posts"),
-    path("posts/tags/", AllTagsView.as_view(), name="tags"),
+    path("posts/tags/", TagsAllView.as_view(), name="tags"),
     
     # Very specific and independent paths
     path("health_check/", HealthCheck.as_view(), name="health_check"),
