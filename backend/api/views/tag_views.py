@@ -11,7 +11,7 @@ from rest_framework.response import Response
 from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 
-class AllTagsView(ListCreateAPIView):
+class TagsAllView(ListCreateAPIView):
     """Returns all tag"""
     # ? can also create a new one
     # TODO - ^remove it later after adding a bunch
