@@ -6,7 +6,7 @@
 			</ClientOnly>
 			<span class="block pl-8 pb-6">{{ charCount }}</span>
 		</div>
-	</div>
+		</div>
 </template>
 
 <script setup lang="ts">

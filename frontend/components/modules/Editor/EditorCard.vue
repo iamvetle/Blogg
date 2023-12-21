@@ -15,7 +15,12 @@
 				</div>
 				<!-- Using Nuxt UI, don't need teleport -->
 				<div v-if="showModalRequirements">
-					<EditorModalRequirements @close="closeModalRequirements" :tags-count="numOfTags" :char-total="totalCharCount" :char-content=charCountContent :char-title="charCountTitle"/>
+					<EditorModalRequirements
+						@close="closeModalRequirements"
+						:tags-count="numOfTags"
+						:char-content="charCountContent"
+						:char-title="charCountTitle"
+					/>
 				</div>
 				<!-- The Modal to discard the content post -->
 				<div v-if="showModalDiscardPost">
@@ -120,7 +125,10 @@ import Underline from "@tiptap/extension-underline";
 import { Image } from "./CustomImage";
 import { Placeholder } from "@tiptap/extension-placeholder";
 
-const emit = defineEmits(["newPostMaterial", "charactersCount"]);
+const emit = defineEmits<{
+	newPostMaterial: [formdata: FormData];
+	charactersCount: [totalCharCount: number];
+}>();
 
 // The state of the modals
 const showModalPublishPost = ref(false);
@@ -145,7 +153,7 @@ watchEffect(() => {
 const formData = ref(new FormData());
 
 /** This stores the title state of the title input editor */
-const titleEditor = ref("");
+const titleEditor = ref<string>("");
 
 /** template ref for the title input */
 const editorTitleInputRef = ref<any>(null);
@@ -160,7 +168,7 @@ const imageFileMap = ref<any>({});
 const title = ref<string | null | undefined>(null);
 const body = ref<string | null | undefined>(null);
 
-const selectedTags = ref<any>([]);
+const selectedTags = ref<string[]>([]);
 
 const editor: any = useEditor({
 	//@ts-ignore
@@ -218,26 +226,28 @@ const editor: any = useEditor({
 /** Has the momentary raw text */
 const contentText = computed(() => editor.value?.getText() || "");
 
-/** 
- * Has the character count of the content from the main editor 
- * @returns - The length as a number 
+/**
+ * Has the character count of the content from the main editor
+ * @returns - The length as a number
  */
-const charCountContent = computed(() => parseInt(contentText.value.length));
+const charCountContent = computed(() => contentText.value.length);
 
-/** 
+/**
  * Has the character count of the title from the title editor
  * @returns - The length as a number
  */
-const charCountTitle = computed(() => parseInt(titleEditor.value.length))
+const charCountTitle = computed(() => titleEditor.value.length);
 
-/** 
- * Hast the total character count of all the post input (from title and main editor) 
+/**
+ * Hast the total character count of all the post input (from title and main editor)
  * @returns - The length as a number
  */
-const totalCharCount = computed(() => charCountContent.value + charCountTitle.value)
+const totalCharCount = computed(
+	() => charCountContent.value + charCountTitle.value || 0,
+);
 
 /** Has the num of tags from an input */
-const numOfTags = computed(() => selectedTags.length || "0")
+const numOfTags = computed(() => selectedTags.value.length || 0);
 
 watchEffect(() => emit("charactersCount", totalCharCount.value));
 
@@ -261,7 +271,9 @@ const focusOnCorrectEditor = () => {
 };
 
 const action = (event: any) => {
-	selectedTags.value = event;
+	const eventResult = event
+	// Populates the selected tags array with the selected tags
+	selectedTags.value = eventResult ?? [];
 };
 
 /** Clear everything in the editor */
@@ -270,6 +282,11 @@ const clearEverythingInEditor = () => {
 	titleEditor.value = "";
 	title.value = "";
 	body.value = "";
+	/**
+	 * ! this doesnt work becauyse
+	 * ! the selected tags are in the "EditorDropdownAddTags" component
+	 * ! and not here
+	 */
 	selectedTags.value = [];
 
 	// Removes all currently stored images and their ids
@@ -337,21 +354,16 @@ const handleImagePaste = async (event: any) => {
 const handlePublishPost = async () => {
 	// The html in string format
 	const html = editor.value?.getHTML();
-	// The html in raw text format
-	const htmlRawText = editor.value?.getText() ?? "";
-
-	// The title of the post
-	const titleText = titleEditor.value ?? "";
 
 	// if the title is literally lese than three characters
-	if (titleText?.length < 3) {
+	if (charCountTitle.value < 3) {
 		// shows the modal that shows the requirements
 		showModalRequirements.value = true;
 		return;
 	}
 
 	// if the post content is under 50
-	if (htmlRawText?.length < 50) {
+	if (charCountContent.value < 50) {
 		showModalRequirements.value = true;
 		return;
 	}
@@ -360,11 +372,10 @@ const handlePublishPost = async () => {
 	 * * If there are more than three tags
 	 * ! Obviously going to increase this later
 	 */
-	if (selectedTags.value.length > 3) {
+	if (numOfTags.value > 3) {
 		showModalRequirements.value = true;
 		return;
 	}
-
 
 	// Puts the html and title in their "reactive" partners
 	body.value = html;
@@ -415,8 +426,8 @@ function handleModalPublishPost() {
 	formData.value.append("content", body.value || "");
 
 	/** If there are any tags, add tags to formdata */
-	if (selectedTags.value.length) {
-		formData.value.append("tags", selectedTags.value);
+	if (numOfTags.value) {
+		formData.value.append("tags", String(selectedTags.value));
 	}
 
 	imageFileMap.value = validateAndCleanImageMap(

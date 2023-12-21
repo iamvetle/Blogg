@@ -7,23 +7,20 @@
 				</div>
 			</template>
 			<template #default>
-				<ul class="space-y-4">
-					<li
+				<div class="prose">
+					<ul
 						:class="charTitle < 3 ? 'text-error' : ''"
-						class="prose"
 						v-html="sanitzedTitle"
-					></li>
-					<li
+					></ul>
+					<ul
 						:class="charContent < 50 ? 'text-error' : ''"
-						class="prose"
 						v-html="sanitizedContent"
-					></li>
-					<li
+					></ul>
+					<ul
 						:class="tagsCount > 3 ? 'text-error' : ''"
-						class="prose"
 						v-html="req3Tags"
-					></li>
-				</ul>
+					></ul>
+				</div>
 			</template>
 		</UCard>
 	</UModal>
@@ -45,7 +42,6 @@ const props = withDefaults(
 		title?: string;
 		charTitle: any;
 		charContent: any;
-		charTotal: any;
 		tagsCount: any;
 	}>(),
 	{
@@ -55,25 +51,43 @@ const props = withDefaults(
 
 const req1Title = computed(
 	() => `
-			&#8226 The
+			<li>
+			The
 			<strong>title</strong> 
 			has to be at least 
 			<strong>3</strong> 
-			characters long - (now <strong>${props.charTitle}</strong>).
+			characters long.
+			</li>
+			<ul>
+				<li>
+					Currently have <strong>${props.charTitle}</strong> characters.
+					</li>
+				</ul>
 		`,
 );
 
 const req2Content = computed(
-	() => `
-			&#8226 The 
-			<strong>content</strong> has to be at least <strong>50</strong> characters long - (currently ${props.charContent}).
+	() => `	<li>
+			The 
+			<strong>content</strong> has to be at least <strong>50</strong> characters long.
+			</li>
+			<ul>
+				<li>
+					Currently have <strong>${props.charContent}</strong> characters.
+					</li>
+				</ul>
+
 `,
 );
 
 const req3Tags = computed(
-	() => `
-			&#8226
-			The post cannot have more than <strong>three tags</strong> - (now <ul><li>${props.tagsCount.toString()}</li></ul>).
+	() => `	<li>
+			The post cannot have more than <strong>three tags</strong>.
+			</li>
+			<ul>
+				<li>Currently have <strong>${props.tagsCount}</strong> characters.
+					</li>
+			</ul>.
 		`,
 );
 const sanitzedTitle = DOMPurify.sanitize(req1Title.value);

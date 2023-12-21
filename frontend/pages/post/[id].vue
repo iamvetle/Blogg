@@ -33,7 +33,7 @@
 		</div>
 
 		<div id="main-content" data-test="html_rendered_content">
-			<PostContentHTML :html="post.content" />
+			<PostContentHTML :html="post.content" class="break-words"/>
 		</div>
 
 		<div class="mb-4">
