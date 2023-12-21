@@ -25,7 +25,7 @@ export const getAllTags = async (): Promise<TagType[] | null> => {
         postStore.allTags = response.data
 
         return response.data
-    } else {
+    } else {        
         return null
     }
 }
