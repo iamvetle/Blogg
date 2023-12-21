@@ -15,7 +15,7 @@
 				</div>
 				<!-- Using Nuxt UI, don't need teleport -->
 				<div v-if="showModalRequirements">
-					<EditorModalRequirements @close="closeModalRequirements" />
+					<EditorModalRequirements @close="closeModalRequirements" :tags-count="numOfTags" :char-total="totalCharCount" :char-content=charCountContent :char-title="charCountTitle"/>
 				</div>
 				<!-- The Modal to discard the content post -->
 				<div v-if="showModalDiscardPost">
@@ -218,14 +218,26 @@ const editor: any = useEditor({
 /** Has the momentary raw text */
 const contentText = computed(() => editor.value?.getText() || "");
 
-/** Has the character count of the content from the main editor */
-const charCountContent = computed(() => contentText.value.length);
+/** 
+ * Has the character count of the content from the main editor 
+ * @returns - The length as a number 
+ */
+const charCountContent = computed(() => parseInt(contentText.value.length));
 
-/** Has the character count of the title from the title editor */
-const charCountTitle = computed(() => titleEditor.value.length)
+/** 
+ * Has the character count of the title from the title editor
+ * @returns - The length as a number
+ */
+const charCountTitle = computed(() => parseInt(titleEditor.value.length))
 
-/** Hast the total character count of all the post input (from title and main editor) */
+/** 
+ * Hast the total character count of all the post input (from title and main editor) 
+ * @returns - The length as a number
+ */
 const totalCharCount = computed(() => charCountContent.value + charCountTitle.value)
+
+/** Has the num of tags from an input */
+const numOfTags = computed(() => selectedTags.length || "0")
 
 watchEffect(() => emit("charactersCount", totalCharCount.value));
 

@@ -6,7 +6,25 @@
 					<h3>{{ title }}</h3>
 				</div>
 			</template>
-			<div class="prose" v-html="sanitizedDescription"></div>
+			<template #default>
+				<ul class="space-y-4">
+					<li
+						:class="charTitle < 3 ? 'text-error' : ''"
+						class="prose"
+						v-html="sanitzedTitle"
+					></li>
+					<li
+						:class="charContent < 50 ? 'text-error' : ''"
+						class="prose"
+						v-html="sanitizedContent"
+					></li>
+					<li
+						:class="tagsCount > 3 ? 'text-error' : ''"
+						class="prose"
+						v-html="req3Tags"
+					></li>
+				</ul>
+			</template>
 		</UCard>
 	</UModal>
 </template>
@@ -25,29 +43,41 @@ const emit = defineEmits(["close"]);
 const props = withDefaults(
 	defineProps<{
 		title?: string;
-		description?: string;
+		charTitle: any;
+		charContent: any;
+		charTotal: any;
+		tagsCount: any;
 	}>(),
 	{
 		title: "Requirements not met",
-		description:
-			`<p>
-                &#8226 The 
-                <strong>title</strong> 
-                has to be at least 
-                <strong>3</strong> 
-                characters long.
-            </p>
-            <p>
-                &#8226 The 
-                <strong>content</strong> of the post has to be at least <strong>50</strong> characters long.
-            </p>
-            <p>
-                &#8226
-                The post cannot have more than <strong>three tags</strong>.
-            </p>`,
 	},
 );
-const sanitizedDescription = DOMPurify.sanitize(props.description);
+
+const req1Title = computed(
+	() => `
+			&#8226 The
+			<strong>title</strong> 
+			has to be at least 
+			<strong>3</strong> 
+			characters long - (now <strong>${props.charTitle}</strong>).
+		`,
+);
+
+const req2Content = computed(
+	() => `
+			&#8226 The 
+			<strong>content</strong> has to be at least <strong>50</strong> characters long - (currently ${props.charContent}).
+`,
+);
+
+const req3Tags = computed(
+	() => `
+			&#8226
+			The post cannot have more than <strong>three tags</strong> - (now <ul><li>${props.tagsCount.toString()}</li></ul>).
+		`,
+);
+const sanitzedTitle = DOMPurify.sanitize(req1Title.value);
+const sanitizedContent = DOMPurify.sanitize(req2Content.value);
 
 const isOpen = ref(true);
 
