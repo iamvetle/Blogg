@@ -20,6 +20,7 @@
 						:tags-count="numOfTags"
 						:char-content="charCountContent"
 						:char-title="charCountTitle"
+						v-model="selectedTags"
 					/>
 				</div>
 				<!-- The Modal to discard the content post -->
@@ -168,6 +169,9 @@ const imageFileMap = ref<any>({});
 const title = ref<string | null | undefined>(null);
 const body = ref<string | null | undefined>(null);
 
+/**
+ * ! I have to make this emit one again upwards so that the selected is able to be removed correctly
+ */
 const selectedTags = ref<string[]>([]);
 
 const editor: any = useEditor({
