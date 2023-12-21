@@ -271,7 +271,7 @@ const focusOnCorrectEditor = () => {
 };
 
 const action = (event: any) => {
-	const eventResult = event
+	const eventResult = event;
 	// Populates the selected tags array with the selected tags
 	selectedTags.value = eventResult ?? [];
 };
@@ -522,6 +522,14 @@ onMounted(() => {
 		// gets the title string from the sessionStorage and inserts it into the input title.value (or empty string)
 		titleEditor.value = sessionStorage.getItem("titlePost") ?? "";
 
+		// gets the tags from the sessionStorage and makes the selected
+		const stringSessionTags = sessionStorage.getItem("tagsPost");
+		const listSessionTags = stringSessionTags?.split(",");
+
+		if (listSessionTags?.includes("") == false) {
+			selectedTags.value = listSessionTags;
+		}
+
 		// focus on the correct editor
 		focusOnCorrectEditor();
 	}
@@ -573,6 +581,9 @@ onUnmounted(() => {
 	// gets the title from the input
 	const titlePost = titleEditor.value;
 
+	// gets the tags
+	const theSelectedTags = String(selectedTags.value);
+
 	// Not supposed to happen
 	if (editor.value.isDestroyed != true) {
 		console.log("not destroyed");
@@ -583,6 +594,8 @@ onUnmounted(() => {
 	sessionStorage.setItem("htmlPost", htmlPost);
 	// Saves the title string in a session for storing
 	sessionStorage.setItem("titlePost", titlePost);
+	// Saves the selected tags in a session for storing
+	sessionStorage.setItem("tagsPost", theSelectedTags);
 });
 </script>
 

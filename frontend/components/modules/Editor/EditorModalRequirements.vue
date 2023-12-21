@@ -1,5 +1,5 @@
 <template>
-	<UModal v-model="isOpen">
+	<UModal :value="modelValue" @input="handleInput">
 		<UCard>
 			<template #header>
 				<div class="prose">
@@ -35,7 +35,7 @@ import DOMPurify from "dompurify";
  *
  * I have to do v-model on this component though "on-top".
  */
-const emit = defineEmits(["close"]);
+const emit = defineEmits(["close", "update:modelValue"]);
 
 const props = withDefaults(
 	defineProps<{
@@ -43,11 +43,21 @@ const props = withDefaults(
 		charTitle: any;
 		charContent: any;
 		tagsCount: any;
+		modelValue: any;
 	}>(),
 	{
 		title: "Requirements not met",
 	},
 );
+
+/**
+ * Handles the input event from the textarea.
+ * Emits an 'update:modelValue' event with the new value, allowing the parent component to update its data.
+ * @param {Event} event - The input event object.
+ */
+ const handleInput = (event: any) => {
+    emit('update:modelValue', event.target.value);
+};
 
 const req1Title = computed(
 	() => `

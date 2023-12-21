@@ -1,7 +1,7 @@
 <template>
 	<div v-for="post in posts?.results">
 		<div class="article" :key="post.id">
-			<feed-post-preview-card :key="post.id">
+			<feed-post-preview-card>
 				<template #profile_picture>
 					<img
 						v-show="true"
