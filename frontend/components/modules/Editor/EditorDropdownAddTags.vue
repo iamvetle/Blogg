@@ -39,13 +39,16 @@
 
 <script setup lang="ts">
 
+
 /** Holds all of the tags */
 const tags = ref<any>([]);
 
 const emit = defineEmits(["output"]);
 
+
+
 /** State for all of the selected tags */
-const selected = ref([]);
+const selected = ref<string[]>([]);
 
 /** Emits whenever a tag is selected or unselected */
 //@ts-ignore
@@ -60,6 +63,7 @@ watch(
 
 /** Fills up the tags with data/tags - and fetches from api */
 onBeforeMount(async () => {
+
 	const response = await getAllTags();
 	if (response == null) {
 		console.warn(
@@ -72,6 +76,25 @@ onBeforeMount(async () => {
 		}
 	}
 });
+
+onMounted(() => {
+	const stringSelectedtags = sessionStorage.getItem("postSelectedTags")
+	const listSelectedTags = stringSelectedtags?.split(",") ?? []
+
+	if (listSelectedTags.includes("") == false) {
+		selected.value = listSelectedTags ?? []		
+	}
+})
+
+onUnmounted(() => {
+
+	// Turns the array of tags into a string with substring(?)
+	const tagsSelected = String(selected.value);
+
+	// Saves the tags in a session for storing
+	sessionStorage.setItem("postSelectedTags", tagsSelected)
+});
+
 </script>
 
 <style scoped></style>

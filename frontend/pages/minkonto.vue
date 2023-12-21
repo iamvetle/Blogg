@@ -80,6 +80,10 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * ! if there are more than 10 posts not all get fetched
+ * ! this is because of pagination on the backend
+ */
 // Declaring stores
 
 const postStore = usePostStore()
