@@ -45,8 +45,7 @@ class PostVideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostVideo
         fields = ['video']
-
-
+        
 # Is used for create and for detail retrieve
 class PostSerializer(serializers.ModelSerializer):
     """Serializes the input. Is used on single post"""
@@ -55,7 +54,7 @@ class PostSerializer(serializers.ModelSerializer):
     date_published = serializers.SerializerMethodField(required=False) # read only by deafault I don't want to end up being able to update date_published    
     num_of_comments = serializers.SerializerMethodField() # number
     
-    content = serializers.CharField(max_length=10000)
+    content = serializers.CharField(max_length=10000) # Can maximum have post a post with 10 000 char | 80 000 on actual the backend
     tags = serializers.StringRelatedField(many=True, required=False)
     
     images = PostImageSerializer(many=True, required=False) # Cannot be updated
@@ -66,7 +65,7 @@ class PostSerializer(serializers.ModelSerializer):
 
         fields = ["id", "title", "content", "author", "date_published", "tags", "images", "videos", "num_of_comments"]
         read_only_fields = ["id", "date_published", "author"]
-    
+
     def create(self, validated_data):
         validated_data['content'] = format_html(validated_data['content'])
         author = self.context['request'].user
@@ -120,6 +119,7 @@ class PostShortenSerializer(serializers.ModelSerializer):
         
         read_only_fields = ['title']
 
+    # This is only when GET is used to retrieve posts - so no posts are changed on the DATABASE
     def get_content_snippet(self, obj):
         content_snippet = obj.content[:200]
         if len(content_snippet) >= 200:
