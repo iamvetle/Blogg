@@ -15,6 +15,12 @@ from django.contrib.auth import get_user_model
 from rest_framework.filters import SearchFilter
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 
+# Serializers
+from api.serializers.post_serializers import PostSerializer
+
+from django.forms.models import model_to_dict
+
+
 # Third-party libraries
 
 # Django Rest Framework
@@ -74,18 +80,7 @@ class PostCreateView(APIView):
 
             # List to hold all of the tags
             tagsList = []
-            # Checks if the request has too many tags in it
-
-            if tagsString:
-                # Splits the string with all of the posts
-                tagsList = tagsString.split(",")
-                print("The tags in the request:", tagsList, type(tagsList)) # print to self
-                
-                # Checking if the request contained too many tags - it should not have more than 3
-                if (len(tagsList) > 3 ):
-                    print("The number of tags included in the request was/is:", len(tagsList))
-                    return Response({"error": "The request had too many tags in it (max=3)"}, status=status.HTTP_400_BAD_REQUEST)
-
+            
             if not title and not content:
                 print("There was no 'title' AND no 'content' values") # print to self
                 return Response(
@@ -99,6 +94,54 @@ class PostCreateView(APIView):
             elif not content:
                 print("There was no 'content' value") # print to self
                 return Response({"error": "Content for the post is required"})
+            
+            # SMALLER THAN ALLOWED
+            
+            minTitleLen = 3
+            minContentLen = 50
+            
+            if (len(title) < minTitleLen) and (len(content) < minContentLen):
+                print(f"The title was less than 3 chracters, and the content was under 50 characters. You had, title: {len(title)}, content: {len(content)}.")
+                return Response({"error": f"The title in the request had less than the minimum amount of required characters, {minTitleLen} characters. The content in the request had less than the minimum amount of required characters, {minContentLen} characters."}, status=status.HTTP_400_BAD_REQUEST)
+            
+            if len(title) < minTitleLen:
+                print(f"The title was LESS then {minTitleLen} characters. It was {len(title)}.")
+                return Response({"error": f"The title in the request had less than the minimum amount of required characters, {minTitleLen} characters."}, status=status.HTTP_400_BAD_REQUEST)
+            
+            if len(content) < minContentLen:
+                print(f"The content was LESS then {minContentLen} characters. It was {len(content)}.")
+                return Response({"error": f"The content in the request had less than the minimum amount of required characters, {minContentLen} characters."}, status=status.HTTP_400_BAD_REQUEST)
+
+            # LARGER THAN ALLOWED
+
+            maxTitleLen = 100
+            maxContentLen = 10000
+                        
+            if (len(title) > maxTitleLen) and (len(content) > maxContentLen):
+                print(f"The TITLE was MORE then {maxTitleLen} characters. It was {len(content)}. The CONTENT was MORE then {maxTitleLen} characters. It was {len(content)}.")
+                return Response({"error": f"The title in the request had more than the maximum amount of characters, {maxTitleLen} characters. The content in the request had more than the maximum amount of characters, {maxContentLen} characters."}, status=status.HTTP_400_BAD_REQUEST)
+            
+            if (len(title) > maxTitleLen):
+                print(f"The TITLE was MORE then {maxTitleLen} characters.")
+                return Response({"error": f"The title in the request had more than the maximum amount of characters, {maxTitleLen} characters. more than the maximum amount of characters, {maxContentLen} characters."}, status=status.HTTP_400_BAD_REQUEST)
+
+            if (len(content) > maxContentLen):
+                print(f"The CONTENT was MORE then {maxContentLen} characters. It was {len(content)}.")
+                return Response({"error": f"The title in the request had more than the maximum amount of characters, {maxTitleLen} characters. The content in the request had more than the maximum amount of characters, {maxContentLen} characters."}, status=status.HTTP_400_BAD_REQUEST)
+
+            print("Title characters:", len(title))
+            print("Content characters:", len(content))
+            
+            # Checks if the request has too many tags in it
+            if tagsString:
+                # Splits the string with all of the posts
+                tagsList = tagsString.split(",")
+                print("The tags in the request:", tagsList, type(tagsList)) # print to self
+                
+                # Checking if the request contained too many tags - it should not have more than 3
+                if (len(tagsList) > 3 ):
+                    print("The number of tags included in the request was/is:", len(tagsList))
+                    return Response({"error": "The request had too many tags in it (max=3)"}, status=status.HTTP_400_BAD_REQUEST)
 
             post = Post.objects.create(title=title, content=content, author=request.user)
 
@@ -152,7 +195,7 @@ class PostCreateView(APIView):
             # Changes the html content to the new updated one
             post.content = str(soup)
             
-            # Finally saves the post                            
+            # Finally saves the post
             post.save()
 
             return Response(
