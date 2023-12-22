@@ -14,28 +14,7 @@ from django.utils.html import format_html
 from time import strftime
 
 CustomUser = get_user_model()
-
-class CommentSerializer(serializers.ModelSerializer):
-    content = serializers.SerializerMethodField()
-    date_published = serializers.SerializerMethodField()
-    
-    author = serializers.StringRelatedField()
-    
-    class Meta:
-        model = Comment
-        fields = ["id", "post", "content", "author", "date_published"]
-        
-        read_only_fields = ["date_published"]        
-        
-    def get_content(self, obj):
-        content = obj.content
-        
-        content = format_html(content)
-        return content
-
-    def get_date_published(self, obj):
-        return obj.date_published.strftime("%d-%m-%Y")
-        
+      
 class PostImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostImage
@@ -45,7 +24,7 @@ class PostVideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostVideo
         fields = ['video']
-        
+
 # Is used for create and for detail retrieve
 class PostSerializer(serializers.ModelSerializer):
     """Serializes the input. Is used on single post"""
@@ -66,22 +45,36 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ["id", "title", "content", "author", "date_published", "tags", "images", "videos", "num_of_comments"]
         read_only_fields = ["id", "date_published", "author"]
 
+    # def validate(self, attrs):
+    #     attributes = super().validate(attrs)
+        
+    #     title = attributes["title"]
+        
+    #     print(title)
+    #     print(len(title))
+        
+    #     return attributes
+
+    # When trying to create
     def create(self, validated_data):
         validated_data['content'] = format_html(validated_data['content'])
         author = self.context['request'].user
         post = Post.objects.create(**validated_data, author=author)
         return post
 
+    # Field
     def get_content(self, obj):
         content = obj.content
         
         content = format_html(content)
         return content
 
+    # Field
     def get_date_published(self, obj):
         if obj.date_published is not None:
             return obj.date_published.strftime("%d-%m-%Y")
         
+    # Field
     def get_num_of_comments(self, obj):
         length = 0
         

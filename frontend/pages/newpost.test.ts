@@ -16,7 +16,6 @@ let wrapper:any;
 
 const factory = () => {
 
-
     return mount(newpost, {
         global: {
             components: {

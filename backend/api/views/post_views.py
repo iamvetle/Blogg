@@ -29,8 +29,8 @@ from api.serializers.post_serializers import (
     PostSerializer,
     PostSaveStyleSerializer,
     PostShortenSerializer,
-    CommentSerializer,
 )
+from api.serializers.comment_serializers import CommentSerializer
 
 # Filter
 from api.filters import CustomPostFilter
