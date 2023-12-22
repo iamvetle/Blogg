@@ -14,7 +14,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=100)  # 100 characters
-    content = models.TextField(max_length=80000)  # 80,000 characters
+    content = models.TextField(max_length=80000)  # 80 000 characters
     date_published = models.DateTimeField(
         auto_now_add=True
     )  # this is not working correctly. it is not appearing when I check on 'publish

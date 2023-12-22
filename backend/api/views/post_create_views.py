@@ -126,7 +126,7 @@ class PostCreateView(APIView):
                 # Open the uploaded image using Pillow
                 image = Image.open(image_file)
 
-                # Compress and convert the image to WebP
+                # Compress and convert the image to webP
                 output = BytesIO()
                 image.save(output, format="WEBP", quality=80)
                 output.seek(0)
