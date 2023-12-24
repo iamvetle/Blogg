@@ -38,7 +38,7 @@ const factory = () => {
 describe('Testing component', () => {
 
     beforeEach(() => {
-        postStore = usePostStore()
+        postStore = usePostStore(pinia)
     });
 
     afterEach(() => {

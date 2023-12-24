@@ -35,11 +35,6 @@ const factory = () => {
 describe('Testing the userfullname component that is used inside of the id user page', () => {
 
     beforeEach(() => {
-        // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
-        // paginationStore = usePaginationStore(pinia); 
-
     });
 
     afterEach(() => {
@@ -78,7 +73,7 @@ describe('Testing the userfullname component that is used inside of the id user 
     test('Should match snapshot', () => {
         wrapper = factory()
 
-        expect(wrapper).toMatchSnapshot()
+        expect(wrapper.html()).toMatchSnapshot()
     })
 
 });
