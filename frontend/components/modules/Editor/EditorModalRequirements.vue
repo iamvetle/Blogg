@@ -40,9 +40,9 @@ const emit = defineEmits(["close", "update:modelValue"]);
 const props = withDefaults(
 	defineProps<{
 		title?: string;
-		charTitle: any;
-		charContent: any;
-		tagsCount: any;
+		charTitle: number;
+		charContent: number;
+		tagsCount: number;
 		modelValue: any;
 	}>(),
 	{

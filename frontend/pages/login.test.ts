@@ -1,12 +1,14 @@
 import { mount } from '@vue/test-utils'
 import login from './login.vue'
 import { createTestingPinia } from '@pinia/testing'
-import { useAuthStore } from '~/store/authStore';
-import LoginCard from '~/components/modules/Auth/LoginCard.vue';
 
-let wrapper
+let wrapper:any;
 let pinia = createTestingPinia()
 let authStore:any
+
+/**
+ * ! Expand later
+ */
 
 
 const factory = () => {
@@ -14,7 +16,6 @@ const factory = () => {
         global: {
             plugins:[pinia],
             components: {
-                LoginCard
             },
             stubs: {
                 "LoginCard":true
@@ -33,27 +34,6 @@ describe('login page testing', () => {
 
     })
 
-    /**
-     * TODO make this work later
-     */
-
-    // test('Should NOT render loginform when the user is authenticated', async () => {
-
-    //     // Arrange
-    //     wrapper = factory()
-    //     authStore.isAuthenticated = true
-
-    //     await (wrapper.vm as any).$nextTick()
-
-    //     const loginCard = wrapper.findComponent({ name: "LoginCard" })
-
-    //     // no act?
-
-    //     // Assert
-    //     expect(wrapper.exists()).toBe(true)
-    //     expect(loginCard.exists()).toBe(false)
-    // })
-
     test('Should render the loginform when the user is NOT authenticated', async () => {
         // Arrange
         wrapper = factory()
@@ -67,7 +47,7 @@ describe('login page testing', () => {
     })
     test('Should match snapshot', () => {
         wrapper = factory()
-        expect(wrapper).toMatchSnapshot()
+        expect(wrapper.html()).toMatchSnapshot()
     })
     
 }

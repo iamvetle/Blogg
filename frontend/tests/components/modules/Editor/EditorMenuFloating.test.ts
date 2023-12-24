@@ -1,7 +1,6 @@
 import EditorMenuFloating from '~/components/modules/Editor/EditorMenuFloating.vue';
 import { mount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
-import { Editor } from '@tiptap/core';
 import { FloatingMenu } from '@tiptap/vue-3'
 
 let wrapper: any;

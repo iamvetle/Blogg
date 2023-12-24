@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the requirements modal used for the text editor > Should match snapshot 1`] = `
+"<umodal value=\\"true\\">
+  <ucard>
+    <div class=\\"prose\\">
+      <ul class=\\"\\">
+
+        <li>
+          The
+          <strong>title</strong>
+          has to be at least
+          <strong>3</strong>
+          characters long.
+        </li>
+        <ul>
+          <li>
+            Currently have <strong>8</strong> characters.
+          </li>
+        </ul>
+      </ul>
+      <ul class=\\"\\">
+        <li>
+          The
+          <strong>content</strong> has to be at least <strong>50</strong> characters long.
+        </li>
+        <ul>
+          <li>
+            Currently have <strong>58</strong> characters.
+          </li>
+        </ul>
+
+      </ul>
+      <ul class=\\"text-error\\">
+        <li>
+          The post cannot have more than <strong>three tags</strong>.
+        </li>
+        <ul>
+          <li>Currently have <strong>4</strong> characters.
+          </li>
+        </ul>.
+      </ul>
+    </div>
+  </ucard>
+</umodal>"
+`;

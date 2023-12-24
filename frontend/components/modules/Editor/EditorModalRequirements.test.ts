@@ -4,8 +4,15 @@ import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 
 let wrapper: any;
 
+/**
+ * ! Should expand
+ */
+
 let titleProp = "you must test something"
-let descriptionProp = "test description of something"
+let mockCharTitle = 8
+let mockCharContent = 58
+let mockTagsCount = 4
+let mockModelValue = true
 
 const factory = () => {
     return mount(EditorModalRequirements, {
@@ -16,9 +23,11 @@ const factory = () => {
             stubs: {},
         },
         props: {
-            modelValue:true,
-            title:titleProp,
-            description:descriptionProp
+            title: titleProp,
+            charTitle: mockCharTitle,
+            charContent: mockCharContent,
+            tagsCount: mockTagsCount,
+            modelValue: mockModelValue
         },
         slots: {}
     })
@@ -41,7 +50,7 @@ describe('Testing the requirements modal used for the text editor', () => {
     test('Should have the UModal from nuxt ui', () => {
         wrapper = factory()
         
-        console.log(wrapper.html())
+        // console.log(wrapper.html()) // print to self
         
         const uModal = wrapper.find("UModal")
         expect(uModal.exists()).toBe(true)
@@ -57,12 +66,9 @@ describe('Testing the requirements modal used for the text editor', () => {
 
         expect(wrapper.props("title")).toBeTruthy()
     })
-    test('Should have the description prop', () => {
+    test('Should match snapshot', () => {
         wrapper = factory()
-
-        expect(wrapper.props("description")).toBeTruthy()
-        expect(wrapper.html()).toContain(descriptionProp)
-        
+        expect(wrapper.html()).toMatchSnapshot()
     })
     
 });
