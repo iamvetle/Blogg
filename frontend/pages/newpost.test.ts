@@ -70,6 +70,11 @@ describe('newPost', () => {
     /**
      * ! its client only which makes things difficult
      */
+    test('Should match snapshot', () => {
+        wrapper = factory()
+        expect(wrapper.html()).toMatchSnapshot()
+    })
+    
  
     
 
