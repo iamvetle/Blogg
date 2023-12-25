@@ -1,13 +1,15 @@
 import EditorDropdownAddTags from './EditorDropdownAddTags.vue';
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
+import { createTestingPinia } from '@pinia/testing';
 
 let wrapper: any;
+let pinia = createTestingPinia()
 
 const factory = () => {
     return shallowMount(EditorDropdownAddTags, {
         global: {
-            plugins: [],
+            plugins: [pinia],
             components: {},
             mocks: {},
             stubs: {},
@@ -20,6 +22,9 @@ const factory = () => {
 describe('Testing the add tags dropdown', () => {
 
     beforeEach(() => {
+        vi.stubGlobal("getAllTags", () => {
+            return null
+        })
     });
 
     afterEach(() => {
@@ -33,6 +38,11 @@ describe('Testing the add tags dropdown', () => {
     test('Should exist', () => {
         wrapper = factory()
         expect(wrapper.exists()).toBe(true)
+    })
+    
+    test('Should match snapshot', () => {
+        wrapper = factory()
+        expect(wrapper.html()).toMatchSnapshot()
     })
     
 });

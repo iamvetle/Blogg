@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the add tags dropdown > Should match snapshot 1`] = `
+"<div class=\\"flex justify-between items-center\\">
+  <div class=\\"w-fit\\">
+    <uselectmenu options=\\"\\" modelvalue=\\"\\" searchable=\\"\\" searchableplaceholder=\\"Add a tag ...\\" multiple=\\"\\" placeholder=\\"Option tags\\" size=\\"lg\\" selectclass=\\"items-center bg-primaryContainer text-onPrimaryContainer outline-none text-sm\\"></uselectmenu>
+  </div>
+  <div class=\\"space-x-2\\"></div>
+</div>"
+`;
