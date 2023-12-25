@@ -1,5 +1,5 @@
 <template>
-	<UModal :value="modelValue" @input="handleInput">
+	<UModal v-model="isOpen">
 		<UCard>
 			<template #header>
 				<div class="prose">
@@ -50,6 +50,9 @@ const props = withDefaults(
 	},
 );
 
+const someValue = ref(true)
+
+
 /**
  * Handles the input event from the textarea.
  * Emits an 'update:modelValue' event with the new value, allowing the parent component to update its data.
@@ -90,6 +93,7 @@ const req2Content = computed(
 `,
 );
 
+/** Can this be exploited - the fact that I am not sanitizing tagsCount? - what no */
 const req3Tags = computed(
 	() => `	<li>
 			The post cannot have more than <strong>three tags</strong>.
@@ -100,14 +104,20 @@ const req3Tags = computed(
 			</ul>.
 		`,
 );
-const sanitzedTitle = DOMPurify.sanitize(req1Title.value);
-const sanitizedContent = DOMPurify.sanitize(req2Content.value);
 
+const sanitzedTitle = computed(() => DOMPurify.sanitize(req1Title.value));
+const sanitizedContent = computed(() => DOMPurify.sanitize(req2Content.value));
+
+/** This controls whether the modal is open or not */
 const isOpen = ref(true);
 
+
 /**
- * Makes sure that when the modal is closed by clicking outside the emit that closes the "showModal" is emit
- * I have to have this to make it possible to click outside of the modal and go back to editing.
+ * Runs every time the modal is shown/not shown
+ * 
+ * Makes it so that I do not need to use v-model in the parent component
+ * because it turns the "isOpen" to false after every emit
+ * 
  */
 watchEffect(() => {
 	if (isOpen.value === false) {

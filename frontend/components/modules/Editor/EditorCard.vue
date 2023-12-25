@@ -144,9 +144,11 @@ const showModalRequirements = ref(false);
 watchEffect(() => {
 	if (showModalPublishPost.value) {
 		showModalDiscardPost.value = false;
+		console.info("The discard modal is closed")
 	}
 	if (showModalDiscardPost.value) {
 		showModalPublishPost.value = false;
+		console.info("The publish modal is closed")
 	}
 });
 
@@ -257,6 +259,7 @@ watchEffect(() => emit("charactersCount", totalCharCount.value));
 
 const focusOnCorrectEditor = () => {
 	/** Takes the focus to the title inpur, if there is an empty title string*/
+	console.info("The focus function is called")
 	if (editor.value) {
 		if (titleEditor.value === "") {
 			/**
@@ -266,9 +269,11 @@ const focusOnCorrectEditor = () => {
 			// dobbel checks
 			if (editorTitleInputRef.value) {
 				(editorTitleInputRef.value as any).textInput?.focus();
+				console.info("The focus is placed on the editor TITLE")
 			}
 			// case: the title input already had some input, string value
 		} else {
+			console.info("The focus is placed on the editor MAIN")
 			editor.value.commands.focus();
 		}
 	}
@@ -277,11 +282,14 @@ const focusOnCorrectEditor = () => {
 const action = (event: any) => {
 	const eventResult = event;
 	// Populates the selected tags array with the selected tags
+	console.info("The selectedTags ref is updated")
+
 	selectedTags.value = eventResult ?? [];
 };
 
 /** Clear everything in the editor */
 const clearEverythingInEditor = () => {
+	console.info("The function that clears everything in the editor is called")
 	editor.value?.commands.clearContent();
 	titleEditor.value = "";
 	title.value = "";
@@ -319,6 +327,7 @@ const handleImagePaste = async (event: any) => {
 			const file = new File([blob], "pasted-image.png", {
 				type: blob.type,
 			});
+			console.info("An image file is supposed to be added through paste")
 
 			const uniqueId = generateUniqueId(); // Function to generate a unique ID.
 			const fileTempUrl = URL.createObjectURL(file);
@@ -357,10 +366,15 @@ const handleImagePaste = async (event: any) => {
  */
 const handlePublishPost = async () => {
 	// The html in string format
+	console.info("The publish button is called")
 	const html = editor.value?.getHTML();
 
 	// if the title is literally lese than three characters
 	if (charCountTitle.value < 3) {
+		console.info("The title in the editor is less than 3 characters")
+		console.info("The requirements modal is supposed to be shown")
+
+
 		// shows the modal that shows the requirements
 		showModalRequirements.value = true;
 		return;
@@ -368,6 +382,9 @@ const handlePublishPost = async () => {
 
 	// if the post content is under 50
 	if (charCountContent.value < 50) {
+		console.info("The content in the editor is less than 50 characters")
+		console.info("The requirements modal is supposed to be shown")
+
 		showModalRequirements.value = true;
 		return;
 	}
@@ -377,6 +394,8 @@ const handlePublishPost = async () => {
 	 * ! Obviously going to increase this later
 	 */
 	if (numOfTags.value > 3) {
+		console.info("There are more than 3 tags selected")
+		console.info("The requirements modal is supposed to be shown")
 		showModalRequirements.value = true;
 		return;
 	}
@@ -392,6 +411,7 @@ const handlePublishPost = async () => {
 };
 
 const handleTryDiscardEditingPost = () => {
+	console.info("The discard button is pressed")
 	const html = editor.value?.getText();
 	const title = titleEditor.value;
 	// if there is something to discard, the discard modal is shown, else, it is not shown

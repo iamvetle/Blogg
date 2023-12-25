@@ -1276,7 +1276,7 @@
   resolved "https://registry.yarnpkg.com/@nuxt/ui-templates/-/ui-templates-1.3.1.tgz#35f5c1adced7495a8c1284e37246a16e373ef5d5"
   integrity sha512-5gc02Pu1HycOVUWJ8aYsWeeXcSTPe8iX8+KIrhyEtEoOSkY0eMBuo0ssljB8wALuEmepv31DlYe5gpiRwkjESA==
 
-"@nuxt/ui@^2.11.0":
+"@nuxt/ui@^2.11.1":
   version "2.11.1"
   resolved "https://registry.yarnpkg.com/@nuxt/ui/-/ui-2.11.1.tgz#e31f9c71da718bfd08b05d5b5183bd5c1070edc4"
   integrity sha512-g+I2qnW1oYeo5xGhA0DsNu8zT5rTbCqt/APocDvYwdNdssrs1ra7mBERcEVkyDIyg2UR6EzTgV2mngLSLBID7g==
@@ -8628,7 +8628,7 @@ nuxi@^3.10.0, nuxi@^3.6.5:
   optionalDependencies:
     fsevents "~2.3.3"
 
-nuxt-icon@^0.6.6, nuxt-icon@^0.6.7:
+nuxt-icon@^0.6.7:
   version "0.6.7"
   resolved "https://registry.yarnpkg.com/nuxt-icon/-/nuxt-icon-0.6.7.tgz#48a4896f362f88682d3074d50625ddee8d9c4d03"
   integrity sha512-0QnQM0yqJCb8PWt+gAn6RiXy1/CHScFuOPbsfIIwHMvyKkea+blj5/unq7F9ZHMkfrHozyCID8ErFPSzwEYLeA==
