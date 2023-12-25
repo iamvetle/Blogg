@@ -1,5 +1,5 @@
 <template>
-	<div v-if="(postStore.loggedInUserPosts) && (loggedInUserStore.loggedInUserProfile)">
+	<div v-if="(postStore?.loggedInUserPosts) && (loggedInUserStore?.loggedInUserProfile)">
 		<div name="default" class="py-12 px-8">
 			<div class="container mx-auto py-8">
 				<div class="grid grid-cols-4 sm:grid-cols-12 gap-12 px-4">

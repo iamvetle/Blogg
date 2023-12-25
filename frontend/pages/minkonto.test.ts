@@ -1,15 +1,22 @@
 import minkonto from './minkonto.vue';
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
+import { createTestingPinia } from '@pinia/testing';
 
 let wrapper: any;
+let postStore:any;
+let loggedInUserStore:any;
+let pinia = createTestingPinia()
+let mockUpdateBio = vi.fn()
 
 const factory = () => {
     return shallowMount(minkonto, {
         global: {
-            plugins: [],
+            plugins: [pinia],
             components: {},
-            mocks: {},
+            mocks: {
+                updateBio:mockUpdateBio
+            },
             stubs: {},
         },
         props: {},
@@ -20,6 +27,13 @@ const factory = () => {
 describe('testing the minkonto page', () => {
 
     beforeEach(() => {
+        postStore = usePostStore(pinia)
+        loggedInUserStore = useLoggedInUserStore(pinia)
+
+        vi.stubGlobal("definePageMeta", () => {
+            return null
+        })
+
     });
 
     afterEach(() => {
@@ -30,8 +44,13 @@ describe('testing the minkonto page', () => {
 
     });
 
-    test('Should exist', () => {
+    test('Should exist', async () => {
+        postStore.loggedInUserPosts = true
+        loggedInUserStore.loggedInUserProfile = true
         wrapper = factory()
+        
+        await wrapper.vm.$nextTick()
+        
         expect(wrapper.exists()).toBe(true)
     })
     

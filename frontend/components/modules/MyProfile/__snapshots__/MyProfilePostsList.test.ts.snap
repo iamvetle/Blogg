@@ -14,13 +14,21 @@ VueWrapper {
       <div
         post="[object Object]"
       >
-        <h2
-          class="text-xl text-onPrimary font-bold mt-8 mb-6"
-        >
-           All posts by true
-        </h2>
-        
-        
+        <div>
+          <h2
+            class="text-xl text-onPrimary font-bold mt-8 mb-6"
+          >
+             All posts by true
+          </h2>
+          <!-- This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations-->
+          <div
+            class="flex flex-col-reverse"
+          >
+            
+            
+          </div>
+        </div>
       </div>
     </div>,
     "_context": {
@@ -283,10 +291,10 @@ VueWrapper {
                           Set {
                             [Circular],
                           },
+                          [Circular],
                           Set {
                             [Circular],
                           },
-                          [Circular],
                           Set {
                             [Circular],
                           },
@@ -587,10 +595,10 @@ VueWrapper {
                         Set {
                           [Circular],
                         },
+                        [Circular],
                         Set {
                           [Circular],
                         },
-                        [Circular],
                         Set {
                           [Circular],
                         },
@@ -898,10 +906,10 @@ VueWrapper {
                             Set {
                               [Circular],
                             },
+                            [Circular],
                             Set {
                               [Circular],
                             },
-                            [Circular],
                             Set {
                               [Circular],
                             },
@@ -1202,10 +1210,10 @@ VueWrapper {
                           Set {
                             [Circular],
                           },
+                          [Circular],
                           Set {
                             [Circular],
                           },
-                          [Circular],
                           Set {
                             [Circular],
                           },
@@ -1640,10 +1648,10 @@ VueWrapper {
                                 Set {
                                   [Circular],
                                 },
+                                [Circular],
                                 Set {
                                   [Circular],
                                 },
-                                [Circular],
                                 Set {
                                   [Circular],
                                 },
@@ -1944,10 +1952,10 @@ VueWrapper {
                               Set {
                                 [Circular],
                               },
+                              [Circular],
                               Set {
                                 [Circular],
                               },
-                              [Circular],
                               Set {
                                 [Circular],
                               },
@@ -2248,10 +2256,10 @@ VueWrapper {
                                 Set {
                                   [Circular],
                                 },
+                                [Circular],
                                 Set {
                                   [Circular],
                                 },
-                                [Circular],
                                 Set {
                                   [Circular],
                                 },
@@ -2540,10 +2548,10 @@ VueWrapper {
                                 Set {
                                   [Circular],
                                 },
+                                [Circular],
                                 Set {
                                   [Circular],
                                 },
-                                [Circular],
                                 Set {
                                   [Circular],
                                 },
@@ -2833,10 +2841,10 @@ VueWrapper {
                               Set {
                                 [Circular],
                               },
+                              [Circular],
                               Set {
                                 [Circular],
                               },
-                              [Circular],
                               Set {
                                 [Circular],
                               },
@@ -3117,10 +3125,10 @@ VueWrapper {
                               Set {
                                 [Circular],
                               },
+                              [Circular],
                               Set {
                                 [Circular],
                               },
-                              [Circular],
                               Set {
                                 [Circular],
                               },
@@ -3461,10 +3469,10 @@ VueWrapper {
                                 Set {
                                   [Circular],
                                 },
+                                [Circular],
                                 Set {
                                   [Circular],
                                 },
-                                [Circular],
                                 Set {
                                   [Circular],
                                 },
@@ -3753,10 +3761,10 @@ VueWrapper {
                                 Set {
                                   [Circular],
                                 },
+                                [Circular],
                                 Set {
                                   [Circular],
                                 },
-                                [Circular],
                                 Set {
                                   [Circular],
                                 },
@@ -4098,10 +4106,10 @@ VueWrapper {
                               Set {
                                 [Circular],
                               },
+                              [Circular],
                               Set {
                                 [Circular],
                               },
-                              [Circular],
                               Set {
                                 [Circular],
                               },
@@ -4382,10 +4390,10 @@ VueWrapper {
                               Set {
                                 [Circular],
                               },
+                              [Circular],
                               Set {
                                 [Circular],
                               },
-                              [Circular],
                               Set {
                                 [Circular],
                               },
@@ -4454,25 +4462,227 @@ VueWrapper {
                 "__v_skip": true,
                 "anchor": null,
                 "appContext": null,
-                "children": " All posts by true",
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": " All posts by true",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <h2
+                      class="text-xl text-onPrimary font-bold mt-8 mb-6"
+                    >
+                       All posts by true
+                    </h2>,
+                    "key": null,
+                    "patchFlag": 1,
+                    "props": {
+                      "class": "text-xl text-onPrimary font-bold mt-8 mb-6",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 9,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "h2",
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": " This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <!-- This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations-->,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 8,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-cmt),
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": [
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": ,
+                        "appContext": null,
+                        "children": [],
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": [],
+                        "dynamicProps": null,
+                        "el": ,
+                        "key": null,
+                        "patchFlag": 256,
+                        "props": null,
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 16,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": Symbol(v-fgt),
+                      },
+                    ],
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <div
+                      class="flex flex-col-reverse"
+                    >
+                      
+                      
+                    </div>,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": {
+                      "class": "flex flex-col-reverse",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 17,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "div",
+                  },
+                ],
                 "component": null,
                 "ctx": [Circular],
                 "dirs": null,
-                "dynamicChildren": null,
+                "dynamicChildren": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": " All posts by true",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <h2
+                      class="text-xl text-onPrimary font-bold mt-8 mb-6"
+                    >
+                       All posts by true
+                    </h2>,
+                    "key": null,
+                    "patchFlag": 1,
+                    "props": {
+                      "class": "text-xl text-onPrimary font-bold mt-8 mb-6",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 9,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "h2",
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": ,
+                    "appContext": null,
+                    "children": [],
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": [],
+                    "dynamicProps": null,
+                    "el": ,
+                    "key": null,
+                    "patchFlag": 256,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 16,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-fgt),
+                  },
+                ],
                 "dynamicProps": null,
-                "el": <h2
-                  class="text-xl text-onPrimary font-bold mt-8 mb-6"
-                >
-                   All posts by true
-                </h2>,
-                "key": null,
-                "patchFlag": 1,
+                "el": <div>
+                  <h2
+                    class="text-xl text-onPrimary font-bold mt-8 mb-6"
+                  >
+                     All posts by true
+                  </h2>
+                  <!-- This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations-->
+                  <div
+                    class="flex flex-col-reverse"
+                  >
+                    
+                    
+                  </div>
+                </div>,
+                "key": 0,
+                "patchFlag": 0,
                 "props": {
-                  "class": "text-xl text-onPrimary font-bold mt-8 mb-6",
+                  "key": 0,
                 },
                 "ref": null,
                 "scopeId": null,
-                "shapeFlag": 9,
+                "shapeFlag": 17,
                 "slotScopeIds": null,
                 "ssContent": null,
                 "ssFallback": null,
@@ -4481,35 +4691,7 @@ VueWrapper {
                 "target": null,
                 "targetAnchor": null,
                 "transition": null,
-                "type": "h2",
-              },
-              {
-                "__v_isVNode": true,
-                "__v_skip": true,
-                "anchor": ,
-                "appContext": null,
-                "children": [],
-                "component": null,
-                "ctx": [Circular],
-                "dirs": null,
-                "dynamicChildren": [],
-                "dynamicProps": null,
-                "el": ,
-                "key": null,
-                "patchFlag": 256,
-                "props": null,
-                "ref": null,
-                "scopeId": null,
-                "shapeFlag": 16,
-                "slotScopeIds": null,
-                "ssContent": null,
-                "ssFallback": null,
-                "staticCount": 0,
-                "suspense": null,
-                "target": null,
-                "targetAnchor": null,
-                "transition": null,
-                "type": Symbol(v-fgt),
+                "type": "div",
               },
             ],
             "component": null,
@@ -4521,25 +4703,227 @@ VueWrapper {
                 "__v_skip": true,
                 "anchor": null,
                 "appContext": null,
-                "children": " All posts by true",
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": " All posts by true",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <h2
+                      class="text-xl text-onPrimary font-bold mt-8 mb-6"
+                    >
+                       All posts by true
+                    </h2>,
+                    "key": null,
+                    "patchFlag": 1,
+                    "props": {
+                      "class": "text-xl text-onPrimary font-bold mt-8 mb-6",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 9,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "h2",
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": " This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <!-- This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations-->,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 8,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-cmt),
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": [
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": ,
+                        "appContext": null,
+                        "children": [],
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": [],
+                        "dynamicProps": null,
+                        "el": ,
+                        "key": null,
+                        "patchFlag": 256,
+                        "props": null,
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 16,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": Symbol(v-fgt),
+                      },
+                    ],
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <div
+                      class="flex flex-col-reverse"
+                    >
+                      
+                      
+                    </div>,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": {
+                      "class": "flex flex-col-reverse",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 17,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "div",
+                  },
+                ],
                 "component": null,
                 "ctx": [Circular],
                 "dirs": null,
-                "dynamicChildren": null,
+                "dynamicChildren": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": " All posts by true",
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <h2
+                      class="text-xl text-onPrimary font-bold mt-8 mb-6"
+                    >
+                       All posts by true
+                    </h2>,
+                    "key": null,
+                    "patchFlag": 1,
+                    "props": {
+                      "class": "text-xl text-onPrimary font-bold mt-8 mb-6",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 9,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "h2",
+                  },
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": ,
+                    "appContext": null,
+                    "children": [],
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": [],
+                    "dynamicProps": null,
+                    "el": ,
+                    "key": null,
+                    "patchFlag": 256,
+                    "props": null,
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 16,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": Symbol(v-fgt),
+                  },
+                ],
                 "dynamicProps": null,
-                "el": <h2
-                  class="text-xl text-onPrimary font-bold mt-8 mb-6"
-                >
-                   All posts by true
-                </h2>,
-                "key": null,
-                "patchFlag": 1,
+                "el": <div>
+                  <h2
+                    class="text-xl text-onPrimary font-bold mt-8 mb-6"
+                  >
+                     All posts by true
+                  </h2>
+                  <!-- This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations-->
+                  <div
+                    class="flex flex-col-reverse"
+                  >
+                    
+                    
+                  </div>
+                </div>,
+                "key": 0,
+                "patchFlag": 0,
                 "props": {
-                  "class": "text-xl text-onPrimary font-bold mt-8 mb-6",
+                  "key": 0,
                 },
                 "ref": null,
                 "scopeId": null,
-                "shapeFlag": 9,
+                "shapeFlag": 17,
                 "slotScopeIds": null,
                 "ssContent": null,
                 "ssFallback": null,
@@ -4548,48 +4932,28 @@ VueWrapper {
                 "target": null,
                 "targetAnchor": null,
                 "transition": null,
-                "type": "h2",
-              },
-              {
-                "__v_isVNode": true,
-                "__v_skip": true,
-                "anchor": ,
-                "appContext": null,
-                "children": [],
-                "component": null,
-                "ctx": [Circular],
-                "dirs": null,
-                "dynamicChildren": [],
-                "dynamicProps": null,
-                "el": ,
-                "key": null,
-                "patchFlag": 256,
-                "props": null,
-                "ref": null,
-                "scopeId": null,
-                "shapeFlag": 16,
-                "slotScopeIds": null,
-                "ssContent": null,
-                "ssFallback": null,
-                "staticCount": 0,
-                "suspense": null,
-                "target": null,
-                "targetAnchor": null,
-                "transition": null,
-                "type": Symbol(v-fgt),
+                "type": "div",
               },
             ],
             "dynamicProps": null,
             "el": <div
               post="[object Object]"
             >
-              <h2
-                class="text-xl text-onPrimary font-bold mt-8 mb-6"
-              >
-                 All posts by true
-              </h2>
-              
-              
+              <div>
+                <h2
+                  class="text-xl text-onPrimary font-bold mt-8 mb-6"
+                >
+                   All posts by true
+                </h2>
+                <!-- This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations-->
+                <div
+                  class="flex flex-col-reverse"
+                >
+                  
+                  
+                </div>
+              </div>
             </div>,
             "key": 0,
             "patchFlag": 16,
@@ -4643,13 +5007,21 @@ VueWrapper {
         "el": <div
           post="[object Object]"
         >
-          <h2
-            class="text-xl text-onPrimary font-bold mt-8 mb-6"
-          >
-             All posts by true
-          </h2>
-          
-          
+          <div>
+            <h2
+              class="text-xl text-onPrimary font-bold mt-8 mb-6"
+            >
+               All posts by true
+            </h2>
+            <!-- This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations-->
+            <div
+              class="flex flex-col-reverse"
+            >
+              
+              
+            </div>
+          </div>
         </div>,
         "key": null,
         "patchFlag": 0,
@@ -4966,10 +5338,10 @@ VueWrapper {
                               Set {
                                 [Circular],
                               },
+                              [Circular],
                               Set {
                                 [Circular],
                               },
-                              [Circular],
                               Set {
                                 [Circular],
                               },
@@ -5270,10 +5642,10 @@ VueWrapper {
                             Set {
                               [Circular],
                             },
+                            [Circular],
                             Set {
                               [Circular],
                             },
-                            [Circular],
                             Set {
                               [Circular],
                             },
@@ -5327,13 +5699,21 @@ VueWrapper {
         "el": <div
           post="[object Object]"
         >
-          <h2
-            class="text-xl text-onPrimary font-bold mt-8 mb-6"
-          >
-             All posts by true
-          </h2>
-          
-          
+          <div>
+            <h2
+              class="text-xl text-onPrimary font-bold mt-8 mb-6"
+            >
+               All posts by true
+            </h2>
+            <!-- This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations-->
+            <div
+              class="flex flex-col-reverse"
+            >
+              
+              
+            </div>
+          </div>
         </div>,
         "key": null,
         "patchFlag": 0,
@@ -5607,10 +5987,10 @@ VueWrapper {
                         Set {
                           [Circular],
                         },
+                        [Circular],
                         Set {
                           [Circular],
                         },
-                        [Circular],
                         Set {
                           [Circular],
                         },
@@ -5850,13 +6230,21 @@ VueWrapper {
   "wrapperElement": <div
     post="[object Object]"
   >
-    <h2
-      class="text-xl text-onPrimary font-bold mt-8 mb-6"
-    >
-       All posts by true
-    </h2>
-    
-    
+    <div>
+      <h2
+        class="text-xl text-onPrimary font-bold mt-8 mb-6"
+      >
+         All posts by true
+      </h2>
+      <!-- This just makes the order be the other way around, BUT it does not deal with
+                the amount of posts when it comes to paginations-->
+      <div
+        class="flex flex-col-reverse"
+      >
+        
+        
+      </div>
+    </div>
   </div>,
 }
 `;

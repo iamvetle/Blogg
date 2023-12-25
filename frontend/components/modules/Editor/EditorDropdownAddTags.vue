@@ -2,7 +2,7 @@
 	<div class="flex justify-between items-center">
 		<div class="w-fit">
 			<USelectMenu
-				:options="tags as any"
+				:options="(tags as any)"
 				v-model="selected"
 				searchable
 				searchablePlaceholder="Add a tag ..."
@@ -44,8 +44,6 @@
 const tags = ref<any>([]);
 
 const emit = defineEmits(["output"]);
-
-
 
 /** State for all of the selected tags */
 const selected = ref<string[]>([]);

@@ -2,27 +2,28 @@ import { mount } from '@vue/test-utils';
 import newpost from './newpost.vue';
 // import EditorCard from '~/components/modules/Editor/EditorCard.vue';
 // import { FilterDropdownTags } from '#build/components';
+import { createTestingPinia } from '@pinia/testing';
 
 // Mock the postCreateNewPost function
-
-
-
 
 let mockGetAllTags = vi.fn()
 let mockPublish = vi.fn()
 let mockAction = vi.fn()
 let mockHandleCharacters = vi.fn()
 let wrapper:any;
+let pinia = createTestingPinia()
 
 const factory = () => {
 
     return mount(newpost, {
         global: {
+            plugins:[pinia],
             components: {
             },
             stubs: {
                 EditorCard: true,
-                FilterDropdownTags:true
+                FilterDropdownTags:true,
+                
             },
             mocks: {
                 publish:mockPublish,
