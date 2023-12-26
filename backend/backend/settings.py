@@ -148,9 +148,7 @@ INTERNAL_IPS = ["127.0.0.1", "localhost"]  # For Django Debug Toolbar
 REST_FRAMEWORK = {  # For token authentication (DRF)
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
-    ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    
-    # 'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomLimitOffsetPagination',
+    ],    
+    'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomPageNumberPagination',
     'PAGE_SIZE': 10
 }

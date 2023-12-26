@@ -11,7 +11,7 @@
 /** States related to the pagination is here */
 const paginationStore = usePaginationStore();
 
-const totalPages = ref(0)
+const totalPages = computed(() => paginationStore.total_number_of_posts)
 
 /**
  * ! The pagination class I just took returns "count" but it is just *one* number
@@ -28,7 +28,6 @@ const totalPages = ref(0)
 const page = ref(1)
 
 watchEffect( async () => {
-	totalPages.value = paginationStore.totalCountOfPages
 	let feedPage = urls.api.posts.feedAtPage(page.value)
 	paginationStore.activeFetchURL = feedPage
 	/**

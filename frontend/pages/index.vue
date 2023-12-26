@@ -43,6 +43,18 @@ onUnmounted(() => {
 	/** So that the navigation bar / paginator at the button restarts, and starts at one  */
 	paginationStore.resetStore();
 });
+
+// const router = useRouter()
+const route = useRoute();
+
+const urlRightNow = computed(() => route.fullPath);
+
+watch(urlRightNow, (newUrl) => {
+	console.info(`The page url is ${newUrl}`, {
+		immediate:true
+	})
+});
+
 </script>
 
 <style scoped></style>

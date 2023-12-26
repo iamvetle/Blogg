@@ -29,8 +29,6 @@ from users.serializers.user_serializers import (
     FollowerSerializer,
 )
 
-from api.pagination import CustomLimitOffsetPagination as GenericPagination
-
 # A view is responsible for processing incomming HTTP requests and returning HTTP responses - handle user-facing logic.
 
 CustomUser = get_user_model()

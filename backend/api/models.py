@@ -34,6 +34,10 @@ class Post(models.Model):
     def body(self):
         return f"{self.content}"
 
+    @classmethod
+    def all_instances_count(cls):
+        return cls.objects.count()
+
 
 class PostImage(models.Model):
     post = models.ForeignKey(Post, related_name="images", on_delete=models.CASCADE)
