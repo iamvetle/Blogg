@@ -1,6 +1,8 @@
 /**
  * Watches the tag filter part of the search store and updates the active fetch URL in the pagination store accordingly.
- */
+* 
+* Constructs a url and sets it as the active url
+*/
 export const useWatchFeedDropdownFilter = () => {
     let unwatch: any
     const feed = urls.api.posts.feed

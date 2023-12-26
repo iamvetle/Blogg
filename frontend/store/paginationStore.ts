@@ -40,6 +40,8 @@ export const usePaginationStore = defineStore("Deals with the pagination bar and
         // The previous page value gets in the previous page variable
         previous_page.value = responseData.previous || ""
 
+        // current_page_number does it by itself - what do I mean by that?
+
         total_number_of_posts.value = responseData.count
     }
 

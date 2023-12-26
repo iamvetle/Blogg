@@ -1,8 +1,7 @@
 <template>
-	<div>
-		<FeedAll/>
-	</div>
-	<!-- fallback -->
+    <div data-test="else_slum">
+        <FeedAll/>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -56,4 +55,6 @@ onBeforeMount(() => useWatchUrl())
 
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

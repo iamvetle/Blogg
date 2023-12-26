@@ -2,6 +2,7 @@
 
 exports[`Testing the FeedDropdownFilter component > Should match snapshot 1`] = `
 "<div data-test=\\"filter_tags\\">
+  <!-- v-model changes the selected tags directly -->
   <uselectmenu options=\\"\\" modelvalue=\\"\\" searchable=\\"\\" searchableplaceholder=\\"Search a tag...\\" multiple=\\"\\" placeholder=\\"Option tags\\" size=\\"lg\\" selectclass=\\"items-center bg-primaryContainer text-onPrimaryContainer outline-none text-sm\\"></uselectmenu>
 </div>"
 `;

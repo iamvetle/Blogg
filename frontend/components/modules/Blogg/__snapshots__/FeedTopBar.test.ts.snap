@@ -1,24 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Testing the choices that are over the feed of posts > Should match snapshot when authenticated 1`] = `
+exports[`Testing component > Should match snapshot when authenticated 1`] = `
 "<div class=\\"flex-row\\">
   <div class=\\"grid gap-8 grid-cols-12 flex items-center\\">
     <div class=\\"col-start-1 col-end-9\\">
       <!-- Only show the two options when web client is authenticated-->
       <div class=\\"text-center space-x-6\\">
-        <feed-top-choice-feed-option-button-stub data-test=\\"feed_all_posts_option_button\\" show-as-selected=\\"false\\"></feed-top-choice-feed-option-button-stub>
-        <feed-top-choice-following-option-button-stub data-test=\\"following_posts_option\\" show-as-selected=\\"true\\"></feed-top-choice-following-option-button-stub>
+        <feedtopchoice></feedtopchoice>
       </div>
     </div>
     <div class=\\"col-span-4\\" data-test=\\"feed_filter_component\\">
-      <feed-dropdown-filter-stub data-test=\\"feed_dropdown_filter\\"></feed-dropdown-filter-stub>
+      <feeddropdownfilter data-test=\\"feed_dropdown_filter\\"></feeddropdownfilter>
     </div>
   </div><!-- IF the following buttons is pressed-->
   <!--v-if-->
 </div>"
 `;
 
-exports[`Testing the choices that are over the feed of posts > Should match snapshot when not authenticated 1`] = `
+exports[`Testing component > Should match snapshot when not authenticated 1`] = `
 "<div class=\\"flex-row\\">
   <div class=\\"grid gap-8 grid-cols-12 flex items-center\\">
     <div class=\\"col-start-1 col-end-9\\">
@@ -26,7 +25,7 @@ exports[`Testing the choices that are over the feed of posts > Should match snap
       <!--v-if-->
     </div>
     <div class=\\"col-span-4\\" data-test=\\"feed_filter_component\\">
-      <feed-dropdown-filter-stub data-test=\\"feed_dropdown_filter\\"></feed-dropdown-filter-stub>
+      <feeddropdownfilter data-test=\\"feed_dropdown_filter\\"></feeddropdownfilter>
     </div>
   </div><!-- IF the following buttons is pressed-->
   <!--v-if-->

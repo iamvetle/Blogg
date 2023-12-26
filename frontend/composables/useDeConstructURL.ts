@@ -1,9 +1,6 @@
 export const useDeConstructURL = () => {
 
 
-
-
-
     onBeforeMount(() => {
         // const router = useRouter();
         const route = useRoute();

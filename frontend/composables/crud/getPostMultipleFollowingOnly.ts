@@ -1,6 +1,8 @@
 
 import { getMethod } from '~/services/apiByCRUD';
 
+const defaultURL = urls.api.posts.following
+
 /**
  * This function fetches data in GET based to the specified URL.
  * The URL can take query parameters and be customized. 
@@ -10,7 +12,7 @@ import { getMethod } from '~/services/apiByCRUD';
  * @returns The response from the API endpoint
  */
 
-export const getPostMultipleFollowingOnly = async (url: string): Promise<SnippetPostMultipleType | null> => {
+export const getPostMultipleFollowingOnly = async (url:string = defaultURL): Promise<SnippetPostMultipleType | null> => {
 
 	const postStore = usePostStore()
 
