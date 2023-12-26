@@ -127,6 +127,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def zipcode(self):
         return f"{self.postal_code}"
+    
+    @classmethod
+    def instance_count(cls):
+        return cls.objects.count()
 
     """
     followers: A ManyToManyField with 'self' allows users to follow each other.

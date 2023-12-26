@@ -10,6 +10,10 @@ class Tag(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    
+    @classmethod
+    def instance_count(cls):
+        return cls.objects.count()
 
 
 class Post(models.Model):
@@ -35,7 +39,7 @@ class Post(models.Model):
         return f"{self.content}"
 
     @classmethod
-    def all_instances_count(cls):
+    def instance_count(cls):
         return cls.objects.count()
 
 
@@ -45,6 +49,10 @@ class PostImage(models.Model):
 
     def __str__(self):
         return f"Image for post {self.post}"
+    
+    @classmethod
+    def instance_count(cls):
+        return cls.objects.count()
 
 
 class PostVideo(models.Model):
@@ -53,6 +61,10 @@ class PostVideo(models.Model):
 
     def __str__(self):
         return f"Video for post {self.post}"
+    
+    @classmethod
+    def instance_count(cls):
+        return cls.objects.count()
 
 
 class Comment(models.Model):
@@ -76,6 +88,10 @@ class Comment(models.Model):
         return (
             f"The post: '{self.post.title}' has a comment by '{self.author.username}'"
         )
+    
+    @classmethod
+    def instance_count(cls):
+        return cls.objects.count()
 
 
 class SavedPost(models.Model):
@@ -92,3 +108,7 @@ class SavedPost(models.Model):
 
     def __str__(self):
         return f"{self.post.title}"
+    
+    @classmethod
+    def instance_count(cls):
+        return cls.objects.count()
