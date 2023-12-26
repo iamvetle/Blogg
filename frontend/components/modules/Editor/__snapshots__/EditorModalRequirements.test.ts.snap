@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Testing the requirements modal used for the text editor > Should match snapshot 1`] = `
-"<umodal value=\\"true\\">
+"<umodal modelvalue=\\"true\\">
   <ucard>
     <div class=\\"prose\\">
       <ul class=\\"\\">

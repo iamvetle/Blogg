@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`newPost > Should match snapshot 1`] = `
+"<div class=\\"pt-2 bg-background\\">
+  <div id=\\"direct-editor\\" class=\\"mx-auto\\">
+    <clientonly>
+      <editor-card-stub data-test=\\"editorcard\\"></editor-card-stub>
+    </clientonly><span class=\\"block pl-8 pb-6\\">0</span>
+  </div>
+</div>"
+`;

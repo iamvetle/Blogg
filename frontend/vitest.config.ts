@@ -5,10 +5,11 @@ import AutoImport from 'unplugin-auto-import/vite'
 export default defineConfig({
     plugins: [
         Vue(),
+        '@nuxt/ui',
         AutoImport({
             imports: ['vue', "vitest"],
             dts:true,
-            dirs: ['./composables', './store', './composables/crud', './components', './constants'],
+            dirs: ['./components', '/testUtils', './services', './composables', './store', './composables/crud', './constants'],
             vueTemplate: true,
         }),
     ],
@@ -18,7 +19,7 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            "~": ".",
+            '~':  new URL('.', import.meta.url).pathname,
             '@/': new URL('./', import.meta.url).pathname,
         }
     }

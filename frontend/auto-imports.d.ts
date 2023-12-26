@@ -23,13 +23,12 @@ declare global {
   const defineComponent: typeof import('vue')['defineComponent']
   const deleteLoggedInUserPost: typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']
   const deleteLoggedInUserProfilePicture: typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']
+  const deleteMethod: typeof import('./services/apiByCRUD')['deleteMethod']
   const deleteSinglePostSingleComment: typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']
   const describe: typeof import('vitest')['describe']
   const effectScope: typeof import('vue')['effectScope']
   const expect: typeof import('vitest')['expect']
-  const extractTitleAndContent: typeof import('./composables/extractTitleAndContent')['extractTitleAndContent']
   const fixPagination: typeof import('./composables/fixPagination')['fixPagination']
-  const generateUniqueId: typeof import('./composables/generateUniqueId')['generateUniqueId']
   const getAllTags: typeof import('./composables/crud/getAllTags')['getAllTags']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
@@ -38,6 +37,7 @@ declare global {
   const getLoggedInUserAllFollowing: typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']
   const getLoggedInUserAllPostSnippets: typeof import('./composables/crud/getLoggedInUserAllPostSnippets')['getLoggedInUserAllPostSnippets']
   const getLoggedInUserProfile: typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']
+  const getMethod: typeof import('./services/apiByCRUD')['getMethod']
   const getNormalUserPosts: typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']
   const getNormalUserProfile: typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']
   const getPostMultipleFollowingOnly: typeof import('./composables/crud/getPostMultipleFollowingOnly')['getPostMultipleFollowingOnly']
@@ -70,15 +70,16 @@ declare global {
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
   const patchLoggedInUserBio: typeof import('./composables/crud/patchLoggedInUserBio')['patchLoggedInUserBio']
+  const patchMethod: typeof import('./services/apiByCRUD')['patchMethod']
   const postCommentOnPost: typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']
   const postCreateNewPost: typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']
   const postForm: typeof import('./composables/crud/postForm')['postForm']
+  const postMethod: typeof import('./services/apiByCRUD')['postMethod']
   const postProfilePicture: typeof import('./composables/crud/postProfilePicture')['postProfilePicture']
   const provide: typeof import('vue')['provide']
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
-  const removeImgTags: typeof import('./composables/removeImgTags')['removeImgTags']
   const resolveComponent: typeof import('vue')['resolveComponent']
   const setRedoRun: typeof import('./composables/editorCommands')['setRedoRun']
   const setUndoRun: typeof import('./composables/editorCommands')['setUndoRun']
@@ -123,6 +124,7 @@ declare global {
 declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, VNode, WritableComputedRef } from 'vue'
+  import('vue')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
@@ -146,6 +148,7 @@ declare module 'vue' {
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly deleteLoggedInUserPost: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']>
     readonly deleteLoggedInUserProfilePicture: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']>
+    readonly deleteMethod: UnwrapRef<typeof import('./services/apiByCRUD')['deleteMethod']>
     readonly deleteSinglePostSingleComment: UnwrapRef<typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']>
     readonly describe: UnwrapRef<typeof import('vitest')['describe']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
@@ -159,6 +162,7 @@ declare module 'vue' {
     readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserAllPostSnippets: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllPostSnippets')['getLoggedInUserAllPostSnippets']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
+    readonly getMethod: UnwrapRef<typeof import('./services/apiByCRUD')['getMethod']>
     readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleFollowingOnly: UnwrapRef<typeof import('./composables/crud/getPostMultipleFollowingOnly')['getPostMultipleFollowingOnly']>
@@ -191,9 +195,11 @@ declare module 'vue' {
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
     readonly patchLoggedInUserBio: UnwrapRef<typeof import('./composables/crud/patchLoggedInUserBio')['patchLoggedInUserBio']>
+    readonly patchMethod: UnwrapRef<typeof import('./services/apiByCRUD')['patchMethod']>
     readonly postCommentOnPost: UnwrapRef<typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']>
     readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
+    readonly postMethod: UnwrapRef<typeof import('./services/apiByCRUD')['postMethod']>
     readonly postProfilePicture: UnwrapRef<typeof import('./composables/crud/postProfilePicture')['postProfilePicture']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
@@ -260,6 +266,7 @@ declare module '@vue/runtime-core' {
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly deleteLoggedInUserPost: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserPost')['deleteLoggedInUserPost']>
     readonly deleteLoggedInUserProfilePicture: UnwrapRef<typeof import('./composables/crud/deleteLoggedInUserProfilePicture')['deleteLoggedInUserProfilePicture']>
+    readonly deleteMethod: UnwrapRef<typeof import('./services/apiByCRUD')['deleteMethod']>
     readonly deleteSinglePostSingleComment: UnwrapRef<typeof import('./composables/crud/deleteSinglePostSingleComment')['deleteSinglePostSingleComment']>
     readonly describe: UnwrapRef<typeof import('vitest')['describe']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
@@ -273,6 +280,7 @@ declare module '@vue/runtime-core' {
     readonly getLoggedInUserAllFollowing: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllFollowing')['getLoggedInUserAllFollowing']>
     readonly getLoggedInUserAllPostSnippets: UnwrapRef<typeof import('./composables/crud/getLoggedInUserAllPostSnippets')['getLoggedInUserAllPostSnippets']>
     readonly getLoggedInUserProfile: UnwrapRef<typeof import('./composables/crud/getLoggedInUserProfile')['getLoggedInUserProfile']>
+    readonly getMethod: UnwrapRef<typeof import('./services/apiByCRUD')['getMethod']>
     readonly getNormalUserPosts: UnwrapRef<typeof import('./composables/crud/getNormalUserPosts')['getNormalUserPosts']>
     readonly getNormalUserProfile: UnwrapRef<typeof import('./composables/crud/getNormalUserProfile')['getNormalUserProfile']>
     readonly getPostMultipleFollowingOnly: UnwrapRef<typeof import('./composables/crud/getPostMultipleFollowingOnly')['getPostMultipleFollowingOnly']>
@@ -305,9 +313,11 @@ declare module '@vue/runtime-core' {
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
     readonly patchLoggedInUserBio: UnwrapRef<typeof import('./composables/crud/patchLoggedInUserBio')['patchLoggedInUserBio']>
+    readonly patchMethod: UnwrapRef<typeof import('./services/apiByCRUD')['patchMethod']>
     readonly postCommentOnPost: UnwrapRef<typeof import('./composables/crud/postCommentOnPost')['postCommentOnPost']>
     readonly postCreateNewPost: UnwrapRef<typeof import('./composables/crud/postCreateNewPost')['postCreateNewPost']>
     readonly postForm: UnwrapRef<typeof import('./composables/crud/postForm')['postForm']>
+    readonly postMethod: UnwrapRef<typeof import('./services/apiByCRUD')['postMethod']>
     readonly postProfilePicture: UnwrapRef<typeof import('./composables/crud/postProfilePicture')['postProfilePicture']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>

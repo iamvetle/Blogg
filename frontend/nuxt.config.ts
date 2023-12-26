@@ -57,9 +57,9 @@ export default defineNuxtConfig({
 	modules: [
 		"@formkit/nuxt",
 		"@pinia/nuxt",
-		"nuxt-vitest",
 		"@nuxt/ui",
-		"nuxt-icon"
+		"nuxt-icon",
+		"nuxt-vitest"
 	],
 	pinia: {
 		autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],

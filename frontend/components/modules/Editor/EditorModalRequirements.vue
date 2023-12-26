@@ -50,18 +50,6 @@ const props = withDefaults(
 	},
 );
 
-const someValue = ref(true)
-
-
-/**
- * Handles the input event from the textarea.
- * Emits an 'update:modelValue' event with the new value, allowing the parent component to update its data.
- * @param {Event} event - The input event object.
- */
- const handleInput = (event: any) => {
-    emit('update:modelValue', event.target.value);
-};
-
 const req1Title = computed(
 	() => `
 			<li>
