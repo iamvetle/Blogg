@@ -11,7 +11,7 @@ export const useSearchStore = defineStore("search", () => {
     /**
      * Is used to contain all of the tags that are selected in an array
      */
-    const tagFilterPart = ref<any>(null);
+    const tagFilterPart = ref<any>([]);
     /**
      * The same as above.
      * 
@@ -26,7 +26,7 @@ export const useSearchStore = defineStore("search", () => {
 
     const resetStore = () => {
         searchPart.value = null
-        tagFilterPart.value = null
+        tagFilterPart.value = []
         categoryFilterPart.value = null        
     }
 

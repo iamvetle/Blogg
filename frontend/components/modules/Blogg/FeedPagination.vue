@@ -1,17 +1,15 @@
 <template>
 	<div data-test="feed_pagination" class="w-full">
-		<UPagination class="bg-red-800" v-model="page" :total="totalPages" :page-count="5">
-
-		</UPagination>	
+		<UPagination v-model="paginationStore.active_page" :total="totalPages" :page-count="5">
+		</UPagination>
 	</div>
 </template>
 
 <script setup lang="ts">
-
 /** States related to the pagination is here */
 const paginationStore = usePaginationStore();
 
-const totalPages = computed(() => paginationStore.total_number_of_posts)
+const totalPages = computed(() => paginationStore.total_number_of_posts);
 
 /**
  * ! The pagination class I just took returns "count" but it is just *one* number
@@ -21,20 +19,22 @@ const totalPages = computed(() => paginationStore.total_number_of_posts)
  * ! also its realtion to tags and navbar
  */
 
-/** 
- * The active page (number) 
+/**
+ * The active page (number)
  * It changes based on UPagination
  */
-const page = ref(1)
+const page = ref(1);
 
-watchEffect( async () => {
-	let feedPage = urls.api.posts.feedAtPage(page.value)
-	paginationStore.activeFetchURL = feedPage
+/** Fetches new data every time the url changes */
+watchEffect(async () => {
+	let feedPage = urls.api.posts.feedAtPage(page.value);
+	paginationStore.activeFetchURL = feedPage;
 	/**
 	 * ? should I have this somewhere else?
 	 */
-	await getPostMultipleSnippet(paginationStore.activeFetchURL)
-})
+	console.info("The url changed. Is going to fetch posts now")
+	await getPostMultipleSnippet(paginationStore.activeFetchURL);
+});
 
 /**
  * When the 'next page' icon ( > ) is clicked new data is fetched

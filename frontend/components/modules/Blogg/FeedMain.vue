@@ -7,14 +7,17 @@
             <!--
                 * Unsure whether I want to do it this way
             -->
-            <FeedTopSearch v-if="postStore.posts" />
+            <FeedTopSearch v-if="isReadyTopSearch" />
         </div>
 
         <div id="top-choice">
 
-            <FeedTopChoice v-if="postStore.posts && postStore.posts?.results" />
+            <FeedTopChoice v-if="isReadyTopChoice" />
         </div>
         <div id="posts-list">
+            <!-- ? no v-if here?
+            ? because I want skeleton loader I think? - but not suspense then? 
+            ? -->
             <FeedPostsList class="w-full mt-12" />
         </div>
         <!-- <div v-else>
@@ -26,5 +29,10 @@
 <script setup lang="ts">
 
 const postStore = usePostStore()
+const searchStore = useSearchStore()
+
+const isReadyTopSearch = computed(() => searchStore.searchPart)
+const isReadyTopChoice = computed(() => postStore.posts?.results)
+
 
 </script>

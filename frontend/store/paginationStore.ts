@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 // This is all based on that the backend uses a limit offset system
-export const usePaginationStore = defineStore("Pagination Store", () => {
+export const usePaginationStore = defineStore("Deals with the pagination bar and links for fetching posts", () => {
 
     /**
      * This store contains links associated pagination.
@@ -22,6 +22,8 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
     const total_number_of_posts = ref<number>(0); // total_number_of_posts_count
 
     const current_page_number = ref<number>(0); // current_page
+
+    const active_page = ref<number>(1)
 
     /** Calculates the total count of pages */
     const totalCountOfPages = computed(() => {
@@ -58,5 +60,5 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
         current_page_number.value = 0
     }
 
-    return { activeFetchURL, setPagination, resetStore, next_page, previous_page,  totalCountOfPages, total_number_of_posts, current_page_number }
+    return { activeFetchURL, active_page, setPagination, resetStore, next_page, previous_page,  totalCountOfPages, total_number_of_posts, current_page_number }
 })

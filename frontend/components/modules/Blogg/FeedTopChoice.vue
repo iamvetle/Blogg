@@ -3,7 +3,7 @@
 		<div class="grid gap-8 grid-cols-12 flex items-center">
 			<div class="col-start-1 col-end-9">
 				<!-- Only show the two options when web client is authenticated-->
-				<div v-if="authStore.isAuthenticated" class="text-center space-x-6">
+				<div v-if="isAuth" class="text-center space-x-6">
 					<FeedTopChoiceFeedOptionButton
 						data-test="feed_all_posts_option_button"
 						:show-as-selected="showFollowingPosts"
@@ -19,7 +19,10 @@
 				</div>
 			</div>
 			<div class="col-span-4" data-test="feed_filter_component">
-				<FeedDropdownFilter data-test="feed_dropdown_filter" v-if="showFollowingPosts === false" />
+				<FeedDropdownFilter
+					data-test="feed_dropdown_filter"
+					v-if="showFollowingPosts === false"
+				/>
 			</div>
 		</div>
 
@@ -52,7 +55,7 @@ const postStore = usePostStore();
 const paginationStore = usePaginationStore();
 const searchStore = useSearchStore();
 const loggedInUserStore = useLoggedInUserStore();
-const authStore = useAuthStore()
+const authStore = useAuthStore();
 
 /**
  * FEED or FOLLOWING button selected display
@@ -90,6 +93,8 @@ const posts_by_following = computed(() => {
 	}
 });
 
+const isAuth = computed(() => authStore.isAuthenticated);
+
 /**
  * This is called when the 'feed button' is clicked.
  *
@@ -121,7 +126,6 @@ const handleShowFollowingPosts = async () => {
 // onBeforeMount( async () => {
 // 	await getAllTags()
 // })
-
 </script>
 
 <style scoped></style>

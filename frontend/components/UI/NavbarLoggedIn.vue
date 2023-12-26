@@ -76,8 +76,9 @@ const search = async (payload: any) => {
 	 * ! Ønsker ikke ha denne løsningen her. Passer ikke med seperation of concerns:
 	 */
 
-	paginationStore.activeFetchURL = constructURL(urls.api.posts.feed);
-	await getPostMultipleSnippet(paginationStore.activeFetchURL); // this should happend ideally on the page level
+	const newURL = constructURL(urls.api.posts.feed);
+	paginationStore.activeFetchURL = newURL.value
+	// await getPostMultipleSnippet(paginationStore.activeFetchURL); // this should happend ideally on the page level
 };
 
 /**

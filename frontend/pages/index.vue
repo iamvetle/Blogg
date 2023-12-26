@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+
 const postStore = usePostStore();
 const searchStore = useSearchStore();
 const paginationStore = usePaginationStore();
@@ -54,6 +55,9 @@ watch(urlRightNow, (newUrl) => {
 		immediate:true
 	})
 });
+
+/** Takes the url queries and puts them in the correct stores (paginationStore, searchStore) */
+useDeConstructURL()
 
 </script>
 

@@ -8,9 +8,9 @@
  * 
  * @todo Find out whether I should move this to a pluging or composable or someting
  */
-export const constructURL = (fetchURL:string):string => {
+export const constructURL = (fetchURL: string): string => {
 
-    const searchStore = useSearchStore()
+	const searchStore = useSearchStore()
 	// Construct the URL based on 	the state
 	let newURL = fetchURL
 
@@ -29,6 +29,16 @@ export const constructURL = (fetchURL:string):string => {
 		newURL += `?${params.join('&')}`;
 	}
 	console.log(newURL)
+
+	const router = useRouter()
+
+	let newQuery = { ...router.currentRoute.value.query };
+
+	// Step 2: Add the `tags` property to this object, with its value being the `tagFilterPart` array from the `searchStore`
+	newQuery.tags = searchStore.tagFilterPart;
+
+	// Step 3: Pass this new object to `router.push`
+	router.push({ query: newQuery });
 
 	return newURL
 
