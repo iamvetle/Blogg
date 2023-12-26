@@ -14,6 +14,7 @@ const api = {
     status: `${baseApiURL}health_check/`,
     // All URLS related to posts
     posts: {
+        feedAtPage: (page:number | string) => `${baseApiURL}posts/feed/?page=${page}`,
         feed: `${baseApiURL}posts/feed/`,  // Base main posts - that can later have filters be applied upon
         following: `${baseApiURL}posts/following/`,  // Posts by following users
         myuser: `${baseApiURL}myuser/posts/`, // Posts by logged in user

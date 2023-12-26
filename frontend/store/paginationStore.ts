@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 
+// This is all based on that the backend uses a limit offset system
 export const usePaginationStore = defineStore("Pagination Store", () => {
 
     /**
@@ -14,30 +15,48 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
      * last url a fetch call for index posts was made to.
      */
     const activeFetchURL = ref<any>(urls.api.posts.feed)
-    
+
     const next_page = ref("") // next_page_link
     const previous_page = ref("") // previous_page_link
-    const last_page_link = ref("") // last_page_link
 
-    const all_pages_count = ref<number>(0); // total_pages_count
-    const number_of_posts = ref<number>(0); // number_of_posts_count
+    const total_number_of_posts = ref<number>(0); // total_number_of_posts_count
 
     const current_page_number = ref<number>(0); // current_page
-    
+
+    /** Calculates the total count of pages */
+    const totalCountOfPages = computed(() => {
+        console.info("A new 'calculation' was made to find out the total count of pages")
+        const num = total_number_of_posts.value / 10
+
+        return Math.ceil(num) || 0
+    })
+
+    /** Corrects all the values used by the (feed)pagination bar */
+    const setPagination = (responseData: SnippetPostMultipleType) => {
+        // The next page value gets in the next page variable
+        next_page.value = responseData.next || ""
+        // The previous page value gets in the previous page variable
+        previous_page.value = responseData.previous || ""
+
+        total_number_of_posts.value = responseData.count
+    }
+
+
     /**
-     * resets everything
+     * resets everything in the store
      */
     const resetStore = () => {
+        console.info("The resetStore function that 'clears' everything in the pagination store was called")
+
         activeFetchURL.value = urls.api.posts.feed
         next_page.value = ""
         previous_page.value = ""
-        last_page_link.value = ""
-    
-        all_pages_count.value = 0
-        number_of_posts.value = 0
-    
-        current_page_number.value = 0 
+
+        // totalCountOfPages.value = 0 // is pagination now
+        total_number_of_posts.value = 0
+
+        current_page_number.value = 0
     }
 
-    return { activeFetchURL, resetStore, next_page, previous_page, last_page_link, all_pages_count, number_of_posts, current_page_number }
+    return { activeFetchURL, setPagination, resetStore, next_page, previous_page,  totalCountOfPages, total_number_of_posts, current_page_number }
 })

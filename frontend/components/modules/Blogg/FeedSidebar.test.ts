@@ -1,15 +1,9 @@
 import FeedSidebar from './FeedSidebar.vue';
-import { flushPromises, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
-import { useAuthStore } from '~/store/authStore';
-import type { FeedSidebarNotAuthenticated } from '#build/components';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();                  
-
-// let generalStore; 
-let loggedInUserStore: any
-let authStore:any
 
 const factory = () => {
     return shallowMount(FeedSidebar, {

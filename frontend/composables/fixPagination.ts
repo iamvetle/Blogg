@@ -13,19 +13,7 @@ export const fixPagination = (all_posts: SnippetPostMultipleType)=> {
     if (all_posts != null) {
 
         const paginationStore = usePaginationStore()
-
-        paginationStore.number_of_posts = all_posts.count
-
-        /** i dont know if this works */
-        const calculate_total_pages = () => {
-            const num = paginationStore.number_of_posts as number / 10
-            return Math.ceil(num)
-        }
-
-        paginationStore.all_pages_count = calculate_total_pages()
-        paginationStore.next_page = all_posts.next
-        paginationStore.previous_page = all_posts.previous
-        paginationStore.current_page_number = all_posts.current_page
+        paginationStore.setPagination(all_posts)
     } else {
         console.log("pagination error on composable")
         return null

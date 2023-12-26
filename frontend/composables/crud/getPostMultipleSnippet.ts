@@ -44,6 +44,7 @@ export const getPostMultipleSnippet = async (url: string): Promise<SnippetPostMu
 
 		/**
 		 * TODO take the assigning to posstore down to page level
+		 * ? no^i dont want that bu where though
 		 */
 		postStore.posts = response.data
 
