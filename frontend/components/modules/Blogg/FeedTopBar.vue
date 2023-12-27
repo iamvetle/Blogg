@@ -42,7 +42,6 @@
 
 const postStore = usePostStore();
 const paginationStore = usePaginationStore();
-const searchStore = useSearchStore();
 const loggedInUserStore = useLoggedInUserStore();
 const authStore = useAuthStore();
 
@@ -84,37 +83,6 @@ const posts_by_following = computed(() => {
 
 const isAuth = computed(() => authStore.isAuthenticated);
 
-/**
- * This is called when the 'feed button' is clicked.
- *
- * It changes the api endpoint url from where posts are fetched to
- * the main feed one. It then fetches all posts.
- *
- * It has its base here - the url.
- */
-const handleShowAllFeedPosts = async () => {
-	searchStore.resetStore();
-
-	paginationStore.activeFetchURL = urls.api.posts.feed;
-	await getPostMultipleSnippet(paginationStore.activeFetchURL);
-};
-
-/**
- * This is called when the 'feed button' is clicked.
- *
- * It changes the api endpoint url from where posts are fetched to
- * the main feed one. It then fetches all posts.
- */
-const handleShowFollowingPosts = async () => {
-	searchStore.resetStore();
-
-	paginationStore.activeFetchURL = urls.api.posts.following;
-	await getPostMultipleFollowingOnly(paginationStore.activeFetchURL);
-};
-
-// onBeforeMount( async () => {
-// 	await getAllTags()
-// })
 </script>
 
 <style scoped></style>

@@ -12,7 +12,7 @@
 
         <div id="top-choice">
 
-            <FeedTopChoice v-if="isReadyTopChoice" />
+            <FeedTopBar/>
         </div>
         <div id="posts-list">
             <!-- ? no v-if here?
@@ -31,8 +31,11 @@
 const postStore = usePostStore()
 const searchStore = useSearchStore()
 
-const isReadyTopSearch = computed(() => searchStore.searchPart)
-const isReadyTopChoice = computed(() => postStore.posts?.results)
+const isReadyTopSearch = computed(() => searchStore.searchPart ? true : false)
+
+
+
+// const isReadyTopChoice = computed(() => postStore.posts?.results)
 
 
 </script>

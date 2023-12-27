@@ -12,6 +12,7 @@ import { getMethod } from '~/services/apiByCRUD';
 export const getAllTags = async (): Promise<TagType[] | null> => {
     const baseURL = urls.api.posts.filter.tags
     console.log(baseURL)
+    console.debug("is this printet")
     
     const postStore = usePostStore()
 
@@ -22,7 +23,10 @@ export const getAllTags = async (): Promise<TagType[] | null> => {
     const response = await getMethod(baseURL, headers)
 
     if (response) {
+        console.debug(response.data)
         postStore.allTags = response.data
+        console.debug(postStore.allTags)
+
 
         return response.data
     } else {        

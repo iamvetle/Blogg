@@ -18,9 +18,13 @@ export const useDeConstructURL = () => {
 
         // }
 
-        searchStore.searchPart = search;
+        if (searchStore.searchPart) {
+            searchStore.searchPart = search;
+        }
 
-        searchStore.tagFilterPart = tags;
+        if (searchStore.tagFilterPart) {
+            searchStore.tagFilterPart = tags;
+        }
 
         console.info("The tags query deconstructed from the url was:", tags)
         console.info("The search query deconstructed from the url was:", search)

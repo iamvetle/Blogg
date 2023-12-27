@@ -17,7 +17,7 @@
 
 			<!-- When closed -->
 			<template #label>
-				<div class="text-md flex items-center">
+				<div class="text-md flex items-center" v-if="searchStore.tagFilterPart.length">
 					<span class="break-words"
 						>{{ searchStore.tagFilterPart.length }} filter</span
 					>
@@ -35,28 +35,46 @@
 </template>
 
 <script setup lang="ts">
+
 const searchStore = useSearchStore();
 
 /** State that holds all the tags - fetched */
 const tags = ref(<string[]>[]);
 
 /** Watches how to */
-useWatchFeedDropdownFilter();
 
-onBeforeMount(async () => {
+onMounted(async () => {
+	console.debug("is this printet")
 	const response = await getAllTags();
 
 	if (response) {
+		console.debug("is this printet ")
 		for (let tag of response) {
+			console.debug(tag)
 			tags.value.push(tag.name);
 		}
 	}
 });
+// useWatchFeedDropdownFilter();
+
 
 /**
  * ? maybe I should have a "isReady" for most components?
+ * 
+ * ! through an error if I shorten it to just => sea..
+ * ! TO SELF: to not use ? with .value, that is reactive referances
  */
-const isReady = computed(() => searchStore.tagFilterPart);
+
+// THIS under, also works
+// const isReady = computed(() => {
+// 	if (searchStore.tagFilterPart.value) {
+// 		return true
+// 	} else {
+// 		return false
+// 	}
+// })
+
+const isReady = computed(() => searchStore.tagFilterPart ? true : false)
 </script>
 
 <style scoped></style>
