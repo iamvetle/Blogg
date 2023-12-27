@@ -114,7 +114,9 @@ declare global {
   const usePostStore: typeof import('./store/postStore')['usePostStore']
   const useSearchStore: typeof import('./store/searchStore')['useSearchStore']
   const useSlots: typeof import('vue')['useSlots']
+  const useURLStore: typeof import('./store/urlStore')['useURLStore']
   const useWatchFeedDropdownFilter: typeof import('./composables/useWatchFeedDropdownFilter')['useWatchFeedDropdownFilter']
+  const useWatchUrl: typeof import('./composables/useWatchURL')['useWatchUrl']
   const vi: typeof import('vitest')['vi']
   const vitest: typeof import('vitest')['vitest']
   const watch: typeof import('vue')['watch']
@@ -234,12 +236,16 @@ declare module 'vue' {
     readonly useAuthStore: UnwrapRef<typeof import('./store/authStore')['useAuthStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useDeConstructURL: UnwrapRef<typeof import('./composables/useDeConstructURL')['useDeConstructURL']>
     readonly useGeneralStore: UnwrapRef<typeof import('./store/generalStore')['useGeneralStore']>
     readonly useLoggedInUserStore: UnwrapRef<typeof import('./store/loggedInUserStore')['useLoggedInUserStore']>
     readonly usePaginationStore: UnwrapRef<typeof import('./store/paginationStore')['usePaginationStore']>
     readonly usePostStore: UnwrapRef<typeof import('./store/postStore')['usePostStore']>
     readonly useSearchStore: UnwrapRef<typeof import('./store/searchStore')['useSearchStore']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
+    readonly useURLStore: UnwrapRef<typeof import('./store/urlStore')['useURLStore']>
+    readonly useWatchFeedDropdownFilter: UnwrapRef<typeof import('./composables/useWatchFeedDropdownFilter')['useWatchFeedDropdownFilter']>
+    readonly useWatchUrl: UnwrapRef<typeof import('./composables/useWatchURL')['useWatchUrl']>
     readonly vi: UnwrapRef<typeof import('vitest')['vi']>
     readonly vitest: UnwrapRef<typeof import('vitest')['vitest']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
@@ -352,12 +358,16 @@ declare module '@vue/runtime-core' {
     readonly useAuthStore: UnwrapRef<typeof import('./store/authStore')['useAuthStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useDeConstructURL: UnwrapRef<typeof import('./composables/useDeConstructURL')['useDeConstructURL']>
     readonly useGeneralStore: UnwrapRef<typeof import('./store/generalStore')['useGeneralStore']>
     readonly useLoggedInUserStore: UnwrapRef<typeof import('./store/loggedInUserStore')['useLoggedInUserStore']>
     readonly usePaginationStore: UnwrapRef<typeof import('./store/paginationStore')['usePaginationStore']>
     readonly usePostStore: UnwrapRef<typeof import('./store/postStore')['usePostStore']>
     readonly useSearchStore: UnwrapRef<typeof import('./store/searchStore')['useSearchStore']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
+    readonly useURLStore: UnwrapRef<typeof import('./store/urlStore')['useURLStore']>
+    readonly useWatchFeedDropdownFilter: UnwrapRef<typeof import('./composables/useWatchFeedDropdownFilter')['useWatchFeedDropdownFilter']>
+    readonly useWatchUrl: UnwrapRef<typeof import('./composables/useWatchURL')['useWatchUrl']>
     readonly vi: UnwrapRef<typeof import('vitest')['vi']>
     readonly vitest: UnwrapRef<typeof import('vitest')['vitest']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>

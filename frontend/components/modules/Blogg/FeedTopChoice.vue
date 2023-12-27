@@ -8,7 +8,7 @@
 		<FeedTopChoiceFollowingOptionButton
 			data-test="following_posts_option"
 			:show-as-selected="showFollowingPosts === false ? true : false"
-			@show-following-posts="handleShowFollowingPosts"
+			@click="handleShowFollowingPosts"
 		/>
 	</div>
 </template>
@@ -35,12 +35,19 @@ const showFollowingPosts = computed(() => {
  * the main feed one. It then fetches all posts.
  */
  const handleShowFollowingPosts = async () => {
+	const router = useRouter()
+
 	searchStore.resetStore();
 
 	// Sets the active url to the basic following url
 	paginationStore.activeFetchURL = urls.api.posts.following;
 	await getPostMultipleFollowingOnly(paginationStore.activeFetchURL);
-};
+
+	router.push({
+	query: {
+		following:"true"
+	}
+})
 
 /**
  * This is called when the 'feed button' is clicked.

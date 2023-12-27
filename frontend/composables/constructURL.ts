@@ -6,7 +6,6 @@
  * This computed property is updated dynamically whenever a value inside changes. Which is either
  * the 'searchPart', or the 'tagFilterPart'
  * 
- * @todo Find out whether I should move this to a pluging or composable or someting
  */
 export const constructURL = (fetchURL: string): string => {
 

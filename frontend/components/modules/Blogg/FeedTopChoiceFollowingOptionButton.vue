@@ -3,16 +3,11 @@
 		class="p-2 rounded-lg"
 		data-test="following_option"
 		:class="selected"
-		@click="$emit('showFollowingPosts')"
 		text="Following"
 	/>
 </template>
 
 <script setup lang="ts">
-
-defineEmits<{
-	showFollowingPosts:any
-}>();
 
 const props = defineProps<{
 	showAsSelected:boolean
