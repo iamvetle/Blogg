@@ -47,7 +47,7 @@ const showFollowingPosts = computed(() => {
 	query: {
 		following:"true"
 	}
-})
+})}
 
 /**
  * This is called when the 'feed button' is clicked.

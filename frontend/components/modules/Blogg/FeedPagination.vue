@@ -26,15 +26,15 @@ const totalPages = computed(() => paginationStore.total_number_of_posts);
 const page = ref(1);
 
 /** Fetches new data every time the url changes */
-watchEffect(async () => {
-	let feedPage = urls.api.posts.feedAtPage(page.value);
-	paginationStore.activeFetchURL = feedPage;
-	/**
-	 * ? should I have this somewhere else?
-	 */
-	console.info("The url changed. Is going to fetch posts now")
-	await getPostMultipleSnippet(paginationStore.activeFetchURL);
-});
+// watchEffect(async () => {
+// 	let feedPage = urls.api.posts.feedAtPage(page.value);
+// 	paginationStore.activeFetchURL = feedPage;
+// 	/**
+// 	 * ? should I have this somewhere else?
+// 	 */
+// 	console.info("The url changed. Is going to fetch posts now")
+// 	await getPostMultipleSnippet(paginationStore.activeFetchURL);
+// });
 
 /**
  * When the 'next page' icon ( > ) is clicked new data is fetched

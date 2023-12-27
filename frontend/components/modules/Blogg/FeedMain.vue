@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 
-const postStore = usePostStore()
+// const postStore = usePostStore()
 const searchStore = useSearchStore()
 
 const isReadyTopSearch = computed(() => searchStore.searchPart ? true : false)

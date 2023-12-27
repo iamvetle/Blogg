@@ -10,16 +10,22 @@ export const useWatchUrl = () => {
 
         async () => {
         const path = route.path
+        const s = route.query.tags
+        const p = JSON.stringify(route.query.tags)
+
+        let stringTag = "?"
+        for (let tag of s) {
+            if(stringTag.includes("&") != false) {
+                stringTag += `tags=${tag}`            
+            } else {
+                stringTag += `&tags=${tag}`            
+            }
+        }
+        alert(stringTag)
             // If the path is "index"
             if(path == "/" ) {
                 alert(path)
                 console.info("Path is supposed to be '/':", path)
-            };
-            // if the path is "/following"
-            if(path == "/following") {
-                alert(path)
-                console.info("Path is supposed to be '/following':", path)
-                await getPostMultipleFollowingOnly()
             };
         },
         // * men trenger jeg den? 
