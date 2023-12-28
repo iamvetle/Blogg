@@ -6,24 +6,27 @@
 </template>
 
 <script setup lang="ts">
-/** States related to the pagination is here */
+import { useRouter } from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
 const paginationStore = usePaginationStore();
 
 const totalPages = computed(() => paginationStore.total_number_of_posts);
 
-/**
- * ! The pagination class I just took returns "count" but it is just *one* number
- * ! above the latest id - so I cant make calculations out of thats
- * ! have to create custom pagination so that can work properly
- * ! also have to fix the relation it has with fix pagination
- * ! also its realtion to tags and navbar
- */
+// Sync the reactive reference number to the URL query parameter
+watchEffect(() => {
+	const pageQueryParam = route.query.page;
+	const currentPage = parseInt(pageQueryParam as string);
+	if (!isNaN(currentPage)) {
+		paginationStore.active_page = currentPage;
+	}
+});
 
-/**
- * The active page (number)
- * It changes based on UPagination
- */
-const page = ref(1);
+// Update the URL query parameter when the reactive reference number changes
+watch(() => paginationStore.active_page, (newPage) => {
+	router.push({ query: { page: newPage.toString() } });
+});
 
 /** Fetches new data every time the url changes */
 // watchEffect(async () => {
