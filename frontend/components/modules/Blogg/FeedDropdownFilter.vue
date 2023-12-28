@@ -17,7 +17,10 @@
 
 			<!-- When closed -->
 			<template #label>
-				<div class="text-md flex items-center" v-if="searchStore.tagFilterPart.length">
+				<div
+					class="text-md flex items-center"
+					v-if="searchStore.tagFilterPart.length"
+				>
 					<span class="break-words"
 						>{{ searchStore.tagFilterPart.length }} filter</span
 					>
@@ -41,6 +44,8 @@ const searchStore = useSearchStore();
 /** State that holds all the tags - fetched */
 const tags = ref(<string[]>[]);
 
+const router = useRouter()
+
 /** Watches how to */
 
 onMounted(async () => {
@@ -55,12 +60,18 @@ onMounted(async () => {
 		}
 	}
 });
-// useWatchFeedDropdownFilter();
 
+/** 
+ * ! ?????
+ */
+// useWatchFeedDropdownFilter();
+watch(() => searchStore.tagFilterPart, (newVal) => {
+	router.push({ query: { tags: newVal } })
+});
 
 /**
  * ? maybe I should have a "isReady" for most components?
- * 
+ *
  * ! through an error if I shorten it to just => sea..
  * ! TO SELF: to not use ? with .value, that is reactive referances
  */
