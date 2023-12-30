@@ -30,18 +30,6 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: ['./typescript', './store', './utils/editor', './composables/crud', './composables/editor', './constants'],
 		presets: [
-			// {
-			// 	from: "./store",
-			// 	imports: [
-			// 		{ name: "usePaginationStore", as: "usePaginationStore" },
-			// 		{ name: "useLoggedInUserStore", as: "useLoggedInUserStore" },
-			// 		{ name: "useGeneralStore", as: "useGeneralStore" },
-			// 		{ name: "usePostStore", as: "usePostStore" },
-			// 		{ name: "useSearchStore", as: "useSearchStore" },
-			// 		{ name: "useAuthStore", as: "useAuthStore" }
-
-			// 	]
-			// },
 			{
 				from: 'axios',
 				imports: [

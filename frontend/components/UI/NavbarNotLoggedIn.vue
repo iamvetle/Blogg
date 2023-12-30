@@ -96,6 +96,7 @@ const logoclick = async () => {
 
 		await navigateTo("/");
 	} else {
+		paginationStore.activeFetchURL = urls.api.posts.feed
 		await getPostMultipleSnippet(paginationStore.activeFetchURL)
 	}
 };
