@@ -15,11 +15,15 @@
             <FeedTopChoice v-if="postStore.posts && postStore.posts?.results" />
         </div>
         <div id="posts-list">
-            <FeedPostsList class="w-full mt-12" />
+            <Suspense>
+                <template #default>
+                    <FeedPostsList class="w-full mt-12" />
+                </template>
+                <template #fallback>
+                    <span>loading</span>
+                </template>
+            </Suspense>
         </div>
-        <!-- <div v-else>
-            <SkeletonFeedPostsList />
-        </div> -->
     </div>
 </template>
 

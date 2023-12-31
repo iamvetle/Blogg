@@ -68,5 +68,9 @@ export default defineNuxtConfig({
 		viewer: true,
 
 	},
-	ssr: false
+	// routeRules: {
+	// 	"/login": { ssr:true },
+	// 	"/registrer": { ssr:true }
+
+	// },
 });

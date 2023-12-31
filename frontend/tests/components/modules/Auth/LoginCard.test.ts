@@ -26,6 +26,9 @@ const factory = () => {
 describe('Testin the Login card component', () => {
 
     beforeEach(() => {
+        vi.stubGlobal("useCookie", () => {
+            return null
+        })
     });
 
     afterEach(() => {

@@ -221,30 +221,35 @@ VueWrapper {
       "directives": null,
       "ec": null,
       "effect": ReactiveEffect {
+        "_depsLength": 5,
+        "_dirtyLevel": 0,
+        "_queryings": 0,
+        "_runnings": 0,
+        "_trackId": 1,
         "active": true,
         "allowRecurse": true,
         "deps": [
-          Set {
-            [Circular],
+          Map {
+            [Circular] => 1,
           },
-          Set {
-            [Circular],
+          Map {
+            [Circular] => 1,
           },
-          Set {
-            [Circular],
+          Map {
+            [Circular] => 1,
           },
-          Set {
-            [Circular],
+          Map {
+            [Circular] => 1,
           },
-          Set {
-            [Circular],
+          Map {
+            [Circular] => 1,
           },
         ],
         "fn": [Function],
         "onTrack": undefined,
         "onTrigger": undefined,
-        "parent": undefined,
         "scheduler": [Function],
+        "trigger": [Function],
       },
       "emit": [Function],
       "emitsOptions": null,
@@ -282,30 +287,35 @@ VueWrapper {
         "detached": true,
         "effects": [
           ReactiveEffect {
+            "_depsLength": 5,
+            "_dirtyLevel": 0,
+            "_queryings": 0,
+            "_runnings": 0,
+            "_trackId": 1,
             "active": true,
             "allowRecurse": true,
             "deps": [
-              Set {
-                [Circular],
+              Map {
+                [Circular] => 1,
               },
-              Set {
-                [Circular],
+              Map {
+                [Circular] => 1,
               },
-              Set {
-                [Circular],
+              Map {
+                [Circular] => 1,
               },
-              Set {
-                [Circular],
+              Map {
+                [Circular] => 1,
               },
-              Set {
-                [Circular],
+              Map {
+                [Circular] => 1,
               },
             ],
             "fn": [Function],
             "onTrack": undefined,
             "onTrigger": undefined,
-            "parent": undefined,
             "scheduler": [Function],
+            "trigger": [Function],
           },
         ],
         "parent": undefined,
@@ -435,21 +445,26 @@ VueWrapper {
           "directives": null,
           "ec": null,
           "effect": ReactiveEffect {
+            "_depsLength": 2,
+            "_dirtyLevel": 0,
+            "_queryings": 0,
+            "_runnings": 0,
+            "_trackId": 1,
             "active": true,
             "allowRecurse": true,
             "deps": [
-              Set {
-                [Circular],
+              Map {
+                [Circular] => 1,
               },
-              Set {
-                [Circular],
+              Map {
+                [Circular] => 1,
               },
             ],
             "fn": [Function],
             "onTrack": undefined,
             "onTrigger": undefined,
-            "parent": undefined,
             "scheduler": [Function],
+            "trigger": [Function],
           },
           "emit": [Function],
           "emitsOptions": null,
@@ -502,21 +517,26 @@ VueWrapper {
             "detached": true,
             "effects": [
               ReactiveEffect {
+                "_depsLength": 2,
+                "_dirtyLevel": 0,
+                "_queryings": 0,
+                "_runnings": 0,
+                "_trackId": 1,
                 "active": true,
                 "allowRecurse": true,
                 "deps": [
-                  Set {
-                    [Circular],
+                  Map {
+                    [Circular] => 1,
                   },
-                  Set {
-                    [Circular],
+                  Map {
+                    [Circular] => 1,
                   },
                 ],
                 "fn": [Function],
                 "onTrack": undefined,
                 "onTrigger": undefined,
-                "parent": undefined,
                 "scheduler": [Function],
+                "trigger": [Function],
               },
             ],
             "parent": undefined,
@@ -823,7 +843,7 @@ VueWrapper {
     "runWithContext": [Function],
     "unmount": [Function],
     "use": [Function],
-    "version": "3.3.12",
+    "version": "3.4.3",
   },
   "__setProps": [Function],
   "cleanUpCallbacks": [
