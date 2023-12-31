@@ -6326,7 +6326,7 @@ VueWrapper {
     "runWithContext": [Function],
     "unmount": [Function],
     "use": [Function],
-    "version": "3.3.13",
+    "version": "3.3.12",
   },
   "__setProps": [Function],
   "cleanUpCallbacks": [

@@ -61,7 +61,9 @@ const baseInputClass = "prose border border-gray-300 sm:text-sm rounded-lg focus
 const baseMessageClass = "prose text-onSurface text-sm text-red-500"
 
 const baseURL = urls.baseApiURL
-const genders = ["Male", "Female", "Annet"]
+const genders = ["Male", "Female", "Other"]
+
+const token = useCookie("token")
 
 withDefaults(defineProps<{
 	redirect?: boolean
@@ -77,6 +79,9 @@ const submitForm = async (formData: any, node) => {
 
 		/** Takes the username and token from the responseData and puts it in localStorage */
 		authStore.setTokenToLocalStorage(responseData.token)
+
+		token.value = responseData.token
+
 		authStore.setUsernameToLocalStorage(responseData.username)
 
 		loginsucess.value = true;
