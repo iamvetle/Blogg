@@ -57,7 +57,7 @@ describe("Testing the index page", () => {
     })
     test('Should match snapshot', () => {
         wrapper = factory()
-        expect(wrapper).toMatchSnapshot()
+        expect(wrapper.html()).toMatchSnapshot()
     })
     
 });

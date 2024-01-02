@@ -13,7 +13,6 @@
 			<FeedSidebar />
 		</div>
 	</div>
-	<!-- fallback -->
 </template>
 
 <script setup lang="ts">
