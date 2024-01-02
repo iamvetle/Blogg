@@ -24,11 +24,11 @@ VueWrapper {
             <div
               class="text-center space-x-6"
             >
-              <feed-top-choice-feed-option-button-stub
+              <feed-top-bar-feed-option-button-stub
                 data-test="feed_all_posts_option_button"
                 show-as-selected="false"
               />
-              <feed-top-choice-following-option-button-stub
+              <feed-top-bar-following-option-button-stub
                 data-test="following_posts_option"
                 show-as-selected="true"
               />
@@ -65,11 +65,11 @@ VueWrapper {
         "FeedDropdownFilter": {
           "name": "FeedDropdownFilter",
         },
-        "FeedTopChoiceFeedOptionButton": {
-          "name": "FeedTopChoiceFeedOptionButton",
+        "FeedTopBarFeedOptionButton": {
+          "name": "FeedTopBarFeedOptionButton",
         },
-        "FeedTopChoiceFollowingOptionButton": {
-          "name": "FeedTopChoiceFollowingOptionButton",
+        "FeedTopBarFollowingOptionButton": {
+          "name": "FeedTopBarFollowingOptionButton",
         },
         "transition": {
           "name": "transition",
@@ -1558,11 +1558,11 @@ VueWrapper {
           "FeedDropdownFilter": {
             "name": "FeedDropdownFilter",
           },
-          "FeedTopChoiceFeedOptionButton": {
-            "name": "FeedTopChoiceFeedOptionButton",
+          "FeedTopBarFeedOptionButton": {
+            "name": "FeedTopBarFeedOptionButton",
           },
-          "FeedTopChoiceFollowingOptionButton": {
-            "name": "FeedTopChoiceFollowingOptionButton",
+          "FeedTopBarFollowingOptionButton": {
+            "name": "FeedTopBarFollowingOptionButton",
           },
           "transition": {
             "name": "transition",
@@ -3186,11 +3186,11 @@ VueWrapper {
               "FeedDropdownFilter": {
                 "name": "FeedDropdownFilter",
               },
-              "FeedTopChoiceFeedOptionButton": {
-                "name": "FeedTopChoiceFeedOptionButton",
+              "FeedTopBarFeedOptionButton": {
+                "name": "FeedTopBarFeedOptionButton",
               },
-              "FeedTopChoiceFollowingOptionButton": {
-                "name": "FeedTopChoiceFollowingOptionButton",
+              "FeedTopBarFollowingOptionButton": {
+                "name": "FeedTopBarFollowingOptionButton",
               },
               "transition": {
                 "name": "transition",
@@ -19558,11 +19558,11 @@ VueWrapper {
                                   "FeedDropdownFilter": {
                                     "name": "FeedDropdownFilter",
                                   },
-                                  "FeedTopChoiceFeedOptionButton": {
-                                    "name": "FeedTopChoiceFeedOptionButton",
+                                  "FeedTopBarFeedOptionButton": {
+                                    "name": "FeedTopBarFeedOptionButton",
                                   },
-                                  "FeedTopChoiceFollowingOptionButton": {
-                                    "name": "FeedTopChoiceFollowingOptionButton",
+                                  "FeedTopBarFollowingOptionButton": {
+                                    "name": "FeedTopBarFollowingOptionButton",
                                   },
                                   "transition": {
                                     "name": "transition",
@@ -21273,7 +21273,7 @@ VueWrapper {
                                 "dirs": null,
                                 "dynamicChildren": null,
                                 "dynamicProps": null,
-                                "el": <feed-top-choice-feed-option-button-stub
+                                "el": <feed-top-bar-feed-option-button-stub
                                   data-test="feed_all_posts_option_button"
                                   show-as-selected="false"
                                 />,
@@ -21295,13 +21295,13 @@ VueWrapper {
                                 "target": null,
                                 "targetAnchor": null,
                                 "transition": null,
-                                "type": "feed-top-choice-feed-option-button-stub",
+                                "type": "feed-top-bar-feed-option-button-stub",
                               },
                               "suspense": null,
                               "suspenseId": 0,
                               "type": {
                                 "model": undefined,
-                                "name": "FeedTopChoiceFeedOptionButton",
+                                "name": "FeedTopBarFeedOptionButton",
                                 "props": {},
                                 "setup": [Function],
                               },
@@ -21318,7 +21318,7 @@ VueWrapper {
                             "dynamicProps": [
                               "show-as-selected",
                             ],
-                            "el": <feed-top-choice-feed-option-button-stub
+                            "el": <feed-top-bar-feed-option-button-stub
                               data-test="feed_all_posts_option_button"
                               show-as-selected="false"
                             />,
@@ -21342,7 +21342,7 @@ VueWrapper {
                             "transition": null,
                             "type": {
                               "model": undefined,
-                              "name": "FeedTopChoiceFeedOptionButton",
+                              "name": "FeedTopBarFeedOptionButton",
                               "props": {},
                               "setup": [Function],
                             },
@@ -21374,11 +21374,11 @@ VueWrapper {
                                   "FeedDropdownFilter": {
                                     "name": "FeedDropdownFilter",
                                   },
-                                  "FeedTopChoiceFeedOptionButton": {
-                                    "name": "FeedTopChoiceFeedOptionButton",
+                                  "FeedTopBarFeedOptionButton": {
+                                    "name": "FeedTopBarFeedOptionButton",
                                   },
-                                  "FeedTopChoiceFollowingOptionButton": {
-                                    "name": "FeedTopChoiceFollowingOptionButton",
+                                  "FeedTopBarFollowingOptionButton": {
+                                    "name": "FeedTopBarFollowingOptionButton",
                                   },
                                   "transition": {
                                     "name": "transition",
@@ -23089,7 +23089,7 @@ VueWrapper {
                                 "dirs": null,
                                 "dynamicChildren": null,
                                 "dynamicProps": null,
-                                "el": <feed-top-choice-following-option-button-stub
+                                "el": <feed-top-bar-following-option-button-stub
                                   data-test="following_posts_option"
                                   show-as-selected="true"
                                 />,
@@ -23111,13 +23111,13 @@ VueWrapper {
                                 "target": null,
                                 "targetAnchor": null,
                                 "transition": null,
-                                "type": "feed-top-choice-following-option-button-stub",
+                                "type": "feed-top-bar-following-option-button-stub",
                               },
                               "suspense": null,
                               "suspenseId": 0,
                               "type": {
                                 "model": undefined,
-                                "name": "FeedTopChoiceFollowingOptionButton",
+                                "name": "FeedTopBarFollowingOptionButton",
                                 "props": {},
                                 "setup": [Function],
                               },
@@ -23134,7 +23134,7 @@ VueWrapper {
                             "dynamicProps": [
                               "show-as-selected",
                             ],
-                            "el": <feed-top-choice-following-option-button-stub
+                            "el": <feed-top-bar-following-option-button-stub
                               data-test="following_posts_option"
                               show-as-selected="true"
                             />,
@@ -23158,7 +23158,7 @@ VueWrapper {
                             "transition": null,
                             "type": {
                               "model": undefined,
-                              "name": "FeedTopChoiceFollowingOptionButton",
+                              "name": "FeedTopBarFollowingOptionButton",
                               "props": {},
                               "setup": [Function],
                             },
@@ -23204,11 +23204,11 @@ VueWrapper {
                                   "FeedDropdownFilter": {
                                     "name": "FeedDropdownFilter",
                                   },
-                                  "FeedTopChoiceFeedOptionButton": {
-                                    "name": "FeedTopChoiceFeedOptionButton",
+                                  "FeedTopBarFeedOptionButton": {
+                                    "name": "FeedTopBarFeedOptionButton",
                                   },
-                                  "FeedTopChoiceFollowingOptionButton": {
-                                    "name": "FeedTopChoiceFollowingOptionButton",
+                                  "FeedTopBarFollowingOptionButton": {
+                                    "name": "FeedTopBarFollowingOptionButton",
                                   },
                                   "transition": {
                                     "name": "transition",
@@ -24923,7 +24923,7 @@ VueWrapper {
                                 "dirs": null,
                                 "dynamicChildren": null,
                                 "dynamicProps": null,
-                                "el": <feed-top-choice-feed-option-button-stub
+                                "el": <feed-top-bar-feed-option-button-stub
                                   data-test="feed_all_posts_option_button"
                                   show-as-selected="false"
                                 />,
@@ -24945,13 +24945,13 @@ VueWrapper {
                                 "target": null,
                                 "targetAnchor": null,
                                 "transition": null,
-                                "type": "feed-top-choice-feed-option-button-stub",
+                                "type": "feed-top-bar-feed-option-button-stub",
                               },
                               "suspense": null,
                               "suspenseId": 0,
                               "type": {
                                 "model": undefined,
-                                "name": "FeedTopChoiceFeedOptionButton",
+                                "name": "FeedTopBarFeedOptionButton",
                                 "props": {},
                                 "setup": [Function],
                               },
@@ -24968,7 +24968,7 @@ VueWrapper {
                             "dynamicProps": [
                               "show-as-selected",
                             ],
-                            "el": <feed-top-choice-feed-option-button-stub
+                            "el": <feed-top-bar-feed-option-button-stub
                               data-test="feed_all_posts_option_button"
                               show-as-selected="false"
                             />,
@@ -24992,7 +24992,7 @@ VueWrapper {
                             "transition": null,
                             "type": {
                               "model": undefined,
-                              "name": "FeedTopChoiceFeedOptionButton",
+                              "name": "FeedTopBarFeedOptionButton",
                               "props": {},
                               "setup": [Function],
                             },
@@ -25033,11 +25033,11 @@ VueWrapper {
                                   "FeedDropdownFilter": {
                                     "name": "FeedDropdownFilter",
                                   },
-                                  "FeedTopChoiceFeedOptionButton": {
-                                    "name": "FeedTopChoiceFeedOptionButton",
+                                  "FeedTopBarFeedOptionButton": {
+                                    "name": "FeedTopBarFeedOptionButton",
                                   },
-                                  "FeedTopChoiceFollowingOptionButton": {
-                                    "name": "FeedTopChoiceFollowingOptionButton",
+                                  "FeedTopBarFollowingOptionButton": {
+                                    "name": "FeedTopBarFollowingOptionButton",
                                   },
                                   "transition": {
                                     "name": "transition",
@@ -26752,7 +26752,7 @@ VueWrapper {
                                 "dirs": null,
                                 "dynamicChildren": null,
                                 "dynamicProps": null,
-                                "el": <feed-top-choice-following-option-button-stub
+                                "el": <feed-top-bar-following-option-button-stub
                                   data-test="following_posts_option"
                                   show-as-selected="true"
                                 />,
@@ -26774,13 +26774,13 @@ VueWrapper {
                                 "target": null,
                                 "targetAnchor": null,
                                 "transition": null,
-                                "type": "feed-top-choice-following-option-button-stub",
+                                "type": "feed-top-bar-following-option-button-stub",
                               },
                               "suspense": null,
                               "suspenseId": 0,
                               "type": {
                                 "model": undefined,
-                                "name": "FeedTopChoiceFollowingOptionButton",
+                                "name": "FeedTopBarFollowingOptionButton",
                                 "props": {},
                                 "setup": [Function],
                               },
@@ -26797,7 +26797,7 @@ VueWrapper {
                             "dynamicProps": [
                               "show-as-selected",
                             ],
-                            "el": <feed-top-choice-following-option-button-stub
+                            "el": <feed-top-bar-following-option-button-stub
                               data-test="following_posts_option"
                               show-as-selected="true"
                             />,
@@ -26821,7 +26821,7 @@ VueWrapper {
                             "transition": null,
                             "type": {
                               "model": undefined,
-                              "name": "FeedTopChoiceFollowingOptionButton",
+                              "name": "FeedTopBarFollowingOptionButton",
                               "props": {},
                               "setup": [Function],
                             },
@@ -26831,11 +26831,11 @@ VueWrapper {
                         "el": <div
                           class="text-center space-x-6"
                         >
-                          <feed-top-choice-feed-option-button-stub
+                          <feed-top-bar-feed-option-button-stub
                             data-test="feed_all_posts_option_button"
                             show-as-selected="false"
                           />
-                          <feed-top-choice-following-option-button-stub
+                          <feed-top-bar-following-option-button-stub
                             data-test="following_posts_option"
                             show-as-selected="true"
                           />
@@ -26872,11 +26872,11 @@ VueWrapper {
                       <div
                         class="text-center space-x-6"
                       >
-                        <feed-top-choice-feed-option-button-stub
+                        <feed-top-bar-feed-option-button-stub
                           data-test="feed_all_posts_option_button"
                           show-as-selected="false"
                         />
-                        <feed-top-choice-following-option-button-stub
+                        <feed-top-bar-following-option-button-stub
                           data-test="following_posts_option"
                           show-as-selected="true"
                         />
@@ -26933,11 +26933,11 @@ VueWrapper {
                               "FeedDropdownFilter": {
                                 "name": "FeedDropdownFilter",
                               },
-                              "FeedTopChoiceFeedOptionButton": {
-                                "name": "FeedTopChoiceFeedOptionButton",
+                              "FeedTopBarFeedOptionButton": {
+                                "name": "FeedTopBarFeedOptionButton",
                               },
-                              "FeedTopChoiceFollowingOptionButton": {
-                                "name": "FeedTopChoiceFollowingOptionButton",
+                              "FeedTopBarFollowingOptionButton": {
+                                "name": "FeedTopBarFollowingOptionButton",
                               },
                               "transition": {
                                 "name": "transition",
@@ -28760,11 +28760,11 @@ VueWrapper {
                     <div
                       class="text-center space-x-6"
                     >
-                      <feed-top-choice-feed-option-button-stub
+                      <feed-top-bar-feed-option-button-stub
                         data-test="feed_all_posts_option_button"
                         show-as-selected="false"
                       />
-                      <feed-top-choice-following-option-button-stub
+                      <feed-top-bar-following-option-button-stub
                         data-test="following_posts_option"
                         show-as-selected="true"
                       />
@@ -28900,11 +28900,11 @@ VueWrapper {
                           "FeedDropdownFilter": {
                             "name": "FeedDropdownFilter",
                           },
-                          "FeedTopChoiceFeedOptionButton": {
-                            "name": "FeedTopChoiceFeedOptionButton",
+                          "FeedTopBarFeedOptionButton": {
+                            "name": "FeedTopBarFeedOptionButton",
                           },
-                          "FeedTopChoiceFollowingOptionButton": {
-                            "name": "FeedTopChoiceFollowingOptionButton",
+                          "FeedTopBarFollowingOptionButton": {
+                            "name": "FeedTopBarFollowingOptionButton",
                           },
                           "transition": {
                             "name": "transition",
@@ -30619,7 +30619,7 @@ VueWrapper {
                         "dirs": null,
                         "dynamicChildren": null,
                         "dynamicProps": null,
-                        "el": <feed-top-choice-feed-option-button-stub
+                        "el": <feed-top-bar-feed-option-button-stub
                           data-test="feed_all_posts_option_button"
                           show-as-selected="false"
                         />,
@@ -30641,13 +30641,13 @@ VueWrapper {
                         "target": null,
                         "targetAnchor": null,
                         "transition": null,
-                        "type": "feed-top-choice-feed-option-button-stub",
+                        "type": "feed-top-bar-feed-option-button-stub",
                       },
                       "suspense": null,
                       "suspenseId": 0,
                       "type": {
                         "model": undefined,
-                        "name": "FeedTopChoiceFeedOptionButton",
+                        "name": "FeedTopBarFeedOptionButton",
                         "props": {},
                         "setup": [Function],
                       },
@@ -30664,7 +30664,7 @@ VueWrapper {
                     "dynamicProps": [
                       "show-as-selected",
                     ],
-                    "el": <feed-top-choice-feed-option-button-stub
+                    "el": <feed-top-bar-feed-option-button-stub
                       data-test="feed_all_posts_option_button"
                       show-as-selected="false"
                     />,
@@ -30688,7 +30688,7 @@ VueWrapper {
                     "transition": null,
                     "type": {
                       "model": undefined,
-                      "name": "FeedTopChoiceFeedOptionButton",
+                      "name": "FeedTopBarFeedOptionButton",
                       "props": {},
                       "setup": [Function],
                     },
@@ -30729,11 +30729,11 @@ VueWrapper {
                           "FeedDropdownFilter": {
                             "name": "FeedDropdownFilter",
                           },
-                          "FeedTopChoiceFeedOptionButton": {
-                            "name": "FeedTopChoiceFeedOptionButton",
+                          "FeedTopBarFeedOptionButton": {
+                            "name": "FeedTopBarFeedOptionButton",
                           },
-                          "FeedTopChoiceFollowingOptionButton": {
-                            "name": "FeedTopChoiceFollowingOptionButton",
+                          "FeedTopBarFollowingOptionButton": {
+                            "name": "FeedTopBarFollowingOptionButton",
                           },
                           "transition": {
                             "name": "transition",
@@ -32448,7 +32448,7 @@ VueWrapper {
                         "dirs": null,
                         "dynamicChildren": null,
                         "dynamicProps": null,
-                        "el": <feed-top-choice-following-option-button-stub
+                        "el": <feed-top-bar-following-option-button-stub
                           data-test="following_posts_option"
                           show-as-selected="true"
                         />,
@@ -32470,13 +32470,13 @@ VueWrapper {
                         "target": null,
                         "targetAnchor": null,
                         "transition": null,
-                        "type": "feed-top-choice-following-option-button-stub",
+                        "type": "feed-top-bar-following-option-button-stub",
                       },
                       "suspense": null,
                       "suspenseId": 0,
                       "type": {
                         "model": undefined,
-                        "name": "FeedTopChoiceFollowingOptionButton",
+                        "name": "FeedTopBarFollowingOptionButton",
                         "props": {},
                         "setup": [Function],
                       },
@@ -32493,7 +32493,7 @@ VueWrapper {
                     "dynamicProps": [
                       "show-as-selected",
                     ],
-                    "el": <feed-top-choice-following-option-button-stub
+                    "el": <feed-top-bar-following-option-button-stub
                       data-test="following_posts_option"
                       show-as-selected="true"
                     />,
@@ -32517,7 +32517,7 @@ VueWrapper {
                     "transition": null,
                     "type": {
                       "model": undefined,
-                      "name": "FeedTopChoiceFollowingOptionButton",
+                      "name": "FeedTopBarFollowingOptionButton",
                       "props": {},
                       "setup": [Function],
                     },
@@ -32563,11 +32563,11 @@ VueWrapper {
                           "FeedDropdownFilter": {
                             "name": "FeedDropdownFilter",
                           },
-                          "FeedTopChoiceFeedOptionButton": {
-                            "name": "FeedTopChoiceFeedOptionButton",
+                          "FeedTopBarFeedOptionButton": {
+                            "name": "FeedTopBarFeedOptionButton",
                           },
-                          "FeedTopChoiceFollowingOptionButton": {
-                            "name": "FeedTopChoiceFollowingOptionButton",
+                          "FeedTopBarFollowingOptionButton": {
+                            "name": "FeedTopBarFollowingOptionButton",
                           },
                           "transition": {
                             "name": "transition",
@@ -34282,7 +34282,7 @@ VueWrapper {
                         "dirs": null,
                         "dynamicChildren": null,
                         "dynamicProps": null,
-                        "el": <feed-top-choice-feed-option-button-stub
+                        "el": <feed-top-bar-feed-option-button-stub
                           data-test="feed_all_posts_option_button"
                           show-as-selected="false"
                         />,
@@ -34304,13 +34304,13 @@ VueWrapper {
                         "target": null,
                         "targetAnchor": null,
                         "transition": null,
-                        "type": "feed-top-choice-feed-option-button-stub",
+                        "type": "feed-top-bar-feed-option-button-stub",
                       },
                       "suspense": null,
                       "suspenseId": 0,
                       "type": {
                         "model": undefined,
-                        "name": "FeedTopChoiceFeedOptionButton",
+                        "name": "FeedTopBarFeedOptionButton",
                         "props": {},
                         "setup": [Function],
                       },
@@ -34327,7 +34327,7 @@ VueWrapper {
                     "dynamicProps": [
                       "show-as-selected",
                     ],
-                    "el": <feed-top-choice-feed-option-button-stub
+                    "el": <feed-top-bar-feed-option-button-stub
                       data-test="feed_all_posts_option_button"
                       show-as-selected="false"
                     />,
@@ -34351,7 +34351,7 @@ VueWrapper {
                     "transition": null,
                     "type": {
                       "model": undefined,
-                      "name": "FeedTopChoiceFeedOptionButton",
+                      "name": "FeedTopBarFeedOptionButton",
                       "props": {},
                       "setup": [Function],
                     },
@@ -34392,11 +34392,11 @@ VueWrapper {
                           "FeedDropdownFilter": {
                             "name": "FeedDropdownFilter",
                           },
-                          "FeedTopChoiceFeedOptionButton": {
-                            "name": "FeedTopChoiceFeedOptionButton",
+                          "FeedTopBarFeedOptionButton": {
+                            "name": "FeedTopBarFeedOptionButton",
                           },
-                          "FeedTopChoiceFollowingOptionButton": {
-                            "name": "FeedTopChoiceFollowingOptionButton",
+                          "FeedTopBarFollowingOptionButton": {
+                            "name": "FeedTopBarFollowingOptionButton",
                           },
                           "transition": {
                             "name": "transition",
@@ -36111,7 +36111,7 @@ VueWrapper {
                         "dirs": null,
                         "dynamicChildren": null,
                         "dynamicProps": null,
-                        "el": <feed-top-choice-following-option-button-stub
+                        "el": <feed-top-bar-following-option-button-stub
                           data-test="following_posts_option"
                           show-as-selected="true"
                         />,
@@ -36133,13 +36133,13 @@ VueWrapper {
                         "target": null,
                         "targetAnchor": null,
                         "transition": null,
-                        "type": "feed-top-choice-following-option-button-stub",
+                        "type": "feed-top-bar-following-option-button-stub",
                       },
                       "suspense": null,
                       "suspenseId": 0,
                       "type": {
                         "model": undefined,
-                        "name": "FeedTopChoiceFollowingOptionButton",
+                        "name": "FeedTopBarFollowingOptionButton",
                         "props": {},
                         "setup": [Function],
                       },
@@ -36156,7 +36156,7 @@ VueWrapper {
                     "dynamicProps": [
                       "show-as-selected",
                     ],
-                    "el": <feed-top-choice-following-option-button-stub
+                    "el": <feed-top-bar-following-option-button-stub
                       data-test="following_posts_option"
                       show-as-selected="true"
                     />,
@@ -36180,7 +36180,7 @@ VueWrapper {
                     "transition": null,
                     "type": {
                       "model": undefined,
-                      "name": "FeedTopChoiceFollowingOptionButton",
+                      "name": "FeedTopBarFollowingOptionButton",
                       "props": {},
                       "setup": [Function],
                     },
@@ -36190,11 +36190,11 @@ VueWrapper {
                 "el": <div
                   class="text-center space-x-6"
                 >
-                  <feed-top-choice-feed-option-button-stub
+                  <feed-top-bar-feed-option-button-stub
                     data-test="feed_all_posts_option_button"
                     show-as-selected="false"
                   />
-                  <feed-top-choice-following-option-button-stub
+                  <feed-top-bar-following-option-button-stub
                     data-test="following_posts_option"
                     show-as-selected="true"
                   />
@@ -36254,11 +36254,11 @@ VueWrapper {
                       "FeedDropdownFilter": {
                         "name": "FeedDropdownFilter",
                       },
-                      "FeedTopChoiceFeedOptionButton": {
-                        "name": "FeedTopChoiceFeedOptionButton",
+                      "FeedTopBarFeedOptionButton": {
+                        "name": "FeedTopBarFeedOptionButton",
                       },
-                      "FeedTopChoiceFollowingOptionButton": {
-                        "name": "FeedTopChoiceFollowingOptionButton",
+                      "FeedTopBarFollowingOptionButton": {
+                        "name": "FeedTopBarFollowingOptionButton",
                       },
                       "transition": {
                         "name": "transition",
@@ -38077,11 +38077,11 @@ VueWrapper {
                   <div
                     class="text-center space-x-6"
                   >
-                    <feed-top-choice-feed-option-button-stub
+                    <feed-top-bar-feed-option-button-stub
                       data-test="feed_all_posts_option_button"
                       show-as-selected="false"
                     />
-                    <feed-top-choice-following-option-button-stub
+                    <feed-top-bar-following-option-button-stub
                       data-test="following_posts_option"
                       show-as-selected="true"
                     />
@@ -38120,8 +38120,8 @@ VueWrapper {
           "suspense": null,
           "suspenseId": 0,
           "type": {
-            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/FeedTopChoice.vue",
-            "__name": "FeedTopChoice",
+            "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/FeedTopBar.vue",
+            "__name": "FeedTopBar",
             "components": {
               "BaseButton": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
@@ -38169,11 +38169,11 @@ VueWrapper {
               <div
                 class="text-center space-x-6"
               >
-                <feed-top-choice-feed-option-button-stub
+                <feed-top-bar-feed-option-button-stub
                   data-test="feed_all_posts_option_button"
                   show-as-selected="false"
                 />
-                <feed-top-choice-following-option-button-stub
+                <feed-top-bar-following-option-button-stub
                   data-test="following_posts_option"
                   show-as-selected="true"
                 />
@@ -38213,8 +38213,8 @@ VueWrapper {
         "targetAnchor": null,
         "transition": null,
         "type": {
-          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/FeedTopChoice.vue",
-          "__name": "FeedTopChoice",
+          "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/modules/Blogg/FeedTopBar.vue",
+          "__name": "FeedTopBar",
           "components": {
             "BaseButton": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseButton.vue",
@@ -38272,11 +38272,11 @@ VueWrapper {
             "FeedDropdownFilter": {
               "name": "FeedDropdownFilter",
             },
-            "FeedTopChoiceFeedOptionButton": {
-              "name": "FeedTopChoiceFeedOptionButton",
+            "FeedTopBarFeedOptionButton": {
+              "name": "FeedTopBarFeedOptionButton",
             },
-            "FeedTopChoiceFollowingOptionButton": {
-              "name": "FeedTopChoiceFollowingOptionButton",
+            "FeedTopBarFollowingOptionButton": {
+              "name": "FeedTopBarFollowingOptionButton",
             },
             "transition": {
               "name": "transition",
@@ -39883,11 +39883,11 @@ VueWrapper {
               <div
                 class="text-center space-x-6"
               >
-                <feed-top-choice-feed-option-button-stub
+                <feed-top-bar-feed-option-button-stub
                   data-test="feed_all_posts_option_button"
                   show-as-selected="false"
                 />
-                <feed-top-choice-following-option-button-stub
+                <feed-top-bar-following-option-button-stub
                   data-test="following_posts_option"
                   show-as-selected="true"
                 />
@@ -40922,11 +40922,11 @@ VueWrapper {
         <div
           class="text-center space-x-6"
         >
-          <feed-top-choice-feed-option-button-stub
+          <feed-top-bar-feed-option-button-stub
             data-test="feed_all_posts_option_button"
             show-as-selected="false"
           />
-          <feed-top-choice-following-option-button-stub
+          <feed-top-bar-following-option-button-stub
             data-test="following_posts_option"
             show-as-selected="true"
           />

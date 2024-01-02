@@ -7,7 +7,7 @@ exports[`Testing the main part of the index page > Should match snapshot 1`] = `
   </div><!-- ! Temp disabled - MAKE SEPERATE PAGE LATER -->
   <!-- <div id=\\"top-choice\\">
 
-            <FeedTopChoice v-if=\\"postStore.posts && postStore.posts?.results\\" />
+            <FeedTopBar v-if=\\"postStore.posts && postStore.posts?.results\\" />
         </div> -->
   <div id=\\"posts-list\\">
     <suspense-stub></suspense-stub>

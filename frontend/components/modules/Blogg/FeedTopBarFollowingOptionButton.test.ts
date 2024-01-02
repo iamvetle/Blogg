@@ -1,11 +1,11 @@
-import FeedTopChoiceFeedOptionButton from './FeedTopChoiceFeedOptionButton.vue';
+import FeedTopBarFollowingOptionButton from './FeedTopBarFollowingOptionButton.vue';          
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 
 let wrapper: any;
 
 const factory = () => {
-    return shallowMount(FeedTopChoiceFeedOptionButton, {
+    return shallowMount(FeedTopBarFollowingOptionButton, {
         global: {
             plugins: [],
             components: {},
@@ -38,7 +38,7 @@ describe('Testing the all posts feed button', () => {
     })
     test('Should have basebutton', () => {
         wrapper = factory()
-        expect(wrapper.find("[data-test='feed_option']").exists()).toBe(true)
+        expect(wrapper.find("[data-test='following_option']").exists()).toBe(true)
         
     })
     test('Should have a selected prop', () => {
@@ -47,15 +47,15 @@ describe('Testing the all posts feed button', () => {
     })
     test('The button should emit when clicked', async () => {
         wrapper = factory()
-        const button = wrapper.find("[data-test='feed_option']")
+        const button = wrapper.find("[data-test='following_option']")
         
         await button.trigger("click")
-        expect(wrapper.emitted("showAllFeedPosts")).toBeTruthy()
+        expect(wrapper.emitted("showFollowingPosts")).toBeTruthy()
     })
     test('The button should have the correct text', async () => {
         wrapper = factory()
-        const button = wrapper.find("[data-test='feed_option']")
-        expect(button.attributes("text")).toBe("Feed")
+        const button = wrapper.find("[data-test='following_option']")
+        expect(button.attributes("text")).toBe("Following")
     })
     test('Should match snapshot', () => {
         wrapper = factory()

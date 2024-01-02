@@ -1,4 +1,4 @@
-import FeedTopChoice from '~/components/modules/Blogg/FeedTopChoice.vue';
+import FeedTopBar from '~/components/modules/Blogg/FeedTopBar.vue';
 import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import BaseButton from '~/components/base/BaseButton.vue';
@@ -20,7 +20,7 @@ let mockShowAllFeedPosts = vi.fn()
 
 
 const factory = () => {
-	return shallowMount(FeedTopChoice, {
+	return shallowMount(FeedTopBar, {
 		global: {
 			plugins: [pinia],
 			components: {
@@ -33,8 +33,8 @@ const factory = () => {
 			},
 			stubs: {
 				"FeedDropdownFilter":true,
-				"FeedTopChoiceFeedOptionButton":true,
-				"FeedTopChoiceFollowingOptionButton":true
+				"FeedTopBarFeedOptionButton":true,
+				"FeedTopBarFollowingOptionButton":true
 			},
 		},
 		slots: {}

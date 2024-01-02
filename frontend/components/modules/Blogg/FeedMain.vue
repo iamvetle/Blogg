@@ -8,7 +8,7 @@
         <!-- ! Temp disabled - MAKE SEPERATE PAGE LATER -->
         <!-- <div id="top-choice">
 
-            <FeedTopChoice v-if="postStore.posts && postStore.posts?.results" />
+            <FeedTopBar v-if="postStore.posts && postStore.posts?.results" />
         </div> -->
         <div id="posts-list">
             <Suspense>

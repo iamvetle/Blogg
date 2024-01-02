@@ -4,7 +4,7 @@ import { createTestingPinia } from "@pinia/testing";
 
 import { shallowMount } from '@vue/test-utils';
 import FeedTopSearch from './FeedTopSearch.vue';
-import FeedTopChoice from '~/components/modules/Blogg/FeedTopChoice.vue';
+import FeedTopBar from '~/components/modules/Blogg/FeedTopBar.vue';
 import FeedPostsList from '~/components/modules/Blogg/FeedPostsList.vue';
 
 let wrapper: any;
@@ -24,7 +24,7 @@ const factory = () => {
             },
             components: {
                 FeedTopSearch,
-                FeedTopChoice,
+                FeedTopBar,
                 FeedPostsList
             },
 
@@ -67,7 +67,7 @@ describe('Testing the main part of the index page', () => {
         // expect(postlist.exists()).toBe(true);
         
         // ! TEMP - look at main file comment
-        // const topChoice = wrapper.findComponent({ name: "FeedTopChoice" })
+        // const topChoice = wrapper.findComponent({ name: "FeedTopBar" })
         // expect(topChoice.exists()).toBe(true)
 
     })
@@ -79,7 +79,7 @@ describe('Testing the main part of the index page', () => {
 
         await wrapper.vm.$nextTick()
         
-        const topChoice = wrapper.findComponent({ name: "FeedTopChoice" })
+        const topChoice = wrapper.findComponent({ name: "FeedTopBar" })
         expect(topChoice.exists()).toBe(false)
     })
     test('Should match snapshot', () => {

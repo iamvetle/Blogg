@@ -5,7 +5,7 @@
     </div>
 
     <div id="top-choice">
-      <FeedTopChoice v-if="postStore.posts && postStore.posts?.results" />
+      <FeedTopBar v-if="postStore.posts && postStore.posts?.results" />
     </div>
     <div id="posts-list">
       <Suspense>
@@ -54,7 +54,7 @@ describe('FeedMain', () => {
     expect(screen.getByText('loading')).toBeInTheDocument();
   });
 
-  it('renders FeedTopChoice when posts are available', () => {
+  it('renders FeedTopBar when posts are available', () => {
     render(FeedMain, {
       data() {
         return {
@@ -94,7 +94,7 @@ describe('FeedMain', () => {
     expect(screen.getByText('loading')).toBeInTheDocument();
   });
 
-  it('renders FeedTopChoice when posts are available', () => {
+  it('renders FeedTopBar when posts are available', () => {
     render(FeedMain, {
       data() {
         return {

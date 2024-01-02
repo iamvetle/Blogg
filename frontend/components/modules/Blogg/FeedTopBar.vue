@@ -4,12 +4,12 @@
 			<div class="col-start-1 col-end-9">
 				<!-- Only show the two options when web client is authenticated-->
 				<div v-if="authStore.isAuthenticated" class="text-center space-x-6">
-					<FeedTopChoiceFeedOptionButton
+					<FeedTopBarFeedOptionButton
 						data-test="feed_all_posts_option_button"
 						:show-as-selected="showFollowingPosts"
 						@show-all-feed-posts="handleShowAllFeedPosts"
 					/>
-					<FeedTopChoiceFollowingOptionButton
+					<FeedTopBarFollowingOptionButton
 						data-test="following_posts_option"
 						:show-as-selected="
 							showFollowingPosts === false ? true : false
