@@ -19,6 +19,10 @@ VueWrapper {
           class="col-span-6 mx-auto w-full"
           data-test="everything"
         >
+          <!-- 
+				* No api fetching is here.
+				* No url "manipulation" (local, or api) changing either.
+			-->
           <feed-main-stub />
         </div>
         <div
@@ -558,6 +562,40 @@ VueWrapper {
                         "__v_skip": true,
                         "anchor": null,
                         "appContext": null,
+                        "children": " 
+				* No api fetching is here.
+				* No url \\"manipulation\\" (local, or api) changing either.
+			",
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <!-- 
+				* No api fetching is here.
+				* No url "manipulation" (local, or api) changing either.
+			-->,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": null,
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 8,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": Symbol(v-cmt),
+                      },
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
                         "children": null,
                         "component": {
                           "a": null,
@@ -831,6 +869,10 @@ VueWrapper {
                       class="col-span-6 mx-auto w-full"
                       data-test="everything"
                     >
+                      <!-- 
+				* No api fetching is here.
+				* No url "manipulation" (local, or api) changing either.
+			-->
                       <feed-main-stub />
                     </div>,
                     "key": null,
@@ -1170,6 +1212,10 @@ VueWrapper {
                     class="col-span-6 mx-auto w-full"
                     data-test="everything"
                   >
+                    <!-- 
+				* No api fetching is here.
+				* No url "manipulation" (local, or api) changing either.
+			-->
                     <feed-main-stub />
                   </div>
                   <div

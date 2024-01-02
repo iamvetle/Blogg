@@ -79,54 +79,36 @@
 
 <script setup lang="ts">
 /**
- * @async
+ * @description - Shows the basic information of the logged in user on the sidebar in the main feed
+ * @name - Name is misleading
  * 
- * Async component
+ * TODO remember to change name later
  */
 
-import profile_picture from '~/assets/placeholder-profile-picture.png'
+import noProfilePicture from '~/assets/placeholder-profile-picture.png'
 
 const loggedInUserStore = useLoggedInUserStore()
 
 
 /**
- * Either returns the full name of the user, or returns only the username (which is not supposed to actually happen)
- */
+* Computes the full name of the user
+* 
+* @returns - The full name of the user (or empty string - but not supposed to happen)
+*/
 const full_name = computed(() => {
-	let name = `${loggedInUserStore.loggedInUserProfile?.first_name} ${loggedInUserStore.loggedInUserProfile?.last_name}` || ""
-
-	if (name.trim() == "") {
-		return null
-	} else {
-		return name
-	}
+	return `${loggedInUserStore.loggedInUserProfile?.first_name} ${loggedInUserStore.loggedInUserProfile?.last_name}`
 })
 
 const profilePicture = computed(() => {
-	if (loggedInUserStore.loggedInUserProfile?.profile_picture || "") {
+	if (loggedInUserStore.loggedInUserProfile?.profile_picture !== "") {
+		// doing || in cause it is falsy but not an empty string
 		return loggedInUserStore.loggedInUserProfile?.profile_picture || ""
 	} else {
-		return profile_picture
+		return noProfilePicture
 	}
 
 })
 
-
-/**
- * All of the data that is needed from the api endpoint is fetched here.
- */
-const fetchData = async () => {
-	/**
-	* Fetches the profile information of the logged-in user
-	*/
-	const loggedInUserProfileURL = urls.users.myUser.profile
-	console.log(loggedInUserProfileURL)
-	await getLoggedInUserProfile(loggedInUserProfileURL)
-
-
-}
-
-onBeforeMount(async () => await fetchData())
 </script>
 
 <style scoped></style>
