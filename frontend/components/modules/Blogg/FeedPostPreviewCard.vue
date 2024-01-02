@@ -63,7 +63,10 @@
 
 <script setup lang="ts">
 
-// temp solution
+/**
+ * ! Make this NOT a SLOT component. Turned out to not be helpfull,
+ * ! because the component is always designed the same way. And it is not more easy to get an overview.
+ */
 
 
 </script>
