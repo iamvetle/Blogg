@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-const postStore = usePostStore();
-const searchStore = useSearchStore();
-const paginationStore = usePaginationStore();
+// const postStore = usePostStore();
+// const searchStore = useSearchStore();
+// const paginationStore = usePaginationStore();
 
 definePageMeta({
 	layout: "feed-layout",
@@ -32,17 +32,18 @@ definePageMeta({
 /**
  * ? Maybe I should have this in the components that actually use the functions and then
  * ? populare the store instead
+ * ! no store is "reset now"
  */
-onUnmounted(() => {
-	/** This makes sure that all the filters and the search is removed*/
-	searchStore.resetStore();
+// onUnmounted(() => {
+// 	/** This makes sure that all the filters and the search is removed*/
+// 	searchStore.resetStore();
 
-	/** So that all posts are "removed" and forces a refetch */
-	postStore.resetStore();
+// 	/** So that all posts are "removed" and forces a refetch */
+// 	postStore.resetStore();
 
-	/** So that the navigation bar / paginator at the button restarts, and starts at one  */
-	paginationStore.resetStore();
-});
+// 	/** So that the navigation bar / paginator at the button restarts, and starts at one  */
+// 	paginationStore.resetStore();
+// });
 </script>
 
 <style scoped></style>

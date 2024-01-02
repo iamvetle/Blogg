@@ -178,7 +178,7 @@ const paginationStore = usePaginationStore();
 
 paginationStore.activeFetchURL = urls.api.posts.feed;
 
-await getPostMultipleSnippet(paginationStore.activeFetchURL);
+// await getPostMultipleSnippet(paginationStore.activeFetchURL);
 
 </script>
 

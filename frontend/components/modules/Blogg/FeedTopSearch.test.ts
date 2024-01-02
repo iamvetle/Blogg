@@ -1,78 +1,27 @@
+// ! made by copilot
+//@ts-ignore
+import { render, screen } from '@testing-library/vue';
 import FeedTopSearch from './FeedTopSearch.vue';
-import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
+let pinia = createTestingPinia()
+describe('FeedTopSearch', () => {
+  it('renders search results when searchPart is not null', () => {
+    const searchPart = 'example';
+    const searchStore = useSearchStore(pinia);
+    searchStore.searchPart = searchPart;
 
-let wrapper: VueWrapper;
-let pinia: any = createTestingPinia();
+    render(FeedTopSearch);
 
+    expect(screen.getByText(`Søkeresultater for '${searchPart}'`)).toBeTruthy();
+  });
 
-let searchStore
-const standardSearchPart = "tester om fisker finnes"
+  it('does not render search results when searchPart is null', () => {
+    const searchStore = useSearchStore(pinia);
+    searchStore.searchPart = null;
 
-// let generalStore; 
-// let postStore; 
-// let loggedInUserStore; 
-// let paginationStore; 
+    render(FeedTopSearch);
 
-const factory = () => {
-    return shallowMount(FeedTopSearch, {
-        global: {
-            plugins: [pinia],
-            components: {
-
-            },
-            mocks: {},
-            stubs: {},
-        },
-        props: {},
-        slots: {}
-    })
-};
-
-describe('Testing the search top of the feed index', () => {
-    // });
-
-    beforeEach(() => {
-        // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
-        // paginationStore = usePaginationStore(pinia); 
-        searchStore = useSearchStore()
-
-        searchStore.searchPart = standardSearchPart
-
-    });
-
-    afterEach(() => {
-        if (wrapper) {
-            wrapper.unmount();
-        }
-    });
-    test('Should exist', () => {
-        wrapper = factory()
-
-        expect(wrapper.exists()).toBe(true)
-    })
-    test('Should display the text "søkeresultater" if there is a true search value', () => {
-        wrapper = factory()
-
-        const searchResults = wrapper.find("[data-test='search-results']")
-
-        // the element existance
-        expect(searchResults.exists()).toBe(true)
-
-        // only the text
-        expect(searchResults.text()).toContain("Søkeresultater for")
-
-        // text and search value
-        expect(searchResults.text()).toBe(`Søkeresultater for '${standardSearchPart}'`)
-
-    })
-    test('Should match snapshot', () => {
-        wrapper = factory()
-        expect(wrapper.html()).toMatchSnapshot()
-    })
-
-
+    expect(screen.queryByTestId('search-results')).toBeNull();
+  });
 });

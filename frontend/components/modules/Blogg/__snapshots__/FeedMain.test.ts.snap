@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the main part of the index page > Should match snapshot 1`] = `
+"<div data-test=\\"everything\\" class=\\"w-full\\">
+  <div id=\\"top-search\\">
+    <feed-top-search-stub></feed-top-search-stub>
+  </div><!-- ! Temp disabled - MAKE SEPERATE PAGE LATER -->
+  <!-- <div id=\\"top-choice\\">
+
+            <FeedTopChoice v-if=\\"postStore.posts && postStore.posts?.results\\" />
+        </div> -->
+  <div id=\\"posts-list\\">
+    <suspense-stub></suspense-stub>
+  </div>
+</div>"
+`;
