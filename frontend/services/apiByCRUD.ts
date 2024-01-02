@@ -5,7 +5,6 @@
  * @param header The header that is going to be passed together with the fetch
  */
 export const getMethod = async (url: string, headers?: object): Promise<AxiosResponse | null> => {
-
     try {
         const response: AxiosResponse = await axios.get(url, { headers })
         // console.log(toRaw(response)) // print to self

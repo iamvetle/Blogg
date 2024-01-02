@@ -7,6 +7,9 @@ export const usePostStore = defineStore("Store for containing posts and related 
      * initial page load. They have the structure of 'SnippetPostMultipleType'
      */
 
+    const paginationStore = usePaginationStore()
+
+
     /** This contains all posts on feed */
     const posts = ref<SnippetPostMultipleType | null>(null)
 
@@ -18,9 +21,9 @@ export const usePostStore = defineStore("Store for containing posts and related 
      */
     const loggedInUserPosts = ref<LoggedInUserMultiplePostType | null>(null)
 
-/**
- * The url that the baseFetchURL initially was before it started getting modified
- */
+    /**
+     * The url that the baseFetchURL initially was before it started getting modified
+     */
     const initialFeedBaseFetchURL = urls.api.posts.feed
 
     /**
@@ -51,5 +54,26 @@ export const usePostStore = defineStore("Store for containing posts and related 
         allComments.value = null
     }
 
-    return { posts, resetStore, allComments, followingPosts, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
+    const fetchFeedPreviewPosts = async () => {
+        // const headers = {}
+
+        const url = paginationStore.activeFetchURL
+        try {
+            const response = await axios.get(url) // switch this to usefetch later
+            if (response.data == null) {
+                console.error(`GET request to ${url} failed (${response.status})`, response.request)
+            } else {
+                posts.value = response.data
+                fixPagination(response.data)
+            }
+        } catch (e: unknown) {
+            console.error("A 'catch' fail happend:")
+        }
+
+
+    }
+
+    return { posts, fetchFeedPreviewPosts,
+        
+        resetStore, allComments, followingPosts, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
 });

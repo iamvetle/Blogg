@@ -40,7 +40,7 @@ export const getPostMultipleSnippet = async (url: string): Promise<SnippetPostMu
 		 * This makes sure that the pagination component 'next button', for instance, is
 		 * in sync with the next expected posts.
 		*/
-		// fixPagination(response.data)
+		fixPagination(response.data)
 
 		/**
 		 * TODO take the assigning to posstore down to page level

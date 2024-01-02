@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-// const postStore = usePostStore();
+const postStore = usePostStore();
 // const searchStore = useSearchStore();
 // const paginationStore = usePaginationStore();
 
@@ -47,6 +47,15 @@ definePageMeta({
 // 	/** So that the navigation bar / paginator at the button restarts, and starts at one  */
 // 	paginationStore.resetStore();
 // });
+
+
+/**
+ * * All posts are fetched when the page is access for the first time
+ */
+onBeforeMount( async () => {
+	await postStore.fetchFeedPreviewPosts();	
+})
+
 </script>
 
 <style scoped></style>
