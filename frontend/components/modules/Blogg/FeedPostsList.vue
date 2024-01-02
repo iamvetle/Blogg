@@ -138,6 +138,9 @@ const color = ref("fill-black");
 
 /**
  * The function takes the html input and returns only the raw text
+ * 
+ * @param - The actual post content (not title) the should be turned into just raw text
+ * 
  * @returns - the raw text of the html
  */
 const toPlainText = (htmlContent: string) => {
@@ -150,6 +153,8 @@ const toPlainText = (htmlContent: string) => {
 /**
  * Redirects the web client to the profile page of the author
  * @param username
+ * 
+ * @returns - Redirects to the users profile page
  */
 const redirect_to_author_page = (username: string) => {
 	return navigateTo(`/user/${username}`);
@@ -158,27 +163,24 @@ const redirect_to_author_page = (username: string) => {
 /**
  * Redirects the web client to the page of the post
  * @param post
+ * 
+ * @returns - Navigates the the specific post
  */
 const redirect_to_post_page = (postId: number) => {
 	return navigateTo(`/post/${postId}`);
 };
 
 /**
- *
  * @param author - the 'author' part of the relevant 'post'
+ * 
+ * @returns - The full name
  */
 const author_full_name = (author: AuthorType) => {
-	// console.log(author) // print to self
 
 	const full_name = `${author.first_name} ${author.last_name}`;
 	return full_name.trim() == "" ? author.username : full_name;
 };
 
-const paginationStore = usePaginationStore();
-
-paginationStore.activeFetchURL = urls.api.posts.feed;
-
-// await getPostMultipleSnippet(paginationStore.activeFetchURL);
 
 </script>
 
