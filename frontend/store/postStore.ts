@@ -32,13 +32,11 @@ export const usePostStore = defineStore("Store for containing posts and related 
     const baseFetchURL = ref<string>(initialFeedBaseFetchURL) // post_snippets_url
     const baseLoggedInUserPostsURL = ref<string>(urls.api.posts.myuser) // personal_post_snippets_url ? why is this with ref - think i should remove later
 
-    /** 
-     * Has all (paginated) tags 
-    */
-    const allTags = ref<TagType[] | null>(null)
-    /**
-     * Has all (paginated) tags 
-     */
+    // /** 
+    //  * Has all tags 
+    // */
+    // const allTags = ref<TagType[] | null>(null)
+
 
     /**
      * Contains all of the comments of a post
@@ -50,7 +48,6 @@ export const usePostStore = defineStore("Store for containing posts and related 
         posts.value = null
         followingPosts.value = null
         loggedInUserPosts.value = null
-        allTags.value = null
         allComments.value = null
     }
 
@@ -75,5 +72,5 @@ export const usePostStore = defineStore("Store for containing posts and related 
 
     return { posts, fetchFeedPreviewPosts,
         
-        resetStore, allComments, followingPosts, allTags, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
+        resetStore, allComments, followingPosts, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
 });

@@ -4,7 +4,7 @@ import { describe, expect, test, beforeEach, afterEach } from 'vitest';
 import { createTestingPinia } from '@pinia/testing';
 
 let wrapper: any;
-let postStore:any;
+let tagStore:any;
 let pinia:any = createTestingPinia()
 
 const allTags = [
@@ -38,7 +38,7 @@ const factory = () => {
 describe('Testing component', () => {
 
     beforeEach(() => {
-        postStore = usePostStore(pinia)
+        tagStore = useTagStore(pinia)
     });
 
     afterEach(() => {
@@ -66,7 +66,7 @@ describe('Testing component', () => {
         expect(selectMenu.attributes("searchable-placeholder")).toBeTruthy()  
     })
     test('The options should be the same as the ones in post store', async () => {
-        postStore.allTags = allTags
+        tagStore.allTags = allTags
 
         wrapper = factory()
 
@@ -76,7 +76,7 @@ describe('Testing component', () => {
         expect(selectMenu.attributes("options")).toBeTruthy()
     })
     test('If there are no tag options in storem there should be no options in select menu either', async () => {
-        postStore.allTags = null
+        tagStore.allTags = null
 
         wrapper = factory()
 

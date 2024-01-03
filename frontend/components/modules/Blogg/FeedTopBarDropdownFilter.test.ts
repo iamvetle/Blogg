@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import FeedDropdownFilter from '@/components/modules/Blogg/FeedDropdownFilter.vue';
+import FeedTopBarDropdownFilter from '~/components/modules/Blogg/FeedTopBarDropdownFilter.vue';
 // import { useSearchStore } from '~/store/searchStore';
 import { createTestingPinia } from '@pinia/testing';
 
@@ -9,7 +9,7 @@ let pinia = createTestingPinia()
 let paginationStore = usePaginationStore()
 
 const factory = () => {
-    return shallowMount(FeedDropdownFilter, {
+    return shallowMount(FeedTopBarDropdownFilter, {
         global: {
             plugins: [pinia],
             components: {},
@@ -21,7 +21,7 @@ const factory = () => {
     })
 }
 
-describe('Testing the FeedDropdownFilter component', () => {
+describe('Testing the FeedTopBarDropdownFilter component', () => {
 
     beforeEach(() => {
         searchStore = useSearchStore(pinia)

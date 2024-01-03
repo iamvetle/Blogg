@@ -3,7 +3,7 @@ import { VueWrapper, shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 import BaseButton from '~/components/base/BaseButton.vue';
 import { usePaginationStore } from '~/store/paginationStore';
-import FeedDropdownFilter from '~/components/modules/Blogg/FeedDropdownFilter.vue';
+import FeedTopBarDropdownFilter from '~/components/modules/Blogg/FeedTopBarDropdownFilter.vue';
 import { useAuthStore } from '~/store/authStore';
 
 let wrapper: VueWrapper;
@@ -25,14 +25,14 @@ const factory = () => {
 			plugins: [pinia],
 			components: {
 				BaseButton,
-				FeedDropdownFilter
+				FeedTopBarDropdownFilter
 			},
 			mocks: {
 				handleShowFollowingPosts: mockSetToOnlyShowFollowingPosts,
 				handleShowAllFeedPosts: mockShowAllFeedPosts,
 			},
 			stubs: {
-				"FeedDropdownFilter":true,
+				"FeedTopBarDropdownFilter":true,
 				"FeedTopBarFeedOptionButton":true,
 				"FeedTopBarFollowingOptionButton":true
 			},
@@ -86,7 +86,7 @@ describe('Testing the choices that are over the feed of posts', () => {
 		authStore.isAuthenticated = true
 		await wrapper.vm.$nextTick()
 		
-		expect(wrapper).toMatchSnapshot()
+		expect(wrapper.html()).toMatchSnapshot()
 	})
 	
 	test('Should render the feed option button when authenticated ', async () => {

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the FeedTopBarDropdownFilter component > Should match snapshot 1`] = `
+"<div data-test=\\"filter_tags\\">
+  <uselectmenu options=\\"\\" modelvalue=\\"\\" searchable=\\"\\" searchableplaceholder=\\"Search a tag...\\" multiple=\\"\\" placeholder=\\"Option tags\\" size=\\"lg\\" selectclass=\\"items-center bg-primaryContainer text-onPrimaryContainer outline-none text-sm\\"></uselectmenu>
+</div>"
+`;

@@ -5,11 +5,10 @@
             <FeedTopSearch/>
         </div>
 
-        <!-- ! Temp disabled - MAKE SEPERATE PAGE LATER -->
-        <!-- <div id="top-choice">
+        <div id="top-choice">
 
             <FeedTopBar v-if="postStore.posts && postStore.posts?.results" />
-        </div> -->
+        </div>
         <div id="posts-list">
             <Suspense>
                 <template #default>
@@ -28,6 +27,6 @@
  * @description Component representing the main feed of the blog.
  */
 
-// const postStore = usePostStore()
+const postStore = usePostStore()
 
 </script>

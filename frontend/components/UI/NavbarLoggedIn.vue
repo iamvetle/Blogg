@@ -102,7 +102,7 @@ const logoclick = async () => {
 		await navigateTo("/");
 	} else {
 		paginationStore.activeFetchURL = urls.api.posts.feed
-		await postStore.fetchAllFeedPreviewPosts();
+		await postStore.fetchFeedPreviewPosts();
 	}
 };
 </script>

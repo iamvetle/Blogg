@@ -2,8 +2,9 @@
 	<div class="flex-row">
 		<div class="grid gap-8 grid-cols-12 flex items-center">
 			<div class="col-start-1 col-end-9">
+				<!-- ! The all feed or only following posts button options -->
 				<!-- Only show the two options when web client is authenticated-->
-				<div v-if="authStore.isAuthenticated" class="text-center space-x-6">
+				<!-- <div v-if="authStore.isAuthenticated" class="text-center space-x-6">
 					<FeedTopBarFeedOptionButton
 						data-test="feed_all_posts_option_button"
 						:show-as-selected="showFollowingPosts"
@@ -16,27 +17,25 @@
 						"
 						@show-following-posts="handleShowFollowingPosts"
 					/>
-				</div>
+				</div> -->
 			</div>
 			<div class="col-span-4" data-test="feed_filter_component">
-				<FeedDropdownFilter data-test="feed_dropdown_filter" v-if="showFollowingPosts === false" />
+				<FeedTopBarDropdownFilter data-test="feed_dropdown_filter" v-if="showFollowingPosts === false" />
 			</div>
 		</div>
 
 		<!-- IF the following buttons is pressed-->
-		<div v-if="showFollowingPosts">
-			<!-- Following NO one-->
+		<!-- <div v-if="showFollowingPosts">
 			<p class="text-lg" v-if="num_of_following === 0">
 				You are not following anyone.
 			</p>
-			<!-- Following someone but with NO posts -->
 			<p
 				class="text-lg"
 				v-if="num_of_following && posts_by_following === 0"
 			>
 				None of whom you are following have published anything.
 			</p>
-		</div>
+		</div> -->
 	</div>
 </template>
 

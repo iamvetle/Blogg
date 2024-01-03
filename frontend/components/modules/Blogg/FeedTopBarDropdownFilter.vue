@@ -2,7 +2,7 @@
 	<div data-test="filter_tags">
 		<USelectMenu
 			:options="tags"
-			v-model="selected"
+			v-model="tagStore.selectedTagNames"
 			searchable
 			searchablePlaceholder="Search a tag..."
 			multiple
@@ -17,8 +17,8 @@
 			<!-- When closed -->
 			<template #label>
 				<div class="text-md flex items-center">
-					<span v-if="selected.length" class="break-words"
-						>{{ selected.length }} filter</span
+					<span v-if="tagStore.selectedTagNames.length" class="break-words"
+						>{{ tagStore.selectedTagNames.length }} filter</span
 					>
 					<span v-else>Filter</span>
 				</div>
@@ -37,49 +37,42 @@
 <script setup lang="ts">
 const searchStore = useSearchStore();
 const paginationStore = usePaginationStore();
-
-/** State that holds all the tags - fetched */
-const tags = ref(<string[]>[]);
-
-/** State for all of the selected tags */
-const selected = ref([]);
+const tagStore = useTagStore()
 
 /**
  * Function that changes the url based on the selected tags and calls
  * 
  * @param items The selected tags
  */
-const action = async (items: any) => {
-	searchStore.tagFilterPart = items;
 
-	/**
-	 * Create a new url with tag paramaters
-	 */
-	paginationStore.activeFetchURL = constructURL(urls.api.posts.feed);
+/** A computed array of the names of all the tags */
+const tags = computed(() => tagStore.allTagNames ? tagStore.allTagNames : [])
 
-	/** Fetches all posts again based on new url made w */
-	await getPostMultipleSnippet(paginationStore.activeFetchURL);
-};
+// const action = async (items: any) => {
+// 	searchStore.tagFilterPart = items;
+
+// 	/**
+// 	 * Create a new url with tag paramaters
+// 	 */
+// 	paginationStore.activeFetchURL = constructURL(urls.api.posts.feed);
+
+// 	/** Fetches all posts again based on new url made w */
+// 	await getPostMultipleSnippet(paginationStore.activeFetchURL);
+// };
 
 /** Watches and calls 'action' when the selected list is updated */
-watch(
-	selected,
-	(newValue) => {
-		// Your logic when 'selected' changes
-		action(newValue);
-	},
-	{ deep: true, immediate: false },
-);
+// watch(
+// 	selected,
+// 	(newValue) => {
+// 		// Your logic when 'selected' changes
+// 		action(newValue);
+// 	},
+// 	{ deep: true, immediate: false },
+// );
 
 onBeforeMount(async () => {
 	/** Fetches all tags */
-	const response = await getAllTags();
-
-	if (response) {
-		for (let tag of response) {
-			tags.value.push(tag.name);
-		}
-	}
+	await tagStore.fetchAllTags()
 });
 </script>
 

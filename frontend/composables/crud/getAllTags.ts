@@ -13,7 +13,7 @@ export const getAllTags = async (): Promise<TagType[] | null> => {
     const baseURL = urls.api.posts.filter.tags
     console.log(baseURL)
     
-    const postStore = usePostStore()
+    const tagStore = usePostStore()
 
     const headers = {
         "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export const getAllTags = async (): Promise<TagType[] | null> => {
     const response = await getMethod(baseURL, headers)
 
     if (response) {
-        postStore.allTags = response.data
+        tagStore.allTags = response.data
 
         return response.data
     } else {        
