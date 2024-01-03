@@ -28,7 +28,9 @@ export default defineAppConfig({
         'mention':'solar:mention-circle-linear',
         'search':'solar:minimalistic-magnifer-zoom-in-linear',
         'filter':'solar:filter-linear',
-        'filtered':'solar:filter-bold'
+        'filtered':'solar:filter-bold',
+        'no-comments':'mingcute:comment-2-line',
+        'has-comments':'mingcute:comment-2-fill'
       }
     }
   })

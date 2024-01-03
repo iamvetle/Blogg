@@ -14,7 +14,7 @@ class CustomPostFilter(filters.FilterSet):
         # it will return posts that match all tags
     )
 
-    date_published = DateFromToRangeFilter(field_name='date_published')
+    date_published = DateFromToRangeFilter(field_name='date_published') # nothing is using this now
 
     class Meta:
         model = Post

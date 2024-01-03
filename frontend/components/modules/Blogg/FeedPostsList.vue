@@ -31,7 +31,7 @@
 					</template>
 
 					<template #date_published v-if="post.date_published">
-						<span>
+						<span class="cursor-default">
 							<p
 								class="font-light"
 								v-text="post.date_published"
@@ -70,10 +70,7 @@
 					</template>
 
 					<!-- Needs to be authenticated to be able to save posts-->
-					<template
-						#tags
-						v-if="post.tags && authStore.isAuthenticated"
-					>
+					<template #tags v-if="post.tags">
 						<span class="me-1" v-for="tag in post.tags">
 							<BaseTag :key="post.id" :text="tag.name" />
 						</span>
@@ -83,7 +80,15 @@
 						#amount-of-comments
 						v-if="post.num_of_comments !== null"
 					>
-						<span>{{ post.num_of_comments }} comments</span>
+						<span v-if="post.num_of_comments >= 1" class="cursor-default space-x-1 flex items-center">
+							<span>{{ post.num_of_comments }} </span>
+							<Icon name="has-comments" class="h-6" />
+						</span>
+						<span v-else class="cursor-default space-x-1 flex items-center">
+							<span>{{ post.num_of_comments }} </span>
+							<Icon name="no-comments" class="h-6" />
+						</span>
+
 					</template>
 
 					<template
@@ -138,9 +143,9 @@ const color = ref("fill-black");
 
 /**
  * The function takes the html input and returns only the raw text
- * 
+ *
  * @param - The actual post content (not title) the should be turned into just raw text
- * 
+ *
  * @returns - the raw text of the html
  */
 const toPlainText = (htmlContent: string) => {
@@ -153,7 +158,7 @@ const toPlainText = (htmlContent: string) => {
 /**
  * Redirects the web client to the profile page of the author
  * @param username
- * 
+ *
  * @returns - Redirects to the users profile page
  */
 const redirect_to_author_page = (username: string) => {
@@ -163,7 +168,7 @@ const redirect_to_author_page = (username: string) => {
 /**
  * Redirects the web client to the page of the post
  * @param post
- * 
+ *
  * @returns - Navigates the the specific post
  */
 const redirect_to_post_page = (postId: number) => {
@@ -172,16 +177,13 @@ const redirect_to_post_page = (postId: number) => {
 
 /**
  * @param author - the 'author' part of the relevant 'post'
- * 
+ *
  * @returns - The full name
  */
 const author_full_name = (author: AuthorType) => {
-
 	const full_name = `${author.first_name} ${author.last_name}`;
 	return full_name.trim() == "" ? author.username : full_name;
 };
-
-
 </script>
 
 <style scoped></style>
