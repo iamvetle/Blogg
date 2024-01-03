@@ -32,7 +32,7 @@ export interface SnippetPostMultipleType {
 	count: number;
 	next: string | null;
 	previous: string | null;
-	current_page: number | null;
+	// current_page: number | null;
 	results: SnippetPostSingleType[]
 }
 export interface SnippetPostSingleType {
@@ -71,7 +71,7 @@ export interface LoggedInUserMultiplePostType {
 	count: number;
 	next: string | null;
 	previous: string | null;
-	current_page: number | null;
+	// current_page: number | null;
 	results: LoggedInUserSinglePostType[]
 }
 export interface LoggedInUserSinglePostType extends PostSingleType {
@@ -84,7 +84,7 @@ export interface AllPostSavedType { // With pagination
 	count: number;
 	next: string | null;
 	previous: string | null;
-	current_page: number | null;
+	// current_page: number | null;
 	results: PostSavedType[]
 }
 export interface PostSavedType {
@@ -104,7 +104,7 @@ export interface PostSavedType {
 // 	count: number;
 // 	next: string | null;
 // 	previous: string | null;
-// 	current_page: number | null;
+	current_page: number | null;
 // 	results: TagType[]
 // }
 export interface TagType {

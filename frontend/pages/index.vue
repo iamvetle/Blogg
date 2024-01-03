@@ -3,7 +3,7 @@
 		class="mt-8 max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28"
 	>
 		<div data-test="everything" class="col-span-6 mx-auto w-full">
-		{{ generalStore.apiURL }}
+		{{ generalStore.activeApiURL }}
 			<!-- 
 				* No api fetching is here.
 				* No url "manipulation" (local, or api) changing either.
@@ -19,7 +19,7 @@
 <script setup lang="ts">
 const postStore = usePostStore();
 // const searchStore = useSearchStore();
-// const paginationStore = usePaginationStore();
+const paginationStore = usePaginationStore();
 const generalStore = useGeneralStore()
 
 definePageMeta({
@@ -35,12 +35,19 @@ definePageMeta({
  */
 
 
+watchEffect(async () => {
+	paginationStore.activeFetchURL = generalStore.activeApiURL
+	await postStore.fetchFeedPreviewPosts();	
+})
+
+
+
 /**
  * * All posts are fetched when the page is access for the first time
  */
-onBeforeMount( async () => {
-	await postStore.fetchFeedPreviewPosts();	
-})
+// onBeforeMount( async () => {
+// 	await postStore.fetchFeedPreviewPosts();	
+// })
 
 </script>
 

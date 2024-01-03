@@ -65,14 +65,14 @@ export const useGeneralStore = defineStore("General store for general things", (
 
   // Construct the api url
 
-  const apiURL = computed(() => {
+  const activeApiURL = computed(() => {
 
-    const base = "http://localhost:8888/api/feed"
+    const base = "http://localhost:8888/api/posts/feed"
 
     const currentRoute = router.currentRoute.value.fullPath
 
     return `${base}${currentRoute}`
   })
 
-  return { search_bar_show, apiURL, baseAPIURL, backgroundForModal, turnBackgroundForModel }
+  return { search_bar_show, activeApiURL, baseAPIURL, backgroundForModal, turnBackgroundForModel }
 });

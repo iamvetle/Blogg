@@ -55,19 +55,21 @@ export const usePostStore = defineStore("Store for containing posts and related 
         // const headers = {}
 
         const url = paginationStore.activeFetchURL
+
         try {
             const response = await axios.get(url) // switch this to usefetch later
             if (response.data == null) {
                 console.error(`GET request to ${url} failed (${response.status})`, response.request)
             } else {
                 posts.value = response.data
-                fixPagination(response.data)
+                paginationStore.setPagination()
             }
+
         } catch (e: unknown) {
             console.error("A 'catch' fail happend:")
         }
 
-
+        // set pagination
     }
 
     return { posts, fetchFeedPreviewPosts,

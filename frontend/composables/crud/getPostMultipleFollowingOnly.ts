@@ -13,6 +13,7 @@ import { getMethod } from '~/services/apiByCRUD';
 export const getPostMultipleFollowingOnly = async (url: string): Promise<SnippetPostMultipleType | null> => {
 
 	const postStore = usePostStore()
+	const paginationStore = usePaginationStore()
 
 	/**
 	 * Fetches the token from local storage, or just returns null.
@@ -42,7 +43,7 @@ export const getPostMultipleFollowingOnly = async (url: string): Promise<Snippet
 		 * This makes sure that the pagination component 'next button', for instance, is
 		 * in sync with the next expected posts.
 		*/
-		fixPagination(response.data)
+		paginationStore.setPagination()
 
 		/**
 		 * TODO take the assigning to posstore down to page level
