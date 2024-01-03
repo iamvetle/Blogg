@@ -21,7 +21,7 @@ from rest_framework.generics import (
 
 # Django Filter
 from django_filters import rest_framework as filters
-from api.pagination import CustomLimitOffsetPagination as GenericPagination
+# from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 # Local application imports
 from api.models import Post, SavedPost, Comment
@@ -75,7 +75,7 @@ class PostAllNormalUserView(ListAPIView):  # /api/<str:username>/
     # permission_classes = [AllowAny] # Does NOT have to authenticated
 
     serializer_class = PostShortenSerializer
-    pagination_class = GenericPagination
+    # Pagination is automatic
     queryset = Post.objects.all()
 
     http_method_names = ["get"]

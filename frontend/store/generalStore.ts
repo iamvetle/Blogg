@@ -9,7 +9,7 @@ export const useGeneralStore = defineStore("General store for general things", (
 
   const backgroundForModal = ref<null | string>(null)
 
-  const turnBackgroundForModel = (option:null | string) => {
+  const turnBackgroundForModel = (option: null | string) => {
     backgroundForModal.value = option
   }
 
@@ -18,16 +18,18 @@ export const useGeneralStore = defineStore("General store for general things", (
    */
   const search_bar_show = ref(false)
 
+  const tagStore = useTagStore()
+
   // const api_urls = {
   //   api:[
   //     "feed/",
   //     "feed/following/",
-      
+
   //     "tags/",
   //     "categories/",
-      
+
   //     "health_check/",
-            
+
   //     "min-side/posts/",
   //     "min-side/posts/<int:pk/edit/",
   //     "min-side/followers/",
@@ -56,9 +58,21 @@ export const useGeneralStore = defineStore("General store for general things", (
   //     "<str:username>/unfollow/",
   //   ]
   // }
-  
-// Module for API URLs
 
+  // Module for API URLs
 
-  return { search_bar_show, baseAPIURL, backgroundForModal, turnBackgroundForModel }
+  const router = useRouter()
+
+  // Construct the api url
+
+  const apiURL = computed(() => {
+
+    const base = "http://localhost:8888/api/feed"
+
+    const currentRoute = router.currentRoute.value.fullPath
+
+    return `${base}${currentRoute}`
+  })
+
+  return { search_bar_show, apiURL, baseAPIURL, backgroundForModal, turnBackgroundForModel }
 });

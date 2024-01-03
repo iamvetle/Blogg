@@ -7,7 +7,6 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
-from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 # Serializer
 from api.serializers.tag_serializers import TagSerializer

@@ -22,8 +22,22 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
     const all_pages_count = ref<number>(0); // total_pages_count
     const number_of_posts = ref<number>(0); // number_of_posts_count
 
-    const current_page_number = ref<number>(0); // current_page
+    const current_page_number = ref<number>(1); // current_page
     
+    const route = useRoute()
+    const router = useRouter()
+
+    /** Adds the current page as a query to the local route url */
+    watchEffect(() => {
+        router.replace({
+            query: {
+                ...route.query,
+                page:current_page_number.value
+            }
+        })        
+    })
+
+
     /**
      * resets everything
      */

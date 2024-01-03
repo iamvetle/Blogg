@@ -42,7 +42,6 @@ from rest_framework import parsers
 
 # Django Filter
 from django_filters import rest_framework as filters
-from api.pagination import CustomLimitOffsetPagination as GenericPagination
 
 # Local application imports
 from api.models import Post, SavedPost, Comment, PostImage, PostVideo, Tag
