@@ -1,16 +1,7 @@
 <template>
 	<Suspense>
 		<template #default>
-            <!-- 
-                If the user is authenticated the loggedInUser informatino is shown-
-                * Should change name of component
-            -->
-			<FeedPostsListSidebar
-				v-if="authStore.isAuthenticated"
-				class="w-full"
-			/>
-            <!-- If the user is not authenticated, the basic? information is shown-->
-			<FeedSidebarNotAuthenticated v-else />
+			<FeedSidebarNotAuthenticated />
 		</template>
 		<template #fallback>
 			<div>

@@ -1,5 +1,4 @@
 <template>
-    <!-- <UButton label="Open" @click="isOpen = true" /> -->
     <UModal v-model="isOpen" prevent-close>
         <UCard>
             <div data-test="inner_popup_modal" class="p-4">

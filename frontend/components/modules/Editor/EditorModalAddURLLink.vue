@@ -1,5 +1,4 @@
 <template>
-    <!-- <UButton label="Open" @click="isOpen = true" /> -->
     <UModal v-model="isOpen" :overlay="false">
         <UCard class="bg-surfaceContainerLow shadow-lg">
             <div data-test="inner_popup_modal" class="px-2 text-onSurface">
