@@ -36,19 +36,26 @@ export const useTagStore = defineStore("Has all logic related to the tags for po
     const route = useRoute()
     const router = useRouter()
 
-    /** Adds tags to the url router based on the selected tags */
-    watchEffect(() => {
-        // this makes sure the watcher doesn't do anything while it is not the correct page
-        if (router.currentRoute.value.path === "/") {
-            router.replace({
-                query: {
-                    ...route.query,
-                    tags: selectedTagNames.value
-                }
-            })
-        }
+    /** 
+     * Adds tags to the url router based on the selected tags 
+     *
+     * Does not run immidiatly on mounted - I THINK 
+    */
+    // watch(() => router.currentRoute.value.path, () => {
+    //     // this makes sure the watcher doesn't do anything while it is not the correct page
+    //     if (router.currentRoute.value.path === "/") {
+    //         router.replace({
+    //             query: {
+    //                 ...route.query,
+    //                 tags: selectedTagNames.value
+    //             }
+    //         })
+    //     }
 
-    })
+    // },
+    //     {
+    //         immediate: false
+    //     })
 
     /** Adds value to the reactive tags referances based on the url */
     // ! on on LATER

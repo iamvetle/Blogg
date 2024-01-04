@@ -13,9 +13,18 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
      * last url a fetch call for index posts was made to.
      */
 
+    const router = useRouter()
+
     const postStore = usePostStore()
 
-    const activeFetchURL = ref<any>(urls.api.posts.feed)
+    const activeFetchURL = computed(() => {
+
+        const base = "http://127.0.0.1:8888/api/posts/feed"
+
+        const currentRoute = router.currentRoute.value.fullPath
+
+        return `${base}${currentRoute}`
+    })
 
     const next_page = ref<null | string>(null)
     const previous_page = ref<null | string>(null)
@@ -33,35 +42,42 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
         }
     }
 
-    const route = useRoute()
-    const router = useRouter()
+    // const route = useRoute()
+    // const router = useRouter()
 
     /** Adds the current page as a query to the local route url */
-    watchEffect(() => {
-        // this makes sure the watcher doesn't do anything while it is not the correct page
-        if (router.currentRoute.value.path === "/") {
-            router.replace({
-                query: {
-                    ...route.query,
-                    page: currentPageNumber.value
-                }
-            })
-        }
-    })
+    // watch(() => router.currentRoute.value.path, () => {
+    //     // this makes sure the watcher doesn't do anything while it is not the correct page
+    //     if (router.currentRoute.value.path === "/") {
+    //         router.replace({
+    //             query: {
+    //                 ...route.query,
+    //                 page: currentPageNumber.value
+    //             }
+    //         })
+    //     }
+    // },
+    //     { immediate: false }
+
+    // )
 
 
     /**
      * resets everything
      */
-    const resetStore = () => {
-        activeFetchURL.value = urls.api.posts.feed
-        next_page.value = ""
-        previous_page.value = ""
+    // const resetStore = () => {
+    //     activeFetchURL.value = urls.api.posts.feed
+    //     next_page.value = ""
+    //     previous_page.value = ""
 
-        countOfPosts.value = 0
+    //     countOfPosts.value = 0
 
-        currentPageNumber.value = 0
+    //     currentPageNumber.value = 0
+    // }
+
+    return {
+        activeFetchURL,
+        // resetStore, 
+        setPagination, next_page, previous_page, countOfPosts, currentPageNumber
     }
-
-    return { activeFetchURL, resetStore, setPagination, next_page, previous_page, countOfPosts, currentPageNumber }
 })

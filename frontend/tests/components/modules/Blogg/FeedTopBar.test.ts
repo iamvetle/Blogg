@@ -54,7 +54,7 @@ describe('Testing the choices that are over the feed of posts', () => {
 		postStore.posts = {
 			results: true
 		}
-		paginationStore.activeFetchURL = "http://localhost:8888/api/feed/following/"
+		paginationStore.activeFetchURL = "http://127.0.0.1:8888/api/feed/following/"
 
 
 	});

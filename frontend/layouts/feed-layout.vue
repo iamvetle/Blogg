@@ -7,7 +7,7 @@
 			</div>
 		</main>
 		<div>
-			<LazyFeedPagination />
+			<!-- <LazyFeedPagination /> -->
 			<LazyTheFooter />
 		</div>
 	</div>

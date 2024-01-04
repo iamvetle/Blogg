@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 		server: true,
 		client: true
 	  },
-	  spaLoadingTemplate:"./app/spa-loading-template.html",
+	//   spaLoadingTemplate:"./app/spa-loading-template.html",
 	vite: {
 		vue: {
 			script: {
@@ -68,9 +68,4 @@ export default defineNuxtConfig({
 		viewer: true,
 
 	},
-	// routeRules: {
-	// 	"/login": { ssr:true },
-	// 	"/registrer": { ssr:true }
-
-	// },
 });

@@ -55,8 +55,7 @@
 						<div class="break-words">
 							<p
 								class="mb-2"
-								v-text="toPlainText(post.content_snippet)"
-							></p>
+							>{{ fromHTMLtoText(post.content_snippet) }}</p>
 						</div>
 					</template>
 
@@ -133,6 +132,7 @@
 
 <script setup lang="ts">
 import account_picture from "~/assets/account-pin-circle-line.svg";
+import fromHTMLtoText from "~/utils/fromHTMLtoText";
 
 const post_image = ref("https://picsum.photos/500/300");
 
@@ -141,19 +141,7 @@ const authStore = useAuthStore();
 
 const color = ref("fill-black");
 
-/**
- * The function takes the html input and returns only the raw text
- *
- * @param - The actual post content (not title) the should be turned into just raw text
- *
- * @returns - the raw text of the html
- */
-const toPlainText = (htmlContent: string) => {
-	const div = document.createElement("div");
-	div.innerHTML = htmlContent;
-	const rawText = div.textContent || div.innerText;
-	return rawText;
-};
+
 
 /**
  * Redirects the web client to the profile page of the author

@@ -16,7 +16,8 @@
     "components\\modules\\Editor\\EditorImageNode.vue": true,
     "components\\modules\\Editor\\EditorBubbleMenu.test.ts": true,
     "components\\modules\\Editor\\EditorBubbleMenu.vue": true,
-    "components\\modules\\Blogg\\FeedTopChoiceAllButton.test.ts": true
+    "components\\modules\\Blogg\\FeedTopChoiceAllButton.test.ts": true,
+    "store\\watchURL.ts": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",

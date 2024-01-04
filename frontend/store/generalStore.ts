@@ -16,50 +16,7 @@ export const useGeneralStore = defineStore("General store for general things", (
   /**
    * Decides whether the search bar in the navbar should be shown (depending on if web client is authenticated)
    */
-  const search_bar_show = ref(false)
-
-  const tagStore = useTagStore()
-
-  // const api_urls = {
-  //   api:[
-  //     "feed/",
-  //     "feed/following/",
-
-  //     "tags/",
-  //     "categories/",
-
-  //     "health_check/",
-
-  //     "min-side/posts/",
-  //     "min-side/posts/<int:pk/edit/",
-  //     "min-side/followers/",
-  //     "min-side/following",
-
-  //     "newpost/",
-
-  //     "posts/saved/",
-  //     "post/<int-pk>/",
-  //     "post/<int:post_id>/save/",
-
-  //     "post/<int:post_id>/comments/",
-  //     "post/<int:post_id>/add-comment/",
-  //     "post/<int:post_id>/remove-comment/<int:comment_id>/",
-  //   ],
-  //   users:[
-  //     "login/",
-  //     "registrer/",
-
-  //     "min-side/",
-  //     "min-side/profile_picture/edit",
-
-  //     "<str:username>/",
-  //     "<str:username/posts/",
-  //     "<str:username>/follow/",
-  //     "<str:username>/unfollow/",
-  //   ]
-  // }
-
-  // Module for API URLs
+  // const search_bar_show = ref(false) // not being used - I THINK
 
   const router = useRouter()
 
@@ -67,12 +24,14 @@ export const useGeneralStore = defineStore("General store for general things", (
 
   const activeApiURL = computed(() => {
 
-    const base = "http://localhost:8888/api/posts/feed"
+    const base = "http://127.0.0.1:8888/api/posts/feed"
 
     const currentRoute = router.currentRoute.value.fullPath
 
     return `${base}${currentRoute}`
   })
 
-  return { search_bar_show, activeApiURL, baseAPIURL, backgroundForModal, turnBackgroundForModel }
+  return { 
+    // search_bar_show, 
+    activeApiURL, baseAPIURL, backgroundForModal, turnBackgroundForModel }
 });

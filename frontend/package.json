@@ -89,6 +89,7 @@
 		"eslint-plugin-prettier": "^5.0.0",
 		"flowbite": "^1.8.1",
 		"istanbul": "^0.4.5",
+		"jsdom": "^23.0.1",
 		"nuxi": "^3.6.5",
 		"nuxt-icon": "^0.6.7",
 		"package.json": "^2.0.1",

@@ -53,26 +53,34 @@ export const usePostStore = defineStore("Store for containing posts and related 
 
     const fetchFeedPreviewPosts = async () => {
         // const headers = {}
+        const route = useRoute();
 
-        const url = paginationStore.activeFetchURL
+
+        const url = `http://127.0.0.1:8888/api/posts/feed${route.fullPath}`
+        const headers = {
+            Accept: 'application/json, text/plain, */*',
+        }
 
         try {
-            const response = await axios.get(url) // switch this to usefetch later
+            const response = await axios.get(url, { headers }) // switch this to usefetch later
             if (response.data == null) {
                 console.error(`GET request to ${url} failed (${response.status})`, response.request)
+                console.log(route.fullPath)
             } else {
                 posts.value = response.data
                 paginationStore.setPagination()
             }
 
         } catch (e: unknown) {
-            console.error("A 'catch' fail happend:")
+            console.error("A 'catch' fail happend:", e)
         }
 
         // set pagination
     }
 
-    return { posts, fetchFeedPreviewPosts,
-        
-        resetStore, allComments, followingPosts, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL };
+    return {
+        posts, fetchFeedPreviewPosts,
+
+        resetStore, allComments, followingPosts, loggedInUserPosts, baseFetchURL, baseLoggedInUserPostsURL
+    };
 });

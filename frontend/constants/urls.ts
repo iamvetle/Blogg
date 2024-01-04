@@ -1,11 +1,11 @@
 // Define the base URL for server endpoint for the entire application.
-const baseURL = "http://localhost:8888/"
+const baseURL = "http://127.0.0.1:8888/"
 
 // The base URL for the api endpoint
-const baseApiURL = "http://localhost:8888/api/";
+const baseApiURL = "http://127.0.0.1:8888/api/";
 
 // The base URL for the api endpoint
-const baseUsersURL = "http://localhost:8888/users/";
+const baseUsersURL = "http://127.0.0.1:8888/users/";
 
 // URLs related to the application's API grouped by functionality.
 

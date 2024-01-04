@@ -26,14 +26,13 @@ SECRET_KEY = "django-insecure-*kcw871xmeqrm@i075wu$(b)63g(n6_vsfs*&4bsw0-el(ey_-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["::1", "localhost", "127.0.0.1", "localhost:3000", "127.0.0.1:3000"]
 AUTH_USER_MODEL = "users.CustomUser"
 
 # Application definition
 
 # So that it is possible to do both /path and /path/
-APPEND_SLASH=True
+APPEND_SLASH = True
 
 
 INSTALLED_APPS = [
@@ -50,7 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_extensions"
+    "django_extensions",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -98,9 +97,8 @@ DATABASES = {
     }
 }
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 # Password validation
@@ -127,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"   
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -150,6 +148,6 @@ REST_FRAMEWORK = {  # For token authentication (DRF)
         "rest_framework.authentication.TokenAuthentication",
     ],
     # 'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomLimitOffsetPagination',
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',    
-    'PAGE_SIZE': 10
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
 }

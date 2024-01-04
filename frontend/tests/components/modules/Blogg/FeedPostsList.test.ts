@@ -26,8 +26,8 @@ describe("list articles testing", () => {
         generalStore.isAuthenticated = true
         postStore.posts = {
             "count": 31,
-            "next": "http://localhost:8888/api/feed/?page=3",
-            "previous": "http://localhost:8888/api/feed/",
+            "next": "http://127.0.0.1:8888/api/feed/?page=3",
+            "previous": "http://127.0.0.1:8888/api/feed/",
             "current_page": 2,
             "results": [
                 {
