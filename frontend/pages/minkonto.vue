@@ -104,7 +104,7 @@ definePageMeta({
  * 2. USER INFORMATION about the logged in user
  */
 onBeforeMount(async () => {
-
+	
 	await getLoggedInUserAllPostSnippets(loggedInUserPostsURL)
 	await getLoggedInUserProfile(loggedInUserURL)
 })

@@ -5,7 +5,7 @@ export const useTagStore = defineStore("Has all logic related to the tags for po
     const allTags = ref<TagType[]>([])
 
     /** The names of all the tags in an array */
-    const allTagNames = computed<string[]>(() => allTags.value?.map(tag => tag.name) ?? [] )
+    const allTagNames = computed<string[]>(() => allTags.value?.map(tag => tag.name) ?? [])
 
     /** 
      * All of the tags that are selected 
@@ -20,7 +20,7 @@ export const useTagStore = defineStore("Has all logic related to the tags for po
         // const headers = {}
 
         const url = urls.api.posts.filter.tags
-        
+
         try {
             const response = await axios.get(url) // switch this to usefetch later
             if (response.data == null) {
@@ -38,24 +38,28 @@ export const useTagStore = defineStore("Has all logic related to the tags for po
 
     /** Adds tags to the url router based on the selected tags */
     watchEffect(() => {
-        router.replace({
-            query: {
-                ...route.query,
-                tags: selectedTagNames.value
-            }
-        })
+        // this makes sure the watcher doesn't do anything while it is not the correct page
+        if (router.currentRoute.value.path === "/") {
+            router.replace({
+                query: {
+                    ...route.query,
+                    tags: selectedTagNames.value
+                }
+            })
+        }
+
     })
 
     /** Adds value to the reactive tags referances based on the url */
-// ! on on LATER
+    // ! on on LATER
     // watchEffect(() => {
 
     //     if (Array.isArray(route.query.tags)) {
     //         selectedTagNames.value = route.query.tags as string[];
     //     }
-        
+
 
     // })
 
-    return {allTags, allTagNames, selectedTagNames, fetchAllTags}
+    return { allTags, allTagNames, selectedTagNames, fetchAllTags }
 })

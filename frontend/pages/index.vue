@@ -40,6 +40,11 @@ watchEffect(async () => {
 	await postStore.fetchFeedPreviewPosts();	
 })
 
+// onBeforeRouteLeave(() => {
+// 	const router = useRouter()
+
+// 	router.push({ path: router.currentRoute.value.path })
+// })
 
 
 /**

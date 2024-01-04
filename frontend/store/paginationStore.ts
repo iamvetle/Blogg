@@ -16,9 +16,9 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
     const postStore = usePostStore()
 
     const activeFetchURL = ref<any>(urls.api.posts.feed)
-    
+
     const next_page = ref<null | string>(null)
-    const previous_page = ref<null | string>(null) 
+    const previous_page = ref<null | string>(null)
 
     const countOfPosts = ref<number>(0);
 
@@ -26,24 +26,27 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
 
     const setPagination = () => {
         if (postStore.posts != null) {
-    
+
             countOfPosts.value = postStore.posts.count
             next_page.value = postStore.posts.next
             previous_page.value = postStore.posts.previous
         }
     }
-    
+
     const route = useRoute()
     const router = useRouter()
 
     /** Adds the current page as a query to the local route url */
     watchEffect(() => {
-        router.replace({
-            query: {
-                ...route.query,
-                page:currentPageNumber.value
-            }
-        })        
+        // this makes sure the watcher doesn't do anything while it is not the correct page
+        if (router.currentRoute.value.path === "/") {
+            router.replace({
+                query: {
+                    ...route.query,
+                    page: currentPageNumber.value
+                }
+            })
+        }
     })
 
 
@@ -54,10 +57,10 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
         activeFetchURL.value = urls.api.posts.feed
         next_page.value = ""
         previous_page.value = ""
-    
+
         countOfPosts.value = 0
-    
-        currentPageNumber.value = 0 
+
+        currentPageNumber.value = 0
     }
 
     return { activeFetchURL, resetStore, setPagination, next_page, previous_page, countOfPosts, currentPageNumber }
