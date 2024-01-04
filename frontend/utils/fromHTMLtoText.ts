@@ -1,16 +1,14 @@
 //@ts-ignore
-import { JSDOM } from 'jsdom'
+import {htmlToText} from 'html-to-text'
 
 /**
- * The function takes the html input and returns only the raw text
- *
- * @param - The actual post content (not title) the should be turned into just raw text
- *
- * @returns - the raw text of the html
+ * Converts HTML string to plain text.
+ * @param htmlString - The HTML string to convert.
+ * @returns The plain text representation of the HTML string.
  */
-export default function (htmlContent: string) {
+export const fromHTMLtoText = (htmlString: string) => {
     // Creates a "fake" document (that I can use server side)
-	const dom = new JSDOM(htmlContent);
-	const rawText = dom.window.document.body.textContent
-	return rawText
+
+    return htmlToText(htmlString) || ""
 };
+

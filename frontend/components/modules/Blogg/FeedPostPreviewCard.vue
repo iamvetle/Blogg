@@ -1,7 +1,7 @@
 <template>
 	<div class="article grid-cols-12 grid gap-8 mb-16">
 
-		<div id="left-col-article" class="col-start-1 col-end-9">
+		<div data-article="left-col-article" class="col-start-1 col-end-9">
 			
 			<span class="flex items-center w-full mb-2">
 				<span class="user-picture flex items-center">
@@ -37,15 +37,15 @@
 				</span>
 
 				<span class="flex items-center">
-					<span id="comments-count" class="me-2">
+					<span data-article="comments-count" class="me-2">
 						<slot name="amount-of-comments"></slot>
 					</span>
 
-					<span id="save-article" class="me-2">
+					<span data-article="save-article" class="me-2">
 						<slot name="save-article-icon"></slot>
 					</span>
 
-					<span id="article-options" class="">
+					<span data-article="article-options" class="">
 
 						<slot name="more-options-icon"></slot>
 
@@ -55,7 +55,7 @@
 			</span>
 		</div>
 
-		<div id="right-col-article" class="col-span-4 flex items-center justify-center">
+		<div data-article="right-col-article" class="col-span-4 flex items-center justify-center">
 			<slot name="article_image">This is were the article image is.</slot>
 		</div>
 	</div>

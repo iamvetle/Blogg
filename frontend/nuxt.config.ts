@@ -47,7 +47,8 @@ export default defineNuxtConfig({
 		"@pinia/nuxt",
 		"@nuxt/ui",
 		"nuxt-icon",
-		"nuxt-vitest"
+		"nuxt-vitest",
+		'@nuxtjs/html-validator'
 	],
 	pinia: {
 		autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],

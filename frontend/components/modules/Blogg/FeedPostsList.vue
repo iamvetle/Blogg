@@ -55,7 +55,8 @@
 						<div class="break-words">
 							<p
 								class="mb-2"
-							>{{ fromHTMLtoText(post.content_snippet) }}</p>
+								v-text="fromHTMLtoText(post.content_snippet)"
+							></p>
 						</div>
 					</template>
 
@@ -117,7 +118,7 @@
 
 					<template #article_image v-if="post.id">
 						<img
-							:src="post_image"
+							:src="exampleImage"
 							alt="Bilde til artikkel"
 							class="w-full h-auto"
 						/>
@@ -132,9 +133,8 @@
 
 <script setup lang="ts">
 import account_picture from "~/assets/account-pin-circle-line.svg";
-import fromHTMLtoText from "~/utils/fromHTMLtoText";
-
-const post_image = ref("https://picsum.photos/500/300");
+import {fromHTMLtoText} from "~/utils/fromHTMLtoText";
+import exampleImage from '~/assets/example-image.jpg'
 
 const postStore = usePostStore();
 const authStore = useAuthStore();
