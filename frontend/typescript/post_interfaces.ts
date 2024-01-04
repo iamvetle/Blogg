@@ -108,9 +108,9 @@ export interface PostSavedType {
 // 	results: TagType[]
 // }
 export interface TagType {
-	id:number,
+	id?:number,
 	name: string,
-	post_count:string
+	post_count?:string
 }
 
 export interface ImageType {

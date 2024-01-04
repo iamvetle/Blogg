@@ -24,6 +24,7 @@ const generalStore = useGeneralStore();
 definePageMeta({
 	layout: "feed-layout",
 });
+
 useWatchStore();
 
 await postStore.fetchFeedPreviewPosts();

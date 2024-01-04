@@ -51,11 +51,14 @@ export const usePostStore = defineStore("Store for containing posts and related 
         allComments.value = null
     }
 
+    /**  */
     const fetchFeedPreviewPosts = async () => {
         // const headers = {}
         const route = useRoute();
 
-
+        /** 
+         * TODO change the way that "url" is here now - maybe use runtime config?
+         */
         const url = `http://127.0.0.1:8888/api/posts/feed${route.fullPath}`
         const headers = {
             Accept: 'application/json, text/plain, */*',
