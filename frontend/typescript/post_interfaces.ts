@@ -16,9 +16,9 @@ export interface NormalUserSnippetPostType {
 			date_published: string;
 			num_of_followers: string;
 
-			tags: string[];
+			tags: TagType[] | [];
 
-			images: ImageType[];
+			images: ImageType[] | [];
 
 			num_of_comments: number;
 		}
@@ -41,9 +41,9 @@ export interface SnippetPostSingleType {
 	content_snippet: string;
 	date_published: string;
 	author: AuthorType;
-	tags: null | TagType[];
+	tags: TagType[] | [];
 
-	images: ImageType[];
+	images: ImageType[] | [];
 	num_of_comments: number;
 }
 
@@ -56,10 +56,10 @@ export interface PostSingleType {
 	content: string;
 	date_published: string;
 	author: AuthorType;
-	tags: null | TagType[];
+	tags: TagType[] | [];
 
-	images: ImageType[];
-	videos: VideoType[];
+	images: ImageType[] | [];
+	videos: VideoType[] | [];
 
 	num_of_comments: number;
 }
@@ -84,7 +84,6 @@ export interface AllPostSavedType { // With pagination
 	count: number;
 	next: string | null;
 	previous: string | null;
-	// current_page: number | null;
 	results: PostSavedType[]
 }
 export interface PostSavedType {
@@ -94,6 +93,7 @@ export interface PostSavedType {
 		username: string,
 		first_name: string,
 		last_name: string,
+		// ? img???
 	}
 }
 
@@ -104,13 +104,13 @@ export interface PostSavedType {
 // 	count: number;
 // 	next: string | null;
 // 	previous: string | null;
-	current_page: number | null;
+	// current_page: number | null;
 // 	results: TagType[]
 // }
 export interface TagType {
 	id?:number,
 	name: string,
-	post_count?:string
+	post_count?:number
 }
 
 export interface ImageType {

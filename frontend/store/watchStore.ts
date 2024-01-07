@@ -1,3 +1,7 @@
+import { defineStore } from 'pinia';
+import { usePaginationStore } from './paginationStore';
+import { useTagStore } from './tagStore';
+
 export const useWatchStore = defineStore("Watches the router url", () => {
 
     const paginationStore = usePaginationStore()

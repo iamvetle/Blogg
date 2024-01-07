@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="mt-8 max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28"
-	>
+	>s
 		<div data-test="everything" class="col-span-6 mx-auto w-full">
 			<!-- 
 				* No api fetching is here.
@@ -17,9 +17,9 @@
 
 <script setup lang="ts">
 const postStore = usePostStore();
-// const searchStore = useSearchStore();
-const paginationStore = usePaginationStore();
-const generalStore = useGeneralStore();
+// // const searchStore = useSearchStore();
+// const paginationStore = usePaginationStore();
+// const generalStore = useGeneralStore();
 
 definePageMeta({
 	layout: "feed-layout",
@@ -28,13 +28,6 @@ definePageMeta({
 useWatchStore();
 
 await postStore.fetchFeedPreviewPosts();
-
-
-
-
-
-
-
 
 
 /**

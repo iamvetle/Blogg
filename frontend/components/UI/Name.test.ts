@@ -1,5 +1,5 @@
 import Name from './Name.vue';
-import { VueWrapper, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
 let wrapper: any;
@@ -78,6 +78,6 @@ describe('Testing the name component', () => {
     test('Should match snapshot', () => {
       wrapper = factory()
 
-      expect(wrapper).toMatchSnapshot()
+      expect(wrapper.html()).toMatchSnapshot()
     })
 });

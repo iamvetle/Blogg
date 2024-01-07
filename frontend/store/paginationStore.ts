@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { usePostStore } from './postStore';
 
 export const usePaginationStore = defineStore("Pagination Store", () => {
     /**
@@ -12,16 +13,17 @@ export const usePaginationStore = defineStore("Pagination Store", () => {
      * This url gets update frequently. It is supposed to represent the 
      * last url a fetch call for index posts was made to.
      */
+    const postStore = usePostStore()
+
 
     const router = useRouter()
 
-    const postStore = usePostStore()
 
     const activeFetchURL = computed(() => {
 
         const base = "http://127.0.0.1:8888/api/posts/feed"
 
-        const currentRoute = router.currentRoute.value.fullPath
+        const currentRoute = router?.currentRoute?.value?.fullPath
 
         return `${base}${currentRoute}`
     })

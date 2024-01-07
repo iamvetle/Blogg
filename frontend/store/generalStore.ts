@@ -18,11 +18,12 @@ export const useGeneralStore = defineStore("General store for general things", (
    */
   // const search_bar_show = ref(false) // not being used - I THINK
 
-  const router = useRouter()
 
   // Construct the api url
 
   const activeApiURL = computed(() => {
+    const router = useRouter()
+
 
     const base = "http://127.0.0.1:8888/api/posts/feed"
 

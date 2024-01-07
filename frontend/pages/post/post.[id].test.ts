@@ -10,30 +10,12 @@ import PostTitle from '~/components/UI/PostTitle.vue';
 import BaseImage from '~/components/base/BaseImage.vue';
 import PostContentHTML from '~/components/UI/PostContentHTML.vue';
 import BaseButton from '~/components/base/BaseButton.vue';
-
-
-const standardPost = {
-    id: 5,
-    title: "testTitle",
-    content: "testContent",
-    author: {
-        username: "testUsername",
-        first_name: "testFirstName",
-        last_name: "testLastName"
-    },
-    num_of_comments: 6,
-    tags: [
-        {
-            name: "candy",
-        },
-        {
-            name: "fridge"
-        }
-    ]
-}
+import { testPostSingle } from '~/tests/testingHelpers/testConstants';
 
 let wrapper: any;
 let pinia: any = createTestingPinia();
+
+let post = testPostSingle
 
 // let generalStore; 
 let postStore;
@@ -41,6 +23,8 @@ let postStore;
 // let paginationStore; 
 
 const mockFetchPostRelated = vi.fn()
+const mockGetSinglePostComments = (value:any) => value
+const mockGetLoggedInUserProfile = vi.fn()
 
 const factory = () => {
     return shallowMount(idVue, {
@@ -56,7 +40,9 @@ const factory = () => {
                 BaseButton,
             },
             mocks: {
-                fetchPostRelated:mockFetchPostRelated
+                fetchPostRelated:mockFetchPostRelated,
+                getSinglePostComments:mockGetSinglePostComments,
+                getLoggedInUserProfile:mockGetLoggedInUserProfile,
             },
             stubs: {
                 TagsList: true,
@@ -65,7 +51,8 @@ const factory = () => {
                 PostContentHTML:true,
                 PostTitle:true,
                 PostBookmark:true,
-                BaseImage:true
+                BaseImage:true,
+                
             },
         },
         props: {},
@@ -75,21 +62,7 @@ const factory = () => {
 
 describe('Testing the single post component', () => {
 
-    vi.stubGlobal('definePageMeta', () => {
-        return null
-    });
 
-    // vi.stubGlobal('fetchPostRelated', () => {
-    //     return null
-    // });
-
-    vi.stubGlobal('useRoute', () => {
-        return {
-            params: {
-                id: 1
-            }
-        }
-    });
 
     beforeEach(() => {
         // generalStore = useGeneralStore(pinia); 
@@ -97,6 +70,13 @@ describe('Testing the single post component', () => {
         // loggedInUserStore = useLoggedInUserStore(pinia); 
         // paginationStore = usePaginationStore(pinia); 
 
+        vi.stubGlobal("useRoute", () => {
+            return {
+                params: {
+                    id:3
+                }
+            }
+        })
     });
 
     afterEach(() => {
@@ -107,14 +87,15 @@ describe('Testing the single post component', () => {
 
     test('Page should exist', () => {
         wrapper = factory()
+        console.log(wrapper.html())
 
         expect(wrapper.exists()).toBe(true)
     })
     test('Should match snapshot', () => {
         wrapper = factory()
 
-        expect(wrapper).toMatchSnapshot()
-    })
+        expect(wrapper.html()).toMatchSnapshot()
+    });
 
     /**
      * ! need to mock function in order to test that which I just cant bother doing right now
@@ -122,7 +103,7 @@ describe('Testing the single post component', () => {
     // test('PostBookmark should be present if all post data is ok', async () => {
     //     wrapper = factory()
 
-    //     wrapper.vm.post = standardPost
+    //     wrapper.vm.post = post
 
     //     await wrapper.vm.$nextTick()
 
@@ -131,8 +112,9 @@ describe('Testing the single post component', () => {
     // })
     test('articletags should be present if all post data is ok', async () => {
         wrapper = factory()
+        await flushPromises()
 
-        wrapper.vm.post = standardPost
+        wrapper.vm.post = post
 
         await wrapper.vm.$nextTick()
 
@@ -141,27 +123,37 @@ describe('Testing the single post component', () => {
     })
     test('Should have the image component', async () => {
         wrapper = factory()
-        wrapper.vm.post = standardPost
+        await flushPromises()
+
+        wrapper.vm.post = post
+        
         await wrapper.vm.$nextTick()
         expect(wrapper.findComponent({ name: "BaseImage" }).exists()).toBe(true)
     })
     test('Should have the component that renders the html input from prop', async () => {
         wrapper = factory()
-        wrapper.vm.post = standardPost
+        await flushPromises()
+
+        wrapper.vm.post = post
+        
         await wrapper.vm.$nextTick()
         console.log(wrapper.html())
         expect(wrapper.findComponent({ name: "PostContentHTML" }).exists()).toBe(true)
     })  
     test('Should render the basebutton, back button, on page', async () => {
         wrapper = factory()
-        wrapper.vm.post = standardPost
+        await flushPromises()
+
+        wrapper.vm.post = post
         await wrapper.vm.$nextTick()
         expect(wrapper.findComponent({ name: "BaseButton" }).exists()).toBe(true)
     })
     test('Should render the comments component', async () => {
         wrapper = factory()
+        await flushPromises()
+
         
-        wrapper.vm.post = standardPost
+        wrapper.vm.post = post
 
         await wrapper.vm.$nextTick()
         console.log(wrapper.html())
@@ -173,8 +165,9 @@ describe('Testing the single post component', () => {
     })
     test('Should render the post title component', async () => {
         wrapper = factory()
-        
-        wrapper.vm.post = standardPost
+        await flushPromises()
+
+        wrapper.vm.post = post
 
         await wrapper.vm.$nextTick()
         console.log(wrapper.html())
@@ -182,8 +175,12 @@ describe('Testing the single post component', () => {
         expect(wrapper.find("[data-test='post_title']").exists()).toBe(true)
         expect(wrapper.findComponent({ name:"PostTitle" }).exists()).toBe(true)
     })
-    test('Should match snapshot', () => {
+    test('Should match snapshot', async () => {
         wrapper = factory()
+        await flushPromises()
+        await wrapper.vm.$nextTick()
+        
+
         expect(wrapper.html()).toMatchSnapshot()
     })
     

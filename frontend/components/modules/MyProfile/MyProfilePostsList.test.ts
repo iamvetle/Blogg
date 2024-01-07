@@ -7,8 +7,9 @@ let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
 
 // let generalStore;
-let loggedInUserStore:any 
+let loggedInUserStore: any
 let postStore: any
+let paginationStore
 // let paginationStore; 
 
 /**
@@ -22,7 +23,7 @@ const factory = () => {
             components: { MyProfilePostPreviewCard },
             mocks: {},
             stubs: {
-                MyProfilePostPreviewCard:true
+                MyProfilePostPreviewCard: true
             },
         },
         props: {
@@ -36,16 +37,18 @@ const factory = () => {
 describe('Testing MyprofileListarticles', () => {
 
     beforeEach(() => {
-        postStore = usePostStore()
-        loggedInUserStore = useLoggedInUserStore()
+        postStore = usePostStore(pinia)
+        loggedInUserStore = useLoggedInUserStore(pinia)
+        paginationStore = usePaginationStore(pinia)
 
         postStore.loggedInUserPosts = {
-            results:true
+            results: true
         }
         loggedInUserStore.loggedInUserProfile = {
-            first_name:true
+            first_name: true
         }
-    });
+
+    })
 
     afterEach(() => {
         if (wrapper) {
@@ -55,14 +58,14 @@ describe('Testing MyprofileListarticles', () => {
 
     test('Should exist', async () => {
         wrapper = factory()
-        
+
         await wrapper.vm.$nextTick()
 
         expect(wrapper.exists()).toBe(true)
     })
     test('Should match snapshot', () => {
-      wrapper = factory()
+        wrapper = factory()
 
-      expect(wrapper).toMatchSnapshot()
+        expect(wrapper).toMatchSnapshot()
     })
-});
+})

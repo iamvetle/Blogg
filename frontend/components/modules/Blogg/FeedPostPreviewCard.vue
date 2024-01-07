@@ -6,12 +6,14 @@
 			v-if="post"
 		>
 			<span class="flex items-center w-full mb-2">
-				<!-- Profile picture-->
-				<span class="user-picture flex items-center">
+				<span
+					class="user-picture flex items-center"
+					v-if="showUsername"
+				>
+					<!-- User profile picture-->
 					<BaseImage
-						v-show="true"
 						:src="account_picture"
-						alt="Bruker profilbilde"
+						alt="Profile picture"
 						class="w-6 h-auto me-2"
 					/>
 				</span>
@@ -25,6 +27,7 @@
 							v-if="showUsername"
 						>
 							<span
+								data-testid="post_author_name"
 								class="font-bold"
 								v-text="author_full_name(post.author)"
 							></span>
@@ -33,6 +36,7 @@
 
 					<!-- Date published -->
 					<span
+						data-test="post_date_published"
 						class="cursor-default font-light"
 						v-text="post.date_published"
 					></span>
@@ -49,9 +53,10 @@
 				</NuxtLink>
 
 				<!--Content-->
-				<div class="break-words mb-2"
-					v-text="fromHTMLtoText(post.content_snippet)">
-				</div>
+				<div
+					class="break-words mb-2"
+					v-text="fromHTMLtoText(post.content_snippet)"
+				></div>
 			</div>
 
 			<span class="flex items-center justify-between">
@@ -90,7 +95,9 @@
 							v-else
 							class="cursor-default space-x-1 flex items-center"
 						>
-							<span>{{ post.num_of_comments }} </span>
+							<span data-test="post_number_of_comments"
+								>{{ post.num_of_comments }}
+							</span>
 							<Icon name="no-comments" class="h-6" />
 						</span>
 					</span>
@@ -129,6 +136,7 @@
 		>
 			<!-- Article image -->
 			<img
+				data-test="post_article_image"
 				:src="exampleImage"
 				alt="Bilde til artikkel"
 				class="w-full h-auto"
@@ -139,8 +147,10 @@
 
 <script setup lang="ts">
 const authStore = useAuthStore();
+
 import account_picture from "~/assets/account-pin-circle-line.svg";
 import exampleImage from "~/assets/example-image.jpg";
+import { fromHTMLtoText } from '~/utils/fromHTMLtoText';
 
 withDefaults(
 	defineProps<{
@@ -171,9 +181,9 @@ const redirect_to_post_page = (postId: number) => {
  *
  * @returns - Redirects to the users profile page
  */
-const redirect_to_author_page = (username: string) => {
-	return navigateTo(`/user/${username}`);
-};
+// const redirect_to_author_page = (username: string) => {
+// 	return navigateTo(`/user/${username}`);
+// };
 
 /**
  * @param author - the 'author' part of the relevant 'post'

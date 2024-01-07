@@ -1,14 +1,15 @@
 import BaseButtonFollow from '~/components/base/BaseButtonFollow.vue';
-import { VueWrapper, shallowMount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import { createTestingPinia } from '@pinia/testing';
 
+let loggedInUserStore:any;
+let wrapper:any;
+let pinia = createTestingPinia()
+
 describe('testing basefollowbutton', () => {
-    let wrapper: VueWrapper;
-    let store: any;
 
     beforeEach(() => {
-        const pinia = createTestingPinia();
-        store = useGeneralStore(pinia);
+    loggedInUserStore = useLoggedInUserStore(pinia)
 
 
         wrapper = shallowMount(BaseButtonFollow, {
@@ -33,6 +34,6 @@ describe('testing basefollowbutton', () => {
         expect(wrapper.exists()).toBe(true)
     })
     test('This snapchot works?', () => {
-        expect(wrapper).toMatchSnapshot()      
+        expect(wrapper.html()).toMatchSnapshot()      
     })
 });

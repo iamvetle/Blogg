@@ -10,8 +10,9 @@ import FeedPostsList from '~/components/modules/Blogg/FeedPostsList.vue';
 let wrapper: any;
 let postStore: any;
 let loggedInUserStore:any;
+let paginationStore:any;
 
-let pinia: any;
+let pinia = createTestingPinia()
 
 const factory = () => {
 
@@ -34,16 +35,19 @@ const factory = () => {
 
 describe('Testing the main part of the index page', () => {
 
-    pinia = createTestingPinia()
+    beforeEach(() => {
 
-    postStore = usePostStore(pinia)
-    loggedInUserStore = useLoggedInUserStore(pinia)
+        postStore = usePostStore(pinia)
+        loggedInUserStore = useLoggedInUserStore(pinia)
+        paginationStore = usePaginationStore(pinia)
+    
+        postStore.posts = {
+            results: true
+        }
+    
+        loggedInUserStore.loggedInUserProfile = true
+    })
 
-    postStore.posts = {
-        results: true
-    }
-
-    loggedInUserStore.loggedInUserProfile = true
 
     afterEach(() => {
         if (wrapper) {
@@ -53,6 +57,7 @@ describe('Testing the main part of the index page', () => {
 
     test('Should exist', () => {
         wrapper = factory()
+        console.log(wrapper.html())
         expect(wrapper.exists())
     })
     test('If posts and logged in user data has been fetched and is in user store, all components should be shown', async () => {

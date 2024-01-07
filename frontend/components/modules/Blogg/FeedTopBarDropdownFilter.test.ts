@@ -4,9 +4,10 @@ import FeedTopBarDropdownFilter from '~/components/modules/Blogg/FeedTopBarDropd
 import { createTestingPinia } from '@pinia/testing';
 
 let wrapper:any;
-let searchStore;
+let searchStore:any;
 let pinia = createTestingPinia()
-let paginationStore = usePaginationStore()
+let paginationStore:any;
+let generalStore:any
 
 const factory = () => {
     return shallowMount(FeedTopBarDropdownFilter, {
@@ -25,7 +26,8 @@ describe('Testing the FeedTopBarDropdownFilter component', () => {
 
     beforeEach(() => {
         searchStore = useSearchStore(pinia)
-        paginationStore = usePaginationStore()
+        paginationStore = usePaginationStore(pinia)
+        generalStore = useGeneralStore(pinia)
         
     })
 
