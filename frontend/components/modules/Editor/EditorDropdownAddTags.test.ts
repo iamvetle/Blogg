@@ -27,6 +27,7 @@ describe('Testing the add tags dropdown', () => {
         })
     });
 
+
     afterEach(() => {
         if (wrapper) {
             wrapper.unmount();

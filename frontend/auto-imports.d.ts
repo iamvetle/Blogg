@@ -114,6 +114,7 @@ declare global {
   const useSearchStore: typeof import('./store/searchStore')['useSearchStore']
   const useSlots: typeof import('vue')['useSlots']
   const useTagStore: typeof import('./store/tagStore')['useTagStore']
+  const useWatchStore: typeof import('./store/watchStore')['useWatchStore']
   const vi: typeof import('vitest')['vi']
   const vitest: typeof import('vitest')['vitest']
   const watch: typeof import('vue')['watch']
@@ -240,6 +241,7 @@ declare module 'vue' {
     readonly useSearchStore: UnwrapRef<typeof import('./store/searchStore')['useSearchStore']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTagStore: UnwrapRef<typeof import('./store/tagStore')['useTagStore']>
+    readonly useWatchStore: UnwrapRef<typeof import('./store/watchStore')['useWatchStore']>
     readonly vi: UnwrapRef<typeof import('vitest')['vi']>
     readonly vitest: UnwrapRef<typeof import('vitest')['vitest']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
@@ -359,6 +361,7 @@ declare module '@vue/runtime-core' {
     readonly useSearchStore: UnwrapRef<typeof import('./store/searchStore')['useSearchStore']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTagStore: UnwrapRef<typeof import('./store/tagStore')['useTagStore']>
+    readonly useWatchStore: UnwrapRef<typeof import('./store/watchStore')['useWatchStore']>
     readonly vi: UnwrapRef<typeof import('vitest')['vi']>
     readonly vitest: UnwrapRef<typeof import('vitest')['vitest']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>

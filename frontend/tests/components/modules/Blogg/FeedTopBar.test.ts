@@ -50,10 +50,10 @@ describe('Testing the choices that are over the feed of posts', () => {
 		paginationStore = usePaginationStore(pinia); 
 		authStore = useAuthStore(pinia)
 
-		loggedInUserStore.loggedInUserProfile = { num_of_following: 8 }
-		postStore.posts = {
-			results: true
-		}
+		// loggedInUserStore.loggedInUserProfile = { num_of_following: 8 }
+		// postStore.posts = {
+		// 	results: true
+		// }
 		paginationStore.activeFetchURL = "http://127.0.0.1:8888/api/feed/following/"
 
 
@@ -73,73 +73,81 @@ describe('Testing the choices that are over the feed of posts', () => {
 	})
 
 	/** The web client should not get any options when not authenticated */
-	test('Should match snapshot when not authenticated', async () => {
-		wrapper = factory()
-		authStore.isAuthenticated = false;
+	// test('Should match snapshot when not authenticated', async () => {
+	// 	wrapper = factory()
+	// 	authStore.isAuthenticated = false;
 
-		await wrapper.vm.$nextTick()
+	// 	await wrapper.vm.$nextTick()
 	
-		expect(wrapper.html()).toMatchSnapshot()
-	})
-	test('Should match snapshot when authenticated', async () => {
-		wrapper = factory()
-		authStore.isAuthenticated = true
-		await wrapper.vm.$nextTick()
+	// 	expect(wrapper.html()).toMatchSnapshot()
+	// })
+
+	// test('Should match snapshot when authenticated', async () => {
+	// 	wrapper = factory()
+	// 	authStore.isAuthenticated = true
+	// 	await wrapper.vm.$nextTick()
 		
+	// 	expect(wrapper.html()).toMatchSnapshot()
+	// })
+
+	test('Should match snapshot', () => {
+		wrapper = factory()
 		expect(wrapper.html()).toMatchSnapshot()
 	})
 	
-	test('Should render the feed option button when authenticated ', async () => {
-		wrapper = factory()
-		authStore.isAuthenticated = true
-		await wrapper.vm.$nextTick()
+	
+	// test('Should render the feed option button when authenticated ', async () => {
+	// 	wrapper = factory()
+	// 	authStore.isAuthenticated = true
+	// 	await wrapper.vm.$nextTick()
 
-		expect(wrapper.find("[data-test='feed_all_posts_option_button']").exists()).toBe(true)
-	})
-	test('Should render the following option button when authenticated', async () => {
-		wrapper = factory()
-		authStore.isAuthenticated = true
-		await wrapper.vm.$nextTick()
+	// 	expect(wrapper.find("[data-test='feed_all_posts_option_button']").exists()).toBe(true)
+	// })
 
-		expect(wrapper.find("[data-test='following_posts_option']").exists()).toBe(true)
-	})
-	test('Should NOT render the following option button when NOT authenticated', async () => {
-		wrapper = factory()
-		authStore.isAuthenticated = false
-		await wrapper.vm.$nextTick()
+	// test('Should render the following option button when authenticated', async () => {
+	// 	wrapper = factory()
+	// 	authStore.isAuthenticated = true
+	// 	await wrapper.vm.$nextTick()
 
-		expect(wrapper.find("[data-test='following_posts_option']").exists()).toBe(false)
-	})
-	test('Should NOT render the feed option button when NOT authenticated ', async () => {
-		wrapper = factory()
-		authStore.isAuthenticated = false
-		await wrapper.vm.$nextTick()
+	// 	expect(wrapper.find("[data-test='following_posts_option']").exists()).toBe(true)
+	// })
+	// test('Should NOT render the following option button when NOT authenticated', async () => {
+	// 	wrapper = factory()
+	// 	authStore.isAuthenticated = false
+	// 	await wrapper.vm.$nextTick()
 
-		expect(wrapper.find("[data-test='feed_all_posts_option_button']").exists()).toBe(false)
-	})
-	test('Should have a "button" to call the function that only shows posts by the the users the logged in user is following', async () => {
-		wrapper = factory()
-		// The user is authenticated
-		authStore.isAuthenticated = true
-		await wrapper.vm.$nextTick()
+	// 	expect(wrapper.find("[data-test='following_posts_option']").exists()).toBe(false)
+	// })
+	// test('Should NOT render the feed option button when NOT authenticated ', async () => {
+	// 	wrapper = factory()
+	// 	authStore.isAuthenticated = false
+	// 	await wrapper.vm.$nextTick()
+
+	// 	expect(wrapper.find("[data-test='feed_all_posts_option_button']").exists()).toBe(false)
+	// })
+	// test('Should have a "button" to call the function that only shows posts by the the users the logged in user is following', async () => {
+	// 	wrapper = factory()
+	// 	// The user is authenticated
+	// 	authStore.isAuthenticated = true
+	// 	await wrapper.vm.$nextTick()
 				
-		const setToFollowingOnlyButton = wrapper.find("[data-test='following_posts_option']")
+	// 	const setToFollowingOnlyButton = wrapper.find("[data-test='following_posts_option']")
 
-		await setToFollowingOnlyButton.trigger("show-following-posts")
+	// 	await setToFollowingOnlyButton.trigger("show-following-posts")
 
-		expect(mockSetToOnlyShowFollowingPosts).toHaveBeenCalledOnce()
-	})
-	test('Should have a "button" call the function that shows all feed posts', async () => {
-		wrapper = factory()
-		authStore.isAuthenticated = true
-		await wrapper.vm.$nextTick()
+	// 	expect(mockSetToOnlyShowFollowingPosts).toHaveBeenCalledOnce()
+	// })
+	// test('Should have a "button" call the function that shows all feed posts', async () => {
+	// 	wrapper = factory()
+	// 	authStore.isAuthenticated = true
+	// 	await wrapper.vm.$nextTick()
 		
-		const setToFeedButton = wrapper.find("[data-test='feed_all_posts_option_button']")
+	// 	const setToFeedButton = wrapper.find("[data-test='feed_all_posts_option_button']")
 
-		await setToFeedButton.trigger("show-all-feed-posts")
+	// 	await setToFeedButton.trigger("show-all-feed-posts")
 
-		expect(mockShowAllFeedPosts).toHaveBeenCalledOnce()
-	})
+	// 	expect(mockShowAllFeedPosts).toHaveBeenCalledOnce()
+	// })
 
 	test('Should render the filter regardless of if the user is authenticated or not', async () => {
 		wrapper = factory()

@@ -40,7 +40,7 @@ describe('Testing the component "PostSavedCard"', () => {
     })
 
     test('Should match snapshot', () => {
-      expect(wrapper).toMatchSnapshot()
+      expect(wrapper.html()).toMatchSnapshot()
     })
 
 });

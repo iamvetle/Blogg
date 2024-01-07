@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { usePaginationStore } from './paginationStore';
 
 export const usePostStore = defineStore("Store for containing posts and related to posts", () => {
 

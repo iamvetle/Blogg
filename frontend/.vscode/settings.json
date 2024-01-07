@@ -1,24 +1,5 @@
 {
-  "files.exclude": {
-    "components\\modules\\Editor\\CustomImage.test.ts": true,
-    "components\\modules\\Editor\\CustomImage.ts": true,
-    ".prettierignore": true,
-    ".npmrc": true,
-    ".nuxt": true,
-    ".output": true,
-    ".prettierrc": true,
-    ".vscode": true,
-    "auto-imports.d.ts": true,
-    "components.d.ts": true,
-    "coverage": true,
-    "vue-shims.d.ts": true,
-    "yarn-error.log": true,
-    "components\\modules\\Editor\\EditorImageNode.vue": true,
-    "components\\modules\\Editor\\EditorBubbleMenu.test.ts": true,
-    "components\\modules\\Editor\\EditorBubbleMenu.vue": true,
-    "components\\modules\\Blogg\\FeedTopChoiceAllButton.test.ts": true,
-    "store\\watchURL.ts": true
-  },
+  "files.exclude": {},
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit"

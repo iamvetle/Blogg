@@ -47,11 +47,11 @@
  * And the option to filter with tags
  */
 
-const postStore = usePostStore();
+// const postStore = usePostStore();
 const paginationStore = usePaginationStore();
-const searchStore = useSearchStore();
-const loggedInUserStore = useLoggedInUserStore();
-const authStore = useAuthStore()
+// const searchStore = useSearchStore();
+// const loggedInUserStore = useLoggedInUserStore();
+// const authStore = useAuthStore()
 
 /**
  * FEED or FOLLOWING button selected display
@@ -70,24 +70,24 @@ const showFollowingPosts = computed(() => {
 	}
 });
 
-const num_of_following = computed(() => {
-	if (
-		loggedInUserStore.loggedInUserProfile &&
-		loggedInUserStore.loggedInUserProfile.num_of_following > 0
-	) {
-		return loggedInUserStore.loggedInUserProfile?.num_of_following;
-	} else {
-		return 0;
-	}
-});
+// const num_of_following = computed(() => {
+// 	if (
+// 		loggedInUserStore.loggedInUserProfile &&
+// 		loggedInUserStore.loggedInUserProfile.num_of_following > 0
+// 	) {
+// 		return loggedInUserStore.loggedInUserProfile?.num_of_following;
+// 	} else {
+// 		return 0;
+// 	}
+// });
 
-const posts_by_following = computed(() => {
-	if (postStore.posts && postStore.posts.results.length > 0) {
-		return postStore.posts.results.length;
-	} else {
-		return 0;
-	}
-});
+// const posts_by_following = computed(() => {
+// 	if (postStore.posts && postStore.posts.results.length > 0) {
+// 		return postStore.posts.results.length;
+// 	} else {
+// 		return 0;
+// 	}
+// });
 
 /**
  * This is called when the 'feed button' is clicked.
@@ -97,12 +97,12 @@ const posts_by_following = computed(() => {
  *
  * It has its base here - the url.
  */
-const handleShowAllFeedPosts = async () => {
-	searchStore.resetStore();
+// const handleShowAllFeedPosts = async () => {
+// 	searchStore.resetStore();
 
-	paginationStore.activeFetchURL = urls.api.posts.feed;
-	await getPostMultipleSnippet(paginationStore.activeFetchURL);
-};
+// 	paginationStore.activeFetchURL = urls.api.posts.feed;
+// 	await getPostMultipleSnippet(paginationStore.activeFetchURL);
+// };
 
 /**
  * This is called when the 'feed button' is clicked.
@@ -110,12 +110,12 @@ const handleShowAllFeedPosts = async () => {
  * It changes the api endpoint url from where posts are fetched to
  * the main feed one. It then fetches all posts.
  */
-const handleShowFollowingPosts = async () => {
-	searchStore.resetStore();
+// const handleShowFollowingPosts = async () => {
+// 	searchStore.resetStore();
 
-	paginationStore.activeFetchURL = urls.api.posts.following;
-	await getPostMultipleFollowingOnly(paginationStore.activeFetchURL);
-};
+// 	paginationStore.activeFetchURL = urls.api.posts.following;
+// 	await getPostMultipleFollowingOnly(paginationStore.activeFetchURL);
+// };
 
 // onBeforeMount( async () => {
 // 	await getAllTags()

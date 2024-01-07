@@ -11,8 +11,6 @@ VueWrapper {
     "_container": <div
       data-v-app=""
     >
-      
-      <!-- &lt;UButton label="Open" @click="isOpen = true" /&gt; -->
       <umodal
         modelvalue="true"
         prevent-close=""
@@ -55,7 +53,6 @@ VueWrapper {
           </div>
         </ucard>
       </umodal>
-      
     </div>,
     "_context": {
       "app": [Circular],
@@ -514,7 +511,7 @@ VueWrapper {
           "subTree": {
             "__v_isVNode": true,
             "__v_skip": true,
-            "anchor": ,
+            "anchor": null,
             "appContext": null,
             "children": [
               {
@@ -522,483 +519,379 @@ VueWrapper {
                 "__v_skip": true,
                 "anchor": null,
                 "appContext": null,
-                "children": " <UButton label=\\"Open\\" @click=\\"isOpen = true\\" /> ",
+                "children": [
+                  {
+                    "__v_isVNode": true,
+                    "__v_skip": true,
+                    "anchor": null,
+                    "appContext": null,
+                    "children": [
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": " Title ",
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <!-- Title -->,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": null,
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 8,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": Symbol(v-cmt),
+                      },
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "ce": undefined,
+                        "children": [
+                          {
+                            "__v_isVNode": true,
+                            "__v_skip": true,
+                            "anchor": null,
+                            "appContext": null,
+                            "ce": undefined,
+                            "children": "Do you want to publish the post?",
+                            "component": null,
+                            "ctx": null,
+                            "dirs": null,
+                            "dynamicChildren": null,
+                            "dynamicProps": null,
+                            "el": <span
+                              class="text-center text-2xl text-onSurface"
+                            >
+                              Do you want to publish the post?
+                            </span>,
+                            "key": null,
+                            "patchFlag": 0,
+                            "props": {
+                              "class": "text-center text-2xl text-onSurface",
+                            },
+                            "ref": null,
+                            "scopeId": null,
+                            "shapeFlag": 9,
+                            "slotScopeIds": null,
+                            "ssContent": null,
+                            "ssFallback": null,
+                            "staticCount": 0,
+                            "suspense": null,
+                            "target": null,
+                            "targetAnchor": null,
+                            "transition": null,
+                            "type": "span",
+                          },
+                        ],
+                        "component": null,
+                        "ctx": null,
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <div
+                          class="mb-8"
+                          data-test="modal_title"
+                        >
+                          <span
+                            class="text-center text-2xl text-onSurface"
+                          >
+                            Do you want to publish the post?
+                          </span>
+                        </div>,
+                        "key": null,
+                        "patchFlag": -1,
+                        "props": {
+                          "class": "mb-8",
+                          "data-test": "modal_title",
+                        },
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 17,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": "div",
+                      },
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": " Options ",
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <!-- Options -->,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": null,
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 8,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": Symbol(v-cmt),
+                      },
+                      {
+                        "__v_isVNode": true,
+                        "__v_skip": true,
+                        "anchor": null,
+                        "appContext": null,
+                        "children": [
+                          {
+                            "__v_isVNode": true,
+                            "__v_skip": true,
+                            "anchor": null,
+                            "appContext": null,
+                            "children": " Cancel ",
+                            "component": null,
+                            "ctx": [Circular],
+                            "dirs": null,
+                            "dynamicChildren": null,
+                            "dynamicProps": null,
+                            "el": <button
+                              class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
+                              data-test="do_abort_option"
+                            >
+                               Cancel 
+                            </button>,
+                            "key": null,
+                            "patchFlag": 0,
+                            "props": {
+                              "class": "p-2 rounded-lg border border-primary text-primary hover:shadow-md",
+                              "data-test": "do_abort_option",
+                              "onClick": [Function],
+                            },
+                            "ref": null,
+                            "scopeId": null,
+                            "shapeFlag": 9,
+                            "slotScopeIds": null,
+                            "ssContent": null,
+                            "ssFallback": null,
+                            "staticCount": 0,
+                            "suspense": null,
+                            "target": null,
+                            "targetAnchor": null,
+                            "transition": null,
+                            "type": "button",
+                          },
+                          {
+                            "__v_isVNode": true,
+                            "__v_skip": true,
+                            "anchor": null,
+                            "appContext": null,
+                            "children": " Confirm ",
+                            "component": null,
+                            "ctx": [Circular],
+                            "dirs": null,
+                            "dynamicChildren": null,
+                            "dynamicProps": null,
+                            "el": <button
+                              class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
+                              data-test="do_confirm_option"
+                              id="cancel"
+                            >
+                               Confirm 
+                            </button>,
+                            "key": null,
+                            "patchFlag": 0,
+                            "props": {
+                              "class": "rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md",
+                              "data-test": "do_confirm_option",
+                              "id": "cancel",
+                              "onClick": [Function],
+                            },
+                            "ref": null,
+                            "scopeId": null,
+                            "shapeFlag": 9,
+                            "slotScopeIds": null,
+                            "ssContent": null,
+                            "ssFallback": null,
+                            "staticCount": 0,
+                            "suspense": null,
+                            "target": null,
+                            "targetAnchor": null,
+                            "transition": null,
+                            "type": "button",
+                          },
+                        ],
+                        "component": null,
+                        "ctx": [Circular],
+                        "dirs": null,
+                        "dynamicChildren": null,
+                        "dynamicProps": null,
+                        "el": <div
+                          class="flex justify-end space-x-6"
+                          data-test="options"
+                        >
+                          <button
+                            class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
+                            data-test="do_abort_option"
+                          >
+                             Cancel 
+                          </button>
+                          <button
+                            class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
+                            data-test="do_confirm_option"
+                            id="cancel"
+                          >
+                             Confirm 
+                          </button>
+                        </div>,
+                        "key": null,
+                        "patchFlag": 0,
+                        "props": {
+                          "class": "flex justify-end space-x-6",
+                          "data-test": "options",
+                        },
+                        "ref": null,
+                        "scopeId": null,
+                        "shapeFlag": 17,
+                        "slotScopeIds": null,
+                        "ssContent": null,
+                        "ssFallback": null,
+                        "staticCount": 0,
+                        "suspense": null,
+                        "target": null,
+                        "targetAnchor": null,
+                        "transition": null,
+                        "type": "div",
+                      },
+                    ],
+                    "component": null,
+                    "ctx": [Circular],
+                    "dirs": null,
+                    "dynamicChildren": null,
+                    "dynamicProps": null,
+                    "el": <div
+                      class="p-4"
+                      data-test="inner_popup_modal"
+                    >
+                      <!-- Title -->
+                      <div
+                        class="mb-8"
+                        data-test="modal_title"
+                      >
+                        <span
+                          class="text-center text-2xl text-onSurface"
+                        >
+                          Do you want to publish the post?
+                        </span>
+                      </div>
+                      <!-- Options -->
+                      <div
+                        class="flex justify-end space-x-6"
+                        data-test="options"
+                      >
+                        <button
+                          class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
+                          data-test="do_abort_option"
+                        >
+                           Cancel 
+                        </button>
+                        <button
+                          class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
+                          data-test="do_confirm_option"
+                          id="cancel"
+                        >
+                           Confirm 
+                        </button>
+                      </div>
+                    </div>,
+                    "key": null,
+                    "patchFlag": 0,
+                    "props": {
+                      "class": "p-4",
+                      "data-test": "inner_popup_modal",
+                    },
+                    "ref": null,
+                    "scopeId": null,
+                    "shapeFlag": 17,
+                    "slotScopeIds": null,
+                    "ssContent": null,
+                    "ssFallback": null,
+                    "staticCount": 0,
+                    "suspense": null,
+                    "target": null,
+                    "targetAnchor": null,
+                    "transition": null,
+                    "type": "div",
+                  },
+                ],
                 "component": null,
                 "ctx": [Circular],
                 "dirs": null,
                 "dynamicChildren": null,
                 "dynamicProps": null,
-                "el": <!-- &lt;UButton label="Open" @click="isOpen = true" /&gt; -->,
+                "el": <ucard>
+                  <div
+                    class="p-4"
+                    data-test="inner_popup_modal"
+                  >
+                    <!-- Title -->
+                    <div
+                      class="mb-8"
+                      data-test="modal_title"
+                    >
+                      <span
+                        class="text-center text-2xl text-onSurface"
+                      >
+                        Do you want to publish the post?
+                      </span>
+                    </div>
+                    <!-- Options -->
+                    <div
+                      class="flex justify-end space-x-6"
+                      data-test="options"
+                    >
+                      <button
+                        class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
+                        data-test="do_abort_option"
+                      >
+                         Cancel 
+                      </button>
+                      <button
+                        class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
+                        data-test="do_confirm_option"
+                        id="cancel"
+                      >
+                         Confirm 
+                      </button>
+                    </div>
+                  </div>
+                </ucard>,
                 "key": null,
                 "patchFlag": 0,
                 "props": null,
                 "ref": null,
                 "scopeId": null,
-                "shapeFlag": 8,
-                "slotScopeIds": null,
-                "ssContent": null,
-                "ssFallback": null,
-                "staticCount": 0,
-                "suspense": null,
-                "target": null,
-                "targetAnchor": null,
-                "transition": null,
-                "type": Symbol(v-cmt),
-              },
-              {
-                "__v_isVNode": true,
-                "__v_skip": true,
-                "anchor": null,
-                "appContext": null,
-                "children": [
-                  {
-                    "__v_isVNode": true,
-                    "__v_skip": true,
-                    "anchor": null,
-                    "appContext": null,
-                    "children": [
-                      {
-                        "__v_isVNode": true,
-                        "__v_skip": true,
-                        "anchor": null,
-                        "appContext": null,
-                        "children": [
-                          {
-                            "__v_isVNode": true,
-                            "__v_skip": true,
-                            "anchor": null,
-                            "appContext": null,
-                            "children": " Title ",
-                            "component": null,
-                            "ctx": [Circular],
-                            "dirs": null,
-                            "dynamicChildren": null,
-                            "dynamicProps": null,
-                            "el": <!-- Title -->,
-                            "key": null,
-                            "patchFlag": 0,
-                            "props": null,
-                            "ref": null,
-                            "scopeId": null,
-                            "shapeFlag": 8,
-                            "slotScopeIds": null,
-                            "ssContent": null,
-                            "ssFallback": null,
-                            "staticCount": 0,
-                            "suspense": null,
-                            "target": null,
-                            "targetAnchor": null,
-                            "transition": null,
-                            "type": Symbol(v-cmt),
-                          },
-                          {
-                            "__v_isVNode": true,
-                            "__v_skip": true,
-                            "anchor": null,
-                            "appContext": null,
-                            "ce": undefined,
-                            "children": [
-                              {
-                                "__v_isVNode": true,
-                                "__v_skip": true,
-                                "anchor": null,
-                                "appContext": null,
-                                "ce": undefined,
-                                "children": "Do you want to publish the post?",
-                                "component": null,
-                                "ctx": null,
-                                "dirs": null,
-                                "dynamicChildren": null,
-                                "dynamicProps": null,
-                                "el": <span
-                                  class="text-center text-2xl text-onSurface"
-                                >
-                                  Do you want to publish the post?
-                                </span>,
-                                "key": null,
-                                "patchFlag": 0,
-                                "props": {
-                                  "class": "text-center text-2xl text-onSurface",
-                                },
-                                "ref": null,
-                                "scopeId": null,
-                                "shapeFlag": 9,
-                                "slotScopeIds": null,
-                                "ssContent": null,
-                                "ssFallback": null,
-                                "staticCount": 0,
-                                "suspense": null,
-                                "target": null,
-                                "targetAnchor": null,
-                                "transition": null,
-                                "type": "span",
-                              },
-                            ],
-                            "component": null,
-                            "ctx": null,
-                            "dirs": null,
-                            "dynamicChildren": null,
-                            "dynamicProps": null,
-                            "el": <div
-                              class="mb-8"
-                              data-test="modal_title"
-                            >
-                              <span
-                                class="text-center text-2xl text-onSurface"
-                              >
-                                Do you want to publish the post?
-                              </span>
-                            </div>,
-                            "key": null,
-                            "patchFlag": -1,
-                            "props": {
-                              "class": "mb-8",
-                              "data-test": "modal_title",
-                            },
-                            "ref": null,
-                            "scopeId": null,
-                            "shapeFlag": 17,
-                            "slotScopeIds": null,
-                            "ssContent": null,
-                            "ssFallback": null,
-                            "staticCount": 0,
-                            "suspense": null,
-                            "target": null,
-                            "targetAnchor": null,
-                            "transition": null,
-                            "type": "div",
-                          },
-                          {
-                            "__v_isVNode": true,
-                            "__v_skip": true,
-                            "anchor": null,
-                            "appContext": null,
-                            "children": " Options ",
-                            "component": null,
-                            "ctx": [Circular],
-                            "dirs": null,
-                            "dynamicChildren": null,
-                            "dynamicProps": null,
-                            "el": <!-- Options -->,
-                            "key": null,
-                            "patchFlag": 0,
-                            "props": null,
-                            "ref": null,
-                            "scopeId": null,
-                            "shapeFlag": 8,
-                            "slotScopeIds": null,
-                            "ssContent": null,
-                            "ssFallback": null,
-                            "staticCount": 0,
-                            "suspense": null,
-                            "target": null,
-                            "targetAnchor": null,
-                            "transition": null,
-                            "type": Symbol(v-cmt),
-                          },
-                          {
-                            "__v_isVNode": true,
-                            "__v_skip": true,
-                            "anchor": null,
-                            "appContext": null,
-                            "children": [
-                              {
-                                "__v_isVNode": true,
-                                "__v_skip": true,
-                                "anchor": null,
-                                "appContext": null,
-                                "children": " Cancel ",
-                                "component": null,
-                                "ctx": [Circular],
-                                "dirs": null,
-                                "dynamicChildren": null,
-                                "dynamicProps": null,
-                                "el": <button
-                                  class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                                  data-test="do_abort_option"
-                                >
-                                   Cancel 
-                                </button>,
-                                "key": null,
-                                "patchFlag": 0,
-                                "props": {
-                                  "class": "p-2 rounded-lg border border-primary text-primary hover:shadow-md",
-                                  "data-test": "do_abort_option",
-                                  "onClick": [Function],
-                                },
-                                "ref": null,
-                                "scopeId": null,
-                                "shapeFlag": 9,
-                                "slotScopeIds": null,
-                                "ssContent": null,
-                                "ssFallback": null,
-                                "staticCount": 0,
-                                "suspense": null,
-                                "target": null,
-                                "targetAnchor": null,
-                                "transition": null,
-                                "type": "button",
-                              },
-                              {
-                                "__v_isVNode": true,
-                                "__v_skip": true,
-                                "anchor": null,
-                                "appContext": null,
-                                "children": " Confirm ",
-                                "component": null,
-                                "ctx": [Circular],
-                                "dirs": null,
-                                "dynamicChildren": null,
-                                "dynamicProps": null,
-                                "el": <button
-                                  class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                                  data-test="do_confirm_option"
-                                  id="cancel"
-                                >
-                                   Confirm 
-                                </button>,
-                                "key": null,
-                                "patchFlag": 0,
-                                "props": {
-                                  "class": "rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md",
-                                  "data-test": "do_confirm_option",
-                                  "id": "cancel",
-                                  "onClick": [Function],
-                                },
-                                "ref": null,
-                                "scopeId": null,
-                                "shapeFlag": 9,
-                                "slotScopeIds": null,
-                                "ssContent": null,
-                                "ssFallback": null,
-                                "staticCount": 0,
-                                "suspense": null,
-                                "target": null,
-                                "targetAnchor": null,
-                                "transition": null,
-                                "type": "button",
-                              },
-                            ],
-                            "component": null,
-                            "ctx": [Circular],
-                            "dirs": null,
-                            "dynamicChildren": null,
-                            "dynamicProps": null,
-                            "el": <div
-                              class="flex justify-end space-x-6"
-                              data-test="options"
-                            >
-                              <button
-                                class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                                data-test="do_abort_option"
-                              >
-                                 Cancel 
-                              </button>
-                              <button
-                                class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                                data-test="do_confirm_option"
-                                id="cancel"
-                              >
-                                 Confirm 
-                              </button>
-                            </div>,
-                            "key": null,
-                            "patchFlag": 0,
-                            "props": {
-                              "class": "flex justify-end space-x-6",
-                              "data-test": "options",
-                            },
-                            "ref": null,
-                            "scopeId": null,
-                            "shapeFlag": 17,
-                            "slotScopeIds": null,
-                            "ssContent": null,
-                            "ssFallback": null,
-                            "staticCount": 0,
-                            "suspense": null,
-                            "target": null,
-                            "targetAnchor": null,
-                            "transition": null,
-                            "type": "div",
-                          },
-                        ],
-                        "component": null,
-                        "ctx": [Circular],
-                        "dirs": null,
-                        "dynamicChildren": null,
-                        "dynamicProps": null,
-                        "el": <div
-                          class="p-4"
-                          data-test="inner_popup_modal"
-                        >
-                          <!-- Title -->
-                          <div
-                            class="mb-8"
-                            data-test="modal_title"
-                          >
-                            <span
-                              class="text-center text-2xl text-onSurface"
-                            >
-                              Do you want to publish the post?
-                            </span>
-                          </div>
-                          <!-- Options -->
-                          <div
-                            class="flex justify-end space-x-6"
-                            data-test="options"
-                          >
-                            <button
-                              class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                              data-test="do_abort_option"
-                            >
-                               Cancel 
-                            </button>
-                            <button
-                              class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                              data-test="do_confirm_option"
-                              id="cancel"
-                            >
-                               Confirm 
-                            </button>
-                          </div>
-                        </div>,
-                        "key": null,
-                        "patchFlag": 0,
-                        "props": {
-                          "class": "p-4",
-                          "data-test": "inner_popup_modal",
-                        },
-                        "ref": null,
-                        "scopeId": null,
-                        "shapeFlag": 17,
-                        "slotScopeIds": null,
-                        "ssContent": null,
-                        "ssFallback": null,
-                        "staticCount": 0,
-                        "suspense": null,
-                        "target": null,
-                        "targetAnchor": null,
-                        "transition": null,
-                        "type": "div",
-                      },
-                    ],
-                    "component": null,
-                    "ctx": [Circular],
-                    "dirs": null,
-                    "dynamicChildren": null,
-                    "dynamicProps": null,
-                    "el": <ucard>
-                      <div
-                        class="p-4"
-                        data-test="inner_popup_modal"
-                      >
-                        <!-- Title -->
-                        <div
-                          class="mb-8"
-                          data-test="modal_title"
-                        >
-                          <span
-                            class="text-center text-2xl text-onSurface"
-                          >
-                            Do you want to publish the post?
-                          </span>
-                        </div>
-                        <!-- Options -->
-                        <div
-                          class="flex justify-end space-x-6"
-                          data-test="options"
-                        >
-                          <button
-                            class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                            data-test="do_abort_option"
-                          >
-                             Cancel 
-                          </button>
-                          <button
-                            class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                            data-test="do_confirm_option"
-                            id="cancel"
-                          >
-                             Confirm 
-                          </button>
-                        </div>
-                      </div>
-                    </ucard>,
-                    "key": null,
-                    "patchFlag": 0,
-                    "props": null,
-                    "ref": null,
-                    "scopeId": null,
-                    "shapeFlag": 17,
-                    "slotScopeIds": null,
-                    "ssContent": null,
-                    "ssFallback": null,
-                    "staticCount": 0,
-                    "suspense": null,
-                    "target": null,
-                    "targetAnchor": null,
-                    "transition": null,
-                    "type": "UCard",
-                  },
-                ],
-                "component": null,
-                "ctx": [Circular],
-                "dirs": null,
-                "dynamicChildren": null,
-                "dynamicProps": [
-                  "modelValue",
-                ],
-                "el": <umodal
-                  modelvalue="true"
-                  prevent-close=""
-                >
-                  <ucard>
-                    <div
-                      class="p-4"
-                      data-test="inner_popup_modal"
-                    >
-                      <!-- Title -->
-                      <div
-                        class="mb-8"
-                        data-test="modal_title"
-                      >
-                        <span
-                          class="text-center text-2xl text-onSurface"
-                        >
-                          Do you want to publish the post?
-                        </span>
-                      </div>
-                      <!-- Options -->
-                      <div
-                        class="flex justify-end space-x-6"
-                        data-test="options"
-                      >
-                        <button
-                          class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                          data-test="do_abort_option"
-                        >
-                           Cancel 
-                        </button>
-                        <button
-                          class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                          data-test="do_confirm_option"
-                          id="cancel"
-                        >
-                           Confirm 
-                        </button>
-                      </div>
-                    </div>
-                  </ucard>
-                </umodal>,
-                "key": null,
-                "patchFlag": 8,
-                "props": {
-                  "modelValue": true,
-                  "onUpdate:modelValue": [Function],
-                  "prevent-close": "",
-                },
-                "ref": null,
-                "scopeId": null,
                 "shapeFlag": 17,
                 "slotScopeIds": null,
                 "ssContent": null,
@@ -1008,487 +901,68 @@ VueWrapper {
                 "target": null,
                 "targetAnchor": null,
                 "transition": null,
-                "type": "UModal",
+                "type": "UCard",
               },
             ],
             "component": null,
             "ctx": [Circular],
             "dirs": null,
-            "dynamicChildren": [
-              {
-                "__v_isVNode": true,
-                "__v_skip": true,
-                "anchor": null,
-                "appContext": null,
-                "children": [
-                  {
-                    "__v_isVNode": true,
-                    "__v_skip": true,
-                    "anchor": null,
-                    "appContext": null,
-                    "children": [
-                      {
-                        "__v_isVNode": true,
-                        "__v_skip": true,
-                        "anchor": null,
-                        "appContext": null,
-                        "children": [
-                          {
-                            "__v_isVNode": true,
-                            "__v_skip": true,
-                            "anchor": null,
-                            "appContext": null,
-                            "children": " Title ",
-                            "component": null,
-                            "ctx": [Circular],
-                            "dirs": null,
-                            "dynamicChildren": null,
-                            "dynamicProps": null,
-                            "el": <!-- Title -->,
-                            "key": null,
-                            "patchFlag": 0,
-                            "props": null,
-                            "ref": null,
-                            "scopeId": null,
-                            "shapeFlag": 8,
-                            "slotScopeIds": null,
-                            "ssContent": null,
-                            "ssFallback": null,
-                            "staticCount": 0,
-                            "suspense": null,
-                            "target": null,
-                            "targetAnchor": null,
-                            "transition": null,
-                            "type": Symbol(v-cmt),
-                          },
-                          {
-                            "__v_isVNode": true,
-                            "__v_skip": true,
-                            "anchor": null,
-                            "appContext": null,
-                            "ce": undefined,
-                            "children": [
-                              {
-                                "__v_isVNode": true,
-                                "__v_skip": true,
-                                "anchor": null,
-                                "appContext": null,
-                                "ce": undefined,
-                                "children": "Do you want to publish the post?",
-                                "component": null,
-                                "ctx": null,
-                                "dirs": null,
-                                "dynamicChildren": null,
-                                "dynamicProps": null,
-                                "el": <span
-                                  class="text-center text-2xl text-onSurface"
-                                >
-                                  Do you want to publish the post?
-                                </span>,
-                                "key": null,
-                                "patchFlag": 0,
-                                "props": {
-                                  "class": "text-center text-2xl text-onSurface",
-                                },
-                                "ref": null,
-                                "scopeId": null,
-                                "shapeFlag": 9,
-                                "slotScopeIds": null,
-                                "ssContent": null,
-                                "ssFallback": null,
-                                "staticCount": 0,
-                                "suspense": null,
-                                "target": null,
-                                "targetAnchor": null,
-                                "transition": null,
-                                "type": "span",
-                              },
-                            ],
-                            "component": null,
-                            "ctx": null,
-                            "dirs": null,
-                            "dynamicChildren": null,
-                            "dynamicProps": null,
-                            "el": <div
-                              class="mb-8"
-                              data-test="modal_title"
-                            >
-                              <span
-                                class="text-center text-2xl text-onSurface"
-                              >
-                                Do you want to publish the post?
-                              </span>
-                            </div>,
-                            "key": null,
-                            "patchFlag": -1,
-                            "props": {
-                              "class": "mb-8",
-                              "data-test": "modal_title",
-                            },
-                            "ref": null,
-                            "scopeId": null,
-                            "shapeFlag": 17,
-                            "slotScopeIds": null,
-                            "ssContent": null,
-                            "ssFallback": null,
-                            "staticCount": 0,
-                            "suspense": null,
-                            "target": null,
-                            "targetAnchor": null,
-                            "transition": null,
-                            "type": "div",
-                          },
-                          {
-                            "__v_isVNode": true,
-                            "__v_skip": true,
-                            "anchor": null,
-                            "appContext": null,
-                            "children": " Options ",
-                            "component": null,
-                            "ctx": [Circular],
-                            "dirs": null,
-                            "dynamicChildren": null,
-                            "dynamicProps": null,
-                            "el": <!-- Options -->,
-                            "key": null,
-                            "patchFlag": 0,
-                            "props": null,
-                            "ref": null,
-                            "scopeId": null,
-                            "shapeFlag": 8,
-                            "slotScopeIds": null,
-                            "ssContent": null,
-                            "ssFallback": null,
-                            "staticCount": 0,
-                            "suspense": null,
-                            "target": null,
-                            "targetAnchor": null,
-                            "transition": null,
-                            "type": Symbol(v-cmt),
-                          },
-                          {
-                            "__v_isVNode": true,
-                            "__v_skip": true,
-                            "anchor": null,
-                            "appContext": null,
-                            "children": [
-                              {
-                                "__v_isVNode": true,
-                                "__v_skip": true,
-                                "anchor": null,
-                                "appContext": null,
-                                "children": " Cancel ",
-                                "component": null,
-                                "ctx": [Circular],
-                                "dirs": null,
-                                "dynamicChildren": null,
-                                "dynamicProps": null,
-                                "el": <button
-                                  class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                                  data-test="do_abort_option"
-                                >
-                                   Cancel 
-                                </button>,
-                                "key": null,
-                                "patchFlag": 0,
-                                "props": {
-                                  "class": "p-2 rounded-lg border border-primary text-primary hover:shadow-md",
-                                  "data-test": "do_abort_option",
-                                  "onClick": [Function],
-                                },
-                                "ref": null,
-                                "scopeId": null,
-                                "shapeFlag": 9,
-                                "slotScopeIds": null,
-                                "ssContent": null,
-                                "ssFallback": null,
-                                "staticCount": 0,
-                                "suspense": null,
-                                "target": null,
-                                "targetAnchor": null,
-                                "transition": null,
-                                "type": "button",
-                              },
-                              {
-                                "__v_isVNode": true,
-                                "__v_skip": true,
-                                "anchor": null,
-                                "appContext": null,
-                                "children": " Confirm ",
-                                "component": null,
-                                "ctx": [Circular],
-                                "dirs": null,
-                                "dynamicChildren": null,
-                                "dynamicProps": null,
-                                "el": <button
-                                  class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                                  data-test="do_confirm_option"
-                                  id="cancel"
-                                >
-                                   Confirm 
-                                </button>,
-                                "key": null,
-                                "patchFlag": 0,
-                                "props": {
-                                  "class": "rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md",
-                                  "data-test": "do_confirm_option",
-                                  "id": "cancel",
-                                  "onClick": [Function],
-                                },
-                                "ref": null,
-                                "scopeId": null,
-                                "shapeFlag": 9,
-                                "slotScopeIds": null,
-                                "ssContent": null,
-                                "ssFallback": null,
-                                "staticCount": 0,
-                                "suspense": null,
-                                "target": null,
-                                "targetAnchor": null,
-                                "transition": null,
-                                "type": "button",
-                              },
-                            ],
-                            "component": null,
-                            "ctx": [Circular],
-                            "dirs": null,
-                            "dynamicChildren": null,
-                            "dynamicProps": null,
-                            "el": <div
-                              class="flex justify-end space-x-6"
-                              data-test="options"
-                            >
-                              <button
-                                class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                                data-test="do_abort_option"
-                              >
-                                 Cancel 
-                              </button>
-                              <button
-                                class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                                data-test="do_confirm_option"
-                                id="cancel"
-                              >
-                                 Confirm 
-                              </button>
-                            </div>,
-                            "key": null,
-                            "patchFlag": 0,
-                            "props": {
-                              "class": "flex justify-end space-x-6",
-                              "data-test": "options",
-                            },
-                            "ref": null,
-                            "scopeId": null,
-                            "shapeFlag": 17,
-                            "slotScopeIds": null,
-                            "ssContent": null,
-                            "ssFallback": null,
-                            "staticCount": 0,
-                            "suspense": null,
-                            "target": null,
-                            "targetAnchor": null,
-                            "transition": null,
-                            "type": "div",
-                          },
-                        ],
-                        "component": null,
-                        "ctx": [Circular],
-                        "dirs": null,
-                        "dynamicChildren": null,
-                        "dynamicProps": null,
-                        "el": <div
-                          class="p-4"
-                          data-test="inner_popup_modal"
-                        >
-                          <!-- Title -->
-                          <div
-                            class="mb-8"
-                            data-test="modal_title"
-                          >
-                            <span
-                              class="text-center text-2xl text-onSurface"
-                            >
-                              Do you want to publish the post?
-                            </span>
-                          </div>
-                          <!-- Options -->
-                          <div
-                            class="flex justify-end space-x-6"
-                            data-test="options"
-                          >
-                            <button
-                              class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                              data-test="do_abort_option"
-                            >
-                               Cancel 
-                            </button>
-                            <button
-                              class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                              data-test="do_confirm_option"
-                              id="cancel"
-                            >
-                               Confirm 
-                            </button>
-                          </div>
-                        </div>,
-                        "key": null,
-                        "patchFlag": 0,
-                        "props": {
-                          "class": "p-4",
-                          "data-test": "inner_popup_modal",
-                        },
-                        "ref": null,
-                        "scopeId": null,
-                        "shapeFlag": 17,
-                        "slotScopeIds": null,
-                        "ssContent": null,
-                        "ssFallback": null,
-                        "staticCount": 0,
-                        "suspense": null,
-                        "target": null,
-                        "targetAnchor": null,
-                        "transition": null,
-                        "type": "div",
-                      },
-                    ],
-                    "component": null,
-                    "ctx": [Circular],
-                    "dirs": null,
-                    "dynamicChildren": null,
-                    "dynamicProps": null,
-                    "el": <ucard>
-                      <div
-                        class="p-4"
-                        data-test="inner_popup_modal"
-                      >
-                        <!-- Title -->
-                        <div
-                          class="mb-8"
-                          data-test="modal_title"
-                        >
-                          <span
-                            class="text-center text-2xl text-onSurface"
-                          >
-                            Do you want to publish the post?
-                          </span>
-                        </div>
-                        <!-- Options -->
-                        <div
-                          class="flex justify-end space-x-6"
-                          data-test="options"
-                        >
-                          <button
-                            class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                            data-test="do_abort_option"
-                          >
-                             Cancel 
-                          </button>
-                          <button
-                            class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                            data-test="do_confirm_option"
-                            id="cancel"
-                          >
-                             Confirm 
-                          </button>
-                        </div>
-                      </div>
-                    </ucard>,
-                    "key": null,
-                    "patchFlag": 0,
-                    "props": null,
-                    "ref": null,
-                    "scopeId": null,
-                    "shapeFlag": 17,
-                    "slotScopeIds": null,
-                    "ssContent": null,
-                    "ssFallback": null,
-                    "staticCount": 0,
-                    "suspense": null,
-                    "target": null,
-                    "targetAnchor": null,
-                    "transition": null,
-                    "type": "UCard",
-                  },
-                ],
-                "component": null,
-                "ctx": [Circular],
-                "dirs": null,
-                "dynamicChildren": null,
-                "dynamicProps": [
-                  "modelValue",
-                ],
-                "el": <umodal
-                  modelvalue="true"
-                  prevent-close=""
-                >
-                  <ucard>
-                    <div
-                      class="p-4"
-                      data-test="inner_popup_modal"
-                    >
-                      <!-- Title -->
-                      <div
-                        class="mb-8"
-                        data-test="modal_title"
-                      >
-                        <span
-                          class="text-center text-2xl text-onSurface"
-                        >
-                          Do you want to publish the post?
-                        </span>
-                      </div>
-                      <!-- Options -->
-                      <div
-                        class="flex justify-end space-x-6"
-                        data-test="options"
-                      >
-                        <button
-                          class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
-                          data-test="do_abort_option"
-                        >
-                           Cancel 
-                        </button>
-                        <button
-                          class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
-                          data-test="do_confirm_option"
-                          id="cancel"
-                        >
-                           Confirm 
-                        </button>
-                      </div>
-                    </div>
-                  </ucard>
-                </umodal>,
-                "key": null,
-                "patchFlag": 8,
-                "props": {
-                  "modelValue": true,
-                  "onUpdate:modelValue": [Function],
-                  "prevent-close": "",
-                },
-                "ref": null,
-                "scopeId": null,
-                "shapeFlag": 17,
-                "slotScopeIds": null,
-                "ssContent": null,
-                "ssFallback": null,
-                "staticCount": 0,
-                "suspense": null,
-                "target": null,
-                "targetAnchor": null,
-                "transition": null,
-                "type": "UModal",
-              },
+            "dynamicChildren": [],
+            "dynamicProps": [
+              "modelValue",
             ],
-            "dynamicProps": null,
-            "el": ,
+            "el": <umodal
+              modelvalue="true"
+              prevent-close=""
+            >
+              <ucard>
+                <div
+                  class="p-4"
+                  data-test="inner_popup_modal"
+                >
+                  <!-- Title -->
+                  <div
+                    class="mb-8"
+                    data-test="modal_title"
+                  >
+                    <span
+                      class="text-center text-2xl text-onSurface"
+                    >
+                      Do you want to publish the post?
+                    </span>
+                  </div>
+                  <!-- Options -->
+                  <div
+                    class="flex justify-end space-x-6"
+                    data-test="options"
+                  >
+                    <button
+                      class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
+                      data-test="do_abort_option"
+                    >
+                       Cancel 
+                    </button>
+                    <button
+                      class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
+                      data-test="do_confirm_option"
+                      id="cancel"
+                    >
+                       Confirm 
+                    </button>
+                  </div>
+                </div>
+              </ucard>
+            </umodal>,
             "key": null,
-            "patchFlag": 2112,
-            "props": null,
+            "patchFlag": 8,
+            "props": {
+              "modelValue": true,
+              "onUpdate:modelValue": [Function],
+              "prevent-close": "",
+            },
             "ref": null,
             "scopeId": null,
-            "shapeFlag": 16,
+            "shapeFlag": 17,
             "slotScopeIds": null,
             "ssContent": null,
             "ssFallback": null,
@@ -1497,7 +971,7 @@ VueWrapper {
             "target": null,
             "targetAnchor": null,
             "transition": null,
-            "type": Symbol(v-fgt),
+            "type": "UModal",
           },
           "suspense": null,
           "suspenseId": 0,
@@ -1546,7 +1020,48 @@ VueWrapper {
         "dirs": null,
         "dynamicChildren": null,
         "dynamicProps": null,
-        "el": ,
+        "el": <umodal
+          modelvalue="true"
+          prevent-close=""
+        >
+          <ucard>
+            <div
+              class="p-4"
+              data-test="inner_popup_modal"
+            >
+              <!-- Title -->
+              <div
+                class="mb-8"
+                data-test="modal_title"
+              >
+                <span
+                  class="text-center text-2xl text-onSurface"
+                >
+                  Do you want to publish the post?
+                </span>
+              </div>
+              <!-- Options -->
+              <div
+                class="flex justify-end space-x-6"
+                data-test="options"
+              >
+                <button
+                  class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
+                  data-test="do_abort_option"
+                >
+                   Cancel 
+                </button>
+                <button
+                  class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
+                  data-test="do_confirm_option"
+                  id="cancel"
+                >
+                   Confirm 
+                </button>
+              </div>
+            </div>
+          </ucard>
+        </umodal>,
         "key": null,
         "patchFlag": 0,
         "props": {
@@ -1677,7 +1192,48 @@ VueWrapper {
         "dirs": null,
         "dynamicChildren": null,
         "dynamicProps": null,
-        "el": ,
+        "el": <umodal
+          modelvalue="true"
+          prevent-close=""
+        >
+          <ucard>
+            <div
+              class="p-4"
+              data-test="inner_popup_modal"
+            >
+              <!-- Title -->
+              <div
+                class="mb-8"
+                data-test="modal_title"
+              >
+                <span
+                  class="text-center text-2xl text-onSurface"
+                >
+                  Do you want to publish the post?
+                </span>
+              </div>
+              <!-- Options -->
+              <div
+                class="flex justify-end space-x-6"
+                data-test="options"
+              >
+                <button
+                  class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
+                  data-test="do_abort_option"
+                >
+                   Cancel 
+                </button>
+                <button
+                  class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
+                  data-test="do_confirm_option"
+                  id="cancel"
+                >
+                   Confirm 
+                </button>
+              </div>
+            </div>
+          </ucard>
+        </umodal>,
         "key": null,
         "patchFlag": 0,
         "props": null,
@@ -1719,7 +1275,7 @@ VueWrapper {
     "runWithContext": [Function],
     "unmount": [Function],
     "use": [Function],
-    "version": "3.4.3",
+    "version": "3.4.5",
   },
   "__setProps": [Function],
   "cleanUpCallbacks": [
@@ -1900,6 +1456,47 @@ VueWrapper {
   "rootVM": {
     "VTU_COMPONENT": {},
   },
-  "wrapperElement": ,
+  "wrapperElement": <umodal
+    modelvalue="true"
+    prevent-close=""
+  >
+    <ucard>
+      <div
+        class="p-4"
+        data-test="inner_popup_modal"
+      >
+        <!-- Title -->
+        <div
+          class="mb-8"
+          data-test="modal_title"
+        >
+          <span
+            class="text-center text-2xl text-onSurface"
+          >
+            Do you want to publish the post?
+          </span>
+        </div>
+        <!-- Options -->
+        <div
+          class="flex justify-end space-x-6"
+          data-test="options"
+        >
+          <button
+            class="p-2 rounded-lg border border-primary text-primary hover:shadow-md"
+            data-test="do_abort_option"
+          >
+             Cancel 
+          </button>
+          <button
+            class="rounded-lg bg-primary p-2 text-onPrimary hover:shadow-md"
+            data-test="do_confirm_option"
+            id="cancel"
+          >
+             Confirm 
+          </button>
+        </div>
+      </div>
+    </ucard>
+  </umodal>,
 }
 `;

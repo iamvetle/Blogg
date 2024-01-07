@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitest/config'
 import Vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
+// import {vitestSetup} from '~/tests/setupFiles/vitestSetup'
 
 export default defineConfig({
     plugins: [
@@ -16,11 +17,12 @@ export default defineConfig({
     test: {
         globals: true,
         environment: "happy-dom",
+        setupFiles: ["./tests/setup.ts"],
     },
     resolve: {
         alias: {
             '~':  new URL('.', import.meta.url).pathname,
             '@/': new URL('./', import.meta.url).pathname,
         }
-    }
+    },
 })
