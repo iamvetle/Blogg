@@ -1,21 +1,13 @@
 <template>
-    <div>
-        <img :src="src" v-bind="$attrs"/>
-    </div>
+	<img :src="src" :alt="alt"/>
 </template>
 
 <script setup lang="ts">
 
-defineOptions({
-    inheritAttrs:false  
-})
-
 defineProps<{
-    src:string;
+	src: string;
+    alt:string;
 }>();
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

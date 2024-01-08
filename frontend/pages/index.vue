@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="mt-8 max-w-[1100px] w-full mx-auto px-6 grid grid-cols-10 gap-28"
-	>s
+	>
 		<div data-test="everything" class="col-span-6 mx-auto w-full">
 			<!-- 
 				* No api fetching is here.

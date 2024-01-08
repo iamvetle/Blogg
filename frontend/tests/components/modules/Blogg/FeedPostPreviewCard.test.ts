@@ -53,6 +53,9 @@ describe("testing PostArticle", async () => {
     })
     test("The title should render", () => {
         expect(wrapper.text()).toContain(post.title)
+
+        const postTitle = wrapper.find("[data-test='post_title']")
+        expect(postTitle.text()).toContain(post.title)
     })
     test("The content(snippet) gets rendered", () => {
         const rawTextForTest = fromHTMLtoText(post.content_snippet)

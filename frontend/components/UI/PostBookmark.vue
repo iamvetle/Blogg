@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <span>
         <!--
             ! this is a bad implementation
             TODO fix this later so it isnt two components
@@ -10,7 +10,7 @@
         <!-- Hovering over makes it gray-->
         <BaseIconSaveArticleUnSaved v-else @mouseover="color = 'gray'" @mouseleave="color = 'black'"
             @click="save(post)" :fill-color="color" />
-    </div>
+    </span>
 </template>
 
 <script setup lang="ts">

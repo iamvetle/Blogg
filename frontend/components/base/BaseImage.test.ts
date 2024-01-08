@@ -5,6 +5,9 @@ import { createTestingPinia } from '@pinia/testing';
 let wrapper: VueWrapper;
 let pinia: any = createTestingPinia();
 
+let mockAltProp = "Description of testing image"
+let mockSourceProp = "~/test/test.jpeg"
+
 const factory = () => {
     return shallowMount(BaseImage, {
         global: {
@@ -14,13 +17,14 @@ const factory = () => {
             stubs: {},
         },
         props: {
-            src:"~/test/test.jpeg"
+            src: mockSourceProp,
+            alt: mockAltProp
         },
         slots: {}
-    })  
+    })
 };
 
-describe('Testing baseimage', () => {
+describe('Testing BaseImage component', () => {
 
     beforeEach(() => {
 
@@ -38,6 +42,16 @@ describe('Testing baseimage', () => {
         expect(wrapper.exists()).toBe(true)
     })
     test('Should have a src prop', () => {
-      expect(wrapper.props("src")).toBeTruthy()
+        wrapper = factory()
+        expect(wrapper.props("src")).toBe(mockSourceProp)
+    })
+    test('Should have a alt prop', () => {
+        wrapper = factory()
+        expect(wrapper.props("alt")).toBe(mockAltProp)
+    })
+    test('Component should essentialy be an img element', () => {
+        wrapper = factory()
+        expect(wrapper.element.tagName).toBe("IMG")
+        
     })
 });

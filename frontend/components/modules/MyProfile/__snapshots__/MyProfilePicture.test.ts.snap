@@ -2672,8 +2672,11 @@ VueWrapper {
             "BaseImage": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
               "__name": "BaseImage",
-              "inheritAttrs": false,
               "props": {
+                "alt": {
+                  "required": true,
+                  "type": [Function],
+                },
                 "src": {
                   "required": true,
                   "type": [Function],
@@ -9739,7 +9742,6 @@ VueWrapper {
                       "asyncDep": null,
                       "asyncResolved": false,
                       "attrs": {
-                        "alt": "Profilbilde",
                         "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                       },
                       "attrsProxy": null,
@@ -9750,6 +9752,7 @@ VueWrapper {
                       "c": null,
                       "components": null,
                       "ctx": {
+                        "alt": "Profilbilde",
                         "cancelUpload": [MockFunction spy],
                         "handleFileChange": [MockFunction spy],
                         "handlePostNewProfileImage": [MockFunction spy],
@@ -9760,7 +9763,7 @@ VueWrapper {
                       "directives": null,
                       "ec": null,
                       "effect": ReactiveEffect {
-                        "_depsLength": 2,
+                        "_depsLength": 3,
                         "_dirtyLevel": 0,
                         "_queryings": 0,
                         "_runnings": 0,
@@ -9768,6 +9771,9 @@ VueWrapper {
                         "active": true,
                         "allowRecurse": true,
                         "deps": [
+                          Map {
+                            [Circular] => 1,
+                          },
                           Map {
                             [Circular] => 1,
                           },
@@ -9794,11 +9800,18 @@ VueWrapper {
                       "next": null,
                       "parent": [Circular],
                       "props": {
+                        "alt": "Profilbilde",
                         "src": "~/src/picture.jpeg",
                       },
                       "propsDefaults": {},
                       "propsOptions": [
                         {
+                          "alt": {
+                            "0": false,
+                            "1": true,
+                            "required": true,
+                            "type": [Function],
+                          },
                           "src": {
                             "0": false,
                             "1": true,
@@ -9818,6 +9831,7 @@ VueWrapper {
                         },
                       },
                       "proxy": {
+                        "alt": "Profilbilde",
                         "cancelUpload": [MockFunction spy],
                         "handleFileChange": [MockFunction spy],
                         "handlePostNewProfileImage": [MockFunction spy],
@@ -9835,7 +9849,7 @@ VueWrapper {
                         "detached": true,
                         "effects": [
                           ReactiveEffect {
-                            "_depsLength": 2,
+                            "_depsLength": 3,
                             "_dirtyLevel": 0,
                             "_queryings": 0,
                             "_runnings": 0,
@@ -9843,6 +9857,9 @@ VueWrapper {
                             "active": true,
                             "allowRecurse": true,
                             "deps": [
+                              Map {
+                                [Circular] => 1,
+                              },
                               Map {
                                 [Circular] => 1,
                               },
@@ -9861,7 +9878,6 @@ VueWrapper {
                       },
                       "setupContext": {
                         "attrs": {
-                          "alt": "Profilbilde",
                           "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                         },
                         "emit": [Function],
@@ -9915,6 +9931,10 @@ VueWrapper {
                         "model": undefined,
                         "name": "BaseImage",
                         "props": {
+                          "alt": {
+                            "required": true,
+                            "type": [Function],
+                          },
                           "src": {
                             "required": true,
                             "type": [Function],
@@ -9962,6 +9982,10 @@ VueWrapper {
                       "model": undefined,
                       "name": "BaseImage",
                       "props": {
+                        "alt": {
+                          "required": true,
+                          "type": [Function],
+                        },
                         "src": {
                           "required": true,
                           "type": [Function],
@@ -13367,6 +13391,7 @@ VueWrapper {
                     "@@__IMMUTABLE_ITERABLE__@@": 0,
                     "@@__IMMUTABLE_RECORD__@@": 0,
                     "_isMockFunction": 0,
+                    "alt": 3,
                     "cancelUpload": 4,
                     "constructor": 0,
                     "handleFileChange": 4,
@@ -14202,11 +14227,9 @@ VueWrapper {
                   "asyncDep": null,
                   "asyncResolved": false,
                   "attrs": {
-                    "alt": "Profilbilde",
                     "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                   },
                   "attrsProxy": {
-                    "alt": "Profilbilde",
                     "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                   },
                   "bc": null,
@@ -14216,6 +14239,7 @@ VueWrapper {
                   "c": null,
                   "components": null,
                   "ctx": {
+                    "alt": "Profilbilde",
                     "cancelUpload": [MockFunction spy],
                     "handleFileChange": [MockFunction spy],
                     "handlePostNewProfileImage": [MockFunction spy],
@@ -14226,7 +14250,7 @@ VueWrapper {
                   "directives": null,
                   "ec": null,
                   "effect": ReactiveEffect {
-                    "_depsLength": 2,
+                    "_depsLength": 3,
                     "_dirtyLevel": 0,
                     "_queryings": 0,
                     "_runnings": 0,
@@ -14234,6 +14258,9 @@ VueWrapper {
                     "active": true,
                     "allowRecurse": true,
                     "deps": [
+                      Map {
+                        [Circular] => 1,
+                      },
                       Map {
                         [Circular] => 1,
                       },
@@ -14260,11 +14287,18 @@ VueWrapper {
                   "next": null,
                   "parent": [Circular],
                   "props": {
+                    "alt": "Profilbilde",
                     "src": "~/src/picture.jpeg",
                   },
                   "propsDefaults": {},
                   "propsOptions": [
                     {
+                      "alt": {
+                        "0": false,
+                        "1": true,
+                        "required": true,
+                        "type": [Function],
+                      },
                       "src": {
                         "0": false,
                         "1": true,
@@ -14284,6 +14318,7 @@ VueWrapper {
                     },
                   },
                   "proxy": {
+                    "alt": "Profilbilde",
                     "cancelUpload": [MockFunction spy],
                     "handleFileChange": [MockFunction spy],
                     "handlePostNewProfileImage": [MockFunction spy],
@@ -14301,7 +14336,7 @@ VueWrapper {
                     "detached": true,
                     "effects": [
                       ReactiveEffect {
-                        "_depsLength": 2,
+                        "_depsLength": 3,
                         "_dirtyLevel": 0,
                         "_queryings": 0,
                         "_runnings": 0,
@@ -14309,6 +14344,9 @@ VueWrapper {
                         "active": true,
                         "allowRecurse": true,
                         "deps": [
+                          Map {
+                            [Circular] => 1,
+                          },
                           Map {
                             [Circular] => 1,
                           },
@@ -14327,7 +14365,6 @@ VueWrapper {
                   },
                   "setupContext": {
                     "attrs": {
-                      "alt": "Profilbilde",
                       "class": "w-32 h-32 bg-onPrimary border-black border rounded-full mb-4 shrink-0",
                     },
                     "emit": [Function],
@@ -14381,6 +14418,10 @@ VueWrapper {
                     "model": undefined,
                     "name": "BaseImage",
                     "props": {
+                      "alt": {
+                        "required": true,
+                        "type": [Function],
+                      },
                       "src": {
                         "required": true,
                         "type": [Function],
@@ -14428,6 +14469,10 @@ VueWrapper {
                   "model": undefined,
                   "name": "BaseImage",
                   "props": {
+                    "alt": {
+                      "required": true,
+                      "type": [Function],
+                    },
                     "src": {
                       "required": true,
                       "type": [Function],
@@ -14527,8 +14572,11 @@ VueWrapper {
               "BaseImage": {
                 "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
                 "__name": "BaseImage",
-                "inheritAttrs": false,
                 "props": {
+                  "alt": {
+                    "required": true,
+                    "type": [Function],
+                  },
                   "src": {
                     "required": true,
                     "type": [Function],
@@ -14625,8 +14673,11 @@ VueWrapper {
             "BaseImage": {
               "__file": "C:/Users/metle/Desktop/Blogg/frontend/components/base/BaseImage.vue",
               "__name": "BaseImage",
-              "inheritAttrs": false,
               "props": {
+                "alt": {
+                  "required": true,
+                  "type": [Function],
+                },
                 "src": {
                   "required": true,
                   "type": [Function],

@@ -20,7 +20,11 @@ describe('_blank testing', () => {
         })
     })
 
-    test('exists', () => {
+    test('Should exist', () => {
         expect(wrapper.exists()).toBe(true)
     })
+    test('Should match snapshot', () => {
+        expect(wrapper.html()).toMatchSnapshot()
+    })
+    
 })

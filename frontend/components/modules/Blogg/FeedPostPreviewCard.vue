@@ -5,7 +5,7 @@
 			class="col-start-1 col-end-9"
 			v-if="post"
 		>
-			<span class="flex items-center w-full mb-2">
+			<div class="flex items-center w-full mb-2">
 				<span
 					class="user-picture flex items-center"
 					v-if="showUsername"
@@ -41,16 +41,18 @@
 						v-text="post.date_published"
 					></span>
 				</span>
-			</span>
+			</div>
 
 			<div class="mb-4 w-full">
 				<!--Title-->
-				<NuxtLink
-					:to="`/post/${post.id}`"
-					class="cursor-pointer break-words"
-				>
-					<h3 class="text-[28px] mb-2" v-text="post.title"></h3>
-				</NuxtLink>
+				<div data-test="post_title">
+					<NuxtLink
+						:to="`/post/${post.id}`"
+						class="cursor-pointer break-words"
+					>
+						<h3 class="text-[28px] mb-2" v-text="post.title"></h3>
+					</NuxtLink>
+				</div>
 
 				<!--Content-->
 				<div
@@ -59,7 +61,7 @@
 				></div>
 			</div>
 
-			<span class="flex items-center justify-between">
+			<div class="flex items-center justify-between">
 				<span class="flex items-center space-x-2">
 					<!-- Les mer -->
 					<span
@@ -83,7 +85,7 @@
 
 				<span class="flex items-center">
 					<!--Amount of comments-->
-					<span data-article="comments-count" class="me-2">
+					<span class="me-2">
 						<span
 							v-if="post.num_of_comments >= 1"
 							class="cursor-default space-x-1 flex items-center"
@@ -103,7 +105,7 @@
 					</span>
 
 					<!--Save article-->
-					<span data-article="save-article" class="me-2">
+					<span class="me-2">
 						<PostBookmark
 							v-if="
 								post.id &&
@@ -117,7 +119,7 @@
 					</span>
 
 					<!--Article options-->
-					<span data-article="article-options" class="">
+					<span>
 						<BaseIconMoreOptions
 							widthProp="24"
 							heightProp="24"
@@ -127,15 +129,14 @@
 						/>
 					</span>
 				</span>
-			</span>
+			</div>
 		</div>
 
 		<div
-			data-article="right-col-article"
 			class="col-span-4 flex items-center justify-center"
 		>
 			<!-- Article image -->
-			<img
+			<BaseImage
 				data-test="post_article_image"
 				:src="exampleImage"
 				alt="Bilde til artikkel"

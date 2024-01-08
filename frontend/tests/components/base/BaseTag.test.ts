@@ -2,6 +2,9 @@ import { VueWrapper, mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import BaseTag from '~/components/base/BaseTag.vue'
 
+let mockTextProp = "TestTag1Name"
+let mockClassProp = "flex article someting tag"
+
 describe('_blank testing', () => {
     let wrapper:VueWrapper;
     let store:any;
@@ -15,9 +18,8 @@ describe('_blank testing', () => {
                 plugins: [pinia],
             },
             props: {
-                text: {
-                    name: "test prop"
-                }
+                text: mockTextProp,
+                class: mockClassProp,
             }
         })
     })
@@ -26,7 +28,10 @@ describe('_blank testing', () => {
         expect(wrapper.exists()).toBe(true)
     })
 
-    it("should render prop", () => {
-        expect(wrapper.text()).toContain("test prop")
+    it("Should render the prop", () => {
+        expect(wrapper.text()).toBe(mockTextProp)
+    })
+    test('Should have the class prop', () => {
+        expect(wrapper.attributes("class")).toBe(mockClassProp)   
     })
 })

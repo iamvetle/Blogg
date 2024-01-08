@@ -2,24 +2,30 @@
 
 exports[`testing PostArticle > Should match snapshot 1`] = `
 "<div class=\\"article grid-cols-12 grid gap-8 mb-16\\">
-  <div data-article=\\"left-col-article\\" class=\\"col-start-1 col-end-9\\"><span class=\\"flex items-center w-full mb-2\\"><span class=\\"user-picture flex items-center\\"><!-- User profile picture--><baseimage src=\\"/assets/account-pin-circle-line.svg\\" alt=\\"Profile picture\\" class=\\"w-6 h-auto me-2\\"></baseimage></span><!-- Author--><span class=\\"flex items-center justify-between w-full\\"><span class=\\"flex items-center full_name\\"><nuxtlink to=\\"/user/kingOfMario23\\" class=\\"cursor-pointer break-words\\"><span data-testid=\\"post_author_name\\" class=\\"font-bold\\">Timmy Bakke</span></nuxtlink></span><!-- Date published --><span data-test=\\"post_date_published\\" class=\\"cursor-default font-light\\">2023-23-2</span></span></span>
+  <div data-article=\\"left-col-article\\" class=\\"col-start-1 col-end-9\\">
+    <div class=\\"flex items-center w-full mb-2\\"><span class=\\"user-picture flex items-center\\"><!-- User profile picture--><baseimage src=\\"/assets/account-pin-circle-line.svg\\" alt=\\"Profile picture\\" class=\\"w-6 h-auto me-2\\"></baseimage></span><!-- Author--><span class=\\"flex items-center justify-between w-full\\"><span class=\\"flex items-center full_name\\"><nuxtlink to=\\"/user/kingOfMario23\\" class=\\"cursor-pointer break-words\\"><span data-testid=\\"post_author_name\\" class=\\"font-bold\\">Timmy Bakke</span></nuxtlink></span><!-- Date published --><span data-test=\\"post_date_published\\" class=\\"cursor-default font-light\\">2023-23-2</span></span></div>
     <div class=\\"mb-4 w-full\\">
       <!--Title-->
-      <nuxtlink to=\\"/post/14\\" class=\\"cursor-pointer break-words\\">
-        <h3 class=\\"text-[28px] mb-2\\">Just testing</h3>
-      </nuxtlink>
+      <div data-test=\\"post_title\\">
+        <nuxtlink to=\\"/post/14\\" class=\\"cursor-pointer break-words\\">
+          <h3 class=\\"text-[28px] mb-2\\">Just testing</h3>
+        </nuxtlink>
+      </div>
       <!--Content-->
       <div class=\\"break-words mb-2\\">SOMETHING THAT SHOULD BE PROCESSED
 
         Body content goes here</div>
-    </div><span class=\\"flex items-center justify-between\\"><span class=\\"flex items-center space-x-2\\"><!-- Les mer --><span class=\\"cursor-pointer text text-primary hover:text-primaryFixed\\"> Les mer </span>
-    <!--Tags--><span class=\\"flex items-center\\"><span class=\\"me-1\\"><basetag text=\\"Development\\"></basetag></span><span class=\\"me-1\\"><basetag text=\\"Music\\"></basetag></span></span></span><span class=\\"flex items-center\\"><!--Amount of comments--><span data-article=\\"comments-count\\" class=\\"me-2\\"><span class=\\"cursor-default space-x-1 flex items-center\\"><span>5</span>
-    <icon name=\\"has-comments\\" class=\\"h-6\\"></icon></span></span>
-    <!--Save article--><span data-article=\\"save-article\\" class=\\"me-2\\"><!--v-if--></span>
-    <!--Article options--><span data-article=\\"article-options\\" class=\\"\\"><baseiconmoreoptions widthprop=\\"24\\" heightprop=\\"24\\" colorprop=\\"fill-black\\"></baseiconmoreoptions></span></span></span>
+    </div>
+    <div class=\\"flex items-center justify-between\\"><span class=\\"flex items-center space-x-2\\"><!-- Les mer --><span class=\\"cursor-pointer text text-primary hover:text-primaryFixed\\"> Les mer </span>
+      <!--Tags--><span class=\\"flex items-center\\"><span class=\\"me-1\\"><basetag text=\\"Development\\"></basetag></span><span class=\\"me-1\\"><basetag text=\\"Music\\"></basetag></span></span></span><span class=\\"flex items-center\\"><!--Amount of comments--><span class=\\"me-2\\"><span class=\\"cursor-default space-x-1 flex items-center\\"><span>5</span>
+      <icon name=\\"has-comments\\" class=\\"h-6\\"></icon></span></span>
+      <!--Save article--><span class=\\"me-2\\"><!--v-if--></span>
+      <!--Article options--><span><baseiconmoreoptions widthprop=\\"24\\" heightprop=\\"24\\" colorprop=\\"fill-black\\"></baseiconmoreoptions></span></span>
+    </div>
   </div>
-  <div data-article=\\"right-col-article\\" class=\\"col-span-4 flex items-center justify-center\\">
-    <!-- Article image --><img data-test=\\"post_article_image\\" src=\\"/assets/example-image.jpg\\" alt=\\"Bilde til artikkel\\" class=\\"w-full h-auto\\">
+  <div class=\\"col-span-4 flex items-center justify-center\\">
+    <!-- Article image -->
+    <baseimage data-test=\\"post_article_image\\" src=\\"/assets/example-image.jpg\\" alt=\\"Bilde til artikkel\\" class=\\"w-full h-auto\\"></baseimage>
   </div>
 </div>"
 `;
