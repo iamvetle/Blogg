@@ -32,10 +32,10 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
             console.log(tokenFromStorage)
 
             // Update token if present in localStorage
-            if (tokenFromStorage === "") {
+            if (!tokenFromStorage) {
                 token.value = "";
             } else {
-                token.value = tokenFromStorage ?? ""
+                token.value = tokenFromStorage
             }
         }
 
@@ -49,10 +49,10 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
             const usernameFromStorage = localStorage.getItem('username');
 
             // Update token if present in localStorage
-            if (usernameFromStorage === "") {
+            if (!usernameFromStorage) {
                 username.value = "";
             } else {
-                username.value = usernameFromStorage ?? ""
+                username.value = usernameFromStorage
             }
         }
 
@@ -114,14 +114,24 @@ export const useAuthStore = defineStore('Auth Store for managing authentication-
 
             const tokenFromLocalStorage = localStorage.getItem('token');
             console.log(tokenFromLocalStorage);
+            const usernameFromLocalStorage = localStorage.getItem('username');
+            console.log(usernameFromLocalStorage);
+
 
             // Assign an empty string, "", if there was no localStorage token
 
-            if (tokenFromLocalStorage === "") {
+            if (!tokenFromLocalStorage) {
                 token.value = '';
 
             } else {
                 token.value = tokenFromLocalStorage ?? ""
+            }
+
+            if (!usernameFromLocalStorage) {
+                username.value = '';
+
+            } else {
+                username.value = usernameFromLocalStorage ?? ""
             }
 
         }

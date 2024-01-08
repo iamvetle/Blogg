@@ -1,14 +1,13 @@
 <template>
-	<Suspense>
-		<template #default>
-			<FeedSidebarNotAuthenticated />
-		</template>
-		<template #fallback>
-			<div>
-				<SkeletonFeedPostsListSidebar />
-			</div>
-		</template>
-	</Suspense>
+	<!-- <Suspense> -->
+		<!-- <template #default> -->
+			<FeedPostsListSidebar v-if="authStore.isAuthenticated" />
+			<FeedSidebarNotAuthenticated v-else />
+		<!-- </template> -->
+		<!-- <template #fallback>
+			<SkeletonFeedPostsListSidebar />
+		</template> -->
+	<!-- </Suspense> -->
 </template>
 
 <script setup lang="ts">
@@ -29,9 +28,18 @@ const fetchLoggedInUserInformation = async () => {
  */
 
 onBeforeMount(async () => {
-	if (authStore.isAuthenticated != false) {
+	/**
+	 * ! dont really understand why I have to do authStore.authStoreSsetup()
+	 * TODO understand why
+	 * 
+	 * TODO Fix the problem under, where I have to fetch:
+	 */
+	authStore.authStoreSetup()
+	if (authStore.isAuthenticated == false) {
 		await fetchLoggedInUserInformation();
 	}
+	await fetchLoggedInUserInformation();
+
 });
 </script>
 
