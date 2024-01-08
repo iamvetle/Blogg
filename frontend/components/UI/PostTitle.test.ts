@@ -31,25 +31,13 @@ const factory = () => {
     })
 };
 
-describe('', () => {
+describe('Testing the PostTitle component to the id/post page', () => {
 
     vi.stubGlobal('definePageMeta', () => {
         return null
     });
 
-    // vi.stubGlobal('useRoute', () => {
-    //     return {
-    //         params: {
-    //             id: 1
-    //         }
-    //     }
-    // });
-
     beforeEach(() => {
-        // generalStore = useGeneralStore(pinia); 
-        // postStore = usePostStore(pinia); 
-        // loggedInUserStore = useLoggedInUserStore(pinia); 
-        // paginationStore = usePaginationStore(pinia); 
 
     });
 
@@ -80,8 +68,7 @@ describe('', () => {
     })
     test('Attributes ($attrs) should be on the h1 element', () => {
         wrapper = factory()
-        const h1 = wrapper.find("[data-test='title']")
-        expect(h1.attributes("class")).toBe(classAttr)
+        expect(wrapper.attributes("class")).toBe(classAttr)
     })
 
 });

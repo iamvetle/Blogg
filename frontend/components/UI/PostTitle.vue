@@ -1,9 +1,5 @@
 <template>
-    <div>
-        <span>
-            <h1 data-test="title" v-bind="$attrs">{{ title }}</h1>
-        </span>
-    </div>
+	<h1 v-bind="$attrs">{{ title }}</h1>
 </template>
 
 <script setup lang="ts">
@@ -12,9 +8,8 @@
  */
 
 defineProps<{
-    title: string;
+	title: string;
 }>();
-
 </script>
 
 <style scoped></style>

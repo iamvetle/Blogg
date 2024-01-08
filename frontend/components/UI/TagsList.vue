@@ -8,6 +8,7 @@
 
 <script setup lang="ts">
 /**
+ * ! why is not error comming here?
  * Contains multiple tags.
  * 
  * Loops through the tags, one after another.
