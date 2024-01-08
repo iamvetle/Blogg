@@ -1,5 +1,5 @@
 <template>
-    <div v-bind="$attrs" data-test="num_of_followers">
+    <div data-test="num_of_followers">
         <span v-if="num_of_followers === 1">{{ num_of_followers }} follower</span>
         <span v-else>{{ num_of_followers }} followers</span>
     </div>

@@ -31,6 +31,7 @@ describe('Should render', () => {
 
     beforeEach(() => {
         loggedInUserStore = useLoggedInUserStore(pinia);
+        //@ts-ignore
         loggedInUserStore.loggedInUserProfile = {
             num_of_following: 871321421
         }

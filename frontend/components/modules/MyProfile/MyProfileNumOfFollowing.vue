@@ -1,7 +1,7 @@
 <template>
-    <div v-bind="$attrs">
+    <div>
         <NumOfFollowing
-        :num_of_following="loggedInUserStore.loggedInUserProfile.num_of_following"
+        :num_of_following="loggedInUserStore.loggedInUserProfile?.num_of_following"
         />
     </div>
 </template>
